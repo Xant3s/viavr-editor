@@ -1,32 +1,29 @@
 `Please edit this README to fit your project and keep it up-to-date with your concept.`
 
-`All final deliverables (code, executable game, report, trailer and poster) have to be committed, tagged as final and pushed to your GitLab repository.`
+`All final deliverables (code, executable, report, presentations) have to be committed, tagged as final and pushed to your GitLab repository.`
 
-# GameLab Project Repository
+# Games Engineering Project Repository
 
 |  General Info  | |
 | ---|---|
 | Working Title | `Edit me!` |
 | Final Title | `Edit me!` |
-| Student | `Name`, `edit-me`@stud-mail.uni-wuerzburg.de, `s######` |
+| Student | `Name`, `edit-me`@stud-mail.uni-wuerzburg.de|
 | Target Platform(s) | `Edit me!` |
-| Start Date | 21.10.2019 |
-| Study Program | Games Engineering B.Sc.|
+| Start Date | `Edit me!` |
+| Study Program | `Edit me!` |
 
 ### Abstract
 
 `Insert your project description here, and keep it up-to-date.`
 
-`--- 8< --- READ, THEN REPLACE WITH CUSTOM CONTENT BELOW HERE --- 8< ---`
+`------ READ, THEN REPLACE WITH CUSTOM CONTENT BELOW HERE ------`
 
 ## Repository Usage Guides
 
 ```
 RepositoryRoot/
-    ├── README.md           // This should reflect your project 
-    │                       //  accurately, so always merge infor- 
-    │                       //  mation from your concept paper 
-    │                       //  with the readme
+    ├── README.md           
     ├── builds/             // Archives (.zip) of built executables of your projects
     │                       //  including (non-standard) dependencies
     ├── code/
@@ -34,11 +31,8 @@ RepositoryRoot/
     │   ├── my-game-1/      // No un-used folders, no "archived" folders
     │   ├── CMakeLists.txt  // e.g. if using CMake, this can be your project root
     │   └── ...
-    ├── documentation/      // GL2/3 - Each project requires FULL documentation  
-    │                       //   i.e. API Docs, Handbook, Dev Docs
-    ├── poster/             // PDF of your Poster(s)
-    ├── report/             // PDF
-    └── trailer/            // .mp4 (final trailer, no raw material)
+    └── report/             // PDF
+    └── presentation/       // pptx etc
 ```
 
 ### Project and Source Control

@@ -23,7 +23,8 @@ export default class Main {
             }
         });
 
-        win.loadFile('src/indexpage/index.html');
+        // win.loadFile('src/indexpage/index.html');
+        win.loadFile('https://localhost:9090');
         win.webContents.openDevTools();
     }
 

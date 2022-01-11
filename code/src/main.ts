@@ -19,12 +19,15 @@ export default class Main {
             width: 1000,
             height: 700,
             webPreferences: {
-                nodeIntegration: true
+                nodeIntegration: true,
+                // webSecurity: false
+                webviewTag: true
             }
         });
 
-        // win.loadFile('src/indexpage/index.html');
-        win.loadFile('https://localhost:9090');
+        win.loadFile('src/indexpage/index.html');
+        // win.loadFile('src/Spoke/src/index.html');
+        // win.loadFile('https://localhost:9090');
         win.webContents.openDevTools();
     }
 

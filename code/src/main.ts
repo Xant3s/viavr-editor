@@ -21,19 +21,9 @@ export default class Main {
             }
         })
 
+        Main.allowCertificatesFromLocalhost(win)
         win.loadFile('src/indexpage/index.html')
         win.maximize()
-
-        // https://stackoverflow.com/questions/63923644/self-signed-certificates-in-electron
-        win.webContents.session.setCertificateVerifyProc((request, callback) => {
-            const {hostname} = request
-            console.log(hostname)
-            if(hostname === 'localhost') { // this is blind trust, however you should use the certificate, valdiatedcertifcate, verificationresult as your verification point to call callback
-                callback(0) // Trust this domain
-            } else {
-                callback(-3) // Use chromium's verification result
-            }
-        })
     }
 
     private static activate() {
@@ -46,5 +36,18 @@ export default class Main {
         if(process.platform !== 'darwin') {
             Main.application.quit()
         }
+    }
+
+    private static allowCertificatesFromLocalhost(win: Electron.BrowserWindow) {
+        // https://stackoverflow.com/questions/63923644/self-signed-certificates-in-electron
+        win.webContents.session.setCertificateVerifyProc((request, callback) => {
+            const {hostname} = request
+            console.log(hostname)
+            if(hostname === 'localhost') { // this is blind trust, however you should use the certificate, valdiatedcertifcate, verificationresult as your verification point to call callback
+                callback(0) // Trust this domain
+            } else {
+                callback(-3) // Use chromium's verification result
+            }
+        })
     }
 }

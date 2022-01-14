@@ -1,0 +1,3 @@
+[submodule "code/src/Spoke"]
+	path = code/src/Spoke
+	url = https://github.com/mozilla/Spoke.git

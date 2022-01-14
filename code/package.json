@@ -1,0 +1,60 @@
+{
+  "name": "viavr-editor",
+  "version": "0.1.0",
+  "description": "VIA-VR Editor",
+  "main": "dist/app.js",
+  "scripts": {
+    "spoke": "cd src/Spoke && yarn start",
+    "build": "tsc && electron-forge start",
+    "start": "npm-run-all --parallel spoke build",
+    "package": "tsc && electron-forge package",
+    "make": "tsc && electron-forge make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab2.informatik.uni-wuerzburg.de:GE/Teaching/grl/2021-truman-viavr-editor.git"
+  },
+  "keywords": [],
+  "author": "Samuel Truman",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^11.3.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "unity_interop"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}

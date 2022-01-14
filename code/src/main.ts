@@ -24,7 +24,7 @@ export default class Main {
         })
 
         win.loadFile('src/indexpage/index.html')
-        win.webContents.openDevTools()
+        // win.webContents.openDevTools()
 
         // https://stackoverflow.com/questions/63923644/self-signed-certificates-in-electron
         win.webContents.session.setCertificateVerifyProc((request, callback) => {

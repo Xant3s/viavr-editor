@@ -16,15 +16,13 @@ export default class Main {
 
     private static createWindow() {
         const win = new BrowserWindow({
-            width: 1000,
-            height: 700,
             webPreferences: {
                 nodeIntegration: true,
             }
         })
 
         win.loadFile('src/indexpage/index.html')
-        // win.webContents.openDevTools()
+        win.maximize()
 
         // https://stackoverflow.com/questions/63923644/self-signed-certificates-in-electron
         win.webContents.session.setCertificateVerifyProc((request, callback) => {

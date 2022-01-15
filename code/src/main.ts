@@ -13,6 +13,7 @@ export default class Main {
         Main.application.on('activate', Main.activate)
         Main.application.on('window-all-closed', Main.onWindowAllClosed)
 
+        // https://github.com/electron/electron/issues/18214
         Main.application.commandLine.appendSwitch('disable-site-isolation-trials')
     }
 

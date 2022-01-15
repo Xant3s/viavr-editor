@@ -12,18 +12,23 @@ export default class Main {
         Main.application.whenReady().then(Main.createWindow)
         Main.application.on('activate', Main.activate)
         Main.application.on('window-all-closed', Main.onWindowAllClosed)
+
+        // https://github.com/electron/electron/issues/18214
+        Main.application.commandLine.appendSwitch('disable-site-isolation-trials')
     }
 
     private static createWindow() {
         const win = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
+                webSecurity: false,
             }
         })
 
         Main.allowCertificatesFromLocalhost(win)
         win.loadFile('src/indexpage/index.html')
         win.maximize()
+        win.webContents.openDevTools()
     }
 
     private static activate() {

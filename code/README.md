@@ -9,7 +9,7 @@
     node -v
     npm -v
     ```
-  - Node >=16.10 will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run 
+  - Node >=16.10 will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator: 
   ```
   corepack enable
   ```

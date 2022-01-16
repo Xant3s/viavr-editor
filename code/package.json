@@ -4,6 +4,7 @@
   "description": "VIA-VR Editor",
   "main": "dist/app.js",
   "scripts": {
+    "postinstall": "cd plugins/Spoke && yarn install",
     "spoke": "cd plugins/Spoke && yarn start",
     "build": "tsc && electron-forge start",
     "start": "npm-run-all --parallel spoke build",
@@ -16,7 +17,7 @@
   },
   "keywords": [],
   "author": "Samuel Truman",
-  "license": "ISC",
+  "license": "none",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",

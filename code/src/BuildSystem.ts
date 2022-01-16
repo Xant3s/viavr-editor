@@ -1,4 +1,4 @@
-import {ipcMain as ipc} from 'electron'
+import {BrowserWindow, ipcMain as ipc} from 'electron'
 
 export default class BuildSystem {
     constructor() {
@@ -6,6 +6,16 @@ export default class BuildSystem {
     }
 
     private openBuildMenu(){
-        console.log("Build System");
+        const buildDialog = new BrowserWindow(
+            {
+                width: 1000,
+                height: 700,
+                title: "Build Dialog",
+                webPreferences: {
+                    nodeIntegration: true
+                }
+            }
+        )
+        buildDialog.loadFile('src/BuildDialog/BuildDialog.html')
     }
 }

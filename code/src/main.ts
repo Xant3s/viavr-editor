@@ -1,6 +1,7 @@
 import {BrowserWindow, Menu} from 'electron'
 import CustomMenu from './CustomMenu'
 
+export let mainWindow : BrowserWindow;
 
 export default class Main {
     static mainWindow: Electron.BrowserWindow
@@ -19,18 +20,18 @@ export default class Main {
     }
 
     private static createWindow() {
-        const win = new BrowserWindow({
+        mainWindow = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
                 webSecurity: false,
             }
         })
 
-        Main.allowCertificatesFromLocalhost(win)
+        Main.allowCertificatesFromLocalhost(mainWindow)
         new CustomMenu().loadCustomMenu()
-        win.loadFile('src/indexpage/index.html')
-        win.maximize()
-        win.webContents.openDevTools()
+        mainWindow.loadFile('src/indexpage/index.html')
+        mainWindow.maximize()
+        mainWindow.webContents.openDevTools()
     }
 
     private static activate() {

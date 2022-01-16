@@ -1,4 +1,5 @@
 import {BrowserWindow, Menu} from 'electron'
+import CustomMenu from './CustomMenu'
 
 
 export default class Main {
@@ -26,54 +27,10 @@ export default class Main {
         })
 
         Main.allowCertificatesFromLocalhost(win)
+        new CustomMenu().loadCustomMenu()
         win.loadFile('src/indexpage/index.html')
         win.maximize()
         win.webContents.openDevTools()
-
-        let menu = Menu.buildFromTemplate([
-            {
-                role: 'fileMenu',
-            },
-            {
-                role: 'editMenu',
-            },
-            {
-                role: 'viewMenu',
-            },
-            {
-                role: 'windowMenu',
-            },
-            {
-                role: 'help',
-                submenu: [
-                    {
-                        label: 'About',
-                        click() {
-                            require('electron').shell.openExternal('https://www.hci.uni-wuerzburg.de/projects/via-vr/')
-                        }
-                    },
-                    // Documentation
-                    {
-                        label: 'Documentation',
-                        click() {
-                            require('electron').shell.openExternal('https://gitlab2.informatik.uni-wuerzburg.de/GE/Teaching/grl/2021-truman-viavr-editor/-/wikis/home')
-                        }}
-                    ,
-                ]
-            },
-            {
-                label: 'Build',
-                submenu: [
-                    {
-                        label: "Open Build Menu",
-                        click: () => {
-                            console.log("Open build menu")
-                        }
-                    }
-                ]
-            }
-        ])
-        Menu.setApplicationMenu(menu)
     }
 
     private static activate() {

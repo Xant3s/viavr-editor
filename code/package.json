@@ -4,7 +4,7 @@
   "description": "VIA-VR Editor",
   "main": "dist/app.js",
   "scripts": {
-    "spoke": "cd src/Spoke && yarn start",
+    "spoke": "cd plugins/Spoke && yarn start",
     "build": "tsc && electron-forge start",
     "start": "npm-run-all --parallel spoke build",
     "package": "tsc && electron-forge package",

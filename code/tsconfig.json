@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "outDir": "dist"
   },
   "exclude": [

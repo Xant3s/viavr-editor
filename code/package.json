@@ -10,7 +10,7 @@
     "start": "npm-run-all --parallel spoke build",
     "package": "tsc && electron-forge package",
     "make": "tsc && electron-forge make",
-    "copy-dependencies:win": "cpy plugins out/viavr-editor-win32-x64 --parents",
+    "copy-dependencies:win": "cpy plugins out/viavr-editor-win32-x64 --parents --dot",
     "make:win": "tsc && electron-forge make && copy-dependencies"
   },
   "repository": {

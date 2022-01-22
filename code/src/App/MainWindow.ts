@@ -1,48 +1,50 @@
-import {BrowserWindow, Menu} from 'electron'
+import {BrowserWindow} from 'electron'
 import CustomMenu from './CustomMenu'
 
-export let mainWindow : BrowserWindow;
 
-export default class Main {
-    static mainWindow: Electron.BrowserWindow
-    static application: Electron.App
-    static BrowserWindow
+export default class MainWindow {
+    private static window: Electron.BrowserWindow
+    private application: Electron.App
 
-    static main(application: Electron.App, browserWindow: typeof BrowserWindow) {
-        Main.BrowserWindow = browserWindow
-        Main.application = application
-        Main.application.whenReady().then(Main.createWindow)
-        Main.application.on('activate', Main.activate)
-        Main.application.on('window-all-closed', Main.onWindowAllClosed)
+
+    public constructor(application: Electron.App) {
+        this.application = application
+        this.application.whenReady().then(MainWindow.createWindow)
+        this.application.on('activate', MainWindow.activate)
+        this.application.on('window-all-closed', () => MainWindow.onWindowAllClosed(application))
 
         // https://github.com/electron/electron/issues/18214
-        Main.application.commandLine.appendSwitch('disable-site-isolation-trials')
+        this.application.commandLine.appendSwitch('disable-site-isolation-trials')
+    }
+
+    get window(): Electron.BrowserWindow {
+        return MainWindow.window
     }
 
     private static createWindow() {
-        mainWindow = new BrowserWindow({
+        MainWindow.window = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
                 webSecurity: false,
             }
         })
 
-        Main.allowCertificatesFromLocalhost(mainWindow)
+        MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()
-        mainWindow.loadFile('src/indexpage/index.html')
-        mainWindow.maximize()
-        mainWindow.webContents.openDevTools()
+        MainWindow.window.loadFile('src/Editor/indexpage/index.html')
+        MainWindow.window.maximize()
+        MainWindow.window.webContents.openDevTools()
     }
 
     private static activate() {
         if(BrowserWindow.getAllWindows().length === 0) {
-            Main.createWindow()
+            MainWindow.createWindow()
         }
     }
 
-    private static onWindowAllClosed() {
+    private static onWindowAllClosed(app: Electron.App) {
         if(process.platform !== 'darwin') {
-            Main.application.quit()
+            app.quit()
         }
     }
 

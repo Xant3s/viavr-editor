@@ -1,8 +1,14 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
-import {mainWindow} from './main'
+import UnityManager from './UnityManager'
+import UnityPackageManager from './UnityPackageManager'
 
 export default class BuildSystem {
-    constructor() {
+    private readonly mainWindow: BrowserWindow
+
+    constructor(window: Electron.BrowserWindow) {
+        this.mainWindow = window
+        new UnityManager()
+        new UnityPackageManager()
         ipc.on('open-build-menu', () => this.openBuildMenu())
     }
 
@@ -13,13 +19,13 @@ export default class BuildSystem {
                 height: 500,
                 title: "Build Dialog",
                 modal: true,
-                parent: mainWindow,
+                parent: this.mainWindow,
                 autoHideMenuBar: true,
                 webPreferences: {
                     nodeIntegration: true
                 }
             }
         )
-        buildDialog.loadFile('src/BuildDialog/BuildDialog.html')
+        buildDialog.loadFile('src/Editor/BuildDialog/BuildDialog.html')
     }
 }

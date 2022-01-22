@@ -1,16 +1,30 @@
 import {ipcMain as ipc} from 'electron'
+import * as child_process from 'child_process'
+
 
 export default class SpokeManager {
-    constructor() {
-        this.startSpoke()
-        ipc.on('app-quit', this.stopSpoke)
-    }
+    private app: Electron.App
+    private startCommand: string = 'cd plugins/Spoke && yarn start'
+    private static spoke: child_process.ChildProcess
+    private static pid: number
 
-    private startSpoke() {
-        console.log('Starting Spoke')
+
+    constructor(app: Electron.App) {
+        this.app = app
+        // if(app.isPackaged){
+        SpokeManager.spoke = child_process.spawn(this.startCommand, [], {
+            shell: true,
+            detached: true,
+        })
+        SpokeManager.pid = SpokeManager.spoke.pid
+        ipc.on('app-quit', this.stopSpoke)
+        console.log('Spoke started with pid: ' + SpokeManager.pid)
+        // }
     }
 
     private stopSpoke() {
-        console.log('Quitting viavr')
+        // TODO
+        // console.log('Stopping spoke with pid: ' + SpokeManager.pid)
+        // SpokeManager.spoke.kill()
     }
 }

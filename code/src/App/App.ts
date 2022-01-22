@@ -5,4 +5,4 @@ import SpokeManager from './SpokeManager'
 
 const mainWindow = new MainWindow(app)
 new BuildSystem(mainWindow.window)
-new SpokeManager()
+new SpokeManager(app)

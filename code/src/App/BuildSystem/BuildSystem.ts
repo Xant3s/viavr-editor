@@ -1,8 +1,12 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
 import {mainWindow} from '../main'
+import UnityManager from './UnityManager'
+import UnityPackageManager from './UnityPackageManager'
 
 export default class BuildSystem {
     constructor() {
+        new UnityManager()
+        new UnityPackageManager()
         ipc.on('open-build-menu', () => this.openBuildMenu())
     }
 

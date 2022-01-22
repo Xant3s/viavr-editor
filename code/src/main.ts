@@ -29,7 +29,7 @@ export default class Main {
 
         Main.allowCertificatesFromLocalhost(mainWindow)
         new CustomMenu().loadCustomMenu()
-        mainWindow.loadFile('src/indexpage/index.html')
+        mainWindow.loadFile('src/Editor/indexpage/index.html')
         mainWindow.maximize()
         mainWindow.webContents.openDevTools()
     }

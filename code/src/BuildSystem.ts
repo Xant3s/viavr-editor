@@ -20,6 +20,6 @@ export default class BuildSystem {
                 }
             }
         )
-        buildDialog.loadFile('src/BuildDialog/BuildDialog.html')
+        buildDialog.loadFile('src/Editor/BuildDialog/BuildDialog.html')
     }
 }

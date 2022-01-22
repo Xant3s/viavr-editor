@@ -9,7 +9,8 @@
     "build": "tsc && electron-forge start",
     "start": "npm-run-all --parallel spoke build",
     "package": "tsc && electron-forge package",
-    "make": "tsc && electron-forge make"
+    "make": "tsc && electron-forge make",
+    "copy-dependencies": "cp plugins ${out_dir}/plugins"
   },
   "repository": {
     "type": "git",

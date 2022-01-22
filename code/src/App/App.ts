@@ -1,6 +1,6 @@
 import {app, BrowserWindow} from 'electron'
 import Main from './main'
-import BuildSystem from './BuildSystem'
+import BuildSystem from './BuildSystem/BuildSystem'
 import UnityManager from './BuildSystem/UnityManager'
 import UnityPackageManager from './BuildSystem/UnityPackageManager'
 

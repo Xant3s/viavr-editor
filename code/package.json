@@ -2,7 +2,7 @@
   "name": "viavr-editor",
   "version": "0.1.0",
   "description": "VIA-VR Editor",
-  "main": "dist/app.js",
+  "main": "dist/App/app.js",
   "scripts": {
     "postinstall": "cd plugins/Spoke && yarn install",
     "spoke": "cd plugins/Spoke && yarn start",

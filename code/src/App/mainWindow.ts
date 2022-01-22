@@ -1,22 +1,21 @@
-import {BrowserWindow, Menu} from 'electron'
+import {BrowserWindow} from 'electron'
 import CustomMenu from './CustomMenu'
 
 export let mainWindow : BrowserWindow;
 
-export default class Main {
-    static mainWindow: Electron.BrowserWindow
+export default class MainWindow {
+    static window: Electron.BrowserWindow
     static application: Electron.App
-    static BrowserWindow
 
-    static main(application: Electron.App, browserWindow: typeof BrowserWindow) {
-        Main.BrowserWindow = browserWindow
-        Main.application = application
-        Main.application.whenReady().then(Main.createWindow)
-        Main.application.on('activate', Main.activate)
-        Main.application.on('window-all-closed', Main.onWindowAllClosed)
+
+    static main(application: Electron.App) {
+        MainWindow.application = application
+        MainWindow.application.whenReady().then(MainWindow.createWindow)
+        MainWindow.application.on('activate', MainWindow.activate)
+        MainWindow.application.on('window-all-closed', MainWindow.onWindowAllClosed)
 
         // https://github.com/electron/electron/issues/18214
-        Main.application.commandLine.appendSwitch('disable-site-isolation-trials')
+        MainWindow.application.commandLine.appendSwitch('disable-site-isolation-trials')
     }
 
     private static createWindow() {
@@ -27,7 +26,7 @@ export default class Main {
             }
         })
 
-        Main.allowCertificatesFromLocalhost(mainWindow)
+        MainWindow.allowCertificatesFromLocalhost(mainWindow)
         new CustomMenu().loadCustomMenu()
         mainWindow.loadFile('src/Editor/indexpage/index.html')
         mainWindow.maximize()
@@ -36,13 +35,13 @@ export default class Main {
 
     private static activate() {
         if(BrowserWindow.getAllWindows().length === 0) {
-            Main.createWindow()
+            MainWindow.createWindow()
         }
     }
 
     private static onWindowAllClosed() {
         if(process.platform !== 'darwin') {
-            Main.application.quit()
+            MainWindow.application.quit()
         }
     }
 

@@ -1,5 +1,5 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
-import {mainWindow} from '../main'
+import {mainWindow} from '../mainWindow'
 import UnityManager from './UnityManager'
 import UnityPackageManager from './UnityPackageManager'
 

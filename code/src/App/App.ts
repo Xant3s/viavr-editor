@@ -1,7 +1,7 @@
-import {app, BrowserWindow} from 'electron'
-import Main from './main'
+import {app} from 'electron'
+import MainWindow from './mainWindow'
 import BuildSystem from './BuildSystem/BuildSystem'
 
-Main.main(app, BrowserWindow)
+MainWindow.main(app)
 new BuildSystem()
 

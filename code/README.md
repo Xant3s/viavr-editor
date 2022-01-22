@@ -25,10 +25,10 @@
   - Run `npm install`
   - Run `npm start` to start the application
 
-## How to Build Executable
+## How to Build Executable (Currently Windows Only)
 
 - Navigate to the `code` folder and run the following commands:
   - Run `npm install`
-  - Run `npm run make` to build executable for your system
+  - Run `npm run make:win` to build executable for your system
 - Install [Yarn](https://yarnpkg.com/) on the target PC
 - Copy the `out/{Appname}` folder to the target PC

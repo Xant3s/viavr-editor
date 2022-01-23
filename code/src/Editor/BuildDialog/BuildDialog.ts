@@ -18,6 +18,8 @@ class BuildDialog {
         ipc.on('clear-packages', () => this.packageList.innerHTML = '')
         ipc.on('add-package', (_, p) => this.addPackage(p))
         ipc.on('ready-to-build-project', () => this.buildButton.prop('disabled', false))
+
+        ipc.send('query-available-packages')
     }
 
     private setUnityPath() {

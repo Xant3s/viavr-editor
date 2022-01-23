@@ -4,14 +4,27 @@ import fetch from 'node-fetch'
 
 
 ipc.on('query-available-packages', async (e) => {
-    const packageManager = new UnityPackageManager()
+    const packageManager = UnityPackageManager.getInstance()
     const packageList = await packageManager.queryPackagesFromRegistry()
     packageList.forEach(p => e.sender.send('add-package', p as Package))
 })
 
 
 export default class UnityPackageManager {
+    static instance: UnityPackageManager
     static registryUrl = 'https://packages.informatik.uni-wuerzburg.de'
+
+
+    public static getInstance(): UnityPackageManager {
+        if (!UnityPackageManager.instance) {
+            UnityPackageManager.instance = new UnityPackageManager()
+        }
+        return UnityPackageManager.instance
+    }
+
+    private constructor() {
+
+    }
 
     public async queryPackagesFromRegistry() {
         const response = await fetch(`${UnityPackageManager.registryUrl}/-/v1/search?text=unity-de.jmu.ge`)

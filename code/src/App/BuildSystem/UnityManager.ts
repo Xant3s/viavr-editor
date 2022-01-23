@@ -62,7 +62,7 @@ export default class UnityManager {
         console.log('Start installing packages.')
         const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
         const manifestData = await JSON.parse(manifest)
-        const packageManager = new UnityPackageManager()
+        const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromRegistry()
         packages.forEach((selectedToInstall: boolean, packageName: string) => {
             if(selectedToInstall) {

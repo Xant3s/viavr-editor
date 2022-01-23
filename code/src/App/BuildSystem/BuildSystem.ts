@@ -8,7 +8,6 @@ export default class BuildSystem {
     constructor(window: Electron.BrowserWindow) {
         this.mainWindow = window
         new UnityManager()
-        new UnityPackageManager()
         ipc.on('open-build-menu', () => this.openBuildMenu())
     }
 

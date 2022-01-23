@@ -10,15 +10,19 @@ class BuildDialog {
     constructor() {
         $('#btn-select-unity-path').on('click', () => ipc.send('select-unity-path'))
         $('#btn-confirm-unity-path').on('click', () => this.setUnityPath())
-        $('#btn-query-packages').on('click', () => ipc.send('query-available-packages'))
+        $('#btn-query-packages').on('click', () => this.queryPackages())
         $('#btn-create-project').on('click', () => ipc.send('create-unity-project', this.getSelectedPackages()))
         this.buildButton.on('click', () => ipc.send('build-unity-project'))
 
         ipc.on('selected-unity-path', (_, unityPath) => this.unityPathText.value = unityPath ?? this.unityPathText.value)
-        ipc.on('clear-packages', () => this.packageList.innerHTML = '')
         ipc.on('add-package', (_, p) => this.addPackage(p))
         ipc.on('ready-to-build-project', () => this.buildButton.prop('disabled', false))
 
+        this.queryPackages()
+    }
+
+    private queryPackages() {
+        this.packageList.innerHTML = ''
         ipc.send('query-available-packages')
     }
 

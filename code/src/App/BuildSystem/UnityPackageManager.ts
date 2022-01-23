@@ -5,7 +5,6 @@ import fetch from 'node-fetch'
 
 ipc.on('query-available-packages', async (e) => {
     const packageManager = new UnityPackageManager()
-    e.sender.send('clear-packages')
     const packageList = await packageManager.queryPackagesFromRegistry()
     packageList.forEach(p => e.sender.send('add-package', p as Package))
 })

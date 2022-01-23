@@ -1,3 +1,4 @@
+import {BrowserWindow, ipcMain as ipc} from 'electron'
 import Preferences from './Preferences'
 
 const fs = require('fs').promises
@@ -20,7 +21,9 @@ export default class PreferencesManager {
         this.initialized = true
     }
 
-    private constructor() {}
+    private constructor() {
+        ipc.on('open-preferences', () => PreferencesManager.openPreferences())
+    }
 
     public get<Type>(name: string): Type {
         return this.preferences[name] as Type
@@ -41,5 +44,17 @@ export default class PreferencesManager {
                 console.log(err)
             }
         })
+    }
+
+    private static openPreferences() {
+        const win = new BrowserWindow({
+            width: 800,
+            height: 600,
+            autoHideMenuBar: true,
+            webPreferences: {
+                nodeIntegration: true
+            }
+        })
+        win.loadFile('src/Editor/Preferences/Preferences.html')
     }
 }

@@ -1,39 +1,45 @@
-import {dialog, ipcMain as ipc} from 'electron'
+import {app, dialog, ipcMain as ipc} from 'electron'
 import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
-const {exec} = require('child_process')
+import {exec} from 'child_process'
+
 const fs = require('fs').promises
-const {app} = require('electron')
 
 
-export default class UnityManager {
+export default class UnityBuildManager {
     private unityPath = ''
     private buildPath = ''
 
     constructor() {
+        // TODO: Move to BuildSystem
         ipc.on('select-unity-path', async (e) => {
-            const unityPath = await UnityManager.promptUserForPathToUnity()
+            const unityPath = await UnityBuildManager.promptUserForPathToUnity()
             e.sender.send('selected-unity-path', unityPath)
         })
 
+        // TODO: Move to Preferences
         ipc.on('set-unity-path', (_, args) => this.unityPath = args)
+
 
         ipc.on('create-unity-project', async (e, packages) => {
             await this.createEmptyUnityProject(packages)
             e.sender.send('ready-to-build-project')
         })
-
         ipc.on('build-unity-project', () => this.buildUnityProject(this.buildPath))
     }
 
     private async createEmptyUnityProject(packages: Map<string, boolean>) {
-        const outputPath = await UnityManager.promptUserForProjectBuildPath()
+        const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()  // TODO: what if user aborts?
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
-        await UnityManager.setupScopedRegistry(outputPath)
+        await UnityBuildManager.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         await this.addImportedScenesToBuildSettings(outputPath)
-        // await this.generateUnityProject(outputPath)
         this.buildPath = outputPath
+    }
+
+    private static async promptUserForProjectBuildPath() : Promise<string> {
+        const chosenFolders = await dialog.showOpenDialog({properties: ['openDirectory', "createDirectory"]})
+        return chosenFolders.filePaths[0]
     }
 
     private static async setupScopedRegistry(outputPath: string) {
@@ -80,7 +86,7 @@ export default class UnityManager {
     }
 
     private async addImportedScenesToBuildSettings(projectPath: string) {
-        const unityAppPath = UnityManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
+        const unityAppPath = UnityBuildManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
         const importScenesCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.SceneImporter.AddScenesToBuildSettings`
         console.log('Start importing scenes.')
         exec(importScenesCommand, err => {
@@ -89,20 +95,8 @@ export default class UnityManager {
         })
     }
 
-    // @ts-ignore
-    private async generateUnityProject(projectPath: string) {
-        const unityAppPath = UnityManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
-        // const generateProjectCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.ProjectGenerator.GenerateProject`
-        const generateProjectFilesCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}"`
-        console.log('Start generating project.')
-        exec(generateProjectFilesCommand, err => {
-            if(err) console.log(err)
-            console.log('Project generated.')
-        })
-    }
-
     private buildUnityProject(projectPath: string) {
-        const unityAppPath = UnityManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
+        const unityAppPath = UnityBuildManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
         const buildProjectCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.BuildManager.BuildToDefaultPath`
         console.log('Start building.')
         exec(buildProjectCommand, err => {
@@ -114,11 +108,6 @@ export default class UnityManager {
     private static async promptUserForPathToUnity() {
         const pathToUnity = await dialog.showOpenDialog({properties: ['openFile']})
         return pathToUnity[0]
-    }
-
-    private static async promptUserForProjectBuildPath() : Promise<string> {
-        const chosenFolders = await dialog.showOpenDialog({properties: ['openDirectory', "createDirectory"]})
-        return chosenFolders.filePaths[0]
     }
 
     private static isMacOS = () => process.platform === 'darwin';

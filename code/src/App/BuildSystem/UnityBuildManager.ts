@@ -1,9 +1,10 @@
 import {app, dialog, ipcMain as ipc} from 'electron'
 import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
-import {exec} from 'child_process'
+import * as util from 'util'
 
 const fs = require('fs').promises
+const exec = util.promisify(require('child_process').exec)
 
 
 export default class UnityBuildManager {
@@ -28,7 +29,10 @@ export default class UnityBuildManager {
             await this.createEmptyUnityProject(packages)
             e.sender.send('ready-to-build-project')
         })
-        ipc.on('build-unity-project', () => this.buildUnityProject(this.buildPath))
+        ipc.on('build-unity-project', async (e) => {
+            await this.buildUnityProject(this.buildPath)
+            e.sender.emit('build-finished')
+        })
     }
 
     private async createEmptyUnityProject(packages: Map<string, boolean>) {
@@ -97,20 +101,20 @@ export default class UnityBuildManager {
         const unityAppPath = UnityBuildManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
         const importScenesCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.SceneImporter.AddScenesToBuildSettings`
         console.log('Start importing scenes.')
-        exec(importScenesCommand, err => {
-            if(err) console.log(err)
-            console.log('Added scenes to build settings.')
-        })
+        const {stdout, stderr } = await exec(importScenesCommand)
+        if(stderr) console.log(stderr)
+        console.log(stdout)
+        console.log('Scenes imported.')
     }
 
-    private buildUnityProject(projectPath: string) {
+    private async buildUnityProject(projectPath: string) {
         const unityAppPath = UnityBuildManager.isMacOS()? `${this.unityPath}/Contents/MacOS/Unity` : `${this.unityPath}`
         const buildProjectCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.BuildManager.BuildToDefaultPath`
         console.log('Start building.')
-        exec(buildProjectCommand, err => {
-            if(err) console.log(err)
-            console.log('Build finished.')
-        })
+        const {stdout, stderr } = await exec(buildProjectCommand)
+        if(stderr) console.log(stderr)
+        console.log(stdout)
+        console.log('Build finished.')
     }
 
     private static async promptUserForPathToUnity() {

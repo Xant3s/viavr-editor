@@ -2,19 +2,25 @@ import {app, dialog, ipcMain as ipc} from 'electron'
 import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
 import * as util from 'util'
+import PreferencesManager from '../Preferences/PreferencesManager'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
 
 export default class UnityBuildManager {
-    static packageRegistryUrl = 'https://packages.informatik.uni-wuerzburg.de'
-    static packageRegistryName = 'Info9 JMU'
-    static packageRegistryScope = 'unity-de.jmu'
+    private readonly packageRegistryName: string
+    private readonly packageRegistryUrl: string
+    private readonly packageRegistryScope: string
     private unityPath = ''
     private buildPath = ''
 
     constructor() {
+        this.packageRegistryName = PreferencesManager.getInstance().get<string>('packageRegistryName')
+        this.packageRegistryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
+        this.packageRegistryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
+
+
         // TODO: Move to BuildSystem
         ipc.on('select-unity-path', async (e) => {
             const unityPath = await UnityBuildManager.promptUserForPathToUnity()
@@ -43,7 +49,7 @@ export default class UnityBuildManager {
             return
         }
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
-        await UnityBuildManager.setupScopedRegistry(outputPath)
+        await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
@@ -54,7 +60,7 @@ export default class UnityBuildManager {
         return chosenFolders.filePaths[0]
     }
 
-    private static async setupScopedRegistry(outputPath: string) {
+    private async setupScopedRegistry(outputPath: string) {
         const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
         let manifestData = await JSON.parse(manifest)
         if(!('scopedRegistries' in manifestData)) {

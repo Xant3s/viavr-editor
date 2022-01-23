@@ -3,13 +3,6 @@ import Package from './Package'
 import fetch from 'node-fetch'
 
 
-ipc.on('query-available-packages', async (e) => {
-    const packageManager = UnityPackageManager.getInstance()
-    const packageList = await packageManager.queryPackagesFromRegistry()
-    packageList.forEach(p => e.sender.send('add-package', p as Package))
-})
-
-
 export default class UnityPackageManager {
     static instance: UnityPackageManager
     static registryUrl = 'https://packages.informatik.uni-wuerzburg.de'
@@ -23,7 +16,11 @@ export default class UnityPackageManager {
     }
 
     private constructor() {
-
+        ipc.on('query-available-packages', async (e) => {
+            const packageManager = UnityPackageManager.getInstance()
+            const packageList = await packageManager.queryPackagesFromRegistry()
+            packageList.forEach(p => e.sender.send('add-package', p as Package))
+        })
     }
 
     public async queryPackagesFromRegistry() {

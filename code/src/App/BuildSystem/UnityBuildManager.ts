@@ -7,6 +7,9 @@ const fs = require('fs').promises
 
 
 export default class UnityBuildManager {
+    static packageRegistryUrl = 'https://packages.informatik.uni-wuerzburg.de'
+    static packageRegistryName = 'Info9 JMU'
+    static packageRegistryScope = 'unity-de.jmu'
     private unityPath = ''
     private buildPath = ''
 
@@ -49,14 +52,14 @@ export default class UnityBuildManager {
             manifestData['scopedRegistries'] = []
         }
 
-        const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == 'https://packages.informatik.uni-wuerzburg.de')
+        const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == this.packageRegistryUrl)
         if(registryAlreadyExists) return;
 
         const registryEntry = {
-            'name': 'Info9 JMU',
-            'url': 'https://packages.informatik.uni-wuerzburg.de',
+            'name': this.packageRegistryName,
+            'url': this.packageRegistryUrl,
             'scopes': [
-                'unity-de.jmu'
+                this.packageRegistryScope
             ]
         }
         manifestData['scopedRegistries'].push(registryEntry)

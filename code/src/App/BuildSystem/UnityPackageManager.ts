@@ -1,11 +1,13 @@
 import {ipcMain as ipc} from 'electron'
-import Package from './Package'
 import fetch from 'node-fetch'
+import Package from './Package'
+import PreferencesManager from '../Preferences/PreferencesManager'
 
 
 export default class UnityPackageManager {
-    static instance: UnityPackageManager
-    static registryUrl = 'https://packages.informatik.uni-wuerzburg.de'
+    private static instance: UnityPackageManager
+    private readonly registryUrl: string
+    private readonly registryScope: string
 
 
     public static getInstance(): UnityPackageManager {
@@ -16,6 +18,8 @@ export default class UnityPackageManager {
     }
 
     private constructor() {
+        this.registryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
+        this.registryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
         ipc.on('query-available-packages', async (e) => {
             const packageManager = UnityPackageManager.getInstance()
             const packageList = await packageManager.queryPackagesFromRegistry()
@@ -23,17 +27,18 @@ export default class UnityPackageManager {
         })
     }
 
+
     public async queryPackagesFromRegistry() {
-        const response = await fetch(`${UnityPackageManager.registryUrl}/-/v1/search?text=unity-de.jmu.ge`)
+        const response = await fetch(`${this.registryUrl}/-/v1/search?text=${this.registryScope}`)
         const packageList = await response.json()
         const packages = packageList['objects'].map(obj => obj['package'])
-        const packageDetails = await Promise.all(packages.map(p => UnityPackageManager.queryPackageDetails(p['name'])))
+        const packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(p['name'])))
         const packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))
         return packagesLatestInfo
     }
 
-    public static async queryPackageDetails(packageName: string) {
-        const res = await fetch(`${UnityPackageManager.registryUrl}/${packageName}`)
+    public async queryPackageDetails(packageName: string) {
+        const res = await fetch(`${this.registryUrl}/${packageName}`)
         return await res.json()
     }
 

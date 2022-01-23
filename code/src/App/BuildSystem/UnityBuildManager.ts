@@ -33,6 +33,11 @@ export default class UnityBuildManager {
 
     private async createEmptyUnityProject(packages: Map<string, boolean>) {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()  // TODO: what if user aborts?
+        if(outputPath === undefined) {
+            ipc.emit('aborted-create-unity-project')
+            console.log('aborted create unity project')
+            return
+        }
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await UnityBuildManager.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)

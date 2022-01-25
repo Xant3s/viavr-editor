@@ -12,13 +12,6 @@ export default class UnityBuildManager {
     private buildPath = ''
 
     constructor() {
-        // TODO: Move to BuildSystem
-        ipc.on('select-unity-path', async (e) => {
-            const unityPath = await UnityBuildManager.promptUserForPathToUnity()
-            e.sender.send('selected-unity-path', unityPath)
-        })
-
-
         ipc.on('create-unity-project', async (e, packages) => {
             await this.createEmptyUnityProject(packages)
             e.sender.send('ready-to-build-project')
@@ -115,11 +108,6 @@ export default class UnityBuildManager {
         if(stderr) console.log(stderr)
         console.log(stdout)
         console.log('Build finished.')
-    }
-
-    private static async promptUserForPathToUnity() {
-        const pathToUnity = await dialog.showOpenDialog({properties: ['openFile']})
-        return pathToUnity[0]
     }
 
     private static isMacOS = () => process.platform === 'darwin';

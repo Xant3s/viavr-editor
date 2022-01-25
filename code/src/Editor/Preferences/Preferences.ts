@@ -12,9 +12,7 @@ class Preferences {
         this.addUpdatePreferencesEvent<string>($('#package-registry-name'), 'packageRegistryName')
         this.addUpdatePreferencesEvent<string>($('#package-registry-url'), 'packageRegistryUrl')
         this.addUpdatePreferencesEvent<string>($('#package-registry-scope'), 'packageRegistryScope')
-
-        $('#btn-select-unity-path').on('click', async () => {
-        })
+        $('#btn-select-unity-path').on('click', async () => ipc.send('select-unity-path'))
     }
 
     private loadInitialValues() {

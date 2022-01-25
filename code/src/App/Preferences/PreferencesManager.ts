@@ -71,6 +71,5 @@ export default class PreferencesManager {
             }
         })
         this.window.loadFile('src/Editor/Preferences/Preferences.html')
-        this.window.webContents.openDevTools()
     }
 }

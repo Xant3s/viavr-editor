@@ -1,11 +1,21 @@
-import {Menu, ipcMain as ipc} from 'electron'
+import {Menu, ipcMain as ipc, app} from 'electron'
 
 
 export default class CustomMenu {
     public loadCustomMenu() {
         const menu = Menu.buildFromTemplate([
             {
-                role: 'fileMenu',
+                label: "File",
+                submenu: [
+                    {
+                      label: "Preferences",
+                        click: () => ipc.emit('open-preferences')
+                    },
+                    {
+                        label: "Exit",
+                        click: () => app.quit()
+                    }
+                ]
             },
             {
                 role: 'editMenu',

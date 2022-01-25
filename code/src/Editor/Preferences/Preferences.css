@@ -1,0 +1,10 @@
+.preference-entry {
+    margin-bottom: 10px;
+}
+
+.preference-entry label {
+    display: inline-block;
+    width: 180px;
+    text-align: right;
+    margin-right: 10px;
+}

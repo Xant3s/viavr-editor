@@ -8,11 +8,13 @@ class Preferences {
     constructor() {
         this.loadInitialValues()
 
-        this.addUpdatePreferencesEvent<string>($('#unity-path'), 'unityPath')
+        const unityPathQuery = $('#unity-path')
+        this.addUpdatePreferencesEvent<string>(unityPathQuery, 'unityPath')
         this.addUpdatePreferencesEvent<string>($('#package-registry-name'), 'packageRegistryName')
         this.addUpdatePreferencesEvent<string>($('#package-registry-url'), 'packageRegistryUrl')
         this.addUpdatePreferencesEvent<string>($('#package-registry-scope'), 'packageRegistryScope')
         $('#btn-select-unity-path').on('click', async () => ipc.send('select-unity-path'))
+        ipc.on(`preference-changed-from-backend-unityPath`, (_, data) => unityPathQuery.val(data))
     }
 
     private loadInitialValues() {
@@ -20,11 +22,6 @@ class Preferences {
         this.loadPreference($('#package-registry-name'), 'packageRegistryName')
         this.loadPreference($('#package-registry-url'), 'packageRegistryUrl')
         this.loadPreference($('#package-registry-scope'), 'packageRegistryScope')
-        // ipc.on('selected-unity-path', (_, unityPath) => this.unityPathText.value = unityPath ?? this.unityPathText.value)
-        ipc.on(`preference-changed-from-backend-unityPath`, (_, data) => {
-            console.log('new')
-            $('#unity-path').val(data)
-        })
     }
 
     private async loadPreference(queryElement: JQuery<HTMLElement>, name: string) {
@@ -42,7 +39,6 @@ class Preferences {
                 name: name,
                 value: queryElement.val()
             })
-            console.log('fire')
         })
     }
 }

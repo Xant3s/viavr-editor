@@ -18,14 +18,14 @@ export default class UnityBuildManager {
         })
         ipc.on('build-unity-project', async (e) => {
             await UnityBuildManager.buildUnityProject(this.buildPath)
-            e.sender.emit('build-finished')
+            e.sender.send('build-finished')
         })
     }
 
     private async createEmptyUnityProject(packages: Map<string, boolean>) {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
-            ipc.emit('aborted-create-unity-project')
+            ipc.emit('aborted-create-unity-project')    // TODO: send instead of emit
             console.log('aborted create unity project')
             return
         }

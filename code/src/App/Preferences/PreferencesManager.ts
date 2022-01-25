@@ -9,6 +9,7 @@ export default class PreferencesManager {
     private static instance: PreferencesManager
     private readonly preferencesPath = './res/preferences.json'
     private preferences!: Preferences
+    private window?: BrowserWindow
     private initialized = false
 
 
@@ -25,7 +26,7 @@ export default class PreferencesManager {
     }
 
     private constructor() {
-        ipc.on('open-preferences', () => PreferencesManager.openPreferences())
+        ipc.on('open-preferences', () => this.openPreferences())
         ipc.on('preferences-changed', (_, pref) => this.updatePreference(pref))
         ipc.on('app-quit', () => this.savePreferences())
         new PreferencesChannel()
@@ -37,15 +38,13 @@ export default class PreferencesManager {
 
     public set<Type>(name: string, value: Type) {
         this.preferences[name] = value
-        ipc.emit(`preference-changed-from-backend-${name}`, value)
+        this.window?.webContents.send(`preference-changed-from-backend-${name}`, value)
         this.savePreferences()
-        console.log('set preference', name, value)
     }
 
     // Handles update from frontend
     private updatePreference(pref) {
         this.preferences[pref.name] = pref.value
-        console.log(`Preference ${pref.name} changed to ${pref.value}`)
         this.savePreferences()
     }
 
@@ -62,8 +61,8 @@ export default class PreferencesManager {
         })
     }
 
-    private static openPreferences() {
-        const win = new BrowserWindow({
+    private openPreferences() {
+        this.window = new BrowserWindow({
             width: 800,
             height: 600,
             autoHideMenuBar: true,
@@ -71,7 +70,7 @@ export default class PreferencesManager {
                 nodeIntegration: true
             }
         })
-        win.loadFile('src/Editor/Preferences/Preferences.html')
-        win.webContents.openDevTools()
+        this.window.loadFile('src/Editor/Preferences/Preferences.html')
+        this.window.webContents.openDevTools()
     }
 }

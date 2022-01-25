@@ -28,7 +28,7 @@ export default class PreferencesManager {
         ipc.on('open-preferences', () => PreferencesManager.openPreferences())
         ipc.on('preferences-changed', (_, pref) => this.updatePreference(pref))
         ipc.on('app-quit', () => this.savePreferences())
-        new PreferencesChannel().init()
+        new PreferencesChannel()
     }
 
     public get<Type>(name: string): Type {

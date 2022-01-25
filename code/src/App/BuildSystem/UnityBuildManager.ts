@@ -3,15 +3,19 @@ import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
 import * as util from 'util'
 import PreferencesManager from '../Preferences/PreferencesManager'
+import BuildSystem from './BuildSystem'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
 
 export default class UnityBuildManager {
+    private readonly buildSystem: BuildSystem
     private buildPath = ''
 
-    constructor() {
+
+    constructor(buildSystem: BuildSystem) {
+        this.buildSystem = buildSystem
         ipc.on('create-unity-project', async (e, packages) => {
             await this.createEmptyUnityProject(packages)
             e.sender.send('ready-to-build-project')
@@ -25,7 +29,7 @@ export default class UnityBuildManager {
     private async createEmptyUnityProject(packages: Map<string, boolean>) {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
-            ipc.emit('aborted-create-unity-project')    // TODO: send instead of emit
+            this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
             console.log('aborted create unity project')
             return
         }

@@ -5,10 +5,12 @@ import PreferencesManager from '../Preferences/PreferencesManager'
 
 export default class BuildSystem {
     private readonly mainWindow: BrowserWindow
+    private _buildDialog?: BrowserWindow
+
 
     constructor(window: Electron.BrowserWindow) {
         this.mainWindow = window
-        new UnityBuildManager()
+        new UnityBuildManager(this)
         UnityPackageManager.getInstance()
         ipc.on('open-build-menu', () => this.openBuildMenu())
         ipc.on('select-unity-path', async (e) => {
@@ -21,8 +23,12 @@ export default class BuildSystem {
         })
     }
 
+    get buildDialog(): Electron.BrowserWindow | undefined {
+        return this._buildDialog
+    }
+
     private openBuildMenu(){
-        const buildDialog = new BrowserWindow(
+        this._buildDialog = new BrowserWindow(
             {
                 width: 700,
                 height: 500,
@@ -35,6 +41,6 @@ export default class BuildSystem {
                 }
             }
         )
-        buildDialog.loadFile('src/Editor/BuildDialog/BuildDialog.html')
+        this._buildDialog.loadFile('src/Editor/BuildDialog/BuildDialog.html')
     }
 }

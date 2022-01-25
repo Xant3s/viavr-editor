@@ -8,13 +8,10 @@ class BuildDialog {
     private readonly packageList = document.getElementById('package-list') as HTMLDivElement
 
     constructor() {
-        // $('#btn-select-unity-path').on('click', () => ipc.send('select-unity-path'))
-        // $('#btn-confirm-unity-path').on('click', () => this.setUnityPath())
         $('#btn-query-packages').on('click', () => this.queryPackages())
         $('#btn-create-project').on('click', () => ipc.send('create-unity-project', this.getSelectedPackages()))
         this.buildButton.on('click', () => ipc.send('build-unity-project'))
 
-        // ipc.on('selected-unity-path', (_, unityPath) => this.unityPathText.value = unityPath ?? this.unityPathText.value)
         ipc.on('add-package', (_, p) => this.addPackage(p))
         ipc.on('ready-to-build-project', () => this.buildButton.prop('disabled', false))
 
@@ -24,13 +21,6 @@ class BuildDialog {
     private queryPackages() {
         this.packageList.innerHTML = ''
         ipc.send('query-available-packages')
-    }
-
-    private setUnityPath() {
-        const unityPath = this.unityPathText?.value
-        ipc.send('set-unity-path', unityPath)
-        if(unityPath !== undefined)
-            $('#btn-create-project').prop('disabled', false)
     }
 
     private addPackage(p) {

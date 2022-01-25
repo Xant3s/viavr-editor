@@ -37,8 +37,12 @@ export default class PreferencesManager {
 
     public set<Type>(name: string, value: Type) {
         this.preferences[name] = value
+        ipc.emit(`preference-changed-from-backend-${name}`, value)
+        this.savePreferences()
+        console.log('set preference', name, value)
     }
 
+    // Handles update from frontend
     private updatePreference(pref) {
         this.preferences[pref.name] = pref.value
         console.log(`Preference ${pref.name} changed to ${pref.value}`)

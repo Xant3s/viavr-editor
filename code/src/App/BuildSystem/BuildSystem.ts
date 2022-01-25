@@ -12,9 +12,12 @@ export default class BuildSystem {
         UnityPackageManager.getInstance()
         ipc.on('open-build-menu', () => this.openBuildMenu())
         ipc.on('select-unity-path', async (e) => {
-            const unityPath = await BuildSystem.promptUserForPathToUnity()
+            // const unityPath: string = await BuildSystem.promptUserForPathToUnity()
+            const res = await dialog.showOpenDialog({properties: ['openFile']})
+            const unityPath: string = res[0]
             // TODO: Check if path is valid
             PreferencesManager.getInstance().set('unityPath', unityPath)
+            console.log(`new Unity path: ` + unityPath)
         })
     }
 
@@ -35,8 +38,9 @@ export default class BuildSystem {
         buildDialog.loadFile('src/Editor/BuildDialog/BuildDialog.html')
     }
 
-    private static async promptUserForPathToUnity() {
+    private static async promptUserForPathToUnity() : Promise<string> {
         const pathToUnity = await dialog.showOpenDialog({properties: ['openFile']})
+        console.log(`pathToUnity: ` + pathToUnity[0])
         return pathToUnity[0]
     }
 }

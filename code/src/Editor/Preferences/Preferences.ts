@@ -20,6 +20,11 @@ class Preferences {
         this.loadPreference($('#package-registry-name'), 'packageRegistryName')
         this.loadPreference($('#package-registry-url'), 'packageRegistryUrl')
         this.loadPreference($('#package-registry-scope'), 'packageRegistryScope')
+        // ipc.on('selected-unity-path', (_, unityPath) => this.unityPathText.value = unityPath ?? this.unityPathText.value)
+        ipc.on(`preference-changed-from-backend-unityPath`, (_, data) => {
+            console.log('new')
+            $('#unity-path').val(data)
+        })
     }
 
     private async loadPreference(queryElement: JQuery<HTMLElement>, name: string) {
@@ -37,6 +42,7 @@ class Preferences {
                 name: name,
                 value: queryElement.val()
             })
+            console.log('fire')
         })
     }
 }

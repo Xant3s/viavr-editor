@@ -1,5 +1,6 @@
 export default interface Preferences {
-    unityPath: string
+    darkMode: string,
+    unityPath: string,
     packageRegistryUrl: string,
     packageRegistryName: string,
     packageRegistryScope: string

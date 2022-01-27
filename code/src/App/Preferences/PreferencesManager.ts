@@ -1,6 +1,5 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
 import Preferences from './Preferences'
-import PreferencesChannel from './PreferencesChannel'
 
 const fs = require('fs').promises
 
@@ -28,8 +27,8 @@ export default class PreferencesManager {
     private constructor() {
         ipc.on('open-preferences', () => this.openPreferences())
         ipc.on('preferences-changed', (_, pref) => this.updatePreference(pref))
+        ipc.handle('preferences:request', (_, name) => this.get(name))
         ipc.on('app-quit', () => this.savePreferences())
-        new PreferencesChannel()
     }
 
     public get<Type>(name: string): Type {

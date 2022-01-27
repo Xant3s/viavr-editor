@@ -1,8 +1,6 @@
 import {ipcRenderer as ipc} from 'electron'
 import $ = require('jquery')
-import {IpcService} from '../IpcService'
 
-const ipcService = new IpcService()
 
 class Preferences {
     constructor() {
@@ -34,11 +32,7 @@ class Preferences {
     }
 
     private async loadPreference(queryElement: JQuery<HTMLElement>, name: string): Promise<string> {
-        const data = await ipcService.send<string>('preferences-request',
-            {
-                responseChannel: `preferences-response-${name}`,
-                params: [name]
-            })
+        const data = await ipc.invoke('preferences:request', name)
         queryElement.val(data)
         return data
     }

@@ -11,10 +11,12 @@
     <br />
 
     <div class="preference-entry">
-        <label for="btn-toggle-dark-mode">Dark mode:</label>
-        <button id="btn-toggle-dark-mode" type="button">Toggle Dark Mode</button>
-        <button id="btn-toggle-dark-mode-reset" type="button">Reset to System Theme</button>
-        <label>(Current theme: <strong id="theme-source">System</strong>)</label>
+        <label for="dark-mode">Theme:</label>
+        <select name="dark-mode" id="dark-mode">
+            <option value="System">System</option>
+            <option value="Dark">Dark</option>
+            <option value="Light">Light</option>
+        </select>
     </div>
 
     <div class="preference-entry">

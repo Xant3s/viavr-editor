@@ -37,18 +37,6 @@ export default class MainWindow {
         MainWindow.window.maximize()
         MainWindow.window.webContents.openDevTools()
 
-
-        ipcMain.handle('dark-mode:toggle', () => {
-                if(nativeTheme.shouldUseDarkColors) {
-                    nativeTheme.themeSource = 'light'
-                } else {
-                    nativeTheme.themeSource = 'dark'
-                }
-
-                return nativeTheme.shouldUseDarkColors
-            }
-        )
-
         ipcMain.on('dark-mode:set', (_, val) => nativeTheme.themeSource = val.toLowerCase())
     }
 

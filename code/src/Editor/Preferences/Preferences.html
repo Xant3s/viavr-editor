@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Preferences</title>
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="./Preferences.css">
 </head>
 <body>
@@ -10,10 +11,16 @@
     <br />
 
     <div class="preference-entry">
+        <label for="btn-toggle-dark-mode">Dark mode:</label>
+        <button id="btn-toggle-dark-mode" type="button">Toggle Dark Mode</button>
+        <button id="btn-toggle-dark-mode-reset" type="button">Reset to System Theme</button>
+        <label>(Current theme: <strong id="theme-source">System</strong>)</label>
+    </div>
+
+    <div class="preference-entry">
         <label for="unity-path">Path to Unity executable:</label>
         <input id="unity-path" type="text" value="" />
         <button id="btn-select-unity-path" type="button">Select</button>
-<!--        <button id="btn-confirm-unity-path" type="button">Confirm</button>-->
     </div>
 
     <div class="preference-entry">

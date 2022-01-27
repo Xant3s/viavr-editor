@@ -14,6 +14,18 @@ class Preferences {
         this.addUpdatePreferencesEvent<string>($('#package-registry-url'), 'packageRegistryUrl')
         this.addUpdatePreferencesEvent<string>($('#package-registry-scope'), 'packageRegistryScope')
         $('#btn-select-unity-path').on('click', async () => ipc.send('select-unity-path'))
+
+        $('#btn-toggle-dark-mode').on('click', async () => {
+            // @ts-ignore
+            const isDarkMode = await window.darkMode.toggle()
+            $('#theme-source').text(isDarkMode ? 'Dark' : 'Light')
+        })
+        $('#btn-toggle-dark-mode-reset').on('click', async () => {
+            // @ts-ignore
+            await window.darkMode.system()
+            $('#theme-source').text('System')
+        })
+
         ipc.on(`preference-changed-from-backend-unityPath`, (_, data) => unityPathQuery.val(data))
     }
 

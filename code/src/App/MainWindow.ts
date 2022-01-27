@@ -1,5 +1,6 @@
-import {BrowserWindow, ipcMain as ipc} from 'electron'
+import {BrowserWindow, ipcMain, ipcMain as ipc, nativeTheme} from 'electron'
 import CustomMenu from './CustomMenu'
+import * as path from 'path'
 
 
 export default class MainWindow {
@@ -27,6 +28,7 @@ export default class MainWindow {
             webPreferences: {
                 nodeIntegration: true,
                 webSecurity: false,
+                preload: path.join(__dirname, 'Preload.js')
             }
         })
 
@@ -35,6 +37,20 @@ export default class MainWindow {
         MainWindow.window.loadFile('src/Editor/indexpage/index.html')
         MainWindow.window.maximize()
         MainWindow.window.webContents.openDevTools()
+
+
+        ipcMain.handle('dark-mode:toggle', () => {
+                if(nativeTheme.shouldUseDarkColors) {
+                    nativeTheme.themeSource = 'light'
+                } else {
+                    nativeTheme.themeSource = 'dark'
+                }
+
+                return nativeTheme.shouldUseDarkColors
+            }
+        )
+
+        ipcMain.handle('dark-mode:system', ()=> nativeTheme.themeSource = 'system')
     }
 
     private static activate() {

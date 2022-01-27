@@ -18,10 +18,18 @@ class Preferences {
         $('#btn-toggle-dark-mode').on('click', async () => {
             const isDarkMode = await ipc.invoke('dark-mode:toggle')
             $('#theme-source').text(isDarkMode ? 'Dark' : 'Light')
+            ipc.send('preferences-changed', {
+                name: 'darkMode',
+                value: isDarkMode ? 'Dark' : 'Light'
+            })
         })
         $('#btn-toggle-dark-mode-reset').on('click', async () => {
             await ipc.invoke('dark-mode:system')
             $('#theme-source').text('System')
+            ipc.send('preferences-changed', {
+                name: 'darkMode',
+                value: 'System'
+            })
         })
 
         ipc.on(`preference-changed-from-backend-unityPath`, (_, data) => unityPathQuery.val(data))
@@ -32,15 +40,21 @@ class Preferences {
         this.loadPreference($('#package-registry-name'), 'packageRegistryName')
         this.loadPreference($('#package-registry-url'), 'packageRegistryUrl')
         this.loadPreference($('#package-registry-scope'), 'packageRegistryScope')
+        this.loadPreference($('#theme-source'), 'darkMode').then(value => {
+            $('#theme-source').text(value)
+            if(value === 'System') ipc.send('dark-mode:system')
+            else ipc.send('dark-mode:set', value)
+        })
     }
 
-    private async loadPreference(queryElement: JQuery<HTMLElement>, name: string) {
+    private async loadPreference(queryElement: JQuery<HTMLElement>, name: string): Promise<string> {
         const data = await ipcService.send<string>('preferences-request',
             {
                 responseChannel: `preferences-response-${name}`,
                 params: [name]
             })
         queryElement.val(data)
+        return data
     }
 
     private addUpdatePreferencesEvent<Type>(queryElement: JQuery<HTMLElement>, name: string = 'packageRegistryName') {

@@ -49,6 +49,9 @@ export default class MainWindow {
             }
         )
 
+        ipcMain.on('dark-mode:set', (_, val) => {
+            nativeTheme.themeSource = val.toLowerCase()
+        })
         ipcMain.handle('dark-mode:system', () => nativeTheme.themeSource = 'system')
     }
 

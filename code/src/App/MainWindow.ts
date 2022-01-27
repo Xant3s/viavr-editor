@@ -27,8 +27,7 @@ export default class MainWindow {
         MainWindow.window = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
-                webSecurity: false,
-                preload: path.join(__dirname, 'Preload.js')
+                webSecurity: false
             }
         })
 
@@ -50,7 +49,7 @@ export default class MainWindow {
             }
         )
 
-        ipcMain.handle('dark-mode:system', ()=> nativeTheme.themeSource = 'system')
+        ipcMain.handle('dark-mode:system', () => nativeTheme.themeSource = 'system')
     }
 
     private static activate() {

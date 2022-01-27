@@ -16,13 +16,11 @@ class Preferences {
         $('#btn-select-unity-path').on('click', async () => ipc.send('select-unity-path'))
 
         $('#btn-toggle-dark-mode').on('click', async () => {
-            // @ts-ignore
-            const isDarkMode = await window.darkMode.toggle()
+            const isDarkMode = await ipc.invoke('dark-mode:toggle')
             $('#theme-source').text(isDarkMode ? 'Dark' : 'Light')
         })
         $('#btn-toggle-dark-mode-reset').on('click', async () => {
-            // @ts-ignore
-            await window.darkMode.system()
+            await ipc.invoke('dark-mode:system')
             $('#theme-source').text('System')
         })
 

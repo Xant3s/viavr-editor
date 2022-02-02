@@ -9,6 +9,41 @@ const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
 
+interface PackageManifest {
+    scopedRegistries?: ScopedRegistry[]
+}
+
+interface Dependency {
+
+}
+
+class ScopedRegistry {
+    public name: string
+    public url: string
+    public scopes: string[]
+
+    constructor(name: string, url: string, scopes: string[]) {
+        this.name = name
+        this.url = url
+        this.scopes = scopes
+    }
+}
+
+declare global {
+    interface Array<T> {
+        findOrCreate(predicate: (element: T) => boolean, create: () => T): T
+    }
+}
+
+Array.prototype.findOrCreate = function<T>(predicate: (element: T) => boolean, create: () => T) : T {
+    const element = this.find(predicate)
+    if(element === undefined) {
+        this.push(create())
+    }
+    return this.find(predicate)
+}
+
+
 export default class UnityBuildManager {
     private readonly buildUtilsNamespace = 'de.jmu.ge.BuildUtils'
     private readonly buildSystem: BuildSystem
@@ -36,9 +71,9 @@ export default class UnityBuildManager {
         }
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
-        await this.setupScopedComRegistry(outputPath)
+        // await this.setupScopedComRegistry(outputPath)
         await this.installPackages(outputPath, packages)
-        await this.addImportedScenesToBuildSettings(outputPath)
+        // await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 
@@ -51,29 +86,32 @@ export default class UnityBuildManager {
         const packageRegistryName = PreferencesManager.getInstance().get<string>('packageRegistryName')
         const packageRegistryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
         const packageRegistryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
+        let manifest = await UnityBuildManager.readManifest(outputPath)
 
-        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
-        let manifestData = await JSON.parse(manifest)
-        if(!('scopedRegistries' in manifestData)) {
-            manifestData['scopedRegistries'] = []
-        }
+        manifest.scopedRegistries ??= []
+        // const myRegistry = manifest.scopedRegistries.find(registry => registry.url === packageRegistryUrl)
+        //                     ?? new ScopedRegistry(packageRegistryName, packageRegistryUrl, [])
+        // !myRegistry.scopes.includes(packageRegistryScope) ? myRegistry.scopes.push(packageRegistryScope) : null
+        // manifest.scopedRegistries.push(myRegistry)
 
-        const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == packageRegistryUrl)
-        if(registryAlreadyExists) return;
+        const scopedRegistry = manifest.scopedRegistries.findOrCreate(reg => reg.url === packageRegistryUrl,
+                                () => new ScopedRegistry(packageRegistryName, packageRegistryUrl, []))
+        scopedRegistry.scopes.findOrCreate(scope => scope === packageRegistryScope, () => packageRegistryScope)
 
-        const registryEntry = {
-            'name': packageRegistryName,
-            'url': packageRegistryUrl,
-            'scopes': [
-                packageRegistryScope
-            ]
-        }
-        manifestData['scopedRegistries'].push(registryEntry)
-        const newFileData = JSON.stringify(manifestData, null, 4)
+        await UnityBuildManager.writeManifest(manifest, outputPath)
+    }
+
+    private static async readManifest(outputPath: string) {
+        const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)
+        return await JSON.parse(manifestData) as PackageManifest
+    }
+
+    private static async writeManifest(manifest: PackageManifest, outputPath: string) {
+        const newFileData = JSON.stringify(manifest, null, 4)
         await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
     }
 
-    // TODO: Refactor
+// TODO: Refactor
     private async setupScopedComRegistry(outputPath: string) {
         const packageRegistryName = 'JMU Info9 Com'
         const packageRegistryUrl = 'https://packages.informatik.uni-wuerzburg.de'

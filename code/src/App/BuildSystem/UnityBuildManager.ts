@@ -10,6 +10,7 @@ const exec = util.promisify(require('child_process').exec)
 
 
 export default class UnityBuildManager {
+    private readonly buildUtilsNamespace = 'de.jmu.ge.BuildUtils'
     private readonly buildSystem: BuildSystem
     private buildPath = ''
 
@@ -21,7 +22,7 @@ export default class UnityBuildManager {
             e.sender.send('ready-to-build-project')
         })
         ipc.on('build-unity-project', async (e) => {
-            await UnityBuildManager.buildUnityProject(this.buildPath)
+            await this.buildUnityProject(this.buildPath)
             e.sender.send('build-finished')
         })
     }
@@ -37,7 +38,7 @@ export default class UnityBuildManager {
         await this.setupScopedRegistry(outputPath)
         await this.setupScopedComRegistry(outputPath)
         await this.installPackages(outputPath, packages)
-        await UnityBuildManager.addImportedScenesToBuildSettings(outputPath)
+        await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 
@@ -120,26 +121,25 @@ export default class UnityBuildManager {
         console.log('Packages installed.')
     }
 
-    private static async addImportedScenesToBuildSettings(projectPath: string) {
-        const unityPath = PreferencesManager.getInstance().get<string>('unityPath')
-        const unityAppPath = UnityBuildManager.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
-        const importScenesCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.SceneImporter.AddScenesToBuildSettings`
+    private async addImportedScenesToBuildSettings(projectPath: string) {
         console.log('Start importing scenes.')
-        const {stdout, stderr } = await exec(importScenesCommand)
-        if(stderr) console.log(stderr)
-        console.log(stdout)
+        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.SceneImporter.AddScenesToBuildSettings`, projectPath);
         console.log('Scenes imported.')
     }
 
-    private static async buildUnityProject(projectPath: string) {
+    private async buildUnityProject(projectPath: string) {
+        console.log('Start building.')
+        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.BuildManager.BuildToDefaultPath`, projectPath);
+        console.log('Build finished.')
+    }
+
+    private async invokeUnityMethod(method: string, projectPath: string) {
         const unityPath = PreferencesManager.getInstance().get<string>('unityPath')
         const unityAppPath = UnityBuildManager.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
-        const buildProjectCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.BuildManager.BuildToDefaultPath`
-        console.log('Start building.')
-        const {stdout, stderr } = await exec(buildProjectCommand)
+        const command = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod ${method}`
+        const {stdout, stderr } = await exec(command)
         if(stderr) console.log(stderr)
         console.log(stdout)
-        console.log('Build finished.')
     }
 
     private static isMacOS = () => process.platform === 'darwin';

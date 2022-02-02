@@ -35,6 +35,7 @@ export default class UnityBuildManager {
         }
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
+        await this.setupScopedComRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         await UnityBuildManager.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
@@ -58,6 +59,33 @@ export default class UnityBuildManager {
 
         const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == packageRegistryUrl)
         if(registryAlreadyExists) return;
+
+        const registryEntry = {
+            'name': packageRegistryName,
+            'url': packageRegistryUrl,
+            'scopes': [
+                packageRegistryScope
+            ]
+        }
+        manifestData['scopedRegistries'].push(registryEntry)
+        const newFileData = JSON.stringify(manifestData, null, 4)
+        await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+    }
+
+    // TODO: Refactor
+    private async setupScopedComRegistry(outputPath: string) {
+        const packageRegistryName = 'JMU Info9 Com'
+        const packageRegistryUrl = 'https://packages.informatik.uni-wuerzburg.de'
+        const packageRegistryScope = 'unity-com'
+
+        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
+        let manifestData = await JSON.parse(manifest)
+        if(!('scopedRegistries' in manifestData)) {
+            manifestData['scopedRegistries'] = []
+        }
+
+        // const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == packageRegistryUrl)
+        // if(registryAlreadyExists) return;
 
         const registryEntry = {
             'name': packageRegistryName,

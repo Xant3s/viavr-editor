@@ -91,7 +91,7 @@ export default class UnityBuildManager {
         const packageRegistryScope = this.loadPreference('packageRegistryScope')
         let manifest = await UnityBuildManager.readManifest(outputPath)
         this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, packageRegistryScope)
-        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, 'unity-com')
+        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, 'unity-com')    // TODO: no not hardcode
         await UnityBuildManager.writeManifest(manifest, outputPath)
     }
 

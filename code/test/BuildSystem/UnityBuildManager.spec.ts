@@ -34,7 +34,6 @@ describe('UnityBuildManager', () => {
 
         it('should create a new scoped registry if none exists with the same url', () => {
             const unityBuildManager: UnityBuildManager = new UnityBuildManager(buildSystem)
-            // let manifest = mock(<PackageManifest>{})
             let manifest = <PackageManifest> {
                 "scopedRegistries": [
                     {

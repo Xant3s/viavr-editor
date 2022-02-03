@@ -29,20 +29,6 @@ class ScopedRegistry {
     }
 }
 
-declare global {
-    interface Array<T> {
-        findOrCreate(predicate: (element: T) => boolean, create: () => T): T
-    }
-}
-
-Array.prototype.findOrCreate = function<T>(predicate: (element: T) => boolean, create: () => T) : T {
-    const element = this.find(predicate)
-    if(element === undefined) {
-        this.push(create())
-    }
-    return this.find(predicate)
-}
-
 
 export default class UnityBuildManager {
     private readonly buildUtilsNamespace = 'de.jmu.ge.BuildUtils'
@@ -92,10 +78,6 @@ export default class UnityBuildManager {
     }
 
     private loadPreference = (preference: string) => PreferencesManager.getInstance().get<string>(preference)
-
-    // private loadPreference(preferenceName: string) {
-    //     return PreferencesManager.getInstance().get<string>(preferenceName)
-    // }
 
     private static async readManifest(outputPath: string) {
         const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)

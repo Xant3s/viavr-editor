@@ -71,7 +71,6 @@ export default class UnityBuildManager {
         }
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
-        // await this.setupScopedComRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         // await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
@@ -83,23 +82,20 @@ export default class UnityBuildManager {
     }
 
     private async setupScopedRegistry(outputPath: string) {
-        const packageRegistryName = PreferencesManager.getInstance().get<string>('packageRegistryName')
-        const packageRegistryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
-        const packageRegistryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
+        const packageRegistryName = this.loadPreference('packageRegistryName')
+        const packageRegistryUrl = this.loadPreference('packageRegistryUrl')
+        const packageRegistryScope = this.loadPreference('packageRegistryScope')
         let manifest = await UnityBuildManager.readManifest(outputPath)
-
-        manifest.scopedRegistries ??= []
-        // const myRegistry = manifest.scopedRegistries.find(registry => registry.url === packageRegistryUrl)
-        //                     ?? new ScopedRegistry(packageRegistryName, packageRegistryUrl, [])
-        // !myRegistry.scopes.includes(packageRegistryScope) ? myRegistry.scopes.push(packageRegistryScope) : null
-        // manifest.scopedRegistries.push(myRegistry)
-
-        const scopedRegistry = manifest.scopedRegistries.findOrCreate(reg => reg.url === packageRegistryUrl,
-                                () => new ScopedRegistry(packageRegistryName, packageRegistryUrl, []))
-        scopedRegistry.scopes.findOrCreate(scope => scope === packageRegistryScope, () => packageRegistryScope)
-
+        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, packageRegistryScope)
+        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, 'unity-com')
         await UnityBuildManager.writeManifest(manifest, outputPath)
     }
+
+    private loadPreference = (preference: string) => PreferencesManager.getInstance().get<string>(preference)
+
+    // private loadPreference(preferenceName: string) {
+    //     return PreferencesManager.getInstance().get<string>(preferenceName)
+    // }
 
     private static async readManifest(outputPath: string) {
         const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)
@@ -111,31 +107,11 @@ export default class UnityBuildManager {
         await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
     }
 
-// TODO: Refactor
-    private async setupScopedComRegistry(outputPath: string) {
-        const packageRegistryName = 'JMU Info9 Com'
-        const packageRegistryUrl = 'https://packages.informatik.uni-wuerzburg.de'
-        const packageRegistryScope = 'unity-com'
-
-        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
-        let manifestData = await JSON.parse(manifest)
-        if(!('scopedRegistries' in manifestData)) {
-            manifestData['scopedRegistries'] = []
-        }
-
-        // const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == packageRegistryUrl)
-        // if(registryAlreadyExists) return;
-
-        const registryEntry = {
-            'name': packageRegistryName,
-            'url': packageRegistryUrl,
-            'scopes': [
-                packageRegistryScope
-            ]
-        }
-        manifestData['scopedRegistries'].push(registryEntry)
-        const newFileData = JSON.stringify(manifestData, null, 4)
-        await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+    private addScopedRegistryToManifest(manifest: PackageManifest, packageRegistryUrl: string, packageRegistryName: string, packageRegistryScope: string) {
+        manifest.scopedRegistries ??= []
+        const scopedRegistry = manifest.scopedRegistries.findOrCreate(reg => reg.url === packageRegistryUrl,
+            () => new ScopedRegistry(packageRegistryName, packageRegistryUrl, []))
+        scopedRegistry.scopes.findOrCreate(scope => scope === packageRegistryScope, () => packageRegistryScope)
     }
 
     private async installPackages(outputPath : string, packages : Map<string, boolean>) {

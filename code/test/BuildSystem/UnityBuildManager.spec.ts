@@ -52,5 +52,63 @@ describe('UnityBuildManager', () => {
             expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url2')).to.not.be.equal(-1)
         })
 
+        it('should not create a new registry if there is already one with the same url', () => {
+            const unityBuildManager: UnityBuildManager = new UnityBuildManager(buildSystem)
+            let manifest = <PackageManifest> {
+                "scopedRegistries": [
+                    {
+                        "url": "url1",
+                        "name": "name",
+                        "scopes": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+            unityBuildManager.addScopedRegistryToManifest(manifest, 'url1', 'name', 'scope')
+            expect(manifest['scopedRegistries']).to.have.lengthOf(1)
+            expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
+        })
+
+        it('should do nothing if an identical registry already exists', () => {
+            const unityBuildManager: UnityBuildManager = new UnityBuildManager(buildSystem)
+            let manifest = <PackageManifest> {
+                "scopedRegistries": [
+                    {
+                        "url": "url1",
+                        "name": "name",
+                        "scopes": [
+                            "scope1"
+                        ]
+                    }
+                ]
+            }
+            unityBuildManager.addScopedRegistryToManifest(manifest, 'url1', 'name', 'scope1')
+            expect(manifest['scopedRegistries']).to.have.lengthOf(1)
+            expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
+            expect(manifest['scopedRegistries'][0]['scopes']).to.have.lengthOf(1)
+            expect(manifest['scopedRegistries'][0]['scopes']).to.contain('scope1')
+        })
+
+        it('should add the scope to the existing registry if both registries have the same url but the scopes are different', () => {
+            const unityBuildManager: UnityBuildManager = new UnityBuildManager(buildSystem)
+            let manifest = <PackageManifest> {
+                "scopedRegistries": [
+                    {
+                        "url": "url1",
+                        "name": "name",
+                        "scopes": [
+                            "scope1"
+                        ]
+                    }
+                ]
+            }
+            unityBuildManager.addScopedRegistryToManifest(manifest, 'url1', 'name', 'scope2')
+            expect(manifest['scopedRegistries']).to.have.lengthOf(1)
+            expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
+            expect(manifest['scopedRegistries'][0]['scopes']).to.have.lengthOf(2)
+            expect(manifest['scopedRegistries'][0]['scopes']).to.contain('scope1')
+            expect(manifest['scopedRegistries'][0]['scopes']).to.contain('scope2')
+        })
     })
 })

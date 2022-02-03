@@ -17,6 +17,21 @@ interface Dependency {
 
 }
 
+declare global{
+    interface Array<T> {
+        findOrCreate(predicate: (element: T) => boolean, create: () => T): T
+    }
+}
+
+Array.prototype.findOrCreate = function <T>(predicate: (element: T) => boolean, create: () => T): T {
+    const element = this.find(predicate)
+    if(element === undefined) {
+        this.push(create())
+    }
+    return this.find(predicate)
+}
+
+
 class ScopedRegistry {
     public name: string
     public url: string
@@ -38,6 +53,9 @@ export default class UnityBuildManager {
 
     constructor(buildSystem: BuildSystem) {
         this.buildSystem = buildSystem
+    }
+
+    public initIPC() {
         ipc.on('create-unity-project', async (e, packages) => {
             await this.createEmptyUnityProject(packages)
             e.sender.send('ready-to-build-project')
@@ -89,7 +107,7 @@ export default class UnityBuildManager {
         await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
     }
 
-    private addScopedRegistryToManifest(manifest: PackageManifest, packageRegistryUrl: string, packageRegistryName: string, packageRegistryScope: string) {
+    public addScopedRegistryToManifest(manifest: PackageManifest, packageRegistryUrl: string, packageRegistryName: string, packageRegistryScope: string) {
         manifest.scopedRegistries ??= []
         const scopedRegistry = manifest.scopedRegistries.findOrCreate(reg => reg.url === packageRegistryUrl,
             () => new ScopedRegistry(packageRegistryName, packageRegistryUrl, []))

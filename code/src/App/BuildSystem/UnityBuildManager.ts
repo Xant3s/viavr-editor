@@ -9,7 +9,7 @@ const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
 
-interface PackageManifest {
+export interface PackageManifest {
     scopedRegistries?: ScopedRegistry[]
 }
 

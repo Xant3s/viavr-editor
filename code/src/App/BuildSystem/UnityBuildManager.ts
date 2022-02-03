@@ -10,6 +10,7 @@ const exec = util.promisify(require('child_process').exec)
 
 
 export interface PackageManifest {
+    dependencies?: Dependency[]
     scopedRegistries?: ScopedRegistry[]
 }
 
@@ -116,22 +117,22 @@ export default class UnityBuildManager {
 
     private async installPackages(outputPath : string, packages : Map<string, boolean>) {
         console.log('Start installing packages.')
-        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
-        const manifestData = await JSON.parse(manifest)
+        const manifest = await UnityBuildManager.readManifest(outputPath)
+
         const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromRegistry()
         packages.forEach((selectedToInstall: boolean, packageName: string) => {
             if(selectedToInstall) {
                 const latestVersion = (packageList.find(p => p.name == packageName).version)
                 console.log(`Add package ${packageName}: ${latestVersion}.`)
-                manifestData.dependencies[packageName] = latestVersion
+                manifest.dependencies ??= []
+                manifest.dependencies[packageName] = latestVersion
             } else {
                 console.log(`Skip package ${packageName}.`)
             }
         })
 
-        const newFileData = JSON.stringify(manifestData, null, 4)
-        await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+        await UnityBuildManager.writeManifest(manifest, outputPath)
         console.log('Packages installed.')
     }
 

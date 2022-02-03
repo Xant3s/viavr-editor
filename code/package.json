@@ -10,7 +10,7 @@
     "make": "tsc && electron-forge make",
     "copy-dependencies:win": "cpy plugins out/viavr-editor-win32-x64 --parents --dot",
     "make:win": "tsc && electron-forge make && copy-dependencies",
-    "test": "mocha --config test/runners/mocha/.mocharc.jsonc"
+    "test": "mocha --config test/.mocharc.jsonc"
   },
   "repository": {
     "type": "git",

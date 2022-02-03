@@ -46,6 +46,8 @@ describe('UnityBuildManager', () => {
                 ]
             }
             unityBuildManager.addScopedRegistryToManifest(manifest, 'url2', 'name', 'scope')
+            expect(manifest['scopedRegistries']).to.exist
+            if(manifest['scopedRegistries'] === undefined) return
             expect(manifest['scopedRegistries']).to.have.lengthOf(2)
             expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
             expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url2')).to.not.be.equal(-1)
@@ -65,6 +67,8 @@ describe('UnityBuildManager', () => {
                 ]
             }
             unityBuildManager.addScopedRegistryToManifest(manifest, 'url1', 'name', 'scope')
+            expect(manifest['scopedRegistries']).to.exist
+            if(manifest['scopedRegistries'] === undefined) return
             expect(manifest['scopedRegistries']).to.have.lengthOf(1)
             expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
         })
@@ -83,6 +87,8 @@ describe('UnityBuildManager', () => {
                 ]
             }
             unityBuildManager.addScopedRegistryToManifest(manifest, 'url1', 'name', 'scope1')
+            expect(manifest['scopedRegistries']).to.exist
+            if(manifest['scopedRegistries'] === undefined) return
             expect(manifest['scopedRegistries']).to.have.lengthOf(1)
             expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
             expect(manifest['scopedRegistries'][0]['scopes']).to.have.lengthOf(1)
@@ -103,6 +109,8 @@ describe('UnityBuildManager', () => {
                 ]
             }
             unityBuildManager.addScopedRegistryToManifest(manifest, 'url1', 'name', 'scope2')
+            expect(manifest['scopedRegistries']).to.exist
+            if(manifest['scopedRegistries'] === undefined) return
             expect(manifest['scopedRegistries']).to.have.lengthOf(1)
             expect(manifest['scopedRegistries'].findIndex(r => r.url === 'url1')).to.not.be.equal(-1)
             expect(manifest['scopedRegistries'][0]['scopes']).to.have.lengthOf(2)

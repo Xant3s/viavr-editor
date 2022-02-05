@@ -4,7 +4,7 @@
   "description": "VIA-VR Editor",
   "main": "dist/src/App/app.js",
   "scripts": {
-    "postinstall": "cd plugins/Spoke && yarn install",
+    "postinstall": "cd plugins/Spoke && yarn install --ignore-scripts",
     "start": "tsc && electron-forge start",
     "package": "tsc && electron-forge package",
     "make": "tsc && electron-forge make",

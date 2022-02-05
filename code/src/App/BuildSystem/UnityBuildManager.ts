@@ -57,7 +57,7 @@ export default class UnityBuildManager {
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
-        // await this.addImportedScenesToBuildSettings(outputPath)
+        await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 

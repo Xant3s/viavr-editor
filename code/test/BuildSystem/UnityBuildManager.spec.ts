@@ -1,7 +1,8 @@
 import {expect} from 'chai'
 import {mock} from 'ts-mockito'
 import BuildSystem from '../../src/App/BuildSystem/BuildSystem'
-import UnityBuildManager, {PackageManifest} from '../../src/App/BuildSystem/UnityBuildManager'
+import UnityBuildManager from '../../src/App/BuildSystem/UnityBuildManager'
+import {PackageManifest} from '../../src/App/BuildSystem/DataStructures/PackageManifest'
 
 
 describe('UnityBuildManager', () => {

@@ -4,19 +4,12 @@ import UnityPackageManager from './UnityPackageManager'
 import * as util from 'util'
 import PreferencesManager from '../Preferences/PreferencesManager'
 import BuildSystem from './BuildSystem'
+import {PackageManifest} from './DataStructures/PackageManifest'
+import {ScopedRegistry} from './DataStructures/ScopedRegistry'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
-
-export interface PackageManifest {
-    dependencies?: Dependency[]
-    scopedRegistries?: ScopedRegistry[]
-}
-
-interface Dependency {
-
-}
 
 declare global{
     interface Array<T> {
@@ -30,19 +23,6 @@ Array.prototype.findOrCreate = function <T>(predicate: (element: T) => boolean, 
         this.push(create())
     }
     return this.find(predicate)
-}
-
-
-class ScopedRegistry {
-    public name: string
-    public url: string
-    public scopes: string[]
-
-    constructor(name: string, url: string, scopes: string[]) {
-        this.name = name
-        this.url = url
-        this.scopes = scopes
-    }
 }
 
 

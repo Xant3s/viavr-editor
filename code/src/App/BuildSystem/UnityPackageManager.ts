@@ -1,6 +1,6 @@
 import {ipcMain as ipc} from 'electron'
 import fetch from 'node-fetch'
-import Package from './Package'
+import Package from './DataStructures/Package'
 import PreferencesManager from '../Preferences/PreferencesManager'
 
 

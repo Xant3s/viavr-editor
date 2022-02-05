@@ -4,24 +4,45 @@ import UnityPackageManager from './UnityPackageManager'
 import * as util from 'util'
 import PreferencesManager from '../Preferences/PreferencesManager'
 import BuildSystem from './BuildSystem'
+import {PackageManifest} from './DataStructures/PackageManifest'
+import {ScopedRegistry} from './DataStructures/ScopedRegistry'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
 
+declare global{
+    interface Array<T> {
+        findOrCreate(predicate: (element: T) => boolean, create: () => T): T
+    }
+}
+
+Array.prototype.findOrCreate = function <T>(predicate: (element: T) => boolean, create: () => T): T {
+    const element = this.find(predicate)
+    if(element === undefined) {
+        this.push(create())
+    }
+    return this.find(predicate)
+}
+
+
 export default class UnityBuildManager {
+    private readonly buildUtilsNamespace = 'de.jmu.ge.BuildUtils'
     private readonly buildSystem: BuildSystem
     private buildPath = ''
 
 
     constructor(buildSystem: BuildSystem) {
         this.buildSystem = buildSystem
+    }
+
+    public initIPC() {
         ipc.on('create-unity-project', async (e, packages) => {
             await this.createEmptyUnityProject(packages)
             e.sender.send('ready-to-build-project')
         })
         ipc.on('build-unity-project', async (e) => {
-            await UnityBuildManager.buildUnityProject(this.buildPath)
+            await this.buildUnityProject(this.buildPath)
             e.sender.send('build-finished')
         })
     }
@@ -35,9 +56,8 @@ export default class UnityBuildManager {
         }
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
-        await this.setupScopedComRegistry(outputPath)
         await this.installPackages(outputPath, packages)
-        await UnityBuildManager.addImportedScenesToBuildSettings(outputPath)
+        // await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 
@@ -47,99 +67,74 @@ export default class UnityBuildManager {
     }
 
     private async setupScopedRegistry(outputPath: string) {
-        const packageRegistryName = PreferencesManager.getInstance().get<string>('packageRegistryName')
-        const packageRegistryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
-        const packageRegistryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
+        const packageRegistryName = this.loadPreference('packageRegistryName')
+        const packageRegistryUrl = this.loadPreference('packageRegistryUrl')
+        const packageRegistryScope = this.loadPreference('packageRegistryScope')
+        let manifest = await UnityBuildManager.readManifest(outputPath)
+        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, packageRegistryScope)
+        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, 'unity-com')    // TODO: no not hardcode
+        await UnityBuildManager.writeManifest(manifest, outputPath)
+    }
 
-        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
-        let manifestData = await JSON.parse(manifest)
-        if(!('scopedRegistries' in manifestData)) {
-            manifestData['scopedRegistries'] = []
-        }
+    private loadPreference = (preference: string) => PreferencesManager.getInstance().get<string>(preference)
 
-        const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == packageRegistryUrl)
-        if(registryAlreadyExists) return;
+    private static async readManifest(outputPath: string) {
+        const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)
+        return await JSON.parse(manifestData) as PackageManifest
+    }
 
-        const registryEntry = {
-            'name': packageRegistryName,
-            'url': packageRegistryUrl,
-            'scopes': [
-                packageRegistryScope
-            ]
-        }
-        manifestData['scopedRegistries'].push(registryEntry)
-        const newFileData = JSON.stringify(manifestData, null, 4)
+    private static async writeManifest(manifest: PackageManifest, outputPath: string) {
+        const newFileData = JSON.stringify(manifest, null, 4)
         await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
     }
 
-    // TODO: Refactor
-    private async setupScopedComRegistry(outputPath: string) {
-        const packageRegistryName = 'JMU Info9 Com'
-        const packageRegistryUrl = 'https://packages.informatik.uni-wuerzburg.de'
-        const packageRegistryScope = 'unity-com'
-
-        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
-        let manifestData = await JSON.parse(manifest)
-        if(!('scopedRegistries' in manifestData)) {
-            manifestData['scopedRegistries'] = []
-        }
-
-        // const registryAlreadyExists = (manifestData['scopedRegistries'] as Array<any>).some(p => p['url'] == packageRegistryUrl)
-        // if(registryAlreadyExists) return;
-
-        const registryEntry = {
-            'name': packageRegistryName,
-            'url': packageRegistryUrl,
-            'scopes': [
-                packageRegistryScope
-            ]
-        }
-        manifestData['scopedRegistries'].push(registryEntry)
-        const newFileData = JSON.stringify(manifestData, null, 4)
-        await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+    public addScopedRegistryToManifest(manifest: PackageManifest, packageRegistryUrl: string, packageRegistryName: string, packageRegistryScope: string) {
+        manifest.scopedRegistries ??= []
+        const scopedRegistry = manifest.scopedRegistries.findOrCreate(reg => reg.url === packageRegistryUrl,
+            () => new ScopedRegistry(packageRegistryName, packageRegistryUrl, []))
+        scopedRegistry.scopes.findOrCreate(scope => scope === packageRegistryScope, () => packageRegistryScope)
     }
 
     private async installPackages(outputPath : string, packages : Map<string, boolean>) {
         console.log('Start installing packages.')
-        const manifest = await fs.readFile(`${outputPath}/Packages/manifest.json`)
-        const manifestData = await JSON.parse(manifest)
+        const manifest = await UnityBuildManager.readManifest(outputPath)
+
         const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromRegistry()
         packages.forEach((selectedToInstall: boolean, packageName: string) => {
             if(selectedToInstall) {
                 const latestVersion = (packageList.find(p => p.name == packageName).version)
                 console.log(`Add package ${packageName}: ${latestVersion}.`)
-                manifestData.dependencies[packageName] = latestVersion
+                manifest.dependencies ??= []
+                manifest.dependencies[packageName] = latestVersion
             } else {
                 console.log(`Skip package ${packageName}.`)
             }
         })
 
-        const newFileData = JSON.stringify(manifestData, null, 4)
-        await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+        await UnityBuildManager.writeManifest(manifest, outputPath)
         console.log('Packages installed.')
     }
 
-    private static async addImportedScenesToBuildSettings(projectPath: string) {
-        const unityPath = PreferencesManager.getInstance().get<string>('unityPath')
-        const unityAppPath = UnityBuildManager.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
-        const importScenesCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.SceneImporter.AddScenesToBuildSettings`
+    private async addImportedScenesToBuildSettings(projectPath: string) {
         console.log('Start importing scenes.')
-        const {stdout, stderr } = await exec(importScenesCommand)
-        if(stderr) console.log(stderr)
-        console.log(stdout)
+        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.SceneImporter.AddScenesToBuildSettings`, projectPath);
         console.log('Scenes imported.')
     }
 
-    private static async buildUnityProject(projectPath: string) {
+    private async buildUnityProject(projectPath: string) {
+        console.log('Start building.')
+        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.BuildManager.BuildToDefaultPath`, projectPath);
+        console.log('Build finished.')
+    }
+
+    private async invokeUnityMethod(method: string, projectPath: string) {
         const unityPath = PreferencesManager.getInstance().get<string>('unityPath')
         const unityAppPath = UnityBuildManager.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
-        const buildProjectCommand = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod de.jmu.ge.BuildUtils.BuildManager.BuildToDefaultPath`
-        console.log('Start building.')
-        const {stdout, stderr } = await exec(buildProjectCommand)
+        const command = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod ${method}`
+        const {stdout, stderr } = await exec(command)
         if(stderr) console.log(stderr)
         console.log(stdout)
-        console.log('Build finished.')
     }
 
     private static isMacOS = () => process.platform === 'darwin';

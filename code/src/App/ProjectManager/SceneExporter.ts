@@ -11,6 +11,6 @@ export default class SceneExporter {
     }
 
     private exportScene() {
-        this.mainWindow.window.webContents.send('spoke:export-scene')
+        this.mainWindow.send('spoke:export-scene')
     }
 }

@@ -148,7 +148,7 @@ export default class UnityBuildManager {
 
     private async convertScenesToUnityFormat(projectPath: string) {
         console.log('Start converting scenes.')
-        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.SceneImporter.AddScenesToBuildSettings`, projectPath);
+        await this.invokeUnityMethod(`de.jmu.ge.SpokeSceneImporter.SceneImporter.CreateAlLScenes`, projectPath);
         console.log('Scenes converted.')
     }
 
@@ -172,7 +172,7 @@ export default class UnityBuildManager {
         if(stderr) console.log(stderr)
         console.log(stdout)
     }
-    
+
     private static isMacOS = () => process.platform === 'darwin';
 }
 

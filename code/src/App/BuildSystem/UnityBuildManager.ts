@@ -120,8 +120,7 @@ export default class UnityBuildManager {
     }
 
     private async importScenes(outputPath: string) {
-        await UnityBuildManager.exportSceneList(outputPath)
-        await this.exportScenes(outputPath)
+        await Promise.all([UnityBuildManager.exportSceneList(outputPath), this.exportScenes(outputPath)])
         await this.convertScenesToUnityFormat(outputPath)
     }
 

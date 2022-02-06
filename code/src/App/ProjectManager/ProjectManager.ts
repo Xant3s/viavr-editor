@@ -17,10 +17,12 @@ export default class ProjectManager {
         ipc.on('project-manager:create-new-project', async () => {
             this.projectPath = await ProjectManager.promptUserForProjectPath()
             this.presentWorkingDirectory = this.projectPath
+            console.log('Project path: ', this.projectPath)
         })
         ipc.on('project-manager:open-project', async () => {
             this.projectPath = await ProjectManager.promptUserForProjectPath()
             this.presentWorkingDirectory = this.projectPath
+            console.log('Project path: ', this.projectPath)
         })
     }
 

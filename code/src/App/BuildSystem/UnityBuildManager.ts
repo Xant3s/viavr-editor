@@ -120,7 +120,10 @@ export default class UnityBuildManager {
     }
 
     private async importScenes(outputPath: string) {
-        await Promise.all([UnityBuildManager.exportSceneList(outputPath), this.exportScenes(outputPath)])
+        await Promise.all([
+            UnityBuildManager.exportSceneList(outputPath),
+            this.exportScenes(outputPath)
+        ])
         await this.convertScenesToUnityFormat(outputPath)
     }
 
@@ -147,7 +150,7 @@ export default class UnityBuildManager {
 
     private async convertScenesToUnityFormat(projectPath: string) {
         console.log('Start converting scenes.')
-        await this.invokeUnityMethod(`de.jmu.ge.SpokeSceneImporter.SceneImporter.CreateAlLScenes`, projectPath);
+        await this.invokeUnityMethod(`de.jmu.ge.SpokeSceneImporter.SceneImporter.CreateAllScenes`, projectPath);
         console.log('Scenes converted.')
     }
 

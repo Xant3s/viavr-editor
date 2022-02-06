@@ -121,7 +121,7 @@ export default class UnityBuildManager {
 
     private async importScenes(outputPath: string) {
         await UnityBuildManager.exportSceneList(outputPath)
-        // await this.exportScenes(outputPath)
+        await this.exportScenes(outputPath)
         // TODO: invoke unity method import scenes
     }
 

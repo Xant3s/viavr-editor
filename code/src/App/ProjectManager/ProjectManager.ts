@@ -2,8 +2,8 @@ import {dialog, ipcMain as ipc} from 'electron'
 
 export default class ProjectManager {
     private static instance: ProjectManager
-    private projectPath
-    private presentWorkingDirectory
+    private projectPath!: string
+    private _presentWorkingDirectory!: string
 
 
     public static getInstance(): ProjectManager {
@@ -13,15 +13,20 @@ export default class ProjectManager {
         return ProjectManager.instance
     }
 
+
+    get presentWorkingDirectory() {
+        return this._presentWorkingDirectory
+    }
+
     private constructor() {
         ipc.on('project-manager:create-new-project', async () => {
             this.projectPath = await ProjectManager.promptUserForProjectPath()
-            this.presentWorkingDirectory = this.projectPath
+            this._presentWorkingDirectory = this.projectPath
             console.log('Project path: ', this.projectPath)
         })
         ipc.on('project-manager:open-project', async () => {
             this.projectPath = await ProjectManager.promptUserForProjectPath()
-            this.presentWorkingDirectory = this.projectPath
+            this._presentWorkingDirectory = this.projectPath
             console.log('Project path: ', this.projectPath)
         })
     }

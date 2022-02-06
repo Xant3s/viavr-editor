@@ -6,6 +6,8 @@ import PreferencesManager from '../Preferences/PreferencesManager'
 import BuildSystem from './BuildSystem'
 import {PackageManifest} from './DataStructures/PackageManifest'
 import {ScopedRegistry} from './DataStructures/ScopedRegistry'
+import ProjectManager from '../ProjectManager/ProjectManager'
+import * as assert from 'assert'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
@@ -38,7 +40,7 @@ export default class UnityBuildManager {
 
     public initIPC() {
         ipc.on('create-unity-project', async (e, packages) => {
-            await this.createEmptyUnityProject(packages)
+            await this.createUnityProject(packages)
             e.sender.send('ready-to-build-project')
         })
         ipc.on('build-unity-project', async (e) => {
@@ -47,7 +49,7 @@ export default class UnityBuildManager {
         })
     }
 
-    private async createEmptyUnityProject(packages: Map<string, boolean>) {
+    private async createUnityProject(packages: Map<string, boolean>) {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
@@ -57,7 +59,8 @@ export default class UnityBuildManager {
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
-        await this.addImportedScenesToBuildSettings(outputPath)
+        await this.importScenes(outputPath)
+        // await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 
@@ -114,6 +117,31 @@ export default class UnityBuildManager {
 
         await UnityBuildManager.writeManifest(manifest, outputPath)
         console.log('Packages installed.')
+    }
+
+    private async importScenes(outputPath: string) {
+        await UnityBuildManager.exportSceneList(outputPath)
+        // await this.exportScenes(outputPath)
+        // TODO: invoke unity method import scenes
+    }
+
+    private static async exportSceneList(outputPath: string) {
+        const pwd = ProjectManager.getInstance().presentWorkingDirectory
+        assert(pwd !== undefined)
+        const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)
+        const sceneFiles = fileList.filter(file => file.endsWith('.glb'))
+        let sceneList = {}
+        sceneList["Scenes"] = sceneFiles.map(sceneFile => sceneFile.substr(0, sceneFile.length - 4))
+        await fs.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
+    }
+
+    private async exportScenes(outputPath: string) {
+        const pwd = ProjectManager.getInstance().presentWorkingDirectory
+        assert(pwd !== undefined)
+        const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)
+        const sceneFiles = fileList.filter(file => file.endsWith('.glb'))
+        sceneFiles.forEach(sceneFile =>
+            fs.copyFile(`${pwd}/Scenes/${sceneFile}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneFile}`))
     }
 
     private async addImportedScenesToBuildSettings(projectPath: string) {

@@ -23,6 +23,10 @@ export default class MainWindow {
         return MainWindow.window
     }
 
+    public send(channel: string, ...args: any[]) {
+        MainWindow.window.webContents.send(channel, ...args)
+    }
+
     private static createWindow() {
         MainWindow.window = new BrowserWindow({
             webPreferences: {

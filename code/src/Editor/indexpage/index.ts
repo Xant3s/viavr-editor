@@ -1,4 +1,4 @@
-// import {ipcRenderer as ipc} from 'electron'
+import {ipcRenderer as ipc} from 'electron'
 import $ = require('jquery')
 
 // Hot reloading
@@ -7,7 +7,9 @@ try {
 } catch (_) {}
 
 
-$('#btn-test').on('click', () => {
+
+
+ipc.on('spoke:export-scene', () => {
     const $spoke = $('#iframe-spoke').contents()
     const $$ = (query) => $spoke.find(query)
 

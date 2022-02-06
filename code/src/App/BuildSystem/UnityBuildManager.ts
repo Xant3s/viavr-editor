@@ -60,7 +60,7 @@ export default class UnityBuildManager {
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         await this.importScenes(outputPath)
-        // await this.addImportedScenesToBuildSettings(outputPath)
+        await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 
@@ -122,26 +122,34 @@ export default class UnityBuildManager {
     private async importScenes(outputPath: string) {
         await UnityBuildManager.exportSceneList(outputPath)
         await this.exportScenes(outputPath)
-        // TODO: invoke unity method import scenes
+        await this.convertScenesToUnityFormat(outputPath)
     }
 
     private static async exportSceneList(outputPath: string) {
-        const pwd = ProjectManager.getInstance().presentWorkingDirectory
-        assert(pwd !== undefined)
-        const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)
-        const sceneFiles = fileList.filter(file => file.endsWith('.glb'))
+        const {sceneFiles} = await UnityBuildManager.FindSceneFiles()
         let sceneList = {}
         sceneList["Scenes"] = sceneFiles.map(sceneFile => sceneFile.substr(0, sceneFile.length - 4))
         await fs.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
     }
 
     private async exportScenes(outputPath: string) {
+        const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
+        sceneFiles.forEach(sceneFile =>
+            fs.copyFile(`${pwd}/Scenes/${sceneFile}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneFile}`))
+    }
+
+    private static async FindSceneFiles() {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         assert(pwd !== undefined)
         const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)
         const sceneFiles = fileList.filter(file => file.endsWith('.glb'))
-        sceneFiles.forEach(sceneFile =>
-            fs.copyFile(`${pwd}/Scenes/${sceneFile}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneFile}`))
+        return {pwd, sceneFiles}
+    }
+
+    private async convertScenesToUnityFormat(projectPath: string) {
+        console.log('Start converting scenes.')
+        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.SceneImporter.AddScenesToBuildSettings`, projectPath);
+        console.log('Scenes converted.')
     }
 
     private async addImportedScenesToBuildSettings(projectPath: string) {
@@ -164,7 +172,7 @@ export default class UnityBuildManager {
         if(stderr) console.log(stderr)
         console.log(stdout)
     }
-
+    
     private static isMacOS = () => process.platform === 'darwin';
 }
 

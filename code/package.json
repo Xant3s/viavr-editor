@@ -9,7 +9,8 @@
     "package": "tsc && electron-forge package",
     "make": "tsc && electron-forge make",
     "copy-dependencies:win": "cpy plugins out/viavr-editor-win32-x64 --parents --dot",
-    "make:win": "tsc && electron-forge make && copy-dependencies",
+    "build": "tsc && electron-forge make",
+    "make:win": "npm-run-all build copy-dependencies:win",
     "test": "mocha --config test/.mocharc.jsonc"
   },
   "repository": {
@@ -46,12 +47,14 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "asar": false
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "unity_interop"
+            "name": "viavr-editor"
           }
         },
         {

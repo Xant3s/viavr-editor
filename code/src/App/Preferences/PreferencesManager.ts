@@ -1,4 +1,4 @@
-import {BrowserWindow, ipcMain as ipc} from 'electron'
+import {app, BrowserWindow, ipcMain as ipc} from 'electron'
 import Preferences from './Preferences'
 
 const fs = require('fs').promises
@@ -6,7 +6,7 @@ const fs = require('fs').promises
 
 export default class PreferencesManager {
     private static instance: PreferencesManager
-    private readonly preferencesPath = './res/preferences.json'
+    private readonly preferencesPath = app.getAppPath() + '/res/preferences.json'
     private preferences!: Preferences
     private window?: BrowserWindow
     private initialized = false

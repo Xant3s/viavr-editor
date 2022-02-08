@@ -16,9 +16,9 @@ export default class SpokeManager {
             shell: true,
             detached: true,
         })
-        SpokeManager.pid = SpokeManager.spoke.pid
+        // SpokeManager.pid = SpokeManager.spoke.pid
         ipc.on('app-quit', this.stopSpoke)
-        console.log('Spoke started with pid: ' + SpokeManager.pid)
+        // console.log('Spoke started with pid: ' + SpokeManager.pid)
         // }
     }
 

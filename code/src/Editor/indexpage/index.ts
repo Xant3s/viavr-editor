@@ -12,6 +12,13 @@ const $$ = (query: string) => {
     return $spoke.find(query)
 }
 
+ipc.on('spoke:export-scene', () => {
+    const exportSceneButton = $$('div:contains("Export as binary glTF"):last')
+    exportSceneButton.hide()
+    waitUntilAvailable(exportButton, (btn) => handleExportOptionsDialog(btn), 100)
+    exportSceneButton.trigger('click')
+})
+
 const exportButton = () => {
     const exportProjectBtnQuery = $$('button:contains("Export Project"):last')
     const isAvailable = exportProjectBtnQuery.length > 0
@@ -35,19 +42,8 @@ function handleExportProgressDialog(dialogTitle) {
     $$('div:contains("project"):last').text('Exporting scene...')
 }
 
-ipc.on('spoke:export-scene', () => {
-    const $exportGlb = $$('div:contains("Export as binary glTF"):last')
-    $exportGlb.hide()
-    // setInterval(handleExportOptionsDialog, 100)
-    waitUntilAvailable(exportButton, (btn) => handleExportOptionsDialog(btn), 100)
-
-
-    $exportGlb.trigger('click')
-})
-
 const waitUntilAvailable = (predicate, callback, updateTimeInMs: number = 100) => {
     const checkIfAvailable = () => {
-        console.log('loop')
         const [found, result] = predicate()
         if(found) {
             clearInterval(intervalId)
@@ -57,25 +53,3 @@ const waitUntilAvailable = (predicate, callback, updateTimeInMs: number = 100) =
 
     const intervalId = setInterval(checkIfAvailable, updateTimeInMs)
 }
-
-// const handleExportOptionsDialog = () => {
-//     const $spoke = $('#iframe-spoke').contents()
-//     const $$ = (query) => $spoke.find(query)
-//     console.log('loop')
-//
-//     // Export options dialog
-//     const $exportProjectBtn = $$('button:contains("Export Project")')
-//     if($exportProjectBtn.length > 0) {
-//         const $form = $exportProjectBtn.closest('form')
-//         $form.hide()
-//         $exportProjectBtn.last().trigger('click')
-//         // TODO: stop loop
-//     }
-//
-//     // Export progress dialog
-//     const $exportingProjectProgressbarSpan = $$('span:contains("Exporting Project"):last')
-//     if($exportingProjectProgressbarSpan.length > 0) {
-//         $exportingProjectProgressbarSpan.text('Exporting Scene...')
-//         $$('div:contains("project"):last').text('Exporting scene...')
-//     }
-// }

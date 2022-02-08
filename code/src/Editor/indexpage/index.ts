@@ -28,9 +28,16 @@ const foo = () => {
     // console.log($exportProjectBtn === undefined)
     // console.log($exportProjectBtn.length)
     if($exportProjectBtn.length > 0) {
-        // const $form = $exportProjectBtn.closest('form')
-        // $form.hide()
+        const $form = $exportProjectBtn.closest('form')
+        $form.hide()
         $exportProjectBtn.last().trigger('click')
+        // TODO: stop loop
+    }
+
+    const $exportingProjectProgressbarSpan = $$('span:contains("Exporting Project"):last')
+    if($exportingProjectProgressbarSpan.length > 0) {
+        $exportingProjectProgressbarSpan.text('Exporting Scene...')
+        $$('div:contains("project"):last').text('Exporting scene...')
     }
 }
 // setInterval(foo, 500)

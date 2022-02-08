@@ -7,51 +7,39 @@ try {
 } catch (_) {}
 
 
-function queryForExportButton() {
+const $$ = (query: string) => {
     const $spoke = $('#iframe-spoke').contents()
-    const $$ = (query) => $spoke.find(query)
+    return $spoke.find(query)
+}
 
+const exportButton = () => {
     const exportProjectBtnQuery = $$('button:contains("Export Project"):last')
-    return [exportProjectBtnQuery.length > 0, exportProjectBtnQuery]
+    const isAvailable = exportProjectBtnQuery.length > 0
+    return [isAvailable, exportProjectBtnQuery]
+}
+
+const exportProcessDialogTitle = () => {
+    const dialogTitleQuery = $$('span:contains("Exporting Project"):last')
+    const isAvailable = dialogTitleQuery.length > 0
+    return [isAvailable, dialogTitleQuery]
 }
 
 function handleExportOptionsDialog(exportProjectBtn) {
-    const form = exportProjectBtn.closest('form')
-    form.hide()
+    exportProjectBtn.closest('form').hide()
     exportProjectBtn.trigger('click')
-    waitUntilAvailable(() => queryForExportProcessDialogTitle(), (dialogTitle) => handleExportProgressDialog(dialogTitle), 100)
-}
-
-function queryForExportProcessDialogTitle() {
-    const $spoke = $('#iframe-spoke').contents()
-    const $$ = (query) => $spoke.find(query)
-
-    const dialogTitleQuery = $$('span:contains("Exporting Project"):last')
-    return [dialogTitleQuery.length > 0, dialogTitleQuery]
-
+    waitUntilAvailable(exportProcessDialogTitle, (dialogTitle) => handleExportProgressDialog(dialogTitle), 100)
 }
 
 function handleExportProgressDialog(dialogTitle) {
-    //     const $exportingProjectProgressbarSpan = $$('span:contains("Exporting Project"):last')
-//     if($exportingProjectProgressbarSpan.length > 0) {
-//         $exportingProjectProgressbarSpan.text('Exporting Scene...')
-//         $$('div:contains("project"):last').text('Exporting scene...')
-//     }
-    const $spoke = $('#iframe-spoke').contents()
-    const $$ = (query) => $spoke.find(query)
-
     dialogTitle.text('Exporting Scene...')
     $$('div:contains("project"):last').text('Exporting scene...')
 }
 
 ipc.on('spoke:export-scene', () => {
-    const $spoke = $('#iframe-spoke').contents()
-    const $$ = (query) => $spoke.find(query)
-
     const $exportGlb = $$('div:contains("Export as binary glTF"):last')
     $exportGlb.hide()
     // setInterval(handleExportOptionsDialog, 100)
-    waitUntilAvailable(() => queryForExportButton(), (exportProjectBtn) => handleExportOptionsDialog(exportProjectBtn), 100)
+    waitUntilAvailable(exportButton, (btn) => handleExportOptionsDialog(btn), 100)
 
 
     $exportGlb.trigger('click')

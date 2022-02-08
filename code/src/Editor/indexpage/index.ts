@@ -4,7 +4,8 @@ import $ = require('jquery')
 // Hot reloading
 try {
     require('electron-reloader')(module)
-} catch (_) {}
+} catch(_) {
+}
 
 
 const $$ = (query: string) => {
@@ -12,44 +13,43 @@ const $$ = (query: string) => {
     return $spoke.find(query)
 }
 
-ipc.on('spoke:export-scene', () => {
-    const exportSceneButton = $$('div:contains("Export as binary glTF"):last')
-    exportSceneButton.hide()
-    waitUntilAvailable(exportButton, (btn) => handleExportOptionsDialog(btn), 100)
-    exportSceneButton.trigger('click')
-})
 
-const exportButton = () => {
-    const exportProjectBtnQuery = $$('button:contains("Export Project"):last')
-    const isAvailable = exportProjectBtnQuery.length > 0
-    return [isAvailable, exportProjectBtnQuery]
-}
-
-const exportProcessDialogTitle = () => {
-    const dialogTitleQuery = $$('span:contains("Exporting Project"):last')
-    const isAvailable = dialogTitleQuery.length > 0
-    return [isAvailable, dialogTitleQuery]
-}
-
-function handleExportOptionsDialog(exportProjectBtn) {
-    exportProjectBtn.closest('form').hide()
-    exportProjectBtn.trigger('click')
-    waitUntilAvailable(exportProcessDialogTitle, (dialogTitle) => handleExportProgressDialog(dialogTitle), 100)
-}
-
-function handleExportProgressDialog(dialogTitle) {
-    dialogTitle.text('Exporting Scene...')
-    $$('div:contains("project"):last').text('Exporting scene...')
-}
-
-const waitUntilAvailable = (predicate, callback, updateTimeInMs: number = 100) => {
-    const checkIfAvailable = () => {
-        const [found, result] = predicate()
-        if(found) {
-            clearInterval(intervalId)
-            callback(result)
-        }
+class SceneExport {
+    constructor() {
+        ipc.on('spoke:export-scene', async() => {
+            const exportSceneButton = $$('div:contains("Export as binary glTF"):last')
+            exportSceneButton.hide()
+            exportSceneButton.trigger('click')
+            const exportButton = await this.htmlElement('button:contains("Export Project"):last')
+            await this.handleExportOptionsDialog(exportButton)
+        })
     }
 
-    const intervalId = setInterval(checkIfAvailable, updateTimeInMs)
+    private async handleExportOptionsDialog(exportProjectBtn) {
+        exportProjectBtn.closest('form').hide()
+        exportProjectBtn.trigger('click')
+        const dialogTitle = await this.htmlElement('span:contains("Exporting Project"):last')
+        dialogTitle.text('Exporting Scene...')
+        $$('div:contains("project"):last').text('Exporting scene...')
+    }
+
+    private htmlElement(query: string, updateIntervalInMs: number = 100, timeout: number = 10_000): Promise<JQuery<HTMLElement>> {
+        return new Promise((resolve, reject) => {
+            const checkIfAvailable = () => {
+                const element = $$(query)
+                if(element.length > 0) {
+                    clearInterval(intervalId)
+                    resolve(element.first())
+                }
+            }
+
+            const intervalId = setInterval(checkIfAvailable, updateIntervalInMs)
+            setTimeout(() => {
+                clearInterval(intervalId)
+                reject(new Error('Timeout'))
+            }, timeout)
+        })
+    }
 }
+
+new SceneExport()

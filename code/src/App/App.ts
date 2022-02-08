@@ -12,7 +12,7 @@ const init = async () => {
     new SpokeManager(app)
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
-    ProjectManager.getInstance()
+    ProjectManager.getInstance().init(mainWindow)
     new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)
 }

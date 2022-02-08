@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <title>VIA-VR Editor</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background: white;">
-    <div id="spoke-container">
+<body>
+
+    <div id="project-selection-page">
+        <h1>Welcome</h1>
+        <button id="create-new-project-btn" type="button">Create New Project</button>
+        <button id="open-project-btn" type="button">Open Project</button>
+    </div>
+
+    <div id="spoke-container" hidden>
         <iframe id="iframe-spoke" title="Inline Frame Example" src="https://localhost:9090"></iframe>
     </div>
 

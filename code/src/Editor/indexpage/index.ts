@@ -13,6 +13,22 @@ const $$ = (query: string) => {
     return $spoke.find(query)
 }
 
+$('#create-new-project-btn').on('click', () => {
+    ipc.send('project-manager:create-new-project')
+})
+
+$('#open-project-btn').first().on('click', () => {
+    ipc.send('project-manager:open-project')
+})
+
+ipc.on('project-manager:project-created', () => onProjectSelected())
+ipc.on('project-manager:project-opened', () => onProjectSelected())
+
+function onProjectSelected() {
+    $('#project-selection-page').hide()
+    $('#spoke-container').show()
+}
+
 
 class SceneExport {
     constructor() {

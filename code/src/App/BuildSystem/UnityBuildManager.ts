@@ -39,17 +39,26 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.on('create-unity-project', async (e, packages) => {
-            await this.createUnityProject(packages)
+        ipc.on('query-available-scenes', async (e) => {
+            const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
+            e.sender.send('display-available-scenes', sceneFiles)
+        })
+        ipc.on('create-unity-project', async (e, scenesAndPackages) => {
+            await this.createUnityProject(scenesAndPackages)
             e.sender.send('ready-to-build-project')
         })
         ipc.on('build-unity-project', async (e) => {
             await this.buildUnityProject(this.buildPath)
             e.sender.send('build-finished')
         })
+        ipc.on('open-build-directory', async (e) => {
+            await UnityBuildManager.openBuildDirectory(this.buildPath)
+        })
     }
 
-    private async createUnityProject(packages: Map<string, boolean>) {
+    private async createUnityProject(scenesAndPackages: Map<string, boolean>) {
+        const scenes = scenesAndPackages[0]
+        const packages = scenesAndPackages[1]
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
@@ -59,7 +68,7 @@ export default class UnityBuildManager {
         await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
-        await this.importScenes(outputPath)
+        await this.importScenes(outputPath, scenes)
         await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
@@ -119,25 +128,28 @@ export default class UnityBuildManager {
         console.log('Packages installed.')
     }
 
-    private async importScenes(outputPath: string) {
+    private async importScenes(outputPath: string, scenes: Array<[string, boolean]>) {
         await Promise.all([
-            UnityBuildManager.exportSceneList(outputPath),
-            this.exportScenes(outputPath)
+            UnityBuildManager.exportSceneList(outputPath, scenes),
+            this.exportScenes(outputPath, scenes)
         ])
         await this.convertScenesToUnityFormat(outputPath)
     }
 
-    private static async exportSceneList(outputPath: string) {
-        const {sceneFiles} = await UnityBuildManager.FindSceneFiles()
+    private static async exportSceneList(outputPath: string, scenes: Array<[string, boolean]>) {
         let sceneList = {}
-        sceneList["Scenes"] = sceneFiles.map(sceneFile => sceneFile.substr(0, sceneFile.length - 4))
+        sceneList["Scenes"] = scenes.filter(scene => scene[1])
+                                    .map(scene => scene[0])
+                                    .map(sceneName => sceneName.substr(0, sceneName.length - 4))
         await fs.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
     }
 
-    private async exportScenes(outputPath: string) {
-        const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
-        sceneFiles.forEach(sceneFile =>
-            fs.copyFile(`${pwd}/Scenes/${sceneFile}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneFile}`))
+    private async exportScenes(outputPath: string, scenes: Array<[string, boolean]>) {
+        const pwd = ProjectManager.getInstance().presentWorkingDirectory
+        const sceneNames = scenes.filter(scene => scene[1])
+                                 .map(scene => scene[0])
+        sceneNames.forEach(sceneName =>
+            fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
     }
 
     private static async FindSceneFiles() {
@@ -173,6 +185,10 @@ export default class UnityBuildManager {
         const {stdout, stderr } = await exec(command)
         if(stderr) console.log(stderr)
         console.log(stdout)
+    }
+
+    private static async openBuildDirectory(buildPath: string) {
+        await exec(`start "" ${buildPath}\\Build\\Windows`)
     }
 
     private static isMacOS = () => process.platform === 'darwin';

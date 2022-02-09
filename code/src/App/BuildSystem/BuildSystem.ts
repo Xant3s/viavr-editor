@@ -3,12 +3,13 @@ import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import PreferencesManager from '../Preferences/PreferencesManager'
 
+
 export default class BuildSystem {
     private readonly mainWindow: BrowserWindow
     private _buildDialog?: BrowserWindow
 
 
-    constructor(window: Electron.BrowserWindow) {
+    constructor(window: BrowserWindow) {
         this.mainWindow = window
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
@@ -28,11 +29,11 @@ export default class BuildSystem {
         return this._buildDialog
     }
 
-    private openBuildMenu(){
+    private async openBuildMenu(){
         this._buildDialog = new BrowserWindow(
             {
                 width: 700,
-                height: 500,
+                height: 600,
                 title: "Build Dialog",
                 modal: true,
                 parent: this.mainWindow,

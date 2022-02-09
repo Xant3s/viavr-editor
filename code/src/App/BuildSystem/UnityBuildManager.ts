@@ -39,6 +39,10 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
+        ipc.on('query-available-scenes', async (e) => {
+            const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
+            e.sender.send('display-available-scenes', sceneFiles)
+        })
         ipc.on('create-unity-project', async (e, packages) => {
             await this.createUnityProject(packages)
             e.sender.send('ready-to-build-project')
@@ -49,10 +53,6 @@ export default class UnityBuildManager {
         })
         ipc.on('open-build-directory', async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
-        })
-        ipc.on('query-available-scenes', async (e) => {
-            const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
-            e.sender.send('display-available-scenes', sceneFiles)
         })
     }
 

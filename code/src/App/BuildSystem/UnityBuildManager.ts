@@ -145,9 +145,11 @@ export default class UnityBuildManager {
     }
 
     private async exportScenes(outputPath: string, scenes: Array<[string, boolean]>) {
-        const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
-        sceneFiles.forEach(sceneFile =>
-            fs.copyFile(`${pwd}/Scenes/${sceneFile}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneFile}`))
+        const pwd = ProjectManager.getInstance().presentWorkingDirectory
+        const sceneNames = scenes.filter(scene => scene[1])
+                                 .map(scene => scene[0])
+        sceneNames.forEach(sceneName =>
+            fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
     }
 
     private static async FindSceneFiles() {

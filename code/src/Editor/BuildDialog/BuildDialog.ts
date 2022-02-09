@@ -37,7 +37,7 @@ class BuildDialog {
         console.log('display')
         scenes.forEach(sceneName => {
             const label = document.createElement('label')
-            const description = document.createTextNode(sceneName)
+            const description = document.createTextNode(sceneName.substr(0, sceneName.length - 4))
             const checkbox = document.createElement('input')
             const br = document.createElement('br')
             checkbox.type = 'checkbox'

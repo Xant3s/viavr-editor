@@ -5,6 +5,7 @@ import $ = require('jquery')
 class BuildDialog {
     private readonly buildButton = $('#btn-build-project')
     private readonly packageList = document.getElementById('package-list') as HTMLDivElement
+    private readonly sceneList = $('#scene-list').get()[0] as HTMLDivElement
     private readonly openProjectButton = $('#btn-open-build-directory')
 
     constructor() {
@@ -16,13 +17,19 @@ class BuildDialog {
         ipc.on('add-package', (_, p) => this.addPackage(p))
         ipc.on('ready-to-build-project', () => this.buildButton.prop('disabled', false))
         ipc.on('build-finished', () => this.openProjectButton.prop('disabled', false))
-
+        ipc.on('display-available-scenes', (e, scenes) => this.displayAvailableScenes(scenes))
         this.queryPackages()
+        this.queryScenes()
     }
 
     private queryPackages() {
         this.packageList.innerHTML = ''
         ipc.send('query-available-packages')
+    }
+
+    private queryScenes() {
+        this.sceneList.innerHTML = ''
+        ipc.send('query-available-scenes')
     }
 
     private addPackage(p) {
@@ -54,6 +61,23 @@ class BuildDialog {
         const packages = new Map<string, boolean>()
         checkboxes.forEach(checkbox => packages.set(checkbox.id, (checkbox as HTMLInputElement).checked))
         return packages
+    }
+
+    private displayAvailableScenes(scenes) {
+        console.log('display')
+        scenes.forEach(sceneName => {
+            const label = document.createElement('label')
+            const description = document.createTextNode(sceneName)
+            const checkbox = document.createElement('input')
+            const br = document.createElement('br')
+            checkbox.type = 'checkbox'
+            checkbox.classList.add('scene-select-checkbox')
+            checkbox.id = sceneName
+            label.appendChild(checkbox)
+            label.appendChild(description)
+            label.appendChild(br)
+            this.sceneList.appendChild(label)
+        })
     }
 }
 

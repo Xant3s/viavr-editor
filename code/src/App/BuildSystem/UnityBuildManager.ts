@@ -50,6 +50,10 @@ export default class UnityBuildManager {
         ipc.on('open-build-directory', async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
+        ipc.on('query-available-scenes', async (e) => {
+            const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
+            e.sender.send('display-available-scenes', sceneFiles)
+        })
     }
 
     private async createUnityProject(packages: Map<string, boolean>) {

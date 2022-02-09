@@ -47,6 +47,9 @@ export default class UnityBuildManager {
             await this.buildUnityProject(this.buildPath)
             e.sender.send('build-finished')
         })
+        ipc.on('open-build-directory', async (e) => {
+            await UnityBuildManager.openBuildDirectory(this.buildPath)
+        })
     }
 
     private async createUnityProject(packages: Map<string, boolean>) {
@@ -173,6 +176,10 @@ export default class UnityBuildManager {
         const {stdout, stderr } = await exec(command)
         if(stderr) console.log(stderr)
         console.log(stdout)
+    }
+
+    private static async openBuildDirectory(buildPath: string) {
+        await exec(`start "" ${buildPath}\\Build\\Windows`)
     }
 
     private static isMacOS = () => process.platform === 'darwin';

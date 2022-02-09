@@ -4,16 +4,18 @@ import $ = require('jquery')
 
 class BuildDialog {
     private readonly buildButton = $('#btn-build-project')
-    private readonly unityPathText = document.getElementById('unity-path') as HTMLInputElement
     private readonly packageList = document.getElementById('package-list') as HTMLDivElement
+    private readonly openProjectButton = $('#btn-open-build-directory')
 
     constructor() {
         $('#btn-query-packages').on('click', () => this.queryPackages())
         $('#btn-create-project').on('click', () => ipc.send('create-unity-project', this.getSelectedPackages()))
         this.buildButton.on('click', () => ipc.send('build-unity-project'))
+        this.openProjectButton.on('click', () => ipc.send('open-build-directory'))
 
         ipc.on('add-package', (_, p) => this.addPackage(p))
         ipc.on('ready-to-build-project', () => this.buildButton.prop('disabled', false))
+        ipc.on('build-finished', () => this.openProjectButton.prop('disabled', false))
 
         this.queryPackages()
     }

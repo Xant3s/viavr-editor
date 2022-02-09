@@ -10,7 +10,8 @@ class BuildDialog {
 
     constructor() {
         $('#btn-query-packages').on('click', () => this.queryPackages())
-        $('#btn-create-project').on('click', () => ipc.send('create-unity-project', this.getSelectedPackages()))
+        $('#btn-create-project').on('click', () =>
+            ipc.send('create-unity-project', [this.getSelectedScenes(), this.getSelectedPackages()]))
         this.buildButton.on('click', () => ipc.send('build-unity-project'))
         this.openProjectButton.on('click', () => ipc.send('open-build-directory'))
 
@@ -30,6 +31,23 @@ class BuildDialog {
     private queryScenes() {
         this.sceneList.innerHTML = ''
         ipc.send('query-available-scenes')
+    }
+
+    private displayAvailableScenes(scenes) {
+        console.log('display')
+        scenes.forEach(sceneName => {
+            const label = document.createElement('label')
+            const description = document.createTextNode(sceneName)
+            const checkbox = document.createElement('input')
+            const br = document.createElement('br')
+            checkbox.type = 'checkbox'
+            checkbox.classList.add('scene-select-checkbox')
+            checkbox.id = sceneName
+            label.appendChild(checkbox)
+            label.appendChild(description)
+            label.appendChild(br)
+            this.sceneList.appendChild(label)
+        })
     }
 
     private addPackage(p) {
@@ -56,28 +74,18 @@ class BuildDialog {
         }
     }
 
+    private getSelectedScenes() {
+        const checkboxes = Array.from(document.getElementsByClassName('scene-select-checkbox'))
+        const scenes = new Array<[string, boolean]>()
+        checkboxes.forEach(checkbox => scenes.push([checkbox.id, (checkbox as HTMLInputElement).checked]))
+        return scenes
+    }
+
     private getSelectedPackages() {
         const checkboxes = Array.from(document.getElementsByClassName('package-select-checkbox'))
         const packages = new Map<string, boolean>()
         checkboxes.forEach(checkbox => packages.set(checkbox.id, (checkbox as HTMLInputElement).checked))
         return packages
-    }
-
-    private displayAvailableScenes(scenes) {
-        console.log('display')
-        scenes.forEach(sceneName => {
-            const label = document.createElement('label')
-            const description = document.createTextNode(sceneName)
-            const checkbox = document.createElement('input')
-            const br = document.createElement('br')
-            checkbox.type = 'checkbox'
-            checkbox.classList.add('scene-select-checkbox')
-            checkbox.id = sceneName
-            label.appendChild(checkbox)
-            label.appendChild(description)
-            label.appendChild(br)
-            this.sceneList.appendChild(label)
-        })
     }
 }
 

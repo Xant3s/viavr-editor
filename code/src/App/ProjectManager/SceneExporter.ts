@@ -26,7 +26,10 @@ export default class SceneExporter {
 
             item.once('done', (event, state) => {
                 if(state === 'completed') console.log(`Scene ${item.getFilename()} exported`)
-                else console.log(`Scene export failed: ${state} (Check path)`)
+                else {
+                    console.log(`Scene export failed: ${state} (Check path)`)
+                    console.log(saveScenePath)
+                }
             })
         })
     }

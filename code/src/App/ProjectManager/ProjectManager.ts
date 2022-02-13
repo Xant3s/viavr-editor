@@ -1,11 +1,14 @@
 import {app, dialog, ipcMain as ipc} from 'electron'
+import * as fs from 'fs'
+import fastFolderSizeSync from 'fast-folder-size/sync'
 import MainWindow from '../MainWindow'
 import * as Path from 'path'
 import Utils from '../BuildSystem/Utils'
-import * as fs from 'fs'
+
 
 export default class ProjectManager {
     private static instance: ProjectManager
+    private readonly zipThresholdInMB: number = 5000
     private mainWindow!: MainWindow
     // The path to the current saved project. This may be the path to a .via file.
     private projectPath!: string
@@ -88,6 +91,19 @@ export default class ProjectManager {
         }
 
         // Get pwd size
+        const pwdSizeInBytes = fastFolderSizeSync(this.presentWorkingDirectory)
+        if(pwdSizeInBytes !== undefined) {
+            const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
+            console.log('Project size: ', pwdSizeInMB)
+
+            if(pwdSizeInMB > this.zipThresholdInMB) {
+                console.log('Project is too large to save.')
+                return
+            } else{
+                console.log('Project is small enough to save.')
+            }
+
+        }
 
         // if small compress to zip, replace existing zip
 

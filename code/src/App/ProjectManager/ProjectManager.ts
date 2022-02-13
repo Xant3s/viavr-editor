@@ -61,13 +61,17 @@ export default class ProjectManager {
             filters: [{name: 'VIA-VR project files', extensions: ['via']}]
         })
         if(!canceled && filePaths.length > 0) {
-            this.projectPath = filePaths[0]
-            const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
-            fs.rmdirSync(tempProjectFolder, {recursive: true})
-            await Utils.extractZipToPath(filePaths[0], tempProjectFolder)
-            this._presentWorkingDirectory = tempProjectFolder
-            this.onProjectOpened()
+            await this.openProjectFromFileNoPrompt(filePaths[0])
         }
+    }
+
+    public async openProjectFromFileNoPrompt(filePath: string) {
+        this.projectPath = filePath
+        const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
+        fs.rmdirSync(tempProjectFolder, {recursive: true})
+        await Utils.extractZipToPath(filePath, tempProjectFolder)
+        this._presentWorkingDirectory = tempProjectFolder
+        this.onProjectOpened()
     }
 
     private async openProjectFromFolder() {

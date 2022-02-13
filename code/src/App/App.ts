@@ -17,4 +17,14 @@ const init = async () => {
     new BuildSystem(mainWindow.window)
 }
 
+const tryOpenProject = async () => {
+    if(process.argv.length >= 1 && process.argv[1] !== '.') {
+        console.log(`Opening project ${process.argv[1]}`)
+        await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
+    }
+}
+
+app.whenReady().then(tryOpenProject)
+
 init()
+

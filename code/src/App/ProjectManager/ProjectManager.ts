@@ -96,14 +96,27 @@ export default class ProjectManager {
             const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
             console.log('Project size: ', pwdSizeInMB)
 
-            if(pwdSizeInMB < this.zipThresholdInMB) {
-                await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
-                return
-            } else {
+            // if(pwdSizeInMB < this.zipThresholdInMB) {
+            //     await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
+            //     return
+            // } else {
                 // if large copy to project path if not already, delete zip if exists
-                console.log('Project is too large to save.')
-
+            if(this.projectPath == this.presentWorkingDirectory) {
+                console.log('Project saved.')
+                // TODO: Architecture: add event
+                return
             }
+
+                console.log('Project is too large to be save as .via file.')
+                // TODO: Notify user
+                // if was zip before, create proejct folder
+                this.projectPath = "C:\\Users\\secre\\Desktop\\test.via"// todo: remove
+                const projectFolderName = Path.parse(this.projectPath).name
+                fs.rmdirSync(this.projectPath, {recursive: true})
+                this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName)
+            console.log('Project path: ', this.projectPath)
+fs.copyFileSync(this.presentWorkingDirectory, this.projectPath)
+            // }
 
         }
     }

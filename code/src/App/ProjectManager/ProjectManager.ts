@@ -51,7 +51,6 @@ export default class ProjectManager {
             fs.rmdirSync(tempProjectFolder, {recursive: true})
             await Utils.extractZipToPath(filePaths[0], tempProjectFolder)
             this._presentWorkingDirectory = tempProjectFolder
-            this.mainWindow.send('project-manager:project-opened')
             this.onProjectOpened()
         }
     }

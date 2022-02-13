@@ -96,8 +96,14 @@ export default class ProjectManager {
             const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
 
             if(pwdSizeInMB < this.zipThresholdInMB) {
+                if(Path.parse(this.projectPath).ext.length === 0) {
+                    this.projectPath = Path.join(Path.dirname(this.projectPath), Path.parse(this.projectPath).name + '.via')
+                    // If the project was previously too large, i.e. the project path is a directory,
+                    // we are not removing that directory for now.
+                    // The directory equals pwd, so we would get issues if we try to remove it too soon.
+                }
                 await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
-                // What is this project was previously too large, i.e. the project path is a dir? -> ignore for now
+                // Now we could delete the old project folder. Not sure if we want to do that.
             } else if(this.projectPath == this.presentWorkingDirectory) {
                 // Do nothing.
                 // TODO: Architecture: add event

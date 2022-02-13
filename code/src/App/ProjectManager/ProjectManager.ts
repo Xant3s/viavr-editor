@@ -91,34 +91,25 @@ export default class ProjectManager {
             return
         }
 
-        // Get pwd size
         const pwdSizeInBytes = fastFolderSizeSync(this.presentWorkingDirectory)
         if(pwdSizeInBytes !== undefined) {
             const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
-            console.log('Project size: ', pwdSizeInMB)
 
-            // if(pwdSizeInMB < this.zipThresholdInMB) {
-            //     await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
-            //     return
-            // } else {
-                // if large copy to project path if not already, delete zip if exists
-            if(this.projectPath == this.presentWorkingDirectory) {
-                console.log('Project saved.')
+            if(pwdSizeInMB < this.zipThresholdInMB) {
+                await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
+                // What is this project was previously too large, i.e. the project path is a dir? -> ignore for now
+            } else if(this.projectPath == this.presentWorkingDirectory) {
+                // Do nothing.
                 // TODO: Architecture: add event
-                return
-            }
-
+            } else {
                 console.log('Project is too large to be save as .via file.')
                 // TODO: Notify user
-                // if was zip before, create proejct folder
-                this.projectPath = "C:\\Users\\secre\\Desktop\\test.via"// todo: remove
                 const projectFolderName = Path.parse(this.projectPath).name
-                fs.rmdirSync(this.projectPath, {recursive: true})
+                fs.rmdirSync(this.projectPath, {recursive: true})   // Remove .via file that may or may not exist (it does not exist for new projects)
                 this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName) // TODO: what if this folder already exists and is unrelated?
-            console.log('Project path: ', this.projectPath)
                 fse.copySync(this.presentWorkingDirectory, this.projectPath)
-            // }
-
+            }
+            console.log('Project saved.')
         }
     }
 }

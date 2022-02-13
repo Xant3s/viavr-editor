@@ -2,6 +2,7 @@ import {app, dialog, ipcMain as ipc} from 'electron'
 import MainWindow from '../MainWindow'
 import * as Path from 'path'
 import Utils from '../BuildSystem/Utils'
+import * as fs from 'fs'
 
 export default class ProjectManager {
     private static instance: ProjectManager
@@ -45,10 +46,10 @@ export default class ProjectManager {
             filters: [{name: 'VIA-VR project files', extensions: ['via']}]
         })
         if(!canceled && filePaths.length > 0) {
-            const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/projects/1")
             this.projectPath = filePaths[0]
+            const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
+            fs.rmdirSync(tempProjectFolder, {recursive: true})
             await Utils.extractZipToPath(filePaths[0], tempProjectFolder)
-            // TODO use projectID from project settings to extract to unique path in temp folder
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send('project-manager:project-opened')
             this.onProjectOpened()

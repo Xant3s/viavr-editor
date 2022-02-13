@@ -32,6 +32,7 @@ export default class ProjectManager {
         ipc.on('project-manager:create-new-project', async () => this.createNewProject())
         ipc.on('project-manager:open-project', async () => this.openProjectFromFile())
         ipc.on('project-manager:open-project-folder', async () => this.openProjectFromFolder())
+        ipc.on('project-manager:save-project', async () => this.saveProject())
     }
 
     private async createNewProject() {
@@ -78,5 +79,18 @@ export default class ProjectManager {
         console.log('Project path: ', this.projectPath)
         console.log('Present working directory: ', this.presentWorkingDirectory)
         this.mainWindow.send('project-manager:project-opened')
+    }
+
+    private saveProject() {
+        if(this.projectPath === undefined && this.presentWorkingDirectory === undefined) {
+            console.log('No project loaded.')
+            return
+        }
+
+        // Get pwd size
+
+        // if small compress to zip, replace existing zip
+
+        // if large copy to project path if not already, delete zip if exists
     }
 }

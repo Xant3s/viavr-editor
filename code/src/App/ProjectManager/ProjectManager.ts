@@ -4,6 +4,7 @@ import fastFolderSizeSync from 'fast-folder-size/sync'
 import MainWindow from '../MainWindow'
 import * as Path from 'path'
 import Utils from '../BuildSystem/Utils'
+import fse from 'fs-extra'
 
 
 export default class ProjectManager {
@@ -113,9 +114,9 @@ export default class ProjectManager {
                 this.projectPath = "C:\\Users\\secre\\Desktop\\test.via"// todo: remove
                 const projectFolderName = Path.parse(this.projectPath).name
                 fs.rmdirSync(this.projectPath, {recursive: true})
-                this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName)
+                this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName) // TODO: what if this folder already exists and is unrelated?
             console.log('Project path: ', this.projectPath)
-fs.copyFileSync(this.presentWorkingDirectory, this.projectPath)
+                fse.copySync(this.presentWorkingDirectory, this.projectPath)
             // }
 
         }

@@ -29,15 +29,25 @@ export default class ProjectManager {
     }
 
     private constructor() {
-        ipc.on('project-manager:create-new-project', async () => {
-            // TODO
-            this.projectPath = await ProjectManager.promptUserForProjectPath()
-            this._presentWorkingDirectory = this.projectPath
-            console.log('Project path: ', this.projectPath)
-            this.mainWindow.send('project-manager:project-created')
-        })
+        ipc.on('project-manager:create-new-project', async () => this.createNewProject())
         ipc.on('project-manager:open-project', async () => this.openProjectFromFile())
         ipc.on('project-manager:open-project-folder', async () => this.openProjectFromFolder())
+    }
+
+    private async createNewProject() {
+        const {canceled, filePath} = await dialog.showSaveDialog(this.mainWindow.window, {
+            title: 'Create New Project',
+            filters: [
+                {name: 'VIA-VR Project', extensions: ['via']}
+            ]
+        })
+        if(!canceled && filePath !== undefined && filePath?.length > 0){
+            this.projectPath = filePath
+            const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
+            fs.rmdirSync(tempProjectFolder, {recursive: true})
+            this._presentWorkingDirectory = tempProjectFolder
+            this.mainWindow.send('project-manager:project-created')
+        }
     }
 
     private async openProjectFromFile() {
@@ -59,7 +69,6 @@ export default class ProjectManager {
         const {canceled, filePaths} = await dialog.showOpenDialog({properties: ['openDirectory', "createDirectory"]})
         if(!canceled && filePaths.length > 0) {
             this.projectPath = filePaths[0]
-            // TODO: copy project folder or change in place?
             this._presentWorkingDirectory = this.projectPath
             this.onProjectOpened()
         }
@@ -69,10 +78,5 @@ export default class ProjectManager {
         console.log('Project path: ', this.projectPath)
         console.log('Present working directory: ', this.presentWorkingDirectory)
         this.mainWindow.send('project-manager:project-opened')
-    }
-
-    private static async promptUserForProjectPath() : Promise<string> {
-        const chosenFolders = await dialog.showOpenDialog({properties: ['openDirectory', "createDirectory", 'openFile']})
-        return chosenFolders.filePaths[0]
     }
 }

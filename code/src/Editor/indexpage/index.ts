@@ -21,6 +21,10 @@ $('#open-project-btn').first().on('click', () => {
     ipc.send('project-manager:open-project')
 })
 
+$('#open-project-folder-btn').first().on('click', () => {
+    ipc.send('project-manager:open-project-folder')
+})
+
 ipc.on('project-manager:project-created', () => onProjectSelected())
 ipc.on('project-manager:project-opened', () => onProjectSelected())
 

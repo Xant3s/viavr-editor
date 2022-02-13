@@ -12,12 +12,8 @@ export default class CustomMenu {
                         click: () => ipc.emit('save-current-scene')
                     },
                     {
-                      label: "Create New Project",
-                      click: () => ipc.emit('project-manager:create-new-project')
-                    },
-                    {
-                        label: "Open Project",
-                        click: () => ipc.emit('project-manager:open-project')
+                      label: "Save Project",
+                      click: () => ipc.emit('project-manager:save-project')
                     },
                     {
                       label: "Preferences",

@@ -1,4 +1,5 @@
 import extract = require('extract-zip')
+import AdmZip from 'adm-zip'
 
 export default class Utils {
     public static async extractZipToPath(zipPath: string, outputPath: string) {
@@ -9,5 +10,11 @@ export default class Utils {
         }
         console.log('Extracted template zip.')
         return outputPath
+    }
+
+    public static async compressToPath(folderPath: string, outputPath: string) {
+        let zip = new AdmZip()
+        zip.addLocalFolder(folderPath)
+        zip.writeZip(outputPath)
     }
 }

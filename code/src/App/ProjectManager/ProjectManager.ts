@@ -84,7 +84,7 @@ export default class ProjectManager {
         this.mainWindow.send('project-manager:project-opened')
     }
 
-    private saveProject() {
+    private async saveProject() {
         if(this.projectPath === undefined && this.presentWorkingDirectory === undefined) {
             console.log('No project loaded.')
             return
@@ -96,17 +96,15 @@ export default class ProjectManager {
             const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
             console.log('Project size: ', pwdSizeInMB)
 
-            if(pwdSizeInMB > this.zipThresholdInMB) {
-                console.log('Project is too large to save.')
+            if(pwdSizeInMB < this.zipThresholdInMB) {
+                await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
                 return
-            } else{
-                console.log('Project is small enough to save.')
+            } else {
+                // if large copy to project path if not already, delete zip if exists
+                console.log('Project is too large to save.')
+
             }
 
         }
-
-        // if small compress to zip, replace existing zip
-
-        // if large copy to project path if not already, delete zip if exists
     }
 }

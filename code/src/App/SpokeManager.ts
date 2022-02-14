@@ -1,10 +1,11 @@
 import {ipcMain as ipc} from 'electron'
 import * as child_process from 'child_process'
+import AppUtils from './AppUtils'
 
 
 export default class SpokeManager {
     private app: Electron.App
-    private startCommand: string = 'cd plugins/Spoke && yarn start'
+    private startCommand: string = `cd ${AppUtils.getResPath()}/plugins/Spoke && yarn start`
     private static spoke: child_process.ChildProcess
     private static pid: number
 

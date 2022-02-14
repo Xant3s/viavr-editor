@@ -48,8 +48,7 @@
       "package.json"
     ],
     "extraResources": [
-      "plugins/**/*",
-      "res/*"
+      "res/**/*"
     ],
     "fileAssociations": [
       {

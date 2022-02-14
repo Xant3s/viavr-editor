@@ -10,8 +10,6 @@
     "start": "electron .",
     "prestart": "npm run build",
     "package": "npm run build && electron-builder build",
-    "package:win": "npm-run-all package copy-dependencies:win",
-    "copy-dependencies:win": "cpy plugins out/win-unpacked --parents --dot",
     "test": "mocha --config test/.mocharc.jsonc",
     "clean": "rimraf ./dist ./out"
   },
@@ -23,7 +21,6 @@
     "@types/jquery": "^3.5.13",
     "@types/mocha": "^9.1.0",
     "chai": "^4.3.6",
-    "cpy-cli": "^3.1.1",
     "electron": "^11.3.0",
     "electron-builder": "^22.14.13",
     "electron-reloader": "^1.2.1",

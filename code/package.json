@@ -47,6 +47,9 @@
       "dist/**/*",
       "package.json"
     ],
+    "extraResources": [
+      "plugins/**/*"
+    ],
     "fileAssociations": [
       {
         "ext": [

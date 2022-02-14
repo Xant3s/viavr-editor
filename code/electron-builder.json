@@ -1,8 +1,0 @@
-{
-  "directories": {
-    "output": "./out"
-  },
-  "asarUnpack": ["**/*.node"],
-  "buildDependenciesFromSource": true,
-  "npmRebuild": true
-}

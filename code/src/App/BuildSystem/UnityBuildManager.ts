@@ -7,7 +7,7 @@ import BuildSystem from './BuildSystem'
 import {PackageManifest} from './DataStructures/PackageManifest'
 import {ScopedRegistry} from './DataStructures/ScopedRegistry'
 import ProjectManager from '../ProjectManager/ProjectManager'
-import assert from 'assert'
+import assert = require('assert')
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)

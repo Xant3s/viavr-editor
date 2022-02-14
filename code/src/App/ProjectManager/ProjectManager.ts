@@ -1,10 +1,10 @@
 import {app, dialog, ipcMain as ipc} from 'electron'
 import * as fs from 'fs'
-import fastFolderSizeSync from 'fast-folder-size/sync'
-import MainWindow from '../MainWindow'
+import * as fse from 'fs-extra'
 import * as Path from 'path'
+import MainWindow from '../MainWindow'
 import Utils from '../BuildSystem/Utils'
-import fse from 'fs-extra'
+import fastFolderSizeSync = require('fast-folder-size/sync')
 
 
 export default class ProjectManager {

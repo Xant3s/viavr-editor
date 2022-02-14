@@ -4,7 +4,7 @@
   "description": "VIA-VR Editor",
   "main": "dist/src/App/App.js",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && cd plugins/Spoke && yarn install --ignore-scripts",
+    "postinstall": "electron-builder install-app-deps && cd res/plugins/Spoke && yarn install --ignore-scripts",
     "build": "tsc",
     "watch": "tsc -w",
     "start": "electron .",

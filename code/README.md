@@ -17,7 +17,7 @@
   ```
   yarn -v
   ```
-
+- Make sure Unity 2020 LTS or newer is installed
 
 ## How to Start (Currently Only Tested on Windows)
 

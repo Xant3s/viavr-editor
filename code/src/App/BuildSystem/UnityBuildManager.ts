@@ -7,7 +7,8 @@ import BuildSystem from './BuildSystem'
 import {PackageManifest} from './DataStructures/PackageManifest'
 import {ScopedRegistry} from './DataStructures/ScopedRegistry'
 import ProjectManager from '../ProjectManager/ProjectManager'
-import assert from 'assert'
+import assert = require('assert')
+import AppUtils from '../AppUtils'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
@@ -65,7 +66,7 @@ export default class UnityBuildManager {
             console.log('aborted create unity project')
             return
         }
-        await Utils.extractZipToPath(app.getAppPath() + '/res/DefaultUnityProject.zip', outputPath)
+        await Utils.extractZipToPath(AppUtils.getResPath() + '/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         await this.importScenes(outputPath, scenes)

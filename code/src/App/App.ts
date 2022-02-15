@@ -18,7 +18,8 @@ const init = async () => {
 }
 
 const tryOpenProject = async () => {
-    if(process.argv.length >= 1 && process.argv[1] !== '.') {
+    // Also see https://github.com/electron/electron/issues/4690
+    if(process.argv.length > 1 && process.argv[1] !== '.') {
         console.log(`Opening project ${process.argv[1]}`)
         await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
     }

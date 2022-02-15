@@ -19,7 +19,7 @@
   ```
 
 
-## How to Start
+## How to Start (Currently Only Tested on Windows)
 
 - Navigate to the `code` folder and run the following commands:
   - Run `npm install`
@@ -29,6 +29,13 @@
 
 - Navigate to the `code` folder and run the following commands:
   - Run `npm install`
-  - Run `npm run make:win` to build executable for your system
+  - Run `npm run package` to build executable for your system
 - Install [Yarn](https://yarnpkg.com/) on the target PC
-- Copy the `out/{Appname}` folder to the target PC
+- Copy the setup executable from the `out` folder to the target PC
+- Run the setup executable on the target PC
+
+## How to Run Unit Tests
+
+- Navigate to the `code` folder and run the following commands:
+  - Run `npm install`
+  - Run `npm test`

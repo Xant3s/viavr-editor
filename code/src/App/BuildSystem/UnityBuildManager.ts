@@ -1,4 +1,4 @@
-import {app, dialog, ipcMain as ipc} from 'electron'
+import {dialog, ipcMain as ipc} from 'electron'
 import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
 import * as util from 'util'

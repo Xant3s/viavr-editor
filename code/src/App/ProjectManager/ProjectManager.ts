@@ -5,6 +5,9 @@ import * as Path from 'path'
 import MainWindow from '../MainWindow'
 import Utils from '../BuildSystem/Utils'
 import fastFolderSizeSync = require('fast-folder-size/sync')
+import util from 'util'
+
+const exec = util.promisify(require('child_process').exec)
 
 
 export default class ProjectManager {
@@ -37,6 +40,7 @@ export default class ProjectManager {
         ipc.on('project-manager:open-project', async () => this.openProjectFromFile())
         ipc.on('project-manager:open-project-folder', async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveProject())
+        ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
     }
 
     private async createNewProject() {
@@ -121,5 +125,9 @@ export default class ProjectManager {
             }
             console.log('Project saved.')
         }
+    }
+
+    private async openPresentWorkingDirectory() {
+        await exec(`start "" ${this.presentWorkingDirectory}`)
     }
 }

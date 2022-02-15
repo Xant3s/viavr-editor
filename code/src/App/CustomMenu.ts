@@ -59,6 +59,15 @@ export default class CustomMenu {
                         click: () => ipc.emit('open-build-menu')
                     }
                 ]
+            },
+            {
+                label: 'Dev Tools',
+                submenu: [
+                    {
+                        label: "Open present working directory",
+                        click: () => ipc.emit('dev:open-pwd')
+                    }
+                ]
             }
         ])
         Menu.setApplicationMenu(menu)

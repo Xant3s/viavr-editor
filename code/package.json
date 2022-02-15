@@ -1,6 +1,6 @@
 {
   "name": "viavr-editor",
-  "version": "0.1.0",
+  "version": "0.1.0-development",
   "description": "VIA-VR Editor",
   "main": "dist/src/App/App.js",
   "scripts": {

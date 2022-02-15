@@ -34,7 +34,6 @@ class BuildDialog {
     }
 
     private displayAvailableScenes(scenes) {
-        console.log('display')
         scenes.forEach(sceneName => {
             const label = document.createElement('label')
             const description = document.createTextNode(sceneName.substr(0, sceneName.length - 4))
@@ -43,6 +42,7 @@ class BuildDialog {
             checkbox.type = 'checkbox'
             checkbox.classList.add('scene-select-checkbox')
             checkbox.id = sceneName
+            checkbox.checked = true
             label.appendChild(checkbox)
             label.appendChild(description)
             label.appendChild(br)

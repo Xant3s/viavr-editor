@@ -13,6 +13,11 @@
 
 Architecture prototype for integrated VIA-VR editor. Focused on extensibility and software architecture.
 
+## Related Repositories
+
+- [Spoke Scene Importer](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer)
+- [VIA-VR Gameplay Manager](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-gameplay-manager)
+
 ## Quick Start
 
 See [quick start](code/README.md)

@@ -9,6 +9,7 @@ import {ScopedRegistry} from './DataStructures/ScopedRegistry'
 import ProjectManager from '../ProjectManager/ProjectManager'
 import assert = require('assert')
 import AppUtils from '../AppUtils'
+import UnityBridge from './UnityBridge'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
@@ -30,7 +31,6 @@ Array.prototype.findOrCreate = function <T>(predicate: (element: T) => boolean, 
 
 
 export default class UnityBuildManager {
-    private readonly buildUtilsNamespace = 'de.jmu.ge.BuildUtils'
     private readonly buildSystem: BuildSystem
     private buildPath = ''
 
@@ -49,7 +49,7 @@ export default class UnityBuildManager {
             e.sender.send('ready-to-build-project')
         })
         ipc.on('build-unity-project', async (e) => {
-            await this.buildUnityProject(this.buildPath)
+            await new UnityBridge().build(this.buildPath)
             e.sender.send('build-finished')
         })
         ipc.on('open-build-directory', async (e) => {
@@ -70,7 +70,6 @@ export default class UnityBuildManager {
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, packages)
         await this.importScenes(outputPath, scenes)
-        await this.addImportedScenesToBuildSettings(outputPath)
         this.buildPath = outputPath
     }
 
@@ -134,7 +133,6 @@ export default class UnityBuildManager {
             UnityBuildManager.exportSceneList(outputPath, scenes),
             this.exportScenes(outputPath, scenes)
         ])
-        await this.convertScenesToUnityFormat(outputPath)
     }
 
     private static async exportSceneList(outputPath: string, scenes: Array<[string, boolean]>) {
@@ -161,37 +159,8 @@ export default class UnityBuildManager {
         return {pwd, sceneFiles}
     }
 
-    private async convertScenesToUnityFormat(projectPath: string) {
-        console.log('Start converting scenes.')
-        await this.invokeUnityMethod(`de.jmu.ge.SpokeSceneImporter.SceneImporter.CreateAllScenes`, projectPath);
-        console.log('Scenes converted.')
-    }
-
-    private async addImportedScenesToBuildSettings(projectPath: string) {
-        console.log('Start importing scenes.')
-        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.SceneImporter.AddScenesToBuildSettings`, projectPath);
-        console.log('Scenes imported.')
-    }
-
-    private async buildUnityProject(projectPath: string) {
-        console.log('Start building.')
-        await this.invokeUnityMethod(`${this.buildUtilsNamespace}.BuildManager.BuildToDefaultPath`, projectPath);
-        console.log('Build finished.')
-    }
-
-    private async invokeUnityMethod(method: string, projectPath: string) {
-        const unityPath = PreferencesManager.getInstance().get<string>('unityPath')
-        const unityAppPath = UnityBuildManager.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
-        const command = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod ${method}`
-        const {stdout, stderr } = await exec(command)
-        if(stderr) console.log(stderr)
-        console.log(stdout)
-    }
-
     private static async openBuildDirectory(buildPath: string) {
         await exec(`start "" ${buildPath}\\Build\\Windows`)
     }
-
-    private static isMacOS = () => process.platform === 'darwin';
 }
 

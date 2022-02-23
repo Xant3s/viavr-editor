@@ -34,7 +34,8 @@ export default class UnityPackageManager {
         const packages = packageList['objects'].map(obj => obj['package'])
         const packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(p['name'])))
         const packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))
-        return packagesLatestInfo
+        const viavrPackagesLatestInfo = packagesLatestInfo.filter(p => p.keywords && (p.keywords as string[]).indexOf('viavr') !== -1)
+        return viavrPackagesLatestInfo
     }
 
     public async queryPackageDetails(packageName: string) {

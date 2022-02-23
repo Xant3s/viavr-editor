@@ -31,7 +31,6 @@ Array.prototype.findOrCreate = function <T>(predicate: (element: T) => boolean, 
 
 
 export default class UnityBuildManager {
-    private readonly buildUtilsNamespace = 'de.jmu.ge.BuildUtils'
     private readonly buildSystem: BuildSystem
     private buildPath = ''
 

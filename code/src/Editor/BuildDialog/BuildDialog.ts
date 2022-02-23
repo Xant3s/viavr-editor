@@ -51,6 +51,11 @@ class BuildDialog {
     }
 
     private addPackage(p) {
+        // TODO: remove temp code
+        if((p.name as string).indexOf('unity-') !== -1) {
+            return
+        }
+
         const label = document.createElement('label')
         const description = document.createTextNode(p.displayName)
         const versionContainer = document.createElement('span')

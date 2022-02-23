@@ -19,5 +19,4 @@ export default class UnityBridge {
     }
 
     private static isMacOS = () => process.platform === 'darwin';
-
 }

@@ -1,5 +1,5 @@
 import PreferencesManager from '../Preferences/PreferencesManager'
-import util from 'util'
+const util = require('util')
 
 const exec = util.promisify(require('child_process').exec)
 

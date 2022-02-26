@@ -1,5 +1,5 @@
 import {app} from 'electron'
-import Path from 'path'
+import * as Path from 'path'
 
 export default class AppUtils {
     public static getResPath() {

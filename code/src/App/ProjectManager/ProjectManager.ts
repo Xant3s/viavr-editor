@@ -5,8 +5,8 @@ import * as Path from 'path'
 import MainWindow from '../MainWindow'
 import Utils from '../BuildSystem/Utils'
 import fastFolderSizeSync = require('fast-folder-size/sync')
-import util from 'util'
 
+const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 
 

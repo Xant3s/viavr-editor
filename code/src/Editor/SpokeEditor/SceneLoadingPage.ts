@@ -20,12 +20,12 @@ export default class SceneLoadingPage {
         $$('a:contains("Login"):last').parent().hide()
         $$('a:contains("Source"):first').parent().parent().hide()
 
-        newSceneButton.on('click', async() => await this.onShowSceneLoadingSelectionPage())
+        newSceneButton.on('click', async() => await this.onShowCreateNewScenePage())
         $$('h3:contains("New Scene"):last').parent().on('click', async() =>
-            await this.onShowSceneLoadingSelectionPage())
+            await this.onShowCreateNewScenePage())
     }
 
-    private async onShowSceneLoadingSelectionPage() {
+    private async onShowCreateNewScenePage() {
         // TODO: Possible timeout issue -> add event listener instead of polling
         await htmlElement('a:contains("Back to projects"):last')
         $$('h1:contains("New Project"):last').text('New Scene')

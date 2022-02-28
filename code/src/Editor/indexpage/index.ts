@@ -1,6 +1,7 @@
 import {ipcRenderer as ipc} from 'electron'
 import {SceneExport} from '../SpokeEditor/SceneExport'
 import $ = require('jquery')
+import SceneLoadingPage from '../SpokeEditor/SceneLoadingPage'
 
 // Hot reloading
 try {
@@ -32,3 +33,4 @@ function onProjectSelected() {
 
 
 new SceneExport()
+new SceneLoadingPage()

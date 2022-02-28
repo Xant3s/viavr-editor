@@ -13,6 +13,11 @@ export default class SceneLoadingPage {
     }
 
     private async onShowSceneLoadingPage() {
+        this.updateUILabels()
+        this.displayAvailableScenes()
+    }
+
+    private updateUILabels() {
         this.title.text('Scenes')
         const newSceneButton = $$('a:contains("New Project"):first')
         newSceneButton.text('New Scene')
@@ -23,6 +28,20 @@ export default class SceneLoadingPage {
         newSceneButton.on('click', async() => await this.onShowCreateNewScenePage())
         $$('h3:contains("New Scene"):last').parent().on('click', async() =>
             await this.onShowCreateNewScenePage())
+    }
+
+    private displayAvailableScenes() {
+        const newSceneLabel = $$('h3:contains("New Scene")')
+        const sceneLoadButton = newSceneLabel.parent()
+        const grid = sceneLoadButton.parent()
+        const newButton = sceneLoadButton.clone()
+        newButton.find('svg').hide()
+        newButton.find('h3').text('Test')
+        newButton.attr('href', '#')
+        newButton.on('click', async() => {
+            console.log('test')
+        })
+        newButton.insertAfter(sceneLoadButton)
     }
 
     private async onShowCreateNewScenePage() {

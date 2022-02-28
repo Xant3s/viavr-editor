@@ -33,15 +33,18 @@ export default class SceneLoadingPage {
     private displayAvailableScenes() {
         const newSceneLabel = $$('h3:contains("New Scene")')
         const sceneLoadButton = newSceneLabel.parent()
-        const grid = sceneLoadButton.parent()
-        const newButton = sceneLoadButton.clone()
+        this.addLoadSceneButton('Test', sceneLoadButton)
+    }
+
+    private addLoadSceneButton(sceneName: string, newSceneButton: JQuery<HTMLElement>) {
+        const newButton = newSceneButton.clone()
         newButton.find('svg').hide()
-        newButton.find('h3').text('Test')
+        newButton.find('h3').text(sceneName)
         newButton.attr('href', '#')
         newButton.on('click', async() => {
-            console.log('test')
+            console.log(sceneName)
         })
-        newButton.insertAfter(sceneLoadButton)
+        newButton.insertAfter(newSceneButton)
     }
 
     private async onShowCreateNewScenePage() {

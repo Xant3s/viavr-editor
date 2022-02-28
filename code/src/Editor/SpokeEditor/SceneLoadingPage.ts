@@ -25,6 +25,7 @@ export default class SceneLoadingPage {
         $$('h1:contains("New Project"):last').text('New Scene')
         $$('a:contains("Back to projects"):first').text('Back to scenes')
         $$('a:contains("New Empty Project"):first').text('New Empty scene')
+        $$('a:contains("Import From Blender"):first').hide()
         $$('a:contains("Login"):last').parent().hide()
         $$('a:contains("Source"):first').parent().parent().hide()
         const newEmptySceneButton = await htmlElement('h3:contains("New Empty Project"):first')

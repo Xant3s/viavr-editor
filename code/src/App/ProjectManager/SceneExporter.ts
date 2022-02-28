@@ -20,7 +20,7 @@ export default class SceneExporter {
 
     private setSaveScenePathToProjectFolder() {
         session.defaultSession.on('will-download', async(event, item, webContents) => {
-            if(!item.getFilename().endsWith('.glb')) return
+            if(!item.getFilename().endsWith('.glb') && !item.getFilename().endsWith('.spoke')) return
             const saveScenePath = Path.join(ProjectManager.getInstance().presentWorkingDirectory, 'Scenes', item.getFilename())
             item.setSavePath(saveScenePath)
 

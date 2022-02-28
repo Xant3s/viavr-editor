@@ -7,21 +7,25 @@ export default class SceneLoadingPage {
         const handleSceneLoadingPage = async() => {
             this.title = await htmlElement('h1:contains("Projects"):last')
             await this.onShowSceneLoadingPage()
-            await htmlElement('a:contains("Back to projects"):last')
-            await this.onShowSceneLoadingSelectionPage()
         }
         handleSceneLoadingPage()
     }
 
     private async onShowSceneLoadingPage() {
         this.title.text('Scenes')
-        $$('a:contains("New Project"):first').text('New Scene')
+        const newSceneButton = $$('a:contains("New Project"):first')
+        newSceneButton.text('New Scene')
         $$('h3:contains("New Project"):last').text('New Scene')
         $$('a:contains("Login"):last').parent().hide()
         $$('a:contains("Source"):first').parent().parent().hide()
+
+        newSceneButton.on('click', async() => await this.onShowSceneLoadingSelectionPage())
+        $$('h3:contains("New Scene"):last').parent().on('click', async() =>
+            await this.onShowSceneLoadingSelectionPage())
     }
 
     private async onShowSceneLoadingSelectionPage() {
+        await htmlElement('a:contains("Back to projects"):last')
         $$('h1:contains("New Project"):last').text('New Scene')
         $$('a:contains("Back to projects"):first').text('Back to scenes')
         $$('a:contains("New Empty Project"):first').text('New Empty scene')

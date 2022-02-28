@@ -31,6 +31,5 @@ function onProjectSelected() {
     $('#spoke-container').show()
 }
 
-
 new SceneExport()
 new SceneLoadingPage()

@@ -5,6 +5,7 @@ export default class SceneLoadingPage {
 
     constructor() {
         const handleSceneLoadingPage = async() => {
+            // TODO: Possible timeout issue -> add event listener instead of polling
             this.title = await htmlElement('h1:contains("Projects"):last')
             await this.onShowSceneLoadingPage()
         }
@@ -25,6 +26,7 @@ export default class SceneLoadingPage {
     }
 
     private async onShowSceneLoadingSelectionPage() {
+        // TODO: Possible timeout issue -> add event listener instead of polling
         await htmlElement('a:contains("Back to projects"):last')
         $$('h1:contains("New Project"):last').text('New Scene')
         $$('a:contains("Back to projects"):first').text('Back to scenes')

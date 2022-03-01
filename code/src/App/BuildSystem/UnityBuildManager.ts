@@ -41,7 +41,7 @@ export default class UnityBuildManager {
 
     public initIPC() {
         ipc.on('query-available-scenes', async (e) => {
-            const {pwd, sceneFiles} = await UnityBuildManager.FindSceneFiles()
+            const {pwd, sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
             e.sender.send('display-available-scenes', sceneFiles)
         })
         ipc.on('create-unity-project', async (e, scenesAndPackages) => {
@@ -54,6 +54,13 @@ export default class UnityBuildManager {
         })
         ipc.on('open-build-directory', async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
+        })
+
+        // TODO: handle request for json scene files
+        ipc.handle('query-available-json-scenes', async (e) => {
+            const {pwd, sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
+            return sceneFiles
+            // e.returnValue = sceneFiles
         })
     }
 
@@ -151,11 +158,11 @@ export default class UnityBuildManager {
             fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
     }
 
-    private static async FindSceneFiles() {
+    private static async findFilesOfTypeInPwd(fileExtension: string = '.glb') {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         assert(pwd !== undefined)
         const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)
-        const sceneFiles = fileList.filter(file => file.endsWith('.glb'))
+        const sceneFiles = fileList.filter(file => file.endsWith(fileExtension))
         return {pwd, sceneFiles}
     }
 

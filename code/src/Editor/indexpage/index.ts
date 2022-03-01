@@ -30,8 +30,9 @@ ipc.on('project-manager:project-opened', () => onProjectSelected())
 function onProjectSelected() {
     $('#project-selection-page').hide()
     $('#spoke-container').show()
+    new SceneEditor()
+    new SceneExport()
+    new SceneLoadingPage()
 }
 
-new SceneEditor()
-new SceneExport()
-new SceneLoadingPage()
+

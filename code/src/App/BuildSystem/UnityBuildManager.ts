@@ -55,12 +55,9 @@ export default class UnityBuildManager {
         ipc.on('open-build-directory', async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
-
-        // TODO: handle request for json scene files
         ipc.handle('query-available-json-scenes', async (e) => {
-            const {pwd, sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
+            const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
-            // e.returnValue = sceneFiles
         })
     }
 

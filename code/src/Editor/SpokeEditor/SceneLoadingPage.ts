@@ -1,5 +1,6 @@
 import {$$, htmlElement} from './Spoke'
 import {ipcRenderer} from 'electron'
+import * as Path from 'path'
 
 export default class SceneLoadingPage {
     private title!: JQuery<HTMLElement>
@@ -34,21 +35,19 @@ export default class SceneLoadingPage {
     private async displayAvailableScenes() {
         const newSceneLabel = $$('h3:contains("New Scene")')
         const sceneLoadButton = newSceneLabel.parent()
-        // TODO: foreach
-        const availableScenes = await ipcRenderer.invoke('query-available-json-scenes')
-        console.log(availableScenes?.length)
-        // TODO: load scene names
-        this.addLoadSceneButton('Test', sceneLoadButton)
+        const availableScenes: string[] = await ipcRenderer.invoke('query-available-json-scenes')
+        availableScenes.forEach(sceneName => this.addLoadSceneButton(sceneName, sceneLoadButton))
     }
 
     private addLoadSceneButton(sceneName: string, newSceneButton: JQuery<HTMLElement>) {
+        const sceneNameWithoutExtension = Path.parse(sceneName).name
         const newButton = newSceneButton.clone()
         newButton.find('svg').hide()
-        newButton.find('h3').text(sceneName)
+        newButton.find('h3').text(sceneNameWithoutExtension)
         newButton.attr('href', '#')
         newButton.on('click', async() => {
             // TODO: load scene
-            console.log(sceneName)
+            console.log(sceneNameWithoutExtension)
         })
         newButton.insertAfter(newSceneButton)
     }

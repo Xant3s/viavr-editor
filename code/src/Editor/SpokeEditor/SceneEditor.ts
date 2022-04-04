@@ -13,6 +13,6 @@ export default class {
                 handleSceneEditorPage()
             })
         }
-        handleSceneEditorPage()
+        // handleSceneEditorPage()
     }
 }

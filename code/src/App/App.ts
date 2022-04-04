@@ -1,4 +1,4 @@
-import {app} from 'electron'
+import {app, ipcMain as ipc} from 'electron'
 import MainWindow from './MainWindow'
 import BuildSystem from './BuildSystem/BuildSystem'
 import SpokeManager from './SpokeManager'
@@ -15,6 +15,14 @@ const init = async () => {
     ProjectManager.getInstance().init(mainWindow)
     new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)
+
+    ipc.handle('get-main-window-url', () => {
+        return new Promise((resolve) => {
+            resolve(mainWindow.window.webContents.getURL())
+        })
+    })
+
+    ipc.on('print-main-window-url', () => console.log(mainWindow.window.webContents.getURL()))
 }
 
 const tryOpenProject = async () => {

@@ -1,4 +1,4 @@
-import {Menu, ipcMain as ipc, app} from 'electron'
+import {Menu, ipcMain as ipc, app, ipcRenderer} from 'electron'
 
 
 export default class CustomMenu {
@@ -66,6 +66,12 @@ export default class CustomMenu {
                     {
                         label: "Open present working directory",
                         click: () => ipc.emit('dev:open-pwd')
+                    },
+                    {
+                        label: "Print URL",
+                        click: async () => {
+                            ipc.emit('print-main-window-url')
+                        }
                     }
                 ]
             }

@@ -1,6 +1,8 @@
 import {$$, htmlElement} from './Spoke'
 import {ipcRenderer} from 'electron'
 import * as Path from 'path'
+import ProjectManager from '../../App/ProjectManager/ProjectManager'
+
 
 export default class SceneLoadingPage {
     private title!: JQuery<HTMLElement>
@@ -45,11 +47,26 @@ export default class SceneLoadingPage {
         newButton.find('svg').hide()
         newButton.find('h3').text(sceneNameWithoutExtension)
         newButton.attr('href', '#')
-        newButton.on('click', async() => {
-            // TODO: load scene
-            console.log(sceneNameWithoutExtension)
-        })
+        newButton.on('click', async() => this.loadScene(sceneName, newSceneButton))
         newButton.insertAfter(newSceneButton)
+    }
+
+    private async loadScene(sceneName: string, newSceneButton: JQuery<HTMLElement>) {
+        console.log(sceneName)
+        // TODO: load scene
+        // create new empty scene
+        $$('h3:contains("New Scene"):last').trigger('click')
+        const newEmptySceneBtn = await htmlElement('h3:contains("New Empty Scene"):last')
+        newEmptySceneBtn.trigger('click')
+
+        // load legacy json
+        const importBtn = await htmlElement('div:contains("Import legacy"):last')
+        importBtn.trigger('click')
+        await htmlElement('div:contains("Warning! This will overwrite your existing scene"):last')
+        $$('button:contains("Ok"):last').trigger('click')
+
+        // handle open file dialog
+
     }
 
     private async onShowCreateNewScenePage() {

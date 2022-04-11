@@ -19,7 +19,6 @@ export default class ProjectManager {
     // The path to the extracted project. May have unsaved changes. May be the same as project path for large projects.
     private _presentWorkingDirectory!: string
 
-
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
             ProjectManager.instance = new ProjectManager()
@@ -41,6 +40,7 @@ export default class ProjectManager {
         ipc.on('project-manager:open-project-folder', async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
+        ipc.handle('project-manager:get-present-working-directory', async () => this._presentWorkingDirectory)
     }
 
     private async createNewProject() {

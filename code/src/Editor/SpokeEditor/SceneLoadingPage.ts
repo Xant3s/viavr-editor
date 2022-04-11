@@ -52,8 +52,7 @@ export default class SceneLoadingPage {
     }
 
     private async loadScene(sceneName: string, newSceneButton: JQuery<HTMLElement>) {
-        console.log(sceneName)
-        // TODO: load scene
+        const pwd = await ipcRenderer.invoke('project-manager:get-present-working-directory')
         // create new empty scene
         $$('h3:contains("New Scene"):last').trigger('click')
         const newEmptySceneBtn = await htmlElement('h3:contains("New Empty Scene"):last')
@@ -65,8 +64,11 @@ export default class SceneLoadingPage {
         await htmlElement('div:contains("Warning! This will overwrite your existing scene"):last')
         $$('button:contains("Ok"):last').trigger('click')
 
-        // handle open file dialog
-
+        // TODO: handle open file dialog: right now the user has to select the json file. We probably want to automate this in the future.
+        // add 'el.id = "spoke-import-json-scene-file";' to 'EditorContainer.js' line 783 in Spoke 8aa84fce 2021-12-03 17:36
+        // const sceneFileElement = await htmlElement('#spoke-import-json-scene-file')
+        // @ts-ignore
+        // sceneFileElement.get()[0].files = [Path.join(pwd, sceneName)]
     }
 
     private async onShowCreateNewScenePage() {

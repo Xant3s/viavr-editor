@@ -4,16 +4,22 @@ import AppUtils from './AppUtils'
 
 
 export default class SpokeManager {
-    private app: Electron.App
+    private static instance: SpokeManager
     private startCommand: string = `cd ${AppUtils.getResPath()}/plugins/Spoke && yarn start`
-    private static spoke: child_process.ChildProcess
+    private spoke: child_process.ChildProcess
     private static pid: number
 
 
-    constructor(app: Electron.App) {
-        this.app = app
+    public static getInstance(): SpokeManager {
+        if(!SpokeManager.instance) {
+            SpokeManager.instance = new SpokeManager()
+        }
+        return SpokeManager.instance
+    }
+
+    private constructor() {
         // if(app.isPackaged){
-        SpokeManager.spoke = child_process.spawn(this.startCommand, [], {
+        this.spoke = child_process.spawn(this.startCommand, [], {
             shell: true,
             detached: true,
         })
@@ -25,6 +31,7 @@ export default class SpokeManager {
 
     private stopSpoke() {
         // TODO
+        console.log('Stop Spoke')
         // console.log('Stopping spoke with pid: ' + SpokeManager.pid)
         // SpokeManager.spoke.kill()
     }

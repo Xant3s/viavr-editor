@@ -9,7 +9,7 @@ import SceneExporter from './ProjectManager/SceneExporter'
 
 const init = async () => {
     const mainWindow = new MainWindow(app)
-    new SpokeManager(app)
+    SpokeManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
     ProjectManager.getInstance().init(mainWindow)

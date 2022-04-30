@@ -1,14 +1,12 @@
 import {ipcMain as ipc} from 'electron'
 import * as child_process from 'child_process'
+import kill from 'tree-kill'
 import AppUtils from './AppUtils'
-const kill = require('tree-kill')
-
 
 export default class SpokeManager {
     private static instance: SpokeManager
     private startCommand: string = `cd ${AppUtils.getResPath()}/plugins/Spoke && yarn start`
     private spoke: child_process.ChildProcess
-    private static pid: number
 
 
     public static getInstance(): SpokeManager {
@@ -24,20 +22,11 @@ export default class SpokeManager {
             shell: true,
             detached: true,
         })
-        // SpokeManager.pid = SpokeManager.spoke.pid
         ipc.on('app-quit', this.stopSpoke)
-        // console.log('Spoke started with pid: ' + SpokeManager.pid)
         // }
     }
 
     private stopSpoke() {
-        // TODO
-        console.log('Stop Spoke')
-        // console.log('Stopping spoke with pid: ' + SpokeManager.pid)
-        // @ts-ignore
-        // SpokeManager.getInstance().spoke.stdin.pause()
-        // SpokeManager.getInstance().spoke.kill()
         kill(SpokeManager.getInstance().spoke.pid)
-        // this.spoke.kill()
     }
 }

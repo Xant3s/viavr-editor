@@ -1,6 +1,7 @@
 import {ipcMain as ipc} from 'electron'
 import * as child_process from 'child_process'
 import AppUtils from './AppUtils'
+const kill = require('tree-kill')
 
 
 export default class SpokeManager {
@@ -33,6 +34,10 @@ export default class SpokeManager {
         // TODO
         console.log('Stop Spoke')
         // console.log('Stopping spoke with pid: ' + SpokeManager.pid)
-        // SpokeManager.spoke.kill()
+        // @ts-ignore
+        // SpokeManager.getInstance().spoke.stdin.pause()
+        // SpokeManager.getInstance().spoke.kill()
+        kill(SpokeManager.getInstance().spoke.pid)
+        // this.spoke.kill()
     }
 }

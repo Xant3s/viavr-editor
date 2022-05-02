@@ -1,0 +1,25 @@
+test:
+  image: electronuserland/builder:wine
+  stage: test
+  # cache:
+  #   paths:
+  #     - code/node_modules
+  #     - code/plugins
+  before_script:
+    - node -v
+    - npm -v
+    - cd code/
+    - npm i yarn
+    - yarn -v
+    - npm i
+  script:
+    # - npm start
+    - npm test
+    # - mocha --reporter mocha-junit-reporter --reporter-options mochaFIle=junit.xml
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
+  tags:
+    - docker

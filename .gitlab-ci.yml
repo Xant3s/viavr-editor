@@ -3,7 +3,7 @@ stages:
   - build
 
 package:
-  image: electronuserland/builder:wine
+  image: node:latest
   stage: build
   before_script:
     - node -v

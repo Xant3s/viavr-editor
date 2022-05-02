@@ -27,6 +27,7 @@ package:
   before_script:
     - node -v
     - npm -v
+    - cd code/
     - npm i yarn
     - yarn -v
     - npm i

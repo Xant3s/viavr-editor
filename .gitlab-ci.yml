@@ -1,0 +1,113 @@
+stages:
+  - build
+#  - test
+
+tsc:
+  image: node:latest
+  stage: build
+  cache:
+    paths:
+      - code/node_modules
+  before_script:
+    - node -v
+    - npm -v
+    - cd code/
+    - npm i yarn
+    - yarn -v
+    - npm i
+  script:
+    - npm run build
+  tags:
+    - docker
+
+#package-win:
+#  image: electronuserland/builder:wine
+#  stage: build
+#  cache:
+#    paths:
+#      - node_modules
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - cd code/
+#    - npm i yarn
+#    - yarn -v
+#    - npm i
+#  script:
+#    - npm run package:win
+#  artifacts:
+#    paths:
+#      - out/
+#    expire_in: 1 week
+#  tags:
+#    - docker
+
+#package-linux:
+#  image: node:latest
+#  stage: build
+#  cache:
+#    paths:
+#      - node_modules
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - cd code/
+#    - npm i yarn
+#    - yarn -v
+#    - npm i
+#  script:
+#    - npm run package:linux
+#  artifacts:
+#    paths:
+#      - out/
+#    expire_in: 1 week
+#  tags:
+#    - docker
+
+#package-mac:
+#  image: node:latest
+#  stage: build
+#  cache:
+#    paths:
+#      - node_modules
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - cd code/
+#    - npm i yarn
+#    - yarn -v
+#    - npm i
+#  script:
+#    - npm run package:mac
+#  artifacts:
+#    paths:
+#      - out/
+#    expire_in: 1 week
+#  tags:
+#    - docker
+
+#test:
+#  image: electronuserland/builder:wine
+#  stage: test
+#  # cache:
+#  #   paths:
+#  #     - code/node_modules
+#  #     - code/plugins
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - cd code/
+#    - npm i yarn
+#    - yarn -v
+#    - npm i
+#  script:
+#    # - npm start
+#    - npm run test
+#    # - mocha --reporter mocha-junit-reporter --reporter-options mochaFIle=junit.xml
+##  artifacts:
+##    when: always
+##    reports:
+##      junit:
+##        - junit.xml
+#  tags:
+#    - docker

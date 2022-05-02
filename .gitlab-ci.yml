@@ -17,8 +17,26 @@ tsc:
   tags:
     - docker
 
+package:
+  image: electronuserland/builder:wine
+  stage: build
+#  cache:
+#    paths:
+#      - node_modules
+#      - out
+  before_script:
+    - node -v
+    - npm -v
+    - npm i yarn
+    - yarn -v
+    - npm i
+  script:
+    - npm run package
+  tags:
+    - docker
+
 test:
-  image: electronuserland/builder:wine-mono
+  image: electronuserland/builder:wine
   stage: test
   # cache:
   #   paths:

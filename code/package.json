@@ -4,7 +4,7 @@
   "description": "VIA-VR Editor",
   "main": "dist/src/App/App.js",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && cd res/plugins/Spoke && yarn install --ignore-scripts",
+    "postinstall": "electron-builder install-app-deps",
     "build": "tsc",
     "watch": "tsc -w",
     "start": "electron .",
@@ -42,15 +42,6 @@
   "build": {
     "extraResources": [
       "res/**/*"
-    ],
-    "fileAssociations": [
-      {
-        "ext": [
-          "via"
-        ],
-        "name": "VIA-VR Project",
-        "description": "VIA-VR Project"
-      }
     ],
     "directories": {
       "output": "./out"

@@ -20,13 +20,12 @@ tsc:
   tags:
     - docker
 
-#package:
+#package-win:
 #  image: electronuserland/builder:wine
 #  stage: build
-##  cache:
-##    paths:
-##      - node_modules
-##      - out
+#  cache:
+#    paths:
+#      - node_modules
 #  before_script:
 #    - node -v
 #    - npm -v
@@ -35,7 +34,55 @@ tsc:
 #    - yarn -v
 #    - npm i
 #  script:
-#    - npm run package
+#    - npm run package:win
+#  artifacts:
+#    paths:
+#      - out/
+#    expire_in: 1 week
+#  tags:
+#    - docker
+
+#package-linux:
+#  image: electronuserland/builder:wine
+#  stage: build
+#  cache:
+#    paths:
+#      - node_modules
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - cd code/
+#    - npm i yarn
+#    - yarn -v
+#    - npm i
+#  script:
+#    - npm run package:linux
+#  artifacts:
+#    paths:
+#      - out/
+#    expire_in: 1 week
+#  tags:
+#    - docker
+
+#package-mac:
+#  image: electronuserland/builder:wine
+#  stage: build
+#  cache:
+#    paths:
+#      - node_modules
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - cd code/
+#    - npm i yarn
+#    - yarn -v
+#    - npm i
+#  script:
+#    - npm run package:mac
+#  artifacts:
+#    paths:
+#      - out/
+#    expire_in: 1 week
 #  tags:
 #    - docker
 

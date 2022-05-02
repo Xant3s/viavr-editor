@@ -1,31 +1,39 @@
-import {ipcMain as ipc} from 'electron'
+import {app, ipcMain as ipc} from 'electron'
 import * as child_process from 'child_process'
+import kill from 'tree-kill'
 import AppUtils from './AppUtils'
-
+import PreferencesManager from './Preferences/PreferencesManager'
 
 export default class SpokeManager {
-    private app: Electron.App
+    private static instance: SpokeManager
     private startCommand: string = `cd ${AppUtils.getResPath()}/plugins/Spoke && yarn start`
-    private static spoke: child_process.ChildProcess
-    private static pid: number
+    private spoke!: child_process.ChildProcess
 
 
-    constructor(app: Electron.App) {
-        this.app = app
-        // if(app.isPackaged){
-        SpokeManager.spoke = child_process.spawn(this.startCommand, [], {
+    public static getInstance(): SpokeManager {
+        if(!SpokeManager.instance) {
+            SpokeManager.instance = new SpokeManager()
+        }
+        return SpokeManager.instance
+    }
+
+    private constructor() {
+        this.startSpoke()
+        ipc.on('app-quit', this.stopSpoke)
+    }
+
+    private startSpoke() {
+        this.spoke = child_process.spawn(this.startCommand, [], {
             shell: true,
             detached: true,
         })
-        // SpokeManager.pid = SpokeManager.spoke.pid
-        ipc.on('app-quit', this.stopSpoke)
-        // console.log('Spoke started with pid: ' + SpokeManager.pid)
-        // }
     }
 
     private stopSpoke() {
-        // TODO
-        // console.log('Stopping spoke with pid: ' + SpokeManager.pid)
-        // SpokeManager.spoke.kill()
+        const shouldStop: boolean = PreferencesManager.getInstance().get<boolean>('dev-stopSpoke') as boolean
+
+        if(app.isPackaged || shouldStop) {
+            kill(SpokeManager.getInstance().spoke.pid)
+        }
     }
 }

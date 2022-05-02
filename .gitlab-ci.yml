@@ -5,9 +5,9 @@ stages:
 tsc:
   image: node:latest
   stage: build
-    cache:
-      paths:
-        - code/node_modules
+  cache:
+    paths:
+      - code/node_modules
   before_script:
     - node -v
     - npm -v

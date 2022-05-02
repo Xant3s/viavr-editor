@@ -43,7 +43,7 @@ tsc:
 #    - docker
 
 #package-linux:
-#  image: electronuserland/builder:wine
+#  image: node:latest
 #  stage: build
 #  cache:
 #    paths:
@@ -65,7 +65,7 @@ tsc:
 #    - docker
 
 #package-mac:
-#  image: electronuserland/builder:wine
+#  image: node:latest
 #  stage: build
 #  cache:
 #    paths:

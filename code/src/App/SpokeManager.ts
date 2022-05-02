@@ -33,7 +33,7 @@ export default class SpokeManager {
         const shouldStop: boolean = PreferencesManager.getInstance().get<boolean>('dev-stopSpoke') as boolean
 
         if(app.isPackaged || shouldStop) {
-            kill(SpokeManager.getInstance().spoke.pid)
+            kill(SpokeManager.getInstance().spoke.pid ?? 0)
         }
     }
 }

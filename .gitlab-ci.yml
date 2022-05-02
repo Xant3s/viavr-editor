@@ -2,7 +2,7 @@ stages:
   - build
   - test
 
-package:
+tsc:
   image: node:latest
   stage: build
   before_script:
@@ -18,7 +18,7 @@ package:
     - docker
 
 test:
-  image: electronuserland/builder:wine
+  image: electronuserland/builder:wine-mono
   stage: test
   # cache:
   #   paths:

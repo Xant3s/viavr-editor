@@ -7,6 +7,11 @@ import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 const App = () => {
   const foo = () => {
     console.log('foo')
+    if(window.api === undefined) {
+      // If only React is running without Electron, the context bridge is not available.
+      // So create a dummy API object.
+      window.api = {send: () => {}, receive: () => {}}
+    }
     window.api.send('toMain', 'foo')
     return 'foo'
   }

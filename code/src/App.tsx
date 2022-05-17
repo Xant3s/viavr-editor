@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {HelloWorld} from './HelloWorld'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 // import {ipcRenderer} from 'electron'
 
 const App = () => {

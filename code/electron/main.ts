@@ -16,7 +16,7 @@ function createWindow() {
     })
 
     if (isDev) {
-        win.loadURL('http://localhost:3000/index.html');
+        win.loadURL('http://localhost:3000#/test');
     } else {
         // 'build/index.html'
         win.loadURL(`file://${__dirname}/../index.html`);

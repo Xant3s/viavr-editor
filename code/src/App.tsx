@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {HelloWorld} from './HelloWorld'
 // import {ipcRenderer} from 'electron'
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         >
           Learn React
         </a>
+        <HelloWorld />
         <p>{foo()}</p>
       </header>
     </div>

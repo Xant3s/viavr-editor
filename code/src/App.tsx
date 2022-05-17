@@ -3,12 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import {HelloWorld} from './HelloWorld'
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
-// import {ipcRenderer} from 'electron'
 
 const App = () => {
   const foo = () => {
     console.log('foo')
-    // ipcRenderer.send('foo')
+    window.api.send('toMain', 'foo')
     return 'foo'
   }
 

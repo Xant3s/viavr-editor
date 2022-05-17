@@ -4,17 +4,18 @@ const {contextBridge, ipcRenderer} = require("electron")
 // the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld(
     "api", {
-        send: (channel, data) => {
+        send: (channel: string, data: any) => {
             // whitelist channels
             let validChannels = ["toMain"]
             if(validChannels.includes(channel)) {
                 ipcRenderer.send(channel, data)
             }
         },
-        receive: (channel, func) => {
+        receive: (channel: string, func: (arg0: any) => void) => {
             let validChannels = ["fromMain"]
             if(validChannels.includes(channel)) {
                 // Deliberately strip event as it includes `sender`
+                // @ts-ignore
                 ipcRenderer.on(channel, (event, ...args) => func(...args))
             }
         }

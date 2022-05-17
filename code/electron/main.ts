@@ -16,7 +16,7 @@ function createWindow() {
     })
 
     if (isDev) {
-        win.loadURL('http://localhost:3000#/test');
+        win.loadURL('http://localhost:3000');
     } else {
         // 'build/index.html'
         win.loadURL(`file://${__dirname}/../index.html`);
@@ -43,9 +43,11 @@ function createWindow() {
         win.webContents.openDevTools();
     }
 
-    ipcMain.on('ipc-test', () => {
-        console.log('ipc-test')
+    ipcMain.on('toMain', () => {
+        console.log('received from renderer')
     })
+
+    win.webContents.send('fromMain', 'asdf')
 }
 
 app.on('ready', createWindow);

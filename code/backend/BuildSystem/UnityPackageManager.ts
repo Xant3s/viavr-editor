@@ -31,6 +31,7 @@ export default class UnityPackageManager {
     public async queryPackagesFromRegistry() {
         const response = await fetch(`${this.registryUrl}/-/v1/search?text=${this.registryScope}`)
         const packageList = await response.json()
+        // @ts-ignore
         const packages = packageList['objects'].map(obj => obj['package'])
         const packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(p['name'])))
         const packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))

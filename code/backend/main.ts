@@ -1,69 +1,42 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import {app, BrowserWindow, ipcMain as ipc} from 'electron';
+import MainWindow from './MainWindow'
+import BuildSystem from './BuildSystem/BuildSystem'
+import SpokeManager from './SpokeManager'
+import PreferencesManager from './Preferences/PreferencesManager'
+import ProjectManager from './ProjectManager/ProjectManager'
+import SceneExporter from './ProjectManager/SceneExporter'
+
 import * as path from 'path';
 import * as isDev from 'electron-is-dev';
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
 
-let win: BrowserWindow | null = null;
 
-function createWindow() {
-    win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true,
-            preload: path.join(__dirname, 'preload.js')
-        }
-    })
+const init = async () => {
+    const mainWindow = new MainWindow(app)
+    // SpokeManager.getInstance()
+    // const preferencesManager = PreferencesManager.getInstance()
+    // await preferencesManager.init()
+    // ProjectManager.getInstance().init(mainWindow)
+    // new SceneExporter(mainWindow)
+    // new BuildSystem(mainWindow.window)
 
-    if (isDev) {
-        win.loadURL('http://localhost:3000');
-    } else {
-        // 'build/index.html'
-        win.loadURL(`file://${__dirname}/../index.html`);
-    }
+    // ipc.handle('get-main-window-url', () => {
+    //     return new Promise((resolve) => {
+    //         resolve(mainWindow.window.webContents.getURL())
+    //     })
+    // })
 
-    win.on('closed', () => win = null);
-
-    // Hot Reloading
-    if (isDev) {
-        // 'node_modules/.bin/electronPath'
-        require('electron-reload')(__dirname, {
-            electron: path.join(__dirname, '..', '..', 'node_modules', '.bin', 'electron'),
-            forceHardReset: true,
-            hardResetMethod: 'exit'
-        });
-    }
-
-    // DevTools
-    installExtension(REACT_DEVELOPER_TOOLS)
-        .then((name) => console.log(`Added Extension:  ${name}`))
-        .catch((err) => console.log('An error occurred: ', err));
-
-    if (isDev) {
-        win.webContents.openDevTools();
-    }
-
-    ipcMain.on('toMain', () => {
-        console.log('received from renderer')
-    })
-
-    ipcMain.handle('toMain', () => {
-        return 'hello'
-    })
-
-    win.webContents.send('fromMain', 'asdf')
+    // ipc.on('print-main-window-url', () => console.log(mainWindow.window.webContents.getURL()))
 }
 
-app.on('ready', createWindow);
+// const tryOpenProject = async () => {
+//     // Also see https://github.com/electron/electron/issues/4690
+//     if(process.argv.length > 1 && process.argv[1] !== '.') {
+//         console.log(`Opening project ${process.argv[1]}`)
+//         await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
+//     }
+// }
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
+// app.whenReady().then(tryOpenProject)
 
-app.on('activate', () => {
-    if (win === null) {
-        createWindow();
-    }
-});
+init()

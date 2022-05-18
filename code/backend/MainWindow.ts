@@ -1,6 +1,9 @@
 import {BrowserWindow, ipcMain, ipcMain as ipc, nativeTheme} from 'electron'
-import CustomMenu from './CustomMenu'
 import * as path from 'path'
+import * as isDev from 'electron-is-dev'
+import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
+import CustomMenu from './CustomMenu'
+
 
 
 export default class MainWindow {
@@ -31,17 +34,42 @@ export default class MainWindow {
         MainWindow.window = new BrowserWindow({
             webPreferences: {
                 nodeIntegration: true,
-                webSecurity: false
+                webSecurity: false,
+                preload: path.join(__dirname, 'preload.js')
             }
         })
 
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()
-        MainWindow.window.loadFile('src/Editor/indexpage/index.html')
+
+        if (isDev) {
+            MainWindow.window.loadURL('http://localhost:3000')
+        } else {
+            MainWindow.window.loadURL(`file://${__dirname}/../index.html`)
+        }
+
         MainWindow.window.maximize()
-        MainWindow.window.webContents.openDevTools()
 
         ipcMain.on('dark-mode:set', (_, val) => nativeTheme.themeSource = val.toLowerCase())
+
+        // Hot Reloading
+        if (isDev) {
+            // 'node_modules/.bin/electronPath'
+            require('electron-reload')(__dirname, {
+                electron: path.join(__dirname, '..', '..', 'node_modules', '.bin', 'electron'),
+                forceHardReset: true,
+                hardResetMethod: 'exit'
+            })
+        }
+
+        // DevTools
+        installExtension(REACT_DEVELOPER_TOOLS)
+            .then((name) => console.log(`Added Extension:  ${name}`))
+            .catch((err) => console.log('An error occurred: ', err))
+
+        if(isDev) {
+            MainWindow.window.webContents.openDevTools()
+        }
     }
 
     private static activate() {

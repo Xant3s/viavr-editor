@@ -6,7 +6,9 @@
     "strict": true,
     "outDir": "../build", // Output transpiled files to build/electron/
     "rootDir": "../",
+    "esModuleInterop": true,
     "noEmitOnError": true,
+    "noImplicitAny": false,
     "typeRoots": [
       "node_modules/@types"
     ]

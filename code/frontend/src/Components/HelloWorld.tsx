@@ -9,7 +9,7 @@ export const HelloWorld = () => {
             setData(response)
         }
 
-        getData()
+        // getData()
     }, [])
 
     const foo = () => {
@@ -25,7 +25,7 @@ export const HelloWorld = () => {
                 on: () => {}
             }
         }
-        window.api.send('toMain', 'foo')
+        // window.api.send('toMain', 'foo')
 
         return data
     }

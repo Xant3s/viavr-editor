@@ -47,6 +47,11 @@ function createWindow() {
         console.log('received from renderer')
     })
 
+    ipcMain.handle('toMain', () => {
+        console.log('handle')
+        return 'hello'
+    })
+
     win.webContents.send('fromMain', 'asdf')
 }
 

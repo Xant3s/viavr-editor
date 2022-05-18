@@ -1,19 +1,36 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {HelloWorld} from './HelloWorld'
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 
 const App = () => {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await window.api.invoke('toMain', 'asd')
+      setData(response)
+    }
+
+    getData()
+  }, [])
+
+
+
   const foo = () => {
     console.log('foo')
     if(window.api === undefined) {
       // If only React is running without Electron, the context bridge is not available.
       // So create a dummy API object.
-      window.api = {send: () => {}, receive: () => {}}
+      window.api = {
+        invoke(channel: string, data: any): Promise<any> {
+          return Promise.resolve(undefined);
+        }, send: () => {}, on: () => {}}
     }
     window.api.send('toMain', 'foo')
-    return 'foo'
+
+    return data
   }
 
 

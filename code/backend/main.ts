@@ -48,7 +48,6 @@ function createWindow() {
     })
 
     ipcMain.handle('toMain', () => {
-        console.log('handle')
         return 'hello'
     })
 

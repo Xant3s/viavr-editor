@@ -1,16 +1,22 @@
 const {contextBridge, ipcRenderer} = require("electron")
 
+const validChannels = {
+    "toMain": [
+        "toMain"
+    ],
+    "fromMain": [
+        "fromMain"
+    ]
+}
 
 const send = (channel: string, data: any) => {
-    let validChannels = ["toMain"]
-    if(validChannels.includes(channel)) {
+    if(validChannels["toMain"].includes(channel)) {
         ipcRenderer.send(channel, data)
     }
 }
 
 const invoke = async (channel: string, data: any) => {
-    let validChannels = ["toMain"]
-    if(validChannels.includes(channel)) {
+    if(validChannels["toMain"].includes(channel)) {
         return ipcRenderer.invoke(channel, data)
     }
     return new Promise((_, reject) => { reject("Invalid channel") })
@@ -18,8 +24,7 @@ const invoke = async (channel: string, data: any) => {
 
 //@ts-ignore
 const on = (channel: string, func) => {
-    let validChannels = ["fromMain"]
-    if(validChannels.includes(channel)) {
+    if(validChannels["fromMain"].includes(channel)) {
         // Deliberately strip event as it includes `sender`
         ipcRenderer.on(channel, (event, ...args) => func(...args))
     }

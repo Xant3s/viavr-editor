@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "noEmitOnError": true,
     "noImplicitAny": false,
+    "noUnusedLocals": false,
     "typeRoots": [
       "node_modules/@types"
     ]

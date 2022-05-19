@@ -11,17 +11,17 @@ const validChannels = {
     ]
 }
 
-const send = (channel: string, data: any) => {
+const send = (channel: string, ...args: any) => {
     if(validChannels["toMain"].includes(channel)) {
-        ipcRenderer.send(channel, data)
-    } else{
+        ipcRenderer.send(channel, ...args)
+    } else {
         console.error(`Invalid channel: ${channel}`)
     }
 }
 
-const invoke = async (channel: string, data: any) => {
+const invoke = async (channel: string, ...args: any) => {
     if(validChannels["toMain"].includes(channel)) {
-        return ipcRenderer.invoke(channel, data)
+        return ipcRenderer.invoke(channel, ...args)
     } else {
         console.error(`Invalid channel: ${channel}`)
     }

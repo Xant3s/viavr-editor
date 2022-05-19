@@ -34,6 +34,8 @@ export const Preferences: FC = () => {
             setThemeSource(themeSource)
         }
 
+        window.api.on('preference-changed-from-backend-unityPath', (data) => {setUnityPath(data)})
+
         loadInitialValues()
     })
 

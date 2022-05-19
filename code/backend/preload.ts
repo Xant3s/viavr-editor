@@ -8,7 +8,8 @@ const validChannels = {
         "select-unity-path"
     ],
     "fromMain": [
-        "fromMain"
+        "fromMain",
+        "preference-changed-from-backend-unityPath"
     ]
 }
 

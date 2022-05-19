@@ -1,4 +1,5 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
+import * as isDev from 'electron-is-dev'
 import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
 
@@ -70,6 +71,10 @@ export default class PreferencesManager {
                 nodeIntegration: true
             }
         })
-        this.window.loadFile('src/Editor/Preferences/Preferences.html')
+        if (isDev) {
+            this.window.loadURL('http://localhost:3000#/preferences')
+        } else {
+            this.window.loadURL(`file://${__dirname}/../index.html#/preferences`)
+        }
     }
 }

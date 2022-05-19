@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain as ipc} from 'electron';
+import {app, ipcMain as ipc} from 'electron';
 import MainWindow from './MainWindow'
 import BuildSystem from './BuildSystem/BuildSystem'
 import SpokeManager from './SpokeManager'
@@ -14,8 +14,8 @@ import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-insta
 const init = async () => {
     const mainWindow = new MainWindow(app)
     // SpokeManager.getInstance()
-    // const preferencesManager = PreferencesManager.getInstance()
-    // await preferencesManager.init()
+    const preferencesManager = PreferencesManager.getInstance()
+    await preferencesManager.init()
     // ProjectManager.getInstance().init(mainWindow)
     // new SceneExporter(mainWindow)
     // new BuildSystem(mainWindow.window)

@@ -3,7 +3,8 @@ const {contextBridge, ipcRenderer} = require("electron")
 const validChannels = {
     "toMain": [
         "toMain",
-        "preferences:request"
+        "preferences:request",
+        "preferences-changed"
     ],
     "fromMain": [
         "fromMain"

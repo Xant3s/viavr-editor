@@ -18,7 +18,7 @@ const init = async () => {
     await preferencesManager.init()
     // ProjectManager.getInstance().init(mainWindow)
     // new SceneExporter(mainWindow)
-    // new BuildSystem(mainWindow.window)
+    new BuildSystem(mainWindow.window)
 
     // ipc.handle('get-main-window-url', () => {
     //     return new Promise((resolve) => {

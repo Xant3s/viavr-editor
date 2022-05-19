@@ -2,6 +2,7 @@ import {BrowserWindow, ipcMain as ipc} from 'electron'
 import * as isDev from 'electron-is-dev'
 import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
+import path from 'path'
 
 const fs = require('fs').promises
 
@@ -68,7 +69,8 @@ export default class PreferencesManager {
             height: 600,
             autoHideMenuBar: true,
             webPreferences: {
-                nodeIntegration: true
+                nodeIntegration: true,
+                preload: path.join(__dirname, '../preload.js')
             }
         })
         if (isDev) {

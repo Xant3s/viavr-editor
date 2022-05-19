@@ -5,7 +5,8 @@ const validChannels = {
         "toMain",
         "preferences:request",
         "preferences-changed",
-        "select-unity-path"
+        "select-unity-path",
+        "dark-mode:set"
     ],
     "fromMain": [
         "fromMain",

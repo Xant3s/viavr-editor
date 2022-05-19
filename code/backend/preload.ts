@@ -4,7 +4,8 @@ const validChannels = {
     "toMain": [
         "toMain",
         "preferences:request",
-        "preferences-changed"
+        "preferences-changed",
+        "select-unity-path"
     ],
     "fromMain": [
         "fromMain"

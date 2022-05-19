@@ -14,7 +14,6 @@ export const Preferences: FC = () => {
     }
 
     const updatePreference = (updateStateFunction, event, name: string) => {
-        // event.preventDefault()
         updateStateFunction(event.target.value)
         window.api.send('preferences-changed', {name: name, value: event.target.value})
     }
@@ -59,7 +58,7 @@ export const Preferences: FC = () => {
                 <input id={'unity-path'} type={'text'} value={unityPath} onChange={(e) => {
                     updatePreference(setUnityPath, e, "unityPath")}
                 } />
-                <button id={'btn-select-unity-path'}>Select</button>
+                <button id={'btn-select-unity-path'} onClick={() => {window.api.send('select-unity-path')}}>Select</button>
             </div>
 
             <div className="preference-entry">

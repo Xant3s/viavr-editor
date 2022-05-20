@@ -11,13 +11,18 @@ const validChannels = {
         "query-available-packages",
         "create-unity-project",
         "build-unity-project",
-        "open-build-directory"
+        "open-build-directory",
+        "project-manager:create-new-project",
+        "project-manager:open-project",
+        "project-manager:open-project-folder"
     ],
     "fromMain": [
         "fromMain",
         "preference-changed-from-backend-unityPath",
         "ready-to-build-project",
-        "build-finished"
+        "build-finished",
+        "project-manager:project-created",
+        "project-manager:project-opened"
     ]
 }
 

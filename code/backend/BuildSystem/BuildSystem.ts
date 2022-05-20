@@ -1,4 +1,5 @@
 import {BrowserWindow, dialog, ipcMain as ipc} from 'electron'
+import path from 'path'
 import * as isDev from 'electron-is-dev'
 import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
@@ -40,7 +41,8 @@ export default class BuildSystem {
                 parent: this.mainWindow,
                 autoHideMenuBar: true,
                 webPreferences: {
-                    nodeIntegration: true
+                    nodeIntegration: true,
+                    preload: path.join(__dirname, '../preload.js')
                 }
             }
         )

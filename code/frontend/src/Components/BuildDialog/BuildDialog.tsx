@@ -47,7 +47,7 @@ export const BuildDialog: FC = () => {
             <label>Select scenes to build:</label><br/>
             {
                 scenes.map(({isSelected, sceneFileName}) => (
-                    <Scene isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
+                    <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
                 ))
             }
 

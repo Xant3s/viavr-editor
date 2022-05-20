@@ -20,10 +20,10 @@ export default class UnityPackageManager {
     private constructor() {
         this.registryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
         this.registryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
-        ipc.on('query-available-packages', async (e) => {
+        ipc.handle('query-available-packages', async (e) => {
             const packageManager = UnityPackageManager.getInstance()
             const packageList = await packageManager.queryPackagesFromRegistry()
-            packageList.forEach(p => e.sender.send('add-package', p as Package))
+            return packageList
         })
     }
 

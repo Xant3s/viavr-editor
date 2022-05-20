@@ -19,6 +19,8 @@ export const BuildDialog: FC = () => {
     ])
 
     const [packages, setPackages] = useState<any[]>([])
+    const [readyToBuild, setReadyToBuild] = useState(false)
+    const [buildFinished, setBuildFinished] = useState(false)
 
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
@@ -52,22 +54,23 @@ export const BuildDialog: FC = () => {
         return packages.filter(item => item.mandatory || item.isSelected)
     }
 
+    const loadScenes = async () => {
+        const sceneFileNames = await window.api.invoke('query-available-scenes')
+        setScenes(sceneFileNames.map(sceneFileName => {
+            return ({isSelected: true, sceneFileName})
+        }))
+    }
+
+    const loadPackages = async () => {
+        const packages = await window.api.invoke('query-available-packages')
+        setPackages(packages)
+    }
+
     useEffect(() => {
-        const loadScenes = async () => {
-            const sceneFileNames = await window.api.invoke('query-available-scenes')
-            setScenes(sceneFileNames.map(sceneFileName => {
-                return ({isSelected: true, sceneFileName})
-            }))
-        }
-
-        const loadPackages = async () => {
-            const packages = await window.api.invoke('query-available-packages')
-            console.log(packages)
-            setPackages(packages)
-        }
-
         // loadScenes()
         loadPackages()
+        window.api.on('ready-to-build-project', () => {setReadyToBuild(true)})
+        window.api.on('build-finished', () => {setBuildFinished(true)})
     }, [])
 
     return (
@@ -82,7 +85,6 @@ export const BuildDialog: FC = () => {
             }
 
             <br/>
-            <button id="btn-query-packages" type="button">Search for Packages</button>
             <h4>Packages</h4>
 
             {packages.map((p) => (
@@ -106,10 +108,10 @@ export const BuildDialog: FC = () => {
             <br/>
             <label>Info: Build project will only work on Windows for now.</label>
             <br/>
-            <button id="btn-build-project" type="button" onClick={() => window.api.send('create-unity-project')} disabled>
+            <button id="btn-build-project" type="button" onClick={() => window.api.send('create-unity-project')} disabled={!readyToBuild}>
                 Build Unity Project
             </button>
-            <button id="btn-open-build-directory" type="button" onClick={() => window.api.send('open-build-directory')} disabled>
+            <button id="btn-open-build-directory" type="button" onClick={() => window.api.send('open-build-directory')} disabled={!buildFinished}>
                 Open Build Directory
             </button>
         </>

@@ -15,7 +15,9 @@ const validChannels = {
     ],
     "fromMain": [
         "fromMain",
-        "preference-changed-from-backend-unityPath"
+        "preference-changed-from-backend-unityPath",
+        "ready-to-build-project",
+        "build-finished"
     ]
 }
 

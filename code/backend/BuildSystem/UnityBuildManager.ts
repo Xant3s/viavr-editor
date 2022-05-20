@@ -44,8 +44,8 @@ export default class UnityBuildManager {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.on('create-unity-project', async (e, scenesAndPackages) => {
-            await this.createUnityProject(scenesAndPackages)
+        ipc.on('create-unity-project', async (e, selectedScenes, selectedPackages) => {
+            await this.createUnityProject(selectedScenes, selectedPackages)
             e.sender.send('ready-to-build-project')
         })
         ipc.on('build-unity-project', async (e) => {
@@ -61,9 +61,7 @@ export default class UnityBuildManager {
         })
     }
 
-    private async createUnityProject(scenesAndPackages: Map<string, boolean>) {
-        const scenes = scenesAndPackages[0]
-        const packages = scenesAndPackages[1]
+    private async createUnityProject(selectedScenes, selectedPackages) {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
@@ -72,8 +70,8 @@ export default class UnityBuildManager {
         }
         await Utils.extractZipToPath(AppUtils.getResPath() + '/DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
-        await this.installPackages(outputPath, packages)
-        await this.importScenes(outputPath, scenes)
+        await this.installPackages(outputPath, selectedPackages)
+        await this.importScenes(outputPath, selectedScenes)
         this.buildPath = outputPath
     }
 
@@ -111,46 +109,40 @@ export default class UnityBuildManager {
         scopedRegistry.scopes.findOrCreate(scope => scope === packageRegistryScope, () => packageRegistryScope)
     }
 
-    private async installPackages(outputPath : string, packages : Map<string, boolean>) {
+    private async installPackages(outputPath : string, selectedPackages) {
         console.log('Start installing packages.')
         const manifest = await UnityBuildManager.readManifest(outputPath)
 
         const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromRegistry()
-        packages.forEach((selectedToInstall: boolean, packageName: string) => {
-            if(selectedToInstall) {
-                const latestVersion = (packageList.find(p => p.name == packageName).version)
-                console.log(`Add package ${packageName}: ${latestVersion}.`)
-                manifest.dependencies ??= []
-                manifest.dependencies[packageName] = latestVersion
-            } else {
-                console.log(`Skip package ${packageName}.`)
-            }
+        selectedPackages.forEach(selectedPackage => {
+            const latestVersion = (packageList.find(p => p.name === selectedPackage.name).version)
+            console.log(`Add package ${selectedPackage.name}: ${latestVersion}.`)
+            manifest.dependencies ??= []
+            manifest.dependencies[selectedPackage.name] = latestVersion
         })
 
         await UnityBuildManager.writeManifest(manifest, outputPath)
         console.log('Packages installed.')
     }
 
-    private async importScenes(outputPath: string, scenes: Array<[string, boolean]>) {
+    private async importScenes(outputPath: string, scenes: Array<any>) {
         await Promise.all([
             UnityBuildManager.exportSceneList(outputPath, scenes),
             this.exportScenes(outputPath, scenes)
         ])
     }
 
-    private static async exportSceneList(outputPath: string, scenes: Array<[string, boolean]>) {
+    private static async exportSceneList(outputPath: string, scenes: Array<any>) {
         let sceneList = {}
-        sceneList["Scenes"] = scenes.filter(scene => scene[1])
-                                    .map(scene => scene[0])
+        sceneList["Scenes"] = scenes.map(scene => scene.name)
                                     .map(sceneName => sceneName.substr(0, sceneName.length - 4))
         await fs.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
     }
 
-    private async exportScenes(outputPath: string, scenes: Array<[string, boolean]>) {
+    private async exportScenes(outputPath: string, scenes: Array<any>) {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
-        const sceneNames = scenes.filter(scene => scene[1])
-                                 .map(scene => scene[0])
+        const sceneNames = scenes.map(scene => scene.name)
         sceneNames.forEach(sceneName =>
             fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
     }

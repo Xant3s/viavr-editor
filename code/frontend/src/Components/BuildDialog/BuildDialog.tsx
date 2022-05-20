@@ -1,5 +1,6 @@
 import {FC, useEffect, useState} from 'react'
 import {Scene} from './Scene'
+import {Package} from './Package'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState([
@@ -17,6 +18,8 @@ export const BuildDialog: FC = () => {
         }
     ])
 
+    const [packages, setPackages] = useState<any[]>([])
+
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
             if(scene.sceneFileName === sceneFileName) {
@@ -29,6 +32,18 @@ export const BuildDialog: FC = () => {
         }))
     }
 
+    const togglePackageSelected = (packageName: string) => {
+        setPackages(packages.map(packageItem => {
+            if(packageItem.packageName === packageName) {
+                return {
+                    ...packageItem,
+                    isSelected: !packageItem.isSelected
+                }
+            }
+            return packageItem
+        }))
+    }
+
     useEffect(() => {
         const loadScenes = async () => {
             const sceneFileNames = await window.api.invoke('query-available-scenes')
@@ -37,7 +52,14 @@ export const BuildDialog: FC = () => {
             }))
         }
 
+        const loadPackages = async () => {
+            const packages = await window.api.invoke('query-available-packages')
+            console.log(packages)
+            setPackages(packages)
+        }
+
         // loadScenes()
+        loadPackages()
     }, [])
 
     return (
@@ -53,6 +75,19 @@ export const BuildDialog: FC = () => {
 
             <br/>
             <button id="btn-query-packages" type="button">Search for Packages</button>
+            <h4>Packages</h4>
+
+            {packages.map((p) => (
+                <Package key={p.name}
+                         name={p.name}
+                         displayName={p.displayName}
+                         version={p.version}
+                         description={p.description}
+                         isSelected={p.isSelected}
+                         mandatory={p.mandatory}
+                         toggleFunction={togglePackageSelected}/>
+            ))}
+
             <br/>
             <div id="package-list"></div>
             <br/>

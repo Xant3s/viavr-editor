@@ -6,7 +6,8 @@ const validChannels = {
         "preferences:request",
         "preferences-changed",
         "select-unity-path",
-        "dark-mode:set"
+        "dark-mode:set",
+        "query-available-scenes"
     ],
     "fromMain": [
         "fromMain",

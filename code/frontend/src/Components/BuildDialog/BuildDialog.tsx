@@ -1,4 +1,4 @@
-import {FC, useState} from 'react'
+import {FC, useEffect, useState} from 'react'
 import {Scene} from './Scene'
 
 export const BuildDialog: FC = () => {
@@ -29,6 +29,16 @@ export const BuildDialog: FC = () => {
         }))
     }
 
+    useEffect(() => {
+        const loadScenes = async () => {
+            const sceneFileNames = await window.api.invoke('query-available-scenes')
+            setScenes(sceneFileNames.map(sceneFileName => {
+                return ({isSelected: true, sceneFileName})
+            }))
+        }
+
+        // loadScenes()
+    }, [])
 
     return (
         <>
@@ -41,7 +51,6 @@ export const BuildDialog: FC = () => {
                 ))
             }
 
-            <div id={'scene-list'}></div>
             <br/>
             <button id="btn-query-packages" type="button">Search for Packages</button>
             <br/>

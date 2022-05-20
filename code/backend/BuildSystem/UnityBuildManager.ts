@@ -40,9 +40,9 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.on('query-available-scenes', async (e) => {
-            const {pwd, sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
-            e.sender.send('display-available-scenes', sceneFiles)
+        ipc.handle('query-available-scenes', async (e) => {
+            const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
+            return sceneFiles
         })
         ipc.on('create-unity-project', async (e, scenesAndPackages) => {
             await this.createUnityProject(scenesAndPackages)

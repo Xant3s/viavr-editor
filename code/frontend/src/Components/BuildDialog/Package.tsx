@@ -13,7 +13,13 @@ interface IPackage {
 export const Package = ({name, displayName, version, description, isSelected, mandatory, toggleFunction}: IPackage) => {
     return (
         <div>
-            <input id={name} type={'checkbox'} title={description} checked={mandatory || isSelected} onChange={() => {toggleFunction(name)}}/>
+            <input id={name}
+                   type={'checkbox'}
+                   title={description}
+                   checked={mandatory || isSelected}
+                   onChange={() => {toggleFunction(name)}}
+                   disabled={mandatory}
+            />
             <label htmlFor={name}>{displayName}</label>
             <span style={{paddingLeft: '10px', color: 'gray'}}>{version}</span>
         </div>

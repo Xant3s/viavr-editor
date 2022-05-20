@@ -1,4 +1,5 @@
 import {BrowserWindow, dialog, ipcMain as ipc} from 'electron'
+import * as isDev from 'electron-is-dev'
 import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import PreferencesManager from '../Preferences/PreferencesManager'
@@ -43,6 +44,10 @@ export default class BuildSystem {
                 }
             }
         )
-        this._buildDialog.loadFile('src/Editor/BuildDialog/BuildDialog.html')
+        if(isDev) {
+            this._buildDialog.loadURL('http://localhost:3000#/build-dialog')
+        } else {
+            this._buildDialog.loadURL(`file://${__dirname}/../index.html#/build-dialog`)
+        }
     }
 }

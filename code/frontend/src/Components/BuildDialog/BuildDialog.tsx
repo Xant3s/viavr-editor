@@ -44,6 +44,14 @@ export const BuildDialog: FC = () => {
         }))
     }
 
+    const getSelectedScenes = () => {
+        return scenes.filter(item => item.isSelected)
+    }
+
+    const getSelectedPackages = () => {
+        return packages.filter(item => item.mandatory || item.isSelected)
+    }
+
     useEffect(() => {
         const loadScenes = async () => {
             const sceneFileNames = await window.api.invoke('query-available-scenes')
@@ -91,13 +99,19 @@ export const BuildDialog: FC = () => {
             <br/>
             <div id="package-list"></div>
             <br/>
-            <button id="btn-create-project" type="button">Create Unity Project</button>
+            <button id="btn-create-project" type="button" onClick={() => window.api.send('create-unity-project', getSelectedScenes(), getSelectedPackages())}>
+                Create Unity Project
+            </button>
             <br/>
             <br/>
             <label>Info: Build project will only work on Windows for now.</label>
             <br/>
-            <button id="btn-build-project" type="button" disabled>Build Unity Project</button>
-            <button id="btn-open-build-directory" type="button" disabled>Open Build Directory</button>
+            <button id="btn-build-project" type="button" onClick={() => window.api.send('create-unity-project')} disabled>
+                Build Unity Project
+            </button>
+            <button id="btn-open-build-directory" type="button" onClick={() => window.api.send('open-build-directory')} disabled>
+                Open Build Directory
+            </button>
         </>
     )
 }

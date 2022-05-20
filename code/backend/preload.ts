@@ -8,7 +8,10 @@ const validChannels = {
         "select-unity-path",
         "dark-mode:set",
         "query-available-scenes",
-        "query-available-packages"
+        "query-available-packages",
+        "create-unity-project",
+        "build-unity-project",
+        "open-build-directory"
     ],
     "fromMain": [
         "fromMain",

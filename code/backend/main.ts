@@ -6,37 +6,33 @@ import PreferencesManager from './Preferences/PreferencesManager'
 import ProjectManager from './ProjectManager/ProjectManager'
 import SceneExporter from './ProjectManager/SceneExporter'
 
-import * as path from 'path';
-import * as isDev from 'electron-is-dev';
-import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
-
 
 const init = async () => {
     const mainWindow = new MainWindow(app)
-    // SpokeManager.getInstance()
+    SpokeManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
-    // ProjectManager.getInstance().init(mainWindow)
-    // new SceneExporter(mainWindow)
+    ProjectManager.getInstance().init(mainWindow)
+    new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)
 
-    // ipc.handle('get-main-window-url', () => {
-    //     return new Promise((resolve) => {
-    //         resolve(mainWindow.window.webContents.getURL())
-    //     })
-    // })
+    ipc.handle('get-main-window-url', () => {
+        return new Promise((resolve) => {
+            resolve(mainWindow.window.webContents.getURL())
+        })
+    })
 
-    // ipc.on('print-main-window-url', () => console.log(mainWindow.window.webContents.getURL()))
+    ipc.on('print-main-window-url', () => console.log(mainWindow.window.webContents.getURL()))
 }
 
-// const tryOpenProject = async () => {
-//     // Also see https://github.com/electron/electron/issues/4690
-//     if(process.argv.length > 1 && process.argv[1] !== '.') {
-//         console.log(`Opening project ${process.argv[1]}`)
-//         await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
-//     }
-// }
+const tryOpenProject = async () => {
+    // Also see https://github.com/electron/electron/issues/4690
+    if(process.argv.length > 1 && process.argv[1] !== '.') {
+        console.log(`Opening project ${process.argv[1]}`)
+        await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
+    }
+}
 
-// app.whenReady().then(tryOpenProject)
+app.whenReady().then(tryOpenProject)
 
 init()

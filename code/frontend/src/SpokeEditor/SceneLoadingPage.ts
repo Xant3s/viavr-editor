@@ -1,5 +1,4 @@
 import {$$, htmlElement} from './Spoke'
-import ProjectManager from '../../../backend/ProjectManager/ProjectManager'
 
 
 export default class SceneLoadingPage {
@@ -50,7 +49,6 @@ export default class SceneLoadingPage {
     }
 
     private async loadScene(sceneName: string, newSceneButton: JQuery<HTMLElement>) {
-        const pwd = await window.api.invoke('project-manager:get-present-working-directory')
         // create new empty scene
         $$('h3:contains("New Scene"):last').trigger('click')
         const newEmptySceneBtn = await htmlElement('h3:contains("New Empty Scene"):last')

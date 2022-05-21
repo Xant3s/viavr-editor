@@ -16,7 +16,7 @@ tsc:
     - yarn -v
     - npm i
   script:
-    - npm run build:backend
+    - npm run build:frontend
   tags:
     - docker
 

@@ -3,7 +3,7 @@ import {$$, htmlElement} from './Spoke'
 
 export class SceneExport {
     constructor() {
-        window.api.on('spoke:export-scene', async() => {
+        api.on('spoke:export-scene', async() => {
             await Promise.all([
                 this.exportSceneAsGlb(),
                 this.exportSceneAsJson()

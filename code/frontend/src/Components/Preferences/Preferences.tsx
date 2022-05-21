@@ -10,12 +10,12 @@ export const Preferences: FC = () => {
 
 
     const loadPreference = (name: string) => {
-        return window.api.invoke('preferences:request', name)
+        return api.invoke('preferences:request', name)
     }
 
     const updatePreference = (updateStateFunction, event, name: string) => {
         updateStateFunction(event.target.value)
-        window.api.send('preferences:changed', {name: name, value: event.target.value})
+        api.send('preferences:changed', {name: name, value: event.target.value})
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const Preferences: FC = () => {
             setThemeSource(themeSource)
         }
 
-        window.api.on('preferences:preference-changed-from-backend-unityPath', (data) => {setUnityPath(data)})
+        api.on('preferences:preference-changed-from-backend-unityPath', (data) => {setUnityPath(data)})
 
         loadInitialValues()
     })
@@ -49,7 +49,7 @@ export const Preferences: FC = () => {
                 <label htmlFor={'dark-mode'}>Theme:</label>
                 <select id={'dark-mode'} name={'dark-mode'} value={themeSource} onChange={(e) => {
                     updatePreference(setUnityPath, e, "darkMode")
-                    window.api.send('dark-mode:set', e.target.value)
+                    api.send('dark-mode:set', e.target.value)
                 }}>
                     <option value={'System'}>System</option>
                     <option value={'Dark'}>Dark</option>
@@ -62,7 +62,7 @@ export const Preferences: FC = () => {
                 <input id={'unity-path'} type={'text'} value={unityPath} onChange={(e) => {
                     updatePreference(setUnityPath, e, "unityPath")
                 }}/>
-                <button id={'btn-select-unity-path'} onClick={() => {window.api.send(window.api.channels.toMain.buildSystemSelectUnityPath)}}>Select</button>
+                <button id={'btn-select-unity-path'} onClick={() => {api.send(api.channels.toMain.buildSystemSelectUnityPath)}}>Select</button>
             </div>
 
             <div className="preference-entry">

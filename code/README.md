@@ -54,6 +54,8 @@ The page will reload if you make edits. You will also see any lint errors in the
 
 ## How to Run Unit Tests
 
+Currently, only the backend has unit tests. `electron-is-dev` is incompatible with unit tests.
+
 - Navigate to the `code` folder and run the following commands:
   - Run `npm install`
   - Run `npm test`

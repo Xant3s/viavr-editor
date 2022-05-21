@@ -20,7 +20,7 @@
     "package:win": "npm run build:all && electron-builder build --win",
     "package:linux": "npm run build:all && electron-builder build --linux",
     "package:mac": "npm run build:all && electron-builder build --mac",
-    "test": "react-scripts test",
+    "test": "mocha --config test/.mocharc.jsonc",
     "clean": "rimraf ./build ./dist",
     "eject": "react-scripts eject"
   },
@@ -45,11 +45,9 @@
     "wait-on": "^6.0.1"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/electron-devtools-installer": "^2.2.2",
-    "@types/jest": "^27.5.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "adm-zip": "^0.5.9",
@@ -108,11 +106,11 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ],
     "rules": {
-      "no-unused-vars": "off"
+      "no-unused-vars": "off",
+      "no-unused-expressions": "off"
     }
   }
 }

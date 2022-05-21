@@ -31,7 +31,7 @@ export const Editor = () => {
         </div>
 
         <div id={'spoke-container'} hidden={hideSpokeContainer}>
-            <iframe id={'iframe-spoke'} src={'https://localhost:9090'} />
+            <iframe id={'iframe-spoke'} title={'Spoke Editor'} src={'https://localhost:9090'} />
         </div>
         </>
     )

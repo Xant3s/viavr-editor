@@ -1,5 +1,4 @@
 import {$$, htmlElement} from './Spoke'
-import ProjectManager from '../../../backend/ProjectManager/ProjectManager'
 
 
 export default class SceneLoadingPage {

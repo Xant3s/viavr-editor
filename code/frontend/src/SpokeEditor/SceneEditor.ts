@@ -10,6 +10,7 @@ export default class {
             backToScenesButton.text('Back to Scenes')
             backToScenesButton.on('click', () => {
                 new SceneLoadingPage()
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 handleSceneEditorPage()
             })
         }

@@ -62,7 +62,7 @@ export const Preferences: FC = () => {
                 <input id={'unity-path'} type={'text'} value={unityPath} onChange={(e) => {
                     updatePreference(setUnityPath, e, "unityPath")
                 }}/>
-                <button id={'btn-select-unity-path'} onClick={() => {window.api.send('BuildSystem:select-unity-path')}}>Select</button>
+                <button id={'btn-select-unity-path'} onClick={() => {window.api.send(window.api.channels.toMain.buildSystemSelectUnityPath)}}>Select</button>
             </div>
 
             <div className="preference-entry">

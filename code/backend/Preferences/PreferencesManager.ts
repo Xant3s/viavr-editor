@@ -30,8 +30,8 @@ export default class PreferencesManager {
 
     private constructor() {
         ipc.on('preferences:open', () => this.openPreferences())
-        ipc.on(channels.toMain.preferencesChanged, (_, pref) => this.updatePreference(pref))
-        ipc.handle(channels.toMain.preferencesRequest, (_, name) => this.get(name))
+        ipc.on(channels.toMain.changePreference, (_, pref) => this.updatePreference(pref))
+        ipc.handle(channels.toMain.requestPreference, (_, name) => this.get(name))
         ipc.on('app:quit', () => this.savePreferences())
     }
 

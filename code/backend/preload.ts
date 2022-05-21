@@ -4,27 +4,27 @@ const {contextBridge, ipcRenderer} = require("electron")
 
 export const channels = {
     "toMain": {
-        buildSystemSelectUnityPath: 'BuildSystem:select-unity-path',
-        buildSystemQueryAvailableScenes: "BuildSystem:query-available-scenes",
-        buildSystemQueryAvailablePackages: "BuildSystem:query-available-packages",
-        buildSystemCreateUnityProject: "BuildSystem:create-unity-project",
-        buildSystemBuildUnityProject: "BuildSystem:build-unity-project",
-        buildSystemOpenBuildDirectory: "BuildSystem:open-build-directory",
-        buildSystemQueryAvailableJsonScenes: "BuildSystem:query-available-json-scenes",
-        darkModeSet: "dark-mode:set",
-        preferencesRequest: "preferences:request",
-        preferencesChanged: "preferences:changed",
-        projectManagerCreateNewProject: "project-manager:create-new-project",
-        projectManagerOpenProject: "project-manager:open-project",
-        projectManagerOpenProjectFolder: "project-manager:open-project-folder",
-        projectManagerGetPresentWorkingDirectory: "project-manager:get-present-working-directory"
+        selectUnityPath: 'BuildSystem:select-unity-path',
+        queryScenes: "BuildSystem:query-available-scenes",
+        queryPackages: "BuildSystem:query-available-packages",
+        createUnityProject: "BuildSystem:create-unity-project",
+        buildUnityProject: "BuildSystem:build-unity-project",
+        openBuildDirectory: "BuildSystem:open-build-directory",
+        queryJsonScenes: "BuildSystem:query-available-json-scenes",
+        setDarkMode: "dark-mode:set",
+        requestPreference: "preferences:request",
+        changePreference: "preferences:changed",
+        createNewProject: "project-manager:create-new-project",
+        openProject: "project-manager:open-project",
+        openProjectFolder: "project-manager:open-project-folder",
+        getPresentWorkingDirectory: "project-manager:get-present-working-directory"
     },
     "fromMain": {
-        buildSystemBuildFinished: "BuildSystem:build-finished",
-        buildSystemReadyToBuildProject: "BuildSystem:ready-to-build-project",
-        preferencesPreferenceChangedFromBackendUnityPath: "preferences:preference-changed-from-backend-unityPath",
-        projectManagerProjectCreated: "project-manager:project-created",
-        projectManagerProjectOpened: "project-manager:project-opened",
+        buildFinished: "BuildSystem:build-finished",
+        readyToBuildProject: "BuildSystem:ready-to-build-project",
+        preferenceChangedFromBackendUnityPath: "preferences:preference-changed-from-backend-unityPath",
+        projectCreated: "project-manager:project-created",
+        projectOpened: "project-manager:project-opened",
         spokeExportScene: "spoke:export-scene"
     }
 }

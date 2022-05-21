@@ -51,7 +51,7 @@ export default class MainWindow {
 
         MainWindow.window.maximize()
 
-        ipcMain.on(channels.toMain.darkModeSet, (_, val) => nativeTheme.themeSource = val.toLowerCase())
+        ipcMain.on(channels.toMain.setDarkMode, (_, val) => nativeTheme.themeSource = val.toLowerCase())
 
         // Hot Reloading
         if (isDev) {

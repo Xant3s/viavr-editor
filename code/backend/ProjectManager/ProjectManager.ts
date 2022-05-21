@@ -36,12 +36,12 @@ export default class ProjectManager {
     }
 
     private constructor() {
-        ipc.on(channels.toMain.projectManagerCreateNewProject, async () => this.createNewProject())
-        ipc.on(channels.toMain.projectManagerOpenProject, async () => this.openProjectFromFile())
-        ipc.on(channels.toMain.projectManagerOpenProjectFolder, async () => this.openProjectFromFolder())
+        ipc.on(channels.toMain.createNewProject, async () => this.createNewProject())
+        ipc.on(channels.toMain.openProject, async () => this.openProjectFromFile())
+        ipc.on(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
-        ipc.handle(channels.toMain.projectManagerGetPresentWorkingDirectory, async () => this._presentWorkingDirectory)
+        ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
     }
 
     private async createNewProject() {
@@ -56,7 +56,7 @@ export default class ProjectManager {
             const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
             fs.rmdirSync(tempProjectFolder, {recursive: true})
             this._presentWorkingDirectory = tempProjectFolder
-            this.mainWindow.send(channels.fromMain.projectManagerProjectCreated)
+            this.mainWindow.send(channels.fromMain.projectCreated)
         }
     }
 
@@ -91,7 +91,7 @@ export default class ProjectManager {
     private onProjectOpened() {
         console.log('Project path: ', this.projectPath)
         console.log('Present working directory: ', this.presentWorkingDirectory)
-        this.mainWindow.send(channels.fromMain.projectManagerProjectOpened)
+        this.mainWindow.send(channels.fromMain.projectOpened)
     }
 
     private async saveProject() {

@@ -41,22 +41,22 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.handle(channels.toMain.buildSystemQueryAvailableScenes, async (e) => {
+        ipc.handle(channels.toMain.queryScenes, async (e) => {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.on(channels.toMain.buildSystemCreateUnityProject, async (e, selectedScenes, selectedPackages) => {
+        ipc.on(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
             await this.createUnityProject(selectedScenes, selectedPackages)
-            e.sender.send(channels.fromMain.buildSystemReadyToBuildProject)
+            e.sender.send(channels.fromMain.readyToBuildProject)
         })
-        ipc.on(channels.toMain.buildSystemBuildUnityProject, async (e) => {
+        ipc.on(channels.toMain.buildUnityProject, async (e) => {
             await new UnityBridge().build(this.buildPath)
-            e.sender.send(channels.fromMain.buildSystemBuildFinished)
+            e.sender.send(channels.fromMain.buildFinished)
         })
-        ipc.on(channels.toMain.buildSystemOpenBuildDirectory, async (e) => {
+        ipc.on(channels.toMain.openBuildDirectory, async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
-        ipc.handle(channels.toMain.buildSystemQueryAvailableJsonScenes, async (e) => {
+        ipc.handle(channels.toMain.queryJsonScenes, async (e) => {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
         })

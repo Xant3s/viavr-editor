@@ -21,7 +21,7 @@ export default class UnityPackageManager {
     private constructor() {
         this.registryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
         this.registryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
-        ipc.handle(channels.toMain.buildSystemQueryAvailablePackages, async (e) => {
+        ipc.handle(channels.toMain.queryPackages, async (e) => {
             const packageManager = UnityPackageManager.getInstance()
             const packageList = await packageManager.queryPackagesFromRegistry()
             return packageList

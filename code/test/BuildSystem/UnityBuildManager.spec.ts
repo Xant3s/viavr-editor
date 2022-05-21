@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import {expect} from 'chai'
 import {mock} from 'ts-mockito'
-import BuildSystem from '../../src/App/BuildSystem/BuildSystem'
-import UnityBuildManager from '../../src/App/BuildSystem/UnityBuildManager'
-import {PackageManifest} from '../../src/App/BuildSystem/DataStructures/PackageManifest'
+import BuildSystem from '../../backend/BuildSystem/BuildSystem'
+import UnityBuildManager from '../../backend/BuildSystem/UnityBuildManager'
+import {PackageManifest} from '../../backend/BuildSystem/DataStructures/PackageManifest'
 
 
 describe('UnityBuildManager', () => {

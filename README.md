@@ -15,8 +15,8 @@ Architecture prototype for integrated VIA-VR editor. Focused on extensibility an
 
 ## Related Repositories
 
-- [Spoke Scene Importer](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer)
-- [VIA-VR Gameplay Manager](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-gameplay-manager)
+- [Spoke Scene Importer](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer) - A Unity package that transforms binary GLTF scenes exported from Mozilla Spoke into Unity scenes
+- [VIA-VR Unity Bridge](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge) - Provides a coherent interface for all VIA-VR Unity packages to use.
 
 ## Quick Start
 

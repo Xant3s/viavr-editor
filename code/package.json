@@ -2,48 +2,72 @@
   "name": "viavr-editor",
   "version": "0.1.0-development",
   "description": "VIA-VR Editor",
-  "main": "dist/src/App/App.js",
-  "scripts": {
-    "postinstall": "electron-builder install-app-deps && cd res/plugins/Spoke && yarn install --ignore-scripts",
-    "build": "tsc",
-    "watch": "tsc -w",
-    "start": "electron .",
-    "prestart": "npm run build",
-    "package": "npm run build && electron-builder build",
-    "package:win": "npm run build && electron-builder build --win",
-    "package:linux": "npm run build && electron-builder build --linux",
-    "package:mac": "npm run build && electron-builder build --mac",
-    "test": "mocha --config test/.mocharc.jsonc",
-    "clean": "rimraf ./dist ./out"
-  },
-  "keywords": [],
   "author": "Samuel Truman",
   "license": "none",
+  "main": "build/backend/main.js",
+  "homepage": ".",
+  "private": true,
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps && cd res/plugins/Spoke && yarn install --ignore-scripts",
+    "prestart": "npm run build:backend",
+    "start": "concurrently \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\"",
+    "start:frontend": "react-app-rewired start",
+    "build:all": " npm run build:frontend && npm run build:backend",
+    "build:backend": "tsc -p backend/tsconfig.json",
+    "build:frontend": "react-app-rewired build",
+    "watch:backend": "tsc -w -p backend/tsconfig.json",
+    "package": "npm run build:all && electron-builder build",
+    "package:win": "npm run build:all && electron-builder build --win",
+    "package:linux": "npm run build:all && electron-builder build --linux",
+    "package:mac": "npm run build:all && electron-builder build --mac",
+    "test": "mocha --config test/.mocharc.jsonc",
+    "clean": "rimraf ./build ./dist",
+    "eject": "react-scripts eject"
+  },
   "devDependencies": {
-    "@types/chai": "^4.3.0",
-    "@types/jquery": "^3.5.13",
-    "@types/mocha": "^9.1.0",
+    "@types/chai": "^4.3.1",
+    "@types/jquery": "^3.5.14",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^17.0.35",
     "chai": "^4.3.6",
-    "electron": "^11.3.0",
-    "electron-builder": "^22.14.13",
-    "electron-reloader": "^1.2.1",
-    "mocha": "^9.2.0",
+    "concurrently": "^7.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^18.2.3",
+    "electron-builder": "^23.0.3",
+    "electron-reloader": "^1.2.3",
+    "mocha": "^10.0.0",
     "npm-run-all": "^4.1.5",
+    "react-app-rewired": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-mockito": "^2.6.1",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.2.2"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
+    "wait-on": "^6.0.1"
   },
   "dependencies": {
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/electron-devtools-installer": "^2.2.2",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.3",
     "adm-zip": "^0.5.9",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-is-dev": "^2.0.0",
+    "electron-reload": "^2.0.0-alpha.1",
     "extract-zip": "^2.0.1",
-    "fast-folder-size": "^1.6.1",
-    "fs-extra": "^10.0.0",
+    "fast-folder-size": "^1.6.2",
+    "fs-extra": "^10.1.0",
     "jquery": "^3.6.0",
     "node-fetch": "^2.6.7",
-    "tree-kill": "^1.2.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "tree-kill": "^1.2.2",
+    "web-vitals": "^2.1.4"
   },
   "build": {
+    "extends": null,
     "extraResources": [
       "res/**/*"
     ],
@@ -56,13 +80,37 @@
         "description": "VIA-VR Project"
       }
     ],
+    "files": [
+      "build/**/*"
+    ],
     "directories": {
-      "output": "./out"
+      "buildResources": "res"
     },
     "asarUnpack": [
       "**/*.node"
     ],
     "buildDependenciesFromSource": true,
     "npmRebuild": true
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "no-unused-expressions": "off"
+    }
   }
 }

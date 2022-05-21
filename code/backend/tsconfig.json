@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "outDir": "../build", // Output transpiled files to build/electron/
+    "rootDir": "../",
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}

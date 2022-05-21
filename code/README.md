@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# VIA-VR Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Make sure [node.js](https://nodejs.org/en/download/) >=16.10 is installed
+  - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
-### `npm start`
+    ```bash
+    node -v
+    npm -v
+    ```
 
-Runs the app in the development mode.\
+  - Node >=16.10 will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator:
+
+    ```bash
+    corepack enable
+    ```
+
+  - To check that Yarn was installed correctly, type the following command in your terminal client:
+
+    ```bash
+    yarn -v
+    ```
+
+- Make sure Unity 2020 LTS or newer is installed
+
+## How to Start (Currently Only Tested on Windows)
+
+- Navigate to the `code` folder and run the following commands:
+  - Run `npm install`
+  - Run `npm start` to start the application
+
+## How to Start Only the Frontend
+
+When developing new UI it can be useful to just start the frontend to view the result. This will be considerably faster than also starting the backend. It also comes with faster hot-reloading. When starting just the frontend you will not be able to fetch data from the backend, so only use this when working with dummy data.
+
+- Navigate to the `code` folder and run the following commands:
+  - Run `npm install`
+  - Run `npm start:frontend`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits. You will also see any lint errors in the console. Navigate to subpages using the `#/` notation (e.g. `http://localhost:3000#/hello-world`).
 
-### `npm test`
+## How to Build Executable (Currently Windows Only)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Navigate to the `code` folder and run the following commands:
+  - Run `npm install`
+  - Run `npm run package` to build executable for your system
+- Install [Yarn](https://yarnpkg.com/) on the target PC
+- Copy the setup executable from the `dist` folder to the target PC
+- Run the setup executable on the target PC
 
-### `npm run build`
+## How to Run Unit Tests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Navigate to the `code` folder and run the following commands:
+  - Run `npm install`
+  - Run `npm test`

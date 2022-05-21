@@ -17,21 +17,21 @@ export const Editor = () => {
     }
 
     useEffect(() => {
-        api.on('project-manager:project-created', () => onProjectSelected())
-        api.on('project-manager:project-opened', () => onProjectSelected())
+        api.on(api.channels.fromMain.projectManagerProjectCreated, () => onProjectSelected())
+        api.on(api.channels.fromMain.projectManagerProjectOpened, () => onProjectSelected())
     })
 
     return (
         <>
         <div hidden={hideProjectSelectionPage}>
             <h1>Welcome</h1>
-            <button onClick={() => api.send('project-manager:create-new-project')}>
+            <button onClick={() => api.send(api.channels.toMain.projectManagerCreateNewProject)}>
                 Create New Project
             </button>
-            <button onClick={() => api.send('project-manager:open-project')}>
+            <button onClick={() => api.send(api.channels.toMain.projectManagerOpenProject)}>
                 Open Project
             </button>
-            <button onClick={() => api.send('project-manager:open-project-folder')}>
+            <button onClick={() => api.send(api.channels.toMain.projectManagerOpenProjectFolder)}>
                 Open Project from Folder
             </button>
         </div>

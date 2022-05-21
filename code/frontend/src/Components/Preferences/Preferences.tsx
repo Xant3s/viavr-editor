@@ -10,12 +10,12 @@ export const Preferences: FC = () => {
 
 
     const loadPreference = (name: string) => {
-        return api.invoke('preferences:request', name)
+        return api.invoke(api.channels.toMain.preferencesRequest, name)
     }
 
     const updatePreference = (updateStateFunction, event, name: string) => {
         updateStateFunction(event.target.value)
-        api.send('preferences:changed', {name: name, value: event.target.value})
+        api.send(api.channels.toMain.preferencesChanged, {name: name, value: event.target.value})
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const Preferences: FC = () => {
             setThemeSource(themeSource)
         }
 
-        api.on('preferences:preference-changed-from-backend-unityPath', (data) => {setUnityPath(data)})
+        api.on(api.channels.fromMain.preferencesPreferenceChangedFromBackendUnityPath, (data) => {setUnityPath(data)})
 
         loadInitialValues()
     })
@@ -49,7 +49,7 @@ export const Preferences: FC = () => {
                 <label htmlFor={'dark-mode'}>Theme:</label>
                 <select id={'dark-mode'} name={'dark-mode'} value={themeSource} onChange={(e) => {
                     updatePreference(setUnityPath, e, "darkMode")
-                    api.send('dark-mode:set', e.target.value)
+                    api.send(api.channels.toMain.darkModeSet, e.target.value)
                 }}>
                     <option value={'System'}>System</option>
                     <option value={'Dark'}>Dark</option>

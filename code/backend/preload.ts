@@ -2,7 +2,7 @@ import * as Path from 'path'
 const {contextBridge, ipcRenderer} = require("electron")
 
 
-const channels = {
+export const channels = {
     "toMain": {
         buildSystemSelectUnityPath: 'BuildSystem:select-unity-path',
         buildSystemQueryAvailableScenes: "BuildSystem:query-available-scenes",
@@ -20,7 +20,7 @@ const channels = {
         projectManagerGetPresentWorkingDirectory: "project-manager:get-present-working-directory"
     },
     "fromMain": {
-       buildSystemBuildFinished: "BuildSystem:build-finished",
+        buildSystemBuildFinished: "BuildSystem:build-finished",
         buildSystemReadyToBuildProject: "BuildSystem:ready-to-build-project",
         preferencesPreferenceChangedFromBackendUnityPath: "preferences:preference-changed-from-backend-unityPath",
         projectManagerProjectCreated: "project-manager:project-created",

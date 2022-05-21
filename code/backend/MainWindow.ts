@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as isDev from 'electron-is-dev'
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
 import CustomMenu from './CustomMenu'
+import {channels} from './preload'
 
 
 
@@ -50,7 +51,7 @@ export default class MainWindow {
 
         MainWindow.window.maximize()
 
-        ipcMain.on('dark-mode:set', (_, val) => nativeTheme.themeSource = val.toLowerCase())
+        ipcMain.on(channels.toMain.darkModeSet, (_, val) => nativeTheme.themeSource = val.toLowerCase())
 
         // Hot Reloading
         if (isDev) {

@@ -3,6 +3,7 @@ import * as isDev from 'electron-is-dev'
 import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
 import path from 'path'
+import {channels} from '../preload'
 
 const fs = require('fs').promises
 
@@ -29,8 +30,8 @@ export default class PreferencesManager {
 
     private constructor() {
         ipc.on('preferences:open', () => this.openPreferences())
-        ipc.on('preferences:changed', (_, pref) => this.updatePreference(pref))
-        ipc.handle('preferences:request', (_, name) => this.get(name))
+        ipc.on(channels.toMain.preferencesChanged, (_, pref) => this.updatePreference(pref))
+        ipc.handle(channels.toMain.preferencesRequest, (_, name) => this.get(name))
         ipc.on('app:quit', () => this.savePreferences())
     }
 

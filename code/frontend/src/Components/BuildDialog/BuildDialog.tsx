@@ -42,22 +42,22 @@ export const BuildDialog: FC = () => {
     }
 
     const loadScenes = async () => {
-        const sceneFileNames = await api.invoke('BuildSystem:query-available-scenes')
+        const sceneFileNames = await api.invoke(api.channels.toMain.buildSystemQueryAvailableScenes)
         setScenes(sceneFileNames.map(sceneFileName => {
             return ({isSelected: true, sceneFileName})
         }))
     }
 
     const loadPackages = async () => {
-        const packages = await api.invoke('BuildSystem:query-available-packages')
+        const packages = await api.invoke(api.channels.toMain.buildSystemQueryAvailablePackages)
         setPackages(packages)
     }
 
     useEffect(() => {
         loadScenes()
         loadPackages()
-        api.on('BuildSystem:ready-to-build-project', () => {setReadyToBuild(true)})
-        api.on('BuildSystem:build-finished', () => {setBuildFinished(true)})
+        api.on(api.channels.fromMain.buildSystemReadyToBuildProject, () => {setReadyToBuild(true)})
+        api.on(api.channels.fromMain.buildSystemBuildFinished, () => {setBuildFinished(true)})
     }, [])
 
     return (
@@ -88,17 +88,17 @@ export const BuildDialog: FC = () => {
             <br/>
             <div id="package-list"></div>
             <br/>
-            <button id="btn-create-project" type="button" onClick={() => api.send('BuildSystem:create-unity-project', getSelectedSceneNames(), getSelectedPackages())}>
+            <button id="btn-create-project" type="button" onClick={() => api.send(api.channels.toMain.buildSystemCreateUnityProject, getSelectedSceneNames(), getSelectedPackages())}>
                 Create Unity Project
             </button>
             <br/>
             <br/>
             <label>Info: Build project will only work on Windows for now.</label>
             <br/>
-            <button id="btn-build-project" type="button" onClick={() => api.send('BuildSystem:build-unity-project')} disabled={!readyToBuild}>
+            <button id="btn-build-project" type="button" onClick={() => api.send(api.channels.toMain.buildSystemBuildUnityProject)} disabled={!readyToBuild}>
                 Build Unity Project
             </button>
-            <button id="btn-open-build-directory" type="button" onClick={() => api.send('BuildSystem:open-build-directory')} disabled={!buildFinished}>
+            <button id="btn-open-build-directory" type="button" onClick={() => api.send(api.channels.toMain.buildSystemOpenBuildDirectory)} disabled={!buildFinished}>
                 Open Build Directory
             </button>
         </>

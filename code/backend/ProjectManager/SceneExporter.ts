@@ -2,6 +2,7 @@ import {ipcMain, session} from 'electron'
 import MainWindow from '../MainWindow'
 import ProjectManager from './ProjectManager'
 import * as Path from 'path'
+import {channels} from '../preload'
 
 
 export default class SceneExporter {
@@ -15,7 +16,7 @@ export default class SceneExporter {
 
     private exportScene() {
         this.setSaveScenePathToProjectFolder()
-        this.mainWindow.send('spoke:export-scene')
+        this.mainWindow.send(channels.fromMain.spokeExportScene)
     }
 
     private setSaveScenePathToProjectFolder() {

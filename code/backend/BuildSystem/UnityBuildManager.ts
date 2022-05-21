@@ -10,6 +10,7 @@ import ProjectManager from '../ProjectManager/ProjectManager'
 import assert = require('assert')
 import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
+import {channels} from '../preload'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
@@ -40,22 +41,22 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.handle('BuildSystem:query-available-scenes', async (e) => {
+        ipc.handle(channels.toMain.buildSystemQueryAvailableScenes, async (e) => {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.on('BuildSystem:create-unity-project', async (e, selectedScenes, selectedPackages) => {
+        ipc.on(channels.toMain.buildSystemCreateUnityProject, async (e, selectedScenes, selectedPackages) => {
             await this.createUnityProject(selectedScenes, selectedPackages)
-            e.sender.send('BuildSystem:ready-to-build-project')
+            e.sender.send(channels.fromMain.buildSystemReadyToBuildProject)
         })
-        ipc.on('BuildSystem:build-unity-project', async (e) => {
+        ipc.on(channels.toMain.buildSystemBuildUnityProject, async (e) => {
             await new UnityBridge().build(this.buildPath)
-            e.sender.send('BuildSystem:build-finished')
+            e.sender.send(channels.fromMain.buildSystemBuildFinished)
         })
-        ipc.on('BuildSystem:open-build-directory', async (e) => {
+        ipc.on(channels.toMain.buildSystemOpenBuildDirectory, async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
-        ipc.handle('BuildSystem:query-available-json-scenes', async (e) => {
+        ipc.handle(channels.toMain.buildSystemQueryAvailableJsonScenes, async (e) => {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
         })

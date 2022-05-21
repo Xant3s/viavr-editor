@@ -3,21 +3,7 @@ import {Scene} from './Scene'
 import {Package} from './Package'
 
 export const BuildDialog: FC = () => {
-    const [scenes, setScenes] = useState([
-        {
-            isSelected: true,
-            sceneFileName: 'Scene 1.glb',
-        },
-        {
-            isSelected: false,
-            sceneFileName: 'Scene 2.glb',
-        },
-        {
-            isSelected: true,
-            sceneFileName: 'Scene 3.glb',
-        }
-    ])
-
+    const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [readyToBuild, setReadyToBuild] = useState(false)
     const [buildFinished, setBuildFinished] = useState(false)
@@ -67,7 +53,7 @@ export const BuildDialog: FC = () => {
     }
 
     useEffect(() => {
-        // loadScenes()
+        loadScenes()
         loadPackages()
         window.api.on('ready-to-build-project', () => {setReadyToBuild(true)})
         window.api.on('build-finished', () => {setBuildFinished(true)})

@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react'
 import './styles.css'
+import SceneEditor from '../../SpokeEditor/SceneEditor'
+import {SceneExport} from '../../SpokeEditor/SceneExport'
+import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
 
 export const Editor = () => {
     const [hideProjectSelectionPage, setHideProjectSelectionPage] = useState(false)
@@ -8,6 +11,9 @@ export const Editor = () => {
     const onProjectSelected = () => {
         setHideProjectSelectionPage(true)
         setHideSpokeContainer(false)
+        new SceneEditor()
+        new SceneExport()
+        new SceneLoadingPage()
     }
 
     useEffect(() => {

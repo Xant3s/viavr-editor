@@ -1,3 +1,4 @@
+import * as Path from 'path'
 const {contextBridge, ipcRenderer} = require("electron")
 
 const validChannels = {
@@ -14,7 +15,9 @@ const validChannels = {
         "open-build-directory",
         "project-manager:create-new-project",
         "project-manager:open-project",
-        "project-manager:open-project-folder"
+        "project-manager:open-project-folder",
+        "query-available-json-scenes",
+        "project-manager:get-present-working-directory"
     ],
     "fromMain": [
         "fromMain",
@@ -22,7 +25,8 @@ const validChannels = {
         "ready-to-build-project",
         "build-finished",
         "project-manager:project-created",
-        "project-manager:project-opened"
+        "project-manager:project-opened",
+        "spoke:export-scene"
     ]
 }
 
@@ -56,7 +60,8 @@ const on = (channel: string, func) => {
 export const API = {
     send: send,
     invoke: invoke,
-    on: on
+    on: on,
+    Path: Path
 }
 
 contextBridge.exposeInMainWorld("api", API)

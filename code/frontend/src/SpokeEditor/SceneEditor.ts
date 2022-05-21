@@ -1,7 +1,7 @@
 import {$$, htmlElement} from './Spoke'
 import SceneLoadingPage from './SceneLoadingPage'
 
-export default class {
+export default class SceneEditor {
     constructor() {
         const handleSceneEditorPage = async() => {
             // TODO: Possible timeout issue -> add event listener instead of polling

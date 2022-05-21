@@ -17,7 +17,7 @@ export default class CustomMenu {
                     },
                     {
                       label: "Preferences",
-                        click: () => ipc.emit('open-preferences')
+                        click: () => ipc.emit('preferences:open')
                     },
                     {
                         label: "Exit",
@@ -56,7 +56,7 @@ export default class CustomMenu {
                 submenu: [
                     {
                         label: "Open Build Menu",
-                        click: () => ipc.emit('open-build-menu')
+                        click: () => ipc.emit('BuildSystem:open-build-menu')
                     }
                 ]
             },

@@ -19,7 +19,7 @@ export default class SpokeManager {
 
     private constructor() {
         this.startSpoke()
-        ipc.on('app-quit', this.stopSpoke)
+        ipc.on('app:quit', this.stopSpoke)
     }
 
     private startSpoke() {

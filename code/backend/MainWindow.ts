@@ -16,7 +16,7 @@ export default class MainWindow {
         this.application.whenReady().then(MainWindow.createWindow)
         this.application.on('activate', MainWindow.activate)
         this.application.on('window-all-closed', () => MainWindow.onWindowAllClosed(application))
-        this.application.on('quit', () => ipc.emit('app-quit'))
+        this.application.on('quit', () => ipc.emit('app:quit'))
 
         // https://github.com/electron/electron/issues/18214
         this.application.commandLine.appendSwitch('disable-site-isolation-trials')

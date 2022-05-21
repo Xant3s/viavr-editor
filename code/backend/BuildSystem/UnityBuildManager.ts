@@ -40,22 +40,22 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.handle('query-available-scenes', async (e) => {
+        ipc.handle('BuildSystem:query-available-scenes', async (e) => {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.on('create-unity-project', async (e, selectedScenes, selectedPackages) => {
+        ipc.on('BuildSystem:create-unity-project', async (e, selectedScenes, selectedPackages) => {
             await this.createUnityProject(selectedScenes, selectedPackages)
-            e.sender.send('ready-to-build-project')
+            e.sender.send('BuildSystem:ready-to-build-project')
         })
-        ipc.on('build-unity-project', async (e) => {
+        ipc.on('BuildSystem:build-unity-project', async (e) => {
             await new UnityBridge().build(this.buildPath)
-            e.sender.send('build-finished')
+            e.sender.send('BuildSystem:build-finished')
         })
-        ipc.on('open-build-directory', async (e) => {
+        ipc.on('BuildSystem:open-build-directory', async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
-        ipc.handle('query-available-json-scenes', async (e) => {
+        ipc.handle('BuildSystem:query-available-json-scenes', async (e) => {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
         })

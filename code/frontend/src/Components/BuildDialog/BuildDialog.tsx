@@ -42,22 +42,22 @@ export const BuildDialog: FC = () => {
     }
 
     const loadScenes = async () => {
-        const sceneFileNames = await window.api.invoke('query-available-scenes')
+        const sceneFileNames = await window.api.invoke('BuildSystem:query-available-scenes')
         setScenes(sceneFileNames.map(sceneFileName => {
             return ({isSelected: true, sceneFileName})
         }))
     }
 
     const loadPackages = async () => {
-        const packages = await window.api.invoke('query-available-packages')
+        const packages = await window.api.invoke('BuildSystem:query-available-packages')
         setPackages(packages)
     }
 
     useEffect(() => {
         loadScenes()
         loadPackages()
-        window.api.on('ready-to-build-project', () => {setReadyToBuild(true)})
-        window.api.on('build-finished', () => {setBuildFinished(true)})
+        window.api.on('BuildSystem:ready-to-build-project', () => {setReadyToBuild(true)})
+        window.api.on('BuildSystem:build-finished', () => {setBuildFinished(true)})
     }, [])
 
     return (
@@ -88,17 +88,17 @@ export const BuildDialog: FC = () => {
             <br/>
             <div id="package-list"></div>
             <br/>
-            <button id="btn-create-project" type="button" onClick={() => window.api.send('create-unity-project', getSelectedSceneNames(), getSelectedPackages())}>
+            <button id="btn-create-project" type="button" onClick={() => window.api.send('BuildSystem:create-unity-project', getSelectedSceneNames(), getSelectedPackages())}>
                 Create Unity Project
             </button>
             <br/>
             <br/>
             <label>Info: Build project will only work on Windows for now.</label>
             <br/>
-            <button id="btn-build-project" type="button" onClick={() => window.api.send('build-unity-project')} disabled={!readyToBuild}>
+            <button id="btn-build-project" type="button" onClick={() => window.api.send('BuildSystem:build-unity-project')} disabled={!readyToBuild}>
                 Build Unity Project
             </button>
-            <button id="btn-open-build-directory" type="button" onClick={() => window.api.send('open-build-directory')} disabled={!buildFinished}>
+            <button id="btn-open-build-directory" type="button" onClick={() => window.api.send('BuildSystem:open-build-directory')} disabled={!buildFinished}>
                 Open Build Directory
             </button>
         </>

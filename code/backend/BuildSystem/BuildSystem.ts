@@ -16,8 +16,8 @@ export default class BuildSystem {
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
         UnityPackageManager.getInstance()
-        ipc.on('open-build-menu', () => this.openBuildMenu())
-        ipc.on('select-unity-path', async (e) => {
+        ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
+        ipc.on('BuildSystem:select-unity-path', async (e) => {
             const result = await dialog.showOpenDialog({properties: ['openFile']})
             if(result && !result.canceled){
                 const unityPath = result.filePaths[0]

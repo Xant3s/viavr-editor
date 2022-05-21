@@ -1,37 +1,47 @@
 import * as Path from 'path'
 const {contextBridge, ipcRenderer} = require("electron")
 
-const validChannels = {
-    "toMain": [
-        "toMain",
-        "preferences:request",
-        "preferences-changed",
-        "select-unity-path",
-        "dark-mode:set",
-        "query-available-scenes",
-        "query-available-packages",
-        "create-unity-project",
-        "build-unity-project",
-        "open-build-directory",
-        "project-manager:create-new-project",
-        "project-manager:open-project",
-        "project-manager:open-project-folder",
-        "query-available-json-scenes",
-        "project-manager:get-present-working-directory"
-    ],
-    "fromMain": [
-        "fromMain",
-        "preference-changed-from-backend-unityPath",
-        "ready-to-build-project",
-        "build-finished",
-        "project-manager:project-created",
-        "project-manager:project-opened",
-        "spoke:export-scene"
-    ]
+
+export const channels = {
+    "toMain": {
+        selectUnityPath: 'BuildSystem:select-unity-path',
+        queryScenes: "BuildSystem:query-available-scenes",
+        queryPackages: "BuildSystem:query-available-packages",
+        createUnityProject: "BuildSystem:create-unity-project",
+        buildUnityProject: "BuildSystem:build-unity-project",
+        openBuildDirectory: "BuildSystem:open-build-directory",
+        queryJsonScenes: "BuildSystem:query-available-json-scenes",
+        setDarkMode: "dark-mode:set",
+        requestPreference: "preferences:request",
+        changePreference: "preferences:changed",
+        createNewProject: "project-manager:create-new-project",
+        openProject: "project-manager:open-project",
+        openProjectFolder: "project-manager:open-project-folder",
+        getPresentWorkingDirectory: "project-manager:get-present-working-directory"
+    },
+    "fromMain": {
+        buildFinished: "BuildSystem:build-finished",
+        readyToBuildProject: "BuildSystem:ready-to-build-project",
+        preferenceChangedFromBackendUnityPath: "preferences:preference-changed-from-backend-unityPath",
+        projectCreated: "project-manager:project-created",
+        projectOpened: "project-manager:project-opened",
+        spokeExportScene: "spoke:export-scene"
+    }
+}
+
+class ValidChannels {
+    toMain: string[]
+    fromMain: string[]
+
+    constructor() {
+        this.toMain = Object.values(channels.toMain)
+        this.fromMain = Object.values(channels.fromMain)
+    }
 }
 
 const send = (channel: string, ...args: any) => {
-    if(validChannels["toMain"].includes(channel)) {
+    const validChannels = new ValidChannels()
+    if(validChannels.toMain.includes(channel)) {
         ipcRenderer.send(channel, ...args)
     } else {
         console.error(`Invalid channel: ${channel}`)
@@ -39,7 +49,8 @@ const send = (channel: string, ...args: any) => {
 }
 
 const invoke = async (channel: string, ...args: any) => {
-    if(validChannels["toMain"].includes(channel)) {
+    const validChannels = new ValidChannels()
+    if(validChannels.toMain.includes(channel)) {
         return ipcRenderer.invoke(channel, ...args)
     } else {
         console.error(`Invalid channel: ${channel}`)
@@ -49,7 +60,8 @@ const invoke = async (channel: string, ...args: any) => {
 
 //@ts-ignore
 const on = (channel: string, func) => {
-    if(validChannels["fromMain"].includes(channel)) {
+    const validChannels = new ValidChannels()
+    if(validChannels.fromMain.includes(channel)) {
         // Deliberately strip event as it includes `sender`
         ipcRenderer.on(channel, (event, ...args) => func(...args))
     } else {
@@ -61,7 +73,8 @@ export const API = {
     send: send,
     invoke: invoke,
     on: on,
-    Path: Path
+    Path: Path,
+    channels: channels
 }
 
 contextBridge.exposeInMainWorld("api", API)

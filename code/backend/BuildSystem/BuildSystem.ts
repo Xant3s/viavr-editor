@@ -1,6 +1,7 @@
 import {BrowserWindow, dialog, ipcMain as ipc} from 'electron'
 import path from 'path'
 import * as isDev from 'electron-is-dev'
+import {channels} from '../preload'
 import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import PreferencesManager from '../Preferences/PreferencesManager'
@@ -16,8 +17,8 @@ export default class BuildSystem {
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
         UnityPackageManager.getInstance()
-        ipc.on('open-build-menu', () => this.openBuildMenu())
-        ipc.on('select-unity-path', async (e) => {
+        ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
+        ipc.on(channels.toMain.selectUnityPath, async (e) => {
             const result = await dialog.showOpenDialog({properties: ['openFile']})
             if(result && !result.canceled){
                 const unityPath = result.filePaths[0]

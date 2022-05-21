@@ -34,7 +34,7 @@ export default class SceneLoadingPage {
     private async displayAvailableScenes() {
         const newSceneLabel = $$('h3:contains("New Scene")')
         const sceneLoadButton = newSceneLabel.parent()
-        const availableScenes: string[] = await api.invoke('query-available-json-scenes')
+        const availableScenes: string[] = await api.invoke(api.channels.toMain.queryJsonScenes)
         availableScenes.forEach(sceneName => this.addLoadSceneButton(sceneName, sceneLoadButton))
     }
 

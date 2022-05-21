@@ -10,12 +10,12 @@ export const Preferences: FC = () => {
 
 
     const loadPreference = (name: string) => {
-        return api.invoke('preferences:request', name)
+        return api.invoke(api.channels.toMain.requestPreference, name)
     }
 
     const updatePreference = (updateStateFunction, event, name: string) => {
         updateStateFunction(event.target.value)
-        api.send('preferences-changed', {name: name, value: event.target.value})
+        api.send(api.channels.toMain.changePreference, {name: name, value: event.target.value})
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const Preferences: FC = () => {
             setThemeSource(themeSource)
         }
 
-        api.on('preference-changed-from-backend-unityPath', (data) => {setUnityPath(data)})
+        api.on(api.channels.fromMain.preferenceChangedFromBackendUnityPath, (data) => {setUnityPath(data)})
 
         loadInitialValues()
     })
@@ -49,7 +49,7 @@ export const Preferences: FC = () => {
                 <label htmlFor={'dark-mode'}>Theme:</label>
                 <select id={'dark-mode'} name={'dark-mode'} value={themeSource} onChange={(e) => {
                     updatePreference(setUnityPath, e, "darkMode")
-                    api.send('dark-mode:set', e.target.value)
+                    api.send(api.channels.toMain.setDarkMode, e.target.value)
                 }}>
                     <option value={'System'}>System</option>
                     <option value={'Dark'}>Dark</option>
@@ -62,7 +62,7 @@ export const Preferences: FC = () => {
                 <input id={'unity-path'} type={'text'} value={unityPath} onChange={(e) => {
                     updatePreference(setUnityPath, e, "unityPath")
                 }}/>
-                <button id={'btn-select-unity-path'} onClick={() => {api.send('select-unity-path')}}>Select</button>
+                <button id={'btn-select-unity-path'} onClick={() => {api.send(api.channels.toMain.selectUnityPath)}}>Select</button>
             </div>
 
             <div className="preference-entry">

@@ -1,5 +1,6 @@
 import {ipcMain as ipc} from 'electron'
 import fetch from 'node-fetch'
+import {channels} from '../preload'
 import Package from './DataStructures/Package'
 import PreferencesManager from '../Preferences/PreferencesManager'
 
@@ -20,7 +21,7 @@ export default class UnityPackageManager {
     private constructor() {
         this.registryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
         this.registryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
-        ipc.handle('query-available-packages', async (e) => {
+        ipc.handle(channels.toMain.queryPackages, async (e) => {
             const packageManager = UnityPackageManager.getInstance()
             const packageList = await packageManager.queryPackagesFromRegistry()
             return packageList

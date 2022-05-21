@@ -5,6 +5,7 @@ import * as Path from 'path'
 import MainWindow from '../MainWindow'
 import Utils from '../BuildSystem/Utils'
 import fastFolderSizeSync = require('fast-folder-size/sync')
+import {channels} from '../preload'
 
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
@@ -35,12 +36,12 @@ export default class ProjectManager {
     }
 
     private constructor() {
-        ipc.on('project-manager:create-new-project', async () => this.createNewProject())
-        ipc.on('project-manager:open-project', async () => this.openProjectFromFile())
-        ipc.on('project-manager:open-project-folder', async () => this.openProjectFromFolder())
+        ipc.on(channels.toMain.createNewProject, async () => this.createNewProject())
+        ipc.on(channels.toMain.openProject, async () => this.openProjectFromFile())
+        ipc.on(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
-        ipc.handle('project-manager:get-present-working-directory', async () => this._presentWorkingDirectory)
+        ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
     }
 
     private async createNewProject() {
@@ -55,7 +56,7 @@ export default class ProjectManager {
             const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
             fs.rmdirSync(tempProjectFolder, {recursive: true})
             this._presentWorkingDirectory = tempProjectFolder
-            this.mainWindow.send('project-manager:project-created')
+            this.mainWindow.send(channels.fromMain.projectCreated)
         }
     }
 
@@ -90,7 +91,7 @@ export default class ProjectManager {
     private onProjectOpened() {
         console.log('Project path: ', this.projectPath)
         console.log('Present working directory: ', this.presentWorkingDirectory)
-        this.mainWindow.send('project-manager:project-opened')
+        this.mainWindow.send(channels.fromMain.projectOpened)
     }
 
     private async saveProject() {

@@ -3,6 +3,7 @@ import * as isDev from 'electron-is-dev'
 import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
 import path from 'path'
+import {channels} from '../preload'
 
 const fs = require('fs').promises
 
@@ -28,10 +29,10 @@ export default class PreferencesManager {
     }
 
     private constructor() {
-        ipc.on('open-preferences', () => this.openPreferences())
-        ipc.on('preferences-changed', (_, pref) => this.updatePreference(pref))
-        ipc.handle('preferences:request', (_, name) => this.get(name))
-        ipc.on('app-quit', () => this.savePreferences())
+        ipc.on('preferences:open', () => this.openPreferences())
+        ipc.on(channels.toMain.changePreference, (_, pref) => this.updatePreference(pref))
+        ipc.handle(channels.toMain.requestPreference, (_, name) => this.get(name))
+        ipc.on('app:quit', () => this.savePreferences())
     }
 
     public get<Type>(name: string): Type {
@@ -40,7 +41,7 @@ export default class PreferencesManager {
 
     public set<Type>(name: string, value: Type) {
         this.preferences[name] = value
-        this.window?.webContents.send(`preference-changed-from-backend-${name}`, value)
+        this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
         this.savePreferences()
     }
 

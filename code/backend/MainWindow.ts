@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as isDev from 'electron-is-dev'
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
 import CustomMenu from './CustomMenu'
+import {channels} from './preload'
 
 
 
@@ -16,7 +17,7 @@ export default class MainWindow {
         this.application.whenReady().then(MainWindow.createWindow)
         this.application.on('activate', MainWindow.activate)
         this.application.on('window-all-closed', () => MainWindow.onWindowAllClosed(application))
-        this.application.on('quit', () => ipc.emit('app-quit'))
+        this.application.on('quit', () => ipc.emit('app:quit'))
 
         // https://github.com/electron/electron/issues/18214
         this.application.commandLine.appendSwitch('disable-site-isolation-trials')
@@ -50,7 +51,7 @@ export default class MainWindow {
 
         MainWindow.window.maximize()
 
-        ipcMain.on('dark-mode:set', (_, val) => nativeTheme.themeSource = val.toLowerCase())
+        ipcMain.on(channels.toMain.setDarkMode, (_, val) => nativeTheme.themeSource = val.toLowerCase())
 
         // Hot Reloading
         if (isDev) {

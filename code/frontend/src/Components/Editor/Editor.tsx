@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import './styles.css'
 
 export const Editor = () => {
     const [hideProjectSelectionPage, setHideProjectSelectionPage] = useState(false)

@@ -16,7 +16,7 @@ docfx:
         - mono ../../docfx/docfx.exe docfx.json build
     artifacts:
         paths:
-            - _site
+            - code/docs/_site
         expire_in: 1 week
     tags:
         - docker

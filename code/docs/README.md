@@ -2,12 +2,12 @@
 
 We use [DocFX](https://dotnet.github.io/docfx/) for generating the documentation.
 
-
 ## How to Build the Documentation Site
 
 1. Install DocFX [see more](https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool)
 2. Run `docfx ./docfx.json --serve` inside the `code/docs` folder. You should now be able to view the generated site on [http://localhost:8080](http://localhost:8080).
    1. Alternatively, run `docfx ./docfx.json` inside the `code/docs` folder and open the `code/docs/_site/index.html` file with any browser
+   2. Run the `CleanRebuild.bat` script to delete the cache and rebuild
 
 ## Continuous Deployment
 

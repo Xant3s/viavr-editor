@@ -3,5 +3,4 @@
 </p>
 
 
-
-# Welcome to the VIA-VR Documentation
+# VIA-VR Editor Documentation for Developers

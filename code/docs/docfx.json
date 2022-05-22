@@ -19,7 +19,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "specifications/**/images/**"
         ]
       }
     ],

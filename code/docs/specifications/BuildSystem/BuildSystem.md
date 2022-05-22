@@ -4,24 +4,8 @@ The build system creates a Unity project based on the VIA-VR project and invokes
 
 ## Build Process Flowchart
 
-```mermaid
-flowchart TD;
-subgraph viavr[VIA-VR Editor]
-    qp[Query packages from registry] --> usp[/User selects packages to install/]
-    usp --> uss[/User selects scenes/]
-    uss --> cp[Copy Unity project template]
-    cp --> ss[Setup scoped registry]
-    ss --> ap[Add selected packages to manifest]
-end
-subgraph Unity
-    uop[Generate Unity project files]
-    uop --> usi[Add scenes to build settings]
-    usi --> up([Unity project])
-    up --> ub[Build project]
-    ub --> exe([Executable])
-end
-viavr -- Invoke BuildUtils package in batch mode --> Unity
-```
+<img src="images/BuildSystem_FlowGraph.png" alt="SceneExportPipeline" style="alignment: center"/>
+
 
 <!-- TODO: add specification how packages load configuration form the VIA-VR editor, how behaviors are added to scenes, etc -->
 
@@ -37,4 +21,4 @@ viavr -- Invoke BuildUtils package in batch mode --> Unity
 
 ## Scene Export Pipeline
 
-![SceneExportPipeline](images/SceneExportPipeline.png)
+<img src="images/SceneExportPipeline.png" alt="SceneExportPipeline" style="alignment: center"/>

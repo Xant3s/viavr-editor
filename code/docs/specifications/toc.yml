@@ -4,10 +4,10 @@
   href: BuildSystem/BuildSystem.md
 - name: Unity Packages
   items:
-    - name: How to Create a Package for VIA-VR
+    - name: How to Create Packages for VIA-VR
       href: Packages/QuickStart.md
-    - name: Packages Full Guide
-      href: Packages/FullGuide.md
+    - name: Packages Full Specification
+      href: Packages/FullSpecs.md
 
 #TODO: add code folder overview, App, Editor, Plugins, etc
 

@@ -10,7 +10,9 @@ This page serves as quick start on how to develop packages for the VIA-VR projec
 - [Unity package manual](https://docs.unity3d.com/Manual/CustomPackages.html)
 - [Unity versions to use](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/orga/software-versions#unity)
 
-## Step 1: Create the Payload
+## Step 1: Develop the Payload
+
+
 
 ## Step 2: Adopt the Package Structure
 
@@ -18,7 +20,7 @@ This page serves as quick start on how to develop packages for the VIA-VR projec
 
 <!-- TODO: Unity Bridge -->
 
-<!-- TODO: package.json mandatory, keywords, ui manifest -->
+<!-- TODO: ui manifest -->
 
 ## Package Manifest
 
@@ -27,22 +29,37 @@ VIA-VR Unity packages must have the following values in their `package.json`.
 ```json
 {
     "author": {
-    "name": "Games Engineering JMU W\u00fcrzburg",
-    "url": "https://games.uni-wuerzburg.de"
+        "name": "<AUTHOR NAME>",
+        "url": "<AUTHOR WEBSITE>"
     },
+    "description": "<SHORT DESCRIPTION OF THE PACKAGE>",
     "documentationUrl": "<LINK TO THE DOCUMENTATION>",
-    "name": "de.jmu.ge.<PACKAGE NAME>",
+    "name": "<PACKAGE SCOPE>.<PACKAGE NAME>",
+    "keywords": [
+        "viavr"
+    ],
     "publishConfig": {
-        "registry": "https://packages.informatik.uni-wuerzburg.de/"
+        "registry": "<PACKAGE REGISTRY URL>"
     }
 }
 ```
+
+<div class="NOTE">
+  <h5>NOTE</h5>
+  <p>
+  See <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/build-utils/-/blob/master/package.json">example</a>.</p>
+</div>
+
+<div class="WARNING">
+  <h5>WARNING</h5>
+  <p>Published packages with the 'viavr' keyword will become immediately visible to the VIA-VR editor. Do not add this keyword until the package can be used in a VIA-VR project.</p>
+</div>
 
 ## Package Manifest Extensions
 
 Additionally, VIA-VR Unity packages can have the following custom properties in their `package.json`.
 
 
-| Property    | Values            | Description |
-| ------------- | ------------------- | ------------- |
-| "mandatory" | `true` or `false` |             |
+| Property    | Values            | Description                                                                                           |
+|-------------|-------------------|-------------------------------------------------------------------------------------------------------|
+| "mandatory" | `true` or `false` | Determines whether all VIA-VR projects must install this package. Should be `false` for most packages. |

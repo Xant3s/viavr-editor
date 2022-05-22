@@ -42,8 +42,7 @@ So far your package is hopefully quite useful for fellow Unity developers who kn
 2. Create a sample .json file which contains a sane default configuration for you package. The json structure must comply with the structure defined by your `Configuration` class. Place this file in `Settings/<YOUR PACKAGE NAME>/`. You can move it to your package samples.
 3. Add the [Unity Bridge](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge) package to the list of package dependencies inside your `package.json`
 4. Use the `JsonLoader` provided by the Unity Bridge to load the configuration from your .json file. Use this configuration in your package. You can assume the .json exists at `Assets/Settings/<YOUR PACKAGE NAME>/Configuration.json`.
-5. Create a `PackageConfigurator` class which inherits from `UnityBridge.core.PackageConfigurator`. Override the necessary event functions to automate all tasks you would usually do manually in the Unity editor
-<!-- TODO: ref event functions -->
+5. Create a `PackageConfigurator` class which inherits from `UnityBridge.core.PackageConfigurator`. Override the necessary [event functions](#event-functions) to automate all tasks you would usually do manually in the Unity editor
 
 <div class="NOTE">
     <h5>EXAMPLE</h5>
@@ -64,14 +63,20 @@ So far your package is hopefully quite useful for fellow Unity developers who kn
     <p>5. <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/Packages/de.jmu.ge.spokesceneimporter/Editor/PackageConfigurator.cs">PackageConfigurator</a> class</p>
 </div>
 
+<div class="NOTE">
+    <h5>NOTE</h5>
+    <p>
+        To test if your PackageConfigurator works, select 'Tools > VIA-VR Unity Bridge > Simulate Bridge Calls' from the Unity menu. For edit mode only.
+    </p>
+</div>
 
-
-<!-- TODO: Unity Bridge: package configuration event functions -->
-
-<!-- json file to test, bridge run test -->
-<!-- place settings.json in specified folder -->
+<!-- TODO: place settings.json in specified folder -->
 
 <!-- TODO: add differences between editor and runtime packages -->
+
+## Event Functions
+
+Please refer to the [Unity Bridge documentation](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge/-/blob/main/README.md) to learn about the available event functions.
 
 ## Package Manifest
 

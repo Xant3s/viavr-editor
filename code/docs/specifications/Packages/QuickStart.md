@@ -12,7 +12,8 @@ This page serves as quick start on how to develop packages for the VIA-VR projec
 
 ## Step 1: Develop the Payload
 
-First, develop the payload, i.e. the functionality of your package. Feel free to adopt the package structure ([Step 2](#step-2-adopt-the-package-structure)) right away or work in a regular Unity project first. Your functionality should be as self-contained as possible. Keep coupling to a minimum. Use self-contained prefabs. Test your functionality in isolation (whitebox levels etc.). This step is no different from developing any other Unity package.
+First, develop the payload, i.e. the functionality of your package. Feel free to adopt the package structure ([Step 2](#step-2-adopt-the-package-structure)) right away or work in a regular Unity project first. Your functionality should be as self-contained as possible. Keep coupling to a minimum. Use self-contained prefabs. Test your functionality in isolation (whitebox levels etc.).
+This step is no different from developing any other Unity package.
 
 <div class="NOTE">
     <h5>EXAMPLE</h5>
@@ -22,6 +23,17 @@ First, develop the payload, i.e. the functionality of your package. Feel free to
 </div>
 
 ## Step 2: Adopt the Package Structure
+
+Now adopt the package structure. Make sure to satisfy all specifications ([VIA-VR C# Style Guide](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/package-registry/-/wikis/C%23-Style-Guide), [Semantic Versioning](https://docs.unity3d.com/Manual/upm-semver.html), [Unity Package Manual](https://docs.unity3d.com/Manual/CustomPackages.html), [Unity Versions to Use](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/orga/software-versions#unity), [Package Manifest Values](#package-manifest), [Package Manifest Extensions](#package-manifest-extensions)). Add [samples](https://docs.unity3d.com/Manual/cus-samples.html) whenever it makes sense. Add documentation.
+This step is no different from developing any other Unity package. You now have a fully functional Unity package that - once published - can be used in other projects without any additional steps.
+
+<div class="NOTE">
+    <h5>EXAMPLE</h5>
+    <p>
+        See the <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/example-package">example package</a> for a minimal example. You can also <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/package-registry#how-to-install-packages">install it from the package registry</a>.
+    </p>
+</div>
+
 
 ## Step 3: Configuration
 
@@ -69,4 +81,4 @@ Additionally, VIA-VR Unity packages can have the following custom properties in 
 
 | Property    | Values            | Description                                                                                           |
 |-------------|-------------------|-------------------------------------------------------------------------------------------------------|
-| "mandatory" | `true` or `false` | Determines whether all VIA-VR projects must install this package. Should be `false` for most packages. |
+| "mandatory" | `true` or `false` | Determines whether all VIA-VR projects must install this package. Should be `false` for most packages. This property is optional. It only has an effect if present and set to `true`. |

@@ -1,6 +1,39 @@
 stages:
   - build
+  - deploy
 #  - test
+
+docfx:
+    image: mono:latest
+    stage: build
+    before_script:
+        - apt update
+        - apt install -y unzip wget
+        - wget https://github.com/dotnet/docfx/releases/download/v2.59.2/docfx.zip
+        - unzip docfx.zip -d docfx
+    script:
+        - cd code/docs
+        - mono ../../docfx/docfx.exe docfx.json build
+    artifacts:
+        paths:
+            - _site
+        expire_in: 1 week
+    tags:
+        - docker
+
+lecture-server:
+    image: alpine:latest
+    stage: deploy
+    before_script:
+        - apk update
+        - apk add rsync
+    script:
+        - rsync -a code/docs/_site/ /lectures/viavr-docs/editor/
+    tags:
+        - docker
+        - lectures
+    # only:
+        # - master
 
 backend:
   image: node:latest

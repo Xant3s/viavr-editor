@@ -34,12 +34,44 @@ This step is no different from developing any other Unity package. You now have 
     </p>
 </div>
 
-
 ## Step 3: Configuration
 
-<!-- TODO: Unity Bridge -->
+So far your package is hopefully quite useful for fellow Unity developers who know how to code and are familiar with the Unity editor. To also make your package usable by VIA-VR editor users, do the following.
 
-<!-- TODO: ui manifest -->
+1. Create a serializable `Configuration` class, which declares the structure of the data your package consumes
+2. Create a sample .json file which contains a sane default configuration for you package. The json structure must comply with the structure defined by your `Configuration` class. Place this file in `Settings/<YOUR PACKAGE NAME>/`. You can move it to your package samples.
+3. Add the [Unity Bridge](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge) package to the list of package dependencies inside your `package.json`
+4. Use the `JsonLoader` provided by the Unity Bridge to load the configuration from your .json file. Use this configuration in your package. You can assume the .json exists at `Assets/Settings/<YOUR PACKAGE NAME>/Configuration.json`.
+5. Create a `PackageConfigurator` class which inherits from `UnityBridge.core.PackageConfigurator`. Override the necessary event functions to automate all tasks you would usually do manually in the Unity editor
+<!-- TODO: ref event functions -->
+
+<div class="NOTE">
+    <h5>EXAMPLE</h5>
+    <p>
+        A health bar package might define its configuration as a list of GameObject names that should have a health bar. The configuration might also include other parameterized settings like the health bar appearance, the initial health values, etc.
+    </p>
+    <p>
+        Normally, you would have to add at least one MonoBehaviour to your scene. This MonoBehaviour would then load the the configuration and add health bars to all specified GameObjects when the game starts. To automate this step, you would override the OnConfigureScene method of your PackageConfigurator. In this method you would create a new GameObject and add your MonoBehavior as component.
+    </p>
+    <br />
+    <p>
+        Let's have a look at a concrete example: the <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer">Spoke Scene Importer</a> package. You can read up on what it does <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/README.md">here</a>.
+    </p>
+    <p>1. <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/Packages/de.jmu.ge.spokesceneimporter/Editor/Configuration.cs">Configuration</a> class</p>
+    <p>2. <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/Packages/de.jmu.ge.spokesceneimporter/Samples~/FirstExample/Settings/Scenes.json">Example .json</a></p>
+    <p>3. <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/Packages/de.jmu.ge.spokesceneimporter/package.json">Package manifest (line 18)</a></p>
+    <p>4. <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/Packages/de.jmu.ge.spokesceneimporter/Editor/SceneImporter.cs">Loading the configuration (line 24)</a></p>
+    <p>5. <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/Packages/de.jmu.ge.spokesceneimporter/Editor/PackageConfigurator.cs">PackageConfigurator</a> class</p>
+</div>
+
+
+
+<!-- TODO: Unity Bridge: package configuration event functions -->
+
+<!-- json file to test, bridge run test -->
+<!-- place settings.json in specified folder -->
+
+<!-- TODO: add differences between editor and runtime packages -->
 
 ## Package Manifest
 
@@ -66,7 +98,7 @@ VIA-VR Unity packages must have the following values in their `package.json`.
 <div class="NOTE">
   <h5>NOTE</h5>
   <p>
-  See <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/build-utils/-/blob/master/package.json">example</a>.</p>
+  See <a href="https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/build-utils/-/blob/master/package.json">example manifest</a>.</p>
 </div>
 
 <div class="WARNING">
@@ -82,3 +114,7 @@ Additionally, VIA-VR Unity packages can have the following custom properties in 
 | Property    | Values            | Description                                                                                           |
 |-------------|-------------------|-------------------------------------------------------------------------------------------------------|
 | "mandatory" | `true` or `false` | Determines whether all VIA-VR projects must install this package. Should be `false` for most packages. This property is optional. It only has an effect if present and set to `true`. |
+
+<!-- TODO: ui manifest -->
+
+<!-- TODO: dependencies: registries/scopes inject into viavr editor -->

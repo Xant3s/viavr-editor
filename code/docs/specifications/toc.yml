@@ -4,7 +4,7 @@
   href: BuildSystem/BuildSystem.md
 - name: Unity Packages
   items:
-    - name: How to Create a Package
+    - name: How to Create a Package for VIA-VR
       href: Packages/QuickStart.md
     - name: Packages Full Guide
       href: Packages/FullGuide.md

@@ -24,4 +24,4 @@ See [quick start](code/README.md)
 
 ## Documentation
 
-See [Wiki](https://gitlab2.informatik.uni-wuerzburg.de/GE/Teaching/grl/2021-truman-viavr-editor/-/wikis/home)
+See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)

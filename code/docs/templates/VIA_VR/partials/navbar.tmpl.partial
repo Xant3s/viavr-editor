@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{_rel}}index.html">
-        <img id="logo" src="{{_rel}}images/VIA-VR-logo-EN.svg" height="55" width="50" alt="{{_appName}}" >
+        <img id="logo" src="{{_rel}}images/VIA-VR-logo-White2.svg" height="55" width="50" alt="{{_appName}}" >
       </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">

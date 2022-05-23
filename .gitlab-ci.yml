@@ -32,8 +32,8 @@ lecture-server:
     tags:
         - docker
         - lectures
-    # only:
-        # - master
+    only:
+        - master
 
 backend:
   image: node:latest

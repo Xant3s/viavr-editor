@@ -1,7 +1,7 @@
 import {BrowserWindow, dialog, ipcMain as ipc} from 'electron'
 import path from 'path'
 import * as isDev from 'electron-is-dev'
-import {channels} from '../preload'
+import {channels} from '../API'
 import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import PreferencesManager from '../Preferences/PreferencesManager'

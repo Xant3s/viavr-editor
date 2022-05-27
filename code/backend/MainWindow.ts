@@ -3,7 +3,7 @@ import * as path from 'path'
 import * as isDev from 'electron-is-dev'
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
 import CustomMenu from './CustomMenu'
-import {channels} from './preload'
+import {channels} from './API'
 
 
 

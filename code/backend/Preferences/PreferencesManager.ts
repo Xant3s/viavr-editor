@@ -3,7 +3,7 @@ import * as isDev from 'electron-is-dev'
 import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
 import path from 'path'
-import {channels} from '../preload'
+import {channels} from '../API'
 
 const fs = require('fs').promises
 

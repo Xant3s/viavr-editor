@@ -10,7 +10,7 @@ import ProjectManager from '../ProjectManager/ProjectManager'
 import assert = require('assert')
 import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
-import {channels} from '../preload'
+import {channels} from '../API'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)

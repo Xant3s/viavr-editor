@@ -2,7 +2,7 @@ import {ipcMain, session} from 'electron'
 import MainWindow from '../MainWindow'
 import ProjectManager from './ProjectManager'
 import * as Path from 'path'
-import {channels} from '../preload'
+import {channels} from '../API'
 
 
 export default class SceneExporter {

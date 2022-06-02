@@ -6,6 +6,8 @@
   items:
     - name: How to Create Packages for VIA-VR
       href: Packages/QuickStart.md
+    - name: Reality Stack and VIA-VR Packages
+      href: Packages/RealityStack.md
     - name: Packages Full Specification
       href: Packages/FullSpecs.md
 

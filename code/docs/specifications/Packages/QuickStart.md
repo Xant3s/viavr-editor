@@ -1,4 +1,4 @@
-# How to Create Packages for VIA-VR
+# How to Create Unity Packages for VIA-VR
 
 This page serves as quick start on how to develop packages for the VIA-VR project. We focus on requirements and best practices specific to the VIA-VR project. Please read the general information if you are unfamiliar with any of those topics.
 

@@ -3,19 +3,18 @@ import './Preferences.css'
 import {Preference} from './Preference'
 
 export const Preferences: FC = () => {
-    const [unityPath, setUnityPath] = useState('')
-    const [registryName, setRegistryName] = useState('')
-    const [registryUrl, setRegistryUrl] = useState('')
-    const [registryScope, setRegistryScope] = useState('')
-    const [themeSource, setThemeSource] = useState('')
+    const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
+    const setPref = (key: string, value: any) => {
+        setPrefs(new Map(prefs.set(key, value)))
+    }
 
     const loadPreference = (name: string) => {
         return api.invoke(api.channels.toMain.requestPreference, name)
     }
 
-    const updatePreference = (updateStateFunction, event, name: string) => {
-        updateStateFunction(event.target.value)
+    const updatePreference = (event, name: string) => {
+        setPref(name, event.target.value)
         api.send(api.channels.toMain.changePreference, {name: name, value: event.target.value})
     }
 
@@ -28,14 +27,14 @@ export const Preferences: FC = () => {
                 loadPreference('packageRegistryScope'),
                 loadPreference('darkMode')
             ])
-            setUnityPath(unityPath)
-            setRegistryName(registryName)
-            setRegistryUrl(registryUrl)
-            setRegistryScope(registryScope)
-            setThemeSource(themeSource)
+            setPref('unityPath', unityPath)
+            setPref('registryName', registryName)
+            setPref('registryUrl', registryUrl)
+            setPref('registryScope', registryScope)
+            setPref('darkMode', themeSource)
         }
 
-        api.on(api.channels.fromMain.preferenceChangedFromBackendUnityPath, (data) => {setUnityPath(data)})
+        api.on(api.channels.fromMain.preferenceChangedFromBackendUnityPath, (data) => {setPref('unityPath', data)})
 
         loadInitialValues()
     })
@@ -46,25 +45,25 @@ export const Preferences: FC = () => {
             <h1>Preferences</h1>
             <br />
 
-            <Preference id={'dark-mode'} label={'Theme'} value={themeSource} onChange={(e) => {
-                updatePreference(setUnityPath, e, "darkMode")
+            <Preference id={'dark-mode'} label={'Theme'} value={prefs.get('darkMode')} onChange={(e) => {
+                updatePreference(e, "darkMode")
                 api.send(api.channels.toMain.setDarkMode, e.target.value)
             }} kind={'dropdown'} options={['System', 'Dark', 'Light']} />
 
-            <Preference id={'unity-path'} label='Path to Unity executable' value={unityPath} onChange={(e) => {
-                updatePreference(setUnityPath, e, "unityPath")
+            <Preference id={'unity-path'} label='Path to Unity executable' value={prefs.get('unityPath')} onChange={(e) => {
+                updatePreference(e, "unityPath")
             }} kind={'path'} selectPath={() => {api.send(api.channels.toMain.selectUnityPath)}}  />
 
-            <Preference id={'package-registry-name'} label={'Package registry name'} value={registryName} onChange={(e) => {
-                updatePreference(setRegistryName, e, "packageRegistryName")
+            <Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('registryName')} onChange={(e) => {
+                updatePreference(e, "packageRegistryName")
             }} />
 
-            <Preference id={'package-registry-url'} label={'Package registry url'} value={registryUrl} onChange={(e) => {
-                updatePreference(setRegistryUrl, e, "packageRegistryUrl")
+            <Preference id={'package-registry-url'} label={'Package registry url'} value={prefs.get('registryUrl')} onChange={(e) => {
+                updatePreference(e, "packageRegistryUrl")
             }} />
 
-            <Preference id={'package-registry-scope'} label={'Package registry scope'} value={registryScope} onChange={(e) => {
-                updatePreference(setRegistryScope, e, "packageRegistryScope")
+            <Preference id={'package-registry-scope'} label={'Package registry scope'} value={prefs.get('registryScope')} onChange={(e) => {
+                updatePreference(e, "packageRegistryScope")
             }} />
         </>
     )

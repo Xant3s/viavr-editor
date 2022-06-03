@@ -46,17 +46,10 @@ export const Preferences: FC = () => {
             <h1>Preferences</h1>
             <br />
 
-            <div className={'preference-entry'}>
-                <label htmlFor={'dark-mode'}>Theme:</label>
-                <select id={'dark-mode'} name={'dark-mode'} value={themeSource} onChange={(e) => {
-                    updatePreference(setUnityPath, e, "darkMode")
-                    api.send(api.channels.toMain.setDarkMode, e.target.value)
-                }}>
-                    <option value={'System'}>System</option>
-                    <option value={'Dark'}>Dark</option>
-                    <option value={'Light'}>Light</option>
-                </select>
-            </div>
+            <Preference id={'dark-mode'} label={'Theme'} value={themeSource} onChange={(e) => {
+                updatePreference(setUnityPath, e, "darkMode")
+                api.send(api.channels.toMain.setDarkMode, e.target.value)
+            }} kind={'dropdown'} options={['System', 'Dark', 'Light']} />
 
             <Preference id={'unity-path'} label='Path to Unity executable' value={unityPath} onChange={(e) => {
                 updatePreference(setUnityPath, e, "unityPath")

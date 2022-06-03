@@ -1,9 +1,9 @@
+import {StringPreference} from './StringPreference'
+
 export const Preference = ({id, label, value, onChange}) => {
     return (
-        <div className="preference-entry">
-            <label htmlFor={id}>{label}:</label>
-            <input id={id} type="text" value={value} onChange={onChange}/>
-            <br/>
-        </div>
+        <>
+            <StringPreference id={id} label={label} value={value} onChange={onChange}/>
+        </>
     )
 }

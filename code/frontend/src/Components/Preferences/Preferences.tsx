@@ -58,13 +58,9 @@ export const Preferences: FC = () => {
                 </select>
             </div>
 
-            <div className={'preference-entry'}>
-                <label htmlFor={'unity-path'}>Path to Unity executable:</label>
-                <input id={'unity-path'} type={'text'} value={unityPath} onChange={(e) => {
-                    updatePreference(setUnityPath, e, "unityPath")
-                }}/>
-                <button id={'btn-select-unity-path'} onClick={() => {api.send(api.channels.toMain.selectUnityPath)}}>Select</button>
-            </div>
+            <Preference id={'unity-path'} label='Path to Unity executable' value={unityPath} onChange={(e) => {
+                updatePreference(setUnityPath, e, "unityPath")
+            }} kind={'path'} selectPath={() => {api.send(api.channels.toMain.selectUnityPath)}}  />
 
             <Preference id={'package-registry-name'} label={'Package registry name'} value={registryName} onChange={(e) => {
                 updatePreference(setRegistryName, e, "packageRegistryName")

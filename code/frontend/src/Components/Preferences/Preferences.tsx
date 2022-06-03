@@ -1,5 +1,6 @@
 import {FC, useEffect, useState} from 'react'
 import './Preferences.css'
+import {Preference} from './Preference'
 
 export const Preferences: FC = () => {
     const [unityPath, setUnityPath] = useState('')
@@ -65,26 +66,17 @@ export const Preferences: FC = () => {
                 <button id={'btn-select-unity-path'} onClick={() => {api.send(api.channels.toMain.selectUnityPath)}}>Select</button>
             </div>
 
-            <div className="preference-entry">
-                <label htmlFor="package-registry-name">Package registry name:</label>
-                <input id="package-registry-name" type="text" value={registryName} onChange={(e) => {
-                    updatePreference(setRegistryName, e, "packageRegistryName")
-                }} /><br/>
-            </div>
+            <Preference id={'package-registry-name'} label={'Package registry name'} value={registryName} onChange={(e) => {
+                updatePreference(setRegistryName, e, "packageRegistryName")
+            }} />
 
-            <div className="preference-entry">
-                <label htmlFor="package-registry-url">Package registry url:</label>
-                <input id="package-registry-url" type="text" value={registryUrl} onChange={(e) => {
-                    updatePreference(setRegistryUrl, e, "packageRegistryUrl")
-                }}/><br/>
-            </div>
+            <Preference id={'package-registry-url'} label={'Package registry url'} value={registryUrl} onChange={(e) => {
+                updatePreference(setRegistryUrl, e, "packageRegistryUrl")
+            }} />
 
-            <div className="preference-entry">
-                <label htmlFor="package-registry-scope">Package registry scope:</label>
-                <input id="package-registry-scope" type="text" value={registryScope} onChange={(e) => {
-                    updatePreference(setRegistryScope, e, "packageRegistryScope")
-                }}/><br/>
-            </div>
+            <Preference id={'package-registry-scope'} label={'Package registry scope'} value={registryScope} onChange={(e) => {
+                updatePreference(setRegistryScope, e, "packageRegistryScope")
+            }} />
         </>
     )
 }

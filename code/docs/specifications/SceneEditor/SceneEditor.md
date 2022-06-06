@@ -1,6 +1,6 @@
 # Drag & Snap Editor
 
-The VIA-VR drag & snap editor is based on [Mozilla Spoke](https://hubs.mozilla.com/spoke). This page explains how Spoke is currently embedded and how the editor can be extended or modified. It also discusses possible future strategies to extend the editor. To learn how to use the Spoke editor, please consult the [Spoke user documentation](https://hubs.mozilla.com/docs/spoke-creating-projects.html).
+The VIA-VR drag & snap editor is based on [Mozilla Spoke](https://hubs.mozilla.com/spoke). This page explains how Spoke is currently embedded and how the Spoke editor can be extended or modified. It also discusses possible future strategies to extend the Spoke editor. To learn how to use the Spoke editor, please consult the [Spoke user documentation](https://hubs.mozilla.com/docs/spoke-creating-projects.html).
 
 <div class="IMPORTANT">
   <h5>CAUTION</h5>

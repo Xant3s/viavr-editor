@@ -63,21 +63,27 @@ api.invoke('app:get-url')
   <p>In the future, the process of modifying Spoke will likely be further abstracted. Most likely callbacks or events will be provided, e.g. <code>onSceneLoaded</code>.</p>
 </div>
 
-<!-- How to change Spoke UI and listen to events -->
-<!-- example: how to modify UI -->
-<!-- 
-- simple $$ example
-- await html element
-- check page route to see what page is loaded at the moment
-- planned: events, e.g. on project loaded etc
- -->
+## How to Listen to Spoke Events
 
-<!-- how to listen to events -->
-<!-- example: how to react on button click -->
-<!-- example: how to query current page -->
-<!-- planned: events, e.g. on project loaded etc -->
+Similarly, developers can add listeners to some Spoke events by accessing the DOM.
 
-<!-- Method 1: how it's used right now -->
+<div class="NOTE">
+  <h5>EXAMPLE</h5>
+  <p>This code adds a listener to the button with the label "Back to Projects".</p>
+<code>
+const button =  $$('div:contains("Back to Projects"):last')
+</code>
+<br />
+<code>
+button.on('click', () => {
+    /* ... */
+})
+</code>
+</div>
+
+This method only works for UI-based events. To alter non-event-based internal Spoke behavior, developers would have to adapt the Spoke source code directly.
+
+
 
 <!-- Method 2: directly modify Spoke, perhaps in combination w/ Method 1 -->
 

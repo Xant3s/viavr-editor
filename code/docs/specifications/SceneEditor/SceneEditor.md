@@ -33,20 +33,46 @@ You can use the dev tools to inspect the DOM structure. Utility functions based 
   <p>This query finds the anchor element by text content and uses jQuery functions to hide it's parent element. $$ is a function that forwards the query to the Spoke iframe.</p>
 </div>
 
+<div class="NOTE">
+  <h5>EXAMPLE</h5>
+  <p>You can query the DOM to wait for the presence of specific elements. This might be useful in specific situations, e.g. when you expect a dialog to pop up. This function makes use of the async/await syntax. This code waits for a button with the text 'Publish Scene...'.</p>
+  <code>await htmlElement('button:contains("Publish Scene...")')</code>
+  <br />
+  <br />
+  <p>Do not use this function to wait for user input etc. as it is likely to time out. This functionality might be changed in the future.</p>
+</div>
 
+You can also check the window URL to determine the active route used by Spoke's React Router. While the backend can directly access the window's webContents, the frontend must use the API provided by the context bridge. [API specification pending...]
 
-<!-- 
-- accessed through Spoke utility functions etc see below
- -->
-<!-- use dev tools to inspect DOM, React dev tools addon is included (WIP) -->
+<!-- TODO: Link to not yet existing documentation on API and context bridge -->
+
+```ts
+// Backend
+app.mainWindow.window.webContents.getURL()
+
+// Frontend
+api.invoke(api.channels.toMain.requestURL)
+
+// or
+
+api.invoke('app:get-url')
+```
+
+<div class="NOTE">
+  <h5>NOTE</h5>
+  <p>In the future, the process of modifying Spoke will likely be further abstracted. Most likely callbacks or events will be provided, e.g. <code>onSceneLoaded</code>.</p>
+</div>
+
 <!-- How to change Spoke UI and listen to events -->
 <!-- example: how to modify UI -->
 <!-- 
 - simple $$ example
 - await html element
+- check page route to see what page is loaded at the moment
+- planned: events, e.g. on project loaded etc
  -->
 
-
+<!-- how to listen to events -->
 <!-- example: how to react on button click -->
 <!-- example: how to query current page -->
 <!-- planned: events, e.g. on project loaded etc -->

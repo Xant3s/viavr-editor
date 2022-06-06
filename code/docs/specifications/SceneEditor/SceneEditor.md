@@ -83,14 +83,14 @@ button.on('click', () => {
 
 This method only works for UI-based events. To alter non-event-based internal Spoke behavior, developers would have to adapt the Spoke source code directly.
 
+## Further Considerations
 
-
-<!-- Method 2: directly modify Spoke, perhaps in combination w/ Method 1 -->
-
-<!-- Method 3: render on top/overlay, not sure if feasible, still need to react to Spoke events -->
-
-<!-- Future: investigate Hubs Cloud, might be useful to save/load projects
-https://hubs.mozilla.com/docs/hubs-cloud-intro.html
-
-Future: build Spoke, also makes it easier to modify Spoke components directly by modifying the Spoke src code
- -->
+- Spoke provides extension mechanisms for some aspects, e.g. adding custom asset sources to the asset panel -> further investigation needed
+- Further investigation regarding localization needed
+- Some more profound changes to the Spoke UI may require a combination of modifying the DOM structure and the Spoke code
+  - Modifying the Spoke code to add IDs to elements might make them easier to find, but is less robust against Spoke updates
+- Some things might be easier to implement by not directly modifying Spoke but in a separate window/panel/tab/popup/overlay
+  - e.g. assigning meta-data to objects imported from Sketchfab
+- We might be able to utilize Electron to serve Spoke as we do for the VIA-VR editor itself, see [future work #23](https://gitlab2.informatik.uni-wuerzburg.de/GE/Teaching/grl/2021-truman-viavr-editor/-/issues/23)
+  - In theory, we could fully merge Spoke and the VIA-VR editor, although this is considered impractical due to very high complexity and low flexibility, also considering future integrations like the avatar engine, etc.
+- In theory, we could host our own Hubs Cloud. This is probably not necessary. See [Hubs documentation](https://hubs.mozilla.com/docs/hubs-cloud-intro.html) to learn more

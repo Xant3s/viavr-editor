@@ -1,6 +1,5 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
 import * as isDev from 'electron-is-dev'
-import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
@@ -11,7 +10,7 @@ const fs = require('fs').promises
 export default class PreferencesManager {
     private static instance: PreferencesManager
     private readonly preferencesPath = AppUtils.getResPath() + '/preferences.json'
-    private preferences!: Preferences
+    private preferences
     private window?: BrowserWindow
     private initialized = false
 

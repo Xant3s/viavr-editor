@@ -12,6 +12,7 @@ export const channels = {
         queryJsonScenes: "BuildSystem:query-available-json-scenes",
         setDarkMode: "dark-mode:set",
         requestPreference: "preferences:request",
+        requestPreferences: "preferences:request-all",
         changePreference: "preferences:changed",
         createNewProject: "project-manager:create-new-project",
         openProject: "project-manager:open-project",

@@ -31,11 +31,16 @@ export default class PreferencesManager {
         ipc.on('preferences:open', () => this.openPreferences())
         ipc.on(channels.toMain.changePreference, (_, pref) => this.updatePreference(pref))
         ipc.handle(channels.toMain.requestPreference, (_, name) => this.get(name))
+        ipc.handle(channels.toMain.requestPreferences, () => this.getAll())
         ipc.on('app:quit', () => this.savePreferences())
     }
 
     public get<Type>(name: string): Type {
         return this.preferences[name] as Type
+    }
+
+    public getAll() {
+        return Object.entries(this.preferences)
     }
 
     public set<Type>(name: string, value: Type) {

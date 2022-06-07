@@ -3,6 +3,7 @@ import * as isDev from 'electron-is-dev'
 import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
+import EventEmitter from 'events'
 
 const fs = require('fs').promises
 
@@ -11,6 +12,7 @@ export default class PreferencesManager {
     private static instance: PreferencesManager
     private readonly preferencesPath = AppUtils.getResPath() + '/preferences.json'
     private preferences
+    private preferenceUpdateEvents: Map<string, EventEmitter> = new Map()
     private window?: BrowserWindow
     private initialized = false
 
@@ -47,12 +49,19 @@ export default class PreferencesManager {
         this.preferences[name] = value
         this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
         this.savePreferences()
+        this.preferenceUpdateEvents[name]?.emit('update', value)
+    }
+
+    public registerPreferenceUpdateEvent(preferenceName: string, f: (value: any) => void) {
+        this.preferenceUpdateEvents[preferenceName] = this.preferenceUpdateEvents[preferenceName] ?? new EventEmitter()
+        this.preferenceUpdateEvents[preferenceName].addListener('update', f)
     }
 
     // Handles update from frontend
     private updatePreference(pref) {
         this.preferences[pref.name] = pref.value
         this.savePreferences()
+        this.preferenceUpdateEvents[pref.name]?.emit('update', pref.value)
     }
 
     public async loadPreferences(path: string = this.preferencesPath) {

@@ -9,7 +9,6 @@ export const channels = {
         buildUnityProject: "BuildSystem:build-unity-project",
         openBuildDirectory: "BuildSystem:open-build-directory",
         queryJsonScenes: "BuildSystem:query-available-json-scenes",
-        setDarkMode: "dark-mode:set",
         requestPreference: "preferences:request",
         requestPreferences: "preferences:request-all",
         changePreference: "preferences:changed",

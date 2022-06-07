@@ -9,8 +9,8 @@ export const Preferences: FC = () => {
         setPrefs(new Map(prefs.set(key, value)))
     }
 
-    const loadPreference = (name: string) => {
-        return api.invoke(api.channels.toMain.requestPreference, name)
+    const loadPreferences = () => {
+        return api.invoke(api.channels.toMain.requestPreferences)
     }
 
     const updatePreference = (event, name: string) => {
@@ -20,18 +20,9 @@ export const Preferences: FC = () => {
 
     useEffect(() => {
         const loadInitialValues = async() => {
-            const [unityPath, registryName, registryUrl, registryScope, themeSource] = await Promise.all([
-                loadPreference('unityPath'),
-                loadPreference('packageRegistryName'),
-                loadPreference('packageRegistryUrl'),
-                loadPreference('packageRegistryScope'),
-                loadPreference('darkMode')
-            ])
-            setPref('unityPath', unityPath)
-            setPref('registryName', registryName)
-            setPref('registryUrl', registryUrl)
-            setPref('registryScope', registryScope)
-            setPref('darkMode', themeSource)
+            const allPreferences = await loadPreferences() as [string, unknown][]
+            const preferencesExcludingDevPreferences = allPreferences.filter(pref => !pref[0].startsWith('dev-'))
+            preferencesExcludingDevPreferences.forEach(pref => setPref(pref[0] as string, pref[1]))
         }
 
         api.on(api.channels.fromMain.preferenceChangedFromBackendUnityPath, (data) => {setPref('unityPath', data)})
@@ -54,15 +45,15 @@ export const Preferences: FC = () => {
                 updatePreference(e, "unityPath")
             }} kind={'path'} selectPath={() => {api.send(api.channels.toMain.selectUnityPath)}}  />
 
-            <Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('registryName')} onChange={(e) => {
+            <Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('packageRegistryName')} onChange={(e) => {
                 updatePreference(e, "packageRegistryName")
             }} />
 
-            <Preference id={'package-registry-url'} label={'Package registry url'} value={prefs.get('registryUrl')} onChange={(e) => {
+            <Preference id={'package-registry-url'} label={'Package registry url'} value={prefs.get('packageRegistryUrl')} onChange={(e) => {
                 updatePreference(e, "packageRegistryUrl")
             }} />
 
-            <Preference id={'package-registry-scope'} label={'Package registry scope'} value={prefs.get('registryScope')} onChange={(e) => {
+            <Preference id={'package-registry-scope'} label={'Package registry scope'} value={prefs.get('packageRegistryScope')} onChange={(e) => {
                 updatePreference(e, "packageRegistryScope")
             }} />
         </>

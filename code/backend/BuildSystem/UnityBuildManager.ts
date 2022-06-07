@@ -12,6 +12,7 @@ import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
 import {channels} from '../API'
 import {StringPreference} from '../Preferences/Preferences'
+import {PackageRegistries} from './DataStructures/PackageRegistries'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
@@ -83,16 +84,19 @@ export default class UnityBuildManager {
     }
 
     private async setupScopedRegistry(outputPath: string) {
-        const packageRegistryName = this.loadPreference('packageRegistryName')
-        const packageRegistryUrl = this.loadPreference('packageRegistryUrl')
-        const packageRegistryScope = this.loadPreference('packageRegistryScope')
+        const packageRegistries = PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries').value
         let manifest = await UnityBuildManager.readManifest(outputPath)
-        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, packageRegistryScope)
-        this.addScopedRegistryToManifest(manifest, packageRegistryUrl, packageRegistryName, 'unity-com')    // TODO: no not hardcode
+        for(const packageRegistry of packageRegistries) {
+            for(const scope of packageRegistry.packageRegistryScopes.value) {
+                this.addScopedRegistryToManifest(manifest,
+                    packageRegistry.packageRegistryUrl.value,
+                    packageRegistry.packageRegistryName.value,
+                    scope)
+            }
+        }
+
         await UnityBuildManager.writeManifest(manifest, outputPath)
     }
-
-    private loadPreference = (preference: string) => PreferencesManager.getInstance().get<StringPreference>(preference).value
 
     private static async readManifest(outputPath: string) {
         const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)

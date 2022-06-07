@@ -14,8 +14,20 @@
     "label": "Path to Unity executable",
     "kind": "path"
   },
-  "packageRegistryUrl": "https://packages.informatik.uni-wuerzburg.de",
-  "packageRegistryName": "Info9 JMU",
-  "packageRegistryScope": "de.jmu",
+  "packageRegistryUrl": {
+    "value": "https://packages.informatik.uni-wuerzburg.de",
+    "label": "Package registry URL",
+    "kind": "string"
+  },
+  "packageRegistryName": {
+    "value": "Info9 JMU",
+    "label": "Package registry name",
+    "kind": "string"
+  },
+  "packageRegistryScope": {
+    "value": "de.jmu",
+    "label": "Package registry scope",
+    "kind": "string"
+  },
   "dev-stopSpoke": false
 }

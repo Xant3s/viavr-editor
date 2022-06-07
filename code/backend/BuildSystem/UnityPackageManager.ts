@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import {channels} from '../API'
 import Package from './DataStructures/Package'
 import PreferencesManager from '../Preferences/PreferencesManager'
+import {StringPreference} from '../Preferences/Preferences'
 
 
 export default class UnityPackageManager {
@@ -19,8 +20,8 @@ export default class UnityPackageManager {
     }
 
     private constructor() {
-        this.registryUrl = PreferencesManager.getInstance().get<string>('packageRegistryUrl')
-        this.registryScope = PreferencesManager.getInstance().get<string>('packageRegistryScope')
+        this.registryUrl = PreferencesManager.getInstance().get<StringPreference>('packageRegistryUrl').value
+        this.registryScope = PreferencesManager.getInstance().get<StringPreference>('packageRegistryScope').value
         ipc.handle(channels.toMain.queryPackages, async (e) => {
             const packageManager = UnityPackageManager.getInstance()
             const packageList = await packageManager.queryPackagesFromRegistry()

@@ -11,6 +11,7 @@ import assert = require('assert')
 import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
 import {channels} from '../API'
+import {StringPreference} from '../Preferences/Preferences'
 
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
@@ -91,7 +92,7 @@ export default class UnityBuildManager {
         await UnityBuildManager.writeManifest(manifest, outputPath)
     }
 
-    private loadPreference = (preference: string) => PreferencesManager.getInstance().get<string>(preference)
+    private loadPreference = (preference: string) => PreferencesManager.getInstance().get<StringPreference>(preference).value
 
     private static async readManifest(outputPath: string) {
         const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)

@@ -68,17 +68,21 @@ export const Preferences: FC = () => {
                 drawPref('unityPath')
             }
 
-            <Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('packageRegistryName')} onChange={(e) => {
-                updatePreference(e, "packageRegistryName")
-            }} />
+            {drawPref('packageRegistryName')}
+            {drawPref('packageRegistryUrl')}
+            {drawPref('packageRegistryScope')}
 
-            <Preference id={'package-registry-url'} label={'Package registry url'} value={prefs.get('packageRegistryUrl')} onChange={(e) => {
-                updatePreference(e, "packageRegistryUrl")
-            }} />
+            {/*<Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('packageRegistryName')} onChange={(e) => {*/}
+            {/*    updatePreference(e, "packageRegistryName")*/}
+            {/*}} />*/}
 
-            <Preference id={'package-registry-scope'} label={'Package registry scope'} value={prefs.get('packageRegistryScope')} onChange={(e) => {
-                updatePreference(e, "packageRegistryScope")
-            }} />
+            {/*<Preference id={'package-registry-url'} label={'Package registry url'} value={prefs.get('packageRegistryUrl')} onChange={(e) => {*/}
+            {/*    updatePreference(e, "packageRegistryUrl")*/}
+            {/*}} />*/}
+
+            {/*<Preference id={'package-registry-scope'} label={'Package registry scope'} value={prefs.get('packageRegistryScope')} onChange={(e) => {*/}
+            {/*    updatePreference(e, "packageRegistryScope")*/}
+            {/*}} />*/}
         </>
     )
 }

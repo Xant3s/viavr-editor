@@ -10,3 +10,9 @@ export interface PathPreference {
     label: string,
     kind: string
 }
+
+export interface StringPreference {
+    value: string,
+    label: string,
+    kind: string
+}

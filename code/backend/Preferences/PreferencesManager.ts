@@ -1,9 +1,9 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
 import * as isDev from 'electron-is-dev'
-import Preferences from './Preferences'
 import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
+import EventEmitter from 'events'
 
 const fs = require('fs').promises
 
@@ -11,7 +11,8 @@ const fs = require('fs').promises
 export default class PreferencesManager {
     private static instance: PreferencesManager
     private readonly preferencesPath = AppUtils.getResPath() + '/preferences.json'
-    private preferences!: Preferences
+    private preferences
+    private preferenceUpdateEvents: Map<string, EventEmitter> = new Map()
     private window?: BrowserWindow
     private initialized = false
 
@@ -32,6 +33,7 @@ export default class PreferencesManager {
         ipc.on('preferences:open', () => this.openPreferences())
         ipc.on(channels.toMain.changePreference, (_, pref) => this.updatePreference(pref))
         ipc.handle(channels.toMain.requestPreference, (_, name) => this.get(name))
+        ipc.handle(channels.toMain.requestPreferences, () => this.getAll())
         ipc.on('app:quit', () => this.savePreferences())
     }
 
@@ -39,16 +41,27 @@ export default class PreferencesManager {
         return this.preferences[name] as Type
     }
 
+    public getAll() {
+        return Object.entries(this.preferences)
+    }
+
     public set<Type>(name: string, value: Type) {
         this.preferences[name] = value
         this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
         this.savePreferences()
+        this.preferenceUpdateEvents[name]?.emit('update', value)
+    }
+
+    public registerPreferenceUpdateEvent(preferenceName: string, f: (value: any) => void) {
+        this.preferenceUpdateEvents[preferenceName] = this.preferenceUpdateEvents[preferenceName] ?? new EventEmitter()
+        this.preferenceUpdateEvents[preferenceName].addListener('update', f)
     }
 
     // Handles update from frontend
     private updatePreference(pref) {
         this.preferences[pref.name] = pref.value
         this.savePreferences()
+        this.preferenceUpdateEvents[pref.name]?.emit('update', pref.value)
     }
 
     public async loadPreferences(path: string = this.preferencesPath) {

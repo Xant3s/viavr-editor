@@ -1,8 +1,33 @@
 {
-  "darkMode": "System",
-  "unityPath": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.2.0f1\\Editor\\Unity.exe",
-  "packageRegistryUrl": "https://packages.informatik.uni-wuerzburg.de",
-  "packageRegistryName": "Info9 JMU",
-  "packageRegistryScope": "de.jmu",
+  "darkMode": {
+    "value": "System",
+    "label": "Theme",
+    "kind": "dropdown",
+    "options": [
+      "System",
+      "Dark",
+      "Light"
+    ]
+  },
+  "unityPath": {
+    "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.2.0f1\\Editor\\Unity.exe",
+    "label": "Path to Unity executable",
+    "kind": "path"
+  },
+  "packageRegistryUrl": {
+    "value": "https://packages.informatik.uni-wuerzburg.de",
+    "label": "Package registry URL",
+    "kind": "string"
+  },
+  "packageRegistryName": {
+    "value": "Info9 JMU",
+    "label": "Package registry name",
+    "kind": "string"
+  },
+  "packageRegistryScope": {
+    "value": "de.jmu",
+    "label": "Package registry scope",
+    "kind": "string"
+  },
   "dev-stopSpoke": false
 }

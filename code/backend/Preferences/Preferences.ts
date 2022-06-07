@@ -1,7 +1,18 @@
-export default interface Preferences {
-    darkMode: string,
-    unityPath: string,
-    packageRegistryUrl: string,
-    packageRegistryName: string,
-    packageRegistryScope: string
+export interface DropdownPreference {
+    value: string,
+    kind: string,
+    label: string,
+    options: string[]
+}
+
+export interface PathPreference {
+    value: string,
+    label: string,
+    kind: string
+}
+
+export interface StringPreference {
+    value: string,
+    label: string,
+    kind: string
 }

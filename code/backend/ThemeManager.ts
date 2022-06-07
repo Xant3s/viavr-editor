@@ -1,7 +1,7 @@
 import {ipcMain, nativeTheme} from 'electron'
 import {channels} from './API'
 import PreferencesManager from './Preferences/PreferencesManager'
-import DropdownPreference from './Preferences/Preferences'
+import {DropdownPreference} from './Preferences/Preferences'
 
 
 export default class ThemeManager {

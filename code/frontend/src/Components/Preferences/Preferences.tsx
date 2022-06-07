@@ -28,7 +28,7 @@ export const Preferences: FC = () => {
         api.send(api.channels.toMain.changePreference, {name: prefName, value: newValue})
     }
 
-    const drawPref = (prefKey: string) => {
+    const createPreferenceComponent = (prefKey: string) => {
         if(prefs.size === 0) return
         const emptyList: string[] = []
         const pref = prefs.get(prefKey)
@@ -61,28 +61,9 @@ export const Preferences: FC = () => {
             <br />
 
             {
-                drawPref('darkMode')
+                Array.from(prefs.keys())
+                     .map(prefKey => createPreferenceComponent(prefKey))
             }
-
-            {
-                drawPref('unityPath')
-            }
-
-            {drawPref('packageRegistryName')}
-            {drawPref('packageRegistryUrl')}
-            {drawPref('packageRegistryScope')}
-
-            {/*<Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('packageRegistryName')} onChange={(e) => {*/}
-            {/*    updatePreference(e, "packageRegistryName")*/}
-            {/*}} />*/}
-
-            {/*<Preference id={'package-registry-url'} label={'Package registry url'} value={prefs.get('packageRegistryUrl')} onChange={(e) => {*/}
-            {/*    updatePreference(e, "packageRegistryUrl")*/}
-            {/*}} />*/}
-
-            {/*<Preference id={'package-registry-scope'} label={'Package registry scope'} value={prefs.get('packageRegistryScope')} onChange={(e) => {*/}
-            {/*    updatePreference(e, "packageRegistryScope")*/}
-            {/*}} />*/}
         </>
     )
 }

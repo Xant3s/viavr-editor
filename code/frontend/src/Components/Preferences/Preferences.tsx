@@ -64,14 +64,9 @@ export const Preferences: FC = () => {
                 drawPref('darkMode')
             }
 
-            {/*<Preference id={'dark-mode'} label={'Theme'} value={prefs.get('darkMode')} onChange={(e) => {*/}
-            {/*    updatePreference(e, "darkMode")*/}
-            {/*    api.send(api.channels.toMain.setDarkMode, e.target.value)*/}
-            {/*}} kind={'dropdown'} options={['System', 'Dark', 'Light']} />*/}
-
-            <Preference id={'unity-path'} label='Path to Unity executable' value={prefs.get('unityPath') && prefs.get('unityPath')['value']} onChange={(e) => {
-                updatePreference(e, "unityPath")
-            }} kind={'path'} selectPath={() => selectPath('unityPath')}  />
+            {
+                drawPref('unityPath')
+            }
 
             <Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('packageRegistryName')} onChange={(e) => {
                 updatePreference(e, "packageRegistryName")

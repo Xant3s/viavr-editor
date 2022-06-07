@@ -5,6 +5,7 @@ import SpokeManager from './SpokeManager'
 import PreferencesManager from './Preferences/PreferencesManager'
 import ProjectManager from './ProjectManager/ProjectManager'
 import SceneExporter from './ProjectManager/SceneExporter'
+import ThemeManager from './ThemeManager'
 
 
 const init = async () => {
@@ -12,6 +13,7 @@ const init = async () => {
     SpokeManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
+    new ThemeManager()
     ProjectManager.getInstance().init(mainWindow)
     new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)

@@ -36,10 +36,10 @@ export const Preferences: FC = () => {
             <h1>Preferences</h1>
             <br />
 
-            <Preference id={'dark-mode'} label={'Theme'} value={prefs.get('darkMode')} onChange={(e) => {
-                updatePreference(e, "darkMode")
-                api.send(api.channels.toMain.setDarkMode, e.target.value)
-            }} kind={'dropdown'} options={['System', 'Dark', 'Light']} />
+            {/*<Preference id={'dark-mode'} label={'Theme'} value={prefs.get('darkMode')} onChange={(e) => {*/}
+            {/*    updatePreference(e, "darkMode")*/}
+            {/*    api.send(api.channels.toMain.setDarkMode, e.target.value)*/}
+            {/*}} kind={'dropdown'} options={['System', 'Dark', 'Light']} />*/}
 
             <Preference id={'unity-path'} label='Path to Unity executable' value={prefs.get('unityPath')} onChange={(e) => {
                 updatePreference(e, "unityPath")

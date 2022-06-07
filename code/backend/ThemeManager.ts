@@ -1,6 +1,7 @@
 import {ipcMain, nativeTheme} from 'electron'
 import {channels} from './API'
 import PreferencesManager from './Preferences/PreferencesManager'
+import DropdownPreference from './Preferences/Preferences'
 
 
 export default class ThemeManager {
@@ -10,7 +11,7 @@ export default class ThemeManager {
     }
 
     private static loadTheme() {
-        const theme = PreferencesManager.getInstance().get<any>('darkMode')
-        nativeTheme.themeSource = theme.toLowerCase()
+        const theme = PreferencesManager.getInstance().get<DropdownPreference>('darkMode')
+        nativeTheme.themeSource = theme.value.toLowerCase() as 'system' | 'dark' | 'light'
     }
 }

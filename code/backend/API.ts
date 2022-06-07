@@ -3,7 +3,6 @@ import Path from 'path'
 
 export const channels = {
     "toMain": {
-        selectUnityPath: 'BuildSystem:select-unity-path',
         queryScenes: "BuildSystem:query-available-scenes",
         queryPackages: "BuildSystem:query-available-packages",
         createUnityProject: "BuildSystem:create-unity-project",
@@ -17,7 +16,8 @@ export const channels = {
         createNewProject: "project-manager:create-new-project",
         openProject: "project-manager:open-project",
         openProjectFolder: "project-manager:open-project-folder",
-        getPresentWorkingDirectory: "project-manager:get-present-working-directory"
+        getPresentWorkingDirectory: "project-manager:get-present-working-directory",
+        showOpenFileDialog: "util:show-open-file-dialog"
     },
     "fromMain": {
         buildFinished: "BuildSystem:build-finished",

@@ -20,9 +20,18 @@ export const Preferences: FC = () => {
         api.send(api.channels.toMain.changePreference, {name: name, value: newValue})
     }
 
+    const selectPath = async (prefName) => {
+        const path = await api.invoke(api.channels.toMain.showOpenFileDialog) as string
+        if(path === undefined) return
+        console.log(path)
+        // const newValue = {...prefs.get(prefName), value: path}
+        const newValue = path
+        setPref(prefName, newValue)
+        api.send(api.channels.toMain.changePreference, {name: prefName, value: newValue})
+    }
+
     const drawPref = (prefKey: string) => {
         if(prefs.size === 0) return
-        const noOP = () => {}
         const emptyList: string[] = []
         const pref = prefs.get(prefKey)
         const kind = pref['kind'] || 'string'
@@ -30,7 +39,8 @@ export const Preferences: FC = () => {
         const options = pref['options'] || emptyList
         const value = pref['value'] || pref
         return (
-            <Preference id={prefKey} label={label} value={value} onChange={(e) => updatePreference(e, prefKey)} kind={kind} options={options} selectPath={noOP}/>
+            <Preference id={prefKey} label={label} value={value} onChange={(e) => updatePreference(e, prefKey)}
+                        kind={kind} options={options} selectPath={() => selectPath(prefKey)}/>
         )
     }
 
@@ -63,7 +73,7 @@ export const Preferences: FC = () => {
 
             <Preference id={'unity-path'} label='Path to Unity executable' value={prefs.get('unityPath')} onChange={(e) => {
                 updatePreference(e, "unityPath")
-            }} kind={'path'} selectPath={() => {api.send(api.channels.toMain.selectUnityPath)}}  />
+            }} kind={'path'} selectPath={() => selectPath('unityPath')}  />
 
             <Preference id={'package-registry-name'} label={'Package registry name'} value={prefs.get('packageRegistryName')} onChange={(e) => {
                 updatePreference(e, "packageRegistryName")

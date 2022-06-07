@@ -1,6 +1,7 @@
 {
   "darkMode": {
     "value": "System",
+    "label": "Theme",
     "kind": "dropdown",
     "options": [
       "System",

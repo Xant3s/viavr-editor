@@ -19,14 +19,16 @@ export const Preferences: FC = () => {
     }
 
     const drawPref = (prefKey: string) => {
+        if(prefs.size === 0) return
         const noOP = () => {}
         const emptyList: string[] = []
         const pref = prefs.get(prefKey)
         const kind = pref['kind'] || 'string'
+        const label = pref['label'] || prefKey
         const options = pref['options'] || emptyList
         const value = pref['value'] || pref
         return (
-            <Preference id={prefKey} label={prefKey} value={value} onChange={noOP} kind={kind} options={options}/>
+            <Preference id={prefKey} label={label} value={value} onChange={noOP} kind={kind} options={options} selectPath={noOP}/>
         )
     }
 

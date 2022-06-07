@@ -18,6 +18,18 @@ export const Preferences: FC = () => {
         api.send(api.channels.toMain.changePreference, {name: name, value: event.target.value})
     }
 
+    const drawPref = (prefKey: string) => {
+        const noOP = () => {}
+        const emptyList: string[] = []
+        const pref = prefs.get(prefKey)
+        const kind = pref['kind'] || 'string'
+        const options = pref['options'] || emptyList
+        const value = pref['value'] || pref
+        return (
+            <Preference id={prefKey} label={prefKey} value={value} onChange={noOP} kind={kind} options={options}/>
+        )
+    }
+
     useEffect(() => {
         const loadInitialValues = async() => {
             const allPreferences = await loadPreferences() as [string, unknown][]
@@ -35,6 +47,10 @@ export const Preferences: FC = () => {
         <>
             <h1>Preferences</h1>
             <br />
+
+            {
+                drawPref('darkMode')
+            }
 
             {/*<Preference id={'dark-mode'} label={'Theme'} value={prefs.get('darkMode')} onChange={(e) => {*/}
             {/*    updatePreference(e, "darkMode")*/}

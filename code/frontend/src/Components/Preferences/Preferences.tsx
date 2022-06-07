@@ -14,8 +14,10 @@ export const Preferences: FC = () => {
     }
 
     const updatePreference = (event, name: string) => {
-        setPref(name, event.target.value)
-        api.send(api.channels.toMain.changePreference, {name: name, value: event.target.value})
+        const isComplex = prefs.get(name)['kind'] !== undefined
+        let newValue = isComplex ? {...prefs.get(name), value: event.target.value} : event.target.value
+        setPref(name, newValue)
+        api.send(api.channels.toMain.changePreference, {name: name, value: newValue})
     }
 
     const drawPref = (prefKey: string) => {
@@ -28,7 +30,7 @@ export const Preferences: FC = () => {
         const options = pref['options'] || emptyList
         const value = pref['value'] || pref
         return (
-            <Preference id={prefKey} label={label} value={value} onChange={noOP} kind={kind} options={options} selectPath={noOP}/>
+            <Preference id={prefKey} label={label} value={value} onChange={(e) => updatePreference(e, prefKey)} kind={kind} options={options} selectPath={noOP}/>
         )
     }
 

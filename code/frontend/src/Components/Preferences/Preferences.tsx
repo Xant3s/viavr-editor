@@ -23,9 +23,7 @@ export const Preferences: FC = () => {
     const selectPath = async (prefName) => {
         const path = await api.invoke(api.channels.toMain.showOpenFileDialog) as string
         if(path === undefined) return
-        console.log(path)
-        // const newValue = {...prefs.get(prefName), value: path}
-        const newValue = path
+        const newValue = {...prefs.get(prefName), value: path}
         setPref(prefName, newValue)
         api.send(api.channels.toMain.changePreference, {name: prefName, value: newValue})
     }
@@ -71,7 +69,7 @@ export const Preferences: FC = () => {
             {/*    api.send(api.channels.toMain.setDarkMode, e.target.value)*/}
             {/*}} kind={'dropdown'} options={['System', 'Dark', 'Light']} />*/}
 
-            <Preference id={'unity-path'} label='Path to Unity executable' value={prefs.get('unityPath')} onChange={(e) => {
+            <Preference id={'unity-path'} label='Path to Unity executable' value={prefs.get('unityPath') && prefs.get('unityPath')['value']} onChange={(e) => {
                 updatePreference(e, "unityPath")
             }} kind={'path'} selectPath={() => selectPath('unityPath')}  />
 

@@ -9,7 +9,11 @@
       "Light"
     ]
   },
-  "unityPath": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.2.0f1\\Editor\\Unity.exe",
+  "unityPath": {
+    "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.2.0f1\\Editor\\Unity.exe",
+    "label": "Path to Unity executable",
+    "kind": "path"
+  },
   "packageRegistryUrl": "https://packages.informatik.uni-wuerzburg.de",
   "packageRegistryName": "Info9 JMU",
   "packageRegistryScope": "de.jmu",

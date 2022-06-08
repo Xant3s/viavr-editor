@@ -1,16 +1,12 @@
 import {ipcMain as ipc} from 'electron'
 import fetch from 'node-fetch'
 import {channels} from '../API'
-import Package from './DataStructures/Package'
 import PreferencesManager from '../Preferences/PreferencesManager'
-import {StringPreference} from '../Preferences/Preferences'
+import {PackageRegistries} from './DataStructures/PackageRegistries'
 
 
 export default class UnityPackageManager {
     private static instance: UnityPackageManager
-    private readonly registryUrl: string
-    private readonly registryScope: string
-
 
     public static getInstance(): UnityPackageManager {
         if (!UnityPackageManager.instance) {
@@ -20,29 +16,37 @@ export default class UnityPackageManager {
     }
 
     private constructor() {
-        this.registryUrl = PreferencesManager.getInstance().get<StringPreference>('packageRegistryUrl').value
-        this.registryScope = PreferencesManager.getInstance().get<StringPreference>('packageRegistryScope').value
         ipc.handle(channels.toMain.queryPackages, async (e) => {
-            const packageManager = UnityPackageManager.getInstance()
-            const packageList = await packageManager.queryPackagesFromRegistry()
-            return packageList
+            return await this.queryPackagesFromAllRegistries()
         })
     }
 
+    public async queryPackagesFromAllRegistries() {
+        const registries = PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries').value
+        const packageManager = UnityPackageManager.getInstance()
+        let packageList: any[] = []
+        for(const registry of registries) {
+            for(const scope of registry.packageRegistryScopes.value) {
+                const packages = await packageManager.queryPackagesFromRegistry(registry.packageRegistryUrl.value, scope)
+                packageList = packageList.concat(packages)
+            }
+        }
+        return packageList
+    }
 
-    public async queryPackagesFromRegistry() {
-        const response = await fetch(`${this.registryUrl}/-/v1/search?text=${this.registryScope}`)
+    public async queryPackagesFromRegistry(registryUrl: string, scope: string) {
+        const response = await fetch(`${registryUrl}/-/v1/search?text=${scope}`)
         const packageList = await response.json()
         // @ts-ignore
         const packages = packageList['objects'].map(obj => obj['package'])
-        const packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(p['name'])))
+        const packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(registryUrl, p['name'])))
         const packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))
         const viavrPackagesLatestInfo = packagesLatestInfo.filter(p => p.keywords && (p.keywords as string[]).indexOf('viavr') !== -1)
         return viavrPackagesLatestInfo
     }
 
-    public async queryPackageDetails(packageName: string) {
-        const res = await fetch(`${this.registryUrl}/${packageName}`)
+    public async queryPackageDetails(registryUrl: string, packageName: string) {
+        const res = await fetch(`${registryUrl}/${packageName}`)
         return await res.json()
     }
 

@@ -30,11 +30,12 @@
         "packageRegistryScopes": {
           "value": ["de.jmu", "unity-com"],
           "label": "Package registry scope",
-          "kind": "string"
+          "kind": "string[]"
         }
       }
     ],
-    "label": "Package registries"
+    "label": "Package registries",
+    "kind": "list"
   },
   "dev-stopSpoke": false
 }

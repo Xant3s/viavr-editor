@@ -120,7 +120,7 @@ export default class UnityBuildManager {
         const manifest = await UnityBuildManager.readManifest(outputPath)
 
         const packageManager = UnityPackageManager.getInstance()
-        const packageList = await packageManager.queryPackagesFromRegistry()
+        const packageList = await packageManager.queryPackagesFromAllRegistries()
         selectedPackages.forEach(selectedPackage => {
             const latestVersion = (packageList.find(p => p.name === selectedPackage.name).version)
             console.log(`Add package ${selectedPackage.name}: ${latestVersion}.`)

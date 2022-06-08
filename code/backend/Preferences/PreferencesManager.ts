@@ -92,5 +92,7 @@ export default class PreferencesManager {
         } else {
             this.window.loadURL(`file://${__dirname}/../index.html#/preferences`)
         }
+
+        this.window.webContents.openDevTools()
     }
 }

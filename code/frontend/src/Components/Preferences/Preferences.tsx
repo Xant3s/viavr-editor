@@ -30,15 +30,20 @@ export const Preferences: FC = () => {
 
     const createPreferenceComponent = (prefKey: string) => {
         if(prefs.size === 0) return
-        const emptyList: string[] = []
         const pref = prefs.get(prefKey)
+        return createPreferenceComponent2(prefKey, pref)
+    }
+
+    const createPreferenceComponent2 = (prefKey: string, pref: any) => {
+        const emptyList: string[] = []
         const kind = pref['kind'] || 'string'
         const label = pref['label'] || prefKey
         const options = pref['options'] || emptyList
         const value = pref['value'] || pref
         return (
-            <Preference id={prefKey} label={label} value={value} onChange={(e) => updatePreference(e, prefKey)}
-                        kind={kind} options={options} selectPath={() => selectPath(prefKey)}/>
+            <Preference id={prefKey} key={prefKey} label={label} value={value} onChange={(e) => updatePreference(e, prefKey)}
+                        kind={kind} options={options} selectPath={() => selectPath(prefKey)}
+                        createPrefComponent={createPreferenceComponent2} />
         )
     }
 

@@ -1,3 +1,5 @@
+import {FaTimes} from 'react-icons/fa'
+
 export const ListPreference = ({id, label, value, onChange, createPrefComponent}) => {
     return (
         <>
@@ -9,7 +11,9 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                                     Object.entries(entry)
                                           .map(entry => createPrefComponent(entry[0], entry[1]))
                                 }</div>
-                                <button id={`btn-remove-${id}`} style={{marginLeft: 10}}>Remove</button>
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <FaTimes onClick={() => {}} style={{color: 'black', cursor: 'pointer', marginLeft: 20}}/>
+                                </div>
                             </div>
                         ))
                     }

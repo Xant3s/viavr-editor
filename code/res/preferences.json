@@ -32,6 +32,23 @@
           "label": "Package registry scope",
           "kind": "string[]"
         }
+      },
+      {
+        "packageRegistryUrl": {
+          "value": "https://packages.de",
+          "label": "Package registry URL",
+          "kind": "string"
+        },
+        "packageRegistryName": {
+          "value": "Dummy",
+          "label": "Package registry name",
+          "kind": "string"
+        },
+        "packageRegistryScopes": {
+          "value": ["de.jmu"],
+          "label": "Package registry scope",
+          "kind": "string[]"
+        }
       }
     ],
     "label": "Package registries",

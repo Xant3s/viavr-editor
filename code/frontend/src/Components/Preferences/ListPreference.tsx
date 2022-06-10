@@ -4,7 +4,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
             <h5>{label}</h5>
                     {
                         value.map(entry => (
-                            <div style={{flexDirection: 'row', display: 'flex', marginBottom: 10}}>
+                            <div className={'preference-list-entry'}>
                                 <div>{
                                     Object.entries(entry)
                                           .map(entry => createPrefComponent(entry[0], entry[1]))

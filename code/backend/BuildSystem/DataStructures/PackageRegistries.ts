@@ -10,9 +10,9 @@ export interface PackageRegistry {
         "kind": "string"
     },
     "packageRegistryScopes": {
-        "value": string[],
+        "value": string,
         "label": string,
-        "kind": "string[]"
+        "kind": "string"
     }
 }
 

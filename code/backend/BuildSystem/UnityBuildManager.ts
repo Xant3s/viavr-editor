@@ -87,7 +87,8 @@ export default class UnityBuildManager {
         const packageRegistries = PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries').value
         let manifest = await UnityBuildManager.readManifest(outputPath)
         for(const packageRegistry of packageRegistries) {
-            for(const scope of packageRegistry.packageRegistryScopes.value) {
+            const scopes = packageRegistry.packageRegistryScopes.value.split(',').map(s => s.trim())
+            for(const scope of scopes) {
                 this.addScopedRegistryToManifest(manifest,
                     packageRegistry.packageRegistryUrl.value,
                     packageRegistry.packageRegistryName.value,

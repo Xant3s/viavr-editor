@@ -9,7 +9,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                     <div className={'preference-list-entry'} key={index}>
                         <div>{
                             Object.entries(item)
-                                  .map(entry => createPrefComponent(entry[0], entry[1]))
+                                  .map(entry => createPrefComponent(entry[0], entry[1], id, index))
                         }</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <FaTimes onClick={() => {}} style={{color: 'black', cursor: 'pointer', marginLeft: 20}}/>

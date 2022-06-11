@@ -20,6 +20,17 @@ export const Preferences: FC = () => {
         api.send(api.channels.toMain.changePreference, {name: name, value: newValue})
     }
 
+    const updateListPreference = (parentName: string, index: number, prefName: string, event) => {
+        if(prefs.size === 0) return
+        let newPrefs = new Map(prefs)
+        let list = newPrefs.get(parentName)['value']
+        if(list === undefined) return
+        list[index][prefName]['value'] = event.target.value
+        newPrefs.set(parentName, {...newPrefs.get(parentName), value: list})
+        setPrefs(newPrefs)
+        api.send(api.channels.toMain.changePreference, {name: parentName, value: newPrefs.get(parentName)})
+    }
+
     const selectPath = async (prefName) => {
         const path = await api.invoke(api.channels.toMain.showOpenFileDialog) as string
         if(path === undefined) return
@@ -29,19 +40,25 @@ export const Preferences: FC = () => {
     }
 
     const createPreferenceComponent = (prefKey: string) => {
-        if(prefs.size === 0) return
         const pref = prefs.get(prefKey)
         return createPreferenceComponent2(prefKey, pref)
     }
 
-    const createPreferenceComponent2 = (prefKey: string, pref: any) => {
+    const createPreferenceComponent2 = (prefKey: string, pref: any, parentKey = '', index = -1) => {
         const emptyList: string[] = []
         const kind = pref['kind'] || 'string'
         const label = pref['label'] || prefKey
         const options = pref['options'] || emptyList
         const value = pref['value'] || pref
+        const onChange = (e) => {
+            if(index !== -1) {
+                updateListPreference(parentKey, index, prefKey, e)
+            } else{
+                updatePreference(e, prefKey)
+            }
+        }
         return (
-            <Preference id={prefKey} key={prefKey} label={label} value={value} onChange={(e) => updatePreference(e, prefKey)}
+            <Preference id={prefKey} key={prefKey} label={label} value={value} onChange={onChange}
                         kind={kind} options={options} selectPath={() => selectPath(prefKey)}
                         createPrefComponent={createPreferenceComponent2} />
         )

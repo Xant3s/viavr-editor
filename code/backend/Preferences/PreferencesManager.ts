@@ -3,16 +3,12 @@ import * as isDev from 'electron-is-dev'
 import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
-import EventEmitter from 'events'
-
-const fs = require('fs').promises
+import SettingsManager from '../Utils/SettingsManager'
 
 
 export default class PreferencesManager {
+    private settingsManager = new SettingsManager(AppUtils.getResPath() + '/preferences.json')
     private static instance: PreferencesManager
-    private readonly preferencesPath = AppUtils.getResPath() + '/preferences.json'
-    private preferences
-    private preferenceUpdateEvents: Map<string, EventEmitter> = new Map()
     private window?: BrowserWindow
     private initialized = false
 
@@ -25,56 +21,38 @@ export default class PreferencesManager {
     }
 
     public async init() {
-        await this.loadPreferences(this.preferencesPath)
+        await this.settingsManager.init()
         this.initialized = true
     }
 
     private constructor() {
         ipc.on('preferences:open', () => this.openPreferences())
-        ipc.on(channels.toMain.changePreference, (_, pref) => this.updatePreference(pref))
-        ipc.handle(channels.toMain.requestPreference, (_, name) => this.get(name))
-        ipc.handle(channels.toMain.requestPreferences, () => this.getAll())
-        ipc.on('app:quit', () => this.savePreferences())
+        ipc.on(channels.toMain.changePreference, (_, pref) => this. updatePreference(pref))
+        ipc.handle(channels.toMain.requestPreference, (_, name) => this.settingsManager.get(name))
+        ipc.handle(channels.toMain.requestPreferences, () => this.settingsManager.getAll())
+        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
     }
 
     public get<Type>(name: string): Type {
-        return this.preferences[name] as Type
+        return this.settingsManager.get<Type>(name)
     }
 
     public getAll() {
-        return Object.entries(this.preferences)
+        return this.settingsManager.getAll()
     }
 
     public set<Type>(name: string, value: Type) {
-        this.preferences[name] = value
+        this.settingsManager.set(name, value)
         this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
-        this.savePreferences()
-        this.preferenceUpdateEvents[name]?.emit('update', value)
     }
 
     public registerPreferenceUpdateEvent(preferenceName: string, f: (value: any) => void) {
-        this.preferenceUpdateEvents[preferenceName] = this.preferenceUpdateEvents[preferenceName] ?? new EventEmitter()
-        this.preferenceUpdateEvents[preferenceName].addListener('update', f)
+        this.settingsManager.registerSettingUpdateEvent(preferenceName, f)
     }
 
     // Handles update from frontend
     private updatePreference(pref) {
-        this.preferences[pref.name] = pref.value
-        this.savePreferences()
-        this.preferenceUpdateEvents[pref.name]?.emit('update', pref.value)
-    }
-
-    public async loadPreferences(path: string = this.preferencesPath) {
-        const data = await fs.readFile(path)
-        this.preferences = JSON.parse(data.toString())
-    }
-
-    public savePreferences(path: string = this.preferencesPath) {
-        fs.writeFile(path, JSON.stringify(this.preferences, null, 2), (err) => {
-            if(err) {
-                console.log(err)
-            }
-        })
+        this.settingsManager.set(pref.name, pref.value)
     }
 
     private openPreferences() {

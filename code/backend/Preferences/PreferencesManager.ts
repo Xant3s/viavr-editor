@@ -80,7 +80,7 @@ export default class PreferencesManager {
     private openPreferences() {
         this.window = new BrowserWindow({
             width: 800,
-            height: 600,
+            height: 700,
             autoHideMenuBar: true,
             webPreferences: {
                 nodeIntegration: true,

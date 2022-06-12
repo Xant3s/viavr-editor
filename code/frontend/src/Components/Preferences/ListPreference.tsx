@@ -27,13 +27,13 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                                   .map(entry => createPrefComponent(entry[0], entry[1], id, index))
                         }</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
-                            <FaTimes onClick={() => removeListItem(index)} style={{color: 'black', cursor: 'pointer', marginLeft: 20}}/>
+                            <FaTimes onClick={() => removeListItem(index)} className={'btn-remove'}/>
                         </div>
                     </div>
                 ))
             }
 
-            <button id={`btn-add-${id}`} onClick={addListItem}>Add</button>
+            <button id={`btn-add-${id}`} className={'btn'} onClick={addListItem} style={{marginLeft: 10}}>Add</button>
         </>
     )
 }

@@ -82,10 +82,12 @@ export const Preferences: FC = () => {
             <h1>Preferences</h1>
             <br />
 
+            <div className={'container'}>
             {
                 Array.from(prefs.keys())
                      .map(prefKey => createPreferenceComponent(prefKey))
             }
+            </div>
         </>
     )
 }

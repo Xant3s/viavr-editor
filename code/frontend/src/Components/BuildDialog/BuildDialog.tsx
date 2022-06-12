@@ -1,6 +1,8 @@
 import {FC, useEffect, useState} from 'react'
 import {Scene} from './Scene'
 import {Package} from './Package'
+import {PreferencesContainer, StyledPreferences } from '../StyledComponents/Preferences/StyledPreferences'
+import { Button } from '../StyledComponents/Button'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
@@ -61,11 +63,13 @@ export const BuildDialog: FC = () => {
     }, [])
 
     return (
-        <>
-            <title>Build Dialog</title>
+        <StyledPreferences>
             <h1>Build Settings</h1>
-            <label>Select scenes to build:</label><br/>
-            {
+            <PreferencesContainer>
+
+            <h4>Scenes</h4>
+
+                {
                 scenes.map(({isSelected, sceneFileName}) => (
                     <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
                 ))
@@ -88,19 +92,17 @@ export const BuildDialog: FC = () => {
             <br/>
             <div id="package-list"></div>
             <br/>
-            <button id="btn-create-project" type="button" onClick={() => api.send(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())}>
+            <Button id="btn-create-project" type="button" onClick={() => api.send(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())}>
                 Create Unity Project
-            </button>
+            </Button>
             <br/>
-            <br/>
-            <label>Info: Build project will only work on Windows for now.</label>
-            <br/>
-            <button id="btn-build-project" type="button" onClick={() => api.send(api.channels.toMain.buildUnityProject)} disabled={!readyToBuild}>
+            <Button id="btn-build-project" type="button" onClick={() => api.send(api.channels.toMain.buildUnityProject)} disabled={!readyToBuild}>
                 Build Unity Project
-            </button>
-            <button id="btn-open-build-directory" type="button" onClick={() => api.send(api.channels.toMain.openBuildDirectory)} disabled={!buildFinished}>
+            </Button>
+            <Button id="btn-open-build-directory" type="button" onClick={() => api.send(api.channels.toMain.openBuildDirectory)} disabled={!buildFinished}>
                 Open Build Directory
-            </button>
-        </>
+            </Button>
+            </PreferencesContainer>
+        </StyledPreferences>
     )
 }

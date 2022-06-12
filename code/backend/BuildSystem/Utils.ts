@@ -8,7 +8,6 @@ export default class Utils {
         } catch(err) {
             console.log(err)
         }
-        console.log('Extracted template zip.')
         return outputPath
     }
 

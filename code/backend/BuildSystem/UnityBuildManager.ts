@@ -68,7 +68,6 @@ export default class UnityBuildManager {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
-            console.log('aborted create unity project')
             return
         }
         await Utils.extractZipToPath(AppUtils.getResPath() + '/DefaultUnityProject.zip', outputPath)
@@ -117,20 +116,16 @@ export default class UnityBuildManager {
     }
 
     private async installPackages(outputPath : string, selectedPackages) {
-        console.log('Start installing packages.')
         const manifest = await UnityBuildManager.readManifest(outputPath)
-
         const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromAllRegistries()
         selectedPackages.forEach(selectedPackage => {
             const latestVersion = (packageList.find(p => p.name === selectedPackage.name).version)
-            console.log(`Add package ${selectedPackage.name}: ${latestVersion}.`)
             manifest.dependencies ??= []
             manifest.dependencies[selectedPackage.name] = latestVersion
         })
 
         await UnityBuildManager.writeManifest(manifest, outputPath)
-        console.log('Packages installed.')
     }
 
     private async importScenes(outputPath: string, sceneNames: Array<string>) {

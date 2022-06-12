@@ -102,15 +102,13 @@ export default class ProjectManager {
     }
 
     private onProjectOpened() {
-        console.log('Project path: ', this.projectPath)
-        console.log('Present working directory: ', this.presentWorkingDirectory)
         this.mainWindow.send(channels.fromMain.projectOpened)
         this.onProjectOpenedEvent.emit('project-loaded')
     }
 
     private async saveProject() {
         if(this.projectPath === undefined && this.presentWorkingDirectory === undefined) {
-            console.log('No project loaded.')
+            console.error('No project loaded.')
             return
         }
 

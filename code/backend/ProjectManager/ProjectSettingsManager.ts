@@ -4,6 +4,7 @@ import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
+import ProjectManager from './ProjectManager'
 
 
 export default class ProjectSettingsManager {
@@ -56,6 +57,11 @@ export default class ProjectSettingsManager {
     }
 
     private openProjectSettings() {
+        if(!ProjectManager.getInstance().projectIsLoaded()) {
+            console.error('No project loaded')
+            return
+        }
+
         this.window = new BrowserWindow({
             width: 800,
             height: 700,

@@ -35,6 +35,11 @@ export default class ProjectManager {
         return this._presentWorkingDirectory
     }
 
+    public projectIsLoaded() {
+        return this.projectPath !== undefined && this.presentWorkingDirectory !== undefined
+            && this.projectPath !== '' && this.presentWorkingDirectory !== ''
+    }
+
     private constructor() {
         ipc.on(channels.toMain.createNewProject, async () => this.createNewProject())
         ipc.on(channels.toMain.openProject, async () => this.openProjectFromFile())

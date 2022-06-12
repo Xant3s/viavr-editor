@@ -8,6 +8,7 @@ import SceneExporter from './ProjectManager/SceneExporter'
 import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
 import {channels} from './API'
+import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
 
 
 const init = async () => {
@@ -17,6 +18,8 @@ const init = async () => {
     await preferencesManager.init()
     new ThemeManager()
     ProjectManager.getInstance().init(mainWindow)
+    const projectSettingsManager = ProjectSettingsManager.getInstance()
+    await projectSettingsManager.init()
     new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)
     new DialogUtils()

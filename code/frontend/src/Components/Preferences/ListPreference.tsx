@@ -1,6 +1,12 @@
 import {FaTimes} from 'react-icons/fa'
 
 export const ListPreference = ({id, label, value, onChange, createPrefComponent}) => {
+    const removeListItem = (index: number) => {
+        const newValue = [...value]
+        newValue.splice(index, 1)
+        onChange({target: {value: newValue}})
+    }
+
     return (
         <>
             <h5>{label}</h5>
@@ -12,7 +18,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                                   .map(entry => createPrefComponent(entry[0], entry[1], id, index))
                         }</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
-                            <FaTimes onClick={() => {}} style={{color: 'black', cursor: 'pointer', marginLeft: 20}}/>
+                            <FaTimes onClick={() => removeListItem(index)} style={{color: 'black', cursor: 'pointer', marginLeft: 20}}/>
                         </div>
                     </div>
                 ))

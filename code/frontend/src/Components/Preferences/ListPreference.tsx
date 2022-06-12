@@ -7,6 +7,15 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
         onChange({target: {value: newValue}})
     }
 
+    const addListItem = () => {
+        const newValue = [...value]
+        if(newValue.length === 0) {
+            console.error('ListPreference: Cannot add item to empty list')
+        }
+        newValue.push(value[value.length - 1])
+        onChange({target: {value: newValue}})
+    }
+
     return (
         <>
             <h5>{label}</h5>
@@ -24,7 +33,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                 ))
             }
 
-            <button id={`btn-add-${id}`}>Add</button>
+            <button id={`btn-add-${id}`} onClick={addListItem}>Add</button>
         </>
     )
 }

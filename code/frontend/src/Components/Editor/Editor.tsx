@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react'
-import './styles.css'
 import SceneEditor from '../../SpokeEditor/SceneEditor'
 import {SceneExport} from '../../SpokeEditor/SceneExport'
 import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
+import {SpokeContainer, SpokeIframe} from '../StyledComponents/Editor/StyledEditor'
 
 export const Editor = () => {
     const [hideProjectSelectionPage, setHideProjectSelectionPage] = useState(false)
@@ -36,9 +36,9 @@ export const Editor = () => {
             </button>
         </div>
 
-        <div id={'spoke-container'} hidden={hideSpokeContainer}>
-            <iframe id={'iframe-spoke'} title={'Spoke Editor'} src={'https://localhost:9090'} />
-        </div>
+        <SpokeContainer id={'spoke-container'} hidden={hideSpokeContainer}>
+            <SpokeIframe id={'iframe-spoke'} title={'Spoke Editor'} src={'https://localhost:9090'} />
+        </SpokeContainer>
         </>
     )
 }

@@ -45,8 +45,6 @@ export default class ProjectSettingsManager {
 
     public async set<Type>(name: string, value: Type) {
         await this.settingsManager.set(name, value)
-        // TODO:
-        // this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
     }
 
     public registerSettingUpdateEvent(preferenceName: string, f: (value: any) => void) {

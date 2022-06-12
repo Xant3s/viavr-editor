@@ -8,3 +8,11 @@
     text-align: right;
     margin-right: 10px;
 }
+
+.preference-list-entry {
+    background: #f4f4f4;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 540px;
+}

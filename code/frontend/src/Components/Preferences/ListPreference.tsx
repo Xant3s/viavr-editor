@@ -14,7 +14,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
         if(newValue.length === 0) {
             console.error('ListPreference: Cannot add item to empty list')
         }
-        newValue.push(value[value.length - 1])
+        newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
         onChange({target: {value: newValue}})
     }
 

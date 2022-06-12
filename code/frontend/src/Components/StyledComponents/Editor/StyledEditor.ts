@@ -21,5 +21,6 @@ export const WelcomeContainer = styled.div`
   justify-content: center;
   color: white;
   background-color: #15171b;
-  height: 100vh;
+  height: ${props => props.hidden ? 0 : '100vh'};
+  visibility: ${props => props.hidden ? 'hidden' : 'visible'};
 `

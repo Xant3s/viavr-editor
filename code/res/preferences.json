@@ -37,5 +37,5 @@
     "label": "Package registries",
     "kind": "list"
   },
-  "dev-stopSpoke": false
+  "dev.stopSpoke": false
 }

@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from 'react'
-import './Preferences.css'
 import {Preference} from './Preference'
+import { StyledPreferences, PreferencesContainer } from '../StyledComponents/Preferences/StyledPreferences'
 
 export const Preferences: FC = () => {
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
@@ -78,14 +78,16 @@ export const Preferences: FC = () => {
 
 
     return (
-        <>
+        <StyledPreferences>
             <h1>Preferences</h1>
             <br />
 
+            <PreferencesContainer>
             {
                 Array.from(prefs.keys())
                      .map(prefKey => createPreferenceComponent(prefKey))
             }
-        </>
+            </PreferencesContainer>
+        </StyledPreferences>
     )
 }

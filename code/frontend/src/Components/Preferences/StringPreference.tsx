@@ -1,7 +1,9 @@
+import {PreferenceEntryLabel} from '../StyledComponents/Preferences/StyledPreferences'
+
 export const StringPreference = ({id, label, value, onChange}) => {
     return (
         <>
-            <label htmlFor={id}>{label}:</label>
+            <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>
             <input id={id} type="text" value={value} onChange={onChange}/>
         </>
     )

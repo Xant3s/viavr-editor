@@ -2,6 +2,7 @@ import {StringPreference} from './StringPreference'
 import {PathPreference} from './PathPreference'
 import {DropDownPreference} from './DropDownPreference'
 import {ListPreference} from './ListPreference'
+import {PreferenceEntry} from '../StyledComponents/Preferences/StyledPreferences'
 
 type Kind = 'path' | 'string' | 'dropdown' | 'list'
 const noOP = () => {}
@@ -23,9 +24,9 @@ export const Preference = ({id, label, value, onChange, kind = 'string', selectP
     }
 
     return (
-        <div className="preference-entry">
+        <PreferenceEntry>
             {getPreference(kind as Kind)}
             <br/>
-        </div>
+        </PreferenceEntry>
     )
 }

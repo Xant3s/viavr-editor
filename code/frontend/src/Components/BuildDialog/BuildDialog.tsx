@@ -7,8 +7,6 @@ import { Button } from '../StyledComponents/Button'
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
-    const [readyToBuild, setReadyToBuild] = useState(false)
-    const [buildFinished, setBuildFinished] = useState(false)
 
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
@@ -55,12 +53,16 @@ export const BuildDialog: FC = () => {
         setPackages(packages)
     }
 
+    const build = async () => {
+        await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
+        await api.invoke(api.channels.toMain.buildUnityProject)
+        await api.invoke(api.channels.toMain.openBuildDirectory)
+    }
+
     useEffect(() => {
         loadScenes()
         loadPackages()
-        api.on(api.channels.fromMain.readyToBuildProject, () => {setReadyToBuild(true)})
-        api.on(api.channels.fromMain.buildFinished, () => {setBuildFinished(true)})
-    }, [])
+    })
 
     return (
         <StyledPreferences>
@@ -92,16 +94,7 @@ export const BuildDialog: FC = () => {
             <br/>
             <div id="package-list"></div>
             <br/>
-            <Button id="btn-create-project" type="button" onClick={() => api.send(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())}>
-                Create Unity Project
-            </Button>
-            <br/>
-            <Button id="btn-build-project" type="button" onClick={() => api.send(api.channels.toMain.buildUnityProject)} disabled={!readyToBuild}>
-                Build Unity Project
-            </Button>
-            <Button id="btn-open-build-directory" type="button" onClick={() => api.send(api.channels.toMain.openBuildDirectory)} disabled={!buildFinished}>
-                Open Build Directory
-            </Button>
+            <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
             </PreferencesContainer>
         </StyledPreferences>
     )

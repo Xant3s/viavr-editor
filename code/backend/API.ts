@@ -24,7 +24,6 @@ export const channels = {
     },
     "fromMain": {
         buildFinished: "BuildSystem:build-finished",
-        readyToBuildProject: "BuildSystem:ready-to-build-project",
         preferenceChangedFromBackendUnityPath: "preferences:preference-changed-from-backend-unityPath",
         projectCreated: "project-manager:project-created",
         projectOpened: "project-manager:project-opened",

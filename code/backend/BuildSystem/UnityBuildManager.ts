@@ -47,15 +47,14 @@ export default class UnityBuildManager {
             const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.on(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
+        ipc.handle(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
             await this.createUnityProject(selectedScenes, selectedPackages)
-            e.sender.send(channels.fromMain.readyToBuildProject)
         })
-        ipc.on(channels.toMain.buildUnityProject, async (e) => {
+        ipc.handle(channels.toMain.buildUnityProject, async (e) => {
             await new UnityBridge().build(this.buildPath)
             e.sender.send(channels.fromMain.buildFinished)
         })
-        ipc.on(channels.toMain.openBuildDirectory, async (e) => {
+        ipc.handle(channels.toMain.openBuildDirectory, async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
         ipc.handle(channels.toMain.queryJsonScenes, async (e) => {

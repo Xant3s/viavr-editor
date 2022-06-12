@@ -74,7 +74,7 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
     useEffect(() => {
         const loadInitialValues = async() => {
             const allPreferences = await loadPreferences() as [string, unknown][]
-            const preferencesExcludingDevPreferences = allPreferences.filter(pref => !pref[0].startsWith('dev-'))
+            const preferencesExcludingDevPreferences = allPreferences.filter(pref => !pref[0].startsWith('dev.'))
             preferencesExcludingDevPreferences.forEach(pref => setPref(pref[0] as string, pref[1]))
         }
 

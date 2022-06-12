@@ -16,7 +16,11 @@ export default class CustomMenu {
                       click: () => ipc.emit('project-manager:save-project')
                     },
                     {
-                      label: "Preferences",
+                      label: "Project Settings",
+                        click: () => ipc.emit('projectSettings:open')
+                    },
+                    {
+                        label: "Preferences",
                         click: () => ipc.emit('preferences:open')
                     },
                     {

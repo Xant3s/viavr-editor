@@ -6,6 +6,7 @@ import MainWindow from '../MainWindow'
 import Utils from '../BuildSystem/Utils'
 import fastFolderSizeSync = require('fast-folder-size/sync')
 import {channels} from '../API'
+import EventEmitter from 'events'
 
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
@@ -19,6 +20,7 @@ export default class ProjectManager {
     private projectPath!: string
     // The path to the extracted project. May have unsaved changes. May be the same as project path for large projects.
     private _presentWorkingDirectory!: string
+    private onProjectOpenedEvent: EventEmitter = new EventEmitter()
 
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
@@ -33,6 +35,15 @@ export default class ProjectManager {
 
     get presentWorkingDirectory() {
         return this._presentWorkingDirectory
+    }
+
+    public projectIsLoaded() {
+        return this.projectPath !== undefined && this.presentWorkingDirectory !== undefined
+            && this.projectPath !== '' && this.presentWorkingDirectory !== ''
+    }
+
+    public registerOnProjectLoadedListener(callback: () => void) {
+        this.onProjectOpenedEvent.addListener('project-loaded', callback)
     }
 
     private constructor() {
@@ -57,6 +68,7 @@ export default class ProjectManager {
             fs.rmdirSync(tempProjectFolder, {recursive: true})
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)
+            this.onProjectOpenedEvent.emit('project-loaded')
         }
     }
 
@@ -92,6 +104,7 @@ export default class ProjectManager {
         console.log('Project path: ', this.projectPath)
         console.log('Present working directory: ', this.presentWorkingDirectory)
         this.mainWindow.send(channels.fromMain.projectOpened)
+        this.onProjectOpenedEvent.emit('project-loaded')
     }
 
     private async saveProject() {

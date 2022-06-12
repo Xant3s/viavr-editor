@@ -13,3 +13,13 @@ export const SpokeIframe = styled.iframe`
   height: 100%;
   border: 0;
 `
+
+export const WelcomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #15171b;
+  height: 100vh;
+`

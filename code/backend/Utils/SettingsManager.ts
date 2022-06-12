@@ -25,9 +25,9 @@ export default class SettingsManager {
         return Object.entries(this.settings)
     }
 
-    public set<Type>(name: string, value: Type) {
+    public async set<Type>(name: string, value: Type) {
         this.settings[name] = value
-        this.saveSettingToFile()
+        await this.saveSettingToFile()
         this.settingUpdateEvents[name]?.emit('update', value)
     }
 
@@ -41,7 +41,7 @@ export default class SettingsManager {
         this.settings = JSON.parse(data.toString())
     }
 
-    public saveSettingToFile(path: string = this.settingsPath) {
-        fs.writeFile(path, JSON.stringify(this.settings, null, 2))
+    public async saveSettingToFile(path: string = this.settingsPath) {
+        await fs.writeFile(path, JSON.stringify(this.settings, null, 2))
     }
 }

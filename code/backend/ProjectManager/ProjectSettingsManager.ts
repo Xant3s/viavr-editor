@@ -43,8 +43,9 @@ export default class ProjectSettingsManager {
         return this.settingsManager.getAll()
     }
 
-    public set<Type>(name: string, value: Type) {
-        this.settingsManager.set(name, value)
+    public async set<Type>(name: string, value: Type) {
+        await this.settingsManager.set(name, value)
+        // TODO:
         // this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
     }
 
@@ -53,8 +54,8 @@ export default class ProjectSettingsManager {
     }
 
     // Handles update from frontend
-    private updateSetting(pref) {
-        this.settingsManager.set(pref.name, pref.value)
+    private async updateSetting(pref) {
+        await this.settingsManager.set(pref.name, pref.value)
     }
 
     private openProjectSettings() {

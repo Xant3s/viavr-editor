@@ -41,8 +41,8 @@ export default class PreferencesManager {
         return this.settingsManager.getAll()
     }
 
-    public set<Type>(name: string, value: Type) {
-        this.settingsManager.set(name, value)
+    public async set<Type>(name: string, value: Type) {
+        await this.settingsManager.set(name, value)
         this.window?.webContents.send(`preferences:preference-changed-from-backend-${name}`, value)
     }
 
@@ -51,8 +51,8 @@ export default class PreferencesManager {
     }
 
     // Handles update from frontend
-    private updatePreference(pref) {
-        this.settingsManager.set(pref.name, pref.value)
+    private async updatePreference(pref) {
+        await this.settingsManager.set(pref.name, pref.value)
     }
 
     private openPreferences() {

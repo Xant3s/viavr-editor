@@ -61,9 +61,9 @@ export default class MainWindow {
         }
 
         // DevTools
-        installExtension(REACT_DEVELOPER_TOOLS)
-            .then((name) => console.log(`Added Extension:  ${name}`))
-            .catch((err) => console.log('An error occurred: ', err))
+        // installExtension(REACT_DEVELOPER_TOOLS)
+        //     .then((name) => console.log(`Added Extension:  ${name}`))
+        //     .catch((err) => console.log('An error occurred: ', err))
 
         if(isDev) {
             MainWindow.window.webContents.openDevTools()

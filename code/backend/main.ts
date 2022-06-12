@@ -7,6 +7,7 @@ import ProjectManager from './ProjectManager/ProjectManager'
 import SceneExporter from './ProjectManager/SceneExporter'
 import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
+import {channels} from './API'
 
 
 const init = async () => {
@@ -27,6 +28,7 @@ const init = async () => {
     })
 
     ipc.on('print-main-window-url', () => console.log(mainWindow.window.webContents.getURL()))
+    ipc.handle(channels.toMain.requestURL, () => mainWindow.window.webContents.getURL())
 }
 
 const tryOpenProject = async () => {

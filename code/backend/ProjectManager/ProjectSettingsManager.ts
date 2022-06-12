@@ -1,6 +1,5 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
 import * as isDev from 'electron-is-dev'
-import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
@@ -8,7 +7,7 @@ import ProjectManager from './ProjectManager'
 
 
 export default class ProjectSettingsManager {
-    private settingsManager = new SettingsManager(AppUtils.getResPath() + '/preferences.json')
+    private settingsManager!: SettingsManager
     private static instance: ProjectSettingsManager
     private window?: BrowserWindow
     private initialized = false
@@ -21,12 +20,14 @@ export default class ProjectSettingsManager {
         return ProjectSettingsManager.instance
     }
 
-    public async init() {
+    private async init() {
+        this.settingsManager = new SettingsManager(ProjectManager.getInstance().presentWorkingDirectory + '/projectSettings.json')
         await this.settingsManager.init()
         this.initialized = true
     }
 
     private constructor() {
+        ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
         ipc.on('projectSettings:open', () => this.openProjectSettings())
         ipc.on(channels.toMain.changeProjectSetting, (_, pref) => this. updateSetting(pref))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))

@@ -7,6 +7,7 @@ import Utils from '../BuildSystem/Utils'
 import fastFolderSizeSync = require('fast-folder-size/sync')
 import {channels} from '../API'
 import EventEmitter from 'events'
+import ProjectSettingsManager from './ProjectSettingsManager'
 
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
@@ -112,6 +113,8 @@ export default class ProjectManager {
             console.log('No project loaded.')
             return
         }
+
+        await ProjectSettingsManager.getInstance().set<string>('dev.viavr.editor.version', app.getVersion())
 
         const pwdSizeInBytes = fastFolderSizeSync(this.presentWorkingDirectory)
         if(pwdSizeInBytes !== undefined) {

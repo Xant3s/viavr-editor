@@ -68,7 +68,7 @@ export const BuildDialog: FC = () => {
     useEffect(() => {
         loadScenes()
         loadPackages()
-    })
+    }, [])
 
     return (
         <StyledPreferences>

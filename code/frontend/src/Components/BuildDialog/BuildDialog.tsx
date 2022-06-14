@@ -3,6 +3,12 @@ import {Scene} from './Scene'
 import {Package} from './Package'
 import {PreferencesContainer, StyledPreferences } from '../StyledComponents/Preferences/StyledPreferences'
 import { Button } from '../StyledComponents/Button'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import * as React from 'react'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
@@ -67,7 +73,52 @@ export const BuildDialog: FC = () => {
     return (
         <StyledPreferences>
             <h1>Build Settings</h1>
+
             <PreferencesContainer>
+
+                <div>
+                    <Accordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            <Typography>Scenes</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                malesuada lacus ex, sit amet blandit leo lobortis eget.
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel2a-content"
+                            id="panel2a-header"
+                        >
+                            <Typography>Packages</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                malesuada lacus ex, sit amet blandit leo lobortis eget.
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Accordion disabled>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel3a-content"
+                            id="panel3a-header"
+                        >
+                            <Typography>Disabled Accordion</Typography>
+                        </AccordionSummary>
+                    </Accordion>
+                </div>
+
+
 
             <h4>Scenes</h4>
 

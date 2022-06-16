@@ -1,5 +1,6 @@
 import EventEmitter from 'events'
 import {promises as fs} from 'fs'
+import * as fs2 from 'fs'
 
 export default class SettingsManager {
     private readonly settingsPath: string
@@ -37,6 +38,10 @@ export default class SettingsManager {
     }
 
     public async loadSettingsFromFile(path: string = this.settingsPath) {
+        if(!(fs2.existsSync(path))) {
+            this.settings = {}
+            return
+        }
         const data = await fs.readFile(path)
         this.settings = JSON.parse(data.toString())
     }

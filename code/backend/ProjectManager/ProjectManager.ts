@@ -66,6 +66,9 @@ export default class ProjectManager {
         if(!canceled && filePath !== undefined && filePath?.length > 0){
             this.projectPath = filePath
             const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
+            if(!fs.existsSync(tempProjectFolder)) {
+                fs.mkdirSync(tempProjectFolder, {recursive: true})
+            }
             fs.rmdirSync(tempProjectFolder, {recursive: true})
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)

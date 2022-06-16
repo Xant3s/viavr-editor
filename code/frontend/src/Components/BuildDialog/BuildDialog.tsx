@@ -1,14 +1,9 @@
 import {FC, useEffect, useState} from 'react'
 import {Scene} from './Scene'
 import {Package} from './Package'
-import {PreferencesContainer, StyledPreferences } from '../StyledComponents/Preferences/StyledPreferences'
-import { Button } from '../StyledComponents/Button'
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import * as React from 'react'
+import {PreferencesContainer, StyledPreferences} from '../StyledComponents/Preferences/StyledPreferences'
+import {Button} from '../StyledComponents/Button'
+import {PreferenceAccordion} from '../Preferences/PreferenceAccordion'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
@@ -40,26 +35,26 @@ export const BuildDialog: FC = () => {
 
     const getSelectedSceneNames = () => {
         return scenes.filter(item => item.isSelected)
-                     .map(scene => scene.sceneFileName)
+            .map(scene => scene.sceneFileName)
     }
 
     const getSelectedPackages = () => {
         return packages.filter(item => item.mandatory || item.isSelected)
     }
 
-    const loadScenes = async () => {
+    const loadScenes = async() => {
         const sceneFileNames = await api.invoke(api.channels.toMain.queryScenes)
         setScenes(sceneFileNames.map(sceneFileName => {
             return ({isSelected: true, sceneFileName})
         }))
     }
 
-    const loadPackages = async () => {
+    const loadPackages = async() => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         setPackages(packages)
     }
 
-    const build = async () => {
+    const build = async() => {
         await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
         await api.invoke(api.channels.toMain.buildUnityProject)
         await api.invoke(api.channels.toMain.openBuildDirectory)
@@ -76,52 +71,34 @@ export const BuildDialog: FC = () => {
 
             <PreferencesContainer>
 
-                <div>
-                    <Accordion>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography>Scenes</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                {
-                                    scenes.map(({isSelected, sceneFileName}) => (
-                                        <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
-                                    ))
-                                }
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                        >
-                            <Typography>Packages</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                {packages.map((p) => (
-                                    <Package key={p.name}
-                                             name={p.name}
-                                             displayName={p.displayName}
-                                             version={p.version}
-                                             description={p.description}
-                                             isSelected={p.isSelected}
-                                             mandatory={p.mandatory}
-                                             toggleFunction={togglePackageSelected}/>
-                                ))}
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                </div>
+                <PreferenceAccordion summary={'Scenes'} details={(
+                    <>
+                        {
+                            scenes.map(({isSelected, sceneFileName}) => (
+                                <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName}
+                                       toggleFunction={toggleSceneSelected}/>
+                            ))
+                        }
+                    </>
+                )}/>
 
-            <br/>
-            <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
+                <PreferenceAccordion summary={'Packages'} details={(
+                    <>
+                        {packages.map((p) => (
+                            <Package key={p.name}
+                                     name={p.name}
+                                     displayName={p.displayName}
+                                     version={p.version}
+                                     description={p.description}
+                                     isSelected={p.isSelected}
+                                     mandatory={p.mandatory}
+                                     toggleFunction={togglePackageSelected}/>
+                        ))}
+                    </>
+                )}/>
+
+                <br/>
+                <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
             </PreferencesContainer>
         </StyledPreferences>
     )

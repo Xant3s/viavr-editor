@@ -87,8 +87,11 @@ export const BuildDialog: FC = () => {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                {
+                                    scenes.map(({isSelected, sceneFileName}) => (
+                                        <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
+                                    ))
+                                }
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
@@ -102,48 +105,21 @@ export const BuildDialog: FC = () => {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                {packages.map((p) => (
+                                    <Package key={p.name}
+                                             name={p.name}
+                                             displayName={p.displayName}
+                                             version={p.version}
+                                             description={p.description}
+                                             isSelected={p.isSelected}
+                                             mandatory={p.mandatory}
+                                             toggleFunction={togglePackageSelected}/>
+                                ))}
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-                    <Accordion disabled>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel3a-content"
-                            id="panel3a-header"
-                        >
-                            <Typography>Disabled Accordion</Typography>
-                        </AccordionSummary>
-                    </Accordion>
                 </div>
 
-
-
-            <h4>Scenes</h4>
-
-                {
-                scenes.map(({isSelected, sceneFileName}) => (
-                    <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
-                ))
-            }
-
-            <br/>
-            <h4>Packages</h4>
-
-            {packages.map((p) => (
-                <Package key={p.name}
-                         name={p.name}
-                         displayName={p.displayName}
-                         version={p.version}
-                         description={p.description}
-                         isSelected={p.isSelected}
-                         mandatory={p.mandatory}
-                         toggleFunction={togglePackageSelected}/>
-            ))}
-
-            <br/>
-            <div id="package-list"></div>
             <br/>
             <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
             </PreferencesContainer>

@@ -24,4 +24,8 @@ export const Button = styled.button`
   &:focus {
     outline: none;
   }
+  
+  &:disabled {
+    background: darkgray;
+  }
 `

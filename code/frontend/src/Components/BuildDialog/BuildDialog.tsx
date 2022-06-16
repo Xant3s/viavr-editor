@@ -1,12 +1,13 @@
 import {FC, useEffect, useState} from 'react'
 import {Scene} from './Scene'
 import {Package} from './Package'
+import {PreferencesContainer, StyledPreferences} from '../StyledComponents/Preferences/StyledPreferences'
+import {Button} from '../StyledComponents/Button'
+import {PreferenceAccordion} from '../Preferences/PreferenceAccordion'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
-    const [readyToBuild, setReadyToBuild] = useState(false)
-    const [buildFinished, setBuildFinished] = useState(false)
 
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
@@ -34,73 +35,71 @@ export const BuildDialog: FC = () => {
 
     const getSelectedSceneNames = () => {
         return scenes.filter(item => item.isSelected)
-                     .map(scene => scene.sceneFileName)
+            .map(scene => scene.sceneFileName)
     }
 
     const getSelectedPackages = () => {
         return packages.filter(item => item.mandatory || item.isSelected)
     }
 
-    const loadScenes = async () => {
+    const loadScenes = async() => {
         const sceneFileNames = await api.invoke(api.channels.toMain.queryScenes)
         setScenes(sceneFileNames.map(sceneFileName => {
             return ({isSelected: true, sceneFileName})
         }))
     }
 
-    const loadPackages = async () => {
+    const loadPackages = async() => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         setPackages(packages)
+    }
+
+    const build = async() => {
+        await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
+        await api.invoke(api.channels.toMain.buildUnityProject)
+        await api.invoke(api.channels.toMain.openBuildDirectory)
     }
 
     useEffect(() => {
         loadScenes()
         loadPackages()
-        api.on(api.channels.fromMain.readyToBuildProject, () => {setReadyToBuild(true)})
-        api.on(api.channels.fromMain.buildFinished, () => {setBuildFinished(true)})
     }, [])
 
     return (
-        <>
-            <title>Build Dialog</title>
+        <StyledPreferences>
             <h1>Build Settings</h1>
-            <label>Select scenes to build:</label><br/>
-            {
-                scenes.map(({isSelected, sceneFileName}) => (
-                    <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName} toggleFunction={toggleSceneSelected}/>
-                ))
-            }
 
-            <br/>
-            <h4>Packages</h4>
+            <PreferencesContainer>
 
-            {packages.map((p) => (
-                <Package key={p.name}
-                         name={p.name}
-                         displayName={p.displayName}
-                         version={p.version}
-                         description={p.description}
-                         isSelected={p.isSelected}
-                         mandatory={p.mandatory}
-                         toggleFunction={togglePackageSelected}/>
-            ))}
+                <PreferenceAccordion summary={'Scenes'} details={(
+                    <>
+                        {
+                            scenes.map(({isSelected, sceneFileName}) => (
+                                <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName}
+                                       toggleFunction={toggleSceneSelected}/>
+                            ))
+                        }
+                    </>
+                )}/>
 
-            <br/>
-            <div id="package-list"></div>
-            <br/>
-            <button id="btn-create-project" type="button" onClick={() => api.send(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())}>
-                Create Unity Project
-            </button>
-            <br/>
-            <br/>
-            <label>Info: Build project will only work on Windows for now.</label>
-            <br/>
-            <button id="btn-build-project" type="button" onClick={() => api.send(api.channels.toMain.buildUnityProject)} disabled={!readyToBuild}>
-                Build Unity Project
-            </button>
-            <button id="btn-open-build-directory" type="button" onClick={() => api.send(api.channels.toMain.openBuildDirectory)} disabled={!buildFinished}>
-                Open Build Directory
-            </button>
-        </>
+                <PreferenceAccordion summary={'Packages'} details={(
+                    <>
+                        {packages.map((p) => (
+                            <Package key={p.name}
+                                     name={p.name}
+                                     displayName={p.displayName}
+                                     version={p.version}
+                                     description={p.description}
+                                     isSelected={p.isSelected}
+                                     mandatory={p.mandatory}
+                                     toggleFunction={togglePackageSelected}/>
+                        ))}
+                    </>
+                )}/>
+
+                <br/>
+                <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
+            </PreferencesContainer>
+        </StyledPreferences>
     )
 }

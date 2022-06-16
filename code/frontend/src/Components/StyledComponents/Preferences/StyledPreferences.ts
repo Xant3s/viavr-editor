@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Accordion from '@mui/material/Accordion'
 
 export const StyledPreferences = styled.div`
   background-color: #15171b;
@@ -13,7 +14,6 @@ export const PreferencesContainer = styled.div`
   padding: 30px;
   border-radius: 2px;
 `
-
 
 export const PreferenceEntry = styled.div`
   margin-bottom: 10px;
@@ -34,4 +34,9 @@ export const PreferenceEntryLabel = styled.label`
   width: 180px;
   text-align: right;
   margin-right: 10px;
+`
+
+export const PreferenceAccordion = styled(Accordion)`
+  background-color: #4d535b!important;
+  color: white!important;
 `

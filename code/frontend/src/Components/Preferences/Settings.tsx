@@ -55,8 +55,10 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         const emptyList: string[] = []
         const kind = pref['kind'] || 'string'
         const label = pref['label'] || prefKey
-        const options = pref['options'] || emptyList
         const value = pref['value'] || pref
+        const options = pref['options'] || emptyList
+        const min = pref['min'] || undefined
+        const max = pref['max'] || undefined
         const onChange = (newValue) => {
             if(index !== -1) {
                 updateListPreference(parentKey, index, prefKey, newValue)
@@ -66,7 +68,7 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         }
         return (
             <Preference id={prefKey} key={prefKey} label={label} value={value} onChange={onChange}
-                        kind={kind} options={options} selectPath={() => selectPath(prefKey)}
+                        kind={kind} options={options} min={min} max={max} selectPath={() => selectPath(prefKey)}
                         createPrefComponent={createPreferenceComponent2} />
         )
     }

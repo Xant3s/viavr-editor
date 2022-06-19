@@ -10,15 +10,15 @@ type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'list
 const noOP = () => {}
 const emptyList: string[] = []
 
-export const Preference = ({id, label, value, onChange, kind = 'string', selectPath = noOP, options = emptyList, createPrefComponent}) => {
+export const Preference = ({id, label, value, onChange, kind = 'string', selectPath = noOP, options = emptyList, min=undefined, max=undefined, createPrefComponent}) => {
     const getPreference = (kind: Kind) => {
         switch(kind) {
             case 'boolean':
                 return BoolPreference({id, label, value, onChange})
             case 'int':
-                return IntPreference({id, label, value, onChange})
+                return IntPreference({id, label, value, onChange, min, max})
             case 'float':
-                return FloatPreference({id, label, value, onChange})
+                return FloatPreference({id, label, value, onChange, min, max})
             case 'path':
                 return PathPreference({id, label, value, onChange, selectPath})
             case 'dropdown':

@@ -21,8 +21,18 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
     }
 
     const updatePreference = (name: string, newValue) => {
+        // console.log(`Updating preference ${name} to ${newValue}`)
+        if(newValue === 'on') {
+            console.log('on')
+            newValue = 'true'
+        } else if(newValue === 'off') {
+            console.log('off')
+            newValue = 'false'
+        }
+        console.log(`Updating preference ${name} to ${newValue}`)
         const isComplex = prefs.get(name)['kind'] !== undefined
         let newVal = isComplex ? {...prefs.get(name), value: newValue} : newValue
+        console.log(newVal)
         setPref(name, newVal)
         api.send(changeSettingChannel, {name: name, value: newVal})
     }

@@ -3,14 +3,17 @@ import {PathPreference} from './PathPreference'
 import {DropDownPreference} from './DropDownPreference'
 import {ListPreference} from './ListPreference'
 import {PreferenceEntry} from '../StyledComponents/Preferences/StyledPreferences'
+import {BoolPreference} from './BoolPreference'
 
-type Kind = 'path' | 'string' | 'dropdown' | 'list'
+type Kind = 'string' | 'boolean' | 'path' | 'dropdown' | 'list'
 const noOP = () => {}
 const emptyList: string[] = []
 
 export const Preference = ({id, label, value, onChange, kind = 'string', selectPath = noOP, options = emptyList, createPrefComponent}) => {
     const getPreference = (kind: Kind) => {
         switch(kind) {
+            case 'boolean':
+                return BoolPreference({id, label, value, onChange})
             case 'path':
                 return PathPreference({id, label, value, onChange, selectPath})
             case 'dropdown':

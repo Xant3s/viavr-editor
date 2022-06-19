@@ -5,8 +5,9 @@ import {ListPreference} from './ListPreference'
 import {PreferenceEntry} from '../StyledComponents/Preferences/StyledPreferences'
 import {BoolPreference} from './BoolPreference'
 import {FloatPreference, IntPreference} from './NumberPreference'
+import { CompositePreference } from './CompositePreference'
 
-type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'list'
+type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'composite' | 'list'
 const noOP = () => {}
 const emptyList: string[] = []
 
@@ -23,6 +24,8 @@ export const Preference = ({id, label, value, onChange, kind = 'string', selectP
                 return PathPreference({id, label, value, onChange, selectPath})
             case 'dropdown':
                 return DropDownPreference({id, label, value, onChange, options})
+            case 'composite':
+                return CompositePreference({id, label, value, onChange, createPrefComponent})
             case 'list':
                 return ListPreference({id, label, value, onChange, createPrefComponent})
             case 'string':  // fallthrough

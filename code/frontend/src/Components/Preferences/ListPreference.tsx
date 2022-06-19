@@ -6,7 +6,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
     const removeListItem = (index: number) => {
         const newValue = [...value]
         newValue.splice(index, 1)
-        onChange({target: {value: newValue}})
+        onChange(newValue)
     }
 
     const addListItem = () => {
@@ -15,7 +15,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
             console.error('ListPreference: Cannot add item to empty list')
         }
         newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
-        onChange({target: {value: newValue}})
+        onChange(newValue)
     }
 
     return (

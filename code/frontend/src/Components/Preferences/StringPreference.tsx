@@ -4,7 +4,7 @@ export const StringPreference = ({id, label, value, onChange}) => {
     return (
         <>
             <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>
-            <input id={id} type="text" value={value} onChange={onChange}/>
+            <input id={id} type="text" value={value} onChange={(e) => onChange(e.target.value)}/>
         </>
     )
 }

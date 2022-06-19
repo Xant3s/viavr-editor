@@ -67,11 +67,11 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         const label = pref['label'] || prefKey
         const options = pref['options'] || emptyList
         const value = pref['value'] || pref
-        const onChange = (e) => {
+        const onChange = (newValue) => {
             if(index !== -1) {
-                updateListPreference(parentKey, index, prefKey, e.target.value)
+                updateListPreference(parentKey, index, prefKey, newValue)
             } else{
-                updatePreference(prefKey, e.target.value)
+                updatePreference(prefKey, newValue)
             }
         }
         return (

@@ -4,7 +4,7 @@ import {DropDownPreference} from './DropDownPreference'
 import {ListPreference} from './ListPreference'
 import {PreferenceEntry} from '../StyledComponents/Preferences/StyledPreferences'
 import {BoolPreference} from './BoolPreference'
-import {IntPreference} from './NumberPreference'
+import {FloatPreference, IntPreference} from './NumberPreference'
 
 type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'list'
 const noOP = () => {}
@@ -17,6 +17,8 @@ export const Preference = ({id, label, value, onChange, kind = 'string', selectP
                 return BoolPreference({id, label, value, onChange})
             case 'int':
                 return IntPreference({id, label, value, onChange})
+            case 'float':
+                return FloatPreference({id, label, value, onChange})
             case 'path':
                 return PathPreference({id, label, value, onChange, selectPath})
             case 'dropdown':

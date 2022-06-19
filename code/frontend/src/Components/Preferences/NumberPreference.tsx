@@ -8,3 +8,12 @@ export const IntPreference = ({id, label, value, onChange}) => {
         </>
     )
 }
+
+export const FloatPreference = ({id, label, value, onChange}) => {
+    return (
+        <>
+            <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>
+            <input id={id} type="number" step={0.1} value={value} onChange={(e) => onChange(e.target.value.toString())}/>
+        </>
+    )
+}

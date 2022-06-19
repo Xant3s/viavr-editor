@@ -20,19 +20,19 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         return api.invoke(loadSettingsChannel)
     }
 
-    const updatePreference = (event, name: string) => {
+    const updatePreference = (name: string, newValue) => {
         const isComplex = prefs.get(name)['kind'] !== undefined
-        let newValue = isComplex ? {...prefs.get(name), value: event.target.value} : event.target.value
-        setPref(name, newValue)
-        api.send(changeSettingChannel, {name: name, value: newValue})
+        let newVal = isComplex ? {...prefs.get(name), value: newValue} : newValue
+        setPref(name, newVal)
+        api.send(changeSettingChannel, {name: name, value: newVal})
     }
 
-    const updateListPreference = (parentName: string, index: number, prefName: string, event) => {
+    const updateListPreference = (parentName: string, index: number, prefName: string, newValue) => {
         if(prefs.size === 0) return
         let newPrefs = new Map(prefs)
         let list = newPrefs.get(parentName)['value']
         if(list === undefined) return
-        list[index][prefName]['value'] = event.target.value
+        list[index][prefName]['value'] = newValue
         newPrefs.set(parentName, {...newPrefs.get(parentName), value: list})
         setPrefs(newPrefs)
         api.send(changeSettingChannel, {name: parentName, value: newPrefs.get(parentName)})
@@ -59,9 +59,9 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         const value = pref['value'] || pref
         const onChange = (e) => {
             if(index !== -1) {
-                updateListPreference(parentKey, index, prefKey, e)
+                updateListPreference(parentKey, index, prefKey, e.target.value)
             } else{
-                updatePreference(e, prefKey)
+                updatePreference(prefKey, e.target.value)
             }
         }
         return (

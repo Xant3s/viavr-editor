@@ -27,6 +27,18 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         api.send(changeSettingChannel, {name: name, value: newVal})
     }
 
+    const updateCompositePreference = (parentName: string, prefName: string, newValue) => {
+        if(prefs.size === 0) return
+        let newPrefs = new Map(prefs)
+        let composite = newPrefs.get(parentName)['value']
+        if(composite === undefined) return
+        composite[prefName]['value'] = newValue
+        newPrefs.set(parentName, {...newPrefs.get(parentName), value: composite})
+        setPrefs(newPrefs)
+        api.send(changeSettingChannel, {name: parentName, value: newPrefs.get(parentName)})
+
+    }
+
     const updateListPreference = (parentName: string, index: number, prefName: string, newValue) => {
         if(prefs.size === 0) return
         let newPrefs = new Map(prefs)
@@ -62,7 +74,10 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         const onChange = (newValue) => {
             if(index !== -1) {
                 updateListPreference(parentKey, index, prefKey, newValue)
-            } else{
+            } else if(parentKey !== undefined) {
+                updateCompositePreference(parentKey, prefKey, newValue)
+            }
+            else{
                 updatePreference(prefKey, newValue)
             }
         }

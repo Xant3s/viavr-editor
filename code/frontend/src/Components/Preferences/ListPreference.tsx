@@ -1,6 +1,8 @@
 import {Button} from '../StyledComponents/Button'
 import {RemoveButton} from '../StyledComponents/RemoveButton'
 import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPreferences'
+import { StringPreference } from './StringPreference'
+import { Row } from '../StyledComponents/Row'
 
 export const ListPreference = ({id, label, value, onChange, createPrefComponent}) => {
     const removeListItem = (index: number) => {
@@ -25,8 +27,9 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                 value.map((item, index) => (
                     <PreferenceListEntry key={index}>
                         <div>{
-                            Object.entries(item)
-                                  .map(entry => createPrefComponent(entry[0], entry[1], id, index))
+                            <StringPreference id={`${id}-${index}`} label={''} value={item} onChange={() =>{}} />
+                            // Object.entries(item)
+                            //       .map(entry => createPrefComponent(entry[0], entry[1], id, index))
                         }</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <RemoveButton onClick={() => removeListItem(index)}/>

@@ -60,14 +60,6 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         api.send(changeSettingChannel, {name: parentName, value: newPrefs.get(parentName)})
     }
 
-    const selectPath = async (prefName) => {
-        const path = await api.invoke(api.channels.toMain.showOpenFileDialog) as string
-        if(path === undefined) return
-        const newValue = {...prefs.get(prefName), value: path}
-        setPref(prefName, newValue)
-        api.send(changeSettingChannel, {name: prefName, value: newValue})
-    }
-
     const createPreferenceComponent = (prefKey: string) => {
         const pref = prefs.get(prefKey)
         return createPreferenceComponent2(prefKey, pref)
@@ -88,13 +80,13 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
                 updateListPreference(prefKey, index, newValue)
             } else if(parentKey !== undefined) {
                 updateCompositePreference(parentKey, prefKey, newValue)
-            } else{
+            } else {
                 updatePreference(prefKey, newValue)
             }
         }
         return (
             <Preference id={prefKey} key={prefKey} label={label} value={value} onChange={onChange}
-                        kind={kind} options={options} min={min} max={max} selectPath={() => selectPath(prefKey)}
+                        kind={kind} options={options} min={min} max={max}
                         createPrefComponent={createPreferenceComponent2} />
         )
     }

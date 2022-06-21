@@ -8,10 +8,9 @@ import {FloatPreference, IntPreference} from './NumberPreference'
 import { CompositePreference } from './CompositePreference'
 
 type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'composite' | 'list'
-const noOP = () => {}
 const emptyList: string[] = []
 
-export const Preference = ({id, label, value, onChange, kind = 'string', selectPath = noOP, options = emptyList, min=undefined, max=undefined, createPrefComponent}) => {
+export const Preference = ({id, label, value, onChange, kind = 'string', options = emptyList, min=undefined, max=undefined, createPrefComponent}) => {
     const getPreference = (kind: Kind) => {
         switch(kind) {
             case 'boolean':
@@ -21,7 +20,7 @@ export const Preference = ({id, label, value, onChange, kind = 'string', selectP
             case 'float':
                 return FloatPreference({id, label, value, onChange, min, max})
             case 'path':
-                return PathPreference({id, label, value, onChange, selectPath})
+                return PathPreference({id, label, value, onChange})
             case 'dropdown':
                 return DropDownPreference({id, label, value, onChange, options})
             case 'composite':

@@ -36,10 +36,20 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         newPrefs.set(parentName, {...newPrefs.get(parentName), value: composite})
         setPrefs(newPrefs)
         api.send(changeSettingChannel, {name: parentName, value: newPrefs.get(parentName)})
-
     }
 
-    const updateListPreference = (parentName: string, index: number, prefName: string, newValue) => {
+    const updateListPreference = (prefName: string, index: number, newValue) => {
+        if(prefs.size === 0) return
+        let newPrefs = new Map(prefs)
+        let list = newPrefs.get(prefName)['value']
+        if(list === undefined) return
+        list[index]['value'] = newValue
+        newPrefs.set(prefName, {...newPrefs.get(prefName), value: list})
+        setPrefs(newPrefs)
+        api.send(changeSettingChannel, {name: prefName, value: newPrefs.get(prefName)})
+    }
+
+    const updateCompositeListPreference = (parentName: string, index: number, prefName: string, newValue) => {
         if(prefs.size === 0) return
         let newPrefs = new Map(prefs)
         let list = newPrefs.get(parentName)['value']
@@ -72,12 +82,13 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         const min = pref['min'] || undefined
         const max = pref['max'] || undefined
         const onChange = (newValue) => {
-            if(index !== -1) {
-                updateListPreference(parentKey, index, prefKey, newValue)
+            if(index !== -1 && parentKey !== undefined) {
+                updateCompositeListPreference(parentKey, index, prefKey, newValue)
+            } else if(index !== -1) {
+                updateListPreference(prefKey, index, newValue)
             } else if(parentKey !== undefined) {
                 updateCompositePreference(parentKey, prefKey, newValue)
-            }
-            else{
+            } else{
                 updatePreference(prefKey, newValue)
             }
         }

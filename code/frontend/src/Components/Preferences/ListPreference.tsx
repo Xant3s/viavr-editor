@@ -5,18 +5,18 @@ import { StringPreference } from './StringPreference'
 
 
 export const ListPreference = ({id, label, value, onChange, createPrefComponent}) => {
-    const removeListItem = (index: number) => {
-        const newValue = [...value]
-        newValue.splice(index, 1)
-        onChange(newValue)
-    }
-
     const addListItem = () => {
         const newValue = [...value]
         if(newValue.length === 0) {
             console.error('ListPreference: Cannot add item to empty list')
         }
         newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
+        onChange(newValue)
+    }
+
+    const removeListItem = (index: number) => {
+        const newValue = [...value]
+        newValue.splice(index, 1)
         onChange(newValue)
     }
 
@@ -27,7 +27,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                 value.map((item, index) => (
                     <PreferenceListEntry key={index}>
                         <div>{
-                            <StringPreference id={`${id}-${index}`} label={undefined} value={item} onChange={() =>{}} />
+                            <StringPreference id={`${id}-${index}`} label={undefined} value={item} onChange={onChange} />
                             // Object.entries(item)
                             //       .map(entry => createPrefComponent(entry[0], entry[1], id, index))
                         }</div>

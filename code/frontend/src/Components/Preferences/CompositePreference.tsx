@@ -3,7 +3,7 @@ import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPrefere
 export const CompositePreference = ({id, label, value, onChange, createPrefComponent}) => {
     return (
         <>
-            <h5>{label}</h5>
+            {label && <h5>{label}</h5>}
             {
                 <PreferenceListEntry>
                     <div>{

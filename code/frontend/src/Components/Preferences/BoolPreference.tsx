@@ -3,7 +3,7 @@ import {PreferenceEntryLabel} from '../StyledComponents/Preferences/StyledPrefer
 export const BoolPreference = ({id, label, value, onChange}) => {
     return (
         <>
-            <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>
+            {label && <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>}
             <input id={id} type="checkbox" checked={value === 'true'} onChange={(e) => {
                 onChange(e.target.checked.toString())
             }}/>

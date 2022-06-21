@@ -15,7 +15,7 @@ export const FloatPreference = ({id, label, value, onChange, min=undefined, max=
 const NumberPreference = ({id, label, value, onChange, step, min=undefined, max=undefined}) => {
     return (
         <>
-            <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>
+            {label && <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>}
             <input id={id} type="number" step={step} min={min} max={max} value={value} onChange={(e) => onChange(e.target.value.toString())}/>
         </>
     )

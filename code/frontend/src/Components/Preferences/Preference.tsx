@@ -10,6 +10,10 @@ import { CompositePreference } from './CompositePreference'
 type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'composite' | 'list'
 const emptyList: string[] = []
 
+export const Setting = () => {
+
+}
+
 export const Preference = ({id, label, value, onChange, kind = 'string', options = emptyList, min=undefined, max=undefined, createPrefComponent}) => {
     const getPreference = (kind: Kind) => {
         switch(kind) {

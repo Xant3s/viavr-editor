@@ -11,7 +11,7 @@ import assert = require('assert')
 import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
 import {channels} from '../API'
-import {StringPreference} from '../Preferences/Preferences'
+import {StringSetting} from '../../frontend/src/@types/Settings'
 import {PackageRegistries} from './DataStructures/PackageRegistries'
 
 const fs = require('fs').promises

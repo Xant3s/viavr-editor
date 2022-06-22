@@ -27,6 +27,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                 value.map((item, index) => (
                     <PreferenceListEntry key={index}>
                         <div>{
+                            // TODO: determine whether this is a string[], number[], or Setting[]
                             <StringPreference id={`${id}-${index}`} label={undefined} value={item} onChange={onChange} />
                             // Object.entries(item)
                             //       .map(entry => createPrefComponent(entry[0], entry[1], id, index))

@@ -1,12 +1,12 @@
 import {PreferenceEntryLabel} from '../StyledComponents/Preferences/StyledPreferences'
 
-export const IntPreference = ({id, label, value, onChange, min=undefined, max=undefined}) => {
+export const IntPreference = ({id, label, value, onChange, min, max}) => {
     return (
         <NumberPreference id={id} label={label} value={value} onChange={onChange} step={1} min={min} max={max}/>
     )
 }
 
-export const FloatPreference = ({id, label, value, onChange, min=undefined, max=undefined}) => {
+export const FloatPreference = ({id, label, value, onChange, min, max}) => {
     return (
         <NumberPreference id={id} label={label} value={value} onChange={onChange} step={0.1} min={min} max={max}/>
     )

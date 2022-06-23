@@ -22,8 +22,9 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         return api.invoke(loadSettingsChannel)
     }
 
-    const sendSettingUpdateToBackend = (name: string, updatedSetting: Setting_t) => {
-        api.send(changeSettingChannel, updatedSetting.uuid, updatedSetting)
+    // in case of a composite setting, name and updated setting will be the root setting while uuid will be the child that changed
+    const sendSettingUpdateToBackend = (name: string, uuid: string, updatedSetting: Setting_t) => {
+        api.send(changeSettingChannel, uuid, updatedSetting)
     }
 
     // const updatePreference = (name: string, newValue) => {

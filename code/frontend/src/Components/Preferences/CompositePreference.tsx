@@ -3,13 +3,14 @@ import {Setting_t, value_t} from '../../@types/Settings'
 
 export declare interface CompositePreferenceProps {
     id: string,
+    uuid: string,
     label: string,
     value: { [key: string]: Setting_t },
-    onChange: (newValue: value_t) => void,
+    onChange: (uuid: string, newValue: value_t) => void,
     createPrefComponent: (settingKey: string, setting: Setting_t, value: value_t | undefined, keyPrefix?: string) => JSX.Element
 }
 
-export const CompositePreference = ({id, label, value, onChange, createPrefComponent}: CompositePreferenceProps) => {
+export const CompositePreference = ({id, uuid, label, value, onChange, createPrefComponent}: CompositePreferenceProps) => {
     const drawEntry = ([settingName, setting]: [string, Setting_t]) => {
         const key = `${id}-${settingName}`
         return (

@@ -1,10 +1,10 @@
 import {PreferenceEntryLabel} from '../StyledComponents/Preferences/StyledPreferences'
 
-export const DropDownPreference = ({id, label, value, onChange, options}) => {
+export const DropDownPreference = ({id, uuid, label, value, onChange, options}) => {
     return (
         <>
             {label && <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>}
-            <select id={id} name={id} value={value} onChange={(e) => onChange(e.target.value)}>
+            <select id={id} name={id} value={value} onChange={(e) => onChange(uuid, e.target.value)}>
                 {
                     options.map((option) => {
                         return <option key={option} value={option}>{option}</option>

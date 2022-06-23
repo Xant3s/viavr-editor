@@ -4,20 +4,20 @@ import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPrefere
 import { StringPreference } from './StringPreference'
 
 
-export const ListPreference = ({id, label, value, onChange, createPrefComponent}) => {
+export const ListPreference = ({id, uuid, label, value, onChange, createPrefComponent}) => {
     const addListItem = () => {
         const newValue = [...value]
         if(newValue.length === 0) {
             console.error('ListPreference: Cannot add item to empty list')
         }
         newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
-        onChange(newValue)
+        onChange(uuid, newValue)
     }
 
     const removeListItem = (index: number) => {
         const newValue = [...value]
         newValue.splice(index, 1)
-        onChange(newValue)
+        onChange(uuid, newValue)
     }
 
     return (
@@ -28,7 +28,7 @@ export const ListPreference = ({id, label, value, onChange, createPrefComponent}
                     <PreferenceListEntry key={index}>
                         <div>{
                             // TODO: determine whether this is a string[], number[], or Setting[]
-                            <StringPreference id={`${id}-${index}`} label={undefined} value={item} onChange={onChange} />
+                            <StringPreference id={`${id}-${index}`} uuid={`${uuid}-${index}`} label={undefined} value={item} onChange={onChange} />
                             // Object.entries(item)
                             //       .map(entry => createPrefComponent(entry[0], entry[1], id, index))
                         }</div>

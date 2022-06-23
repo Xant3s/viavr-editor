@@ -12,7 +12,7 @@ import {useEffect, useState} from 'react'
 // type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'composite' | 'list'
 // const emptyList: string[] = []
 
-export const Setting = ({settingKey, setting, updateCallback = (name: string, uuid: string, newValue: value_t) => {}}) => {
+export const Setting = ({settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {}}) => {
     const [value, setValue] = useState<value_t>()
 
     useEffect(() => {
@@ -20,9 +20,8 @@ export const Setting = ({settingKey, setting, updateCallback = (name: string, uu
     }, [setting.value])
 
     const updateSetting = (uuid: string, newValue: value_t) => {
-        const newSetting = {...setting, value: newValue}
         if(setting.kind !== 'composite') setValue(newValue)
-        updateCallback(settingKey, uuid, newSetting)
+        updateCallback(uuid, newValue)
     }
 
     const createSetting = (settingKey: string, setting: Setting_t, value, keyPrefix = '') => {

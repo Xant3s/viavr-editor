@@ -33,15 +33,15 @@ export default class SettingsManager {
         this.settingUpdateEvents[name]?.emit('update', value)
     }
 
-    public async setByUuid(uuid: string, newSettingValue: Setting_t, settings: any = this.settings) {
+    public async setByUuid(uuid: string, newValue: value_t, settings: any = this.settings) {
         for(const [settingName, settingValue] of Object.entries(settings)) {
             if(typeof settingValue !== 'object') continue
             if(!('uuid' in (settingValue as any))) continue
             const val = settingValue as Setting_t
             if(val.uuid === uuid) {
-                val.value = newSettingValue.value
+                val.value = newValue
             } else if(val.kind === 'composite') {
-                await this.setByUuid(uuid, newSettingValue, val.value)
+                await this.setByUuid(uuid, newValue, val.value)
             }
         }
 

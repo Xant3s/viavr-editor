@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 // import {Preference} from './Preference'
 import { StyledPreferences, PreferencesContainer } from '../StyledComponents/Preferences/StyledPreferences'
 import { Setting } from './Preference'
-import {Setting_t} from '../../@types/Settings'
+import {value_t} from '../../@types/Settings'
 
 export declare interface SettingsProps {
     title: string,
@@ -22,9 +22,8 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         return api.invoke(loadSettingsChannel)
     }
 
-    // in case of a composite setting, name and updated setting will be the root setting while uuid will be the child that changed
-    const sendSettingUpdateToBackend = (name: string, uuid: string, updatedSetting: Setting_t) => {
-        api.send(changeSettingChannel, uuid, updatedSetting)
+    const sendSettingUpdateToBackend = (uuid: string, newValue: value_t) => {
+        api.send(changeSettingChannel, uuid, newValue)
     }
 
     // const updatePreference = (name: string, newValue) => {

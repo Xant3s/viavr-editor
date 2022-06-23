@@ -16,7 +16,7 @@ export const Setting = ({settingKey, setting, updateCallback = (name: string, ne
     const [value, setValue] = useState<value_t>()
 
     useEffect(() => {
-        setValue(setting.value as value_t)
+        setValue(setting.value)
     }, [])
 
     const updateSetting = (newValue: value_t) => {
@@ -25,26 +25,27 @@ export const Setting = ({settingKey, setting, updateCallback = (name: string, ne
         updateCallback(settingKey, newSetting)
     }
 
-    const getSetting = () => {
-        // console.log('getSetting', value)
+    const createSetting = (settingKey: string, setting: Setting_t, value, keyPrefix = '') => {
+        const key = `${keyPrefix}-${settingKey}`
+        value = value ?? setting.value
 
         switch(setting.kind) {
             case 'string':
-                return (<StringPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} />)
+                return (<StringPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} />)
             case 'boolean':
-                return (<BoolPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} />)
+                return (<BoolPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} />)
             case 'int':
-                return (<IntPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} min={setting.min} max={setting.max} />)
+                return (<IntPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} min={setting.min} max={setting.max} />)
             case 'float':
-                return (<FloatPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} min={setting.min} max={setting.max} />)
+                return (<FloatPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} min={setting.min} max={setting.max} />)
             case 'path':
-                return (<PathPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} />)
+                return (<PathPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} />)
             case 'dropdown':
-                return (<DropDownPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} options={setting.options} />)
-            // case 'composite':
-            //     return (<CompositePreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} createPrefComponent={getSetting} />)
+                return (<DropDownPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} options={setting.options} />)
+            case 'composite':
+                return (<CompositePreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} createPrefComponent={createSetting} />)
             // case 'list':
-            //     return (<ListPreference id={settingKey} label={setting.label} value={value} onChange={updateSetting} createPrefComponent={getSetting} />)
+            //     return (<ListPreference id={settingKey} key={key} label={setting.label} value={value} onChange={updateSetting} createPrefComponent={getSetting} />)
             default:
                 return (<div>Unknown setting kind: {setting.kind}</div>)
         }
@@ -52,7 +53,7 @@ export const Setting = ({settingKey, setting, updateCallback = (name: string, ne
 
     return (
         <PreferenceEntry>
-            {getSetting()}
+            {createSetting(settingKey, setting, value)}
             <br/>
         </PreferenceEntry>
     )

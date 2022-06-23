@@ -1,7 +1,7 @@
 import {StringPreference} from './StringPreference'
 import {PathPreference} from './PathPreference'
 import {DropDownPreference} from './DropDownPreference'
-// import {ListPreference} from './ListPreference'
+import {ListPreference} from './ListPreference'
 import {PreferenceEntry} from '../StyledComponents/Preferences/StyledPreferences'
 import {BoolPreference} from './BoolPreference'
 import {FloatPreference, IntPreference} from './NumberPreference'
@@ -43,10 +43,10 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
                 return (<DropDownPreference id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={updateSetting} options={setting.options} />)
             case 'composite':
                 return (<CompositePreference id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={updateSetting} createPrefComponent={createSetting} />)
-            // case 'list':
-            //     return (<ListPreference id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={updateSetting} createPrefComponent={getSetting} />)
-            default:
-                return (<div>Unknown setting kind: {setting.kind}</div>)
+            case 'list':
+                return (<ListPreference id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} listType={setting.listType} onChange={updateSetting} createPrefComponent={createSetting} />)
+            // default:
+            //     return (<div>Unknown setting kind: {setting.kind}</div>)
         }
     }
 

@@ -4,7 +4,7 @@ import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPrefere
 import { StringPreference } from './StringPreference'
 
 
-export const ListPreference = ({id, uuid, label, value, onChange, createPrefComponent}) => {
+export const ListPreference = ({id, uuid, label, value, listType, onChange, createPrefComponent}) => {
     const addListItem = () => {
         const newValue = [...value]
         if(newValue.length === 0) {

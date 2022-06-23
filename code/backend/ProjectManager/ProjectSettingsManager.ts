@@ -30,7 +30,7 @@ export default class ProjectSettingsManager {
     private constructor() {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
         ipc.on('projectSettings:open', () => this.openProjectSettings())
-        ipc.on(channels.toMain.changeProjectSetting, (_, pref) => this. updateSetting(pref))
+        ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this. updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
         ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
@@ -53,8 +53,8 @@ export default class ProjectSettingsManager {
     }
 
     // Handles update from frontend
-    private async updateSetting(pref: { name: string, value: value_t }) {
-        await this.settingsManager.set(pref.name, pref.value)
+    private async updateSetting(uuid: string, value: value_t) {
+        await this.settingsManager.setByUuid(uuid, value)
     }
 
     private openProjectSettings() {

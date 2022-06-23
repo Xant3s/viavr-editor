@@ -1,6 +1,7 @@
 import EventEmitter from 'events'
 import {promises as fs} from 'fs'
 import * as fs2 from 'fs'
+import {Setting_t, value_t} from '../../frontend/src/@types/Settings'
 
 export default class SettingsManager {
     private readonly settingsPath: string
@@ -30,6 +31,19 @@ export default class SettingsManager {
         this.settings[name] = value
         await this.saveSettingToFile()
         this.settingUpdateEvents[name]?.emit('update', value)
+    }
+
+    public async setByUuid(uuid: string, value: value_t, settings: any = this.settings) {
+        for(let setting of settings) {
+            if(!('uuid' in setting)) continue
+            if(setting.uuid === uuid) {
+                setting.value = value
+            } else if(setting.kind === 'composite') {
+                await this.setByUuid(uuid, value, setting.value)
+            }
+        }
+        await this.saveSettingToFile()
+        // TODO: emit update event??
     }
 
     public registerSettingUpdateEvent(settingName: string, f: (value: any) => void) {

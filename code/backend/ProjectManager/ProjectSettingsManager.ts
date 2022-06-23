@@ -4,7 +4,7 @@ import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
 import ProjectManager from './ProjectManager'
-import {value_t} from '../../frontend/src/@types/Settings'
+import {Setting_t} from '../../frontend/src/@types/Settings'
 
 
 export default class ProjectSettingsManager {
@@ -30,7 +30,7 @@ export default class ProjectSettingsManager {
     private constructor() {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
         ipc.on('projectSettings:open', () => this.openProjectSettings())
-        ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this. updateSetting(uuid, value))
+        ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: Setting_t) => this.updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
         ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
@@ -53,8 +53,8 @@ export default class ProjectSettingsManager {
     }
 
     // Handles update from frontend
-    private async updateSetting(uuid: string, value: value_t) {
-        await this.settingsManager.setByUuid(uuid, value)
+    private async updateSetting(uuid: string, newSettingValue: Setting_t) {
+        await this.settingsManager.setByUuid(uuid, newSettingValue)
     }
 
     private openProjectSettings() {

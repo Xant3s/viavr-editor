@@ -33,15 +33,18 @@ export default class SettingsManager {
         this.settingUpdateEvents[name]?.emit('update', value)
     }
 
-    public async setByUuid(uuid: string, value: value_t, settings: any = this.settings) {
-        for(let setting of settings) {
-            if(!('uuid' in setting)) continue
-            if(setting.uuid === uuid) {
-                setting.value = value
-            } else if(setting.kind === 'composite') {
-                await this.setByUuid(uuid, value, setting.value)
+    public async setByUuid(uuid: string, newSettingValue: Setting_t, settings: any = this.settings) {
+        for(const [settingName, settingValue] of Object.entries(settings)) {
+            if(typeof settingValue !== 'object') continue
+            if(!('uuid' in (settingValue as any))) continue
+            const val = settingValue as Setting_t
+            if(val.uuid === uuid) {
+                val.value = newSettingValue.value
+            } else if(val.kind === 'composite') {
+                await this.setByUuid(uuid, newSettingValue, val.value)
             }
         }
+
         await this.saveSettingToFile()
         // TODO: emit update event??
     }

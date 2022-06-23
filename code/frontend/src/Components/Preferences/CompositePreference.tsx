@@ -1,10 +1,10 @@
 import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPreferences'
-import {Setting, Setting_t, value_t} from '../../@types/Settings'
+import {Setting_t, value_t} from '../../@types/Settings'
 
 export declare interface CompositePreferenceProps {
     id: string,
     label: string,
-    value: { [key: string]: Setting },
+    value: { [key: string]: Setting_t },
     onChange: (newValue: value_t) => void,
     createPrefComponent: (settingKey: string, setting: Setting_t, value: value_t | undefined, keyPrefix?: string) => JSX.Element
 }
@@ -26,7 +26,7 @@ export const CompositePreference = ({id, label, value, onChange, createPrefCompo
                 <div>
                     {
                         Object.entries(value)
-                              .map(entry => drawEntry(entry as [string, Setting_t]))
+                              .map(entry => drawEntry(entry))
                     }
                 </div>
             </PreferenceListEntry>

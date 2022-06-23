@@ -11,6 +11,7 @@ export const ListSetting_typeName = 'list'
 
 interface Setting {
     label: string
+    uuid: string
 }
 
 export interface StringSetting extends Setting {

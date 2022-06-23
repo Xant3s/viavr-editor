@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 // import {Preference} from './Preference'
 import { StyledPreferences, PreferencesContainer } from '../StyledComponents/Preferences/StyledPreferences'
 import { Setting } from './Preference'
-import {Setting_t, value_t} from '../../@types/Settings'
+import {value_t} from '../../@types/Settings'
 
 export declare interface SettingsProps {
     title: string,
@@ -119,11 +119,6 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
         //     console.log(v)
         // }
     })
-
-    const test = (prefKey) => {
-        // @ts-ignore
-        return (<Setting key={prefKey} settingKey={prefKey as string} setting={prefs[prefKey] as Setting_t} />)
-    }
 
     return (
         <StyledPreferences>

@@ -1,7 +1,7 @@
 import {StringPreference} from './StringPreference'
 import {PathPreference} from './PathPreference'
 import {DropDownPreference} from './DropDownPreference'
-import {ListPreference} from './ListPreference'
+// import {ListPreference} from './ListPreference'
 import {PreferenceEntry} from '../StyledComponents/Preferences/StyledPreferences'
 import {BoolPreference} from './BoolPreference'
 import {FloatPreference, IntPreference} from './NumberPreference'
@@ -17,7 +17,7 @@ export const Setting = ({settingKey, setting, updateCallback = (name: string, ne
 
     useEffect(() => {
         setValue(setting.value)
-    }, [])
+    }, [setting.value])
 
     const updateSetting = (newValue: value_t) => {
         const newSetting = {...setting, value: newValue}

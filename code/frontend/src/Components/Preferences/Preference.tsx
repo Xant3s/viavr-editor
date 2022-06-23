@@ -12,7 +12,7 @@ import {useEffect, useState} from 'react'
 // type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'composite' | 'list'
 // const emptyList: string[] = []
 
-export const Setting = ({settingKey, setting, updateCallback = (newValue: value_t) => {}}) => {
+export const Setting = ({settingKey, setting, updateCallback = (name: string, newValue: value_t) => {}}) => {
     const [value, setValue] = useState<value_t>()
 
     useEffect(() => {
@@ -20,8 +20,9 @@ export const Setting = ({settingKey, setting, updateCallback = (newValue: value_
     }, [])
 
     const updateSetting = (newValue: value_t) => {
+        const newSetting = {...setting, value: newValue}
         setValue(newValue)
-        updateCallback(newValue)
+        updateCallback(settingKey, newSetting)
     }
 
     const getSetting = () => {

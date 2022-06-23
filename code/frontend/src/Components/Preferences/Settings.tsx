@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 // import {Preference} from './Preference'
 import { StyledPreferences, PreferencesContainer } from '../StyledComponents/Preferences/StyledPreferences'
 import { Setting } from './Preference'
-import {Setting_t} from '../../@types/Settings'
+import {Setting_t, value_t} from '../../@types/Settings'
 
 export declare interface SettingsProps {
     title: string,
@@ -20,6 +20,10 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
 
     const loadPreferences = () => {
         return api.invoke(loadSettingsChannel)
+    }
+
+    const updateSetting = (name: string, newValue: value_t) => {
+        api.send(changeSettingChannel, {name: name, value: newValue})
     }
 
     // const updatePreference = (name: string, newValue) => {
@@ -138,7 +142,7 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
                         // .map(prefKey =>(<Setting key={prefKey} settingKey={prefKey as string} setting={prefs[prefKey] as Setting_t} />))
                     Array.from(prefs.entries())
                         // @ts-ignore
-                         .map(([prefKey, pref]) => (<Setting key={prefKey} settingKey={prefKey} setting={pref} />))
+                         .map(([prefKey, pref]) => (<Setting key={prefKey} settingKey={prefKey} setting={pref} updateCallback={updateSetting} />))
                 }
             </PreferencesContainer>
         </StyledPreferences>

@@ -4,6 +4,7 @@ import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
+import {value_t} from '../../frontend/src/@types/Settings'
 
 
 export default class PreferencesManager {
@@ -51,7 +52,7 @@ export default class PreferencesManager {
     }
 
     // Handles update from frontend
-    private async updatePreference(pref) {
+    private async updatePreference(pref: { name: string; value: value_t }) {
         await this.settingsManager.set(pref.name, pref.value)
     }
 

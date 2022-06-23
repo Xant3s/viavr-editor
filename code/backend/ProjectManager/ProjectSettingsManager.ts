@@ -4,6 +4,7 @@ import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
 import ProjectManager from './ProjectManager'
+import {value_t} from '../../frontend/src/@types/Settings'
 
 
 export default class ProjectSettingsManager {
@@ -52,7 +53,7 @@ export default class ProjectSettingsManager {
     }
 
     // Handles update from frontend
-    private async updateSetting(pref) {
+    private async updateSetting(pref: { name: string, value: value_t }) {
         await this.settingsManager.set(pref.name, pref.value)
     }
 
@@ -76,5 +77,6 @@ export default class ProjectSettingsManager {
         } else {
             this.window.loadURL(`file://${__dirname}/../index.html#/project-settings`)
         }
+        this.window.webContents.openDevTools()
     }
 }

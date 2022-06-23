@@ -1,5 +1,6 @@
 export type Setting_t = StringSetting | BoolSetting | IntSetting | FloatSetting | PathSetting | DropdownSetting | CompositeSetting | ListSetting
 export type value_t = string | string[] | number[] | Setting_t[] | { [key: string]: Setting_t }
+export type listType_t = 'string' | 'int' | 'float' | 'composite'
 export const StringSetting_typeName = 'string'
 export const BoolSetting_typeName = 'boolean'
 export const IntSetting_typeName = 'int'
@@ -57,5 +58,5 @@ export interface CompositeSetting extends Setting {
 export interface ListSetting extends Setting {
     value: string[] | number[] | Setting[]
     kind: 'list'
-    listType: 'string' | 'number' | 'composite'
+    listType: 'string' | 'int' | 'float' | 'composite'
 }

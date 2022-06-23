@@ -2,9 +2,24 @@ import {Button} from '../StyledComponents/Button'
 import {RemoveButton} from '../StyledComponents/RemoveButton'
 import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPreferences'
 import { StringPreference } from './StringPreference'
+import {FloatPreference, IntPreference} from './NumberPreference'
+import {CompositePreference} from './CompositePreference'
 
 
 export const ListPreference = ({id, uuid, label, value, listType, onChange, createPrefComponent}) => {
+    const createListEntry = (listIndex: number, value) => {
+        switch(listType) {
+            case 'string':
+                return <StringPreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} />
+            case 'int':
+                return <IntPreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} min={undefined} max={undefined} />
+            case 'float':
+                return <FloatPreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} min={undefined} max={undefined} />
+            case 'composite':
+                return <CompositePreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} createPrefComponent={createPrefComponent} />
+        }
+    }
+
     const addListItem = () => {
         const newValue = [...value]
         if(newValue.length === 0) {
@@ -26,12 +41,7 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
             {
                 value.map((item, index) => (
                     <PreferenceListEntry key={index}>
-                        <div>{
-                            // TODO: determine whether this is a string[], number[], or Setting[]
-                            <StringPreference id={`${id}-${index}`} uuid={`${uuid}-${index}`} label={undefined} value={item} onChange={onChange} />
-                            // Object.entries(item)
-                            //       .map(entry => createPrefComponent(entry[0], entry[1], id, index))
-                        }</div>
+                        <div>{createListEntry(index, item)}</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <RemoveButton onClick={() => removeListItem(index)}/>
                         </div>

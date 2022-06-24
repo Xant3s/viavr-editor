@@ -28,11 +28,12 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
     }
 
     const addListItem = () => {
-        const newValue = [...value]
-        if(newValue.length === 0) {
-            console.error('ListPreference: Cannot add item to empty list')
-        }
-        newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
+        // const newValue = [...value]
+        // if(newValue.length === 0) {
+        //     console.error('ListPreference: Cannot add item to empty list')
+        // }
+        // newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
+        const newValue = [...value, ""]
         onChange(uuid, newValue)
     }
 

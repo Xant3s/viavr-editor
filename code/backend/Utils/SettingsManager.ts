@@ -1,6 +1,7 @@
 import EventEmitter from 'events'
 import {promises as fs} from 'fs'
 import * as fs2 from 'fs'
+import {Setting_t, value_t} from '../../frontend/src/@types/Settings'
 
 export default class SettingsManager {
     private readonly settingsPath: string
@@ -30,6 +31,26 @@ export default class SettingsManager {
         this.settings[name] = value
         await this.saveSettingToFile()
         this.settingUpdateEvents[name]?.emit('update', value)
+    }
+
+    public async setByUuid(uuid: string, newValue: value_t, settings: any = this.settings) {
+        for(const [settingName, setting] of Object.entries(settings)) {
+            if(typeof setting !== 'object') continue
+            if(!('uuid' in (setting as any))) continue
+            const s = setting as Setting_t
+            if(s.uuid === uuid) {
+                s.value = newValue
+            } else if(s.kind === 'composite') {
+                await this.setByUuid(uuid, newValue, s.value)
+            } else if(s.kind === 'list' && s.listType === 'composite') {
+                for(const composite of s.value) {
+                    await this.setByUuid(uuid, newValue, composite)
+                }
+            }
+        }
+
+        await this.saveSettingToFile()
+        this.settingUpdateEvents['anySetting']?.emit('update', undefined)   // emit update event for any setting. Systems have to load the new value themselves.
     }
 
     public registerSettingUpdateEvent(settingName: string, f: (value: any) => void) {

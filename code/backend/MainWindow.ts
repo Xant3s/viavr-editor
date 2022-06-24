@@ -1,7 +1,7 @@
-import {BrowserWindow, ipcMain, ipcMain as ipc, nativeTheme} from 'electron'
+import {BrowserWindow, ipcMain as ipc} from 'electron'
 import * as path from 'path'
 import * as isDev from 'electron-is-dev'
-import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
+// import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
 import CustomMenu from './CustomMenu'
 
 

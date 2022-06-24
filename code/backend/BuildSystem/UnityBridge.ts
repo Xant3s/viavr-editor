@@ -1,5 +1,5 @@
 import PreferencesManager from '../Preferences/PreferencesManager'
-import {PathPreference} from '../Preferences/Preferences'
+import {PathSetting} from '../../frontend/src/@types/Settings'
 const util = require('util')
 
 const exec = util.promisify(require('child_process').exec)
@@ -11,7 +11,7 @@ export default class UnityBridge {
     }
 
     private async invokeUnityMethod(method: string, projectPath: string) {
-        const unityPath = PreferencesManager.getInstance().get<PathPreference>('unityPath').value
+        const unityPath = PreferencesManager.getInstance().get<PathSetting>('unityPath').value
         const unityAppPath = UnityBridge.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
         const command = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod ${method}`
         const {stdout, stderr } = await exec(command)

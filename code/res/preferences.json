@@ -3,6 +3,7 @@
     "value": "System",
     "label": "Theme",
     "kind": "dropdown",
+    "uuid": "3431c59d-882e-419b-8832-747cfbd01b11",
     "options": [
       "System",
       "Dark",
@@ -12,6 +13,7 @@
   "unityPath": {
     "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.2.0f1\\Editor\\Unity.exe",
     "label": "Path to Unity executable",
+    "uuid": "5565213a-fd3a-412d-ae8f-cf1f446fcfe9",
     "kind": "path"
   },
   "packageRegistries": {
@@ -20,22 +22,27 @@
         "packageRegistryUrl": {
           "value": "https://packages.informatik.uni-wuerzburg.de",
           "label": "Package registry URL",
+          "uuid": "c703f3c4-7d52-495b-bd41-0fb2aae1b95e",
           "kind": "string"
         },
         "packageRegistryName": {
           "value": "Info9 JMU",
           "label": "Package registry name",
+          "uuid": "79891996-c104-456f-8d11-3a8eba22130c",
           "kind": "string"
         },
         "packageRegistryScopes": {
           "value": "de.jmu,unity-com",
           "label": "Package registry scope",
+          "uuid": "652cd6ca-78a9-47e4-9046-f46df2edd12f",
           "kind": "string"
         }
       }
     ],
     "label": "Package registries",
-    "kind": "list"
+    "uuid": "e5431934-2597-4761-8780-38afd694a69c",
+    "kind": "list",
+    "listType": "composite"
   },
   "dev.stopSpoke": false
 }

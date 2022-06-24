@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import {Settings} from './Settings'
+import {Settings} from '../Settings/Settings'
 
 export const Preferences: FC = () => {
     return (

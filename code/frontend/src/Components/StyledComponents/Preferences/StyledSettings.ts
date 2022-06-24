@@ -1,25 +1,25 @@
 import styled from 'styled-components'
 import Accordion from '@mui/material/Accordion'
 
-export const StyledPreferences = styled.div`
+export const StyledSettings = styled.div`
   background-color: #15171b;
   color: white;
   padding: 20px;
   height: 100vh;
 `
 
-export const PreferencesContainer = styled.div`
+export const SettingsContainer = styled.div`
   background-color: #3a4048;
   margin: 30px auto;
   padding: 30px;
   border-radius: 2px;
 `
 
-export const PreferenceEntry = styled.div`
+export const SettingsEntry = styled.div`
   margin-bottom: 10px;
 `
 
-export const PreferenceListEntry = styled.div`
+export const SettingListEntry = styled.div`
   background: #4d535b;
   margin: 10px;
   display: flex;
@@ -29,14 +29,14 @@ export const PreferenceListEntry = styled.div`
   padding: 10px;
 `
 
-export const PreferenceEntryLabel = styled.label`
+export const SettingEntryLabel = styled.label`
   display: inline-block;
   width: 180px;
   text-align: right;
   margin-right: 10px;
 `
 
-export const PreferenceAccordion = styled(Accordion)`
+export const SettingAccordion = styled(Accordion)`
   background-color: #4d535b!important;
   color: white!important;
 `

@@ -4,6 +4,7 @@ import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
+import {value_t} from '../../frontend/src/@types/Settings'
 
 
 export default class PreferencesManager {
@@ -27,7 +28,7 @@ export default class PreferencesManager {
 
     private constructor() {
         ipc.on('preferences:open', () => this.openPreferences())
-        ipc.on(channels.toMain.changePreference, (_, pref) => this. updatePreference(pref))
+        ipc.on(channels.toMain.changePreference, (_, uuid: string, value: value_t) => this. updatePreference(uuid, value))
         ipc.handle(channels.toMain.requestPreference, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestPreferences, () => this.settingsManager.getAll())
         ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
@@ -51,8 +52,8 @@ export default class PreferencesManager {
     }
 
     // Handles update from frontend
-    private async updatePreference(pref) {
-        await this.settingsManager.set(pref.name, pref.value)
+    private async updatePreference(uuid: string, newValue: value_t) {
+        await this.settingsManager.setByUuid(uuid, newValue)
     }
 
     private openPreferences() {

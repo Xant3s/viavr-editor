@@ -77,6 +77,5 @@ export default class ProjectSettingsManager {
         } else {
             this.window.loadURL(`file://${__dirname}/../index.html#/project-settings`)
         }
-        this.window.webContents.openDevTools()
     }
 }

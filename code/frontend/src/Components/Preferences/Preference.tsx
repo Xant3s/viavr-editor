@@ -9,8 +9,6 @@ import { CompositePreference } from './CompositePreference'
 import {Setting_t, value_t} from '../../@types/Settings'
 import {useEffect, useState} from 'react'
 
-// type Kind = 'string' | 'boolean' | 'int' | 'float' | 'path' | 'dropdown' | 'composite' | 'list'
-// const emptyList: string[] = []
 
 export const Setting = ({settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {}}) => {
     const [value, setValue] = useState<value_t>()
@@ -46,8 +44,6 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
                 return (<CompositePreference id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} createPrefComponent={createSetting} />)
             case 'list':
                 return (<ListPreference id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} listType={setting.listType} onChange={onChange} createPrefComponent={createSetting} />)
-            // default:
-            //     return (<div>Unknown setting kind: {setting.kind}</div>)
         }
     }
 
@@ -58,34 +54,3 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
         </PreferenceEntry>
     )
 }
-
-// export const Preference = ({id, label, value, onChange, kind = 'string', options = emptyList, min=undefined, max=undefined, createPrefComponent}) => {
-//     const getPreference = (kind: Kind) => {
-//         switch(kind) {
-//             case 'boolean':
-//                 return BoolPreference({id, label, value, onChange})
-//             case 'int':
-//                 return IntPreference({id, label, value, onChange, min, max})
-//             case 'float':
-//                 return FloatPreference({id, label, value, onChange, min, max})
-//             case 'path':
-//                 return PathPreference({id, label, value, onChange})
-//             case 'dropdown':
-//                 return DropDownPreference({id, label, value, onChange, options})
-//             case 'composite':
-//                 return CompositePreference({id, label, value, onChange, createPrefComponent})
-//             case 'list':
-//                 return ListPreference({id, label, value, onChange, createPrefComponent})
-//             case 'string':  // fallthrough
-//             default:
-//                 return StringPreference({id, label, value, onChange})
-//         }
-//     }
-//
-//     return (
-//         <PreferenceEntry>
-//             {getPreference(kind as Kind)}
-//             <br/>
-//         </PreferenceEntry>
-//     )
-// }

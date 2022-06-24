@@ -1,7 +1,7 @@
-import {BrowserWindow, ipcMain, ipcMain as ipc, nativeTheme} from 'electron'
+import {BrowserWindow, ipcMain as ipc} from 'electron'
 import * as path from 'path'
 import * as isDev from 'electron-is-dev'
-import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
+// import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
 import CustomMenu from './CustomMenu'
 
 
@@ -65,9 +65,9 @@ export default class MainWindow {
         //     .then((name) => console.log(`Added Extension:  ${name}`))
         //     .catch((err) => console.log('An error occurred: ', err))
 
-        // if(isDev) {
-        //     MainWindow.window.webContents.openDevTools()
-        // }
+        if(isDev) {
+            MainWindow.window.webContents.openDevTools()
+        }
     }
 
     private static activate() {

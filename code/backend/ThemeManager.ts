@@ -5,13 +5,13 @@ import {DropdownSetting} from '../frontend/src/@types/Settings'
 
 export default class ThemeManager {
     constructor() {
-        PreferencesManager.getInstance().registerPreferenceUpdateEvent('darkMode', ThemeManager.setTheme)
+        PreferencesManager.getInstance().registerPreferenceUpdateEvent('anySetting', ThemeManager.loadTheme)
         ThemeManager.loadTheme()
     }
 
     private static loadTheme() {
         const theme = PreferencesManager.getInstance().get<DropdownSetting>('darkMode')
-        this.setTheme(theme)
+        ThemeManager.setTheme(theme)
     }
 
     private static setTheme(theme: DropdownSetting) {

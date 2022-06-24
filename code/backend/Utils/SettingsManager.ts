@@ -50,7 +50,7 @@ export default class SettingsManager {
         }
 
         await this.saveSettingToFile()
-        // TODO: emit update event??
+        this.settingUpdateEvents['anySetting']?.emit('update', undefined)   // emit update event for any setting. Systems have to load the new value themselves.
     }
 
     public registerSettingUpdateEvent(settingName: string, f: (value: any) => void) {

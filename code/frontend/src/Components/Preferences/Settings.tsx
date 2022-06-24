@@ -127,7 +127,6 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
 
             <PreferencesContainer>
                 {
-                    // TODO: map initialValues.values to Setting
                     // Array.from(prefs.keys())
                     //      .map(prefKey => createPreferenceComponent(prefKey))
 

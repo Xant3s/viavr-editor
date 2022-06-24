@@ -65,9 +65,9 @@ export default class MainWindow {
         //     .then((name) => console.log(`Added Extension:  ${name}`))
         //     .catch((err) => console.log('An error occurred: ', err))
 
-        if(isDev) {
-            MainWindow.window.webContents.openDevTools()
-        }
+        // if(isDev) {
+        //     MainWindow.window.webContents.openDevTools()
+        // }
     }
 
     private static activate() {

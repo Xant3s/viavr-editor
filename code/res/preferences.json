@@ -41,7 +41,8 @@
     ],
     "label": "Package registries",
     "uuid": "e5431934-2597-4761-8780-38afd694a69c",
-    "kind": "list"
+    "kind": "list",
+    "listType": "composite"
   },
   "dev.stopSpoke": false
 }

@@ -34,14 +34,14 @@ export default class SettingsManager {
     }
 
     public async setByUuid(uuid: string, newValue: value_t, settings: any = this.settings) {
-        for(const [settingName, settingValue] of Object.entries(settings)) {
-            if(typeof settingValue !== 'object') continue
-            if(!('uuid' in (settingValue as any))) continue
-            const val = settingValue as Setting_t
-            if(val.uuid === uuid) {
-                val.value = newValue
-            } else if(val.kind === 'composite') {
-                await this.setByUuid(uuid, newValue, val.value)
+        for(const [settingName, setting] of Object.entries(settings)) {
+            if(typeof setting !== 'object') continue
+            if(!('uuid' in (setting as any))) continue
+            const s = setting as Setting_t
+            if(s.uuid === uuid) {
+                s.value = newValue
+            } else if(s.kind === 'composite') {
+                await this.setByUuid(uuid, newValue, s.value)
             }
         }
 

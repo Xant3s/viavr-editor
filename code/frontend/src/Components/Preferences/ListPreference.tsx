@@ -4,19 +4,26 @@ import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPrefere
 import { StringPreference } from './StringPreference'
 import {FloatPreference, IntPreference} from './NumberPreference'
 import {CompositePreference} from './CompositePreference'
+import {value_t} from '../../@types/Settings'
 
 
 export const ListPreference = ({id, uuid, label, value, listType, onChange, createPrefComponent}) => {
+    const updateSetting = (listIndex: number, newValue: value_t) => {
+        let newVal = [...value]
+        newVal[listIndex] = newValue
+        onChange(uuid, newVal)
+    }
+
     const createListEntry = (listIndex: number, value) => {
         switch(listType) {
             case 'string':
-                return <StringPreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} />
+                return <StringPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} />
             case 'int':
-                return <IntPreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} min={undefined} max={undefined} />
+                return <IntPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
             case 'float':
-                return <FloatPreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} min={undefined} max={undefined} />
+                return <FloatPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
             case 'composite':
-                return <CompositePreference id={`${id}-${listIndex}`} uuid={`${uuid}-${listIndex}`} label={undefined} value={value} onChange={onChange} createPrefComponent={createPrefComponent} />
+                return <CompositePreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} createPrefComponent={createPrefComponent} />
         }
     }
 

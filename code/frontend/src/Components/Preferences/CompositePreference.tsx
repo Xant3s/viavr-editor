@@ -3,7 +3,7 @@ import {Setting_t, value_t} from '../../@types/Settings'
 
 export declare interface CompositePreferenceProps {
     id: string,
-    uuid: string,
+    uuid: string | undefined,
     label: string | undefined,
     value: { [key: string]: Setting_t },
     onChange: (uuid: string, newValue: value_t) => void,

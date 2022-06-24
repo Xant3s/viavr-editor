@@ -1,4 +1,4 @@
-import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPreferences'
+import {SettingListEntry} from '../StyledComponents/Preferences/StyledSettings'
 import {Setting_t, value_t} from '../../@types/Settings'
 
 export declare interface CompositePreferenceProps {
@@ -10,7 +10,7 @@ export declare interface CompositePreferenceProps {
     createPrefComponent: any
 }
 
-export const CompositePreference = ({id, uuid, label, value, onChange, createPrefComponent}: CompositePreferenceProps) => {
+export const CompositeSetting = ({id, uuid, label, value, onChange, createPrefComponent}: CompositePreferenceProps) => {
     const drawEntry = ([settingName, setting]: [string, Setting_t]) => {
         const key = `${id}-${settingName}`
         return (
@@ -23,14 +23,14 @@ export const CompositePreference = ({id, uuid, label, value, onChange, createPre
     return (
         <>
             {label && <h5>{label}</h5>}
-            <PreferenceListEntry>
+            <SettingListEntry>
                 <div>
                     {
                         Object.entries(value)
                               .map(entry => drawEntry(entry))
                     }
                 </div>
-            </PreferenceListEntry>
+            </SettingListEntry>
         </>
     )
 }

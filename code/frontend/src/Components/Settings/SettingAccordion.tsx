@@ -1,10 +1,10 @@
 import AccordionSummary from '@mui/material/AccordionSummary'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Typography from '@mui/material/Typography'
-import {PreferenceAccordion as StyledAccordion} from '../StyledComponents/Preferences/StyledPreferences'
+import {SettingAccordion as StyledAccordion} from '../StyledComponents/Preferences/StyledSettings'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
-export const PreferenceAccordion = ({summary, details}) => {
+export const SettingAccordion = ({summary, details}) => {
     return (
         <StyledAccordion>
             <AccordionSummary

@@ -1,9 +1,9 @@
 import {FC, useEffect, useState} from 'react'
 import {Scene} from './Scene'
 import {Package} from './Package'
-import {PreferencesContainer, StyledPreferences} from '../StyledComponents/Preferences/StyledPreferences'
+import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences/StyledSettings'
 import {Button} from '../StyledComponents/Button'
-import {PreferenceAccordion} from '../Preferences/PreferenceAccordion'
+import {SettingAccordion} from '../Settings/SettingAccordion'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
@@ -66,12 +66,12 @@ export const BuildDialog: FC = () => {
     }, [])
 
     return (
-        <StyledPreferences>
+        <StyledSettings>
             <h1>Build Settings</h1>
 
-            <PreferencesContainer>
+            <SettingsContainer>
 
-                <PreferenceAccordion summary={'Scenes'} details={(
+                <SettingAccordion summary={'Scenes'} details={(
                     <>
                         {
                             scenes.map(({isSelected, sceneFileName}) => (
@@ -82,7 +82,7 @@ export const BuildDialog: FC = () => {
                     </>
                 )}/>
 
-                <PreferenceAccordion summary={'Packages'} details={(
+                <SettingAccordion summary={'Packages'} details={(
                     <>
                         {packages.map((p) => (
                             <Package key={p.name}
@@ -99,7 +99,7 @@ export const BuildDialog: FC = () => {
 
                 <br/>
                 <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
-            </PreferencesContainer>
-        </StyledPreferences>
+            </SettingsContainer>
+        </StyledSettings>
     )
 }

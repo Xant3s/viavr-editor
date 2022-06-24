@@ -1,9 +1,9 @@
-import {PreferenceEntryLabel} from '../StyledComponents/Preferences/StyledPreferences'
+import {SettingEntryLabel} from '../StyledComponents/Preferences/StyledSettings'
 
-export const DropDownPreference = ({id, uuid, label, value, onChange, options}) => {
+export const DropDownSetting = ({id, uuid, label, value, onChange, options}) => {
     return (
         <>
-            {label && <PreferenceEntryLabel htmlFor={id}>{label}:</PreferenceEntryLabel>}
+            {label && <SettingEntryLabel htmlFor={id}>{label}:</SettingEntryLabel>}
             <select id={id} name={id} value={value} onChange={(e) => onChange(uuid, e.target.value)}>
                 {
                     options.map((option) => {

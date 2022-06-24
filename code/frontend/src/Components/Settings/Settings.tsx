@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
-import { StyledPreferences, PreferencesContainer } from '../StyledComponents/Preferences/StyledPreferences'
-import { Setting } from './Preference'
+import {StyledSettings, SettingsContainer} from '../StyledComponents/Preferences/StyledSettings'
+import {Setting} from './Setting'
 import {value_t} from '../../@types/Settings'
 
 export declare interface SettingsProps {
@@ -37,17 +37,17 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
     })
 
     return (
-        <StyledPreferences>
+        <StyledSettings>
             <h1>{title}</h1>
             <br />
 
-            <PreferencesContainer>
+            <SettingsContainer>
                 {
                     Array.from(prefs.entries())
                         // @ts-ignore
                          .map(([prefKey, pref]) => (<Setting key={prefKey} settingKey={prefKey} setting={pref} updateCallback={sendSettingUpdateToBackend} />))
                 }
-            </PreferencesContainer>
-        </StyledPreferences>
+            </SettingsContainer>
+        </StyledSettings>
     )
 }

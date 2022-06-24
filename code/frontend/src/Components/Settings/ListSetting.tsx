@@ -1,14 +1,14 @@
 import {v4 as uuidv4} from 'uuid'
 import {Button} from '../StyledComponents/Button'
 import {RemoveButton} from '../StyledComponents/RemoveButton'
-import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPreferences'
-import { StringPreference } from './StringPreference'
-import {FloatPreference, IntPreference} from './NumberPreference'
-import {CompositePreference} from './CompositePreference'
+import {SettingListEntry} from '../StyledComponents/Preferences/StyledSettings'
+import { StringSetting } from './StringSetting'
+import {FloatSetting, IntSetting} from './NumberPreference'
+import {CompositeSetting} from './CompositeSetting'
 import {value_t} from '../../@types/Settings'
 
 
-export const ListPreference = ({id, uuid, label, value, listType, onChange, createPrefComponent}) => {
+export const ListSetting = ({id, uuid, label, value, listType, onChange, createPrefComponent}) => {
     const updateSetting = (listIndex: number, newValue: value_t, uuidOverride: string | undefined = undefined) => {
         // Composites use the uuid from the nested setting, other lists use the uuid from the list setting itself
         const id = uuidOverride !== undefined ? uuidOverride : uuid
@@ -24,13 +24,13 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
     const createListEntry = (listIndex: number, value) => {
         switch(listType) {
             case 'string':
-                return <StringPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} />
+                return <StringSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} />
             case 'int':
-                return <IntPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
+                return <IntSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
             case 'float':
-                return <FloatPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
+                return <FloatSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
             case 'composite':
-                return <CompositePreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(uuid, newValue) => updateSetting(listIndex, newValue, uuid)} createPrefComponent={createPrefComponent} />
+                return <CompositeSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(uuid, newValue) => updateSetting(listIndex, newValue, uuid)} createPrefComponent={createPrefComponent} />
         }
     }
 
@@ -69,12 +69,12 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
             <div style={{background: '#4d535b'}}>
             {
                 value.map((item, index) => (
-                    <PreferenceListEntry key={index} style={{marginBottom: '0', marginTop: '0'}}>
+                    <SettingListEntry key={index} style={{marginBottom: '0', marginTop: '0'}}>
                         <div>{createListEntry(index, item)}</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <RemoveButton onClick={() => removeListItem(index)}/>
                         </div>
-                    </PreferenceListEntry>
+                    </SettingListEntry>
                 ))
             }
             <Button id={`btn-add-${id}`} onClick={addListItem} style={{marginLeft: 20}}>Add</Button>

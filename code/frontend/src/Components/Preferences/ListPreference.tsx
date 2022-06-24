@@ -1,3 +1,4 @@
+import {v4 as uuidv4} from 'uuid'
 import {Button} from '../StyledComponents/Button'
 import {RemoveButton} from '../StyledComponents/RemoveButton'
 import {PreferenceListEntry} from '../StyledComponents/Preferences/StyledPreferences'
@@ -34,12 +35,17 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
     }
 
     const addListItem = () => {
-        // const newValue = [...value]
-        // if(newValue.length === 0) {
-        //     console.error('ListPreference: Cannot add item to empty list')
-        // }
-        // newValue.push(JSON.parse(JSON.stringify(newValue[newValue.length - 1])))
-        const newValue = [...value, ""]
+        let newValue = [...value]
+        if(listType === 'composite') {
+            if(newValue.length === 0) {
+                console.error('ListPreference: Cannot add item to empty list')
+                return
+            }
+            let newEntry = cloneLastListEntry(newValue)
+            newValue.push(newEntry)
+        } else {
+            newValue = [...value, ""]
+        }
         onChange(uuid, newValue)
     }
 
@@ -47,6 +53,14 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
         const newValue = [...value]
         newValue.splice(index, 1)
         onChange(uuid, newValue)
+    }
+
+    function cloneLastListEntry(newValue: any[]) {
+        let newEntry = JSON.parse(JSON.stringify(newValue[newValue.length - 1]))
+        Object.keys(newEntry).forEach(key => {
+            newEntry[key].uuid = uuidv4()
+        })
+        return newEntry
     }
 
     return (

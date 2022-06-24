@@ -38,9 +38,10 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
     return (
         <>
             <h5>{label}</h5>
+            <div style={{background: '#4d535b'}}>
             {
                 value.map((item, index) => (
-                    <PreferenceListEntry key={index}>
+                    <PreferenceListEntry key={index} style={{marginBottom: '0', marginTop: '0'}}>
                         <div>{createListEntry(index, item)}</div>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <RemoveButton onClick={() => removeListItem(index)}/>
@@ -48,8 +49,8 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
                     </PreferenceListEntry>
                 ))
             }
-
-            <Button id={`btn-add-${id}`} onClick={addListItem} style={{marginLeft: 10}}>Add</Button>
+            <Button id={`btn-add-${id}`} onClick={addListItem} style={{marginLeft: 20}}>Add</Button>
+            </div>
         </>
     )
 }

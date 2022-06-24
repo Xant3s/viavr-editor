@@ -21,7 +21,7 @@ docfx:
     tags:
         - docker
 
-lecture-server:
+deploy-documentation:
     image: alpine:latest
     stage: deploy
     before_script:

@@ -42,6 +42,10 @@ export default class SettingsManager {
                 s.value = newValue
             } else if(s.kind === 'composite') {
                 await this.setByUuid(uuid, newValue, s.value)
+            } else if(s.kind === 'list' && s.listType === 'composite') {
+                for(const composite of s.value) {
+                    await this.setByUuid(uuid, newValue, composite)
+                }
             }
         }
 

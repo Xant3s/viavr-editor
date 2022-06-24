@@ -8,10 +8,16 @@ import {value_t} from '../../@types/Settings'
 
 
 export const ListPreference = ({id, uuid, label, value, listType, onChange, createPrefComponent}) => {
-    const updateSetting = (listIndex: number, newValue: value_t) => {
-        let newVal = [...value]
-        newVal[listIndex] = newValue
-        onChange(uuid, newVal)
+    const updateSetting = (listIndex: number, newValue: value_t, uuidOverride: string | undefined = undefined) => {
+        // Composites use the uuid from the nested setting, other lists use the uuid from the list setting itself
+        const id = uuidOverride !== undefined ? uuidOverride : uuid
+        if(listType === 'composite') {
+            onChange(id, newValue)
+        } else {
+            let newVal = [...value]
+            newVal[listIndex] = newValue
+            onChange(id, newVal)
+        }
     }
 
     const createListEntry = (listIndex: number, value) => {
@@ -23,7 +29,7 @@ export const ListPreference = ({id, uuid, label, value, listType, onChange, crea
             case 'float':
                 return <FloatPreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined} max={undefined} />
             case 'composite':
-                return <CompositePreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(_, newValue) => updateSetting(listIndex, newValue)} createPrefComponent={createPrefComponent} />
+                return <CompositePreference id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value} onChange={(uuid, newValue) => updateSetting(listIndex, newValue, uuid)} createPrefComponent={createPrefComponent} />
         }
     }
 

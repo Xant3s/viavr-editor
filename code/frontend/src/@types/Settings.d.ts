@@ -56,7 +56,7 @@ export interface CompositeSetting extends Setting {
 }
 
 export interface ListSetting extends Setting {
-    value: string[] | number[] | Setting[]
+    value: string[] | number[] | { [key: string]: Setting }[]
     kind: 'list'
     listType: 'string' | 'int' | 'float' | 'composite'
 }

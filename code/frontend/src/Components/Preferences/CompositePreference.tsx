@@ -7,7 +7,7 @@ export declare interface CompositePreferenceProps {
     label: string | undefined,
     value: { [key: string]: Setting_t },
     onChange: (uuid: string, newValue: value_t) => void,
-    createPrefComponent: (settingKey: string, setting: Setting_t, value: value_t | undefined, keyPrefix?: string) => JSX.Element
+    createPrefComponent: any
 }
 
 export const CompositePreference = ({id, uuid, label, value, onChange, createPrefComponent}: CompositePreferenceProps) => {
@@ -15,7 +15,7 @@ export const CompositePreference = ({id, uuid, label, value, onChange, createPre
         const key = `${id}-${settingName}`
         return (
             <div key={key}>
-                {createPrefComponent(settingName, setting, undefined, id)}
+                {createPrefComponent(settingName, setting, undefined, id, onChange)}
             </div>
         )
     }

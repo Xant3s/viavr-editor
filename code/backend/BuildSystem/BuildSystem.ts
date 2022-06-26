@@ -44,6 +44,5 @@ export default class BuildSystem {
         } else {
             this._buildDialog.loadURL(`file://${__dirname}/../index.html#/build-dialog`)
         }
-        this._buildDialog.webContents.openDevTools()
     }
 }

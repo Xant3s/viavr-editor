@@ -13,9 +13,9 @@ export const UnityPackageConfigurations = ({packages}) => {
     useEffect(() => {
         const loadPackageSettings = async() => {
             for(const packageDescription of packages) {
-                const packageConfig = (await api.invoke(api.channels.toMain.getPackageSetting, packageDescription.name)).value
+                const packageConfig = await api.invoke(api.channels.toMain.getPackageSetting, packageDescription.name)
                 if(packageConfig !== undefined) {
-                    packageDescription.configDescription = packageConfig
+                    packageDescription.configDescription = packageConfig.value
                 }
             }
             setPackageDescriptions(packages)
@@ -35,7 +35,7 @@ export const UnityPackageConfigurations = ({packages}) => {
         init()
     }, [packages])
 
-    const draw = (packageDescription) => {
+    const drawPackageConfig = (packageDescription) => {
         return <>
             {
                 Object.entries(packageDescription['configDescription'])
@@ -49,6 +49,6 @@ export const UnityPackageConfigurations = ({packages}) => {
 
     return <>{
         packageDescriptions.map(packageConfig =>
-            <SettingAccordion key={`config-${packageConfig.packageName}`} summary={packageConfig['name']} details={draw(packageConfig)}/>)
+            <SettingAccordion key={`config-${packageConfig.packageName}`} summary={packageConfig['name']} details={drawPackageConfig(packageConfig)}/>)
     }</>
 }

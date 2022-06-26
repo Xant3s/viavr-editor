@@ -10,20 +10,6 @@ export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
 
-    const testPackagesWithConfigDescriptions = [
-        {
-            name: 'de.jmu.ge.testpackage',
-            displayName: 'Test Package',
-            configDescription: {
-                "testString": {
-                    "value": "Hello world",
-                    "label": "Test String",
-                    "uuid": "79891996-c104-456f-8d11-3a8wd3eba22130c",
-                    "kind": "string"
-                }
-            }
-        }
-    ]
 
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
@@ -71,7 +57,6 @@ export const BuildDialog: FC = () => {
     }
 
     const getPackagesToDraw = () => {
-        // return testPackagesWithConfigDescriptions
         return getSelectedPackages().filter(p => 'configDescription' in p)
     }
 

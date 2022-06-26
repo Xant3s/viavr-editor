@@ -25,7 +25,7 @@ export const BuildDialog: FC = () => {
 
     const togglePackageSelected = (packageName: string) => {
         setPackages(packages.map(packageItem => {
-            if(packageItem.packageName === packageName) {
+            if(packageItem.name === packageName) {
                 return {
                     ...packageItem,
                     isSelected: !packageItem.isSelected
@@ -37,7 +37,7 @@ export const BuildDialog: FC = () => {
 
     const getSelectedSceneNames = () => {
         return scenes.filter(item => item.isSelected)
-            .map(scene => scene.sceneFileName)
+                     .map(scene => scene.sceneFileName)
     }
 
     const getSelectedPackages = () => {

@@ -13,6 +13,7 @@ export class UnityPackageSettingsManager {
     public constructor() {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
         ipc.handle(channels.toMain.setPackageSetting, (_, name: string, value) => this.set(name, value))
+        ipc.handle(channels.toMain.getPackageSetting, (_, name: string) => this.get(name))
         ipc.on(channels.toMain.changePackageSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
     }
@@ -32,6 +33,10 @@ export class UnityPackageSettingsManager {
             'label': ''
         }
         await this.settingsManager.set(name, newSetting)
+    }
+
+    private async get(name: string) {
+        return await this.settingsManager.get<any>(name)
     }
 
     // Handles update from frontend

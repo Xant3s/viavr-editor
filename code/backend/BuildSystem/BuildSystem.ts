@@ -3,6 +3,7 @@ import path from 'path'
 import * as isDev from 'electron-is-dev'
 import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
+import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
 
 
 export default class BuildSystem {
@@ -15,6 +16,7 @@ export default class BuildSystem {
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
         UnityPackageManager.getInstance()
+        new UnityPackageSettingsManager()
         ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
     }
 
@@ -42,5 +44,6 @@ export default class BuildSystem {
         } else {
             this._buildDialog.loadURL(`file://${__dirname}/../index.html#/build-dialog`)
         }
+        this._buildDialog.webContents.openDevTools()
     }
 }

@@ -15,6 +15,8 @@ export const channels = {
         requestProjectSetting: "projectSettings:request",
         requestProjectSettings: "projectSettings:request-all",
         changeProjectSetting: "projectSettings:changed",
+        changePackageSetting: "unityPackageSettings:changed",
+        setPackageSetting: "unityPackageSettings:set",
         createNewProject: "project-manager:create-new-project",
         openProject: "project-manager:open-project",
         openProjectFolder: "project-manager:open-project-folder",

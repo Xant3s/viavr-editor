@@ -1,0 +1,33 @@
+import SettingsManager from '../Utils/SettingsManager'
+import ProjectManager from '../ProjectManager/ProjectManager'
+import {ipcMain as ipc} from 'electron'
+import {value_t} from '../../frontend/src/@types/Settings'
+import {channels} from '../API'
+
+export class UnityPackageSettingsManager {
+    private settingsManager!: SettingsManager
+    private initialized = false
+
+
+    public constructor() {
+        ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
+        ipc.handle(channels.toMain.setPackageSetting, (_, name: string, value) => this.set(name, value))
+        ipc.on(channels.toMain.changePackageSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
+        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
+    }
+
+    private async init() {
+        this.settingsManager = new SettingsManager(ProjectManager.getInstance().presentWorkingDirectory + '/packageSettings.json')
+        await this.settingsManager.init()
+        this.initialized = true
+    }
+
+    public async set(name: string, value) {
+        await this.settingsManager.set(name, value)
+    }
+
+    // Handles update from frontend
+    private async updateSetting(uuid: string, newValue: value_t) {
+        await this.settingsManager.setByUuid(uuid, newValue)
+    }
+}

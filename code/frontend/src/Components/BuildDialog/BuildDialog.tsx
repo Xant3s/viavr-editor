@@ -112,6 +112,7 @@ export const BuildDialog: FC = () => {
                     </>
                 )}/>
 
+                {/* TODO: filter packages with configDescription, filter selected packages*/}
                 {/*<UnityPackageConfigurations packages={packages} />*/}
                 <UnityPackageConfigurations packages={testPackagesWithConfigDescriptions} />
 

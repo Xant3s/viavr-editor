@@ -4,10 +4,25 @@ import {Package} from './Package'
 import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences/StyledSettings'
 import {Button} from '../StyledComponents/Button'
 import {SettingAccordion} from '../Settings/SettingAccordion'
+import {UnityPackageConfigurations} from './UnityPackageConfigurations'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
+
+    const testPackagesWithConfigDescriptions = [
+        {
+            name: 'Test Package',
+            configDescription: {
+                "testString": {
+                    "value": "Hello world",
+                    "label": "Test String",
+                    "uuid": "79891996-c104-456f-8d11-3a8wd3eba22130c",
+                    "kind": "string"
+                }
+            }
+        }
+    ]
 
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
@@ -96,6 +111,9 @@ export const BuildDialog: FC = () => {
                         ))}
                     </>
                 )}/>
+
+                {/*<UnityPackageConfigurations packages={packages} />*/}
+                <UnityPackageConfigurations packages={testPackagesWithConfigDescriptions} />
 
                 <br/>
                 <Button id="btn-build-project" type="button" onClick={build}>Build</Button>

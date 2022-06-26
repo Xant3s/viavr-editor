@@ -49,6 +49,6 @@ export const UnityPackageConfigurations = ({packages}) => {
 
     return <>{
         packageDescriptions.map(packageConfig =>
-            <SettingAccordion key={`config-${packageConfig.packageName}`} summary={packageConfig['name']} details={drawPackageConfig(packageConfig)}/>)
+            <SettingAccordion key={`config-${packageConfig.packageName}`} summary={packageConfig['displayName']} details={drawPackageConfig(packageConfig)}/>)
     }</>
 }

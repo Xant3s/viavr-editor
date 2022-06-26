@@ -12,7 +12,8 @@ export const BuildDialog: FC = () => {
 
     const testPackagesWithConfigDescriptions = [
         {
-            name: 'Test Package',
+            name: 'de.jmu.ge.testpackage',
+            displayName: 'Test Package',
             configDescription: {
                 "testString": {
                     "value": "Hello world",

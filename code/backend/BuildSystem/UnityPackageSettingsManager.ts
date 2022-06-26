@@ -1,3 +1,4 @@
+import {v4 as uuid4} from 'uuid'
 import SettingsManager from '../Utils/SettingsManager'
 import ProjectManager from '../ProjectManager/ProjectManager'
 import {ipcMain as ipc} from 'electron'
@@ -23,7 +24,14 @@ export class UnityPackageSettingsManager {
     }
 
     public async set(name: string, value) {
-        await this.settingsManager.set(name, value)
+        const newSetting = {
+            'name': name,
+            'value': value,
+            'uuid': uuid4(),
+            'kind': 'composite',
+            'label': ''
+        }
+        await this.settingsManager.set(name, newSetting)
     }
 
     // Handles update from frontend

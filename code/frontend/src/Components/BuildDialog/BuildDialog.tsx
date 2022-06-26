@@ -70,6 +70,11 @@ export const BuildDialog: FC = () => {
         setPackages(packages)
     }
 
+    const getPackagesToDraw = () => {
+        // return testPackagesWithConfigDescriptions
+        return getSelectedPackages().filter(p => 'configDescription' in p)
+    }
+
     const build = async() => {
         await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
         await api.invoke(api.channels.toMain.buildUnityProject)
@@ -100,7 +105,7 @@ export const BuildDialog: FC = () => {
 
                 <SettingAccordion summary={'Packages'} details={(
                     <>
-                        {packages.map((p) => (
+                        {packages.map(p => (
                             <Package key={p.name}
                                      name={p.name}
                                      displayName={p.displayName}
@@ -113,9 +118,7 @@ export const BuildDialog: FC = () => {
                     </>
                 )}/>
 
-                {/* TODO: filter packages with configDescription, filter selected packages*/}
-                {/*<UnityPackageConfigurations packages={packages} />*/}
-                <UnityPackageConfigurations packages={testPackagesWithConfigDescriptions} />
+                {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
                 <br/>
                 <Button id="btn-build-project" type="button" onClick={build}>Build</Button>

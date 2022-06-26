@@ -11,9 +11,9 @@ import assert = require('assert')
 import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
 import {channels} from '../API'
-import {StringSetting} from '../../frontend/src/@types/Settings'
 import {PackageRegistries} from './DataStructures/PackageRegistries'
-
+import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
+import fs2 from 'fs'
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
@@ -73,6 +73,7 @@ export default class UnityBuildManager {
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, selectedPackages)
         await this.importScenes(outputPath, sceneNames)
+        await this.exportPackageConfigurations(outputPath)
         this.buildPath = outputPath
     }
 
@@ -144,6 +145,15 @@ export default class UnityBuildManager {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         sceneNames.forEach(sceneName =>
             fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
+    }
+
+    private async exportPackageConfigurations(outputPath: string) {
+        const packageConfigurations = UnityPackageSettingsManager.getInstance().getAllPackageConfigurations()
+        for(const [name, packageConfig] of packageConfigurations) {
+            const configurationFolder = `${outputPath}/Assets/Settings/${name}/`
+            fs2.mkdirSync(configurationFolder, {recursive: true})
+            await fs.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify((packageConfig as any).value, null, 4) )
+        }
     }
 
     private static async findFilesOfTypeInPwd(fileExtension: string = '.glb') {

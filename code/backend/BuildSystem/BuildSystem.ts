@@ -16,7 +16,7 @@ export default class BuildSystem {
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
         UnityPackageManager.getInstance()
-        new UnityPackageSettingsManager()
+        UnityPackageSettingsManager.getInstance()
         ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
     }
 

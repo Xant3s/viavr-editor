@@ -6,11 +6,19 @@ import {value_t} from '../../frontend/src/@types/Settings'
 import {channels} from '../API'
 
 export class UnityPackageSettingsManager {
+    private static instance: UnityPackageSettingsManager
     private settingsManager!: SettingsManager
     private initialized = false
 
 
-    public constructor() {
+    public static getInstance(): UnityPackageSettingsManager {
+        if(!UnityPackageSettingsManager.instance) {
+            UnityPackageSettingsManager.instance = new UnityPackageSettingsManager()
+        }
+        return UnityPackageSettingsManager.instance
+    }
+
+    private constructor() {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
         ipc.handle(channels.toMain.setPackageSetting, (_, name: string, value) => this.set(name, value))
         ipc.handle(channels.toMain.getPackageSetting, (_, name: string) => this.get(name))
@@ -33,6 +41,10 @@ export class UnityPackageSettingsManager {
             'label': ''
         }
         await this.settingsManager.set(name, newSetting)
+    }
+
+    public getAllPackageConfigurations() {
+        return this.settingsManager.getAll()
     }
 
     private async get(name: string) {

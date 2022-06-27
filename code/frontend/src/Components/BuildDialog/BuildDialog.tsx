@@ -61,7 +61,8 @@ export const BuildDialog: FC = () => {
     }
 
     const build = async() => {
-        await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
+        const outputPath = await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
+        if(outputPath === undefined) return
         await api.invoke(api.channels.toMain.buildUnityProject)
         await api.invoke(api.channels.toMain.openBuildDirectory)
     }

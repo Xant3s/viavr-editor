@@ -11,9 +11,10 @@ import assert = require('assert')
 import AppUtils from '../AppUtils'
 import UnityBridge from './UnityBridge'
 import {channels} from '../API'
-import {StringSetting} from '../../frontend/src/@types/Settings'
 import {PackageRegistries} from './DataStructures/PackageRegistries'
-
+import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
+import fs2 from 'fs'
+import {Setting_t} from '../../frontend/src/@types/Settings'
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
@@ -73,6 +74,7 @@ export default class UnityBuildManager {
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, selectedPackages)
         await this.importScenes(outputPath, sceneNames)
+        await this.exportPackageConfigurations(outputPath)
         this.buildPath = outputPath
         return outputPath
     }
@@ -145,6 +147,31 @@ export default class UnityBuildManager {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         sceneNames.forEach(sceneName =>
             fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
+    }
+
+    private async exportPackageConfigurations(outputPath: string) {
+        const packageConfigurations = UnityPackageSettingsManager.getInstance().getAllPackageConfigurations()
+        for(const [name, packageConfig] of packageConfigurations) {
+            const configurationFolder = `${outputPath}/Assets/Settings/${name}/`
+            const configuration = this.extractRelevantConfiguration((packageConfig as any).value)
+            fs2.mkdirSync(configurationFolder, {recursive: true})
+            await fs.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify(configuration, null, 4) )
+        }
+    }
+
+    private extractRelevantConfiguration(packageConfig: any) {
+        let configuration = {}
+        for(const [settingName, setting] of Object.entries(packageConfig)) {
+            const s = setting as Setting_t
+            let value = s.value
+            if(s.kind === 'composite') {
+                value = this.extractRelevantConfiguration(s.value)
+            } else if(s.kind === 'list' && s.listType === 'composite') {
+                value = s.value.map(v => this.extractRelevantConfiguration(v))
+            }
+            configuration[settingName] = value
+        }
+        return configuration
     }
 
     private static async findFilesOfTypeInPwd(fileExtension: string = '.glb') {

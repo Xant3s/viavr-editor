@@ -4,10 +4,12 @@ import {Package} from './Package'
 import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences/StyledSettings'
 import {Button} from '../StyledComponents/Button'
 import {SettingAccordion} from '../Settings/SettingAccordion'
+import {UnityPackageConfigurations} from './UnityPackageConfigurations'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
+
 
     const toggleSceneSelected = (sceneFileName: string) => {
         setScenes(scenes.map(scene => {
@@ -23,7 +25,7 @@ export const BuildDialog: FC = () => {
 
     const togglePackageSelected = (packageName: string) => {
         setPackages(packages.map(packageItem => {
-            if(packageItem.packageName === packageName) {
+            if(packageItem.name === packageName) {
                 return {
                     ...packageItem,
                     isSelected: !packageItem.isSelected
@@ -35,7 +37,7 @@ export const BuildDialog: FC = () => {
 
     const getSelectedSceneNames = () => {
         return scenes.filter(item => item.isSelected)
-            .map(scene => scene.sceneFileName)
+                     .map(scene => scene.sceneFileName)
     }
 
     const getSelectedPackages = () => {
@@ -52,6 +54,10 @@ export const BuildDialog: FC = () => {
     const loadPackages = async() => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         setPackages(packages)
+    }
+
+    const getPackagesToDraw = () => {
+        return getSelectedPackages().filter(p => 'configDescription' in p)
     }
 
     const build = async() => {
@@ -85,7 +91,7 @@ export const BuildDialog: FC = () => {
 
                 <SettingAccordion summary={'Packages'} details={(
                     <>
-                        {packages.map((p) => (
+                        {packages.map(p => (
                             <Package key={p.name}
                                      name={p.name}
                                      displayName={p.displayName}
@@ -97,6 +103,8 @@ export const BuildDialog: FC = () => {
                         ))}
                     </>
                 )}/>
+
+                {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
                 <br/>
                 <Button id="btn-build-project" type="button" onClick={build}>Build</Button>

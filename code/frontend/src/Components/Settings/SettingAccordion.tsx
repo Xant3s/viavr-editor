@@ -15,7 +15,7 @@ export const SettingAccordion = ({summary, details}) => {
                 <Typography>{summary}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Typography>{details}</Typography>
+                {details}
             </AccordionDetails>
         </StyledAccordion>
     )

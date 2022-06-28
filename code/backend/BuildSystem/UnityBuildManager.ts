@@ -49,7 +49,7 @@ export default class UnityBuildManager {
             return sceneFiles
         })
         ipc.handle(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
-            await this.createUnityProject(selectedScenes, selectedPackages)
+            return await this.createUnityProject(selectedScenes, selectedPackages)
         })
         ipc.handle(channels.toMain.buildUnityProject, async (e) => {
             await new UnityBridge().build(this.buildPath)
@@ -76,6 +76,7 @@ export default class UnityBuildManager {
         await this.importScenes(outputPath, sceneNames)
         await this.exportPackageConfigurations(outputPath)
         this.buildPath = outputPath
+        return outputPath
     }
 
     private static async promptUserForProjectBuildPath() : Promise<string> {

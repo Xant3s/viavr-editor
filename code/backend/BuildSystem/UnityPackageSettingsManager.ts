@@ -22,7 +22,7 @@ export class UnityPackageSettingsManager {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
         ipc.handle(channels.toMain.setPackageSetting, (_, name: string, value) => this.set(name, value))
         ipc.handle(channels.toMain.getPackageSetting, (_, name: string) => this.get(name))
-        ipc.on(channels.toMain.changePackageSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
+        ipc.handle(channels.toMain.changePackageSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
     }
 

@@ -27,8 +27,8 @@ export default class BuildSystem {
     private async openBuildMenu(){
         this._buildDialog = new BrowserWindow(
             {
-                width: 700,
-                height: 600,
+                width: 900,
+                height: 900,
                 title: "Build Dialog",
                 modal: true,
                 parent: this.mainWindow,

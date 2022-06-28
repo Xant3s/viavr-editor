@@ -20,8 +20,8 @@ export const Package = ({name, displayName, version, description, isSelected, ma
                    onChange={() => {toggleFunction(name)}}
                    disabled={mandatory}
             />
-            <label htmlFor={name}>{displayName}</label>
-            <span style={{paddingLeft: '10px', color: 'gray'}}>{version}</span>
+            <label htmlFor={name} title={description}>{displayName}</label>
+            <span title={description} style={{paddingLeft: '10px', color: 'gray'}}>{version}</span>
         </div>
     )
 }

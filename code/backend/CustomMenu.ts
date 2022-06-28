@@ -50,7 +50,7 @@ export default class CustomMenu {
                     {
                         label: 'Documentation',
                         click() {
-                            require('electron').shell.openExternal('https://gitlab2.informatik.uni-wuerzburg.de/GE/Teaching/grl/2021-truman-viavr-editor/-/wikis/home')
+                            require('electron').shell.openExternal('https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html')
                         }
                     }
                 ]

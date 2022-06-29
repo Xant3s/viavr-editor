@@ -18,7 +18,7 @@ This step is no different from developing any other Unity package.
 <div class="NOTE">
     <h5>EXAMPLE</h5>
     <p>
-        A health bar system has the job to display someone's or something's heath. You would only have to create the health bar UI and a system which updates the health bar according to some data (the unsigned integer value). Your system just consumes the data. It does not need to know anything else. In particular, your system does not need to know the player, inventory, combat systems, enemies, etc. You system does not care where the data comes from, who's health it's displaying, etc. Your system can be reused for any number of entities, e.g. player, enemies, destructible objects, etc. Ideally, your system is parameterized, which allows it to be repurposed, e.g. to represent a stamina bar. Your package may contain one or more systems.
+        A health bar system has the job to display someone's or something's heath. You would only have to create the health bar UI and a system that updates the health bar according to some data (the unsigned integer value). Your system just consumes the data. It does not need to know anything else. In particular, your system does not need to know the player, inventory, combat systems, enemies, etc. Your system does not care where the data comes from, who's health it's displaying, etc. Your system can be reused for any number of entities, e.g. players, enemies, destructible objects, etc. Ideally, your system is parameterized, which allows it to be repurposed, e.g. to represent a stamina bar. Your package may contain one or more systems.
     </p>
 </div>
 
@@ -43,7 +43,7 @@ So far your package is hopefully quite useful for fellow Unity developers who kn
 3. Add the [Unity Bridge](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge) package to the list of package dependencies inside your `package.json`
 4. Use the `JsonLoader` provided by the Unity Bridge to load the configuration from your .json file. Use this configuration in your package. You can assume the .json exists at `Assets/Settings/<YOUR PACKAGE NAME>/Configuration.json`.
 5. Create a `PackageConfigurator` class that inherits from `UnityBridge.core.PackageConfigurator`. Override the necessary [event functions](#event-functions) to automate all tasks you would usually do manually in the Unity editor
-6. If users should be able to configure your package from the VIA-VR Editor build dialog, add a [configDescription](#package-manifest-extensions) to your package manifest
+6. If users should be able to configure your package from the VIA-VR Editor build dialog, add a [configDescription](#package-manifest-extensions) to your package manifest. See [example package manifest](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/gamification-utils/-/blob/main/Packages/de.jmu.ge.gamificationutils/package.json).
 
 <div class="NOTE">
     <h5>EXAMPLE</h5>
@@ -51,7 +51,7 @@ So far your package is hopefully quite useful for fellow Unity developers who kn
         A health bar package might define its configuration as a list of GameObject names that should have a health bar. The configuration might also include other parameterized settings like the health bar appearance, the initial health values, etc.
     </p>
     <p>
-        Normally, you would have to add at least one MonoBehaviour to your scene. This MonoBehaviour would then load the the configuration and add health bars to all specified GameObjects when the game starts. To automate this step, you would override the OnConfigureScene method of your PackageConfigurator. In this method you would create a new GameObject and add your MonoBehavior as component.
+        Normally, you would have to add at least one MonoBehaviour to your scene. This MonoBehaviour would then load the configuration and add health bars to all specified GameObjects when the game starts. To automate this step, you would override the OnConfigureScene method of your PackageConfigurator. In this method, you would create a new GameObject and add your MonoBehavior as component.
     </p>
     <br />
     <p>

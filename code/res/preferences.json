@@ -32,10 +32,14 @@
           "kind": "string"
         },
         "packageRegistryScopes": {
-          "value": "de.jmu,unity-com",
+          "value": [
+            "de.jmu",
+            "unity-com"
+          ],
           "label": "Package registry scope",
           "uuid": "652cd6ca-78a9-47e4-9046-f46df2edd12f",
-          "kind": "string"
+          "kind": "list",
+          "listType": "string"
         }
       }
     ],

@@ -39,10 +39,11 @@ This step is no different from developing any other Unity package. You now have 
 So far your package is hopefully quite useful for fellow Unity developers who know how to code and are familiar with the Unity editor. To also make your package usable by VIA-VR editor users, do the following.
 
 1. Create a serializable `Configuration` class, which declares the structure of the data your package consumes
-2. Create a sample .json file which contains a sane default configuration for you package. The json structure must comply with the structure defined by your `Configuration` class. Place this file in `Settings/<YOUR PACKAGE NAME>/`. You can move it to your package samples.
+2. Create a sample .json file which contains a sane default configuration for you package. The json structure must comply with the structure defined by your `Configuration` class. Place this file in `Settings/<YOUR PACKAGE NAME>/` (e.g. `Assets/Settings/de.jmu.ge.buildutils`). You can move it to your package samples.
 3. Add the [Unity Bridge](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge) package to the list of package dependencies inside your `package.json`
 4. Use the `JsonLoader` provided by the Unity Bridge to load the configuration from your .json file. Use this configuration in your package. You can assume the .json exists at `Assets/Settings/<YOUR PACKAGE NAME>/Configuration.json`.
-5. Create a `PackageConfigurator` class which inherits from `UnityBridge.core.PackageConfigurator`. Override the necessary [event functions](#event-functions) to automate all tasks you would usually do manually in the Unity editor
+5. Create a `PackageConfigurator` class that inherits from `UnityBridge.core.PackageConfigurator`. Override the necessary [event functions](#event-functions) to automate all tasks you would usually do manually in the Unity editor
+6. If users should be able to configure your package from the VIA-VR Editor build dialog, add a [configDescription](#package-manifest-extensions) to your package manifest
 
 <div class="NOTE">
     <h5>EXAMPLE</h5>
@@ -119,7 +120,6 @@ Additionally, VIA-VR Unity packages can have the following custom properties in 
 | Property    | Values            | Description                                                                                           |
 |-------------|-------------------|-------------------------------------------------------------------------------------------------------|
 | "mandatory" | `true` or `false` | Determines whether all VIA-VR projects must install this package. Should be `false` for most packages. This property is optional. It only has an effect if present and set to `true`. |
-
-<!-- TODO: ui manifest -->
+| "configDescription" | [composite settings type](http://localhost:8080/specifications/Settings/Settings.html) | Describes the settings UI presented in the VIA-VR editor build dialog. This property is optional. See [Settings](http://localhost:8080/specifications/Settings/Settings.html) for more info. |
 
 <!-- TODO: dependencies: registries/scopes inject into viavr editor -->

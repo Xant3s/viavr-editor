@@ -4,7 +4,7 @@ export const Checkbox = ({id, checked, onChange, label, title=undefined, disable
     return (
         <div style={{display: 'flex', alignItems: 'center'}}>
             <EvergreenCheckbox id={id} title={title} checked={checked} onChange={onChange} disabled={disabled} style={{margin: 3}} />
-            <label htmlFor={id} style={{marginLeft: 5}} >{label}</label>
+            <label htmlFor={id} title={title} style={{marginLeft: 5}} >{label}</label>
         </div>
     )
 }

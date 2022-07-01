@@ -78,7 +78,7 @@ export const BuildDialog: FC = () => {
 
     return (
         <StyledSettings>
-            <h1>Build Dialog</h1>
+            <h1>Generate VIA Experience</h1>
 
             <SettingsContainer>
 

@@ -5,7 +5,7 @@ import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences
 import {Button} from '../StyledComponents/Button'
 import {SettingAccordion} from '../Settings/SettingAccordion'
 import {UnityPackageConfigurations} from './UnityPackageConfigurations'
-import {Spinner} from 'evergreen-ui'
+import {Spinner, toaster} from 'evergreen-ui'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
@@ -65,10 +65,12 @@ export const BuildDialog: FC = () => {
     const build = async() => {
         const outputPath = await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
         if(outputPath === undefined) return
+        toaster.notify('Started generating the experience, please wait.', {duration: 5})
         setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
         await api.invoke(api.channels.toMain.openBuildDirectory)
         setIsBuilding(false)
+        toaster.success('The experience is now ready.', {duration: 5})
     }
 
     useEffect(() => {

@@ -14,7 +14,7 @@ export const CompositeSetting = ({id, uuid, label, value, onChange, createPrefCo
     const drawEntry = ([settingName, setting]: [string, Setting_t]) => {
         const key = `${id}-${settingName}`
         return (
-            <div key={key}>
+            <div key={key} style={{marginBottom: 5}}>
                 {createPrefComponent(settingName, setting, undefined, id, onChange)}
             </div>
         )

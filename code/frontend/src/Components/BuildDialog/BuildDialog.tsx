@@ -5,10 +5,12 @@ import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences
 import {Button} from '../StyledComponents/Button'
 import {SettingAccordion} from '../Settings/SettingAccordion'
 import {UnityPackageConfigurations} from './UnityPackageConfigurations'
+import {Spinner, toaster} from 'evergreen-ui'
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
+    const [isBuilding, setIsBuilding] = useState(false)
 
 
     const toggleSceneSelected = (sceneFileName: string) => {
@@ -63,8 +65,12 @@ export const BuildDialog: FC = () => {
     const build = async() => {
         const outputPath = await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
         if(outputPath === undefined) return
+        toaster.notify('Started generating the experience, please wait.', {duration: 5})
+        setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
         await api.invoke(api.channels.toMain.openBuildDirectory)
+        setIsBuilding(false)
+        toaster.success('The experience is now ready.', {duration: 5})
     }
 
     useEffect(() => {
@@ -74,7 +80,7 @@ export const BuildDialog: FC = () => {
 
     return (
         <StyledSettings>
-            <h1>Build Settings</h1>
+            <h1>Generate VIA Experience</h1>
 
             <SettingsContainer>
 
@@ -107,7 +113,13 @@ export const BuildDialog: FC = () => {
                 {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
                 <br/>
-                <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
+                <div hidden={isBuilding}>
+                    <Button id="btn-build-project" type="button" onClick={build}>Generate Experience</Button>
+                </div>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div hidden={!isBuilding}>Generating experience...</div>
+                    <Spinner hidden={!isBuilding} style={{marginLeft: 10}} />
+                </div>
             </SettingsContainer>
         </StyledSettings>
     )

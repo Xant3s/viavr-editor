@@ -50,7 +50,6 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
     return (
         <SettingsEntry>
             {createSetting(settingKey, setting, value)}
-            <br/>
         </SettingsEntry>
     )
 }

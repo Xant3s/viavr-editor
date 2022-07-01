@@ -56,10 +56,10 @@ export default class CustomMenu {
                 ]
             },
             {
-                label: 'Build',
+                label: 'Generate VIA Experience',
                 submenu: [
                     {
-                        label: "Open Build Menu",
+                        label: "Generate VIA Experience",
                         click: () => ipc.emit('BuildSystem:open-build-menu')
                     }
                 ]

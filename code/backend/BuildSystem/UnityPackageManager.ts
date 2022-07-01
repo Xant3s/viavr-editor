@@ -26,7 +26,7 @@ export default class UnityPackageManager {
         const packageManager = UnityPackageManager.getInstance()
         let packageList: any[] = []
         for(const registry of registries) {
-            const scopes = registry.packageRegistryScopes.value.split(',').map(s => s.trim())
+            const scopes = registry.packageRegistryScopes.value
             for(const scope of scopes) {
                 const packages = await packageManager.queryPackagesFromRegistry(registry.packageRegistryUrl.value, scope)
                 packageList = packageList.concat(packages)

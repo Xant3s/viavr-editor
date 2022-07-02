@@ -1,4 +1,4 @@
-import {BrowserWindow, ipcMain as ipc} from 'electron'
+import {BrowserWindow, ipcMain as ipc, app} from 'electron'
 import * as isDev from 'electron-is-dev'
 import AppUtils from '../AppUtils'
 import path from 'path'
@@ -31,7 +31,7 @@ export default class PreferencesManager {
         ipc.on(channels.toMain.changePreference, (_, uuid: string, value: value_t) => this. updatePreference(uuid, value))
         ipc.handle(channels.toMain.requestPreference, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestPreferences, () => this.settingsManager.getAll())
-        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
+        app.on('quit', () => this.settingsManager.saveSettingToFile())
     }
 
     public get<Type>(name: string): Type {

@@ -1,4 +1,4 @@
-import {BrowserWindow, ipcMain as ipc} from 'electron'
+import {BrowserWindow, ipcMain as ipc, app} from 'electron'
 import * as path from 'path'
 import * as isDev from 'electron-is-dev'
 // import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
@@ -7,18 +7,15 @@ import CustomMenu from './CustomMenu'
 
 export default class MainWindow {
     private static window: Electron.BrowserWindow
-    private application: Electron.App
 
 
-    public constructor(application: Electron.App) {
-        this.application = application
-        this.application.whenReady().then(MainWindow.createWindow)
-        this.application.on('activate', MainWindow.activate)
-        this.application.on('window-all-closed', () => MainWindow.onWindowAllClosed(application))
-        this.application.on('quit', () => ipc.emit('app:quit'))
+    public constructor() {
+        app.whenReady().then(MainWindow.createWindow)
+        app.on('activate', MainWindow.activate)
+        app.on('window-all-closed', () => MainWindow.onWindowAllClosed(app))
 
         // https://github.com/electron/electron/issues/18214
-        this.application.commandLine.appendSwitch('disable-site-isolation-trials')
+        app.commandLine.appendSwitch('disable-site-isolation-trials')
     }
 
     get window(): Electron.BrowserWindow {
@@ -41,7 +38,7 @@ export default class MainWindow {
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()
 
-        if (isDev) {
+        if(isDev) {
             MainWindow.window.loadURL('http://localhost:3000')
         } else {
             MainWindow.window.loadURL(`file://${__dirname}/../index.html`)
@@ -51,7 +48,7 @@ export default class MainWindow {
 
 
         // Hot Reloading
-        if (isDev) {
+        if(isDev) {
             // 'node_modules/.bin/electronPath'
             require('electron-reload')(__dirname, {
                 electron: path.join(__dirname, '..', '..', 'node_modules', '.bin', 'electron'),

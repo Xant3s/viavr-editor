@@ -1,7 +1,7 @@
 import {v4 as uuid4} from 'uuid'
 import SettingsManager from '../Utils/SettingsManager'
 import ProjectManager from '../ProjectManager/ProjectManager'
-import {ipcMain as ipc} from 'electron'
+import {ipcMain as ipc, app} from 'electron'
 import {value_t} from '../../frontend/src/@types/Settings'
 import {channels} from '../API'
 
@@ -23,7 +23,7 @@ export class UnityPackageSettingsManager {
         ipc.handle(channels.toMain.setPackageSetting, (_, name: string, value) => this.set(name, value))
         ipc.handle(channels.toMain.getPackageSetting, (_, name: string) => this.get(name))
         ipc.handle(channels.toMain.changePackageSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
-        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
+        app.on('quit', () => this.settingsManager.saveSettingToFile())
     }
 
     private async init() {

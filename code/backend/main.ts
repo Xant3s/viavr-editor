@@ -13,7 +13,7 @@ import {Prototypes} from './Prototypes'
 
 
 const init = async () => {
-    const mainWindow = new MainWindow(app)
+    const mainWindow = new MainWindow()
     SpokeManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()

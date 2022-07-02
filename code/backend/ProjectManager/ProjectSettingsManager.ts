@@ -1,4 +1,4 @@
-import {BrowserWindow, ipcMain as ipc} from 'electron'
+import {BrowserWindow, ipcMain as ipc, app} from 'electron'
 import * as isDev from 'electron-is-dev'
 import path from 'path'
 import {channels} from '../API'
@@ -33,7 +33,7 @@ export default class ProjectSettingsManager {
         ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
-        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
+        app.on('quit', () => this.settingsManager.saveSettingToFile())
     }
 
     public get<Type>(name: string): Type {

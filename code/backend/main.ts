@@ -1,3 +1,4 @@
+import {app} from 'electron';
 import MainWindow from './MainWindow'
 import BuildSystem from './BuildSystem/BuildSystem'
 import SpokeManager from './SpokeManager'
@@ -23,5 +24,15 @@ const startup = async () => {
     new DialogUtils()
     new Prototypes()
 }
+
+const tryOpenProject = async () => {
+    // Also see https://github.com/electron/electron/issues/4690
+    if(process.argv.length > 1 && process.argv[1] !== '.') {
+        console.log(`Opening project ${process.argv[1]}`)
+        await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
+    }
+}
+
+app.whenReady().then(tryOpenProject)
 
 startup()

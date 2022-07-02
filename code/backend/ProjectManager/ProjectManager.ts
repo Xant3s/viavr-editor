@@ -54,15 +54,6 @@ export default class ProjectManager {
         ipc.on('project-manager:save-project', async () => this.saveProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
-        app.whenReady().then(this.tryOpenProject)
-    }
-
-    private async tryOpenProject() {
-        // Also see https://github.com/electron/electron/issues/4690
-        if(process.argv.length > 1 && process.argv[1] !== '.') {
-            console.log(`Opening project ${process.argv[1]}`)
-            await this.openProjectFromFileNoPrompt(process.argv[1])
-        }
     }
 
     private async createNewProject() {

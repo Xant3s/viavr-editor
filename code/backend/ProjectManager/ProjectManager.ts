@@ -68,7 +68,7 @@ export default class ProjectManager {
             const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project/")
             const scenesFolder = Path.join(tempProjectFolder, "Scenes/")
             ProjectManager.ensurePathExists(tempProjectFolder)
-            fs.rmdirSync(tempProjectFolder, {recursive: true})
+            fs.rmSync(tempProjectFolder, {recursive: true})
             ProjectManager.ensurePathExists(scenesFolder)
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)
@@ -89,7 +89,7 @@ export default class ProjectManager {
     public async openProjectFromFileNoPrompt(filePath: string) {
         this.projectPath = filePath
         const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
-        fs.rmdirSync(tempProjectFolder, {recursive: true})
+        fs.rmSync(tempProjectFolder, {recursive: true})
         await Utils.extractZipToPath(filePath, tempProjectFolder)
         this._presentWorkingDirectory = tempProjectFolder
         this.onProjectOpened()
@@ -137,7 +137,7 @@ export default class ProjectManager {
                 console.log('Project is too large to be save as .via file.')
                 // TODO: Notify user
                 const projectFolderName = Path.parse(this.projectPath).name
-                fs.rmdirSync(this.projectPath, {recursive: true})   // Remove .via file that may or may not exist (it does not exist for new projects)
+                fs.rmSync(this.projectPath, {recursive: true})   // Remove .via file that may or may not exist (it does not exist for new projects)
                 this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName) // TODO: what if this folder already exists and is unrelated?
                 fse.copySync(this.presentWorkingDirectory, this.projectPath)
             }

@@ -1,6 +1,5 @@
 import {BrowserWindow, ipcMain} from 'electron'
-import path from 'path'
-import * as isDev from 'electron-is-dev'
+import {loadPage} from './Utils/ElectronUtils'
 
 export class Prototypes {
     constructor() {
@@ -20,11 +19,7 @@ export class Prototypes {
                 }
             }
         )
-        if(isDev) {
-            panels.loadURL('http://localhost:3000#/panels-prototype')
-        } else {
-            panels.loadURL(`file://${__dirname}/../index.html#/panels-prototype`)
-        }
+        loadPage(panels, 'panels-prototype')
     }
 
     private async openTabs() {
@@ -39,10 +34,6 @@ export class Prototypes {
                 }
             }
         )
-        if(isDev) {
-            tabs.loadURL('http://localhost:3000#/tabs-prototype')
-        } else {
-            tabs.loadURL(`file://${__dirname}/../index.html#/tabs-prototype`)
-        }
+        loadPage(tabs, 'tabs-prototype')
     }
 }

@@ -33,7 +33,7 @@ export default class ProjectSettingsManager {
         ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
-        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
+        ipc.on('app:quit', () => this.saveSettings())
     }
 
     public get<Type>(name: string): Type {
@@ -55,6 +55,11 @@ export default class ProjectSettingsManager {
     // Handles update from frontend
     private async updateSetting(uuid: string, newValue: value_t) {
         await this.settingsManager.setByUuid(uuid, newValue)
+    }
+
+    private saveSettings() {
+        if(!this.initialized) return
+        this.settingsManager.saveSettingToFile()
     }
 
     private openProjectSettings() {

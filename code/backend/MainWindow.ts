@@ -36,15 +36,13 @@ export default class MainWindow {
         new CustomMenu().loadCustomMenu()
         loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()
-        if(isDev) this.enableHotReloading()
-    }
-
-    private static enableHotReloading() {
-        require('electron-reload')(__dirname, {
-            electron: path.join(__dirname, '../../node_modules/.bin/electron'),
-            forceHardReset: true,
-            hardResetMethod: 'exit'
-        })
+        if(isDev) {
+            require('electron-reload')(__dirname, {
+                electron: path.join(__dirname, '../../node_modules/.bin/electron'),
+                forceHardReset: true,
+                hardResetMethod: 'exit'
+            })
+        }
     }
 
     private static activate() {

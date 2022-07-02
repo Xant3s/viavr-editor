@@ -42,9 +42,9 @@ export class Prototypes {
             }
         )
         if(isDev) {
-            tabs.loadURL('http://localhost:3000#/panels-prototype')
+            tabs.loadURL('http://localhost:3000#/tabs-prototype')
         } else {
-            tabs.loadURL(`file://${__dirname}/../index.html#/panels-prototype`)
+            tabs.loadURL(`file://${__dirname}/../index.html#/tabs-prototype`)
         }
     }
 }

@@ -9,6 +9,7 @@ import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
 import {channels} from './API'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
+import {Prototypes} from './Prototypes'
 
 
 const init = async () => {
@@ -22,6 +23,7 @@ const init = async () => {
     new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)
     new DialogUtils()
+    new Prototypes()
 
     ipc.handle('get-main-window-url', () => {
         return new Promise((resolve) => {

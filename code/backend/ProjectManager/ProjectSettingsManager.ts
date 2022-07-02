@@ -1,10 +1,10 @@
 import {BrowserWindow, ipcMain as ipc, app} from 'electron'
-import * as isDev from 'electron-is-dev'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
 import ProjectManager from './ProjectManager'
 import {value_t} from '../../frontend/src/@types/Settings'
+import {loadPage} from '../Utils/ElectronUtils'
 
 
 export default class ProjectSettingsManager {
@@ -72,10 +72,6 @@ export default class ProjectSettingsManager {
                 preload: path.join(__dirname, '../preload.js')
             }
         })
-        if (isDev) {
-            this.window.loadURL('http://localhost:3000#/project-settings')
-        } else {
-            this.window.loadURL(`file://${__dirname}/../index.html#/project-settings`)
-        }
+        loadPage(this.window, 'project-settings')
     }
 }

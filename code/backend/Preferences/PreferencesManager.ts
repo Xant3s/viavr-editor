@@ -1,10 +1,10 @@
 import {BrowserWindow, ipcMain as ipc, app} from 'electron'
-import * as isDev from 'electron-is-dev'
 import AppUtils from '../AppUtils'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
 import {value_t} from '../../frontend/src/@types/Settings'
+import {loadPage} from '../Utils/ElectronUtils'
 
 
 export default class PreferencesManager {
@@ -66,10 +66,6 @@ export default class PreferencesManager {
                 preload: path.join(__dirname, '../preload.js')
             }
         })
-        if (isDev) {
-            this.window.loadURL('http://localhost:3000#/preferences')
-        } else {
-            this.window.loadURL(`file://${__dirname}/../index.html#/preferences`)
-        }
+        loadPage(this.window, 'preferences')
     }
 }

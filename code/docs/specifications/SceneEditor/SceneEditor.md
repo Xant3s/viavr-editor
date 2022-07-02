@@ -42,22 +42,6 @@ You can use the dev tools to inspect the DOM structure. Utility functions based 
   <p>Do not use this function to wait for user input etc. as it is likely to time out. This functionality might be changed in the future.</p>
 </div>
 
-You can also check the window URL to determine the active route used by Spoke's React Router. While the backend can directly access the window's webContents, the frontend must use the API provided by the context bridge. [API specification pending...]
-
-<!-- TODO: Link to not yet existing documentation on API and context bridge -->
-
-```ts
-// Backend
-app.mainWindow.window.webContents.getURL()
-
-// Frontend
-api.invoke(api.channels.toMain.requestURL)
-
-// or
-
-api.invoke('app:get-url')
-```
-
 <div class="NOTE">
   <h5>NOTE</h5>
   <p>In the future, the process of modifying Spoke will likely be further abstracted. Most likely callbacks or events will be provided, e.g. <code>onSceneLoaded</code>.</p>

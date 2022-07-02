@@ -1,8 +1,8 @@
-import {BrowserWindow, ipcMain as ipc, app} from 'electron'
+import {BrowserWindow, app} from 'electron'
 import * as path from 'path'
 import * as isDev from 'electron-is-dev'
-// import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer"
 import CustomMenu from './CustomMenu'
+import {loadPage} from './Utils/ElectronUtils'
 
 
 export default class MainWindow {
@@ -13,9 +13,7 @@ export default class MainWindow {
         app.whenReady().then(MainWindow.createWindow)
         app.on('activate', MainWindow.activate)
         app.on('window-all-closed', () => MainWindow.onWindowAllClosed(app))
-
-        // https://github.com/electron/electron/issues/18214
-        app.commandLine.appendSwitch('disable-site-isolation-trials')
+        app.commandLine.appendSwitch('disable-site-isolation-trials')   // https://github.com/electron/electron/issues/18214
     }
 
     get window(): Electron.BrowserWindow {
@@ -34,37 +32,19 @@ export default class MainWindow {
                 preload: path.join(__dirname, 'preload.js')
             }
         })
-
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()
-
-        if(isDev) {
-            MainWindow.window.loadURL('http://localhost:3000')
-        } else {
-            MainWindow.window.loadURL(`file://${__dirname}/../index.html`)
-        }
-
+        loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()
+        if(isDev) this.enableHotReloading()
+    }
 
-
-        // Hot Reloading
-        if(isDev) {
-            // 'node_modules/.bin/electronPath'
-            require('electron-reload')(__dirname, {
-                electron: path.join(__dirname, '..', '..', 'node_modules', '.bin', 'electron'),
-                forceHardReset: true,
-                hardResetMethod: 'exit'
-            })
-        }
-
-        // DevTools
-        // installExtension(REACT_DEVELOPER_TOOLS)
-        //     .then((name) => console.log(`Added Extension:  ${name}`))
-        //     .catch((err) => console.log('An error occurred: ', err))
-
-        // if(isDev) {
-        //     MainWindow.window.webContents.openDevTools()
-        // }
+    private static enableHotReloading() {
+        require('electron-reload')(__dirname, {
+            electron: path.join(__dirname, '../../node_modules/.bin/electron'),
+            forceHardReset: true,
+            hardResetMethod: 'exit'
+        })
     }
 
     private static activate() {

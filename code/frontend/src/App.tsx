@@ -12,6 +12,7 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path='/' element={<Editor/>}/>
+                <Route path='/index' element={<Editor/>}/>
                 <Route path='/preferences' element={<Preferences/>}/>
                 <Route path='/project-settings' element={<ProjectSettings/>}/>
                 <Route path='/build-dialog' element={<BuildDialog/>}/>

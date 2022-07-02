@@ -72,12 +72,6 @@ export default class CustomMenu {
                         click: () => ipc.emit('dev:open-pwd')
                     },
                     {
-                        label: "Print URL",
-                        click: async () => {
-                            ipc.emit('print-main-window-url')
-                        }
-                    },
-                    {
                         label: "Open Panels Prototype",
                         click: async () => {
                             ipc.emit('dev:open-panels-prototype')

@@ -22,8 +22,7 @@ export const channels = {
         openProject: "project-manager:open-project",
         openProjectFolder: "project-manager:open-project-folder",
         getPresentWorkingDirectory: "project-manager:get-present-working-directory",
-        showOpenFileDialog: "util:show-open-file-dialog",
-        requestURL: "app:get-url"
+        showOpenFileDialog: "util:show-open-file-dialog"
     },
     "fromMain": {
         buildFinished: "BuildSystem:build-finished",

@@ -17,7 +17,6 @@ export class Prototypes {
                 autoHideMenuBar: true,
                 webPreferences: {
                     nodeIntegration: true,
-                    preload: path.join(__dirname, '../preload.js')
                 }
             }
         )
@@ -37,7 +36,6 @@ export class Prototypes {
                 autoHideMenuBar: true,
                 webPreferences: {
                     nodeIntegration: true,
-                    preload: path.join(__dirname, '../preload.js')
                 }
             }
         )

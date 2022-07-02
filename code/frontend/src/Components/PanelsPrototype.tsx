@@ -1,8 +1,12 @@
 import {IJsonModel, Layout, Model, TabNode} from 'flexlayout-react'
-import 'flexlayout-react/style/light.css'
+import 'flexlayout-react/style/dark.css'
+import {Button} from './StyledComponents/Button'
 
 const json: IJsonModel = {
-    global: {},
+    global: {
+        tabEnableClose: false,
+        tabEnableRename: false,
+    },
     borders: [],
     layout: {
         type: "row",
@@ -17,7 +21,7 @@ const json: IJsonModel = {
                         name: "One",
                         component: "button",
                     }
-                ]
+                ],
             },
             {
                 type: "tabset",
@@ -27,8 +31,13 @@ const json: IJsonModel = {
                         type: "tab",
                         name: "Two",
                         component: "button",
+                    },
+                    {
+                        type: "tab",
+                        name: "Three",
+                        component: "button",
                     }
-                ]
+                ],
             }
         ]
     }
@@ -40,7 +49,7 @@ export const PanelsPrototype = () => {
     const factory = (node: TabNode) => {
         const component = node.getComponent()
         if(component === "button") {
-            return <button>{node.getName()}</button>;
+            return <Button>{node.getName()}</Button>;
         }
     }
 

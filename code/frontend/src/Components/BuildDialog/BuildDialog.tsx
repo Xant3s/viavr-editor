@@ -68,8 +68,13 @@ export const BuildDialog: FC = () => {
         toaster.notify('Started generating the experience, please wait.', {duration: 5})
         setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
-        await api.invoke(api.channels.toMain.openBuildDirectory)
+        const result : 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)
+        if(result === 'failure') {
+            toaster.danger('Something went wrong generating your VIA experience.', {duration: 30})
+            return
+        }
+        await api.invoke(api.channels.toMain.openBuildDirectory)
         toaster.success('The experience is now ready.', {duration: 5})
     }
 

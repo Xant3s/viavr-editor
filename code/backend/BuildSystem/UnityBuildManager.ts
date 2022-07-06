@@ -15,6 +15,7 @@ import {PackageRegistries} from './DataStructures/PackageRegistries'
 import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
 import fs2 from 'fs'
 import {Setting_t} from '../../frontend/src/@types/Settings'
+import Path from 'path'
 const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
@@ -54,6 +55,11 @@ export default class UnityBuildManager {
         ipc.handle(channels.toMain.buildUnityProject, async (e) => {
             await new UnityBridge().build(this.buildPath)
             e.sender.send(channels.fromMain.buildFinished)
+        })
+        ipc.handle(channels.toMain.checkBuildSuccess, async () => {
+            const executablePath = Path.join(this.buildPath, 'Build/Windows')
+            const success = fs2.existsSync(executablePath) && fs2.readdirSync(executablePath).length > 0
+            return success ? 'success' : 'failure'
         })
         ipc.handle(channels.toMain.openBuildDirectory, async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)

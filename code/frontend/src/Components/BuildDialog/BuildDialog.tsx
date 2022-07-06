@@ -117,7 +117,7 @@ export const BuildDialog: FC = () => {
                     <Button id="btn-build-project" type="button" onClick={build}>Generate Experience</Button>
                 </div>
                 <div style={{display: 'flex', alignItems: 'center'}}>
-                    <div hidden={!isBuilding}>Generating experience...</div>
+                    <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>
                     <Spinner hidden={!isBuilding} style={{marginLeft: 10}} />
                 </div>
             </SettingsContainer>

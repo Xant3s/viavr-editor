@@ -94,10 +94,7 @@ export const BuildDialog: FC = () => {
     return (
         <StyledSettings>
             <h1>Generate VIA Experience</h1>
-            {/*Workaround: hidden select to properly import the style*/}
-            {/*<div hidden>*/}
-            {/*    <Select id="scene-selector" height={0}><option value="asd"></option></Select>*/}
-            {/*</div>*/}
+            {/*Workaround: hidden Select to properly import the style*/}
             <InvisibleSelect />
 
             <SettingsContainer>

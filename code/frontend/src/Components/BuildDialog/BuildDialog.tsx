@@ -5,7 +5,15 @@ import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences
 import {Button} from '../StyledComponents/Button'
 import {SettingAccordion} from '../Settings/SettingAccordion'
 import {UnityPackageConfigurations} from './UnityPackageConfigurations'
-import {Spinner, toaster} from 'evergreen-ui'
+import {Select, Spinner, toaster} from 'evergreen-ui'
+
+const InvisibleSelect = () => {
+    return <div hidden>
+        <Select height={0}>
+            <option value="asd"></option>
+        </Select>
+    </div>
+}
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
@@ -86,6 +94,11 @@ export const BuildDialog: FC = () => {
     return (
         <StyledSettings>
             <h1>Generate VIA Experience</h1>
+            {/*Workaround: hidden select to properly import the style*/}
+            {/*<div hidden>*/}
+            {/*    <Select id="scene-selector" height={0}><option value="asd"></option></Select>*/}
+            {/*</div>*/}
+            <InvisibleSelect />
 
             <SettingsContainer>
 

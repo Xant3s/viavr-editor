@@ -1,10 +1,10 @@
-import {BrowserWindow, ipcMain as ipc} from 'electron'
-import * as isDev from 'electron-is-dev'
+import {BrowserWindow, ipcMain as ipc, app} from 'electron'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'
 import ProjectManager from './ProjectManager'
 import {value_t} from '../../frontend/src/@types/Settings'
+import {loadPage} from '../Utils/ElectronUtils'
 
 
 export default class ProjectSettingsManager {
@@ -33,7 +33,7 @@ export default class ProjectSettingsManager {
         ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
-        ipc.on('app:quit', () => this.settingsManager.saveSettingToFile())
+        app.on('quit', () => this.saveSettings())
     }
 
     public get<Type>(name: string): Type {
@@ -57,6 +57,11 @@ export default class ProjectSettingsManager {
         await this.settingsManager.setByUuid(uuid, newValue)
     }
 
+    private saveSettings() {
+        if(!this.initialized) return
+        this.settingsManager.saveSettingToFile()
+    }
+
     private openProjectSettings() {
         if(!ProjectManager.getInstance().projectIsLoaded()) {
             console.error('No project loaded')
@@ -72,10 +77,6 @@ export default class ProjectSettingsManager {
                 preload: path.join(__dirname, '../preload.js')
             }
         })
-        if (isDev) {
-            this.window.loadURL('http://localhost:3000#/project-settings')
-        } else {
-            this.window.loadURL(`file://${__dirname}/../index.html#/project-settings`)
-        }
+        loadPage(this.window, 'project-settings')
     }
 }

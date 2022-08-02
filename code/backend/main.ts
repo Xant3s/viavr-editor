@@ -1,4 +1,4 @@
-import {app, ipcMain as ipc} from 'electron';
+import {app} from 'electron';
 import MainWindow from './MainWindow'
 import BuildSystem from './BuildSystem/BuildSystem'
 import SpokeManager from './SpokeManager'
@@ -7,12 +7,12 @@ import ProjectManager from './ProjectManager/ProjectManager'
 import SceneExporter from './ProjectManager/SceneExporter'
 import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
-import {channels} from './API'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
+import {Prototypes} from './Prototypes'
 
 
-const init = async () => {
-    const mainWindow = new MainWindow(app)
+const startup = async () => {
+    const mainWindow = new MainWindow()
     SpokeManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
@@ -22,15 +22,7 @@ const init = async () => {
     new SceneExporter(mainWindow)
     new BuildSystem(mainWindow.window)
     new DialogUtils()
-
-    ipc.handle('get-main-window-url', () => {
-        return new Promise((resolve) => {
-            resolve(mainWindow.window.webContents.getURL())
-        })
-    })
-
-    ipc.on('print-main-window-url', () => console.log(mainWindow.window.webContents.getURL()))
-    ipc.handle(channels.toMain.requestURL, () => mainWindow.window.webContents.getURL())
+    new Prototypes()
 }
 
 const tryOpenProject = async () => {
@@ -43,4 +35,4 @@ const tryOpenProject = async () => {
 
 app.whenReady().then(tryOpenProject)
 
-init()
+startup()

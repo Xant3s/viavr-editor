@@ -7,6 +7,7 @@ export const channels = {
         queryPackages: "BuildSystem:query-available-packages",
         createUnityProject: "BuildSystem:create-unity-project",
         buildUnityProject: "BuildSystem:build-unity-project",
+        checkBuildSuccess: "BuildSystem:check-build-success",
         openBuildDirectory: "BuildSystem:open-build-directory",
         queryJsonScenes: "BuildSystem:query-available-json-scenes",
         requestPreference: "preferences:request",
@@ -22,8 +23,7 @@ export const channels = {
         openProject: "project-manager:open-project",
         openProjectFolder: "project-manager:open-project-folder",
         getPresentWorkingDirectory: "project-manager:get-present-working-directory",
-        showOpenFileDialog: "util:show-open-file-dialog",
-        requestURL: "app:get-url"
+        showOpenFileDialog: "util:show-open-file-dialog"
     },
     "fromMain": {
         buildFinished: "BuildSystem:build-finished",

@@ -5,7 +5,8 @@ export const StyledSettings = styled.div`
   background-color: #15171b;
   color: white;
   padding: 20px;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 `
 
 export const SettingsContainer = styled.div`

@@ -1,9 +1,9 @@
 import {BrowserWindow, ipcMain as ipc} from 'electron'
 import path from 'path'
-import * as isDev from 'electron-is-dev'
 import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
+import {loadPage} from '../Utils/ElectronUtils'
 
 
 export default class BuildSystem {
@@ -39,10 +39,6 @@ export default class BuildSystem {
                 }
             }
         )
-        if(isDev) {
-            this._buildDialog.loadURL('http://localhost:3000#/build-dialog')
-        } else {
-            this._buildDialog.loadURL(`file://${__dirname}/../index.html#/build-dialog`)
-        }
+        loadPage(this._buildDialog, 'build-dialog')
     }
 }

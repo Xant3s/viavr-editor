@@ -56,10 +56,10 @@ export default class CustomMenu {
                 ]
             },
             {
-                label: 'Build',
+                label: 'Generate VIA Experience',
                 submenu: [
                     {
-                        label: "Open Build Menu",
+                        label: "Generate VIA Experience",
                         click: () => ipc.emit('BuildSystem:open-build-menu')
                     }
                 ]
@@ -72,9 +72,15 @@ export default class CustomMenu {
                         click: () => ipc.emit('dev:open-pwd')
                     },
                     {
-                        label: "Print URL",
+                        label: "Open Panels Prototype",
                         click: async () => {
-                            ipc.emit('print-main-window-url')
+                            ipc.emit('dev:open-panels-prototype')
+                        }
+                    },
+                    {
+                        label: "Open Tabs Prototype",
+                        click: async () => {
+                            ipc.emit('dev:open-tabs-prototype')
                         }
                     }
                 ]

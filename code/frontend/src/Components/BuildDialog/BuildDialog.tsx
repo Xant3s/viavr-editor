@@ -5,10 +5,20 @@ import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences
 import {Button} from '../StyledComponents/Button'
 import {SettingAccordion} from '../Settings/SettingAccordion'
 import {UnityPackageConfigurations} from './UnityPackageConfigurations'
+import {Select, Spinner, toaster} from 'evergreen-ui'
+
+const InvisibleSelect = () => {
+    return <div hidden>
+        <Select height={0}>
+            <option value="asd"></option>
+        </Select>
+    </div>
+}
 
 export const BuildDialog: FC = () => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
+    const [isBuilding, setIsBuilding] = useState(false)
 
 
     const toggleSceneSelected = (sceneFileName: string) => {
@@ -63,8 +73,17 @@ export const BuildDialog: FC = () => {
     const build = async() => {
         const outputPath = await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
         if(outputPath === undefined) return
+        toaster.notify('Started generating the experience, please wait.', {duration: 5})
+        setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
+        const result : 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
+        setIsBuilding(false)
+        if(result === 'failure') {
+            toaster.danger('Something went wrong generating your VIA experience.', {duration: 30})
+            return
+        }
         await api.invoke(api.channels.toMain.openBuildDirectory)
+        toaster.success('The experience is now ready.', {duration: 5})
     }
 
     useEffect(() => {
@@ -74,7 +93,9 @@ export const BuildDialog: FC = () => {
 
     return (
         <StyledSettings>
-            <h1>Build Settings</h1>
+            <h1>Generate VIA Experience</h1>
+            {/*Workaround: hidden Select to properly import the style*/}
+            <InvisibleSelect />
 
             <SettingsContainer>
 
@@ -107,7 +128,13 @@ export const BuildDialog: FC = () => {
                 {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
                 <br/>
-                <Button id="btn-build-project" type="button" onClick={build}>Build</Button>
+                <div hidden={isBuilding}>
+                    <Button id="btn-build-project" type="button" onClick={build}>Generate Experience</Button>
+                </div>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>
+                    <Spinner hidden={!isBuilding} style={{marginLeft: 10}} />
+                </div>
             </SettingsContainer>
         </StyledSettings>
     )

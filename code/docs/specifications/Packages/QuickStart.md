@@ -123,3 +123,6 @@ Additionally, VIA-VR Unity packages can have the following custom properties in 
 | "configDescription" | [composite settings type](http://localhost:8080/specifications/Settings/Settings.html) | Describes the settings UI presented in the VIA-VR editor build dialog. This property is optional. See [Settings](http://localhost:8080/specifications/Settings/Settings.html) for more info. |
 
 <!-- TODO: dependencies: registries/scopes inject into viavr editor -->
+
+
+<!-- TODO: package configuration, ref to settings types -->

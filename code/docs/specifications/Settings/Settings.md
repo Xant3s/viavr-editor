@@ -1,6 +1,6 @@
 # Settings
 
-The settings system consists of both backend and frontend systems, which in combination enable flexible and extensible settings. The UI is inferred from JSON and generated at runtime, which enables the display of settings retrieved from the internet.
+The settings system consists of both backend and frontend systems, which in combination enable flexible and extensible settings. The UI is inferred from JSON and generated at runtime, which enables the display of settings retrieved from the internet or an external application.
 The settings system is used for the [preferences](#preferences), [project settings](#project-settings), and [build dialog](#build-dialog).
 
 ## Preferences
@@ -44,7 +44,7 @@ Registers an event listener. This callback is called when the particular prefere
 
 ##### Parameters
 
-`preferenceName: string` - the name of the preference. Is assumed to be unique
+`preferenceName: string` - the name of the preference. Is assumed to be unique  
 `f: (value: any) => void` - the callback function
 
 #### IPC: 'preferences:open'
@@ -57,7 +57,7 @@ Updates the preference identified by uuid.
 
 ##### Parameters
 
-`uuid: string` - the uuid (v4) used to identify the preference. This preference can be nested.
+`uuid: string` - the uuid (v4) used to identify the preference. This preference can be nested.  
 `value: value_t` - the preference value
 
 #### IPC: 'preferences:request'
@@ -108,7 +108,7 @@ Sets a setting. Changes will be saved to disk immediately. Also, the frontend re
 
 ##### Parameters
 
-`name: string` - the setting name. Is assumed to be unique
+`name: string` - the setting name. Is assumed to be unique  
 `value: Type` - the setting type
 
 #### registerSettingUpdateEvent(preferenceName: string, f: (value: any) => void)
@@ -117,7 +117,7 @@ Registers an event listener. This callback is called when the particular setting
 
 ##### Parameters
 
-`preferenceName: string` - the name of the setting. Is assumed to be unique
+`preferenceName: string` - the name of the setting. Is assumed to be unique  
 `f: (value: any) => void` - the callback function
 
 #### IPC: 'projectSettings:open'
@@ -130,7 +130,7 @@ Updates the setting identified by uuid.
 
 ##### Parameters
 
-`uuid: string` - the uuid (v4) used to identify the setting. This setting can be nested.
+`uuid: string` - the uuid (v4) used to identify the setting. This setting can be nested.  
 `value: value_t` - the setting value
 
 #### IPC: 'projectSettings:request'
@@ -151,6 +151,9 @@ Saves the settings to the filesystem
 
 ## Build Dialog
 
+<!-- are settings persistent?
+where do they come from?
+ -->
 
 
 ## Settings Types

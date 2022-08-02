@@ -4,8 +4,20 @@
   href: BuildSystem/BuildSystem.md
 - name: Drag & Snap Editor
   href: SceneEditor/SceneEditor.md
-- name: Settings
-  href: Settings/Settings.md
+- name: Settings System
+  items:
+  - name: Overview
+    href: Settings/Settings.md
+  - name: Preferences
+    href: Settings/Preferences.md
+  - name: Project Settings
+    href: Settings/ProjectSettings.md
+  - name: Build Dialog
+    href: Settings/BuildDialog.md
+  - name: Settings Types
+    href: Settings/SettingsTypes.md
+  - name: Frontend
+    href: Settings/Frontend.md
 - name: Unity Packages
   items:
     - name: How to Create Packages for VIA-VR

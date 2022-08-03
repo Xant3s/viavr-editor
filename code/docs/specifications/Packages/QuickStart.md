@@ -120,9 +120,7 @@ Additionally, VIA-VR Unity packages can have the following custom properties in 
 | Property    | Values            | Description                                                                                           |
 |-------------|-------------------|-------------------------------------------------------------------------------------------------------|
 | "mandatory" | `true` or `false` | Determines whether all VIA-VR projects must install this package. Should be `false` for most packages. This property is optional. It only has an effect if present and set to `true`. |
-| "configDescription" | [composite settings type](http://localhost:8080/specifications/Settings/Settings.html) | Describes the settings UI presented in the VIA-VR editor build dialog. This property is optional. See [Settings](http://localhost:8080/specifications/Settings/Settings.html) for more info. |
+| "configDescription" | [composite settings type](../Settings/SettingsTypes.md) | Describes the settings UI presented in the VIA-VR editor build dialog. This property is optional. See [Settings](../Settings/Settings.md) for more info. |
+
 
 <!-- TODO: dependencies: registries/scopes inject into viavr editor -->
-
-
-<!-- TODO: package configuration, ref to settings types -->

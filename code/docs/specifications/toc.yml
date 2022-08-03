@@ -16,8 +16,8 @@
     href: Settings/BuildDialog.md
   - name: Settings Types
     href: Settings/SettingsTypes.md
-  - name: Frontend
-    href: Settings/Frontend.md
+  # - name: Frontend
+  #   href: Settings/Frontend.md
 - name: Unity Packages
   items:
     - name: How to Create Packages for VIA-VR

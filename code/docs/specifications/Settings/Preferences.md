@@ -1,6 +1,6 @@
 ## Preferences
 
-Preferences are project-independent, persistent settings, e.g. the Unity editor path. The preferences come with a UI window, JSON serialization/deserialization, and static API for all systems to access. Systems can access the preferences using the [preferences API](#preferences-api). Preferences can be of any type. If a preference is of type `Setting_t`, it can be displayed by the `Setting` React component.
+Preferences are project-independent, persistent settings, e.g. the Unity editor path. The preferences come with a UI window, JSON serialization/deserialization, and static API for all systems to access. Systems can access the preferences using the [preferences API](#preferences-api). Preferences can be of any type. If a preference is of type `Setting_t`, it can be displayed by the `Setting` React component. Preferences are stored in the VIA-VR editor's install folder.
 
 ### Preferences API
 

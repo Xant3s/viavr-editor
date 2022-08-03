@@ -1,6 +1,6 @@
 ## Project Settings
 
-Project settings are project-dependent, persistent settings. The project settings come with a UI window, JSON serialization/deserialization, and static API for all systems to access. Systems can access the project settings using the project settings API.
+Project settings are project-dependent, persistent settings. The project settings come with a UI window, JSON serialization/deserialization, and static API for all systems to access. Systems can access the project settings using the project settings API. Project settings are stored at `temp/viavr/project/projectSettings.json`. On Windows, this corresponds to  `%localappdata%\Temp\viavr\project\projectSettings.json`.
 
 ### Project Settings API
 

@@ -89,7 +89,9 @@ export default class ProjectManager {
     public async openProjectFromFileNoPrompt(filePath: string) {
         this.projectPath = filePath
         const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
-        fs.rmSync(tempProjectFolder, {recursive: true})
+        if(fs.existsSync(tempProjectFolder)) {
+            fs.rmSync(tempProjectFolder, {recursive: true})
+        }
         await Utils.extractZipToPath(filePath, tempProjectFolder)
         this._presentWorkingDirectory = tempProjectFolder
         this.onProjectOpened()

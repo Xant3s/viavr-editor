@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button, Table, TrashIcon} from 'evergreen-ui'
 import {AvatarInfo} from '../../@types/AvatarInfo'
 
@@ -6,6 +6,16 @@ import {AvatarInfo} from '../../@types/AvatarInfo'
 export const AvatarEditor = ({hidden}) => {
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
+
+    useEffect(() => {
+        const loadAvatars = async () => {
+            const projectSettings = await api.invoke(api.channels.toMain.requestProjectSettings) as any
+            const avatars = projectSettings.find(([k, _]) => k === 'dev.avatars')[1] || []
+            setAvatars(avatars)
+        }
+
+        api.on(api.channels.fromMain.projectOpened, loadAvatars)
+    }, [])
 
     return <div hidden={hidden} style={{backgroundColor: '#3a4048', height: 'calc(100vh - 76px)', margin: 0, padding: 10, textAlign: 'center', color: 'white'}}>
         <h1>Avatar Editor</h1>
@@ -18,10 +28,10 @@ export const AvatarEditor = ({hidden}) => {
                 <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
             </Table.Head>
             <Table.Body height={240} minWidth={'600px'}>
-                {avatars.map((avatar) => (
-                    <Table.Row key={avatar.uuid} >
+                {avatars.map((avatar : AvatarInfo) => (
+                    <Table.Row key={avatar.uuid}>
                         <Table.TextCell>{avatar.name}</Table.TextCell>
-                        <Table.TextCell>Unavailable</Table.TextCell>
+                        <Table.TextCell>Please start download</Table.TextCell>
                         <Table.TextCell>
                             <Button appearance='primary'
                                     style={{width: '100%'}}

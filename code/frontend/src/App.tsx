@@ -1,7 +1,7 @@
 import './App.css';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
-import {Preferences} from './Components/Preferences/Preferences';
-import {BuildDialog} from './Components/BuildDialog/BuildDialog';
+import {Preferences} from './Components/Preferences/Preferences'
+import {BuildDialog} from './Components/BuildDialog/BuildDialog'
 import {Editor} from './Components/Editor/Editor'
 import {ProjectSettings} from './Components/ProjectSettings/ProjectSettings'
 import {PanelsPrototype} from './Components/PanelsPrototype'

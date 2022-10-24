@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SpokeContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 56px);
   position: absolute;
   left: 0;
   overflow: hidden;

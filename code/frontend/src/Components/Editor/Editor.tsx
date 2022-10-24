@@ -26,7 +26,7 @@ export const Editor = () => {
     })
 
     return <>
-        <TabHeader setId={setViewID}/>
+        <TabHeader setId={setViewID} hidden={viewID === 0}/>
         <div><ProjectSelection hidden={viewID !== 0}/></div>
         <Spoke hidden={viewID !== 1}/>
         <BehaviorEditor hidden={viewID !== 2}/>

@@ -6,12 +6,10 @@ import {ProjectSelection} from './ProjectSelection'
 import {Spoke} from './Spoke'
 
 export const Editor = () => {
-    const [hideProjectSelectionPage, setHideProjectSelectionPage] = useState(false)
-    const [hideSpokeContainer, setHideSpokeContainer] = useState(true)
+    const [viewID, setViewID] = useState(0)
 
     const onProjectSelected = () => {
-        setHideProjectSelectionPage(true)
-        setHideSpokeContainer(false)
+        setViewID(1)
         new SceneEditor()
         new SceneExport()
         new SceneLoadingPage()
@@ -23,7 +21,7 @@ export const Editor = () => {
     })
 
     return <>
-        <ProjectSelection hidden={hideProjectSelectionPage}/>
-        <Spoke hidden={hideSpokeContainer}/>
+        <ProjectSelection hidden={viewID !== 0}/>
+        <Spoke hidden={viewID !== 1}/>
     </>
 }

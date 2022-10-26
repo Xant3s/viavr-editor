@@ -29,8 +29,8 @@ export default class SpokeManager {
         })
     }
 
-    private stopSpoke() {
-        const shouldStop: boolean = PreferencesManager.getInstance().get<boolean>('dev.stopSpoke') as boolean
+    private async stopSpoke() {
+        const shouldStop: boolean = await PreferencesManager.getInstance().get<boolean>('dev.stopSpoke') as boolean
 
         if(app.isPackaged || shouldStop) {
             kill(SpokeManager.getInstance().spoke.pid ?? 0)

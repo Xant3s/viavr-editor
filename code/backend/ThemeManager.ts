@@ -9,8 +9,8 @@ export default class ThemeManager {
         ThemeManager.loadTheme()
     }
 
-    private static loadTheme() {
-        const theme = PreferencesManager.getInstance().get<DropdownSetting>('darkMode')
+    private static async loadTheme() {
+        const theme = await PreferencesManager.getInstance().get<DropdownSetting>('darkMode')
         ThemeManager.setTheme(theme)
     }
 

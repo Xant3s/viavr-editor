@@ -36,12 +36,12 @@ export default class ProjectSettingsManager {
         app.on('quit', () => this.saveSettings())
     }
 
-    public get<Type>(name: string): Type {
-        return this.settingsManager.get<Type>(name)
+    public async get<Type>(name: string) {
+        return await this.settingsManager.get<Type>(name)
     }
 
-    public getAll() {
-        return this.settingsManager.getAll()
+    public async getAll() {
+        return await this.settingsManager.getAll()
     }
 
     public async set<Type>(name: string, value: Type) {

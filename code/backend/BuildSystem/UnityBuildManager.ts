@@ -91,7 +91,8 @@ export default class UnityBuildManager {
     }
 
     private async setupScopedRegistry(outputPath: string) {
-        const packageRegistries = PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries').value
+        const registriesSetting = await PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries')
+        const packageRegistries = registriesSetting.value
         let manifest = await UnityBuildManager.readManifest(outputPath)
         for(const packageRegistry of packageRegistries) {
             const scopes = packageRegistry.packageRegistryScopes.value
@@ -156,7 +157,7 @@ export default class UnityBuildManager {
     }
 
     private async exportPackageConfigurations(outputPath: string) {
-        const packageConfigurations = UnityPackageSettingsManager.getInstance().getAllPackageConfigurations()
+        const packageConfigurations = await UnityPackageSettingsManager.getInstance().getAllPackageConfigurations()
         for(const [name, packageConfig] of packageConfigurations) {
             const configurationFolder = `${outputPath}/Assets/Settings/${name}/`
             const configuration = this.extractRelevantConfiguration((packageConfig as any).value)

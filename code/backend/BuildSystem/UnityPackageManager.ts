@@ -22,7 +22,8 @@ export default class UnityPackageManager {
     }
 
     public async queryPackagesFromAllRegistries() {
-        const registries = PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries').value
+        const registriesSetting = await PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries')
+        const registries = registriesSetting.value
         const packageManager = UnityPackageManager.getInstance()
         let packageList: any[] = []
         for(const registry of registries) {

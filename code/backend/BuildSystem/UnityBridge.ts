@@ -11,7 +11,8 @@ export default class UnityBridge {
     }
 
     private async invokeUnityMethod(method: string, projectPath: string) {
-        const unityPath = PreferencesManager.getInstance().get<PathSetting>('unityPath').value
+        const pathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
+        const unityPath = pathSetting.value
         const unityAppPath = UnityBridge.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
         const command = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod ${method}`
         const {stdout, stderr } = await exec(command)

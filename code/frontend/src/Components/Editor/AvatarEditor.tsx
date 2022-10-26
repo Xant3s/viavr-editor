@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react"
 import {toString as QrToString} from 'qrcode'
 import SVG from 'react-inlinesvg'
-import {Button, Table, TrashIcon} from 'evergreen-ui'
+import {v4 as uuid4} from 'uuid'
+import {Button, Table, TextInput, toaster, TrashIcon} from 'evergreen-ui'
 import {AvatarInfo} from '../../@types/AvatarInfo'
 
 
@@ -9,6 +10,7 @@ export const AvatarEditor = ({hidden}) => {
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
     const [avatarsSettingUuid, setAvatarsSettingUuid] = useState<string>('')
     const [qrCode, setQrCode] = useState<string>('')
+    const [newAvatarName, setNewAvatarName] = useState<string>('')
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
 
     useEffect(() => {
@@ -18,6 +20,7 @@ export const AvatarEditor = ({hidden}) => {
             const avatars = avatarsSetting[1].value || []
             setAvatarsSettingUuid(avatarsSetting[1].uuid || '')
             setAvatars(avatars)
+            // TODO: check if avatars are downloaded
         }
 
         api.on(api.channels.fromMain.projectOpened, loadAvatars)
@@ -28,6 +31,20 @@ export const AvatarEditor = ({hidden}) => {
         QrToString(token, {type: 'svg'}, (err, svg) => {
             setQrCode(svg)
         })
+    }
+
+    const addAvatar = async () => {
+        if(newAvatarName === '') {
+            toaster.danger('Please enter a name for the avatar')
+            return
+        }
+        const uuid = uuid4()
+        const token = 'dummy-token'   // TODO: request token from TUD server
+        const newAvatar = {name: newAvatarName, id: uuid, token: token}
+        const newAvatars = [...avatars, newAvatar]
+        setAvatars(newAvatars)
+        setNewAvatarName('')
+        api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
     }
 
     const deleteAvatar = (avatarId) => {
@@ -97,5 +114,23 @@ export const AvatarEditor = ({hidden}) => {
                 ))}
             </Table.Body>
         </Table>
+
+        <div style={{display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px'}}>
+            <TextInput name="new-avatar-name-input"
+                       placeholder="New avatar name..."
+                       value={newAvatarName}
+                       onChange={(e) => setNewAvatarName(e.target.value)} />
+
+            <Button appearance='primary' style={{marginRight: '5px'}} onClick={() => addAvatar()}>
+                Create new avatar
+            </Button>
+            <Button appearance='primary'
+                    onClick={() => {
+                        throw new Error('Not implemented')
+                    }}
+            >
+                Load avatar from file
+            </Button>
+        </div>
     </div>
 }

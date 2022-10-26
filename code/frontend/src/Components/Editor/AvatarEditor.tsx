@@ -7,13 +7,16 @@ import {AvatarInfo} from '../../@types/AvatarInfo'
 
 export const AvatarEditor = ({hidden}) => {
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
+    const [avatarsSettingUuid, setAvatarsSettingUuid] = useState<string>('')
     const [qrCode, setQrCode] = useState<string>('')
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
 
     useEffect(() => {
         const loadAvatars = async () => {
             const projectSettings = await api.invoke(api.channels.toMain.requestProjectSettings)
-            const avatars = projectSettings.find(([k, _]) => k === 'dev.avatars')[1] || []
+            const avatarsSetting = projectSettings.find(([k, _]) => k === 'dev.avatars')
+            const avatars = avatarsSetting[1].value || []
+            setAvatarsSettingUuid(avatarsSetting[1].uuid || '')
             setAvatars(avatars)
         }
 
@@ -25,6 +28,13 @@ export const AvatarEditor = ({hidden}) => {
         QrToString(token, {type: 'svg'}, (err, svg) => {
             setQrCode(svg)
         })
+    }
+
+    const deleteAvatar = (avatarId) => {
+        const newAvatars = avatars.filter(avatar => avatar.id !== avatarId)
+        setAvatars(newAvatars)
+        api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
+        // Todo: delete downloaded avatar from project files
     }
 
     return <div hidden={hidden} style={{backgroundColor: '#3a4048', height: 'calc(100vh - 76px)', margin: 0, padding: 10, textAlign: 'center', color: 'white'}}>
@@ -77,6 +87,7 @@ export const AvatarEditor = ({hidden}) => {
                                     appearance='minimal'
                                     intent='danger'
                                     onClick={() => {
+                                        deleteAvatar(avatar.id)
                                     }}
                             >
                                 Delete

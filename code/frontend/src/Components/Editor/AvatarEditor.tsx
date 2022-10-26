@@ -20,8 +20,8 @@ export const AvatarEditor = ({hidden}) => {
         api.on(api.channels.fromMain.projectOpened, loadAvatars)
     }, [])
 
-    const updateQrCode = (avatarUuid) => {
-        const token = avatars.find(avatar => avatar.uuid === avatarUuid)?.token || ''
+    const updateQrCode = (avatarId) => {
+        const token = avatars.find(avatar => avatar.id === avatarId)?.token || ''
         QrToString(token, {type: 'svg'}, (err, svg) => {
             setQrCode(svg)
         })
@@ -49,14 +49,14 @@ export const AvatarEditor = ({hidden}) => {
             </Table.Head>
             <Table.Body height={240} minWidth={'600px'}>
                 {avatars.map((avatar : AvatarInfo) => (
-                    <Table.Row key={avatar.uuid}>
+                    <Table.Row key={avatar.id}>
                         <Table.TextCell>{avatar.name}</Table.TextCell>
                         <Table.TextCell>Please start download</Table.TextCell>
                         <Table.TextCell>
                             <Button appearance='primary'
                                     style={{width: '100%'}}
                                     onClick={() => {
-                                        updateQrCode(avatar.uuid)
+                                        updateQrCode(avatar.id)
                                     }}
                             >
                                 Show QR Code
@@ -66,6 +66,7 @@ export const AvatarEditor = ({hidden}) => {
                             <Button appearance='primary'
                                     style={{width: '100%'}}
                                     onClick={() => {
+                                        throw new Error('Not implemented')
                                     }}
                             >
                                 Download

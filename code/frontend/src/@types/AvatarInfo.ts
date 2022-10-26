@@ -1,5 +1,5 @@
 export class AvatarInfo {
     name: string = ''
-    uuid: string = ''
+    id: string = ''
     token: string = ''
 }

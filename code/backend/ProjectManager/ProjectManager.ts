@@ -107,8 +107,8 @@ export default class ProjectManager {
     }
 
     private onProjectOpened() {
-        this.mainWindow.send(channels.fromMain.projectOpened)
         this.onProjectOpenedEvent.emit('project-loaded')
+        this.mainWindow.send(channels.fromMain.projectOpened)
     }
 
     private async saveProject() {

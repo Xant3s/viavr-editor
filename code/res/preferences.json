@@ -16,6 +16,12 @@
     "uuid": "5565213a-fd3a-412d-ae8f-cf1f446fcfe9",
     "kind": "path"
   },
+  "avatarServer": {
+    "value": "https://avatars.tu-dortmund.de",
+    "label": "Avatar server URL",
+    "uuid": "56940ba8-1db5-42e4-9732-9d15e9649311",
+    "kind": "string"
+  },
   "packageRegistries": {
     "value": [
       {

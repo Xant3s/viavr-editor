@@ -16,24 +16,32 @@ export default class SettingsManager {
 
     public async init() {
         await this.loadSettingsFromFile(this.settingsPath)
-        this.initialized = true
+        this.initialized = this.settings !== undefined
     }
 
-    public get<Type>(name: string): Type {
+    public async get<Type>(name: string) {
+        if(!this.initialized) await this.init()
+        if(!this.initialized) throw new Error('SettingsManager not initialized')
         return this.settings[name] as Type
     }
 
-    public getAll() {
+    public async getAll() {
+        if(!this.initialized) await this.init()
+        if(!this.initialized) throw new Error('SettingsManager not initialized')
         return Object.entries(this.settings)
     }
 
     public async set<Type>(name: string, value: Type) {
+        if(!this.initialized) await this.init()
+        if(!this.initialized) throw new Error('SettingsManager not initialized')
         this.settings[name] = value
         await this.saveSettingToFile()
         this.settingUpdateEvents[name]?.emit('update', value)
     }
 
     public async setByUuid(uuid: string, newValue: value_t, settings: any = this.settings) {
+        if(!this.initialized) await this.init()
+        if(!this.initialized) throw new Error('SettingsManager not initialized')
         for(const [settingName, setting] of Object.entries(settings)) {
             if(typeof setting !== 'object') continue
             if(!('uuid' in (setting as any))) continue

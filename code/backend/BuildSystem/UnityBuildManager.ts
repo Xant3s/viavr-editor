@@ -146,7 +146,10 @@ export default class UnityBuildManager {
 
     private static async exportSceneList(outputPath: string, sceneNames: Array<string>) {
         let sceneList = {}
-        sceneList["Scenes"] = sceneNames.map(sceneName => sceneName.substr(0, sceneName.length - 4))
+        sceneList["Scenes"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4))
+        sceneList["Spoke"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4)
+                                                                  .replace(/ /g, "-")
+                                                                  .toLowerCase())
         await fs.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
     }
 

@@ -9,6 +9,7 @@ import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
 import {Prototypes} from './Prototypes'
+import {ArticyManager} from './ArticyManager'
 
 
 const startup = async () => {
@@ -23,6 +24,7 @@ const startup = async () => {
     new BuildSystem(mainWindow.window)
     new DialogUtils()
     new Prototypes()
+    new ArticyManager()
 }
 
 const tryOpenProject = async () => {

@@ -20,6 +20,7 @@ export const channels = {
         setPackageSetting: "unityPackageSettings:set",
         getPackageSetting: "unityPackageSettings:get",
         createNewProject: "project-manager:create-new-project",
+        openArticyEditor: "articy:open-editor",
         openProject: "project-manager:open-project",
         openProjectFolder: "project-manager:open-project-folder",
         getPresentWorkingDirectory: "project-manager:get-present-working-directory",

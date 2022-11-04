@@ -22,6 +22,12 @@
     "uuid": "56940ba8-1db5-42e4-9732-9d15e9649311",
     "kind": "string"
   },
+  "articyPath": {
+    "value": "C:\\dev\\ArticyDraft\\ArticyDraft.exe",
+    "label": "Path to Articy executable",
+    "uuid": "352f884f-afff-44f0-b84d-9a49188d8f49",
+    "kind": "path"
+  },
   "packageRegistries": {
     "value": [
       {

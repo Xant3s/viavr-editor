@@ -195,7 +195,7 @@ export default class UnityBuildManager {
     }
 
     private static async openBuildDirectory(buildPath: string) {
-        await exec(`start "" ${buildPath}\\Build\\Windows`)
+        await exec(`start "" ${buildPath}\\Build`)
     }
 }
 

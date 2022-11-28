@@ -57,9 +57,11 @@ export default class UnityBuildManager {
             e.sender.send(channels.fromMain.buildFinished)
         })
         ipc.handle(channels.toMain.checkBuildSuccess, async () => {
-            const executablePath = Path.join(this.buildPath, 'Build/Windows')
-            const success = fs2.existsSync(executablePath) && fs2.readdirSync(executablePath).length > 0
-            return success ? 'success' : 'failure'
+            const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
+            const windowsExecutableExists = fs2.existsSync(windowsExecutablePath) && fs2.readdirSync(windowsExecutablePath).length > 0
+            const androidExecutablePath = Path.join(this.buildPath, 'Build/out.apk')
+            const androidExecutableExists = fs2.existsSync(androidExecutablePath)
+            return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
         })
         ipc.handle(channels.toMain.openBuildDirectory, async (e) => {
             await UnityBuildManager.openBuildDirectory(this.buildPath)

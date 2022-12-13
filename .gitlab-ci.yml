@@ -35,41 +35,41 @@ deploy-documentation:
     only:
         - master
 
-# backend:
-#   image: node:latest
-#   stage: build
-#   cache:
-#     paths:
-#       - code/node_modules
-#   before_script:
-#     - node -v
-#     - npm -v
-#     - cd code/
-#     - npm i yarn
-#     - yarn -v
-#     - npm i
-#   script:
-#     - npm run build:backend
-#   tags:
-#     - docker
+backend:
+   image: node:latest
+   stage: build
+   cache:
+     paths:
+       - code/node_modules
+   before_script:
+     - node -v
+     - npm -v
+     - cd code/
+     - npm i yarn
+     - yarn -v
+     - npm i
+   script:
+     - npm run build:backend
+   tags:
+     - docker
 
-# frontend:
-#   image: node:latest
-#   stage: build
-#   cache:
-#     paths:
-#       - code/node_modules
-#   before_script:
-#     - node -v
-#     - npm -v
-#     - cd code/
-#     - npm i yarn
-#     - yarn -v
-#     - npm i
-#   script:
-#     - npm run build:frontend
-#   tags:
-#     - docker
+frontend:
+   image: node:latest
+   stage: build
+   cache:
+     paths:
+       - code/node_modules
+   before_script:
+     - node -v
+     - npm -v
+     - cd code/
+     - npm i yarn
+     - yarn -v
+     - npm i
+   script:
+     - npm run build:frontend
+   tags:
+     - docker
 
 #package-win:
 #  image: electronuserland/builder:wine

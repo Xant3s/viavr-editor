@@ -1,5 +1,7 @@
 ## git-lfs ##
 
+*.via filter=lfs diff=lfs merge=lfs -text
+
 # PowerPoint
 *.pptx filter=lfs diff=lfs merge=lfs -text
 

@@ -12,11 +12,11 @@ docfx:
         - wget https://github.com/dotnet/docfx/releases/download/v2.59.2/docfx.zip
         - unzip docfx.zip -d docfx
     script:
-        - cd code/docs
-        - mono ../../docfx/docfx.exe docfx.json build
+        - cd docs
+        - mono ../docfx/docfx.exe docfx.json build
     artifacts:
         paths:
-            - code/docs/_site
+            - docs/_site
         expire_in: 1 week
     tags:
         - docker
@@ -28,7 +28,7 @@ deploy-documentation:
         - apk update
         - apk add rsync
     script:
-        - rsync -a code/docs/_site/ /lectures/viavr-docs/editor/
+        - rsync -a docs/_site/ /lectures/viavr-docs/editor/
     tags:
         - docker
         - lectures
@@ -40,11 +40,10 @@ backend:
    stage: build
    cache:
      paths:
-       - code/node_modules
+       - node_modules
    before_script:
      - node -v
      - npm -v
-     - cd code/
      - npm i yarn
      - yarn -v
      - npm i
@@ -58,11 +57,10 @@ frontend:
    stage: build
    cache:
      paths:
-       - code/node_modules
+       - node_modules
    before_script:
      - node -v
      - npm -v
-     - cd code/
      - npm i yarn
      - yarn -v
      - npm i
@@ -80,7 +78,6 @@ frontend:
 #  before_script:
 #    - node -v
 #    - npm -v
-#    - cd code/
 #    - npm i yarn
 #    - yarn -v
 #    - npm i
@@ -102,7 +99,6 @@ frontend:
 #  before_script:
 #    - node -v
 #    - npm -v
-#    - cd code/
 #    - npm i yarn
 #    - yarn -v
 #    - npm i
@@ -124,7 +120,6 @@ frontend:
 #  before_script:
 #    - node -v
 #    - npm -v
-#    - cd code/
 #    - npm i yarn
 #    - yarn -v
 #    - npm i
@@ -142,12 +137,11 @@ frontend:
 #  stage: test
 #  # cache:
 #  #   paths:
-#  #     - code/node_modules
-#  #     - code/plugins
+#  #     - node_modules
+#  #     - plugins
 #  before_script:
 #    - node -v
 #    - npm -v
-#    - cd code/
 #    - npm i yarn
 #    - yarn -v
 #    - npm i

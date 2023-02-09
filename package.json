@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps && cd res/plugins/spoke && yarn install --ignore-scripts",
     "prestart": "npm run build:backend",
-    "start": "concurrently \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://127.0.0.1:3000 && npm run watch:backend\" \"wait-on http://127.0.0.1:3000 && npm run build:backend && electron .\"",
+    "start": "concurrently \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\"",
     "start:frontend": "react-app-rewired start",
     "build:all": " npm run build:frontend && npm run build:backend",
     "build:backend": "tsc -p backend/tsconfig.json",

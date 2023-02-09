@@ -1,12 +1,12 @@
-import {$$, htmlElement} from './Spoke'
+import { $$, htmlElement } from './Spoke'
 
 
 export class SceneExport {
     constructor() {
-        api.on('spoke:export-scene', async() => {
+        api.on('spoke:export-scene', async () => {
             await Promise.all([
                 this.exportSceneAsGlb(),
-                this.exportSceneAsJson()
+                this.exportSceneAsJson(),
             ])
         })
     }

@@ -1,5 +1,5 @@
-import {FC} from 'react'
-import {Settings} from '../Settings/Settings'
+import { FC } from 'react'
+import { Settings } from '../Settings/Settings'
 
 export const Preferences: FC = () => {
     return (
@@ -10,6 +10,6 @@ export const Preferences: FC = () => {
                       api.on(api.channels.fromMain.preferenceChangedFromBackendUnityPath, (data) => {
                           setPref('unityPath', data)
                       })
-                  }}/>
+                  }} />
     )
 }

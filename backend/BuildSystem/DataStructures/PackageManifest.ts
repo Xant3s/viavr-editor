@@ -1,4 +1,4 @@
-import {ScopedRegistry} from './ScopedRegistry'
+import { ScopedRegistry } from './ScopedRegistry'
 
 export interface PackageManifest {
     dependencies?: Dependency[]

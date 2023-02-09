@@ -1,5 +1,5 @@
-import {BrowserWindow, ipcMain} from 'electron'
-import {loadPage} from './Utils/ElectronUtils'
+import { BrowserWindow, ipcMain } from 'electron'
+import { loadPage } from './Utils/ElectronUtils'
 
 export class Prototypes {
     constructor() {
@@ -16,8 +16,8 @@ export class Prototypes {
                 autoHideMenuBar: true,
                 webPreferences: {
                     nodeIntegration: true,
-                }
-            }
+                },
+            },
         )
         loadPage(panels, 'panels-prototype')
     }
@@ -31,8 +31,8 @@ export class Prototypes {
                 autoHideMenuBar: true,
                 webPreferences: {
                     nodeIntegration: true,
-                }
-            }
+                },
+            },
         )
         loadPage(tabs, 'tabs-prototype')
     }

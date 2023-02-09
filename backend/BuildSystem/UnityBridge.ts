@@ -1,8 +1,6 @@
 import PreferencesManager from '../Preferences/PreferencesManager'
-import {PathSetting} from '../../frontend/src/@types/Settings'
-const util = require('util')
-
-const exec = util.promisify(require('child_process').exec)
+import { PathSetting } from '../../frontend/src/@types/Settings'
+import { exec } from 'child_process'
 
 
 export default class UnityBridge {
@@ -13,12 +11,12 @@ export default class UnityBridge {
     private async invokeUnityMethod(method: string, projectPath: string) {
         const pathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
         const unityPath = pathSetting.value
-        const unityAppPath = UnityBridge.isMacOS()? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
+        const unityAppPath = UnityBridge.isMacOS() ? `${unityPath}/Contents/MacOS/Unity` : `${unityPath}`
         const command = `"${unityAppPath}" -quit -batchmode -projectPath "${projectPath}" -executeMethod ${method}`
-        const {stdout, stderr } = await exec(command)
+        const { stdout, stderr } = await exec(command)
         if(stderr) console.log(stderr)
         console.log(stdout)
     }
 
-    private static isMacOS = () => process.platform === 'darwin';
+    private static isMacOS = () => process.platform === 'darwin'
 }

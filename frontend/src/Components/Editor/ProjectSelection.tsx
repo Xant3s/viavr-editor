@@ -1,8 +1,8 @@
-import {WelcomeContainer} from '../StyledComponents/Editor/StyledEditor'
-import {Row} from '../StyledComponents/Row'
-import {Button} from '../StyledComponents/Button'
+import { WelcomeContainer } from '../StyledComponents/Editor/StyledEditor'
+import { Row } from '../StyledComponents/Row'
+import { Button } from '../StyledComponents/Button'
 
-export const ProjectSelection = ({hidden}) => {
+export const ProjectSelection = ({ hidden }) => {
     return <WelcomeContainer hidden={hidden}>
         <h1>Welcome</h1>
         <Row>

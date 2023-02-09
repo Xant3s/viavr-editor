@@ -1,7 +1,7 @@
-import {useEffect, useState} from 'react'
-import {StyledSettings, SettingsContainer} from '../StyledComponents/Preferences/StyledSettings'
-import {Setting} from './Setting'
-import {value_t} from '../../@types/Settings'
+import { useEffect, useState } from 'react'
+import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
+import { Setting } from './Setting'
+import { value_t } from '../../@types/Settings'
 
 export declare interface SettingsProps {
     title: string,
@@ -10,7 +10,12 @@ export declare interface SettingsProps {
     registerUpdateCallbacksFromBackend?: (setPref) => void
 }
 
-export const Settings = ({title, loadSettingsChannel, changeSettingChannel, registerUpdateCallbacksFromBackend}: SettingsProps) => {
+export const Settings = ({
+                             title,
+                             loadSettingsChannel,
+                             changeSettingChannel,
+                             registerUpdateCallbacksFromBackend,
+                         }: SettingsProps) => {
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
     const setPref = (key: string, value: any) => {
@@ -26,7 +31,7 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
     }
 
     useEffect(() => {
-        const loadInitialValues = async() => {
+        const loadInitialValues = async () => {
             const allPreferences = await loadPreferences() as [string, unknown][]
             const preferencesExcludingDevPreferences = allPreferences.filter(pref => !pref[0].startsWith('dev.'))
             preferencesExcludingDevPreferences.forEach(pref => setPref(pref[0] as string, pref[1]))
@@ -45,7 +50,8 @@ export const Settings = ({title, loadSettingsChannel, changeSettingChannel, regi
                 {
                     Array.from(prefs.entries())
                         // @ts-ignore
-                         .map(([prefKey, pref]) => (<Setting key={prefKey} settingKey={prefKey} setting={pref} updateCallback={sendSettingUpdateToBackend} />))
+                        .map(([prefKey, pref]) => (<Setting key={prefKey} settingKey={prefKey} setting={pref}
+                                                            updateCallback={sendSettingUpdateToBackend} />))
                 }
             </SettingsContainer>
         </StyledSettings>

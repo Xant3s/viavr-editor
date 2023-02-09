@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {FaTimes} from 'react-icons/fa'
+import { FaTimes } from 'react-icons/fa'
 
 export const RemoveButton = styled(FaTimes)`
   color: white;

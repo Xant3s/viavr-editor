@@ -1,4 +1,4 @@
-import {Checkbox} from '../Utils/UI'
+import { Checkbox } from '../Utils/UI'
 
 type ToggleFunction = (name: string) => void
 
@@ -12,9 +12,17 @@ interface IPackage {
     toggleFunction: ToggleFunction
 }
 
-export const Package = ({name, displayName, version, description, isSelected, mandatory, toggleFunction}: IPackage) => {
+export const Package = ({
+                            name,
+                            displayName,
+                            version,
+                            description,
+                            isSelected,
+                            mandatory,
+                            toggleFunction,
+                        }: IPackage) => {
     return (
-        <div style={{display: 'flex', alignItems: 'center'}}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
             <Checkbox id={name}
                       title={description}
                       checked={mandatory || isSelected}
@@ -22,7 +30,7 @@ export const Package = ({name, displayName, version, description, isSelected, ma
                       disabled={mandatory}
                       label={displayName}
             />
-            <span title={description} style={{paddingLeft: '10px', color: 'gray'}}>{version}</span>
+            <span title={description} style={{ paddingLeft: '10px', color: 'gray' }}>{version}</span>
         </div>
     )
 }

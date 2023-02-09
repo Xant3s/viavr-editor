@@ -1,4 +1,12 @@
-export type Setting_t = StringSetting | BoolSetting | IntSetting | FloatSetting | PathSetting | DropdownSetting | CompositeSetting | ListSetting
+export type Setting_t =
+    StringSetting
+    | BoolSetting
+    | IntSetting
+    | FloatSetting
+    | PathSetting
+    | DropdownSetting
+    | CompositeSetting
+    | ListSetting
 export type value_t = string | string[] | number[] | { [key: string]: Setting_t } | { [key: string]: Setting_t }[]
 export type listType_t = 'string' | 'int' | 'float' | 'composite'
 export const StringSetting_typeName = 'string'

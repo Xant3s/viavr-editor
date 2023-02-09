@@ -1,6 +1,6 @@
-import {IJsonModel, Layout, Model, TabNode} from 'flexlayout-react'
+import { IJsonModel, Layout, Model, TabNode } from 'flexlayout-react'
 import 'flexlayout-react/style/dark.css'
-import {Button} from './StyledComponents/Button'
+import { Button } from './StyledComponents/Button'
 
 const json: IJsonModel = {
     global: {
@@ -9,49 +9,49 @@ const json: IJsonModel = {
     },
     borders: [],
     layout: {
-        type: "row",
+        type: 'row',
         weight: 100,
         children: [
             {
-                type: "tabset",
+                type: 'tabset',
                 weight: 50,
                 children: [
                     {
-                        type: "tab",
-                        name: "One",
-                        component: "button",
-                    }
+                        type: 'tab',
+                        name: 'One',
+                        component: 'button',
+                    },
                 ],
             },
             {
-                type: "tabset",
+                type: 'tabset',
                 weight: 50,
                 children: [
                     {
-                        type: "tab",
-                        name: "Two",
-                        component: "button",
+                        type: 'tab',
+                        name: 'Two',
+                        component: 'button',
                     },
                     {
-                        type: "tab",
-                        name: "Three",
-                        component: "button",
-                    }
+                        type: 'tab',
+                        name: 'Three',
+                        component: 'button',
+                    },
                 ],
-            }
-        ]
-    }
+            },
+        ],
+    },
 }
 
-const model = Model.fromJson(json);
+const model = Model.fromJson(json)
 
 export const PanelsPrototype = () => {
     const factory = (node: TabNode) => {
         const component = node.getComponent()
-        if(component === "button") {
-            return <Button>{node.getName()}</Button>;
+        if(component === 'button') {
+            return <Button>{node.getName()}</Button>
         }
     }
 
-    return <Layout model={model} factory={factory}/>
+    return <Layout model={model} factory={factory} />
 }

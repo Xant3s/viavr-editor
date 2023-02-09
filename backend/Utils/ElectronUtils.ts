@@ -1,4 +1,4 @@
-import {app} from 'electron'
+import { app } from 'electron'
 
 export const loadPage = (window: Electron.BrowserWindow, page: string) => {
     if(app.isPackaged) {

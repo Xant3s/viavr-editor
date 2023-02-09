@@ -1,7 +1,7 @@
 import EventEmitter from 'events'
-import {promises as fs} from 'fs'
 import * as fs2 from 'fs'
-import {Setting_t, value_t} from '../../frontend/src/@types/Settings'
+import { promises as fs } from 'fs'
+import { Setting_t, value_t } from '../../frontend/src/@types/Settings'
 
 export default class SettingsManager {
     private readonly settingsPath: string

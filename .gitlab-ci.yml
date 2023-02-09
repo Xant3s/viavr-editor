@@ -69,26 +69,28 @@ frontend:
    tags:
      - docker
 
-#package-win:
-#  image: electronuserland/builder:wine
-#  stage: build
-#  cache:
-#    paths:
-#      - node_modules
-#  before_script:
-#    - node -v
-#    - npm -v
-#    - npm i yarn
-#    - yarn -v
-#    - npm i
-#  script:
-#    - npm run package:win
-#  artifacts:
-#    paths:
-#      - out/
-#    expire_in: 1 week
-#  tags:
-#    - docker
+package-win:
+  image: electronuserland/builder:wine
+  stage: build
+  cache:
+    paths:
+      - node_modules
+  before_script:
+    - node -v
+    - npm -v
+    - npm i yarn
+    - yarn -v
+    - npm i
+  script:
+    - npm run package:win
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  tags:
+    - docker
+  only:
+    - tags
 
 #package-linux:
 #  image: node:16

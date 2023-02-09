@@ -1,5 +1,5 @@
 import {BrowserWindow, ipcMain as ipc, app} from 'electron'
-import AppUtils from '../AppUtils'
+import AppUtils from '../Utils/AppUtils'
 import path from 'path'
 import {channels} from '../API'
 import SettingsManager from '../Utils/SettingsManager'

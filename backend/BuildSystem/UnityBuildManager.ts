@@ -8,7 +8,7 @@ import {PackageManifest} from './DataStructures/PackageManifest'
 import {ScopedRegistry} from './DataStructures/ScopedRegistry'
 import ProjectManager from '../ProjectManager/ProjectManager'
 import assert = require('assert')
-import AppUtils from '../AppUtils'
+import AppUtils from '../Utils/AppUtils'
 import UnityBridge from './UnityBridge'
 import {channels} from '../API'
 import {PackageRegistries} from './DataStructures/PackageRegistries'

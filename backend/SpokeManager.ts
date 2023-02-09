@@ -1,7 +1,7 @@
 import {app, ipcMain as ipc} from 'electron'
 import * as child_process from 'child_process'
 import kill from 'tree-kill'
-import AppUtils from './AppUtils'
+import AppUtils from './Utils/AppUtils'
 import PreferencesManager from './Preferences/PreferencesManager'
 
 export default class SpokeManager {

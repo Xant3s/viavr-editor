@@ -12,7 +12,7 @@ export default class Utils {
     }
 
     public static async compressToPath(folderPath: string, outputPath: string) {
-        let zip = new AdmZip()
+        const zip = new AdmZip()
         zip.addLocalFolder(folderPath)
         zip.writeZip(outputPath)
     }

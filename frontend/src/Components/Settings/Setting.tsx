@@ -18,7 +18,7 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
     }, [setting.value])
 
     const updateSetting = (uuid: string, newValue: value_t) => {
-        let isComposite = setting.kind === 'composite' || (setting.kind === 'list' && setting.listType === 'composite')
+        const isComposite = setting.kind === 'composite' || (setting.kind === 'list' && setting.listType === 'composite')
         if(!isComposite) setValue(newValue)
         updateCallback(uuid, newValue)
     }

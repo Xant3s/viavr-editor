@@ -6,7 +6,7 @@ import PreferencesManager from './Preferences/PreferencesManager'
 
 export default class SpokeManager {
     private static instance: SpokeManager
-    private startCommand: string = `cd ${AppUtils.getResPath()}plugins/Spoke && yarn start`
+    private startCommand = `cd ${AppUtils.getResPath()}plugins/Spoke && yarn start`
     private spoke!: child_process.ChildProcess
 
 

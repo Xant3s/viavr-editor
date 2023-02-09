@@ -28,7 +28,7 @@ export default class PreferencesManager {
 
     private constructor() {
         ipc.on('preferences:open', () => this.openPreferences())
-        ipc.on(channels.toMain.changePreference, (_, uuid: string, value: value_t) => this. updatePreference(uuid, value))
+        ipc.on(channels.toMain.changePreference, (_, uuid: string, value: value_t) => this.updatePreference(uuid, value))
         ipc.handle(channels.toMain.requestPreference, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestPreferences, () => this.settingsManager.getAll())
         app.on('quit', () => this.settingsManager.saveSettingToFile())

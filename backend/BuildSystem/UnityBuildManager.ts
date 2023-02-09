@@ -95,7 +95,7 @@ export default class UnityBuildManager {
     private async setupScopedRegistry(outputPath: string) {
         const registriesSetting = await PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries')
         const packageRegistries = registriesSetting.value
-        let manifest = await UnityBuildManager.readManifest(outputPath)
+        const manifest = await UnityBuildManager.readManifest(outputPath)
         for(const packageRegistry of packageRegistries) {
             const scopes = packageRegistry.packageRegistryScopes.value
             for(const scope of scopes) {
@@ -147,7 +147,7 @@ export default class UnityBuildManager {
     }
 
     private static async exportSceneList(outputPath: string, sceneNames: Array<string>) {
-        let sceneList = {}
+        const sceneList = {}
         sceneList["Scenes"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4))
         sceneList["Spoke"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4)
                                                                   .replace(/ /g, "-")
@@ -172,7 +172,7 @@ export default class UnityBuildManager {
     }
 
     private extractRelevantConfiguration(packageConfig: any) {
-        let configuration = {}
+        const configuration = {}
         for(const [settingName, setting] of Object.entries(packageConfig)) {
             const s = setting as Setting_t
             let value = s.value
@@ -186,7 +186,7 @@ export default class UnityBuildManager {
         return configuration
     }
 
-    private static async findFilesOfTypeInPwd(fileExtension: string = '.glb') {
+    private static async findFilesOfTypeInPwd(fileExtension = '.glb') {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         assert(pwd !== undefined)
         const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)

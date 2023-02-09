@@ -15,7 +15,7 @@ export const ListSetting = ({id, uuid, label, value, listType, onChange, createP
         if(listType === 'composite') {
             onChange(id, newValue)
         } else {
-            let newVal = [...value]
+            const newVal = [...value]
             newVal[listIndex] = newValue
             onChange(id, newVal)
         }
@@ -41,7 +41,7 @@ export const ListSetting = ({id, uuid, label, value, listType, onChange, createP
                 console.error('ListPreference: Cannot add item to empty list')
                 return
             }
-            let newEntry = cloneLastListEntry(newValue)
+            const newEntry = cloneLastListEntry(newValue)
             newValue.push(newEntry)
         } else {
             newValue = [...value, ""]
@@ -56,7 +56,7 @@ export const ListSetting = ({id, uuid, label, value, listType, onChange, createP
     }
 
     function cloneLastListEntry(newValue: any[]) {
-        let newEntry = JSON.parse(JSON.stringify(newValue[newValue.length - 1]))
+        const newEntry = JSON.parse(JSON.stringify(newValue[newValue.length - 1]))
         Object.keys(newEntry).forEach(key => {
             newEntry[key].uuid = uuidv4()
         })

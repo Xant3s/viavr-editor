@@ -21,7 +21,7 @@
     "package:linux": "npm run build:all && electron-builder build --linux",
     "package:mac": "npm run build:all && electron-builder build --mac",
     "test": "mocha --config test/.mocharc.jsonc",
-    "lint": "eslint --ext .ts,.tsx backend",
+    "lint": "eslint --ext .ts,.tsx backend frontend",
     "clean": "rimraf ./build ./dist",
     "eject": "react-scripts eject"
   },
@@ -119,15 +119,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "no-unused-expressions": "off",
-      "@typescript-eslint/no-unused-vars": "off"
-    }
   }
 }

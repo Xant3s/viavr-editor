@@ -4,7 +4,7 @@ import AdmZip from 'adm-zip'
 export default class Utils {
     public static async extractZipToPath(zipPath: string, outputPath: string) {
         try {
-            await extract(zipPath, {dir: outputPath})
+            await extract(zipPath, { dir: outputPath })
         } catch(err) {
             console.log(err)
         }

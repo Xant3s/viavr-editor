@@ -1,7 +1,7 @@
-import {BrowserWindow, app} from 'electron'
+import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import CustomMenu from './CustomMenu'
-import {loadPage} from './Utils/ElectronUtils'
+import { loadPage } from './Utils/ElectronUtils'
 import electron_reload from 'electron-reload'
 
 
@@ -29,8 +29,8 @@ export default class MainWindow {
             webPreferences: {
                 nodeIntegration: true,
                 webSecurity: false,
-                preload: path.join(__dirname, 'preload.js')
-            }
+                preload: path.join(__dirname, 'preload.js'),
+            },
         })
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()
@@ -40,7 +40,7 @@ export default class MainWindow {
             electron_reload(__dirname, {
                 electron: path.join(__dirname, '../../node_modules/.bin/electron'),
                 forceHardReset: true,
-                hardResetMethod: 'exit'
+                hardResetMethod: 'exit',
             })
         }
     }
@@ -60,7 +60,7 @@ export default class MainWindow {
     private static allowCertificatesFromLocalhost(win: Electron.BrowserWindow) {
         // https://stackoverflow.com/questions/63923644/self-signed-certificates-in-electron
         win.webContents.session.setCertificateVerifyProc((request, callback) => {
-            const {hostname} = request
+            const { hostname } = request
             if(hostname === 'localhost') { // this is blind trust, however you should use the certificate, valdiatedcertifcate, verificationresult as your verification point to call callback
                 callback(0) // Trust this domain
             } else {

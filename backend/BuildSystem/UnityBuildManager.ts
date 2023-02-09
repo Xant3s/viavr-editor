@@ -1,25 +1,24 @@
-import {dialog, ipcMain as ipc} from 'electron'
+import { dialog, ipcMain as ipc } from 'electron'
 import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
-import * as util from 'util'
 import PreferencesManager from '../Preferences/PreferencesManager'
 import BuildSystem from './BuildSystem'
-import {PackageManifest} from './DataStructures/PackageManifest'
-import {ScopedRegistry} from './DataStructures/ScopedRegistry'
+import { PackageManifest } from './DataStructures/PackageManifest'
+import { ScopedRegistry } from './DataStructures/ScopedRegistry'
 import ProjectManager from '../ProjectManager/ProjectManager'
-import assert = require('assert')
 import AppUtils from '../Utils/AppUtils'
 import UnityBridge from './UnityBridge'
-import {channels} from '../API'
-import {PackageRegistries} from './DataStructures/PackageRegistries'
-import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
+import { channels } from '../API'
+import { PackageRegistries } from './DataStructures/PackageRegistries'
+import { UnityPackageSettingsManager } from './UnityPackageSettingsManager'
 import fs from 'fs'
-import {Setting_t} from '../../frontend/src/@types/Settings'
+import { Setting_t } from '../../frontend/src/@types/Settings'
 import Path from 'path'
-import {exec} from 'child_process'
+import { exec } from 'child_process'
+import assert = require('assert')
 
 
-declare global{
+declare global {
     interface Array<T> {
         findOrCreate(predicate: (element: T) => boolean, create: () => T): T
     }
@@ -45,7 +44,7 @@ export default class UnityBuildManager {
 
     public initIPC() {
         ipc.handle(channels.toMain.queryScenes, async (e) => {
-            const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd()
+            const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
         ipc.handle(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
@@ -66,7 +65,7 @@ export default class UnityBuildManager {
             await UnityBuildManager.openBuildDirectory(this.buildPath)
         })
         ipc.handle(channels.toMain.queryJsonScenes, async (e) => {
-            const {sceneFiles} = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
+            const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
         })
     }
@@ -86,8 +85,8 @@ export default class UnityBuildManager {
         return outputPath
     }
 
-    private static async promptUserForProjectBuildPath() : Promise<string> {
-        const chosenFolders = await dialog.showOpenDialog({properties: ['openDirectory', "createDirectory"]})
+    private static async promptUserForProjectBuildPath(): Promise<string> {
+        const chosenFolders = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] })
         return chosenFolders.filePaths[0]
     }
 
@@ -126,7 +125,7 @@ export default class UnityBuildManager {
         scopedRegistry.scopes.findOrCreate(scope => scope === packageRegistryScope, () => packageRegistryScope)
     }
 
-    private async installPackages(outputPath : string, selectedPackages) {
+    private async installPackages(outputPath: string, selectedPackages) {
         const manifest = await UnityBuildManager.readManifest(outputPath)
         const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromAllRegistries()
@@ -142,15 +141,15 @@ export default class UnityBuildManager {
     private async importScenes(outputPath: string, sceneNames: Array<string>) {
         await Promise.all([
             UnityBuildManager.exportSceneList(outputPath, sceneNames),
-            this.exportScenes(outputPath, sceneNames)
+            this.exportScenes(outputPath, sceneNames),
         ])
     }
 
     private static async exportSceneList(outputPath: string, sceneNames: Array<string>) {
         const sceneList = {}
-        sceneList["Scenes"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4))
-        sceneList["Spoke"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4)
-                                                                  .replace(/ /g, "-")
+        sceneList['Scenes'] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4))
+        sceneList['Spoke'] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4)
+                                                                  .replace(/ /g, '-')
                                                                   .toLowerCase())
         await fs.promises.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
     }
@@ -166,8 +165,8 @@ export default class UnityBuildManager {
         for(const [name, packageConfig] of packageConfigurations) {
             const configurationFolder = `${outputPath}/Assets/Settings/${name}/`
             const configuration = this.extractRelevantConfiguration((packageConfig as any).value)
-            fs.mkdirSync(configurationFolder, {recursive: true})
-            await fs.promises.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify(configuration, null, 4) )
+            fs.mkdirSync(configurationFolder, { recursive: true })
+            await fs.promises.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify(configuration, null, 4))
         }
     }
 
@@ -191,7 +190,7 @@ export default class UnityBuildManager {
         assert(pwd !== undefined)
         const fileList: string[] = await fs.promises.readdir(`${pwd}/Scenes`)
         const sceneFiles = fileList.filter(file => file.endsWith(fileExtension))
-        return {pwd, sceneFiles}
+        return { pwd, sceneFiles }
     }
 
     private static async openBuildDirectory(buildPath: string) {

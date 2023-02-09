@@ -1,6 +1,6 @@
-import {nativeTheme} from 'electron'
+import { nativeTheme } from 'electron'
 import PreferencesManager from './Preferences/PreferencesManager'
-import {DropdownSetting} from '../frontend/src/@types/Settings'
+import { DropdownSetting } from '../frontend/src/@types/Settings'
 
 
 export default class ThemeManager {

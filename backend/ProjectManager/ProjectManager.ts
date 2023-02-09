@@ -1,14 +1,14 @@
-import {app, dialog, ipcMain as ipc} from 'electron'
+import { app, dialog, ipcMain as ipc } from 'electron'
 import * as fs from 'fs'
 import * as fse from 'fs-extra'
 import * as Path from 'path'
 import MainWindow from '../MainWindow'
 import Utils from '../BuildSystem/Utils'
-import fastFolderSizeSync = require('fast-folder-size/sync')
-import {channels} from '../API'
+import { channels } from '../API'
 import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
-import {exec} from 'child_process'
+import { exec } from 'child_process'
+import fastFolderSizeSync = require('fast-folder-size/sync')
 
 
 export default class ProjectManager {
@@ -55,18 +55,18 @@ export default class ProjectManager {
     }
 
     private async createNewProject() {
-        const {canceled, filePath} = await dialog.showSaveDialog(this.mainWindow.window, {
+        const { canceled, filePath } = await dialog.showSaveDialog(this.mainWindow.window, {
             title: 'Create New Project',
             filters: [
-                {name: 'VIA-VR Project', extensions: ['via']}
-            ]
+                { name: 'VIA-VR Project', extensions: ['via'] },
+            ],
         })
-        if(!canceled && filePath !== undefined && filePath?.length > 0){
+        if(!canceled && filePath !== undefined && filePath?.length > 0) {
             this.projectPath = filePath
-            const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project/")
-            const scenesFolder = Path.join(tempProjectFolder, "Scenes/")
+            const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project/')
+            const scenesFolder = Path.join(tempProjectFolder, 'Scenes/')
             ProjectManager.ensurePathExists(tempProjectFolder)
-            fs.rmSync(tempProjectFolder, {recursive: true})
+            fs.rmSync(tempProjectFolder, { recursive: true })
             ProjectManager.ensurePathExists(scenesFolder)
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)
@@ -75,9 +75,9 @@ export default class ProjectManager {
     }
 
     private async openProjectFromFile() {
-        const {canceled, filePaths} = await dialog.showOpenDialog({
+        const { canceled, filePaths } = await dialog.showOpenDialog({
             properties: ['openFile'],
-            filters: [{name: 'VIA-VR project files', extensions: ['via']}]
+            filters: [{ name: 'VIA-VR project files', extensions: ['via'] }],
         })
         if(!canceled && filePaths.length > 0) {
             await this.openProjectFromFileNoPrompt(filePaths[0])
@@ -86,9 +86,9 @@ export default class ProjectManager {
 
     public async openProjectFromFileNoPrompt(filePath: string) {
         this.projectPath = filePath
-        const tempProjectFolder = Path.join(app.getPath('temp'), "viavr/project")
+        const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project')
         if(fs.existsSync(tempProjectFolder)) {
-            fs.rmSync(tempProjectFolder, {recursive: true})
+            fs.rmSync(tempProjectFolder, { recursive: true })
         }
         await Utils.extractZipToPath(filePath, tempProjectFolder)
         this._presentWorkingDirectory = tempProjectFolder
@@ -96,7 +96,10 @@ export default class ProjectManager {
     }
 
     private async openProjectFromFolder() {
-        const {canceled, filePaths} = await dialog.showOpenDialog({properties: ['openDirectory', "createDirectory"]})
+        const {
+            canceled,
+            filePaths,
+        } = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] })
         if(!canceled && filePaths.length > 0) {
             this.projectPath = filePaths[0]
             this._presentWorkingDirectory = this.projectPath
@@ -137,7 +140,7 @@ export default class ProjectManager {
                 console.log('Project is too large to be save as .via file.')
                 // TODO: Notify user
                 const projectFolderName = Path.parse(this.projectPath).name
-                fs.rmSync(this.projectPath, {recursive: true})   // Remove .via file that may or may not exist (it does not exist for new projects)
+                fs.rmSync(this.projectPath, { recursive: true })   // Remove .via file that may or may not exist (it does not exist for new projects)
                 this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName) // TODO: what if this folder already exists and is unrelated?
                 fse.copySync(this.presentWorkingDirectory, this.projectPath)
             }
@@ -151,7 +154,7 @@ export default class ProjectManager {
 
     private static ensurePathExists(path: string) {
         if(!fs.existsSync(path)) {
-            fs.mkdirSync(path, {recursive: true})
+            fs.mkdirSync(path, { recursive: true })
             console.log(`Created folder ${path}`)
         }
     }

@@ -1,15 +1,15 @@
-import {ipcMain as ipc} from 'electron'
+import { ipcMain as ipc } from 'electron'
 import fetch from 'node-fetch'
-import {channels} from '../API'
+import { channels } from '../API'
 import PreferencesManager from '../Preferences/PreferencesManager'
-import {PackageRegistries} from './DataStructures/PackageRegistries'
+import { PackageRegistries } from './DataStructures/PackageRegistries'
 
 
 export default class UnityPackageManager {
     private static instance: UnityPackageManager
 
     public static getInstance(): UnityPackageManager {
-        if (!UnityPackageManager.instance) {
+        if(!UnityPackageManager.instance) {
             UnityPackageManager.instance = new UnityPackageManager()
         }
         return UnityPackageManager.instance

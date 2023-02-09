@@ -1,4 +1,4 @@
-import {app, ipcMain as ipc} from 'electron'
+import { app } from 'electron'
 import * as child_process from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'

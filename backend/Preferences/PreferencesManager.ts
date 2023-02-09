@@ -1,10 +1,10 @@
-import {BrowserWindow, ipcMain as ipc, app} from 'electron'
+import { app, BrowserWindow, ipcMain as ipc } from 'electron'
 import AppUtils from '../Utils/AppUtils'
 import path from 'path'
-import {channels} from '../API'
+import { channels } from '../API'
 import SettingsManager from '../Utils/SettingsManager'
-import {value_t} from '../../frontend/src/@types/Settings'
-import {loadPage} from '../Utils/ElectronUtils'
+import { value_t } from '../../frontend/src/@types/Settings'
+import { loadPage } from '../Utils/ElectronUtils'
 
 
 export default class PreferencesManager {
@@ -63,8 +63,8 @@ export default class PreferencesManager {
             autoHideMenuBar: true,
             webPreferences: {
                 nodeIntegration: true,
-                preload: path.join(__dirname, '../preload.js')
-            }
+                preload: path.join(__dirname, '../preload.js'),
+            },
         })
         loadPage(this.window, 'preferences')
     }

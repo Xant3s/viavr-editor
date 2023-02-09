@@ -1,7 +1,7 @@
-import {ipcMain} from 'electron'
-import {channels} from './API'
+import { ipcMain } from 'electron'
+import { channels } from './API'
 import PreferencesManager from './Preferences/PreferencesManager'
-import {Setting_t} from '../frontend/src/@types/Settings'
+import { Setting_t } from '../frontend/src/@types/Settings'
 import child_process from 'child_process'
 import ProjectManager from './ProjectManager/ProjectManager'
 

@@ -8,7 +8,7 @@ import {loadPage} from '../Utils/ElectronUtils'
 
 
 export default class PreferencesManager {
-    private settingsManager = new SettingsManager(AppUtils.getResPath() + '/preferences.json')
+    private settingsManager = new SettingsManager(AppUtils.getResPath() + 'preferences.json')
     private static instance: PreferencesManager
     private window?: BrowserWindow
     private initialized = false

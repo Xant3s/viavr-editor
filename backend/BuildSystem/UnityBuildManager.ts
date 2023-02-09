@@ -78,7 +78,7 @@ export default class UnityBuildManager {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
             return
         }
-        await Utils.extractZipToPath(AppUtils.getResPath() + '/DefaultUnityProject.zip', outputPath)
+        await Utils.extractZipToPath(AppUtils.getResPath() + 'DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, selectedPackages)
         await this.importScenes(outputPath, sceneNames)

@@ -7,14 +7,14 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 ## Prerequisites
 
 - Make sure to clone recursively, i.e. including all submodules
-- Make sure [node.js](https://nodejs.org/en/download/) >=16.10 is installed
+- Make sure [node.js](https://nodejs.org/en/download/) >=16.10 is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
     ```bash
     node -v
     npm -v
     ```
-
   - Node >=16.10 will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator:
 
     ```bash

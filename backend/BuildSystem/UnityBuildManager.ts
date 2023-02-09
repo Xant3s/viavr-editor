@@ -13,10 +13,9 @@ import UnityBridge from './UnityBridge'
 import {channels} from '../API'
 import {PackageRegistries} from './DataStructures/PackageRegistries'
 import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
-import fs2 from 'fs'
+import fs from 'fs'
 import {Setting_t} from '../../frontend/src/@types/Settings'
 import Path from 'path'
-const fs = require('fs').promises
 const exec = util.promisify(require('child_process').exec)
 
 
@@ -58,9 +57,9 @@ export default class UnityBuildManager {
         })
         ipc.handle(channels.toMain.checkBuildSuccess, async () => {
             const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
-            const windowsExecutableExists = fs2.existsSync(windowsExecutablePath) && fs2.readdirSync(windowsExecutablePath).length > 0
+            const windowsExecutableExists = fs.existsSync(windowsExecutablePath) && fs.readdirSync(windowsExecutablePath).length > 0
             const androidExecutablePath = Path.join(this.buildPath, 'Build/out.apk')
-            const androidExecutableExists = fs2.existsSync(androidExecutablePath)
+            const androidExecutableExists = fs.existsSync(androidExecutablePath)
             return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
         })
         ipc.handle(channels.toMain.openBuildDirectory, async (e) => {
@@ -110,13 +109,14 @@ export default class UnityBuildManager {
     }
 
     private static async readManifest(outputPath: string) {
-        const manifestData = await fs.readFile(`${outputPath}/Packages/manifest.json`)
+        const manifest = await fs.promises.readFile(`${outputPath}/Packages/manifest.json`)
+        const manifestData = manifest.toString()
         return await JSON.parse(manifestData) as PackageManifest
     }
 
     private static async writeManifest(manifest: PackageManifest, outputPath: string) {
         const newFileData = JSON.stringify(manifest, null, 4)
-        await fs.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+        await fs.promises.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
     }
 
     public addScopedRegistryToManifest(manifest: PackageManifest, packageRegistryUrl: string, packageRegistryName: string, packageRegistryScope: string) {
@@ -152,13 +152,13 @@ export default class UnityBuildManager {
         sceneList["Spoke"] = sceneNames.map(sceneName => sceneName.substring(0, sceneName.length - 4)
                                                                   .replace(/ /g, "-")
                                                                   .toLowerCase())
-        await fs.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
+        await fs.promises.writeFile(`${outputPath}/Assets/Settings/Scenes.json`, JSON.stringify(sceneList, null, 4))
     }
 
     private async exportScenes(outputPath: string, sceneNames: Array<string>) {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         sceneNames.forEach(sceneName =>
-            fs.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
+            fs.promises.copyFile(`${pwd}/Scenes/${sceneName}`, `${outputPath}/Assets/Settings/SpokeSceneImporter/${sceneName}`))
     }
 
     private async exportPackageConfigurations(outputPath: string) {
@@ -166,8 +166,8 @@ export default class UnityBuildManager {
         for(const [name, packageConfig] of packageConfigurations) {
             const configurationFolder = `${outputPath}/Assets/Settings/${name}/`
             const configuration = this.extractRelevantConfiguration((packageConfig as any).value)
-            fs2.mkdirSync(configurationFolder, {recursive: true})
-            await fs.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify(configuration, null, 4) )
+            fs.mkdirSync(configurationFolder, {recursive: true})
+            await fs.promises.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify(configuration, null, 4) )
         }
     }
 
@@ -189,7 +189,7 @@ export default class UnityBuildManager {
     private static async findFilesOfTypeInPwd(fileExtension = '.glb') {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         assert(pwd !== undefined)
-        const fileList: string[] = await fs.readdir(`${pwd}/Scenes`)
+        const fileList: string[] = await fs.promises.readdir(`${pwd}/Scenes`)
         const sceneFiles = fileList.filter(file => file.endsWith(fileExtension))
         return {pwd, sceneFiles}
     }

@@ -1,4 +1,5 @@
 import {API} from './API'
-const {contextBridge} = require("electron")
+import { contextBridge } from 'electron'
+
 
 contextBridge.exposeInMainWorld("api", API)

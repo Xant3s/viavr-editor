@@ -1,6 +1,6 @@
 import PreferencesManager from '../Preferences/PreferencesManager'
 import {PathSetting} from '../../frontend/src/@types/Settings'
-const util = require('util')
+import util from 'util'
 
 const exec = util.promisify(require('child_process').exec)
 

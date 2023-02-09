@@ -1,4 +1,4 @@
-import {Menu, ipcMain as ipc, app, ipcRenderer} from 'electron'
+import {Menu, ipcMain as ipc, app, shell} from 'electron'
 
 
 export default class CustomMenu {
@@ -44,13 +44,13 @@ export default class CustomMenu {
                     {
                         label: 'About',
                         click() {
-                            require('electron').shell.openExternal('https://www.hci.uni-wuerzburg.de/projects/via-vr/')
+                            shell.openExternal('https://www.hci.uni-wuerzburg.de/projects/via-vr/')
                         }
                     },
                     {
                         label: 'Documentation',
                         click() {
-                            require('electron').shell.openExternal('https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html')
+                            shell.openExternal('https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html')
                         }
                     }
                 ]

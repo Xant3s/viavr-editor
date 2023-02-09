@@ -132,7 +132,7 @@ export default class ProjectManager {
                 }
                 await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
                 // Now we could delete the old project folder. Not sure if we want to do that.
-            } else if(this.projectPath == this.presentWorkingDirectory) {
+            } else if(this.projectPath === this.presentWorkingDirectory) {
                 // Do nothing.
                 // TODO: Architecture: add event
             } else {

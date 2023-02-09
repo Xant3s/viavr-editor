@@ -10,6 +10,7 @@ import { CompositeSetting } from './CompositeSetting'
 import {Setting_t, value_t} from '../../@types/Settings'
 
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 export const Setting = ({settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {}}) => {
     const [value, setValue] = useState<value_t>()
 

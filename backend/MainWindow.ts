@@ -2,6 +2,7 @@ import {BrowserWindow, app} from 'electron'
 import * as path from 'path'
 import CustomMenu from './CustomMenu'
 import {loadPage} from './Utils/ElectronUtils'
+import electron_reload from 'electron-reload'
 
 
 export default class MainWindow {
@@ -36,7 +37,7 @@ export default class MainWindow {
         loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()
         if(!app.isPackaged) {
-            require('electron-reload')(__dirname, {
+            electron_reload(__dirname, {
                 electron: path.join(__dirname, '../../node_modules/.bin/electron'),
                 forceHardReset: true,
                 hardResetMethod: 'exit'

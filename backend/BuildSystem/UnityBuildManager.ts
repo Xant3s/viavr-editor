@@ -16,7 +16,7 @@ import {UnityPackageSettingsManager} from './UnityPackageSettingsManager'
 import fs from 'fs'
 import {Setting_t} from '../../frontend/src/@types/Settings'
 import Path from 'path'
-const exec = util.promisify(require('child_process').exec)
+import {exec} from 'child_process'
 
 
 declare global{

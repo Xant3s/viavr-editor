@@ -8,9 +8,7 @@ import fastFolderSizeSync = require('fast-folder-size/sync')
 import {channels} from '../API'
 import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
-
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
+import {exec} from 'child_process'
 
 
 export default class ProjectManager {

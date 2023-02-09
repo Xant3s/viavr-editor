@@ -36,7 +36,7 @@ deploy-documentation:
         - master
 
 backend:
-   image: node:latest
+   image: node:16
    stage: build
    cache:
      paths:
@@ -53,7 +53,7 @@ backend:
      - docker
 
 frontend:
-   image: node:latest
+   image: node:16
    stage: build
    cache:
      paths:
@@ -91,7 +91,7 @@ frontend:
 #    - docker
 
 #package-linux:
-#  image: node:latest
+#  image: node:16
 #  stage: build
 #  cache:
 #    paths:
@@ -112,7 +112,7 @@ frontend:
 #    - docker
 
 #package-mac:
-#  image: node:latest
+#  image: node:16
 #  stage: build
 #  cache:
 #    paths:

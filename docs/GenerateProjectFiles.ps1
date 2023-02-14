@@ -22,7 +22,6 @@ Remove-Item -Path "_site" -Recurse
 Remove-Item -Path "obj/.cache" -Recurse
 Remove-Item $TocFile
 Remove-Item $DocfxFile
-Get-ChildItem $MainContentDirectory -Recurse | Where-Object { $_.Name -eq $TocFile } | ForEach-Object { Remove-Item $_.FullName }
 
 Write-Host Create main top.yml file
 # Create top.yml file, make latest version the default
@@ -44,12 +43,16 @@ $Versions = Get-ChildItem -Path $MainContentDirectory -Directory
 
 foreach ($version in $Versions)
 {
+	if (Test-Path $MainContentDirectory\$version\$TocFile)
+	{
+		continue
+	}
+	
 	$GeneratedTocYML = ""
 	$TopicsFolder = Get-ChildItem -Path $MainContentDirectory\$version -Directory
 	$ymlContent = ""
 	foreach ($topic in $TopicsFolder)
-	{
-		
+	{			
 		$documents = Get-ChildItem $MainContentDirectory\$version\$topic | Where-Object { $_.Extension -eq ".md" }
 		if ($documents.Count -gt 1)
 		{

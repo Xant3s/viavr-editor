@@ -8,7 +8,7 @@ $(document).ready(function()
   articlesPath += MainContentDirectory + "/"
 
   var PossibleVersions = {}
-  GetArticleFilesFromFolder("/" + MainContentDirectory).then(versions => 
+  GetDomainFolderContent(articlesPath).then(versions => 
   {
     if (articlesPath && subdomainPath)
     {
@@ -17,7 +17,19 @@ $(document).ready(function()
         var [readableName,] = SplitPath(item, "/")
         PossibleVersions[readableName] = String(articlesPath + item + subdomainPath)
       });
-      CheckAsyncDomainListExists(PossibleVersions).then(content => InsertDropDownMenu(currentVersion, content))
+      // for some reason, you can only pass a single argument to the resolve function of the promise
+      CheckAsyncDomainListExists(PossibleVersions).then( domainInfo => 
+        {
+          let validDomainsMap = domainInfo[0] 
+          let invalidVersionList = domainInfo[1]
+          FindAnyFileFromVersionList(articlesPath, invalidVersionList, "/").then(anyInvalidVersionFileMap =>
+            {
+              let allDomains = {};
+              for (const [key, value] of Object.entries(validDomainsMap)) allDomains[key] = [value, true];
+              for (const [key, value] of Object.entries(anyInvalidVersionFileMap)) allDomains[key] = [value, false]
+              InsertDropDownMenu(currentVersion, allDomains)
+            })
+        });
     }
   });
 
@@ -25,20 +37,23 @@ $(document).ready(function()
   {
     // Sort versions to guarantee order
     let versions = Object.entries(foundVersions);
-    versions.sort((a, b) => a[0].localeCompare(b[0]));
-    foundVersions = Object.fromEntries(versions);
+    versions.sort((a, b) => a[0].localeCompare(b[0])).reverse();
+    versions = Object.fromEntries(versions);
 
+    const availableDocHTML = 'style="color:green;"'
     // Insert into html
-    availableVersions = "";
-    for (var key in foundVersions)
+    let availableVersions = "";
+    for (var key in versions)
     {
-      availableVersions += "<li><a href="+ foundVersions[key] + ">"+key+"</a></li>"
+      let file = versions[key][0];
+      let isAvailable = versions[key][1];
+      let htmlColor = isAvailable ? availableDocHTML : ''
+      availableVersions += '<li><a '+ htmlColor + ' href=' + file + ">"+key+"</a></li>"
     }
     var codesnippets = document.getElementsByClassName('subnav navbar navbar-default');
     for(const element of codesnippets)
         element.replaceChildren(DynamicDropDownMenuHTMLCode(currentVersion ? currentVersion : SingleVersionName, availableVersions));
   }
-
 
   function createElementFromHTML(htmlString) 
   {
@@ -83,9 +98,63 @@ $(document).ready(function()
     return [];
   }
 
+  function FindAnyFileFromVersionList(articlesPath, versionList, appendChar = "")
+  {
+    var promises = [];
+    var foundFiles = {};
+    for (let i in versionList)
+    {
+      promises.push(new Promise(resolve => FindAnyFileFromVersion(articlesPath + versionList[i] + appendChar).then(foundPath =>
+        {
+          if (foundPath)
+          {
+            foundFiles[versionList[i]] = foundPath;
+          }
+          resolve()
+        })))
+    }
+    return new Promise(onFoundFiles =>
+      {
+        Promise.all(promises).then( resolved =>
+          {
+            onFoundFiles(foundFiles);
+          })
+      });
+  }
+
+  function FindAnyFileFromVersion(absoluteVersionPath)
+  {
+    return new Promise(foundPath =>
+      {
+        GetDomainFolderContent(absoluteVersionPath).then(topics =>
+          {
+            if(topics.length == 0)
+            {
+              foundPath();
+            }
+            else 
+            {
+              let topicsPath = absoluteVersionPath + topics[0];
+              GetDomainFolderContent(topicsPath).then(foundFiles =>
+                {
+                  if(foundFiles.length == 0)
+                  {
+                    foundPath();
+                  }
+                  else 
+                  {
+                    foundPath(absoluteVersionPath + topics[0] + foundFiles[0]);
+                  }
+                })
+            }
+          })
+      });
+  }
+
   function CheckAsyncDomainListExists(domainMap)
   {
-    var validDomains = {}
+    var validDomainsMap = {}
+    var invalidDomainsList = []
     var promises = []
     for (let [key, value] of Object.entries(domainMap))
     {
@@ -99,7 +168,11 @@ $(document).ready(function()
             {
               if (xhr.status === 200) 
               {
-                validDomains[key] = value;
+                validDomainsMap[key] = value;
+              }
+              else
+              {
+                invalidDomainsList.push(key);
               }
               resolve()
             }
@@ -113,18 +186,17 @@ $(document).ready(function()
       {
         Promise.all(promises).then( function(resolvedDomains)
         {
-          resolve(validDomains);
+          resolve([validDomainsMap, invalidDomainsList]);
         })
       });
   }
 
-  
-  function GetArticleFilesFromFolder(relativePath, onReadyFunc)
+  function GetDomainFolderContent(absoluteDomain)
   {
     return new Promise(resolve => 
       {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', window.location.origin + relativePath, true);
+        xhr.open('GET', absoluteDomain, true);
         xhr.onreadystatechange = function() 
         {
           var fileNames = [];

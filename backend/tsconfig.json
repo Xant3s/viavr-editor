@@ -5,7 +5,8 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": true,
-    "outDir": "../build", // Output transpiled files to build/electron/
+    "outDir": "../build",
+    // Output transpiled files to build/electron/
     "rootDir": "../",
     "esModuleInterop": true,
     "noEmitOnError": true,

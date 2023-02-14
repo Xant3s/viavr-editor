@@ -1,5 +1,5 @@
-import {SettingListEntry} from '../StyledComponents/Preferences/StyledSettings'
-import {Setting_t, value_t} from '../../@types/Settings'
+import { SettingListEntry } from '../StyledComponents/Preferences/StyledSettings'
+import { Setting_t, value_t } from '../../@types/Settings'
 
 export declare interface CompositePreferenceProps {
     id: string,
@@ -10,11 +10,18 @@ export declare interface CompositePreferenceProps {
     createPrefComponent: any
 }
 
-export const CompositeSetting = ({id, uuid, label, value, onChange, createPrefComponent}: CompositePreferenceProps) => {
+export const CompositeSetting = ({
+                                     id,
+                                     uuid,
+                                     label,
+                                     value,
+                                     onChange,
+                                     createPrefComponent,
+                                 }: CompositePreferenceProps) => {
     const drawEntry = ([settingName, setting]: [string, Setting_t]) => {
         const key = `${id}-${settingName}`
         return (
-            <div key={key} style={{marginBottom: 5}}>
+            <div key={key} style={{ marginBottom: 5 }}>
                 {createPrefComponent(settingName, setting, undefined, id, onChange)}
             </div>
         )
@@ -27,7 +34,7 @@ export const CompositeSetting = ({id, uuid, label, value, onChange, createPrefCo
                 <div>
                     {
                         Object.entries(value)
-                              .map(entry => drawEntry(entry))
+                            .map(entry => drawEntry(entry))
                     }
                 </div>
             </SettingListEntry>

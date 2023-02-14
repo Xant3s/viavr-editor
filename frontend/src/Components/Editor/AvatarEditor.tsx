@@ -1,12 +1,12 @@
-import {useEffect, useState} from "react"
-import {toString as QrToString} from 'qrcode'
+import { useEffect, useState } from 'react'
+import { toString as QrToString } from 'qrcode'
 import SVG from 'react-inlinesvg'
-import {v4 as uuid4} from 'uuid'
-import {Button, Table, TextInput, toaster, TrashIcon} from 'evergreen-ui'
-import {AvatarInfo} from '../../@types/AvatarInfo'
+import { v4 as uuid4 } from 'uuid'
+import { Button, Table, TextInput, toaster, TrashIcon } from 'evergreen-ui'
+import { AvatarInfo } from '../../@types/AvatarInfo'
 
 
-export const AvatarEditor = ({hidden}) => {
+export const AvatarEditor = ({ hidden }) => {
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
     const [avatarsSettingUuid, setAvatarsSettingUuid] = useState<string>('')
     const [qrCode, setQrCode] = useState<string>('')
@@ -28,7 +28,7 @@ export const AvatarEditor = ({hidden}) => {
 
     const updateQrCode = (avatarId) => {
         const token = avatars.find(avatar => avatar.id === avatarId)?.token || ''
-        QrToString(token, {type: 'svg'}, (err, svg) => {
+        QrToString(token, { type: 'svg' }, (err, svg) => {
             setQrCode(svg)
         })
     }
@@ -40,7 +40,7 @@ export const AvatarEditor = ({hidden}) => {
         }
         const uuid = uuid4()
         const token = 'dummy-token'   // TODO: request token from TUD server
-        const newAvatar = {name: newAvatarName, id: uuid, token: token}
+        const newAvatar = { name: newAvatarName, id: uuid, token: token }
         const newAvatars = [...avatars, newAvatar]
         setAvatars(newAvatars)
         setNewAvatarName('')
@@ -54,14 +54,27 @@ export const AvatarEditor = ({hidden}) => {
         // Todo: delete downloaded avatar from project files
     }
 
-    return <div hidden={hidden} style={{backgroundColor: '#3a4048', height: 'calc(100vh - 76px)', margin: 0, padding: 10, textAlign: 'center', color: 'white'}}>
+    return <div hidden={hidden} style={{
+        backgroundColor: '#3a4048',
+        height: 'calc(100vh - 76px)',
+        margin: 0,
+        padding: 10,
+        textAlign: 'center',
+        color: 'white',
+    }}>
         <h1>Avatar Editor</h1>
 
         {qrCode !== '' &&
             <div>
                 Scan this QR code with the VIA-VR avatar app:
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', marginTop: '5px'}}>
-                    <SVG src={qrCode} width={256} height="auto"/>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: '20px',
+                    marginTop: '5px',
+                }}>
+                    <SVG src={qrCode} width={256} height='auto' />
                 </div>
             </div>
         }
@@ -75,13 +88,13 @@ export const AvatarEditor = ({hidden}) => {
                 <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
             </Table.Head>
             <Table.Body height={240} minWidth={'600px'}>
-                {avatars.map((avatar : AvatarInfo) => (
+                {avatars.map((avatar: AvatarInfo) => (
                     <Table.Row key={avatar.id}>
                         <Table.TextCell>{avatar.name}</Table.TextCell>
                         <Table.TextCell>Please start download</Table.TextCell>
                         <Table.TextCell>
                             <Button appearance='primary'
-                                    style={{width: '100%'}}
+                                    style={{ width: '100%' }}
                                     onClick={() => {
                                         updateQrCode(avatar.id)
                                     }}
@@ -91,7 +104,7 @@ export const AvatarEditor = ({hidden}) => {
                         </Table.TextCell>
                         <Table.TextCell>
                             <Button appearance='primary'
-                                    style={{width: '100%'}}
+                                    style={{ width: '100%' }}
                                     onClick={() => {
                                         throw new Error('Not implemented')
                                     }}
@@ -115,13 +128,13 @@ export const AvatarEditor = ({hidden}) => {
             </Table.Body>
         </Table>
 
-        <div style={{display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px'}}>
-            <TextInput name="new-avatar-name-input"
-                       placeholder="New avatar name..."
+        <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
+            <TextInput name='new-avatar-name-input'
+                       placeholder='New avatar name...'
                        value={newAvatarName}
                        onChange={(e) => setNewAvatarName(e.target.value)} />
 
-            <Button appearance='primary' style={{marginRight: '5px'}} onClick={() => addAvatar()}>
+            <Button appearance='primary' style={{ marginRight: '5px' }} onClick={() => addAvatar()}>
                 Create new avatar
             </Button>
             <Button appearance='primary'

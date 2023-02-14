@@ -1,7 +1,7 @@
-import {Select} from 'evergreen-ui'
-import {SettingEntryLabel} from '../StyledComponents/Preferences/StyledSettings'
+import { Select } from 'evergreen-ui'
+import { SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
 
-export const DropDownSetting = ({id, uuid, label, value, onChange, options}) => {
+export const DropDownSetting = ({ id, uuid, label, value, onChange, options }) => {
     return (
         <>
             {label && <SettingEntryLabel htmlFor={id}>{label}:</SettingEntryLabel>}

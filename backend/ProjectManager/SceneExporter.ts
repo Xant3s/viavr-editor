@@ -1,8 +1,8 @@
-import {ipcMain, session} from 'electron'
+import { ipcMain, session } from 'electron'
 import MainWindow from '../MainWindow'
 import ProjectManager from './ProjectManager'
 import * as Path from 'path'
-import {channels} from '../API'
+import { channels } from '../API'
 
 
 export default class SceneExporter {
@@ -20,7 +20,7 @@ export default class SceneExporter {
     }
 
     private setSaveScenePathToProjectFolder() {
-        session.defaultSession.on('will-download', async(event, item, webContents) => {
+        session.defaultSession.on('will-download', async (event, item, webContents) => {
             if(!item.getFilename().endsWith('.glb') && !item.getFilename().endsWith('.spoke')) return
             const saveScenePath = Path.join(ProjectManager.getInstance().presentWorkingDirectory, 'Scenes', item.getFilename())
             item.setSavePath(saveScenePath)

@@ -6,7 +6,7 @@ export const $$ = (query: string) => {
     return $spoke.find(query)
 }
 
-export function htmlElement(query: string, updateIntervalInMs: number = 100, timeout: number = 10_000): Promise<JQuery<HTMLElement>> {
+export function htmlElement(query: string, updateIntervalInMs = 100, timeout = 10_000): Promise<JQuery<HTMLElement>> {
     return new Promise((resolve, reject) => {
         const checkIfAvailable = () => {
             const element = $$(query)

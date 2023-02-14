@@ -1,4 +1,4 @@
-import {app} from 'electron';
+import { app } from 'electron'
 import MainWindow from './MainWindow'
 import BuildSystem from './BuildSystem/BuildSystem'
 import SpokeManager from './SpokeManager'
@@ -8,8 +8,8 @@ import SceneExporter from './ProjectManager/SceneExporter'
 import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
-import {Prototypes} from './Prototypes'
-import {ArticyManager} from './ArticyManager'
+import { Prototypes } from './Prototypes'
+import { ArticyManager } from './ArticyManager'
 
 
 const startup = async () => {

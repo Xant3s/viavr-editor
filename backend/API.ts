@@ -1,38 +1,38 @@
-import {ipcRenderer} from 'electron'
+import { ipcRenderer } from 'electron'
 import Path from 'path'
 
 export const channels = {
-    "toMain": {
-        queryScenes: "BuildSystem:query-available-scenes",
-        queryPackages: "BuildSystem:query-available-packages",
-        createUnityProject: "BuildSystem:create-unity-project",
-        buildUnityProject: "BuildSystem:build-unity-project",
-        checkBuildSuccess: "BuildSystem:check-build-success",
-        openBuildDirectory: "BuildSystem:open-build-directory",
-        queryJsonScenes: "BuildSystem:query-available-json-scenes",
-        requestPreference: "preferences:request",
-        requestPreferences: "preferences:request-all",
-        changePreference: "preferences:changed",
-        requestProjectSetting: "projectSettings:request",
-        requestProjectSettings: "projectSettings:request-all",
-        changeProjectSetting: "projectSettings:changed",
-        changePackageSetting: "unityPackageSettings:changed",
-        setPackageSetting: "unityPackageSettings:set",
-        getPackageSetting: "unityPackageSettings:get",
-        createNewProject: "project-manager:create-new-project",
-        openArticyEditor: "articy:open-editor",
-        openProject: "project-manager:open-project",
-        openProjectFolder: "project-manager:open-project-folder",
-        getPresentWorkingDirectory: "project-manager:get-present-working-directory",
-        showOpenFileDialog: "util:show-open-file-dialog"
+    'toMain': {
+        queryScenes: 'BuildSystem:query-available-scenes',
+        queryPackages: 'BuildSystem:query-available-packages',
+        createUnityProject: 'BuildSystem:create-unity-project',
+        buildUnityProject: 'BuildSystem:build-unity-project',
+        checkBuildSuccess: 'BuildSystem:check-build-success',
+        openBuildDirectory: 'BuildSystem:open-build-directory',
+        queryJsonScenes: 'BuildSystem:query-available-json-scenes',
+        requestPreference: 'preferences:request',
+        requestPreferences: 'preferences:request-all',
+        changePreference: 'preferences:changed',
+        requestProjectSetting: 'projectSettings:request',
+        requestProjectSettings: 'projectSettings:request-all',
+        changeProjectSetting: 'projectSettings:changed',
+        changePackageSetting: 'unityPackageSettings:changed',
+        setPackageSetting: 'unityPackageSettings:set',
+        getPackageSetting: 'unityPackageSettings:get',
+        createNewProject: 'project-manager:create-new-project',
+        openArticyEditor: 'articy:open-editor',
+        openProject: 'project-manager:open-project',
+        openProjectFolder: 'project-manager:open-project-folder',
+        getPresentWorkingDirectory: 'project-manager:get-present-working-directory',
+        showOpenFileDialog: 'util:show-open-file-dialog',
     },
-    "fromMain": {
-        buildFinished: "BuildSystem:build-finished",
-        preferenceChangedFromBackendUnityPath: "preferences:preference-changed-from-backend-unityPath",
-        projectCreated: "project-manager:project-created",
-        projectOpened: "project-manager:project-opened",
-        spokeExportScene: "spoke:export-scene"
-    }
+    'fromMain': {
+        buildFinished: 'BuildSystem:build-finished',
+        preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
+        projectCreated: 'project-manager:project-created',
+        projectOpened: 'project-manager:project-opened',
+        spokeExportScene: 'spoke:export-scene',
+    },
 }
 
 class ValidChannels {
@@ -61,7 +61,9 @@ const invoke = async (channel: string, ...args: any) => {
     } else {
         console.error(`Invalid channel: ${channel}`)
     }
-    return new Promise((_, reject) => { reject("Invalid channel") })
+    return new Promise((_, reject) => {
+        reject('Invalid channel')
+    })
 }
 
 //@ts-ignore
@@ -80,5 +82,5 @@ export const API = {
     invoke: invoke,
     on: on,
     Path: Path,
-    channels: channels
+    channels: channels,
 }

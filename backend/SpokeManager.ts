@@ -1,12 +1,12 @@
-import {app, ipcMain as ipc} from 'electron'
+import { app } from 'electron'
 import * as child_process from 'child_process'
 import kill from 'tree-kill'
-import AppUtils from './AppUtils'
+import AppUtils from './Utils/AppUtils'
 import PreferencesManager from './Preferences/PreferencesManager'
 
 export default class SpokeManager {
     private static instance: SpokeManager
-    private startCommand: string = `cd ${AppUtils.getResPath()}/plugins/Spoke && yarn start`
+    private startCommand = `cd ${AppUtils.getResPath()}plugins/Spoke && yarn start`
     private spoke!: child_process.ChildProcess
 
 

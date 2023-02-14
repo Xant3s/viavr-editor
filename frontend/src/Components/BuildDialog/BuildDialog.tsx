@@ -1,16 +1,16 @@
-import {FC, useEffect, useState} from 'react'
-import {Scene} from './Scene'
-import {Package} from './Package'
-import {SettingsContainer, StyledSettings} from '../StyledComponents/Preferences/StyledSettings'
-import {Button} from '../StyledComponents/Button'
-import {SettingAccordion} from '../Settings/SettingAccordion'
-import {UnityPackageConfigurations} from './UnityPackageConfigurations'
-import {Select, Spinner, toaster} from 'evergreen-ui'
+import { FC, useEffect, useState } from 'react'
+import { Scene } from './Scene'
+import { Package } from './Package'
+import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
+import { Button } from '../StyledComponents/Button'
+import { SettingAccordion } from '../Settings/SettingAccordion'
+import { UnityPackageConfigurations } from './UnityPackageConfigurations'
+import { Select, Spinner, toaster } from 'evergreen-ui'
 
 const InvisibleSelect = () => {
     return <div hidden>
         <Select height={0}>
-            <option value="asd"></option>
+            <option value='asd'></option>
         </Select>
     </div>
 }
@@ -26,7 +26,7 @@ export const BuildDialog: FC = () => {
             if(scene.sceneFileName === sceneFileName) {
                 return {
                     ...scene,
-                    isSelected: !scene.isSelected
+                    isSelected: !scene.isSelected,
                 }
             }
             return scene
@@ -38,7 +38,7 @@ export const BuildDialog: FC = () => {
             if(packageItem.name === packageName) {
                 return {
                     ...packageItem,
-                    isSelected: !packageItem.isSelected
+                    isSelected: !packageItem.isSelected,
                 }
             }
             return packageItem
@@ -47,21 +47,21 @@ export const BuildDialog: FC = () => {
 
     const getSelectedSceneNames = () => {
         return scenes.filter(item => item.isSelected)
-                     .map(scene => scene.sceneFileName)
+            .map(scene => scene.sceneFileName)
     }
 
     const getSelectedPackages = () => {
         return packages.filter(item => item.mandatory || item.isSelected)
     }
 
-    const loadScenes = async() => {
+    const loadScenes = async () => {
         const sceneFileNames = await api.invoke(api.channels.toMain.queryScenes)
         setScenes(sceneFileNames.map(sceneFileName => {
-            return ({isSelected: true, sceneFileName})
+            return ({ isSelected: true, sceneFileName })
         }))
     }
 
-    const loadPackages = async() => {
+    const loadPackages = async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         setPackages(packages)
     }
@@ -70,20 +70,20 @@ export const BuildDialog: FC = () => {
         return getSelectedPackages().filter(p => 'configDescription' in p)
     }
 
-    const build = async() => {
+    const build = async () => {
         const outputPath = await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
         if(outputPath === undefined) return
-        toaster.notify('Started generating the experience, please wait.', {duration: 5})
+        toaster.notify('Started generating the experience, please wait.', { duration: 5 })
         setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
-        const result : 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
+        const result: 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)
         if(result === 'failure') {
-            toaster.danger('Something went wrong generating your VIA experience.', {duration: 30})
+            toaster.danger('Something went wrong generating your VIA experience.', { duration: 30 })
             return
         }
         await api.invoke(api.channels.toMain.openBuildDirectory)
-        toaster.success('The experience is now ready.', {duration: 5})
+        toaster.success('The experience is now ready.', { duration: 5 })
     }
 
     useEffect(() => {
@@ -102,13 +102,13 @@ export const BuildDialog: FC = () => {
                 <SettingAccordion summary={'Scenes'} details={(
                     <>
                         {
-                            scenes.map(({isSelected, sceneFileName}) => (
+                            scenes.map(({ isSelected, sceneFileName }) => (
                                 <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName}
-                                       toggleFunction={toggleSceneSelected}/>
+                                       toggleFunction={toggleSceneSelected} />
                             ))
                         }
                     </>
-                )}/>
+                )} />
 
                 <SettingAccordion summary={'Packages'} details={(
                     <>
@@ -120,20 +120,20 @@ export const BuildDialog: FC = () => {
                                      description={p.description}
                                      isSelected={p.isSelected}
                                      mandatory={p.mandatory}
-                                     toggleFunction={togglePackageSelected}/>
+                                     toggleFunction={togglePackageSelected} />
                         ))}
                     </>
-                )}/>
+                )} />
 
                 {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
-                <br/>
+                <br />
                 <div hidden={isBuilding}>
-                    <Button id="btn-build-project" type="button" onClick={build}>Generate Experience</Button>
+                    <Button id='btn-build-project' type='button' onClick={build}>Generate Experience</Button>
                 </div>
-                <div style={{display: 'flex', alignItems: 'center'}}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>
-                    <Spinner hidden={!isBuilding} style={{marginLeft: 10}} />
+                    <Spinner hidden={!isBuilding} style={{ marginLeft: 10 }} />
                 </div>
             </SettingsContainer>
         </StyledSettings>

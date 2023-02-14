@@ -35,8 +35,22 @@ deploy-documentation:
     only:
         - master
 
+lint:
+  image: node:16
+  stage: build
+  cache:
+    paths:
+      - node_modules
+  before_script:
+    - npm i yarn
+    - npm i
+  script:
+    - npm run lint
+  tags:
+    - docker
+
 backend:
-   image: node:latest
+   image: node:16
    stage: build
    cache:
      paths:
@@ -53,7 +67,7 @@ backend:
      - docker
 
 frontend:
-   image: node:latest
+   image: node:16
    stage: build
    cache:
      paths:
@@ -69,29 +83,31 @@ frontend:
    tags:
      - docker
 
-#package-win:
-#  image: electronuserland/builder:wine
-#  stage: build
-#  cache:
-#    paths:
-#      - node_modules
-#  before_script:
-#    - node -v
-#    - npm -v
-#    - npm i yarn
-#    - yarn -v
-#    - npm i
-#  script:
-#    - npm run package:win
-#  artifacts:
-#    paths:
-#      - out/
-#    expire_in: 1 week
-#  tags:
-#    - docker
+package-win:
+  image: electronuserland/builder:wine
+  stage: build
+  cache:
+    paths:
+      - node_modules
+  before_script:
+    - node -v
+    - npm -v
+    - npm i yarn
+    - yarn -v
+    - npm i
+  script:
+    - npm run package:win
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  tags:
+    - docker
+  only:
+    - tags
 
 #package-linux:
-#  image: node:latest
+#  image: node:16
 #  stage: build
 #  cache:
 #    paths:
@@ -112,7 +128,7 @@ frontend:
 #    - docker
 
 #package-mac:
-#  image: node:latest
+#  image: node:16
 #  stage: build
 #  cache:
 #    paths:

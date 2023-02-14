@@ -1,11 +1,11 @@
-import {$$, htmlElement} from './Spoke'
+import { $$, htmlElement } from './Spoke'
 
 
 export default class SceneLoadingPage {
     private title!: JQuery<HTMLElement>
 
     constructor() {
-        const handleSceneLoadingPage = async() => {
+        const handleSceneLoadingPage = async () => {
             // TODO: Possible timeout issue -> add event listener instead of polling
             this.title = await htmlElement('h1:contains("Projects"):last')
             await this.onShowSceneLoadingPage()
@@ -26,8 +26,8 @@ export default class SceneLoadingPage {
         $$('a:contains("Login"):last').parent().hide()
         $$('a:contains("Source"):first').parent().parent().hide()
 
-        newSceneButton.on('click', async() => await this.onShowCreateNewScenePage())
-        $$('h3:contains("New Scene"):last').parent().on('click', async() =>
+        newSceneButton.on('click', async () => await this.onShowCreateNewScenePage())
+        $$('h3:contains("New Scene"):last').parent().on('click', async () =>
             await this.onShowCreateNewScenePage())
     }
 
@@ -44,7 +44,7 @@ export default class SceneLoadingPage {
         newButton.find('svg').hide()
         newButton.find('h3').text(sceneNameWithoutExtension)
         newButton.attr('href', '#')
-        newButton.on('click', async() => this.loadScene(sceneName, newSceneButton))
+        newButton.on('click', async () => this.loadScene(sceneName, newSceneButton))
         newButton.insertAfter(newSceneButton)
     }
 

@@ -1,16 +1,20 @@
-import {useEffect, useState} from 'react'
-import {StringSetting} from './StringSetting'
-import {PathSetting} from './PathSetting'
-import {DropDownSetting} from './DropDownSetting'
-import {ListSetting} from './ListSetting'
-import {SettingsEntry} from '../StyledComponents/Preferences/StyledSettings'
-import {BoolSetting} from './BoolSetting'
-import {FloatSetting, IntSetting} from './NumberPreference'
+import { useEffect, useState } from 'react'
+import { StringSetting } from './StringSetting'
+import { PathSetting } from './PathSetting'
+import { DropDownSetting } from './DropDownSetting'
+import { ListSetting } from './ListSetting'
+import { SettingsEntry } from '../StyledComponents/Preferences/StyledSettings'
+import { BoolSetting } from './BoolSetting'
+import { FloatSetting, IntSetting } from './NumberPreference'
 import { CompositeSetting } from './CompositeSetting'
-import {Setting_t, value_t} from '../../@types/Settings'
+import { Setting_t, value_t } from '../../@types/Settings'
 
 
-export const Setting = ({settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {}}) => {
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export const Setting = ({
+                            settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {
+    },
+                        }) => {
     const [value, setValue] = useState<value_t>()
 
     useEffect(() => {
@@ -18,7 +22,7 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
     }, [setting.value])
 
     const updateSetting = (uuid: string, newValue: value_t) => {
-        let isComposite = setting.kind === 'composite' || (setting.kind === 'list' && setting.listType === 'composite')
+        const isComposite = setting.kind === 'composite' || (setting.kind === 'list' && setting.listType === 'composite')
         if(!isComposite) setValue(newValue)
         updateCallback(uuid, newValue)
     }
@@ -29,21 +33,30 @@ export const Setting = ({settingKey, setting, updateCallback = (uuid: string, ne
 
         switch(setting.kind) {
             case 'string':
-                return <StringSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} />
+                return <StringSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
+                                      onChange={onChange} />
             case 'boolean':
-                return <BoolSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} />
+                return <BoolSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
+                                    onChange={onChange} />
             case 'int':
-                return <IntSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} min={setting.min} max={setting.max} />
+                return <IntSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
+                                   onChange={onChange} min={setting.min} max={setting.max} />
             case 'float':
-                return <FloatSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} min={setting.min} max={setting.max} />
+                return <FloatSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
+                                     onChange={onChange} min={setting.min} max={setting.max} />
             case 'path':
-                return <PathSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} />
+                return <PathSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
+                                    onChange={onChange} />
             case 'dropdown':
-                return <DropDownSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} options={setting.options} />
+                return <DropDownSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label}
+                                        value={value} onChange={onChange} options={setting.options} />
             case 'composite':
-                return <CompositeSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} onChange={onChange} createPrefComponent={createSetting} />
+                return <CompositeSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label}
+                                         value={value} onChange={onChange} createPrefComponent={createSetting} />
             case 'list':
-                return <ListSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value} listType={setting.listType} onChange={onChange} createPrefComponent={createSetting} />
+                return <ListSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
+                                    listType={setting.listType} onChange={onChange}
+                                    createPrefComponent={createSetting} />
         }
     }
 

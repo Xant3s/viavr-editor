@@ -1,4 +1,4 @@
-<img src="../../images/construction.jpg" alt="Under construction" width="75%" style="alignment: center"/>
+<img src="../../../images/construction.jpg" alt="Under construction" width="75%" style="alignment: center"/>
 
 # Build System
 

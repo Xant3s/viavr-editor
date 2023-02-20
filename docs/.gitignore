@@ -1,2 +1,9 @@
-_site/
-obj/
+###############
+#    folder   #
+###############
+/**/DROP/
+/**/TEMP/
+/**/bin/
+/**/obj/
+_site
+docfx.json

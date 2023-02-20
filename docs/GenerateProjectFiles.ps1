@@ -41,50 +41,44 @@ Write-Host Create content top.yml files
 # Generate a toc.yml file for each version
 $Versions = Get-ChildItem -Path $MainContentDirectory -Directory
 
-foreach ($version in $Versions)
-{
-	if (Test-Path $MainContentDirectory\$version\$TocFile)
-	{
-		continue
-	}
-	
-	$GeneratedTocYML = ""
-	$TopicsFolder = Get-ChildItem -Path $MainContentDirectory\$version -Directory
-	$ymlContent = ""
-	foreach ($topic in $TopicsFolder)
-	{			
-		$documents = Get-ChildItem $MainContentDirectory\$version\$topic | Where-Object { $_.Extension -eq ".md" }
-		if ($documents.Count -gt 1)
-		{
-			$ymlContent += 
-@"
+foreach ($version in $Versions) {
+    if (Test-Path $MainContentDirectory\$version\$TocFile) {
+        continue
+    }
+
+    $GeneratedTocYML = ""
+    $TopicsFolder = Get-ChildItem -Path $MainContentDirectory\$version -Directory
+    $ymlContent = ""
+    foreach ($topic in $TopicsFolder) {
+        $documents = Get-ChildItem $MainContentDirectory\$version\$topic | Where-Object { $_.Extension -eq ".md" }
+        if ($documents.Count -gt 1) {
+            $ymlContent +=
+            @"
 - name : $topic
   items:
 
 "@
-			foreach($article in $documents)
-			{
-				$articleName = $article.basename
-				$ymlContent +=
-@"
+            foreach ($article in $documents) {
+                $articleName = $article.basename
+                $ymlContent +=
+                @"
   - name : $articleName
     href : $topic/$article
 
-"@		
-			}
-		}
-		else
-		{
+"@
+            }
+        }
+        else {
 
-				$ymlContent +=
-@"
+            $ymlContent +=
+            @"
 - name : $topic
   href : $topic/$documents
 
-"@		
-		}
-	}
-	$ymlContent | Out-File -FilePath $MainContentDirectory\$version\$TocFile -Encoding UTF8
+"@
+        }
+    }
+    $ymlContent | Out-File -FilePath $MainContentDirectory\$version\$TocFile -Encoding UTF8
 }
 
 Write-Host Create docfx.json from template
@@ -104,10 +98,9 @@ $DocfxContent = ""
 
 
 # Add versions into docfx.json
-foreach($version in $Versions)
-{
-	$DocfxContent += 
-@"
+foreach ($version in $Versions) {
+    $DocfxContent +=
+    @"
 {
 	"files": 
 	[
@@ -136,5 +129,19 @@ Set-Content -Path $DocfxFile -Value $ModifiedJson
 
 Write-Host Generating Files Done.
 Write-Host Run Docfx
+
+docfx docfx.json
+
+# Prints a JSON array of all the HTML files in the Articles directory to the files.json file.
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$articlesDir = Join-Path $scriptDir $MainContentDirectory
+$outputFile = Join-Path $scriptDir "_site/files.json"
+
+Get-ChildItem -Path $articlesDir -Recurse -Filter *.md | ForEach-Object {
+    $relMdPath = $_.FullName.Substring($articlesDir.Length + 1)
+    $relHtmlPath = $relMdPath -replace "\.md$", ".html"
+    $relHtmlPath
+} | ConvertTo-Json | Out-File -Encoding utf8 $outputFile
+
 
 docfx docfx.json --serve

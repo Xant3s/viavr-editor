@@ -12,11 +12,11 @@ docfx:
         - wget https://github.com/dotnet/docfx/releases/download/v2.59.2/docfx.zip
         - unzip docfx.zip -d docfx
     script:
-        - cd docs
-        - mono ../docfx/docfx.exe docfx.json build
+        - chmod +x ./GenerateProjectFiles.sh
+        - ./GenerateProjectFiles.sh
     artifacts:
         paths:
-            - docs/_site
+            - _site
         expire_in: 1 week
     tags:
         - docker

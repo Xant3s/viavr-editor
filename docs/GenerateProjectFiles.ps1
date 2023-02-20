@@ -20,7 +20,6 @@ Write-Host Removing outdated files
 # Delete outdated files
 Remove-Item -Path "_site" -Recurse
 Remove-Item -Path "obj/.cache" -Recurse
-Remove-Item $TocFile
 Remove-Item $DocfxFile
 
 Write-Host Create main top.yml file
@@ -35,7 +34,11 @@ $topYmlContent = @"
 #  href : $APIContentDirectory/
 #  homepage: $APIContentDirectory/index.md
 
-$topYmlContent | Out-File -FilePath $TocFile -Encoding UTF8
+if (Test-Path $TocFile) {
+	# No need to create a new top.yml file
+} else{
+	$topYmlContent | Out-File -FilePath $TocFile -Encoding UTF8
+}
 
 Write-Host Create content top.yml files
 # Generate a toc.yml file for each version

@@ -22,7 +22,6 @@ echo "Removing outdated files"
 # Delete outdated files
 rm -rf _site
 rm -rf obj/.cache
-rm -f $TocFile
 rm -f $DocfxFile
 
 echo "Create main top.yml file"
@@ -36,7 +35,11 @@ topYmlContent="
 # - name : $APIContentDirectory
 #  href : $APIContentDirectory/
 #  homepage: $APIContentDirectory/index.md
-echo "$topYmlContent" > $TocFile
+if [ -f "${TocFile}" ]; then
+  continue
+  else
+  echo "$topYmlContent" > $TocFile
+fi
 
 echo "Create content top.yml files"
 # Generate a toc.yml file for each version

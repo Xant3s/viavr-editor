@@ -95,6 +95,7 @@ def template():
     most_similar_item_index = similarity.argsort()[0][-1]
     # get the template name of the most similar item
     most_similar_item = template_copy.iloc[most_similar_item_index]['name']
+    #TODO: Add exact match to the json object
     return jsonify({'template': most_similar_item})
 
 if __name__ == '__main__':

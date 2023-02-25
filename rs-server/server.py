@@ -1,3 +1,13 @@
+""" 
+TODO:
+MAJOR: Set priority - keyword, theme, domain?
+1. Use env variables for the file paths and other variables
+2. Check on the similarity measure
+3. DB?
+4. Use logging
+5. How to represent the data on the frontend?
+"""
+
 # For server
 from flask import Flask, request, jsonify
 
@@ -91,12 +101,17 @@ def template():
     # Compute similarity between user profile and utility matrix
     similarity = cosine_similarity(user_profile, templateUM)
 
-    # get the index of the most similar item
-    most_similar_item_index = similarity.argsort()[0][-1]
-    # get the template name of the most similar item
-    most_similar_item = template_copy.iloc[most_similar_item_index]['name']
-    #TODO: Add exact match to the json object
-    return jsonify({'template': most_similar_item})
+    # Add the first 5 most similar items to the json object
+    for i in range(5):
+        most_similar_item_index = similarity.argsort()[0][-i]
+        most_similar_item = template_copy.iloc[most_similar_item_index]
+        session_profile.append({
+            "name": most_similar_item.name,
+            "theme": most_similar_item.theme
+        })
+
+    print("\nSession profile: ", session_profile)
+    return jsonify(session_profile)
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

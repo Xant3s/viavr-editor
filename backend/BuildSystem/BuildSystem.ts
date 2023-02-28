@@ -4,6 +4,7 @@ import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import { UnityPackageSettingsManager } from './UnityPackageSettingsManager'
 import { loadPage } from '../Utils/ElectronUtils'
+import { BuildSettingsManager } from './BuildSettingsManager'
 
 
 export default class BuildSystem {
@@ -16,6 +17,7 @@ export default class BuildSystem {
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
         UnityPackageManager.getInstance()
+        BuildSettingsManager.getInstance()
         UnityPackageSettingsManager.getInstance()
         ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
     }

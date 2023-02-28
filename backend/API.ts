@@ -19,6 +19,8 @@ export const channels = {
         changePackageSetting: 'unityPackageSettings:changed',
         setPackageSetting: 'unityPackageSettings:set',
         getPackageSetting: 'unityPackageSettings:get',
+        setBuildSetting: 'buildSettings:set',
+        getBuildSetting: 'buildSettings:get',
         createNewProject: 'project-manager:create-new-project',
         openArticyEditor: 'articy:open-editor',
         openProject: 'project-manager:open-project',

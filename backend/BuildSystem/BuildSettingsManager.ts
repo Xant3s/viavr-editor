@@ -1,0 +1,44 @@
+import SettingsManager from '../Utils/SettingsManager'
+import ProjectManager from '../ProjectManager/ProjectManager'
+import { app, ipcMain as ipc } from 'electron'
+import { channels } from '../API'
+
+
+export class BuildSettingsManager {
+    private static instance: BuildSettingsManager
+    private settingsManager!: SettingsManager
+    private initialized = false
+
+    public static getInstance(): BuildSettingsManager {
+        if(!BuildSettingsManager.instance) {
+            BuildSettingsManager.instance = new BuildSettingsManager()
+        }
+        return BuildSettingsManager.instance
+    }
+
+    private constructor() {
+        ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {await this.init()})
+        ipc.handle(channels.toMain.setBuildSetting, (_, name: string, value) => this.set(name, value))
+        ipc.handle(channels.toMain.getBuildSetting, (_, name: string) => this.get(name))
+        app.on('quit', () => this.saveSettings())
+    }
+
+    private async init() {
+        this.settingsManager = new SettingsManager(ProjectManager.getInstance().presentWorkingDirectory + '/buildSettings.json')
+        await this.settingsManager.init()
+        this.initialized = true
+    }
+
+    public async get<Type>(name: string) {
+        return await this.settingsManager.get<Type>(name)
+    }
+
+    public async set<Type>(name: string, value: Type) {
+        await this.settingsManager.set(name, value)
+    }
+
+    private saveSettings() {
+        if(!this.initialized) return
+        this.settingsManager.saveSettingToFile()
+    }
+}

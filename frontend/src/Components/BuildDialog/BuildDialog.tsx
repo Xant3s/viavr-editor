@@ -22,7 +22,7 @@ export const BuildDialog: FC = () => {
 
 
     const toggleSceneSelected = (sceneFileName: string) => {
-        setScenes(scenes.map(scene => {
+        const updatedScenes = scenes.map(scene => {
             if(scene.sceneFileName === sceneFileName) {
                 return {
                     ...scene,
@@ -30,11 +30,14 @@ export const BuildDialog: FC = () => {
                 }
             }
             return scene
-        }))
+        })
+        setScenes(updatedScenes)
+        api.invoke(api.channels.toMain.setBuildSetting, 'selectedScenes', updatedScenes.filter(scene => scene.isSelected)
+                                                                                            .map(scene => scene.sceneFileName))
     }
 
     const togglePackageSelected = (packageName: string) => {
-        setPackages(packages.map(packageItem => {
+        const updatedPackages = packages.map(packageItem => {
             if(packageItem.name === packageName) {
                 return {
                     ...packageItem,
@@ -42,7 +45,10 @@ export const BuildDialog: FC = () => {
                 }
             }
             return packageItem
-        }))
+        })
+        setPackages(updatedPackages)
+        api.invoke(api.channels.toMain.setBuildSetting, 'selectedPackages', updatedPackages.filter(packageItem => packageItem.isSelected)
+                                                                                                .map(packageItem => packageItem.name))
     }
 
     const getSelectedSceneNames = () => {
@@ -56,14 +62,22 @@ export const BuildDialog: FC = () => {
 
     const loadScenes = async () => {
         const sceneFileNames = await api.invoke(api.channels.toMain.queryScenes)
+        const selectedScenes = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedScenes')
         setScenes(sceneFileNames.map(sceneFileName => {
-            return ({ isSelected: true, sceneFileName })
+            const settingExists = selectedScenes !== undefined
+            const isSelected = settingExists ? selectedScenes.includes(sceneFileName) : true
+            return { isSelected: isSelected, sceneFileName }
         }))
     }
 
     const loadPackages = async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
-        setPackages(packages)
+        const selectedPackages = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedPackages')
+        setPackages(packages.map(p => {
+            const settingExists = selectedPackages !== undefined
+            const isSelected = settingExists ? selectedPackages.includes(p.name) : p.mandatory
+            return { ...p, isSelected }
+        }))
     }
 
     const getPackagesToDraw = () => {

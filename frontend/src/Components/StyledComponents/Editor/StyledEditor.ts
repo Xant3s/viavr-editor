@@ -24,3 +24,25 @@ export const WelcomeContainer = styled.div`
   height: ${props => props.hidden ? 0 : '100vh'};
   visibility: ${props => props.hidden ? 'hidden' : 'visible'};
 `
+
+export const CapturePreferecesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #15171b;
+  height: ${props => props.hidden ? 0 : '100vh'};
+  visibility: ${props => props.hidden ? 'hidden' : 'visible'};
+`
+
+export const TemplateRecommendationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #15171b;
+  height: ${props => props.hidden ? 0 : '100vh'};
+  visibility: ${props => props.hidden ? 'hidden' : 'visible'};
+`

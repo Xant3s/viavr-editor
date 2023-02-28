@@ -52,7 +52,7 @@ def computeUtilityMatrixCB(items, filename):
 
     return utilityMatrixCB
 
-@app.route('/template')
+@app.route('/template', methods=['POST'])
 def template():
     # Dataset management
     template_copy = template_master.copy(deep=True)
@@ -61,9 +61,11 @@ def template():
     # Data from user
     # TODO: Build up user profile throughout the session
     dataForTemplate = request.get_json() # Get data from user
-    user_domain = dataForTemplate['domain'] # Rehab/Therapy
-    user_theme = dataForTemplate['theme'] # Occuppational/Physical/Speech
-    user_keyword = dataForTemplate['keyword'] # Gait
+    print("\nData from user: \n")
+    print(dataForTemplate)
+    user_domain = dataForTemplate['session']['t_domain'] # Rehab/Therapy
+    user_theme = dataForTemplate['session']['t_theme'] # Occuppational/Physical/Speech
+    user_keyword = dataForTemplate['session']['t_keyword'] # Gait
 
     print("\nComplete template dataset: \n")
     print(template_copy.head(10))

@@ -99,6 +99,7 @@ export const ProjectSelection = ({ hidden }) => {
 
     <TemplateRecommendationContainer hidden={hideTemplateRecommendationContainer}>
         <h1>Template Recommendations</h1>
+        <h3>Based on your preferences, we recommend the following templates:</h3>
         <Row>
             <Button onClick={() => api.send(api.channels.toMain.createNewProject)}>
                 Create Project

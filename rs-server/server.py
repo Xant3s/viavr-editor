@@ -108,8 +108,8 @@ def template():
         most_similar_item_index = similarity.argsort()[0][-i]
         most_similar_item = template_copy.iloc[most_similar_item_index]
         session_profile.append({
-            "name": most_similar_item.name,
-            "theme": most_similar_item.theme
+            "name": most_similar_item['name'],
+            "theme": most_similar_item['theme']
         })
 
     print("\nSession profile: ", session_profile)

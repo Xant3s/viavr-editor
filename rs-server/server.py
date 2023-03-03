@@ -107,13 +107,21 @@ def template():
     for i in range(5):
         most_similar_item_index = similarity.argsort()[0][-i]
         most_similar_item = template_copy.iloc[most_similar_item_index]
-        session_profile.append({
+        item_dict = {
+            "id": i,
             "name": most_similar_item['name'],
-            "theme": most_similar_item['theme']
-        })
+            "theme": most_similar_item['theme'],
+            "json": most_similar_item['json']
+        }
+        session_profile.append(item_dict)
+    
+    response = {
+        "templates": session_profile
+    }
 
-    print("\nSession profile: ", session_profile)
-    return jsonify(session_profile)
+    print("\nSession profile (json): ", response)
+
+    return jsonify(response)
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

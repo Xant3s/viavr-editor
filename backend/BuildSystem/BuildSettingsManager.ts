@@ -8,6 +8,7 @@ export class BuildSettingsManager {
     private static instance: BuildSettingsManager
     private settingsManager!: SettingsManager
     private initialized = false
+    private path
 
     public static getInstance(): BuildSettingsManager {
         if(!BuildSettingsManager.instance) {
@@ -24,13 +25,18 @@ export class BuildSettingsManager {
     }
 
     private async init() {
-        this.settingsManager = new SettingsManager(ProjectManager.getInstance().presentWorkingDirectory + '/buildSettings.json')
+        this.path = ProjectManager.getInstance().presentWorkingDirectory + '/buildSettings.json'
+        this.settingsManager = new SettingsManager(this.path)
         await this.settingsManager.init()
         this.initialized = true
     }
 
     public async get<Type>(name: string) {
         return await this.settingsManager.get<Type>(name)
+    }
+
+    public get settingsPath() {
+        return this.path
     }
 
     public async set<Type>(name: string, value: Type) {

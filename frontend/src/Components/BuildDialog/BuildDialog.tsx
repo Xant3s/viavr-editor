@@ -6,6 +6,7 @@ import { Button } from '../StyledComponents/Button'
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { UnityPackageConfigurations } from './UnityPackageConfigurations'
 import { Select, Spinner, toaster } from 'evergreen-ui'
+import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 
 const InvisibleSelect = () => {
     return <div hidden>
@@ -122,6 +123,10 @@ export const BuildDialog: FC = () => {
                             ))
                         }
                     </>
+                )} />
+
+                <SettingAccordion summary={'Supervisor Monitor'} details={(
+                    <SupervisorMonitorSettings />
                 )} />
 
                 <SettingAccordion summary={'Packages'} details={(

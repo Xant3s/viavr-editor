@@ -8,9 +8,9 @@ import { Label, TemplateContent } from '../StyledComponents/Label'
 import { data } from 'jquery'
 
 export const ProjectSelection = ({ hidden }) => {
-    const [hideWelcomeContainer, setHideWelcomeContainer] = useState(hidden)
-    const [hideCapturePreferencesContainer, setHideCapturePreferencesContainer] = useState(!hidden)
-    const [hideTemplateRecommendationContainer, setHideTemplateRecommendationContainer] = useState(!hidden)
+    const [WelcomeContainerStatus, setWelcomeContainer] = useState(hidden)
+    const [CapturePreferencesContainerStatus, setCapturePreferencesContainer] = useState(!hidden)
+    const [TemplateRecommendationContainerStatus, setTemplateRecommendationContainer] = useState(!hidden)
 
     const savePreferences = async () => {
         /* 
@@ -72,26 +72,36 @@ export const ProjectSelection = ({ hidden }) => {
 
     return (
     <>
-    <WelcomeContainer hidden={hideWelcomeContainer}>
+    <WelcomeContainer hidden={WelcomeContainerStatus}>
         <h1>VIA-VR Editor</h1>
         <Row>
             <Button onClick={() => {
-                setHideWelcomeContainer(!hidden)
-                setHideCapturePreferencesContainer(hidden)
-                setHideTemplateRecommendationContainer(!hidden)
+                setWelcomeContainer(!hidden)
+                setCapturePreferencesContainer(hidden)
+                setTemplateRecommendationContainer(!hidden)
             }}>
                 Create New Project
             </Button>
-            <Button onClick={() => api.send(api.channels.toMain.openProject)}>
+            <Button onClick={() => {
+                setWelcomeContainer(!hidden)
+                setCapturePreferencesContainer(!hidden)
+                setTemplateRecommendationContainer(!hidden)
+                api.send(api.channels.toMain.openProject)}
+                }>
                 Open Project
             </Button>
-            <Button onClick={() => api.send(api.channels.toMain.openProjectFolder)}>
+            <Button onClick={() => {
+                setWelcomeContainer(!hidden)
+                setCapturePreferencesContainer(!hidden)
+                setTemplateRecommendationContainer(!hidden)
+                api.send(api.channels.toMain.openProjectFolder)}
+                }>
                 Open Project from Folder
             </Button>
         </Row>
     </WelcomeContainer>
 
-    <CapturePreferecesContainer hidden={hideCapturePreferencesContainer}>
+    <CapturePreferecesContainer hidden={CapturePreferencesContainerStatus}>
         <h1>Preferences</h1>
         <Row>
             <h3>Please enter your details:</h3>
@@ -110,18 +120,18 @@ export const ProjectSelection = ({ hidden }) => {
         </Row>
         <Row>
             <Button onClick={() => {
-                    setHideWelcomeContainer(!hidden)
-                    setHideCapturePreferencesContainer(!hidden)
-                    setHideTemplateRecommendationContainer(hidden)
+                    setWelcomeContainer(!hidden)
+                    setCapturePreferencesContainer(!hidden)
+                    setTemplateRecommendationContainer(hidden)
                     savePreferences()
                 }
             }>
                 Save
             </Button>
             <Button onClick={() => {
-                    setHideWelcomeContainer(hidden)
-                    setHideCapturePreferencesContainer(!hidden)
-                    setHideTemplateRecommendationContainer(!hidden)
+                    setWelcomeContainer(hidden)
+                    setCapturePreferencesContainer(!hidden)
+                    setTemplateRecommendationContainer(!hidden)
                 }
             }>
                 Back
@@ -129,7 +139,7 @@ export const ProjectSelection = ({ hidden }) => {
         </Row>
     </CapturePreferecesContainer>
 
-    <TemplateRecommendationContainer hidden={hideTemplateRecommendationContainer}>
+    <TemplateRecommendationContainer hidden={TemplateRecommendationContainerStatus}>
         <h1>Template Recommendations</h1>
         <h3>Based on your preferences, we recommend the following templates:</h3>
         <Row><Label>Most suitable template: </Label></Row>
@@ -144,9 +154,9 @@ export const ProjectSelection = ({ hidden }) => {
                 Start new project
             </Button>
             <Button onClick={() => {
-                    setHideWelcomeContainer(!hidden)
-                    setHideCapturePreferencesContainer(hidden)
-                    setHideTemplateRecommendationContainer(!hidden)
+                    setWelcomeContainer(!hidden)
+                    setCapturePreferencesContainer(hidden)
+                    setTemplateRecommendationContainer(!hidden)
                 }
             }>
                 Back

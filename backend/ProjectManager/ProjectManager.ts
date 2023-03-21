@@ -47,7 +47,7 @@ export default class ProjectManager {
 
     private constructor() {
         ipc.on(channels.toMain.createNewProject, async () => this.createNewProject())
-        ipc.on(channels.toMain.openProject, async () => this.openProjectFromFile())
+        ipc.on(channels.toMain.openProject, async (event, recommendedProjectPath) => this.openProjectFromFile(recommendedProjectPath))
         ipc.on(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
@@ -74,12 +74,14 @@ export default class ProjectManager {
         }
     }
 
-    private async openProjectFromFile() {
+    private async openProjectFromFile(recommderedProjectPath: string) {
         const { canceled, filePaths } = await dialog.showOpenDialog({
             properties: ['openFile'],
+            defaultPath: Path.join(app.getAppPath(), recommderedProjectPath),
             filters: [{ name: 'VIA-VR project files', extensions: ['via'] }],
         })
         if(!canceled && filePaths.length > 0) {
+            console.log('Opening project from file: ' + filePaths[0])
             await this.openProjectFromFileNoPrompt(filePaths[0])
         }
     }

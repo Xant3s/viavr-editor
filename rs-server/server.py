@@ -116,7 +116,7 @@ def template():
             "id": i,
             "name": most_similar_item['name'],
             "theme": most_similar_item['theme'],
-            "json": most_similar_item['json']
+            "link": most_similar_item['link']
         }
         session_profile.append(item_dict)
     

@@ -51,7 +51,8 @@ export const ProjectSelection = ({ hidden }) => {
             // Fetch the first template name from the json response
             suitable_template!.innerHTML = data['templates'][0].name
             suitable_template!.onclick = () => {
-                alert('You have selected the ' + data['templates'][0].json + ' template')
+                api.send(api.channels.toMain.openProject, data['templates'][0].link)
+                // alert('You have selected the ' + data['templates'][0].link + ' template')
             }
             // Clear the additional template list
             document.getElementById('additional-template')!.innerHTML = ''
@@ -60,7 +61,8 @@ export const ProjectSelection = ({ hidden }) => {
                 const additional_template = document.createElement('TemplateContent')
                 additional_template.innerHTML = data['templates'][i].name
                 additional_template.onclick = () => {
-                    alert('You have selected the ' + data['templates'][i].json + ' template')
+                    api.send(api.channels.toMain.openProject, data['templates'][i].link)
+                    // alert('You have selected the ' + data['templates'][i].link + ' template')
                 }
                 document.getElementById('additional-template')!.appendChild(additional_template)
                 // Add a line break after each additional template
@@ -86,7 +88,7 @@ export const ProjectSelection = ({ hidden }) => {
                 setWelcomeContainer(!hidden)
                 setCapturePreferencesContainer(!hidden)
                 setTemplateRecommendationContainer(!hidden)
-                api.send(api.channels.toMain.openProject)}
+                api.send(api.channels.toMain.openProject, 'res/Templates')}
                 }>
                 Open Project
             </Button>

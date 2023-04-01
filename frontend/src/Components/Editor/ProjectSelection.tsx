@@ -46,28 +46,31 @@ export const ProjectSelection = ({ hidden }) => {
 
     const showTemplates = (response: any) => {
         // Convert response to json
-        const suitable_template = document.getElementById('suitable-template')
+        const suitable_template = document.getElementById('suitable-template') as HTMLElement
         response.then((data) => {
             // Fetch the first template name from the json response
-            suitable_template!.innerHTML = data['templates'][0].name
-            suitable_template!.onclick = () => {
-                api.send(api.channels.toMain.openProject, data['templates'][0].link)
+            suitable_template.innerHTML = data?.templates?.[0]?.name ?? ""
+            suitable_template.onclick = () => {
+                api.send(api.channels.toMain.openProject, data?.templates?.[0]?.link ?? "")
                 // alert('You have selected the ' + data['templates'][0].link + ' template')
             }
             // Clear the additional template list
-            document.getElementById('additional-template')!.innerHTML = ''
-            for (let i = 1; i < data['templates'].length; i++) {
+            const additional_template_container = document.getElementById('additional-template');
+            if (additional_template_container) {
+                additional_template_container.innerHTML = '';
+            }
+            for (let i = 1; i < data?.templates?.length; i++) {
                 // Fetch the rest of the template names from the json response
-                const additional_template = document.createElement('TemplateContent')
-                additional_template.innerHTML = data['templates'][i].name
+                const additional_template = document.createElement('TemplateContent');
+                additional_template.innerHTML = data?.templates?.[i]?.name ?? "";
                 additional_template.onclick = () => {
-                    api.send(api.channels.toMain.openProject, data['templates'][i].link)
-                    // alert('You have selected the ' + data['templates'][i].link + ' template')
-                }
-                document.getElementById('additional-template')!.appendChild(additional_template)
+                    api.send(api.channels.toMain.openProject, data?.templates?.[i]?.link ?? "");
+                    // alert('You have selected the ' + data?.templates?.[i]?.link + ' template')
+                };
+                additional_template_container?.appendChild(additional_template);
                 // Add a line break after each additional template
-                const linebreak = document.createElement('br')
-                document.getElementById('additional-template')!.appendChild(linebreak)
+                const linebreak = document.createElement('br');
+                additional_template_container?.appendChild(linebreak);
             }
         })
     }

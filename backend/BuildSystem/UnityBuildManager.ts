@@ -44,17 +44,12 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.handle(channels.toMain.queryScenes, async (e) => {
+        ipc.handle(channels.toMain.queryScenes, async () => {
             const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.handle(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
-            return await this.createUnityProject(selectedScenes, selectedPackages)
-        })
-        ipc.handle(channels.toMain.buildUnityProject, async (e) => {
-            await new UnityBridge().build(this.buildPath)
-            e.sender.send(channels.fromMain.buildFinished)
-        })
+        ipc.handle(channels.toMain.createUnityProject, async (_, selectedScenes, selectedPackages) => await this.createUnityProject(selectedScenes, selectedPackages))
+        ipc.handle(channels.toMain.buildUnityProject, async () => await new UnityBridge().build(this.buildPath))
         ipc.handle(channels.toMain.checkBuildSuccess, async () => {
             const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
             const windowsExecutableExists = fs.existsSync(windowsExecutablePath) && fs.readdirSync(windowsExecutablePath).length > 0
@@ -62,10 +57,8 @@ export default class UnityBuildManager {
             const androidExecutableExists = fs.existsSync(androidExecutablePath)
             return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
         })
-        ipc.handle(channels.toMain.openBuildDirectory, async (e) => {
-            await UnityBuildManager.openBuildDirectory(this.buildPath)
-        })
-        ipc.handle(channels.toMain.queryJsonScenes, async (e) => {
+        ipc.handle(channels.toMain.openBuildDirectory, async () => await UnityBuildManager.openBuildDirectory(this.buildPath))
+        ipc.handle(channels.toMain.queryJsonScenes, async () => {
             const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
         })

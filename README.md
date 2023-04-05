@@ -7,7 +7,7 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 ## Prerequisites
 
 - Make sure to clone recursively, i.e. including all submodules
-- Make sure [node.js](https://nodejs.org/en/download/) >=16.10 is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+- Make sure [node.js](https://nodejs.org/en/download/) 16.x is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 

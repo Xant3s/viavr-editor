@@ -2,7 +2,7 @@
   "name": "viavr-editor",
   "version": "0.1.0",
   "description": "VIA-VR Editor",
-  "author": "Samuel Truman",
+  "author": "Games Engineering Research Group, University of Wuerzburg",
   "license": "none",
   "main": "build/backend/main.js",
   "homepage": ".",

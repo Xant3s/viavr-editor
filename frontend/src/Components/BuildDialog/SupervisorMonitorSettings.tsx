@@ -7,8 +7,8 @@ export const SupervisorMonitorSettings = () => {
     const [useFloorMap, setUseFloorMap] = useState(false)
 
 
-    const openFloorMapEditor = () => {
-        console.log('open floor map editor')
+    const openFloorMapEditor = async () => {
+        await api.invoke(api.channels.toMain.openFloorMapEditor)
     }
 
     const loadSettings = async () => {
@@ -25,6 +25,11 @@ export const SupervisorMonitorSettings = () => {
         setUseSupervisorMonitor(!useSupervisorMonitor)
     }
 
+    const toggleFloorMap = async () => {
+        await api.invoke(api.channels.toMain.setBuildSetting, 'useFloorMap', !useFloorMap)
+        setUseFloorMap(!useFloorMap)
+    }
+
 
     return <>
         <Checkbox id={'useSupervisorMonitor'}
@@ -39,7 +44,7 @@ export const SupervisorMonitorSettings = () => {
                 <Checkbox id={'useFloorMap'}
                           title={'Whether to use a floor map'}
                           checked={useFloorMap}
-                          onChange={() => setUseFloorMap(!useFloorMap)}
+                          onChange={() => toggleFloorMap()}
                           label={'Use floor map'}
                 />
                 {

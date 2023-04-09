@@ -74,11 +74,13 @@ export const BuildDialog: FC = () => {
     const loadPackages = async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         const selectedPackages = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedPackages')
-        setPackages(packages.map(p => {
+        const newPackages = packages.map(p => {
             const settingExists = selectedPackages !== undefined
             const isSelected = settingExists ? selectedPackages.includes(p.name) : p.mandatory
             return { ...p, isSelected }
-        }))
+        })
+        setPackages(newPackages)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'selectedPackages', newPackages.filter(p => p.isSelected).map(packageItem => packageItem.name))
     }
 
     const getPackagesToDraw = () => {

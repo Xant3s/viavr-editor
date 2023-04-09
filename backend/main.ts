@@ -11,6 +11,7 @@ import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
 import { Prototypes } from './Prototypes'
 import { ArticyManager } from './ArticyManager'
 import { SceneUtils } from './Utils/SceneUtils'
+import { ProjectTags } from './ProjectManager/ProjectTags'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
@@ -25,6 +26,7 @@ const startup = async () => {
     new DialogUtils()
     new Prototypes()
     new ArticyManager()
+    new ProjectTags()
     await SceneUtils.register()
 }
 

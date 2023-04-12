@@ -1,6 +1,5 @@
 import { app, ipcMain as ipc, Menu, shell } from 'electron'
 
-
 export default class CustomMenu {
     public loadCustomMenu() {
         const menu = Menu.buildFromTemplate([
@@ -50,7 +49,9 @@ export default class CustomMenu {
                     {
                         label: 'Documentation',
                         click() {
-                            shell.openExternal('https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html')
+                            shell.openExternal(
+                                'https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html'
+                            )
                         },
                     },
                 ],
@@ -70,18 +71,6 @@ export default class CustomMenu {
                     {
                         label: 'Open present working directory',
                         click: () => ipc.emit('dev:open-pwd'),
-                    },
-                    {
-                        label: 'Open Panels Prototype',
-                        click: async () => {
-                            ipc.emit('dev:open-panels-prototype')
-                        },
-                    },
-                    {
-                        label: 'Open Tabs Prototype',
-                        click: async () => {
-                            ipc.emit('dev:open-tabs-prototype')
-                        },
                     },
                 ],
             },

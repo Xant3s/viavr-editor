@@ -29,6 +29,15 @@ export default class CustomMenu {
                 ],
             },
             {
+                label: 'Generate VIA Experience',
+                submenu: [
+                    {
+                        label: 'Generate VIA Experience',
+                        click: () => ipc.emit('BuildSystem:open-build-menu'),
+                    },
+                ],
+            },
+            {
                 role: 'help',
                 submenu: [
                     {
@@ -44,15 +53,6 @@ export default class CustomMenu {
                                 'https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html'
                             )
                         },
-                    },
-                ],
-            },
-            {
-                label: 'Generate VIA Experience',
-                submenu: [
-                    {
-                        label: 'Generate VIA Experience',
-                        click: () => ipc.emit('BuildSystem:open-build-menu'),
                     },
                 ],
             },

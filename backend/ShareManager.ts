@@ -23,10 +23,16 @@ export default class ShareManager {
 
         const formData = new FormData()
         formData.append('file', fileStream, { knownLength: fileSizeInBytes, filename: projectName + '.via' })
-        const result = await fetch(`${templateServerAddress}/projects/add`, {
-            method: 'POST',
-            body: formData,
-        })
-        return result.status
+        let status: number
+        try {
+            const result = await fetch(`${templateServerAddress}/projects/add`, {
+                method: 'POST',
+                body: formData,
+            })
+            status = result.status
+        } catch {
+            status = 503
+        }
+        return status
     }
 }

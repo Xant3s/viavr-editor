@@ -29,15 +29,6 @@ export default class CustomMenu {
                 ],
             },
             {
-                role: 'editMenu',
-            },
-            {
-                role: 'viewMenu',
-            },
-            {
-                role: 'windowMenu',
-            },
-            {
                 role: 'help',
                 submenu: [
                     {
@@ -71,6 +62,9 @@ export default class CustomMenu {
                     {
                         label: 'Open present working directory',
                         click: () => ipc.emit('dev:open-pwd'),
+                    },
+                    {
+                        role: 'toggleDevTools',
                     },
                 ],
             },

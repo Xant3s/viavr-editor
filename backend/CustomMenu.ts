@@ -29,13 +29,13 @@ export default class CustomMenu {
                 ],
             },
             {
-                role: 'editMenu',
-            },
-            {
-                role: 'viewMenu',
-            },
-            {
-                role: 'windowMenu',
+                label: 'Generate VIA Experience',
+                submenu: [
+                    {
+                        label: 'Generate VIA Experience',
+                        click: () => ipc.emit('BuildSystem:open-build-menu'),
+                    },
+                ],
             },
             {
                 role: 'help',
@@ -57,20 +57,14 @@ export default class CustomMenu {
                 ],
             },
             {
-                label: 'Generate VIA Experience',
-                submenu: [
-                    {
-                        label: 'Generate VIA Experience',
-                        click: () => ipc.emit('BuildSystem:open-build-menu'),
-                    },
-                ],
-            },
-            {
                 label: 'Dev Tools',
                 submenu: [
                     {
                         label: 'Open present working directory',
                         click: () => ipc.emit('dev:open-pwd'),
+                    },
+                    {
+                        role: 'toggleDevTools',
                     },
                 ],
             },

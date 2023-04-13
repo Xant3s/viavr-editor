@@ -15,9 +15,7 @@ export default class ProjectManager {
     private static instance: ProjectManager
     private readonly zipThresholdInMB: number = 5000
     private mainWindow!: MainWindow
-    // The path to the current saved project. This may be the path to a .via file.
-    private projectPath!: string
-    // The path to the extracted project. May have unsaved changes. May be the same as project path for large projects.
+    private _projectPath!: string
     private _presentWorkingDirectory!: string
     private onProjectOpenedEvent: EventEmitter = new EventEmitter()
 
@@ -32,13 +30,19 @@ export default class ProjectManager {
         this.mainWindow = mainWindow
     }
 
+    /// The path to the current saved project. This may be the path to a .via file.
+    get projectPath() {
+        return this._projectPath
+    }
+
+    /// The path to the extracted project. May have unsaved changes. May be the same as project path for large projects.
     get presentWorkingDirectory() {
         return this._presentWorkingDirectory
     }
 
     public projectIsLoaded() {
-        return this.projectPath !== undefined && this.presentWorkingDirectory !== undefined
-            && this.projectPath !== '' && this.presentWorkingDirectory !== ''
+        return this._projectPath !== undefined && this.presentWorkingDirectory !== undefined
+            && this._projectPath !== '' && this.presentWorkingDirectory !== ''
     }
 
     public registerOnProjectLoadedListener(callback: () => void) {
@@ -62,7 +66,7 @@ export default class ProjectManager {
             ],
         })
         if(!canceled && filePath !== undefined && filePath?.length > 0) {
-            this.projectPath = filePath
+            this._projectPath = filePath
             const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project/')
             const scenesFolder = Path.join(tempProjectFolder, 'Scenes/')
             ProjectManager.ensurePathExists(tempProjectFolder)
@@ -85,7 +89,7 @@ export default class ProjectManager {
     }
 
     public async openProjectFromFileNoPrompt(filePath: string) {
-        this.projectPath = filePath
+        this._projectPath = filePath
         const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project')
         if(fs.existsSync(tempProjectFolder)) {
             fs.rmSync(tempProjectFolder, { recursive: true })
@@ -101,8 +105,8 @@ export default class ProjectManager {
             filePaths,
         } = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] })
         if(!canceled && filePaths.length > 0) {
-            this.projectPath = filePaths[0]
-            this._presentWorkingDirectory = this.projectPath
+            this._projectPath = filePaths[0]
+            this._presentWorkingDirectory = this._projectPath
             this.onProjectOpened()
         }
     }
@@ -112,8 +116,8 @@ export default class ProjectManager {
         this.mainWindow.send(channels.fromMain.projectOpened)
     }
 
-    private async saveProject() {
-        if(this.projectPath === undefined && this.presentWorkingDirectory === undefined) {
+    public async saveProject() {
+        if(this._projectPath === undefined && this.presentWorkingDirectory === undefined) {
             console.error('No project loaded.')
             return
         }
@@ -125,24 +129,24 @@ export default class ProjectManager {
             const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
 
             if(pwdSizeInMB < this.zipThresholdInMB) {
-                if(Path.parse(this.projectPath).ext.length === 0) {
-                    this.projectPath = Path.join(Path.dirname(this.projectPath), Path.parse(this.projectPath).name + '.via')
+                if(Path.parse(this._projectPath).ext.length === 0) {
+                    this._projectPath = Path.join(Path.dirname(this._projectPath), Path.parse(this._projectPath).name + '.via')
                     // If the project was previously too large, i.e. the project path is a directory,
                     // we are not removing that directory for now.
                     // The directory equals pwd, so we would get issues if we try to remove it too soon.
                 }
-                await Utils.compressToPath(this.presentWorkingDirectory, this.projectPath)
+                await Utils.compressToPath(this.presentWorkingDirectory, this._projectPath)
                 // Now we could delete the old project folder. Not sure if we want to do that.
-            } else if(this.projectPath === this.presentWorkingDirectory) {
+            } else if(this._projectPath === this.presentWorkingDirectory) {
                 // Do nothing.
                 // TODO: Architecture: add event
             } else {
                 console.log('Project is too large to be save as .via file.')
                 // TODO: Notify user
-                const projectFolderName = Path.parse(this.projectPath).name
-                fs.rmSync(this.projectPath, { recursive: true })   // Remove .via file that may or may not exist (it does not exist for new projects)
-                this.projectPath = Path.join(Path.dirname(this.projectPath), projectFolderName) // TODO: what if this folder already exists and is unrelated?
-                fse.copySync(this.presentWorkingDirectory, this.projectPath)
+                const projectFolderName = Path.parse(this._projectPath).name
+                fs.rmSync(this._projectPath, { recursive: true })   // Remove .via file that may or may not exist (it does not exist for new projects)
+                this._projectPath = Path.join(Path.dirname(this._projectPath), projectFolderName) // TODO: what if this folder already exists and is unrelated?
+                fse.copySync(this.presentWorkingDirectory, this._projectPath)
             }
             console.log('Project saved.')
         }

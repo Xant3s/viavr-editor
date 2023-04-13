@@ -34,6 +34,7 @@ export const channels = {
         floorMapLoadSvg: 'floor-map:load-svg',
         getSceneObjects: 'scene:get-objects',
         shareProject: 'share:project',
+        downloadProjectTemplates: 'share:download-projects',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

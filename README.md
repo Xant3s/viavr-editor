@@ -104,3 +104,7 @@ Currently, only the backend has unit tests. `electron-is-dev` is incompatible wi
 
 - After loading a scene in Spoke, the editor can no longer be closed
   - Temporary workaround: use the task manager to kill the application
+
+## Template Server
+
+To use features related to the template server make sure to run the server (https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/servers/template-server) and specify the server address in the preferences.

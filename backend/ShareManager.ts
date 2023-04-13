@@ -46,17 +46,20 @@ export default class ShareManager {
         })
         if (!canceled && filePaths.length > 0) {
             const destinationDir = filePaths[0]
-            const result = await fetch(`${templateServerAddress}/projects/list`)
-            if (result.status !== 200) return result.status
-            const templateList = await result.json()
-            const downloadPromises = templateList.map(async template => {
-                const fileResult = await fetch(`${templateServerAddress}/projects/download?filename=${template}`)
-                if (fileResult.status !== 200) return fileResult.status
-                const fileBuffer = await fileResult.buffer()
-                await fs.promises.writeFile(Path.join(destinationDir, template), fileBuffer)
-            })
-
-            const results = await Promise.all(downloadPromises)
+            try {
+                const result = await fetch(`${templateServerAddress}/projects/list`)
+                if (result.status !== 200) return result.status
+                const templateList = await result.json()
+                const downloadPromises = templateList.map(async template => {
+                    const fileResult = await fetch(`${templateServerAddress}/projects/download?filename=${template}`)
+                    if (fileResult.status !== 200) return fileResult.status
+                    const fileBuffer = await fileResult.buffer()
+                    await fs.promises.writeFile(Path.join(destinationDir, template), fileBuffer)
+                })
+                const results = await Promise.all(downloadPromises)
+            } catch {
+                return 503 // Service unavailable
+            }
             return 200 // Ok
         }
         return 418 // I'm a teapot (user aborted)

@@ -21,8 +21,8 @@ import requests
 app = Flask(__name__)
 
 missing_values = ['na','--','?','-','None','none','non','NaN']
-template_master = pd.read_csv("./DummyDatasets/template_dataset.csv", na_values = missing_values)
-asset_master = pd.read_csv("./DummyDatasets/asset_dataset.csv", na_values = missing_values)
+template_master = pd.read_csv("./rs-server/DummyDatasets/template_dataset.csv", na_values = missing_values)
+asset_master = pd.read_csv("./rs-server/DummyDatasets/asset_dataset.csv", na_values = missing_values)
 
 ############################################### Template RS ###############################################
 

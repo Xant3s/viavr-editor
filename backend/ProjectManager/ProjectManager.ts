@@ -114,6 +114,7 @@ export default class ProjectManager {
     private onProjectOpened() {
         this.onProjectOpenedEvent.emit('project-loaded')
         this.mainWindow.send(channels.fromMain.projectOpened)
+        this.mainWindow.enableMenuOptionsOnProjectOpened()
     }
 
     public async saveProject() {

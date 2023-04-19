@@ -4,20 +4,23 @@ import CustomMenu from './CustomMenu'
 import { loadPage } from './Utils/ElectronUtils'
 import electron_reload from 'electron-reload'
 
-
 export default class MainWindow {
     private static window: Electron.BrowserWindow
-
 
     public constructor() {
         app.whenReady().then(MainWindow.createWindow)
         app.on('activate', MainWindow.activate)
         app.on('window-all-closed', () => MainWindow.onWindowAllClosed(app))
-        app.commandLine.appendSwitch('disable-site-isolation-trials')   // https://github.com/electron/electron/issues/18214
+        app.commandLine.appendSwitch('disable-site-isolation-trials') // https://github.com/electron/electron/issues/18214
     }
 
     get window(): Electron.BrowserWindow {
         return MainWindow.window
+    }
+
+    public enableMenuOptionsOnProjectOpened() {
+        const menu = new CustomMenu()
+        menu.unlockMenuOptionsUponProjectOpened()
     }
 
     public send(channel: string, ...args: any[]) {
@@ -36,7 +39,7 @@ export default class MainWindow {
         new CustomMenu().loadCustomMenu()
         loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()
-        if(!app.isPackaged) {
+        if (!app.isPackaged) {
             electron_reload(__dirname, {
                 electron: path.join(__dirname, '../../node_modules/.bin/electron'),
                 forceHardReset: true,
@@ -46,13 +49,13 @@ export default class MainWindow {
     }
 
     private static activate() {
-        if(BrowserWindow.getAllWindows().length === 0) {
+        if (BrowserWindow.getAllWindows().length === 0) {
             MainWindow.createWindow()
         }
     }
 
     private static onWindowAllClosed(app: Electron.App) {
-        if(process.platform !== 'darwin') {
+        if (process.platform !== 'darwin') {
             app.quit()
         }
     }
@@ -61,7 +64,8 @@ export default class MainWindow {
         // https://stackoverflow.com/questions/63923644/self-signed-certificates-in-electron
         win.webContents.session.setCertificateVerifyProc((request, callback) => {
             const { hostname } = request
-            if(hostname === 'localhost') { // this is blind trust, however you should use the certificate, valdiatedcertifcate, verificationresult as your verification point to call callback
+            if (hostname === 'localhost') {
+                // this is blind trust, however you should use the certificate, valdiatedcertifcate, verificationresult as your verification point to call callback
                 callback(0) // Trust this domain
             } else {
                 callback(-3) // Use chromium's verification result

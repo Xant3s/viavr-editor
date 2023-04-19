@@ -9,10 +9,14 @@ export default class CustomMenu {
                     {
                         label: 'Save Current Scene',
                         click: () => ipc.emit('save-current-scene'),
+                        id: 'SaveScene',
+                        enabled: false,
                     },
                     {
                         label: 'Save Project',
                         click: () => ipc.emit('project-manager:save-project'),
+                        id: 'SaveProject',
+                        enabled: false,
                     },
                     {
                         label: 'Project Settings',
@@ -34,6 +38,8 @@ export default class CustomMenu {
                     {
                         label: 'Generate VIA Experience',
                         click: () => ipc.emit('BuildSystem:open-build-menu'),
+                        id: 'GenerateExperience',
+                        enabled: false,
                     },
                 ],
             },
@@ -62,6 +68,8 @@ export default class CustomMenu {
                     {
                         label: 'Open present working directory',
                         click: () => ipc.emit('dev:open-pwd'),
+                        id: 'OpenDirectory',
+                        enabled: false,
                     },
                     {
                         role: 'toggleDevTools',
@@ -70,5 +78,17 @@ export default class CustomMenu {
             },
         ])
         Menu.setApplicationMenu(menu)
+    }
+
+    public unlockMenuOptionsUponProjectOpened(){
+        const saveProject = Menu.getApplicationMenu()?.getMenuItemById("SaveProject")
+        const saveScene = Menu.getApplicationMenu()?.getMenuItemById("SaveScene")
+        const generateExperience =  Menu.getApplicationMenu()?.getMenuItemById("GenerateExperience")
+        const openDirectory = Menu.getApplicationMenu()?.getMenuItemById("OpenDirectory")
+
+        if(saveProject) saveProject.enabled = true
+        if(saveScene) saveScene.enabled = true
+        if(generateExperience) generateExperience.enabled = true
+        if(openDirectory) openDirectory.enabled = true
     }
 }

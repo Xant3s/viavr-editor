@@ -1,6 +1,8 @@
 import { app, ipcMain as ipc, Menu, shell } from 'electron'
 
 export default class CustomMenu {
+    private projectLoaded = false
+
     public loadCustomMenu() {
         const menu = Menu.buildFromTemplate([
             {
@@ -9,10 +11,14 @@ export default class CustomMenu {
                     {
                         label: 'Save Current Scene',
                         click: () => ipc.emit('save-current-scene'),
+                        id: 'SaveScene',
+                        enabled: this.projectLoaded,
                     },
                     {
                         label: 'Save Project',
                         click: () => ipc.emit('project-manager:save-project'),
+                        id: 'SaveProject',
+                        enabled: this.projectLoaded,
                     },
                     {
                         label: 'Project Settings',
@@ -34,6 +40,8 @@ export default class CustomMenu {
                     {
                         label: 'Generate VIA Experience',
                         click: () => ipc.emit('BuildSystem:open-build-menu'),
+                        id: 'GenerateExperience',
+                        enabled: this.projectLoaded,
                     },
                 ],
             },
@@ -62,6 +70,8 @@ export default class CustomMenu {
                     {
                         label: 'Open present working directory',
                         click: () => ipc.emit('dev:open-pwd'),
+                        id: 'OpenDirectory',
+                        enabled: this.projectLoaded,
                     },
                     {
                         role: 'toggleDevTools',
@@ -70,5 +80,10 @@ export default class CustomMenu {
             },
         ])
         Menu.setApplicationMenu(menu)
+    }
+
+    public unlockMenuOptionsUponProjectOpened() {
+        this.projectLoaded = true
+        this.loadCustomMenu()
     }
 }

@@ -52,9 +52,7 @@ export const BehaviorEditor = ({ hidden }) => {
         setSceneObjects(objects)
         onSelectChange(objects[0].uuid)
     }
-    useEffect(() => {
-        loadSceneObjects()
-    }, [])
+
 
     // === TASKS ===
     const [tasks, setTasks] = useState<TaskInfo[]>([])

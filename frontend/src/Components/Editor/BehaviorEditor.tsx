@@ -1,13 +1,62 @@
 import { useEffect, useState } from "react"
-import { Button, TextInput, toaster, Table, TrashIcon, SideSheet, TextDropdownButton, SelectMenu, Select, SelectField, TextInputField } from 'evergreen-ui'
+import { Button, TextInput, toaster, Table, TrashIcon, SideSheet, SelectMenu, Select, SelectField, TextInputField } from 'evergreen-ui'
 import { TaskInfo } from '../../@types/TaskInfo'
 import { ConditionInfo } from '../../@types/ConditionInfo'
 import { ActionInfo } from '../../@types/ActionInfo'
 import { SettingAccordion } from "../Settings/SettingAccordion"
-import { DropDownSetting } from "../Settings/DropDownSetting"
 import { Row } from "../StyledComponents/Row"
 
 export const BehaviorEditor = ({ hidden }) => {
+    // === META DATA ===
+    const [options] = useState(["Avatar", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map((label) => ({ label, value: label, })))
+    const [sceneObjects, setSceneObjects] = useState<any[]>([])
+    const [selectedObject, setSelectedObject] = useState<string>('')
+    const [selectedTagsState, setSelectedTags] = useState<any[]>([])
+    const [selectedTagsNamesState, setSelectedTagsNames] = useState<string>('')
+
+    function createSelectedNames(selectedItems: any[]) {
+        let selectedNames = ''
+        const selectedItemsLength = selectedItems.length
+        if (selectedItemsLength === 0) {
+            selectedNames = ''
+        } else if (selectedItemsLength === 1) {
+            selectedNames = selectedItems.toString()
+        } else if (selectedItemsLength > 1) {
+            selectedNames = selectedItemsLength.toString() + ' selected...'
+        }
+        return selectedNames
+    }
+
+    const updateTagSettings = async (selectedItems) => {
+        const selectedNames = createSelectedNames(selectedItems)
+
+        setSelectedTags(selectedItems)
+        setSelectedTagsNames(selectedNames)
+
+        const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
+        tags[selectedObject] = selectedItems
+        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
+    }
+
+    const onSelectChange = async (value) => {
+        const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
+        const objectTags = tags[value] ?? []
+        const selectedNames = createSelectedNames(objectTags)
+        setSelectedObject(value)
+        setSelectedTags(objectTags)
+        setSelectedTagsNames(selectedNames)
+    }
+
+    const loadSceneObjects = async () => {
+        const objects = await api.invoke(api.channels.toMain.getSceneObjects)
+        setSceneObjects(objects)
+        onSelectChange(objects[0].uuid)
+    }
+    useEffect(() => {
+        loadSceneObjects()
+    }, [])
+
+    // === TASKS ===
     const [tasks, setTasks] = useState<TaskInfo[]>([])
     const [newTaskIdentifier, setNewTaskIdentifier] = useState<string>('')
     const [newTaskDescription, setNewTaskDescription] = useState<string>('')
@@ -32,7 +81,6 @@ export const BehaviorEditor = ({ hidden }) => {
             toaster.danger('Please enter a description for the task')
             return
         }
-
 
         const newTask = { identifier: newTaskIdentifier, description: newTaskDescription, conditions: [], actions: [] }
         const newTasks = [...tasks, newTask]
@@ -122,6 +170,41 @@ export const BehaviorEditor = ({ hidden }) => {
 
     return <div hidden={hidden} style={{ backgroundColor: '#3a4048', height: 'calc(100vh - 76px)', margin: 0, padding: 10, textAlign: 'center', color: 'white' }}>
         <h1>Behavior Editor</h1>
+
+        <SettingAccordion summary={'Meta Data'} details={(
+            <div>
+                <Button onClick={() => {
+                    loadSceneObjects()
+                }}>Load Objects</Button>
+
+                <Select style={{ backgroundColor: "white" }} id="sceneObject" onChange={event => onSelectChange(event.target.value)} required>
+                    {sceneObjects.map((object, index) => (
+                        <option key={index} value={object.uuid}>
+                            {object.name}
+                        </option>
+                    ))}
+                </Select>
+
+                <SelectMenu
+                    isMultiSelect
+                    title="Select tags"
+                    options={options}
+                    selected={selectedTagsState}
+                    onSelect={(item) => {
+                        const selected = [...selectedTagsState, item.value]
+                        const selectedItems = selected
+                        updateTagSettings(selectedItems)
+                    }}
+                    onDeselect={(item) => {
+                        const deselectedItemIndex = selectedTagsState.indexOf(item.value)
+                        const selectedItems = selectedTagsState.filter((_item, i) => i !== deselectedItemIndex)
+                        updateTagSettings(selectedItems)
+                    }}
+                >
+                    <Button>{selectedTagsNamesState || 'Select tags...'}</Button>
+                </SelectMenu>
+            </div>
+        )} />
 
         <SettingAccordion summary={'Questlines'} details={(
             <div>
@@ -386,8 +469,8 @@ export const BehaviorEditor = ({ hidden }) => {
                 <SettingAccordion summary={'State1'} details={(
                     <Row>
 
-                            <TextInputField label="Name" placeholder="Name..."></TextInputField>
-                            <TextInputField label="Value" placeholder="Value..."></TextInputField>
+                        <TextInputField label="Name" placeholder="Name..."></TextInputField>
+                        <TextInputField label="Value" placeholder="Value..."></TextInputField>
                     </Row>
                 )} />
 

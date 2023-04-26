@@ -62,6 +62,7 @@ def template():
     # Dataset management
     template_copy = template_master.copy(deep=True)
     session_profile = [] # Use this variable to store session profile
+    errors = [] # Use this variable to store errors
     
     # Data from user
     # TODO: Build up user profile throughout the session
@@ -71,6 +72,10 @@ def template():
     user_domain = dataForTemplate['session']['t_domain'] # Rehab/Therapy
     user_theme = dataForTemplate['session']['t_theme'] # Occuppational/Physical/Speech
     user_keyword = dataForTemplate['session']['t_keyword'] # Gait
+
+    # Return error message if no data is received
+    if dataForTemplate is None:
+        return "error': 'No data received"
 
     print("\nComplete template dataset: \n")
     print(template_copy.head(10))
@@ -86,15 +91,18 @@ def template():
         for index, row in exact_match.iterrows():
             session_profile.append({
                 "name": row['name'],
-                "theme": row['theme']
+                "theme": row['theme'],
+                "link": row['link']
             })
         print("\nSession profile: ", session_profile)
     else:
         print("No exact match found")
+        errors.append({
+            "code": "KeywordNA"
+        })
 
     templateUM = computeUtilityMatrixCB(template_df, "utilityMatrixCB")
     print("\nHeaders: ", templateUM.columns)
-
 
     # User profile: Get input from user
     # Create an empty dataframe with the same columns as the utility matrix
@@ -102,7 +110,14 @@ def template():
     # Add an entry to the user profile
     user_profile.loc[0] = [0 for i in range(len(user_profile.columns))]
     # Add the user's input to the user profile
-    user_profile[user_theme] = 1
+    if(user_theme.capitalize() in user_profile.columns):
+        user_profile[user_theme.capitalize()] = 1
+    else:
+        print("Theme not found in template dataset")
+        errors.append({
+            "code": "ThemeNA"
+        })
+        
     print("\nUser profile: \n", user_profile)
 
     # Compute similarity between user profile and utility matrix
@@ -121,7 +136,8 @@ def template():
         session_profile.append(item_dict)
     
     response = {
-        "templates": session_profile
+        "templates": session_profile,
+        "errors": errors
     }
 
     print("\nSession profile (json): ", response)

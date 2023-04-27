@@ -54,6 +54,7 @@ export function TriggerConfigEditor({
                                      .map(p => p.triggers)
                                      .flat()
             setTriggers(triggers)
+            await api.invoke(api.channels.toMain.setBuildSetting, 'triggers', triggers)
         }
 
         loadSceneObjects()

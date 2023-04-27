@@ -1,3 +1,3 @@
 export class ActionInfo {
-    identifier: string = ''
+    identifier = ''
 }

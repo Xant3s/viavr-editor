@@ -1,4 +1,4 @@
 export class ConditionInfo {
-    identifier: string = ''
-    description: string = ''
+    identifier = ''
+    description = ''
 }

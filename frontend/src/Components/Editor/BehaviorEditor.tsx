@@ -102,10 +102,15 @@ export const BehaviorEditor = ({ hidden }) => {
         }
 
         const newCondition = { identifier: newConditionIdentifier, description: newConditionDescription }
-        const newConditions = [...taskDetails!.conditions, newCondition]
-        if (taskDetails?.conditions !== undefined) {
-            taskDetails.conditions = newConditions
-            setConditions(taskDetails?.conditions)
+        if (!taskDetails) {
+            setTaskDetails(new TaskInfo())
+        } 
+        if (taskDetails) {
+            const newConditions = [...taskDetails.conditions, newCondition]
+            if (taskDetails?.conditions !== undefined) {
+                taskDetails.conditions = newConditions
+                setConditions(taskDetails?.conditions)
+            }
         }
         setNewConditionIdentifier('')
         setNewConditionDescription('')
@@ -122,10 +127,15 @@ export const BehaviorEditor = ({ hidden }) => {
         }
 
         const newAction = { identifier: newActionIdentifier }
-        const newActions = [...taskDetails!.actions, newAction]
-        if (taskDetails?.actions !== undefined) {
-            taskDetails.actions = newActions
-            setActions(taskDetails?.actions)
+        if (!taskDetails) {
+            setTaskDetails(new TaskInfo())
+        } 
+        if (taskDetails) {
+            const newActions = [...taskDetails.actions, newAction]
+            if (taskDetails?.actions !== undefined) {
+                taskDetails.actions = newActions
+                setActions(taskDetails?.actions)
+            }
         }
         setNewActionIdentifier('')
     }

@@ -1,4 +1,3 @@
-import { CapturePreferecesContainer, TemplateRecommendationContainer, WelcomeContainer } from '../StyledComponents/Editor/StyledEditor'
 import { Row } from '../StyledComponents/Row'
 //import { Button } from '../StyledComponents/Button'
 import { useState, useRef } from 'react'
@@ -7,7 +6,9 @@ import { getTemplates } from '../RS/Communication'
 import { Label, TemplateContent } from '../StyledComponents/Label'
 import { data } from 'jquery'
 import { Button, TextInput, toaster } from 'evergreen-ui'
-import { PreferenceLabel } from '../StyledComponents/WelcomeScreen'
+import WelcomeContainer from './WelcomeContainer'
+import CapturePreferencesContainer from './CapturePreferencesContainer'
+import TemplateRecommendationContainer from './TemplateRecommendationContainer'
 
 export const ProjectSelection = ({ hidden }) => {
     const [WelcomeContainerStatus, setWelcomeContainer] = useState(hidden)
@@ -58,7 +59,6 @@ export const ProjectSelection = ({ hidden }) => {
 
     const showTemplates = (response: any) => {
         // Convert response to json
-        
         response.then((data) => {
             // Error handling
             if (data?.templates?.length === 0) {
@@ -112,127 +112,41 @@ export const ProjectSelection = ({ hidden }) => {
 
     return (
     <>
-    <WelcomeContainer hidden={WelcomeContainerStatus}>
-        <h1>VIA-VR Editor</h1>
-        <Row>
-            <Button marginRight={16} appearance="primary" onClick={() => {
-                setWelcomeContainer(!hidden)
-                setCapturePreferencesContainer(hidden)
-                setTemplateRecommendationContainer(!hidden)
-            }}>
-                Create New Project
-            </Button>
-            <Button marginRight={16} appearance="primary" onClick={() => {
-                setWelcomeContainer(!hidden)
-                setCapturePreferencesContainer(!hidden)
-                setTemplateRecommendationContainer(!hidden)
-                api.send(api.channels.toMain.openProject, 'res/Templates')}
-                }>
-                Open Project
-            </Button>
-            <Button marginRight={16} appearance="primary" onClick={() => {
-                setWelcomeContainer(!hidden)
-                setCapturePreferencesContainer(!hidden)
-                setTemplateRecommendationContainer(!hidden)
-                api.send(api.channels.toMain.openProjectFolder)}
-                }>
-                Open Project from Folder
-            </Button>
-        </Row>
-    </WelcomeContainer>
+    <WelcomeContainer 
+        hidden={WelcomeContainerStatus}
+        setWelcomeContainer={setWelcomeContainer}
+        setCapturePreferencesContainer={setCapturePreferencesContainer}
+        setTemplateRecommendationContainer={setTemplateRecommendationContainer}
+    />
+        
+    <CapturePreferencesContainer 
+        hidden={CapturePreferencesContainerStatus}
+        setWelcomeContainer={setWelcomeContainer}
+        setCapturePreferencesContainer={setCapturePreferencesContainer}
+        setTemplateRecommendationContainer={setTemplateRecommendationContainer}
+        sendDataToServer={sendDataToServer}
+        handleDomainChange={handleDomainChange}
+        handleThemeChange={handleThemeChange}
+        handleKeywordChange={handleKeywordChange}
+        handleUsernameChange={handleUsernameChange}
+        handleSpecialisationChange={handleSpecialisationChange}
+    />
 
-    <CapturePreferecesContainer hidden={CapturePreferencesContainerStatus}>
-        <div
-            hidden={hidden}
-            style={{
-                backgroundColor: '#15171b',
-                position: 'relative',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                margin: 0,
-                padding: 10,
-                color: 'white',
-                textAlign: 'center',
-                alignItems: 'center',
-              }}
-        >
-            <h2>Preferences</h2>
-            <h3>Please enter your details:</h3>
-            <form onSubmit={sendDataToServer}>
-                <PreferenceLabel htmlFor="username">Username</PreferenceLabel>
-                <TextInput placeholder="Username" onChange={handleUsernameChange} /> <br />
-                <PreferenceLabel htmlFor="specialisation">Specialisation</PreferenceLabel>
-                <TextInput placeholder="Specialisation" onChange={handleSpecialisationChange} />  <br />
-                <h3>What kind of project would you like to create?</h3>
-                <PreferenceLabel htmlFor="domainName">Domain</PreferenceLabel>
-                <TextInput placeholder="Domain Name (eg. Rehab)" onChange={handleDomainChange} required /> <br />
-                <PreferenceLabel htmlFor="themeName">Theme</PreferenceLabel>
-                <TextInput placeholder="Theme Name (eg. Speech)" onChange={handleThemeChange} required /> <br />
-                <PreferenceLabel htmlFor="keyword">Keyword</PreferenceLabel>
-                <TextInput placeholder="Keyword" onChange={handleKeywordChange} required /> <br /> <br />
-                <Button marginRight={16} appearance="primary" type="submit">Save</Button>
-                <Button marginRight={16} appearance="primary" onClick={() => {
-                    setWelcomeContainer(hidden)
-                    setCapturePreferencesContainer(!hidden)
-                    setTemplateRecommendationContainer(!hidden)
-                }}>
-                    Back
-                </Button>
-            </form>
-        </div>
-    </CapturePreferecesContainer>
-
-    <TemplateRecommendationContainer hidden={TemplateRecommendationContainerStatus}>
-        <h1>Template Recommendations</h1>
-        <h3>Based on your preferences, we recommend the following templates:</h3>
-        <Row><Label>Most suitable template: </Label></Row>
-        <Row>
-            <Button marginRight={16} size='large' onClick={() => openTemplate(suitableTemplateLink)}>
-            {suitableTemplate}    
-            </Button>
-        </Row>
-        {/* <Row><TemplateContent id="suitable-template"></TemplateContent></Row> */}
-        <Row><Label>Additional templates: </Label></Row>
-        {/* <Row><TemplateContent id="additional-template"></TemplateContent></Row> */}
-        <Row>
-            <Button marginRight={16} size='large' onClick={() => openTemplate(additionalTemplate1Link)}>
-            {additionalTemplate1}    
-            </Button>
-        </Row>
-        <Row>
-            <Button marginRight={16} size='large' onClick={() => openTemplate(additionalTemplate2Link)}>
-            {additionalTemplate2}    
-            </Button>
-        </Row>
-        <Row>
-            <Button marginRight={16} size='large' onClick={() => openTemplate(additionalTemplate3Link)}>
-            {additionalTemplate3}    
-            </Button>
-        </Row>
-        <Row>
-            <h2>Or</h2>
-        </Row>
-        <Row>
-            <Button marginRight={16} appearance="primary" onClick={() => {
-                setWelcomeContainer(!hidden)
-                setCapturePreferencesContainer(!hidden)
-                setTemplateRecommendationContainer(!hidden)
-                api.send(api.channels.toMain.createNewProject)}
-            }>
-                Start new project
-            </Button>
-            <Button marginRight={16} appearance="primary" onClick={() => {
-                    setWelcomeContainer(!hidden)
-                    setCapturePreferencesContainer(hidden)
-                    setTemplateRecommendationContainer(!hidden)
-                }
-            }>
-                Back
-            </Button>
-        </Row>
-    </TemplateRecommendationContainer>
+    <TemplateRecommendationContainer 
+        hidden={TemplateRecommendationContainerStatus}
+        setWelcomeContainer={setWelcomeContainer}
+        setCapturePreferencesContainer={setCapturePreferencesContainer}
+        setTemplateRecommendationContainer={setTemplateRecommendationContainer}
+        openTemplate={openTemplate}
+        suitableTemplate={suitableTemplate}
+        suitableTemplateLink={suitableTemplateLink}
+        additionalTemplate1={additionalTemplate1}
+        additionalTemplate1Link={additionalTemplate1Link}
+        additionalTemplate2={additionalTemplate2}
+        additionalTemplate2Link={additionalTemplate2Link}
+        additionalTemplate3={additionalTemplate3}
+        additionalTemplate3Link={additionalTemplate3Link}
+        />
     </>
     )
 }

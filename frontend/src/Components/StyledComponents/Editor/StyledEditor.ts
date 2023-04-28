@@ -14,7 +14,7 @@ export const SpokeIframe = styled.iframe`
   border: 0;
 `
 
-export const WelcomeContainer = styled.div`
+export const WelcomeContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +25,7 @@ export const WelcomeContainer = styled.div`
   visibility: ${props => props.hidden ? 'hidden' : 'visible'};
 `
 
-export const CapturePreferecesContainer = styled.div`
+export const CapturePreferecesContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,7 @@ export const CapturePreferecesContainer = styled.div`
   visibility: ${props => props.hidden ? 'hidden' : 'visible'};
 `
 
-export const TemplateRecommendationContainer = styled.div`
+export const TemplateRecommendationContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

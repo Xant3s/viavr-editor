@@ -32,8 +32,6 @@ export function TriggerConfigEditor({
     const [sceneObjects, setSceneObjects] = React.useState<any[]>([])
     const [triggers, setTriggers] = React.useState<any[]>([])
 
-    const handleClose = () => close()
-
     const handleSceneObjectChange = event => setSceneObject(event.target.value)
 
     const handleTriggerTypeChange = event => setTriggerType(event.target.value)
@@ -65,12 +63,12 @@ export function TriggerConfigEditor({
         <div>
             <Modal
                 open={isOpen}
-                onClose={handleClose}
+                onClose={close}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Button onClick={handleClose} sx={{ position: 'absolute', top: 0, right: 0 }}>
+                    <Button onClick={close} sx={{ position: 'absolute', top: 0, right: 0 }}>
                         <CloseIcon />
                     </Button>
                     <Typography id="modal-modal-title" variant="h6" component="h2">

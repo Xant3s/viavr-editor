@@ -7,9 +7,15 @@ export const ProjectSelection = ({ hidden }) => {
     const [page, setPage] = useState<'welcome' | 'preferences' | 'recommendation'>('welcome')
     const [preferences, setPreferences] = useState<object>({})
 
-    return <div hidden={hidden}>
-        {page === 'welcome' && <WelcomeContainer setPage={setPage} />}
-        {page === 'preferences' && <CapturePreferencesContainer setPage={setPage} setPreferences={setPreferences}/>}
-        {page === 'recommendation' && <TemplateRecommendationContainer setPage={setPage} preferences={preferences} />}
-    </div>
+    return (
+        <div hidden={hidden}>
+            {page === 'welcome' && <WelcomeContainer setPage={setPage} />}
+            {page === 'preferences' && (
+                <CapturePreferencesContainer setPage={setPage} setPreferences={setPreferences} />
+            )}
+            {page === 'recommendation' && (
+                <TemplateRecommendationContainer setPage={setPage} preferences={preferences} />
+            )}
+        </div>
+    )
 }

@@ -22,6 +22,12 @@
     "uuid": "56940ba8-1db5-42e4-9732-9d15e9649311",
     "kind": "string"
   },
+  "templateServer": {
+    "value": "http://localhost:3003",
+    "label": "Template server URL",
+    "uuid": "48aa6b4a-d0d3-460f-ae24-2ce2c03f5e9e",
+    "kind": "string"
+  },
   "articyPath": {
     "value": "C:\\dev\\ArticyDraft\\ArticyDraft.exe",
     "label": "Path to Articy executable",

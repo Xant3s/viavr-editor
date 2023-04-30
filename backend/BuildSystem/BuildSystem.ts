@@ -4,11 +4,17 @@ import UnityBuildManager from './UnityBuildManager'
 import UnityPackageManager from './UnityPackageManager'
 import { UnityPackageSettingsManager } from './UnityPackageSettingsManager'
 import { loadPage } from '../Utils/ElectronUtils'
+import { BuildSettingsManager } from './BuildSettingsManager'
+import { channels } from '../API'
+import * as fs from 'fs/promises'
+import ProjectManager from '../ProjectManager/ProjectManager'
 
 
 export default class BuildSystem {
     private readonly mainWindow: BrowserWindow
     private _buildDialog?: BrowserWindow
+    private floorMapEditor?: BrowserWindow
+    private floorMapSvg
 
 
     constructor(window: BrowserWindow) {
@@ -16,8 +22,42 @@ export default class BuildSystem {
         const unityBuildManager = new UnityBuildManager(this)
         unityBuildManager.initIPC()
         UnityPackageManager.getInstance()
+        BuildSettingsManager.getInstance()
         UnityPackageSettingsManager.getInstance()
         ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
+        ipc.handle('BuildSystem:open-floor-map-editor', () => this.openFloorMapEditor())
+        ipc.handle(channels.toMain.floorMapNewPng, (_, image) => this.saveFloorMapImage(image))
+        ipc.handle(channels.toMain.floorMapNewSvg, (_, image) => this.saveFloorMapSvg(image))
+        ipc.handle(channels.toMain.floorMapGetSvg, () => this.floorMapSvg)
+        ipc.handle(channels.toMain.floorMapLoadSvg, () => this.loadFloorMapSvg())
+    }
+
+    private async saveFloorMapImage(imageData) {
+        const base64Data = imageData.replace(/^data:image\/png;base64,/, '')
+        try {
+            await fs.writeFile(path.join(ProjectManager.getInstance().presentWorkingDirectory, 'floorMap.png'), base64Data, "base64")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    private async saveFloorMapSvg(svgData) {
+        this.floorMapSvg = svgData
+        try {
+            await fs.writeFile(path.join(ProjectManager.getInstance().presentWorkingDirectory, 'floorMap.xmlsvg'), svgData)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    private async loadFloorMapSvg() {
+        try {
+            const floorMapData = await fs.readFile(path.join(ProjectManager.getInstance().presentWorkingDirectory, 'floorMap.xmlsvg'))
+            return floorMapData.toString()
+        } catch (err) {
+            console.log('No floor map found')
+            return undefined
+        }
     }
 
     get buildDialog(): Electron.BrowserWindow | undefined {
@@ -25,11 +65,18 @@ export default class BuildSystem {
     }
 
     private async openBuildMenu() {
-        this._buildDialog = new BrowserWindow(
+        this._buildDialog = this.openWindow('build-dialog')
+    }
+
+    private async openFloorMapEditor() {
+        this.floorMapEditor = this.openWindow('floor-map-editor', 1200, 800)
+    }
+
+    private openWindow(page: string, width = 900, height = 900) {
+        const window = new BrowserWindow(
             {
-                width: 900,
-                height: 900,
-                title: 'Build Dialog',
+                width: width,
+                height: height,
                 modal: true,
                 parent: this.mainWindow,
                 autoHideMenuBar: true,
@@ -39,6 +86,7 @@ export default class BuildSystem {
                 },
             },
         )
-        loadPage(this._buildDialog, 'build-dialog')
+        loadPage(window, page)
+        return window
     }
 }

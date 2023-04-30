@@ -7,7 +7,7 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 ## Prerequisites
 
 - Make sure to clone recursively, i.e. including all submodules
-- Make sure [node.js](https://nodejs.org/en/download/) >=16.10 is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+- Make sure [node.js](https://nodejs.org/en/download/) 16.x is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
@@ -104,3 +104,7 @@ Currently, only the backend has unit tests. `electron-is-dev` is incompatible wi
 
 - After loading a scene in Spoke, the editor can no longer be closed
   - Temporary workaround: use the task manager to kill the application
+
+## Template Server
+
+To use features related to the template server make sure to run the server (https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/servers/template-server) and specify the server address in the preferences.

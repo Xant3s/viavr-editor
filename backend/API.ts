@@ -2,7 +2,7 @@ import { ipcRenderer } from 'electron'
 import Path from 'path'
 
 export const channels = {
-    'toMain': {
+    toMain: {
         queryScenes: 'BuildSystem:query-available-scenes',
         queryPackages: 'BuildSystem:query-available-packages',
         createUnityProject: 'BuildSystem:create-unity-project',
@@ -19,15 +19,24 @@ export const channels = {
         changePackageSetting: 'unityPackageSettings:changed',
         setPackageSetting: 'unityPackageSettings:set',
         getPackageSetting: 'unityPackageSettings:get',
+        setBuildSetting: 'buildSettings:set',
+        getBuildSetting: 'buildSettings:get',
         createNewProject: 'project-manager:create-new-project',
         openArticyEditor: 'articy:open-editor',
         openProject: 'project-manager:open-project',
         openProjectFolder: 'project-manager:open-project-folder',
+        openFloorMapEditor: 'BuildSystem:open-floor-map-editor',
         getPresentWorkingDirectory: 'project-manager:get-present-working-directory',
         showOpenFileDialog: 'util:show-open-file-dialog',
+        floorMapNewPng: 'floor-map:new-png',
+        floorMapNewSvg: 'floor-map:new-svg',
+        floorMapGetSvg: 'floor-map:get-svg',
+        floorMapLoadSvg: 'floor-map:load-svg',
+        getSceneObjects: 'scene:get-objects',
+        shareProject: 'share:project',
+        downloadProjectTemplates: 'share:download-projects',
     },
-    'fromMain': {
-        buildFinished: 'BuildSystem:build-finished',
+    fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
@@ -47,7 +56,7 @@ class ValidChannels {
 
 const send = (channel: string, ...args: any) => {
     const validChannels = new ValidChannels()
-    if(validChannels.toMain.includes(channel)) {
+    if (validChannels.toMain.includes(channel)) {
         ipcRenderer.send(channel, ...args)
     } else {
         console.error(`Invalid channel: ${channel}`)
@@ -56,7 +65,7 @@ const send = (channel: string, ...args: any) => {
 
 const invoke = async (channel: string, ...args: any) => {
     const validChannels = new ValidChannels()
-    if(validChannels.toMain.includes(channel)) {
+    if (validChannels.toMain.includes(channel)) {
         return ipcRenderer.invoke(channel, ...args)
     } else {
         console.error(`Invalid channel: ${channel}`)
@@ -69,7 +78,7 @@ const invoke = async (channel: string, ...args: any) => {
 //@ts-ignore
 const on = (channel: string, func) => {
     const validChannels = new ValidChannels()
-    if(validChannels.fromMain.includes(channel)) {
+    if (validChannels.fromMain.includes(channel)) {
         // Deliberately strip event as it includes `sender`
         ipcRenderer.on(channel, (event, ...args) => func(...args))
     } else {

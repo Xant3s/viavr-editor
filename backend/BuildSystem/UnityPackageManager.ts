@@ -21,7 +21,7 @@ export default class UnityPackageManager {
         })
     }
 
-    public async queryPackagesFromAllRegistries() {
+    public async queryPackagesFromAllRegistries(filterViavr = true) {
         const registriesSetting = await PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries')
         const registries = registriesSetting.value
         const packageManager = UnityPackageManager.getInstance()
@@ -29,22 +29,24 @@ export default class UnityPackageManager {
         for(const registry of registries) {
             const scopes = registry.packageRegistryScopes.value
             for(const scope of scopes) {
-                const packages = await packageManager.queryPackagesFromRegistry(registry.packageRegistryUrl.value, scope)
+                const packages = await packageManager.queryPackagesFromRegistry(registry.packageRegistryUrl.value, scope, filterViavr)
                 packageList = packageList.concat(packages)
             }
         }
         return packageList
     }
 
-    public async queryPackagesFromRegistry(registryUrl: string, scope: string) {
+    public async queryPackagesFromRegistry(registryUrl: string, scope: string, filterViavr = true) {
         const response = await fetch(`${registryUrl}/-/v1/search?text=${scope}`)
         const packageList = await response.json()
         // @ts-ignore
         const packages = packageList['objects'].map(obj => obj['package'])
         const packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(registryUrl, p['name'])))
-        const packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))
-        const viavrPackagesLatestInfo = packagesLatestInfo.filter(p => p.keywords && (p.keywords as string[]).indexOf('viavr') !== -1)
-        return viavrPackagesLatestInfo
+        let packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))
+        if(filterViavr) {
+            packagesLatestInfo = packagesLatestInfo.filter(p => p.keywords && (p.keywords as string[]).indexOf('viavr') !== -1)
+        }
+        return packagesLatestInfo
     }
 
     public async queryPackageDetails(registryUrl: string, packageName: string) {

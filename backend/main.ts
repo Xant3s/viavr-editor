@@ -10,7 +10,9 @@ import DialogUtils from './Utils/DialogUtils'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
 import { Prototypes } from './Prototypes'
 import { ArticyManager } from './ArticyManager'
-
+import { SceneUtils } from './Utils/SceneUtils'
+import { ProjectTags } from './ProjectManager/ProjectTags'
+import ShareManager from './ShareManager'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
@@ -25,11 +27,14 @@ const startup = async () => {
     new DialogUtils()
     new Prototypes()
     new ArticyManager()
+    new ProjectTags()
+    new ShareManager()
+    await SceneUtils.register()
 }
 
 const tryOpenProject = async () => {
     // Also see https://github.com/electron/electron/issues/4690
-    if(process.argv.length > 1 && process.argv[1] !== '.') {
+    if (process.argv.length > 1 && process.argv[1] !== '.') {
         console.log(`Opening project ${process.argv[1]}`)
         await ProjectManager.getInstance().openProjectFromFileNoPrompt(process.argv[1])
     }

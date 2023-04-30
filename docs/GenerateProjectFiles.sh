@@ -138,7 +138,7 @@ outputFile="$scriptDir/_site/files.json"
 echo "[" > "$outputFile"
 
 firstFile=true
-find "$articlesDir" -type f -name "*.md" -print0 | while IFS= read -r -d $'\0' file; do
+find "$articlesDir" -type f -name "*.md" -print0 | tac -s $'\0' | while IFS= read -r -d $'\0' file; do
     relMdPath="${file#$articlesDir/}"
     relHtmlPath=$(echo "$relMdPath" | sed 's/\.md$/.html/' | sed 's/\//\\\\/g')
 

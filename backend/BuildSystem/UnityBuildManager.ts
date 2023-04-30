@@ -16,6 +16,7 @@ import { Setting_t } from '../../frontend/src/@types/Settings'
 import Path from 'path'
 import { exec } from 'child_process'
 import assert = require('assert')
+import { BuildSettingsManager } from './BuildSettingsManager'
 
 
 declare global {
@@ -43,17 +44,12 @@ export default class UnityBuildManager {
     }
 
     public initIPC() {
-        ipc.handle(channels.toMain.queryScenes, async (e) => {
+        ipc.handle(channels.toMain.queryScenes, async () => {
             const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd()
             return sceneFiles
         })
-        ipc.handle(channels.toMain.createUnityProject, async (e, selectedScenes, selectedPackages) => {
-            return await this.createUnityProject(selectedScenes, selectedPackages)
-        })
-        ipc.handle(channels.toMain.buildUnityProject, async (e) => {
-            await new UnityBridge().build(this.buildPath)
-            e.sender.send(channels.fromMain.buildFinished)
-        })
+        ipc.handle(channels.toMain.createUnityProject, async (_, selectedScenes, selectedPackages) => await this.createUnityProject(selectedScenes, selectedPackages))
+        ipc.handle(channels.toMain.buildUnityProject, async () => await new UnityBridge().build(this.buildPath))
         ipc.handle(channels.toMain.checkBuildSuccess, async () => {
             const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
             const windowsExecutableExists = fs.existsSync(windowsExecutablePath) && fs.readdirSync(windowsExecutablePath).length > 0
@@ -61,10 +57,8 @@ export default class UnityBuildManager {
             const androidExecutableExists = fs.existsSync(androidExecutablePath)
             return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
         })
-        ipc.handle(channels.toMain.openBuildDirectory, async (e) => {
-            await UnityBuildManager.openBuildDirectory(this.buildPath)
-        })
-        ipc.handle(channels.toMain.queryJsonScenes, async (e) => {
+        ipc.handle(channels.toMain.openBuildDirectory, async () => await UnityBuildManager.openBuildDirectory(this.buildPath))
+        ipc.handle(channels.toMain.queryJsonScenes, async () => {
             const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
             return sceneFiles
         })
@@ -81,6 +75,7 @@ export default class UnityBuildManager {
         await this.installPackages(outputPath, selectedPackages)
         await this.importScenes(outputPath, sceneNames)
         await this.exportPackageConfigurations(outputPath)
+        await this.exportBuildSettings(outputPath)
         this.buildPath = outputPath
         return outputPath
     }
@@ -129,11 +124,20 @@ export default class UnityBuildManager {
         const manifest = await UnityBuildManager.readManifest(outputPath)
         const packageManager = UnityPackageManager.getInstance()
         const packageList = await packageManager.queryPackagesFromAllRegistries()
+        const unfilteredPackageList = await packageManager.queryPackagesFromAllRegistries(false)
+
         selectedPackages.forEach(selectedPackage => {
             const latestVersion = (packageList.find(p => p.name === selectedPackage.name).version)
             manifest.dependencies ??= []
             manifest.dependencies[selectedPackage.name] = latestVersion
         })
+        const supervisorEnabled = await BuildSettingsManager.getInstance().get<boolean>('supervisorEnabled')
+        if(supervisorEnabled) {
+            const supervisorIntegrationName = 'de.jmu.ge.viavr.supervisorintegration'
+            const supervisorIntegrationVersion = (unfilteredPackageList.find(p => p.name === supervisorIntegrationName).version)
+            manifest.dependencies ??= []
+            manifest.dependencies[supervisorIntegrationName] = supervisorIntegrationVersion
+        }
 
         await UnityBuildManager.writeManifest(manifest, outputPath)
     }
@@ -195,6 +199,15 @@ export default class UnityBuildManager {
 
     private static async openBuildDirectory(buildPath: string) {
         await exec(`start "" ${buildPath}\\Build`)
+    }
+
+    private async exportBuildSettings(outputPath: string) {
+        const settingsPath = await BuildSettingsManager.getInstance().settingsPath
+        await fs.copyFile(settingsPath, `${outputPath}/Assets/Settings/BuildSettings.json`, (err) => {
+            if(err) {
+                console.error(err)
+            }
+        })
     }
 }
 

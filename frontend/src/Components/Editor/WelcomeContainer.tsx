@@ -1,38 +1,26 @@
-import { WelcomeContainerStyle } from "../StyledComponents/Editor/StyledEditor";
-import { Button } from "evergreen-ui";
-import { Row } from "../StyledComponents/Row";
+import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
+import { Button } from 'evergreen-ui'
+import { Row } from '../StyledComponents/Row'
 
-const WelcomeContainer = ({hidden, setWelcomeContainer, setCapturePreferencesContainer, setTemplateRecommendationContainer}) => {
+export const WelcomeContainer = ({ setPage }) => {
     return (
-        <WelcomeContainerStyle hidden={hidden}>
+        <WelcomeContainerStyle>
             <h1>VIA-VR Editor</h1>
             <Row>
-                <Button marginRight={16} appearance="primary" onClick={() => {
-                    setWelcomeContainer(!hidden)
-                    setCapturePreferencesContainer(hidden)
-                    setTemplateRecommendationContainer(!hidden)
-                }}>
+                <Button marginRight={16} appearance='primary' onClick={() => setPage('preferences')}>
                     Create New Project
                 </Button>
-                <Button marginRight={16} appearance="primary" onClick={() => {
-                    setWelcomeContainer(!hidden)
-                    setCapturePreferencesContainer(!hidden)
-                    setTemplateRecommendationContainer(!hidden)
-                    api.send(api.channels.toMain.openProject, 'res/Templates')}
-                    }>
+                <Button marginRight={16} appearance='primary' onClick={() =>
+                        api.send(api.channels.toMain.openProject, 'res/Templates')
+                }>
                     Open Project
                 </Button>
-                <Button marginRight={16} appearance="primary" onClick={() => {
-                    setWelcomeContainer(!hidden)
-                    setCapturePreferencesContainer(!hidden)
-                    setTemplateRecommendationContainer(!hidden)
-                    api.send(api.channels.toMain.openProjectFolder)}
-                    }>
+                <Button marginRight={16} appearance='primary' onClick={() =>
+                        api.send(api.channels.toMain.openProjectFolder)
+                }>
                     Open Project from Folder
                 </Button>
             </Row>
         </WelcomeContainerStyle>
     )
 }
-
-export default WelcomeContainer;

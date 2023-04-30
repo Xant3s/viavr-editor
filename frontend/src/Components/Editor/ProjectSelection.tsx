@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { getTemplates } from '../RS/Communication'
 import { toaster } from 'evergreen-ui'
-import WelcomeContainer from './WelcomeContainer'
-import CapturePreferencesContainer from './CapturePreferencesContainer'
-import TemplateRecommendationContainer from './TemplateRecommendationContainer'
+import { WelcomeContainer } from './WelcomeContainer'
+import { CapturePreferencesContainer } from './CapturePreferencesContainer'
+import { TemplateRecommendationContainer } from './TemplateRecommendationContainer'
 
 export const ProjectSelection = ({ hidden }) => {
-    const [WelcomeContainerStatus, setWelcomeContainer] = useState(hidden)
-    const [CapturePreferencesContainerStatus, setCapturePreferencesContainer] = useState(!hidden)
-    const [TemplateRecommendationContainerStatus, setTemplateRecommendationContainer] = useState(!hidden)
+    const [page, setPage] = useState<'welcome' | 'preferences' | 'recommendation'>('welcome')
     const [suitableTemplate, setSuitableTemplate] = useState('')
     const [suitableTemplateLink, setSuitableTemplateLink] = useState('')
     const [additionalTemplate1, setAdditionalTemplate1] = useState('')
@@ -30,9 +28,6 @@ export const ProjectSelection = ({ hidden }) => {
     const openTemplate = (link : string) => {
         // Open the template in the editor
         api.send(api.channels.toMain.openProject, link);
-        setWelcomeContainer(!hidden)
-        setCapturePreferencesContainer(!hidden)
-        setTemplateRecommendationContainer(!hidden)
     }
 
     const showTemplates = (response: any) => {
@@ -61,13 +56,9 @@ export const ProjectSelection = ({ hidden }) => {
 
     const sendDataToServer = async event => {
         event.preventDefault()
+        setPage('recommendation')
 
-        // Hide CapturePreferencesContainer and show TemplateRecommendationContainer
-        setWelcomeContainer(!hidden)
-        setCapturePreferencesContainer(!hidden)
-        setTemplateRecommendationContainer(hidden)
-
-        if (domainName === '' || themeName === '') {
+        if(domainName === '' || themeName === '') {
             toaster.warning('Please fill in domain and theme fields')
             return
         }
@@ -86,43 +77,34 @@ export const ProjectSelection = ({ hidden }) => {
         showTemplates(templateList)
     }
 
-    return (
-    <>
-    <WelcomeContainer 
-        hidden={WelcomeContainerStatus}
-        setWelcomeContainer={setWelcomeContainer}
-        setCapturePreferencesContainer={setCapturePreferencesContainer}
-        setTemplateRecommendationContainer={setTemplateRecommendationContainer}
-    />
-        
-    <CapturePreferencesContainer 
-        hidden={CapturePreferencesContainerStatus}
-        setWelcomeContainer={setWelcomeContainer}
-        setCapturePreferencesContainer={setCapturePreferencesContainer}
-        setTemplateRecommendationContainer={setTemplateRecommendationContainer}
-        sendDataToServer={sendDataToServer}
-        handleDomainChange={e => setDomainName(e.target.value)}
-        handleThemeChange={e => setThemeName(e.target.value)}
-        handleKeywordChange={e => setKeyword(e.target.value)}
-        handleUsernameChange={e => setUsername(e.target.value)}
-        handleSpecialisationChange={e => setSpecialisation(e.target.value)}
-    />
+    return <div hidden={hidden}>
+        {page === 'welcome' && <WelcomeContainer setPage={setPage} />}
 
-    <TemplateRecommendationContainer 
-        hidden={TemplateRecommendationContainerStatus}
-        setWelcomeContainer={setWelcomeContainer}
-        setCapturePreferencesContainer={setCapturePreferencesContainer}
-        setTemplateRecommendationContainer={setTemplateRecommendationContainer}
-        openTemplate={openTemplate}
-        suitableTemplate={suitableTemplate}
-        suitableTemplateLink={suitableTemplateLink}
-        additionalTemplate1={additionalTemplate1}
-        additionalTemplate1Link={additionalTemplate1Link}
-        additionalTemplate2={additionalTemplate2}
-        additionalTemplate2Link={additionalTemplate2Link}
-        additionalTemplate3={additionalTemplate3}
-        additionalTemplate3Link={additionalTemplate3Link}
-        />
-    </>
-    )
+        {page === 'preferences' &&
+            <CapturePreferencesContainer
+                setPage={setPage}
+                sendDataToServer={sendDataToServer}
+                handleDomainChange={e => setDomainName(e.target.value)}
+                handleThemeChange={e => setThemeName(e.target.value)}
+                handleKeywordChange={e => setKeyword(e.target.value)}
+                handleUsernameChange={e => setUsername(e.target.value)}
+                handleSpecialisationChange={e => setSpecialisation(e.target.value)}
+            />
+        }
+
+        {page === 'recommendation' &&
+            <TemplateRecommendationContainer
+                setPage={setPage}
+                openTemplate={openTemplate}
+                suitableTemplate={suitableTemplate}
+                suitableTemplateLink={suitableTemplateLink}
+                additionalTemplate1={additionalTemplate1}
+                additionalTemplate1Link={additionalTemplate1Link}
+                additionalTemplate2={additionalTemplate2}
+                additionalTemplate2Link={additionalTemplate2Link}
+                additionalTemplate3={additionalTemplate3}
+                additionalTemplate3Link={additionalTemplate3Link}
+            />
+        }
+    </div>
 }

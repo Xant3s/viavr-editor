@@ -10,12 +10,8 @@ export const ProjectSelection = ({ hidden }) => {
     return (
         <div hidden={hidden}>
             {page === 'welcome' && <WelcomeContainer setPage={setPage} />}
-            {page === 'preferences' && (
-                <CapturePreferencesContainer setPage={setPage} setPreferences={setPreferences} />
-            )}
-            {page === 'recommendation' && (
-                <TemplateRecommendationContainer setPage={setPage} preferences={preferences} />
-            )}
+            {page === 'preferences' && <CapturePreferencesContainer setPage={setPage} setPreferences={setPreferences} />}
+            {page === 'recommendation' && <TemplateRecommendationContainer setPage={setPage} preferences={preferences} />}
         </div>
     )
 }

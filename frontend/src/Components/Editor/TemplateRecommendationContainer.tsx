@@ -14,43 +14,38 @@ export const TemplateRecommendationContainer = ({setPage, preferences}) => {
     const [additionalTemplate2Link, setAdditionalTemplate2Link] = useState('')
     const [additionalTemplate3, setAdditionalTemplate3] = useState('')
     const [additionalTemplate3Link, setAdditionalTemplate3Link] = useState('')
-    const additionalTemplateNames = [setAdditionalTemplate1, setAdditionalTemplate2, setAdditionalTemplate3]
-    const additionalTemplateLinks = [setAdditionalTemplate1Link, setAdditionalTemplate2Link, setAdditionalTemplate3Link]
 
-
-    const showTemplates = (templateList) => {
-        if(templateList?.templates?.length === 0) {
-            toaster.warning('No data received from server')
-        }
-        if(templateList?.errors?.[0]?.code === 'ThemeNA') {
-            toaster.warning('No templates found for the given theme. Here are some alternatives.')
-        }
-        if(templateList?.errors?.[0]?.code === 'KeywordNA') {
-            toaster.warning('No templates found for the given keyword. Here are some alternatives.')
-        }
-        // Fetch the first template name from the json response
-        setSuitableTemplate(templateList?.templates?.[0]?.name ?? '')
-        setSuitableTemplateLink(templateList?.templates?.[0]?.link ?? '')
-        // Fetch the additional template names from the json response
-        for(let i = 1; i < templateList?.templates?.length; i++) {
-            additionalTemplateNames[i - 1](templateList?.templates?.[i]?.name ?? '')
-            additionalTemplateLinks[i - 1](templateList?.templates?.[i]?.link ?? '')
-        }
-    }
 
     const openTemplate = (link : string) => {
-        // Open the template in the editor
-        api.send(api.channels.toMain.openProject, link);
+        api.send(api.channels.toMain.openProject, link)
     }
 
     useEffect(() => {
         const queryTemplates = async () => {
             const templateList = await getTemplates(preferences)
-            showTemplates(templateList)
-        }
-        queryTemplates()
 
-    }, [])
+            if(templateList?.templates?.length === 0) {
+                toaster.warning('No data received from server')
+            }
+            if(templateList?.errors?.[0]?.code === 'ThemeNA') {
+                toaster.warning('No templates found for the given theme. Here are some alternatives.')
+            }
+            if(templateList?.errors?.[0]?.code === 'KeywordNA') {
+                toaster.warning('No templates found for the given keyword. Here are some alternatives.')
+            }
+            // Fetch the first template name from the json response
+            setSuitableTemplate(templateList?.templates?.[0]?.name ?? '')
+            setSuitableTemplateLink(templateList?.templates?.[0]?.link ?? '')
+            // Fetch the additional template names from the json response
+            const additionalTemplateNames = [setAdditionalTemplate1, setAdditionalTemplate2, setAdditionalTemplate3]
+            const additionalTemplateLinks = [setAdditionalTemplate1Link, setAdditionalTemplate2Link, setAdditionalTemplate3Link]
+            for(let i = 1; i < templateList?.templates?.length; i++) {
+                additionalTemplateNames[i - 1](templateList?.templates?.[i]?.name ?? '')
+                additionalTemplateLinks[i - 1](templateList?.templates?.[i]?.link ?? '')
+            }
+        }
+       queryTemplates()
+    }, [preferences])
 
 
     return (

@@ -1,11 +1,6 @@
-import { Row } from '../StyledComponents/Row'
-//import { Button } from '../StyledComponents/Button'
-import { useState, useRef } from 'react'
-import { Input } from '../StyledComponents/Input'
+import { useState } from 'react'
 import { getTemplates } from '../RS/Communication'
-import { Label, TemplateContent } from '../StyledComponents/Label'
-import { data } from 'jquery'
-import { Button, TextInput, toaster } from 'evergreen-ui'
+import { toaster } from 'evergreen-ui'
 import WelcomeContainer from './WelcomeContainer'
 import CapturePreferencesContainer from './CapturePreferencesContainer'
 import TemplateRecommendationContainer from './TemplateRecommendationContainer'
@@ -31,30 +26,13 @@ export const ProjectSelection = ({ hidden }) => {
     const additionalTemplateNames = [setAdditionalTemplate1, setAdditionalTemplate2, setAdditionalTemplate3]
     const additionalTemplateLinks = [setAdditionalTemplate1Link, setAdditionalTemplate2Link, setAdditionalTemplate3Link]
 
-    const handleDomainChange = (event) => {
-        setDomainName(event.target.value)
-    }
-    const handleThemeChange = (event) => {
-        setThemeName(event.target.value)
-    }
-    const handleKeywordChange = (event) => {
-        setKeyword(event.target.value)
-    }
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value)
-    }
-    const handleSpecialisationChange = (event) => {
-        setSpecialisation(event.target.value)
-    }
 
     const openTemplate = (link : string) => {
         // Open the template in the editor
-        console.log(link)
         api.send(api.channels.toMain.openProject, link);
         setWelcomeContainer(!hidden)
         setCapturePreferencesContainer(!hidden)
         setTemplateRecommendationContainer(!hidden)
-        
     }
 
     const showTemplates = (response: any) => {
@@ -106,8 +84,6 @@ export const ProjectSelection = ({ hidden }) => {
         }
         const templateList = getTemplates(preferences)
         showTemplates(templateList)
-        console.log(templateList)
-        console.log('Recieved template list')
     }
 
     return (
@@ -125,11 +101,11 @@ export const ProjectSelection = ({ hidden }) => {
         setCapturePreferencesContainer={setCapturePreferencesContainer}
         setTemplateRecommendationContainer={setTemplateRecommendationContainer}
         sendDataToServer={sendDataToServer}
-        handleDomainChange={handleDomainChange}
-        handleThemeChange={handleThemeChange}
-        handleKeywordChange={handleKeywordChange}
-        handleUsernameChange={handleUsernameChange}
-        handleSpecialisationChange={handleSpecialisationChange}
+        handleDomainChange={e => setDomainName(e.target.value)}
+        handleThemeChange={e => setThemeName(e.target.value)}
+        handleKeywordChange={e => setKeyword(e.target.value)}
+        handleUsernameChange={e => setUsername(e.target.value)}
+        handleSpecialisationChange={e => setSpecialisation(e.target.value)}
     />
 
     <TemplateRecommendationContainer 

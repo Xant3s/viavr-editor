@@ -74,10 +74,10 @@ export default class ProjectManager {
         }
     }
 
-    private async openProjectFromFile(recommderedProjectPath: string) {
+    private async openProjectFromFile(defaultPath: string) {
         const { canceled, filePaths } = await dialog.showOpenDialog({
             properties: ['openFile'],
-            defaultPath: Path.join(app.getAppPath(), recommderedProjectPath),
+            defaultPath: Path.join(app.getAppPath(), defaultPath),
             filters: [{ name: 'VIA-VR project files', extensions: ['via'] }],
         })
         if(!canceled && filePaths.length > 0) {

@@ -14,7 +14,29 @@ export const SpokeIframe = styled.iframe`
   border: 0;
 `
 
-export const WelcomeContainer = styled.div`
+export const WelcomeContainerStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #15171b;
+  height: ${props => props.hidden ? 0 : '100vh'};
+  visibility: ${props => props.hidden ? 'hidden' : 'visible'};
+`
+
+export const CapturePreferecesContainerStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #15171b;
+  height: ${props => props.hidden ? 0 : '100vh'};
+  visibility: ${props => props.hidden ? 'hidden' : 'visible'};
+`
+
+export const TemplateRecommendationContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,0 +1,37 @@
+id,domain,theme,keyword,usageCount,name,link,json
+1,Rehab,Occupational,spinal cord,0,Spinal cord movements,dummylink1,json1
+2,Rehab,Physical,gait,0,Gait Rehab,dummylink2,json2
+3,Rehab,Speech,dyslexia,0,Dyslexia - read what you see,dummylink3,json3
+4,Rehab,Physical,balance,0,Balance Rehab,dummylink4,json4
+5,Rehab,Physical,mobility,0,Mobility Rehab,dummylink5,json5
+6,Rehab,Physical,limb,0,Artificial Limb,dummylink6,json6
+7,Rehab,Physical,cane,0,Using cane,dummylink7,json7
+8,Rehab,Physical,crutches,0,Using Crutches,dummylink8,json8
+9,Rehab,Physical,walker,0,Using Walker,dummylink9,json9
+10,Rehab,Physical,wheelchair,0,Using Wheelchair,dummylink10,json10
+11,Rehab,Physical,pain,0,Pain management,dummylink11,json11
+12,Rehab,Speech,dyspaxia,0,Dyspraxia - read slowly,dummylink12,json12
+13,Rehab,Speech,articulation,0,Articulation problems,dummylink13,json13
+14,Rehab,Speech,resonance,0,Resonance problem,dummylink14,json14
+15,Rehab,Speech,parkinsons,0,Parkinson's disease,dummylink15,json15
+16,Rehab,Speech,cerebral palsy,0,Cerebral palsy,dummylink16,json16
+17,Rehab,Speech,down syndrome,0,Down syndrome,dummylink17,json17
+18,Rehab,Occupational,work,0,Work-life balance,dummylink18,json18
+19,Rehab,Occupational,cognition,0,Cognitive development - Filling applications,dummylink19,json19
+20,Rehab,Occupational,grip,0,Grip strength - hold what you see,dummylink20,json20
+21,Rehab,Occupational,handwriting,0,Handwriting exercise ,dummylink21,json21
+22,Rehab,Occupational,depression,0,Nature walk - fight depression,dummylink22,json22
+23,Rehab,Occupational,depression,0,Pet a dog - anti-depressant,dummylink23,json23
+24,Therapy,Psychodynamic,eating,0,Eat it right - Eating disorders,dummylink24,json24
+25,Therapy,Psychodynamic,anxiety,0,Breathing exercise - Anxiety,dummylink25,json25
+26,Therapy,Psychodynamic,drug,0,Drug usage prevention ,dummylink26,json26
+27,Therapy,Psychodynamic,depression,0,Nature walk - fight depression,dummylink27,json27
+28,Therapy,Psychodynamic,depression,0,Pet a dog - anti-depressant,dummylink28,json28
+29,Therapy,Behaviour,fire,0,Fire exposure therapy,dummylink29,json29
+30,Therapy,Behaviour,anxiety,0,Breathing exercise - Anxiety,dummylink30,json30
+31,Therapy,Behaviour,spider,0,Friendly spider - Arachnophobia,dummylink31,json31
+32,Therapy,Behaviour,height,0,I can fly - Aerophobia,dummylink32,json32
+33,Therapy,Behaviour,height,0,I am Burj Khalifa - Acrophobia,dummylink33,json33
+34,Therapy,Behaviour,ocd,0,Make it neat - OCD,dummylink34,json34
+35,Therapy,Behaviour,adhd,0,Do you remember it? - ADHD,dummylink35,json35
+36,Therapy,Behaviour,adhd,0,Focus - ADHD,dummylink36,json36

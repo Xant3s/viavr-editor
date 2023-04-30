@@ -1,20 +1,58 @@
-import { Button } from 'evergreen-ui'
+import { Button, toaster } from 'evergreen-ui'
 import { TemplateRecommendationContainerStyle } from '../StyledComponents/Editor/StyledEditor'
 import { Label } from '../StyledComponents/Label'
 import { Row } from '../StyledComponents/Row'
+import { useEffect, useState } from 'react'
+import { getTemplates } from '../RS/Communication'
 
-export const TemplateRecommendationContainer = ({
-    setPage,
-    suitableTemplate,
-    suitableTemplateLink,
-    additionalTemplate1,
-    additionalTemplate1Link,
-    additionalTemplate2,
-    additionalTemplate2Link,
-    additionalTemplate3,
-    additionalTemplate3Link,
-    openTemplate,
-}) => {
+export const TemplateRecommendationContainer = ({setPage, preferences}) => {
+    const [suitableTemplate, setSuitableTemplate] = useState('')
+    const [suitableTemplateLink, setSuitableTemplateLink] = useState('')
+    const [additionalTemplate1, setAdditionalTemplate1] = useState('')
+    const [additionalTemplate1Link, setAdditionalTemplate1Link] = useState('')
+    const [additionalTemplate2, setAdditionalTemplate2] = useState('')
+    const [additionalTemplate2Link, setAdditionalTemplate2Link] = useState('')
+    const [additionalTemplate3, setAdditionalTemplate3] = useState('')
+    const [additionalTemplate3Link, setAdditionalTemplate3Link] = useState('')
+    const additionalTemplateNames = [setAdditionalTemplate1, setAdditionalTemplate2, setAdditionalTemplate3]
+    const additionalTemplateLinks = [setAdditionalTemplate1Link, setAdditionalTemplate2Link, setAdditionalTemplate3Link]
+
+
+    const showTemplates = (templateList) => {
+        if(templateList?.templates?.length === 0) {
+            toaster.warning('No data received from server')
+        }
+        if(templateList?.errors?.[0]?.code === 'ThemeNA') {
+            toaster.warning('No templates found for the given theme. Here are some alternatives.')
+        }
+        if(templateList?.errors?.[0]?.code === 'KeywordNA') {
+            toaster.warning('No templates found for the given keyword. Here are some alternatives.')
+        }
+        // Fetch the first template name from the json response
+        setSuitableTemplate(templateList?.templates?.[0]?.name ?? '')
+        setSuitableTemplateLink(templateList?.templates?.[0]?.link ?? '')
+        // Fetch the additional template names from the json response
+        for(let i = 1; i < templateList?.templates?.length; i++) {
+            additionalTemplateNames[i - 1](templateList?.templates?.[i]?.name ?? '')
+            additionalTemplateLinks[i - 1](templateList?.templates?.[i]?.link ?? '')
+        }
+    }
+
+    const openTemplate = (link : string) => {
+        // Open the template in the editor
+        api.send(api.channels.toMain.openProject, link);
+    }
+
+    useEffect(() => {
+        const queryTemplates = async () => {
+            const templateList = await getTemplates(preferences)
+            showTemplates(templateList)
+        }
+        queryTemplates()
+
+    }, [])
+
+
     return (
         <TemplateRecommendationContainerStyle>
             <h1>Template Recommendations</h1>

@@ -1,6 +1,7 @@
 import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
-import { Button, toaster } from 'evergreen-ui'
+import { toaster } from 'evergreen-ui'
 import { Row } from '../StyledComponents/Row'
+import { Button } from '../StyledComponents/Button'
 
 export const WelcomeContainer = ({ setPage }) => {
     const downloadProjectTemplates = async () => {
@@ -20,21 +21,13 @@ export const WelcomeContainer = ({ setPage }) => {
         <WelcomeContainerStyle>
             <h1>VIA-VR Editor</h1>
             <Row>
-                <Button marginRight={16} appearance="primary" onClick={() => setPage('preferences')}>
+                <Button onClick={() => setPage('preferences')}>
                     Create New Project
                 </Button>
-                <Button
-                    marginRight={16}
-                    appearance="primary"
-                    onClick={() => api.send(api.channels.toMain.openProject, 'res/Templates')}
-                >
+                <Button onClick={() => api.send(api.channels.toMain.openProject, 'res/Templates')}>
                     Open Project
                 </Button>
-                <Button
-                    marginRight={16}
-                    appearance="primary"
-                    onClick={() => api.send(api.channels.toMain.openProjectFolder)}
-                >
+                <Button onClick={() => api.send(api.channels.toMain.openProjectFolder)}>
                     Open Project from Folder
                 </Button>
             </Row>

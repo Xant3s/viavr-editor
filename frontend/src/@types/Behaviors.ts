@@ -7,7 +7,7 @@ export class TaskInfo {
 
 export class ConditionInfo {
     identifier = ''
-    description = ''
+    parameter = ''
 }
 
 export class ActionInfo {

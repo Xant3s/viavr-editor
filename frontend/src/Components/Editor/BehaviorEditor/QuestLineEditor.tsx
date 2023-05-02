@@ -11,7 +11,7 @@ export const QuestLineEditor = () => {
     const [taskDetails, setTaskDetails] = useState<TaskInfo>()
     const [conditions, setConditions] = useState<ConditionInfo[]>([])
     const [newConditionIdentifier, setNewConditionIdentifier] = useState<string>('')
-    const [newConditionDescription, setNewConditionDescription] = useState<string>('')
+    const [newConditionParameter, setNewConditionParameter] = useState<string>('')
     const [actions, setActions] = useState<ActionInfo[]>([])
     const [newActionIdentifier, setNewActionIdentifier] = useState<string>('')
 
@@ -46,16 +46,16 @@ export const QuestLineEditor = () => {
             toaster.danger('The condition identifier has to be unique')
             return
         }
-        if (newConditionDescription === '') {
-            toaster.danger('Please enter a description for the condition')
+        if (newConditionParameter === '') {
+            toaster.danger('Please enter a parameter for the condition')
             return
         }
 
-        const newCondition = { identifier: newConditionIdentifier, description: newConditionDescription }
+        const newCondition = { identifier: newConditionIdentifier, parameter: newConditionParameter }
         if (!taskDetails) {
             setTaskDetails(new TaskInfo())
         }
-        if (taskDetails) {
+        if(taskDetails) {
             const newConditions = [...taskDetails.conditions, newCondition]
             if (taskDetails?.conditions !== undefined) {
                 taskDetails.conditions = newConditions
@@ -63,7 +63,7 @@ export const QuestLineEditor = () => {
             }
         }
         setNewConditionIdentifier('')
-        setNewConditionDescription('')
+        setNewConditionParameter('')
     }
 
     const addNewAction = () => {
@@ -117,9 +117,9 @@ export const QuestLineEditor = () => {
         }
     }
 
-    return <SettingAccordion summary={'Questlines'} details={(
+    return <SettingAccordion summary={'Quest Lines'} details={(
         <div>
-            <SettingAccordion summary={'Questline1'} details={(
+            <SettingAccordion summary={'Quest Line 1'} details={(
                 <div>
                     <Table>
                         <Table.Head>
@@ -174,14 +174,14 @@ export const QuestLineEditor = () => {
                             <Table>
                                 <Table.Head>
                                     <Table.TextHeaderCell>Condition Identifier</Table.TextHeaderCell>
-                                    <Table.TextHeaderCell>Condition Description</Table.TextHeaderCell>
+                                    <Table.TextHeaderCell>Condition Parameter</Table.TextHeaderCell>
                                     <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
                                 </Table.Head>
                                 <Table.Body height={240} minWidth={'600px'}>
                                     {conditions.map((condition: ConditionInfo) => (
                                         <Table.Row key={condition.identifier}>
                                             <Table.TextCell>{condition.identifier}</Table.TextCell>
-                                            <Table.TextCell>{condition.description}</Table.TextCell>
+                                            <Table.TextCell>{condition.parameter}</Table.TextCell>
                                             <Table.TextCell>
                                                 <Button iconBefore={TrashIcon}
                                                         appearance='minimal'
@@ -200,7 +200,7 @@ export const QuestLineEditor = () => {
 
                             <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
                                 <TextInput placeholder="Identifier..." value={newConditionIdentifier} onChange={(e) => setNewConditionIdentifier(e.target.value)}></TextInput>
-                                <TextInput placeholder="Description..." value={newConditionDescription} onChange={(e) => setNewConditionDescription(e.target.value)}></TextInput>
+                                <TextInput placeholder="Parameter..." value={newConditionParameter} onChange={(e) => setNewConditionParameter(e.target.value)}></TextInput>
                                 <Button appearance='primary'
                                         onClick={() => {
                                             addNewCondition()
@@ -265,7 +265,7 @@ export const QuestLineEditor = () => {
                 <Button appearance="primary" onClick={() => {
                     // TODO implement adding new questlines
                 }}>
-                    Add new Questline
+                    Add New Quest Line
                 </Button>
             </div>
 

@@ -4,6 +4,8 @@ import SVG from 'react-inlinesvg'
 import { v4 as uuid4 } from 'uuid'
 import { Button, Table, TextInput, toaster, TrashIcon } from 'evergreen-ui'
 import { AvatarInfo } from '../../@types/AvatarInfo'
+import * as React from 'react'
+import { MenuItem, Select } from '@mui/material'
 
 
 export const AvatarEditor = ({ hidden }) => {
@@ -12,6 +14,19 @@ export const AvatarEditor = ({ hidden }) => {
     const [qrCode, setQrCode] = useState<string>('')
     const [newAvatarName, setNewAvatarName] = useState<string>('')
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
+    const [sceneObjects, setSceneObjects] = React.useState<any[]>([])
+    const [sceneObject, setSceneObject] = React.useState<string>('') // for testing only
+
+
+    const loadSceneObjects = async () => {
+        const objects = await api.invoke(api.channels.toMain.getSceneObjects)
+        console.log(objects)
+        setSceneObjects(objects)
+    }
+
+    useEffect(() => {
+        if(!hidden) loadSceneObjects()
+    }, [hidden])
 
     useEffect(() => {
         const loadAvatars = async () => {
@@ -83,6 +98,7 @@ export const AvatarEditor = ({ hidden }) => {
             <Table.Head>
                 <Table.TextHeaderCell>Name</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Status</Table.TextHeaderCell>
+                <Table.TextHeaderCell>Scene Object</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Show QR Code</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Download</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
@@ -92,6 +108,15 @@ export const AvatarEditor = ({ hidden }) => {
                     <Table.Row key={avatar.id}>
                         <Table.TextCell>{avatar.name}</Table.TextCell>
                         <Table.TextCell>Please start download</Table.TextCell>
+                        <Table.TextCell>
+                            <Select id="sceneObject" value={sceneObject} style={{minWidth: '100px', height: '30px'}} onChange={e => setSceneObject(e.target.value)} required>
+                                {sceneObjects.map((object, index) => (
+                                    <MenuItem key={index} value={object.uuid}>
+                                        {object.name}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Table.TextCell>
                         <Table.TextCell>
                             <Button appearance='primary'
                                     style={{ width: '100%' }}

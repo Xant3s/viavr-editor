@@ -1,61 +1,54 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Select, SelectMenu } from 'evergreen-ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export const MetaDataEditor = () => {
-    const [options] = useState(["Avatar", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map((label) => ({ label, value: label, })))
+export const MetaDataEditor = ({isActive}) => {
+    const [options] = useState(["Avatar", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label, })))
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
-    const [selectedObject, setSelectedObject] = useState<string>('')
-    const [selectedTagsState, setSelectedTags] = useState<any[]>([])
-    const [selectedTagsNamesState, setSelectedTagsNames] = useState<string>('')
+    const [selectedObject, setSelectedObject] = useState<any>({})
+    const [selectButtonText, setSelectButtonText] = useState<string>('')
+    const [selectedTags, setSelectedTags] = useState<any[]>([])
 
 
-    const updateTagSettings = async (selectedItems) => {
-        const selectedNames = createSelectedNames(selectedItems)
+    const onUpdateSelectedObject = async value => {
+        const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
+        const objectTags = tags[value] ?? []
+        setSelectedObject(value)
+        setSelectedTags(objectTags)
+        setSelectButtonText(calculateSelectButtonText(objectTags))
+    }
 
+    const onUpdateSelectedTags = async (selectedItems) => {
         setSelectedTags(selectedItems)
-        setSelectedTagsNames(selectedNames)
-
+        setSelectButtonText(calculateSelectButtonText(selectedItems))
         const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
         tags[selectedObject] = selectedItems
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
     }
 
-    const onSelectChange = async (value) => {
-        const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
-        const objectTags = tags[value] ?? []
-        const selectedNames = createSelectedNames(objectTags)
-        setSelectedObject(value)
-        setSelectedTags(objectTags)
-        setSelectedTagsNames(selectedNames)
+    function calculateSelectButtonText(selectedItems: any[]) {
+        const selectedItemsLength = selectedItems.length
+        let selectedNames = ''
+        if(selectedItemsLength === 1) {
+            selectedNames = selectedItems.toString()
+        } else if(selectedItemsLength > 1) {
+            selectedNames = `${selectedItemsLength.toString()} selected...`
+        }
+        return selectedNames
     }
 
     const loadSceneObjects = async () => {
         const objects = await api.invoke(api.channels.toMain.getSceneObjects)
         setSceneObjects(objects)
-        onSelectChange(objects[0].uuid)
     }
 
-    function createSelectedNames(selectedItems: any[]) {
-        let selectedNames = ''
-        const selectedItemsLength = selectedItems.length
-        if (selectedItemsLength === 0) {
-            selectedNames = ''
-        } else if (selectedItemsLength === 1) {
-            selectedNames = selectedItems.toString()
-        } else if (selectedItemsLength > 1) {
-            selectedNames = selectedItemsLength.toString() + ' selected...'
-        }
-        return selectedNames
-    }
+    useEffect(() => {
+        if(isActive) loadSceneObjects()
+    }, [isActive])
 
     return <SettingAccordion summary={'Meta Data'} details={(
         <div>
-            <Button onClick={() => {
-                loadSceneObjects()
-            }}>Load Objects</Button>
-
-            <Select style={{ backgroundColor: "white" }} id="sceneObject" onChange={event => onSelectChange(event.target.value)} required>
+            <Select style={{ backgroundColor: "white" }} value={selectedObject.name} onChange={e => onUpdateSelectedObject(e.target.value)} required>
                 {sceneObjects.map((object, index) => (
                     <option key={index} value={object.uuid}>
                         {object.name}
@@ -67,19 +60,17 @@ export const MetaDataEditor = () => {
                 isMultiSelect
                 title="Select tags"
                 options={options}
-                selected={selectedTagsState}
-                onSelect={(item) => {
-                    const selected = [...selectedTagsState, item.value]
-                    const selectedItems = selected
-                    updateTagSettings(selectedItems)
+                selected={selectedTags}
+                onSelect={async item => {
+                    await onUpdateSelectedTags([...selectedTags, item.value])
                 }}
-                onDeselect={(item) => {
-                    const deselectedItemIndex = selectedTagsState.indexOf(item.value)
-                    const selectedItems = selectedTagsState.filter((_item, i) => i !== deselectedItemIndex)
-                    updateTagSettings(selectedItems)
+                onDeselect={async item => {
+                    const deselectedItemIndex = selectedTags.indexOf(item.value)
+                    const selectedItems = selectedTags.filter((_item, i) => i !== deselectedItemIndex)
+                    await onUpdateSelectedTags(selectedItems)
                 }}
             >
-                <Button>{selectedTagsNamesState || 'Select tags...'}</Button>
+                <Button>{selectButtonText || 'Select tags...'}</Button>
             </SelectMenu>
         </div>
     )} />

@@ -1,8 +1,6 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, SideSheet, Table, TextInput, toaster, TrashIcon } from 'evergreen-ui'
-import { TaskInfo } from '../../../@types/TaskInfo'
-import { ConditionInfo } from '../../../@types/ConditionInfo'
-import { ActionInfo } from '../../../@types/ActionInfo'
+import { ActionInfo, TaskInfo, ConditionInfo } from '../../../@types/Behaviors'
 import { useState } from 'react'
 
 export const QuestLineEditor = () => {

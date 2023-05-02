@@ -167,15 +167,6 @@ export const BehaviorEditor = ({ hidden }) => {
         }
     }
 
-    const exportJSON = () => {
-        const e = {
-            tasks: tasks,
-            // TODO add conditionSwitches and the associated GameObjects after tasks
-        }
-        const json = JSON.stringify(e)
-        console.log(json)
-    }
-
     return <div hidden={hidden} style={{ backgroundColor: '#3a4048', height: 'calc(100vh - 76px)', margin: 0, padding: 10, textAlign: 'center', color: 'white' }}>
         <h1>Behavior Editor</h1>
 
@@ -371,108 +362,7 @@ export const BehaviorEditor = ({ hidden }) => {
 
         )} />
 
-        {/* TODO this has to be different from the other conditions related to the questlines */}
-        <SettingAccordion summary={'Global Conditions'} details={(
-            <div>
-                <h2>Global Conditions</h2>
-                <Table>
-                    <Table.Head>
-                        <Table.TextHeaderCell>Condition Identifier</Table.TextHeaderCell>
-                        <Table.TextHeaderCell>Condition Description</Table.TextHeaderCell>
-                        <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
-                    </Table.Head>
-                    <Table.Body height={240} minWidth={'600px'}>
-                        {conditions.map((condition: ConditionInfo) => (
-                            <Table.Row key={condition.identifier}>
-                                <Table.TextCell>{condition.identifier}</Table.TextCell>
-                                <Table.TextCell>{condition.description}</Table.TextCell>
-                                <Table.TextCell>
-                                    <Button iconBefore={TrashIcon}
-                                        appearance='minimal'
-                                        intent='danger'
-                                        onClick={() => {
-                                            deleteCondition(condition.identifier)
-                                        }}
-                                    >
-                                        Delete
-                                    </Button>
-                                </Table.TextCell>
-                            </Table.Row>
-                        ))}
-                    </Table.Body>
-                </Table>
-
-                <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
-                    <TextInput placeholder="Identifier..." value={newConditionIdentifier} onChange={(e) => setNewConditionIdentifier(e.target.value)}></TextInput>
-                    <TextInput placeholder="Description..." value={newConditionDescription} onChange={(e) => setNewConditionDescription(e.target.value)}></TextInput>
-                    <Button appearance='primary'
-                        onClick={() => {
-                            addNewCondition()
-                        }}
-                    >Add new condition</Button>
-                </div>
-            </div>
-        )} />
-
-        <SettingAccordion summary={'ConditionSwitches'} details={(
-            <div>
-                <SettingAccordion summary={'ConditionSwitch1'} details={(
-                    <div>
-                        <SelectField label="Questline">
-                            <option value="foo" selected>Foo</option>
-                            <option value="bar">Bar</option>
-                        </SelectField>
-
-                        <SelectField label="Task">
-                            <option value="foo" selected>Foo</option>
-                            <option value="bar">Bar</option>
-                        </SelectField>
-
-                        <SelectField label="Condition">
-                            <option value="foo" selected>Foo</option>
-                            <option value="bar">Bar</option>
-                        </SelectField>
-
-                    </div>
-                )} />
-
-                <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
-                    <Button appearance="primary" onClick={() => {
-                        // TODO implement adding new condition switches
-                    }}>
-                        Add new ConditionSwitch
-                    </Button>
-                </div>
-            </div>
-        )} />
-
-        <SettingAccordion summary={'ConditionSwitchSetters'} details={(
-            <div>
-                <SettingAccordion summary={'ConditionSwitchSetter1'} details={(
-                    <div>
-                        <SelectField label="Type">
-                            <option value="foo" selected>Foo</option>
-                            <option value="bar">Bar</option>
-                        </SelectField>
-
-                        <SelectField label="Object">
-                            <option value="foo" selected>Foo</option>
-                            <option value="bar">Bar</option>
-                        </SelectField>
-                    </div>
-                )} />
-
-                <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
-                    <Button appearance="primary" onClick={() => {
-                        // TODO implement adding new condition switches
-                    }}>
-                        Add new ConditionSwitchSetter
-                    </Button>
-                </div>
-            </div>
-        )} />
-
-        <SettingAccordion summary={'Global States'} details={(
+        <SettingAccordion summary={'Game States'} details={(
             <div>
                 <SettingAccordion summary={'State1'} details={(
                     <Row>
@@ -491,14 +381,5 @@ export const BehaviorEditor = ({ hidden }) => {
                 </div>
             </div>
         )} />
-
-        <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
-            <Button appearance='primary'
-                onClick={() => {
-                    // TODO just for developing purposes. Has to be automated in the end
-                    exportJSON()
-                }}
-            >EXPORT</Button>
-        </div>
     </div>
 }

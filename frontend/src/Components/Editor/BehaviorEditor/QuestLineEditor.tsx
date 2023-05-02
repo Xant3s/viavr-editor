@@ -17,15 +17,15 @@ export const QuestLineEditor = () => {
 
 
     const addNewTask = () => {
-        if (newTaskIdentifier === '') {
+        if(newTaskIdentifier === '') {
             toaster.danger('Please enter an identifier for the task')
             return
         }
-        if (tasks.find(task => task.identifier === newTaskIdentifier)) {
+        if(tasks.find(task => task.identifier === newTaskIdentifier)) {
             toaster.danger('The task identifier has to be unique')
             return
         }
-        if (newTaskDescription === '') {
+        if(newTaskDescription === '') {
             toaster.danger('Please enter a description for the task')
             return
         }
@@ -38,26 +38,26 @@ export const QuestLineEditor = () => {
     }
 
     const addNewCondition = () => {
-        if (newConditionIdentifier === '') {
+        if(newConditionIdentifier === '') {
             toaster.danger('Please enter an identifier for the condition')
             return
         }
-        if (taskDetails?.conditions.find(condition => condition.identifier === newConditionIdentifier)) {
+        if(taskDetails?.conditions.find(condition => condition.identifier === newConditionIdentifier)) {
             toaster.danger('The condition identifier has to be unique')
             return
         }
-        if (newConditionParameter === '') {
+        if(newConditionParameter === '') {
             toaster.danger('Please enter a parameter for the condition')
             return
         }
 
         const newCondition = { identifier: newConditionIdentifier, parameter: newConditionParameter }
-        if (!taskDetails) {
+        if(!taskDetails) {
             setTaskDetails(new TaskInfo())
         }
         if(taskDetails) {
             const newConditions = [...taskDetails.conditions, newCondition]
-            if (taskDetails?.conditions !== undefined) {
+            if(taskDetails?.conditions !== undefined) {
                 taskDetails.conditions = newConditions
                 setConditions(taskDetails?.conditions)
             }
@@ -67,22 +67,22 @@ export const QuestLineEditor = () => {
     }
 
     const addNewAction = () => {
-        if (newActionIdentifier === '') {
+        if(newActionIdentifier === '') {
             toaster.danger('Please enter an identifier for the action')
             return
         }
-        if (taskDetails?.actions.find(action => action.identifier === newActionIdentifier)) {
+        if(taskDetails?.actions.find(action => action.identifier === newActionIdentifier)) {
             toaster.danger('The action identifier has to be unique')
             return
         }
 
         const newAction = { identifier: newActionIdentifier }
-        if (!taskDetails) {
+        if(!taskDetails) {
             setTaskDetails(new TaskInfo())
         }
-        if (taskDetails) {
+        if(taskDetails) {
             const newActions = [...taskDetails.actions, newAction]
-            if (taskDetails?.actions !== undefined) {
+            if(taskDetails?.actions !== undefined) {
                 taskDetails.actions = newActions
                 setActions(taskDetails?.actions)
             }
@@ -97,22 +97,22 @@ export const QuestLineEditor = () => {
 
     const deleteCondition = (conditionId) => {
         const newConditions = taskDetails?.conditions.filter(condition => condition.identifier !== conditionId)
-        if (taskDetails?.conditions !== undefined && newConditions !== undefined) {
+        if(taskDetails?.conditions !== undefined && newConditions !== undefined) {
             taskDetails.conditions = newConditions
         }
         setTaskDetails(taskDetails)
-        if (taskDetails?.conditions !== undefined) {
+        if(taskDetails?.conditions !== undefined) {
             setConditions(taskDetails?.conditions)
         }
     }
 
     const deleteAction = (actionId) => {
         const newActions = taskDetails?.actions.filter(action => action.identifier !== actionId)
-        if (taskDetails?.actions !== undefined && newActions !== undefined) {
+        if(taskDetails?.actions !== undefined && newActions !== undefined) {
             taskDetails.actions = newActions
         }
         setTaskDetails(taskDetails)
-        if (taskDetails?.actions !== undefined) {
+        if(taskDetails?.actions !== undefined) {
             setActions(taskDetails?.actions)
         }
     }

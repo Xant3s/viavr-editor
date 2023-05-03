@@ -9,11 +9,13 @@ import { Select, Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 
 const InvisibleSelect = () => {
-    return <div hidden>
-        <Select height={0}>
-            <option value='asd'></option>
-        </Select>
-    </div>
+    return (
+        <div hidden>
+            <Select height={0}>
+                <option value="asd"></option>
+            </Select>
+        </div>
+    )
 }
 
 export const BuildDialog: FC = () => {
@@ -21,10 +23,9 @@ export const BuildDialog: FC = () => {
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
 
-
     const toggleSceneSelected = (sceneFileName: string) => {
         const updatedScenes = scenes.map(scene => {
-            if(scene.sceneFileName === sceneFileName) {
+            if (scene.sceneFileName === sceneFileName) {
                 return {
                     ...scene,
                     isSelected: !scene.isSelected,
@@ -33,13 +34,16 @@ export const BuildDialog: FC = () => {
             return scene
         })
         setScenes(updatedScenes)
-        api.invoke(api.channels.toMain.setBuildSetting, 'selectedScenes', updatedScenes.filter(scene => scene.isSelected)
-                                                                                            .map(scene => scene.sceneFileName))
+        api.invoke(
+            api.channels.toMain.setBuildSetting,
+            'selectedScenes',
+            updatedScenes.filter(scene => scene.isSelected).map(scene => scene.sceneFileName)
+        )
     }
 
     const togglePackageSelected = (packageName: string) => {
         const updatedPackages = packages.map(packageItem => {
-            if(packageItem.name === packageName) {
+            if (packageItem.name === packageName) {
                 return {
                     ...packageItem,
                     isSelected: !packageItem.isSelected,
@@ -48,13 +52,15 @@ export const BuildDialog: FC = () => {
             return packageItem
         })
         setPackages(updatedPackages)
-        api.invoke(api.channels.toMain.setBuildSetting, 'selectedPackages', updatedPackages.filter(packageItem => packageItem.isSelected)
-                                                                                                .map(packageItem => packageItem.name))
+        api.invoke(
+            api.channels.toMain.setBuildSetting,
+            'selectedPackages',
+            updatedPackages.filter(packageItem => packageItem.isSelected).map(packageItem => packageItem.name)
+        )
     }
 
     const getSelectedSceneNames = () => {
-        return scenes.filter(item => item.isSelected)
-            .map(scene => scene.sceneFileName)
+        return scenes.filter(item => item.isSelected).map(scene => scene.sceneFileName)
     }
 
     const getSelectedPackages = () => {
@@ -64,11 +70,13 @@ export const BuildDialog: FC = () => {
     const loadScenes = async () => {
         const sceneFileNames = await api.invoke(api.channels.toMain.queryScenes)
         const selectedScenes = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedScenes')
-        setScenes(sceneFileNames.map(sceneFileName => {
-            const settingExists = selectedScenes !== undefined
-            const isSelected = settingExists ? selectedScenes.includes(sceneFileName) : true
-            return { isSelected: isSelected, sceneFileName }
-        }))
+        setScenes(
+            sceneFileNames.map(sceneFileName => {
+                const settingExists = selectedScenes !== undefined
+                const isSelected = true
+                return { isSelected: isSelected, sceneFileName }
+            })
+        )
     }
 
     const loadPackages = async () => {
@@ -80,7 +88,11 @@ export const BuildDialog: FC = () => {
             return { ...p, isSelected }
         })
         setPackages(newPackages)
-        await api.invoke(api.channels.toMain.setBuildSetting, 'selectedPackages', newPackages.filter(p => p.isSelected).map(packageItem => packageItem.name))
+        await api.invoke(
+            api.channels.toMain.setBuildSetting,
+            'selectedPackages',
+            newPackages.filter(p => p.isSelected).map(packageItem => packageItem.name)
+        )
     }
 
     const getPackagesToDraw = () => {
@@ -88,14 +100,18 @@ export const BuildDialog: FC = () => {
     }
 
     const build = async () => {
-        const outputPath = await api.invoke(api.channels.toMain.createUnityProject, getSelectedSceneNames(), getSelectedPackages())
-        if(outputPath === undefined) return
+        const outputPath = await api.invoke(
+            api.channels.toMain.createUnityProject,
+            getSelectedSceneNames(),
+            getSelectedPackages()
+        )
+        if (outputPath === undefined) return
         toaster.notify('Started generating the experience, please wait.', { duration: 5 })
         setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
         const result: 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)
-        if(result === 'failure') {
+        if (result === 'failure') {
             toaster.danger('Something went wrong generating your VIA experience.', { duration: 30 })
             return
         }
@@ -115,42 +131,35 @@ export const BuildDialog: FC = () => {
             <InvisibleSelect />
 
             <SettingsContainer>
+                <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings />} />
 
-                <SettingAccordion summary={'Scenes'} details={(
-                    <>
-                        {
-                            scenes.map(({ isSelected, sceneFileName }) => (
-                                <Scene key={sceneFileName} isSelected={isSelected} sceneFileName={sceneFileName}
-                                       toggleFunction={toggleSceneSelected} />
-                            ))
-                        }
-                    </>
-                )} />
-
-                <SettingAccordion summary={'Supervisor Monitor'} details={(
-                    <SupervisorMonitorSettings />
-                )} />
-
-                <SettingAccordion summary={'Packages'} details={(
-                    <>
-                        {packages.map(p => (
-                            <Package key={p.name}
-                                     name={p.name}
-                                     displayName={p.displayName}
-                                     version={p.version}
-                                     description={p.description}
-                                     isSelected={p.isSelected}
-                                     mandatory={p.mandatory}
-                                     toggleFunction={togglePackageSelected} />
-                        ))}
-                    </>
-                )} />
+                <SettingAccordion
+                    summary={'Packages'}
+                    details={
+                        <>
+                            {packages.map(p => (
+                                <Package
+                                    key={p.name}
+                                    name={p.name}
+                                    displayName={p.displayName}
+                                    version={p.version}
+                                    description={p.description}
+                                    isSelected={p.isSelected}
+                                    mandatory={p.mandatory}
+                                    toggleFunction={togglePackageSelected}
+                                />
+                            ))}
+                        </>
+                    }
+                />
 
                 {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
                 <br />
                 <div hidden={isBuilding}>
-                    <Button id='btn-build-project' type='button' onClick={build}>Generate Experience</Button>
+                    <Button id="btn-build-project" type="button" onClick={build}>
+                        Generate Experience
+                    </Button>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>

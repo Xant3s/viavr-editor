@@ -4,10 +4,8 @@ import ProjectManager from './ProjectManager'
 import * as Path from 'path'
 import { channels } from '../API'
 
-
 export default class SceneExporter {
     private mainWindow: MainWindow
-
 
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
@@ -21,12 +19,16 @@ export default class SceneExporter {
 
     private setSaveScenePathToProjectFolder() {
         session.defaultSession.on('will-download', async (event, item, webContents) => {
-            if(!item.getFilename().endsWith('.glb') && !item.getFilename().endsWith('.spoke')) return
-            const saveScenePath = Path.join(ProjectManager.getInstance().presentWorkingDirectory, 'Scenes', item.getFilename())
+            if (!item.getFilename().endsWith('.glb') && !item.getFilename().endsWith('.spoke')) return
+            const saveScenePath = Path.join(
+                ProjectManager.getInstance().presentWorkingDirectory,
+                'Scenes',
+                item.getFilename()
+            )
             item.setSavePath(saveScenePath)
 
             item.once('done', (event, state) => {
-                if(state === 'completed') console.log(`Scene ${item.getFilename()} exported`)
+                if (state === 'completed') console.log(`Scene ${item.getFilename()} exported`)
                 else {
                     console.log(`Scene export failed: ${state} (Check path)`)
                     console.log(saveScenePath)

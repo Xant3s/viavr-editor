@@ -12,6 +12,7 @@ export const TabButton = styled.button`
   text-decoration: none;
   font-size: 12px;
   font-family: inherit;
+ 
 
   &:hover {
     background: #0550b3;
@@ -23,6 +24,11 @@ export const TabButton = styled.button`
   }
 
   &:focus {
+    outline: none;
+    background: #0550b3;
+  }
+  
+  &:focus-within{
     outline: none;
     background: #0550b3;
   }

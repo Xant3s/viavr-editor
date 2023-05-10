@@ -75,6 +75,7 @@ export default class ProjectManager {
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)
             this.onProjectOpenedEvent.emit('project-loaded')
+            this.mainWindow.enableMenuOptionsOnProjectOpened()
         }
     }
 

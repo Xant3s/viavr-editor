@@ -6,7 +6,7 @@ import { ProjectSelection } from './ProjectSelection'
 import { Spoke } from './Spoke'
 import { TabHeader } from './TabHeader'
 import { BehaviorEditor } from './BehaviorEditor/BehaviorEditor'
-import { AvatarEditor } from './AvatarEditor'
+import { AvatarEditor } from './AvatarEditor/AvatarEditor'
 import { Articy } from './Articy'
 import { Share } from './Share'
 

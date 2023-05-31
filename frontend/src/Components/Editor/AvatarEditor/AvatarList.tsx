@@ -3,10 +3,7 @@ import { AvatarInfo } from '../../../@types/AvatarInfo'
 import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
 
-export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects }) => {
-    const [sceneObject, setSceneObject] = React.useState<string>('') // for testing only
-
-
+export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, assignSceneObject }) => {
     return <Table>
         <Table.Head>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>
@@ -22,7 +19,8 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects }
                     <Table.TextCell>{avatar.name}</Table.TextCell>
                     <Table.TextCell>Please start download</Table.TextCell>
                     <Table.TextCell>
-                        <Select id="sceneObject" value={sceneObject} style={{minWidth: '100px', height: '30px'}} onChange={e => setSceneObject(e.target.value)} required>
+                        <Select id="sceneObject" value={avatar.sceneObject} style={{minWidth: '100px', height: '30px'}}
+                                onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
                             {sceneObjects.map((object, index) => (
                                 <MenuItem key={index} value={object.uuid}>
                                     {object.name}
@@ -55,6 +53,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects }
                                 appearance='minimal'
                                 intent='danger'
                                 onClick={() => {
+                                    // TODO: ask for confirmation
                                     deleteAvatar(avatar.id)
                                 }}
                         >

@@ -50,7 +50,7 @@ export const AvatarEditor = ({ hidden }) => {
     const addAvatar = async (name: string) => {
         const uuid = uuid4()
         const token = 'dummy-token'   // TODO: request token from TUD server
-        const newAvatar = { name: name, id: uuid, token: token }
+        const newAvatar = { name: name, id: uuid, token: token, articyId: '', sceneObject: '' }
         const newAvatars = [...avatars, newAvatar]
         setAvatars(newAvatars)
         api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
@@ -64,10 +64,21 @@ export const AvatarEditor = ({ hidden }) => {
         // Todo: delete downloaded avatar from project files
     }
 
+    const assignSceneObject = (avatarId, sceneObjectId) => {
+        const newAvatars = avatars.map(avatar => {
+            if(avatar.id === avatarId) {
+                avatar.sceneObject = sceneObjectId
+            }
+            return avatar
+        })
+        setAvatars(newAvatars)
+    }
+
+
     return <AvatarEditorContainer hidden={hidden}>
         <h1>Avatar Editor</h1>
         {qrCode !== '' && <QRCodePreview qrCode={qrCode} />}
-        <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} />
+        <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} assignSceneObject={assignSceneObject} />
         <AddAvatarForm addAvatar={addAvatar} />
     </AvatarEditorContainer>
 }

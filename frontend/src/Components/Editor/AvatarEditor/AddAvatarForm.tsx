@@ -5,14 +5,15 @@ import * as React from 'react'
 export const AddAvatarForm = ({addAvatar}) => {
     const [newAvatarName, setNewAvatarName] = useState<string>('')
 
-    function handleSubmit() {
+    function handleSubmit(event) {
+        event.preventDefault()
         addAvatar(newAvatarName)
         setNewAvatarName('')
     }
 
 
     return <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={e => handleSubmit(e)}>
             <TextInput name='new-avatar-name-input'
                        placeholder='New avatar name...'
                        value={newAvatarName}

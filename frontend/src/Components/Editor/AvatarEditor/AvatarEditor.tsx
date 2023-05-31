@@ -55,6 +55,7 @@ export const AvatarEditor = ({ hidden }) => {
         setAvatars(newAvatars)
         api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
         // TODO: save all settings to project settings
+        // TODO: export to build settings
     }
 
     const deleteAvatar = (avatarId) => {

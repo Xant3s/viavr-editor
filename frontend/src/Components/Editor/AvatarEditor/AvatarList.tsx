@@ -4,6 +4,11 @@ import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
 
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, assignSceneObject }) => {
+    // TODO: auto update status
+    // TODO: only enable download button if ready
+    // TODO: download avatars
+    // TODO: export to Unity
+
     return <Table>
         <Table.Head>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>

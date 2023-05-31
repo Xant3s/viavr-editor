@@ -30,7 +30,7 @@ export const AvatarEditor = ({ hidden }) => {
         const newAvatar = { name: name, id: uuid, token: token, articyId: '', sceneObject: '' }
         const newAvatars = [...avatars, newAvatar]
         setAvatars(newAvatars)
-        saveAll()
+        saveAll(newAvatars)
     }
 
     const deleteAvatar = (avatarId) => {
@@ -38,7 +38,7 @@ export const AvatarEditor = ({ hidden }) => {
         setAvatars(newAvatars)
         // Todo: delete downloaded avatar from project files
         // TODO: send delete request to TUD server?
-        saveAll()
+        saveAll(newAvatars)
     }
 
     const assignSceneObject = (avatarId, sceneObjectId) => {
@@ -49,10 +49,11 @@ export const AvatarEditor = ({ hidden }) => {
             return avatar
         })
         setAvatars(newAvatars)
-        saveAll()
+        saveAll(newAvatars)
     }
 
-    const saveAll = () => {
+    const saveAll = (newAvatars = avatars) => {
+        // TODO: bug: add/delete avatar does not trigger save settings files, but change scene object does
         api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, avatars)
         api.invoke(api.channels.toMain.setBuildSetting, 'avatars', avatars)
     }
@@ -70,9 +71,21 @@ export const AvatarEditor = ({ hidden }) => {
         const loadAvatars = async () => {
             const projectSettings = await api.invoke(api.channels.toMain.requestProjectSettings)
             const avatarsSetting = projectSettings.find(([k, _]) => k === 'dev.avatars')
-            const avatars = avatarsSetting[1].value || []
-            setAvatarsSettingUuid(avatarsSetting[1].uuid || uuid4())
+            let avatars
+            let avatarsSettingUuid
+            if(!avatarsSetting) {
+                avatars = []
+                avatarsSettingUuid = uuid4()
+                await api.invoke(api.channels.toMain.unsafeSetProjectSetting, 'dev.avatars', {
+                    value: [],
+                    uuid: avatarsSettingUuid
+                })
+            } else {
+                avatars = avatarsSetting[1].value
+                avatarsSettingUuid = avatarsSetting[1].uuid
+            }
             setAvatars(avatars)
+            setAvatarsSettingUuid(avatarsSettingUuid)
             // TODO: check if avatars are downloaded
         }
 

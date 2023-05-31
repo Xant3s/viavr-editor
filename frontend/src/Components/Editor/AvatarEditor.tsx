@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { toString as QrToString } from 'qrcode'
 import SVG from 'react-inlinesvg'
 import { v4 as uuid4 } from 'uuid'
-import { Button, Table, TextInput, toaster, TrashIcon } from 'evergreen-ui'
+import { Button, Table, TextInput, TrashIcon } from 'evergreen-ui'
 import { AvatarInfo } from '../../@types/AvatarInfo'
 import * as React from 'react'
 import { MenuItem, Select } from '@mui/material'
@@ -20,7 +20,6 @@ export const AvatarEditor = ({ hidden }) => {
 
     const loadSceneObjects = async () => {
         const objects = await api.invoke(api.channels.toMain.getSceneObjects)
-        console.log(objects)
         setSceneObjects(objects)
     }
 
@@ -30,6 +29,7 @@ export const AvatarEditor = ({ hidden }) => {
 
     useEffect(() => {
         const loadAvatars = async () => {
+            // TODO: load all settings from project settings
             const projectSettings = await api.invoke(api.channels.toMain.requestProjectSettings)
             const avatarsSetting = projectSettings.find(([k, _]) => k === 'dev.avatars')
             const avatars = avatarsSetting[1].value || []
@@ -49,10 +49,6 @@ export const AvatarEditor = ({ hidden }) => {
     }
 
     const addAvatar = async () => {
-        if(newAvatarName === '') {
-            toaster.danger('Please enter a name for the avatar')
-            return
-        }
         const uuid = uuid4()
         const token = 'dummy-token'   // TODO: request token from TUD server
         const newAvatar = { name: newAvatarName, id: uuid, token: token }
@@ -60,6 +56,7 @@ export const AvatarEditor = ({ hidden }) => {
         setAvatars(newAvatars)
         setNewAvatarName('')
         api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
+        // TODO: save all settings to project settings
     }
 
     const deleteAvatar = (avatarId) => {
@@ -154,14 +151,17 @@ export const AvatarEditor = ({ hidden }) => {
         </Table>
 
         <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', marginTop: '20px' }}>
-            <TextInput name='new-avatar-name-input'
-                       placeholder='New avatar name...'
-                       value={newAvatarName}
-                       onChange={(e) => setNewAvatarName(e.target.value)} />
+            <form onSubmit={addAvatar}>
+                <TextInput name='new-avatar-name-input'
+                           placeholder='New avatar name...'
+                           value={newAvatarName}
+                           onChange={(e) => setNewAvatarName(e.target.value)} required />
+                <Button appearance='primary' style={{ marginRight: '5px' }} type="submit">
+                    Create new avatar
+                </Button>
+            </form>
 
-            <Button appearance='primary' style={{ marginRight: '5px' }} onClick={() => addAvatar()}>
-                Create new avatar
-            </Button>
+            {/*TODO: load avatar from file*/}
             <Button appearance='primary'
                     onClick={() => {
                         throw new Error('Not implemented')

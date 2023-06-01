@@ -16,6 +16,7 @@ export const channels = {
         requestProjectSetting: 'projectSettings:request',
         requestProjectSettings: 'projectSettings:request-all',
         changeProjectSetting: 'projectSettings:changed',
+        unsafeSetProjectSetting: 'projectSettings:set-unsafe',
         changePackageSetting: 'unityPackageSettings:changed',
         setPackageSetting: 'unityPackageSettings:set',
         getPackageSetting: 'unityPackageSettings:get',

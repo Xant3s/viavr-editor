@@ -35,6 +35,7 @@ export default class ProjectSettingsManager {
         ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
+        ipc.handle(channels.toMain.unsafeSetProjectSetting, (_, name, value) => this.set<any>(name, value))
         app.on('quit', () => this.saveSettings())
     }
 

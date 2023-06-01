@@ -53,9 +53,8 @@ export const AvatarEditor = ({ hidden }) => {
     }
 
     const saveAll = (newAvatars = avatars) => {
-        // TODO: bug: add/delete avatar does not trigger save settings files, but change scene object does
-        api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, avatars)
-        api.invoke(api.channels.toMain.setBuildSetting, 'avatars', avatars)
+        api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
+        api.invoke(api.channels.toMain.setBuildSetting, 'avatars', newAvatars)
     }
 
     const loadSceneObjects = async () => {

@@ -12,15 +12,19 @@ export class SceneExport {
             ]);
             toaster.success('Scene has been saved successfully', { duration: 10 });
         });
+
+        api.on('spoke:project-saved-successfully',  this.projectSavedSuccessfully)
+    }
+
+    private projectSavedSuccessfully(){
+        toaster.success('Project has been saved successfully', { duration: 10 });
     }
 
     private checkTextExists(resolve) {
         if ($$('span:contains("Exporting Scene..."):last').length > 0) {
-            // Text exists
-            setTimeout(this.checkTextExists.bind(this, resolve), 500);
-            // Poll again after a delay
+            setTimeout(this.checkTextExists.bind(this, resolve), 500)
         } else {
-            resolve(); // Resolve the promise when the text is no longer present
+            resolve()
         }
     }
 

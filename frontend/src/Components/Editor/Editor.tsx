@@ -23,7 +23,7 @@ export const Editor = () => {
     useEffect(() => {
         api.on(api.channels.fromMain.projectCreated, () => onProjectSelected())
         api.on(api.channels.fromMain.projectOpened, () => onProjectSelected())
-    })
+    }, [])
 
     return (
         <>

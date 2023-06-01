@@ -41,6 +41,7 @@ export const channels = {
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
         spokeExportScene: 'spoke:export-scene',
+        spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
     },
 }
 

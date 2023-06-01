@@ -9,6 +9,7 @@ import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
+import { API } from '../API'
 
 
 export default class ProjectManager {
@@ -153,6 +154,8 @@ export default class ProjectManager {
                 fse.copySync(this.presentWorkingDirectory, this._projectPath)
             }
             console.log('Project saved.')
+
+            this.mainWindow.send(channels.fromMain.spokeProjectSavedSuccessfully)
         }
     }
 

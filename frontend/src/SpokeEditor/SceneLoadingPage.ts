@@ -62,9 +62,9 @@ export default class SceneLoadingPage {
 
         // TODO: handle open file dialog: right now the user has to select the json file. We probably want to automate this in the future.
         // add 'el.id = "spoke-import-json-scene-file";' to 'EditorContainer.js' line 783 in Spoke 8aa84fce 2021-12-03 17:36
-        // const sceneFileElement = await htmlElement('#spoke-import-json-scene-file')
+        const sceneFileElement = await htmlElement('#spoke-import-json-scene-file')
         // @ts-ignore
-        // sceneFileElement.get()[0].files = [Path.join(pwd, sceneName)]
+        sceneFileElement.get()[0].files = [Path.join(pwd, sceneName)]
     }
 
     private async onShowCreateNewScenePage() {

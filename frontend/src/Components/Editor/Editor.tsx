@@ -23,8 +23,8 @@ export const Editor = () => {
         api.on(api.channels.fromMain.projectOpened, onProjectSelected)
 
         return () => {
-            api.off(api.channels.fromMain.projectCreated, onProjectSelected);
-            api.off(api.channels.fromMain.projectOpened, onProjectSelected);
+            api.removeListener(api.channels.fromMain.projectCreated, onProjectSelected);
+            api.removeListener(api.channels.fromMain.projectOpened, onProjectSelected);
         }
     }, [])
 

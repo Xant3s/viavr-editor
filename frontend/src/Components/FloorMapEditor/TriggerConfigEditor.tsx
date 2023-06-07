@@ -57,6 +57,13 @@ export function TriggerConfigEditor({
 
         loadSceneObjects()
         loadTriggers()
+
+        return () => {
+            api.removeListeners(api.channels.toMain.getSceneObjects)
+            api.removeListeners(api.channels.toMain.getBuildSetting)
+            api.removeListeners(api.channels.toMain.queryPackages)
+            api.removeListeners(api.channels.toMain.setBuildSetting)
+        }
     }, [])
 
     return (

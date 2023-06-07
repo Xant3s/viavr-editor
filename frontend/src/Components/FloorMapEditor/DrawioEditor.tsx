@@ -101,6 +101,10 @@ export const DrawioEditor = ({onFloorMapAvailable}) => {
             }
         }
         loadFloorMap()
+
+        return () => {
+            api.removeListeners(api.channels.toMain.floorMapLoadSvg)
+        }
     }, [])
 
     return (

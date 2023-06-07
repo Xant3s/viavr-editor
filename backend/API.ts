@@ -81,7 +81,7 @@ const on = (channel: string, func) => {
     }
 }
 
-const off = (channel: string, func) => {
+const removeListener = (channel: string, func) => {
     const validChannels = new ValidChannels()
     if (validChannels.fromMain.includes(channel)) {
         // Deliberately strip event as it includes `sender`
@@ -91,10 +91,23 @@ const off = (channel: string, func) => {
     }
 }
 
+const removeListeners =  (channel: string) => {
+    const validChannels = new ValidChannels()
+    if (validChannels.toMain.includes(channel)) {
+        return ipcRenderer.removeAllListeners(channel)
+    } else {
+        console.error(`Invalid channel: ${channel}`)
+    }
+    return new Promise((_, reject) => {
+        reject('Invalid channel')
+    })
+}
+
 export const API = {
     invoke: invoke,
     on: on,
-    off: off,
+    removeListener: removeListener,
+    removeListeners: removeListeners,
     Path: Path,
     channels: channels,
 }

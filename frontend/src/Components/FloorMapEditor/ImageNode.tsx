@@ -10,8 +10,8 @@ export const ImageNode = ({ data }) => {
 
 const StyledImg = styled.img`
     display: block;
-    width: 50%;
-    height: 50%;
+    width: 40px;
+    height: 66px;
     object-fit: cover;
     cursor: move;
     opacity: 1;

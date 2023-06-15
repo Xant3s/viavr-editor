@@ -10,6 +10,7 @@ import { AvatarEditor } from './AvatarEditor/AvatarEditor'
 import { Articy } from './Articy'
 import { Share } from './Share'
 import { BuildDialog } from '../BuildDialog/BuildDialog'
+import { MeshPreprocessing } from './MeshPreprocessing'
 
 export const Editor = () => {
     const [viewID, setViewID] = useState(0)
@@ -27,6 +28,7 @@ export const Editor = () => {
             <div>
                 <ProjectSelection hidden={viewID !== 0} />
             </div>
+            <MeshPreprocessing hidden={viewID !== 6} />
             <Spoke hidden={viewID !== 1} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />

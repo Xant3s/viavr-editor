@@ -13,12 +13,7 @@ import { Share } from './Share'
 export const Editor = () => {
     const [viewID, setViewID] = useState(0)
 
-    const onProjectSelected = () => {
-        setViewID(1)
-        new SceneEditor()
-        new SceneExport()
-        new SceneLoadingPage()
-    }
+    const onProjectSelected = () => setViewID(1)
 
     useEffect(() => {
         api.on(api.channels.fromMain.projectCreated, () => onProjectSelected())

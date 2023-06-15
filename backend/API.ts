@@ -36,6 +36,7 @@ export const channels = {
         getSceneObjects: 'scene:get-objects',
         shareProject: 'share:project',
         downloadProjectTemplates: 'share:download-projects',
+        runPreprocessor: 'preprocessor:run',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

@@ -64,9 +64,14 @@ export const MeshPreprocessing = ({ hidden }) => {
     }.`
 
 
-    function runPreprocessor(e) {
+    async function runPreprocessor(e) {
         e.preventDefault()
-        toaster.notify('not implemented yet')
+        // toaster.notify('not implemented yet')
+        console.log(files)
+        const paths = files.map(file => file.path)
+        const status = await api.invoke(api.channels.toMain.runPreprocessor, paths, percentValue, embedTextures, embedBuffers)
+        console.log(status)
+        toaster.notify(status)
     }
 
     return <div

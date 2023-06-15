@@ -22,17 +22,9 @@ export const MeshPreprocessing = ({ hidden }) => {
     const [embedTextures, setEmbedTextures] = useState<boolean>(true)
     const [embedBuffers, setEmbedBuffers] = useState<boolean>(true)
 
-    {/*'model/gltf+json '*/}
-
-    // type MimeType = {
-    //     jpeg: 'image/jpeg',
-    //     pdf: 'application/pdf',
-    //     gltf: 'model/gltf+json', // Add the gltf mimetype here
-    // };
-
     type ExtendedMimeType = MimeType | 'model/gltf+json'
 
-    const acceptedMimeTypes: MimeType[] = [MimeType.json]
+    // const acceptedMimeTypes: MimeType[] = [MimeType.json]
     const maxFiles = 1
     const [files, setFiles] = useState<any[]>([])
     const [fileRejections, setFileRejections] = useState<any[]>([])
@@ -49,13 +41,15 @@ export const MeshPreprocessing = ({ hidden }) => {
             // rejected for being over the file count limit, but might be under the limit now!)
             const { accepted, rejected } = rebaseFiles(
                 [...updatedFiles, ...updatedFileRejections.map((fileRejection) => fileRejection.file)],
-                { acceptedMimeTypes, maxFiles }
+                // { acceptedMimeTypes, maxFiles }
+                { maxFiles }
             )
 
             setFiles(accepted)
             setFileRejections(rejected)
         },
-        [acceptedMimeTypes, files, fileRejections, maxFiles]
+        // [acceptedMimeTypes, files, fileRejections, maxFiles]
+        [files, fileRejections, maxFiles]
     )
 
     const fileCountOverLimit = files.length + fileRejections.length - maxFiles

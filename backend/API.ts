@@ -16,6 +16,7 @@ export const channels = {
         requestProjectSetting: 'projectSettings:request',
         requestProjectSettings: 'projectSettings:request-all',
         changeProjectSetting: 'projectSettings:changed',
+        unsafeSetProjectSetting: 'projectSettings:set-unsafe',
         changePackageSetting: 'unityPackageSettings:changed',
         setPackageSetting: 'unityPackageSettings:set',
         getPackageSetting: 'unityPackageSettings:get',
@@ -35,12 +36,14 @@ export const channels = {
         getSceneObjects: 'scene:get-objects',
         shareProject: 'share:project',
         downloadProjectTemplates: 'share:download-projects',
+        runPreprocessor: 'preprocessor:run',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
         spokeExportScene: 'spoke:export-scene',
+        spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
     },
 }
 

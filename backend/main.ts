@@ -13,6 +13,7 @@ import { ArticyManager } from './ArticyManager'
 import { SceneUtils } from './Utils/SceneUtils'
 import { ProjectTags } from './ProjectManager/ProjectTags'
 import ShareManager from './ShareManager'
+import MeshPreprocessor from './MeshPreprocessor'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
@@ -29,6 +30,7 @@ const startup = async () => {
     new ArticyManager()
     new ProjectTags()
     new ShareManager()
+    new MeshPreprocessor()
     await SceneUtils.register()
 }
 

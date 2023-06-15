@@ -23,11 +23,11 @@ export const Spoke = ({ hidden }) => {
     }, [])
 
     useEffect(() => {
-        if(!spokeReady) return
+        if(!spokeReady || hidden) return
         new SceneEditor()
         new SceneExport()
         new SceneLoadingPage()
-    }, [spokeReady])
+    }, [spokeReady, hidden])
 
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         {spokeReady ?

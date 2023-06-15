@@ -86,11 +86,10 @@ export const MeshPreprocessing = ({ hidden }) => {
         }}
     >
         <h1>Optimize 3D Objects</h1>
-        <form onSubmit={runPreprocessor}>
+        <form onSubmit={runPreprocessor} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div>You can optimize one file at a time. You can only optimize .gltf file formats.
                 The optimized files will be named &apos;[original name]_optimized.gltf&apos; and saved next to the originals.</div>
-            {/*<Pane maxWidth={654}>*/}
-            {/*<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>*/}
+            <Pane minWidth={500} maxWidth={654} marginTop={25}>
             {/*TODO: only allow .gltf files */}
                 <FileUploader
                     // acceptedMimeTypes={acceptedMimeTypes}
@@ -126,47 +125,51 @@ export const MeshPreprocessing = ({ hidden }) => {
                     values={values}
                     style={{maxWidth: '654'}}
                 />
-            {/*</div>*/}
-            {/*</Pane>*/}
+            </Pane>
 
-            {/*    percent, use textures, output file, use buffers*/}
-            <SettingAccordion summary={'Advanced Settings'} details={
-                <>
-                    <Typography id="non-linear-slider" gutterBottom>
-                        Target Percentage: {percentValue.toString()}
-                    </Typography>
-                    <Slider
-                        value={percentValue}
-                        min={1}
-                        step={1}
-                        max={100}
-                        getAriaValueText={() => percentValue.toString()}
-                        valueLabelFormat={() => percentValue.toString()}
-                        onChange={(e, newValue) => setPercentValue(newValue as number)}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="non-linear-slider"
-                    />
-                    <Label htmlFor="embedTexturesSwitch" marginBottom={8} display="flex" alignItems="left" justifyContent="left" color="white">
-                        <Switch
-                            id="embedTexturesSwitch"
-                            checked={embedTextures}
-                            onChange={(e) => setEmbedTextures(e.target.checked)}
-                            marginRight={8}
-                        />
-                        <span>Embed Textures</span>
-                    </Label>
+            <Pane minWidth={500} maxWidth={654} marginBottom={25}>
+                <SettingAccordion summary={'Advanced Settings'}  details={
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div>
+                        <Pane maxWidth={200}>
+                            <Typography id="non-linear-slider" gutterBottom style={{textAlign: 'left'}}>
+                                Target Percentage: {percentValue.toString()}
+                            </Typography>
+                            <Slider
+                                value={percentValue}
+                                min={1}
+                                step={1}
+                                max={100}
+                                getAriaValueText={() => percentValue.toString()}
+                                valueLabelFormat={() => percentValue.toString()}
+                                onChange={(e, newValue) => setPercentValue(newValue as number)}
+                                valueLabelDisplay="auto"
+                                aria-labelledby="non-linear-slider"
+                            />
+                        </Pane>
 
-                    <Label htmlFor="embedBuffersSwitch" marginBottom={8} display="flex" alignItems="left" justifyContent="left" color="white">
-                        <Switch
-                            id="embedBuffersSwitch"
-                            checked={embedBuffers}
-                            onChange={(e) => setEmbedBuffers(e.target.checked)}
-                            marginRight={8}
-                        />
-                        <span>Embed Buffers</span>
-                    </Label>
-                </>
-            } />
+                        <Label htmlFor="embedTexturesSwitch" marginBottom={8} display="flex" alignItems="left" justifyContent="left" color="white">
+                            <Switch
+                                id="embedTexturesSwitch"
+                                checked={embedTextures}
+                                onChange={(e) => setEmbedTextures(e.target.checked)}
+                                marginRight={8}
+                            />
+                            <span>Embed Textures</span>
+                        </Label>
+                        <Label htmlFor="embedBuffersSwitch" marginBottom={8} display="flex" alignItems="left" justifyContent="left" color="white">
+                            <Switch
+                                id="embedBuffersSwitch"
+                                checked={embedBuffers}
+                                onChange={(e) => setEmbedBuffers(e.target.checked)}
+                                marginRight={8}
+                            />
+                            <span>Embed Buffers</span>
+                        </Label>
+                        </div>
+                    </div>
+                } />
+            </Pane>
             <Button type='submit' disabled={files.length === 0}>Optimize</Button>
         </form>
     </div>

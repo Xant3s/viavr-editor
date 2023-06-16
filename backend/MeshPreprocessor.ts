@@ -6,7 +6,13 @@ import AppUtils from './Utils/AppUtils'
 export default class MeshPreprocessor {
     constructor() {
         ipcMain.handle(channels.toMain.runPreprocessor, async (event, paths, percentValue, embedTextures, embedBuffers) => {
-            return await this.runPreprocessor(paths, percentValue, embedTextures, embedBuffers)
+            try {
+                await this.runPreprocessor(paths, percentValue, embedTextures, embedBuffers)
+            } catch(e) {
+                console.log('catch')
+                return 500
+            }
+            return 200
         })
     }
 

@@ -14,7 +14,6 @@ import { Button } from '../StyledComponents/Button'
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { Slider } from '@mui/material'
 import Typography from '@mui/material/Typography'
-import { alignProperty } from '@mui/material/styles/cssUtils'
 
 
 export const MeshPreprocessing = ({ hidden }) => {
@@ -64,8 +63,13 @@ export const MeshPreprocessing = ({ hidden }) => {
         console.log(files)
         const paths = files.map(file => file.path)
         const status = await api.invoke(api.channels.toMain.runPreprocessor, paths, percentValue, embedTextures, embedBuffers)
-        console.log(status)
-        toaster.notify(status)
+        if(status === 200) {
+            toaster.success('Optimization successful')
+            handleRemove(files[0])
+        } else {
+            toaster.danger('Could not process this file')
+            handleRemove(files[0])
+        }
     }
 
     return <div

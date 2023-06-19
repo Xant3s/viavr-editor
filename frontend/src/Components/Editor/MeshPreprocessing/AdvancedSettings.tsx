@@ -43,104 +43,46 @@ export const AdvancedSettings = ({setSettings}) => {
 
     return <SettingAccordion summary={'Advanced Settings'} details={
         <div>
-            <Pane maxWidth={200}>
-                <Typography id='non-linear-slider' gutterBottom style={{ textAlign: 'left' }}>
-                    Target Percentage: {percentValue.toString()}
-                </Typography>
-                <Slider
-                    value={percentValue}
-                    min={1}
-                    step={1}
-                    max={100}
-                    getAriaValueText={() => percentValue.toString()}
-                    valueLabelFormat={() => percentValue.toString()}
-                    onChange={(e, newValue) => setPercentValue(newValue as number)}
-                    valueLabelDisplay='auto'
-                    aria-labelledby='non-linear-slider'
-                />
-            </Pane>
-            <Label htmlFor='embedTexturesSwitch' marginBottom={8} display='flex' alignItems='left'
-                   justifyContent='left' color='white'>
-                <Switch
-                    id='embedTexturesSwitch'
-                    checked={embedTextures}
-                    onChange={(e) => setEmbedTextures(e.target.checked)}
-                    marginRight={8}
-                />
-                <span>Embed textures</span>
-            </Label>
-            <Label htmlFor='embedBuffersSwitch' marginBottom={8} display='flex' alignItems='left'
-                   justifyContent='left' color='white'>
-                <Switch
-                    id='embedBuffersSwitch'
-                    checked={embedBuffers}
-                    onChange={(e) => setEmbedBuffers(e.target.checked)}
-                    marginRight={8}
-                />
-                <span>Embed buffers</span>
-            </Label>
-            <Label htmlFor='noNormalMapsSwitch' marginBottom={8} display='flex' alignItems='left'
-                   justifyContent='left' color='white'>
-                <Switch
-                    id='noNormalMapsSwitch'
-                    checked={noNormalMaps}
-                    onChange={(e) => setNoNormalMaps(e.target.checked)}
-                    marginRight={8}
-                />
-                <span>Don&apos;t generate normal map</span>
-            </Label>
-            <Label htmlFor='adjustExistingNormalMapsSwitch' marginBottom={8} display='flex' alignItems='left'
-                   justifyContent='left' color='white'>
-                <Switch
-                    id='adjustExistingNormalMapsSwitch'
-                    checked={adjustExistingNormalMaps}
-                    onChange={(e) => setAdjustExistingNormalMaps(e.target.checked)}
-                    marginRight={8}
-                />
-                <span>Adjust existing normal maps</span>
-            </Label>
-            <Label htmlFor='useVertexNormalsSwitch' marginBottom={8} display='flex' alignItems='left'
-                   justifyContent='left' color='white'>
-                <Switch
-                    id='useVertexNormalsSwitch'
-                    checked={useVertexNormals}
-                    onChange={(e) => setUseVertexNormals(e.target.checked)}
-                    marginRight={8}
-                />
-                <span>Use vertex normals</span>
-            </Label>
-            <Pane maxWidth={200}>
-                <Typography id='non-linear-slider' gutterBottom style={{ textAlign: 'left' }}>
-                    Crease angle: {creaseAngle.toString()}
-                </Typography>
-                <Slider
-                    value={creaseAngle}
-                    min={1}
-                    step={1}
-                    max={150}
-                    getAriaValueText={() => creaseAngle.toString()}
-                    valueLabelFormat={() => creaseAngle.toString()}
-                    onChange={(e, newValue) => setCreaseAngle(newValue as number)}
-                    valueLabelDisplay='auto'
-                    aria-labelledby='non-linear-slider'
-                />
-            </Pane>
-            <Pane maxWidth={200}>
-                <Typography id='non-linear-slider' gutterBottom style={{ textAlign: 'left' }}>
-                    Normal deviation: {normalDeviation.toString()}
-                </Typography>
-                <Slider
-                    value={normalDeviation}
-                    min={1}
-                    step={1}
-                    max={100}
-                    getAriaValueText={() => normalDeviation.toString()}
-                    valueLabelFormat={() => normalDeviation.toString()}
-                    onChange={(e, newValue) => setNormalDeviation(newValue as number)}
-                    valueLabelDisplay='auto'
-                    aria-labelledby='non-linear-slider'
-                />
-            </Pane>
+            <SliderSetting id='percentSlider' value={percentValue} setter={setPercentValue} text='Target percentage' min={1} max={100} />
+            <SwitchSetting id='embedTexturesSwitch' checked={embedTextures} setter={setEmbedTextures} text='Embed textures' />
+            <SwitchSetting id='embedBuffersSwitch' checked={embedBuffers} setter={setEmbedBuffers} text='Embed buffers' />
+            <SwitchSetting id='noNormalMapsSwitch' checked={noNormalMaps} setter={setNoNormalMaps} text='Don&apos;t generate normal map' />
+            <SwitchSetting id='adjustExistingNormalMapsSwitch' checked={adjustExistingNormalMaps} setter={setAdjustExistingNormalMaps} text='Adjust existing normal maps' />
+            <SwitchSetting id='useVertexNormalsSwitch' checked={useVertexNormals} setter={setUseVertexNormals} text='Use vertex normals' />
+            <SliderSetting id='creaseAngleSlider' value={creaseAngle} setter={setCreaseAngle} text='Crease angle' min={1} max={150} />
+            <SliderSetting id='normalDeviationSlider' value={normalDeviation} setter={setNormalDeviation} text='Normal deviation' min={1} max={100} />
         </div>
     } />
+}
+
+const SwitchSetting = ({id, checked, setter, text}) => {
+    return <Label htmlFor={id} marginBottom={8} display='flex' alignItems='left'
+           justifyContent='left' color='white'>
+        <Switch
+            id={id}
+            checked={checked}
+            onChange={(e) => setter(e.target.checked)}
+            marginRight={8}
+        />
+        <span>{text}</span>
+    </Label>
+}
+
+const SliderSetting = ({id, value, setter, text, min, max}) => {
+    return <Pane maxWidth={200}>
+        <Typography id={id} gutterBottom style={{ textAlign: 'left' }}>
+            {text}: {value.toString()}
+        </Typography>
+        <Slider
+            value={value}
+            min={min}
+            step={1}
+            max={max}
+            getAriaValueText={() => value.toString()}
+            valueLabelFormat={() => value.toString()}
+            onChange={(e, newValue) => setter(newValue as number)}
+            valueLabelDisplay='auto'
+            aria-labelledby='non-linear-slider'
+        />
+    </Pane>
 }

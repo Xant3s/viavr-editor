@@ -5,9 +5,9 @@ import AppUtils from './Utils/AppUtils'
 
 export default class MeshPreprocessor {
     constructor() {
-        ipcMain.handle(channels.toMain.runPreprocessor, async (event, paths, percentValue, embedTextures, embedBuffers) => {
+        ipcMain.handle(channels.toMain.runPreprocessor, async (event, paths, settings) => {
             try {
-                await this.runPreprocessor(paths, percentValue, embedTextures, embedBuffers)
+                await this.runPreprocessor(paths, settings.percentValue, settings.embedTextures, settings.embedBuffers)
             } catch(e) {
                 console.log('catch')
                 return 500
@@ -18,6 +18,7 @@ export default class MeshPreprocessor {
 
     async runPreprocessor(paths, percentValue, embedTextures, embedBuffers) {
         return new Promise<number>((resolve, reject) => {
+            // TODO: support all advanced settings
             const path = paths[0]
             const executablePath = `${AppUtils.getResPath()}preprocessMesh.exe`
             const embedTexturesArg = embedTextures ? '--embed_textures' : ''

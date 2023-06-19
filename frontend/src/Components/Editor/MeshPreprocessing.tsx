@@ -4,7 +4,6 @@ import {
     FileRejectionReason,
     FileUploader, Label,
     majorScale,
-    MimeType,
     Pane,
     rebaseFiles, Switch,
     toaster,
@@ -17,20 +16,18 @@ import Typography from '@mui/material/Typography'
 
 
 export const MeshPreprocessing = ({ hidden }) => {
+    const maxFiles = 1
     const [percentValue, setPercentValue] = useState<number>(50)
     const [embedTextures, setEmbedTextures] = useState<boolean>(true)
     const [embedBuffers, setEmbedBuffers] = useState<boolean>(true)
-
-    type ExtendedMimeType = MimeType | 'model/gltf+json'
-
-    // const acceptedMimeTypes: MimeType[] = [MimeType.json]
-    const maxFiles = 1
     const [files, setFiles] = useState<any[]>([])
     const [fileRejections, setFileRejections] = useState<any[]>([])
+
     const values = useMemo(() => [...files, ...fileRejections.map((fileRejection) => fileRejection.file)], [
         files,
         fileRejections,
     ])
+
     const handleRemove = useCallback(
         (file) => {
             const updatedFiles = files.filter((existingFile) => existingFile !== file)
@@ -40,14 +37,12 @@ export const MeshPreprocessing = ({ hidden }) => {
             // rejected for being over the file count limit, but might be under the limit now!)
             const { accepted, rejected } = rebaseFiles(
                 [...updatedFiles, ...updatedFileRejections.map((fileRejection) => fileRejection.file)],
-                // { acceptedMimeTypes, maxFiles }
                 { maxFiles }
             )
 
             setFiles(accepted)
             setFileRejections(rejected)
         },
-        // [acceptedMimeTypes, files, fileRejections, maxFiles]
         [files, fileRejections, maxFiles]
     )
 
@@ -56,12 +51,13 @@ export const MeshPreprocessing = ({ hidden }) => {
         fileCountOverLimit === 1 ? 'file' : 'files'
     }.`
 
-
     async function runPreprocessor(e) {
         e.preventDefault()
-        // toaster.notify('not implemented yet')
-        console.log(files)
         const paths = files.map(file => file.path)
+        if(files.some(p => !p.name.endsWith('.gltf'))) {
+            toaster.danger('Only .gltf files are supported')
+            return
+        }
         const status = await api.invoke(api.channels.toMain.runPreprocessor, paths, percentValue, embedTextures, embedBuffers)
         if(status === 200) {
             toaster.success('Optimization successful')
@@ -88,9 +84,7 @@ export const MeshPreprocessing = ({ hidden }) => {
             <div>You can optimize one file at a time. You can only optimize .gltf file formats.
                 The optimized files will be named &apos;[original name]_optimized.gltf&apos; and saved next to the originals.</div>
             <Pane minWidth={500} maxWidth={654} marginTop={25}>
-            {/*TODO: only allow .gltf files */}
                 <FileUploader
-                    // acceptedMimeTypes={acceptedMimeTypes}
                     disabled={files.length + fileRejections.length >= maxFiles}
                     maxFiles={maxFiles}
                     onAccepted={setFiles}

@@ -10,7 +10,8 @@ import { AvatarEditor } from './AvatarEditor/AvatarEditor'
 import { Articy } from './Articy'
 import { Share } from './Share'
 import { BuildDialog } from '../BuildDialog/BuildDialog'
-import { MeshPreprocessing } from './MeshPreprocessing'
+import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
+
 
 export const Editor = () => {
     const [viewID, setViewID] = useState(0)

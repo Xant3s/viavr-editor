@@ -28,7 +28,7 @@ export const MeshPreprocessing = ({ hidden }) => {
         }
     }
 
-    return <AvatarEditorContainer>
+    return <AvatarEditorContainer hidden={hidden}>
         <h1>Optimize 3D Objects</h1>
         <form onSubmit={runPreprocessor} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div>You can optimize one file at a time. You can only optimize .gltf file formats.

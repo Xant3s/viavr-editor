@@ -122,21 +122,19 @@ export const BuildDialog = ({hidden}) => {
     }
 
     useEffect(() => {
-        console.log('use effect')
         if(hidden) return
-        console.log('do sth')
         loadScenes()
         loadPackages()
     }, [hidden])
 
     return (
         <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>
-            <StyledSettings>
+            <StyledSettings hidden={hidden}>
                 <h1>Generate VIA Experience</h1>
                 {/*Workaround: hidden Select to properly import the style*/}
                 <InvisibleSelect />
 
-                <SettingsContainer>
+                <SettingsContainer hidden={hidden}>
                     <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
 
                     <SettingAccordion

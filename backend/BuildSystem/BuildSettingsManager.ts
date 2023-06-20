@@ -32,6 +32,7 @@ export class BuildSettingsManager {
     }
 
     public async get<Type>(name: string) {
+        await this.settingsManager.loadSettingsFromFile(this.path)
         return await this.settingsManager.get<Type>(name)
     }
 

@@ -11,7 +11,6 @@ import { AvatarList } from './AvatarList'
 
 export const AvatarEditor = ({ hidden }) => {
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
-    const [avatarsSettingUuid, setAvatarsSettingUuid] = useState<string>('')
     const [qrCode, setQrCode] = useState<string>('')
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
     const [sceneObjects, setSceneObjects] = React.useState<any[]>([])
@@ -53,7 +52,6 @@ export const AvatarEditor = ({ hidden }) => {
     }
 
     const saveAll = (newAvatars = avatars) => {
-        api.send(api.channels.toMain.changeProjectSetting, avatarsSettingUuid, newAvatars)
         api.invoke(api.channels.toMain.setBuildSetting, 'avatars', newAvatars)
     }
 
@@ -63,33 +61,18 @@ export const AvatarEditor = ({ hidden }) => {
     }
 
     useEffect(() => {
-        if(!hidden) loadSceneObjects()
-    }, [hidden])
-
-    useEffect(() => {
         const loadAvatars = async () => {
-            const projectSettings = await api.invoke(api.channels.toMain.requestProjectSettings)
-            const avatarsSetting = projectSettings.find(([k, _]) => k === 'dev.avatars')
-            let avatars
-            let avatarsSettingUuid
-            if(!avatarsSetting) {
-                avatars = []
-                avatarsSettingUuid = uuid4()
-                await api.invoke(api.channels.toMain.unsafeSetProjectSetting, 'dev.avatars', {
-                    value: [],
-                    uuid: avatarsSettingUuid
-                })
-            } else {
-                avatars = avatarsSetting[1].value
-                avatarsSettingUuid = avatarsSetting[1].uuid
-            }
+            const avatars = await api.invoke(api.channels.toMain.getBuildSetting, 'avatars')
+            if(avatars === undefined) return
             setAvatars(avatars)
-            setAvatarsSettingUuid(avatarsSettingUuid)
             // TODO: check if avatars are downloaded
         }
 
-        api.on(api.channels.fromMain.projectOpened, loadAvatars)
-    }, [])
+        if(!hidden) {
+            loadSceneObjects()
+            loadAvatars()
+        }
+    }, [hidden])
 
 
     return <AvatarEditorContainer hidden={hidden}>

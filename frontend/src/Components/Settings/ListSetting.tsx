@@ -73,12 +73,12 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
     return (
         <>
             <h5>{label}</h5>
-            <div style={{ background: '#4d535b' }}>
+            <div>
                 {
                     value.map((item, index) => (
                         <SettingListEntry key={index} style={{ marginBottom: '0', marginTop: '0' }}>
                             <div>{createListEntry(index, item)}</div>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
                                 <RemoveButton onClick={() => removeListItem(index)} />
                             </div>
                         </SettingListEntry>

@@ -130,9 +130,7 @@ export const BuildDialog = ({hidden}) => {
     return (
         <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>
             <StyledSettings hidden={hidden}>
-                <h1>Generate VIA Experience</h1>
-                {/*Workaround: hidden Select to properly import the style*/}
-                <InvisibleSelect />
+                <Center><h1>Generate VIA Experience</h1></Center>
 
                 <SettingsContainer hidden={hidden}>
                     <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
@@ -161,9 +159,9 @@ export const BuildDialog = ({hidden}) => {
 
                     <br />
                     <div hidden={isBuilding}>
-                        <Button id="btn-build-project" type="button" onClick={build}>
-                            Generate Experience
-                        </Button>
+                        <Center>
+                            <Button id="btn-build-project" type="button" onClick={build}>Generate Experience</Button>
+                        </Center>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>

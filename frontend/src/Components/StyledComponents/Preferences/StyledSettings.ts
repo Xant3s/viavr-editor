@@ -31,7 +31,7 @@ export const SettingsEntry = styled.div`
 export const SettingListEntry = styled.div`
   background: #4d535b;
   margin: 10px;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   width: 540px;
   border-radius: 5px;

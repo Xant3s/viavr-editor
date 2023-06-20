@@ -17,7 +17,7 @@ export const TabHeader = ({ setId, hidden = false }) => {
                 <TabButton onClick={() => handleClick(3)} style={lastClicked === 3 ? { background: '#0550b3' } : {}}>Avatars</TabButton>
                 <TabButton onClick={() => handleClick(4)} style={lastClicked === 4 ? { background: '#0550b3' } : {}}>Articy</TabButton>
                 <TabButton onClick={() => handleClick(5)} style={lastClicked === 5 ? { background: '#0550b3' } : {}}>Share</TabButton>
-                <TabButton onClick={() => handleClick(7)} style={lastClicked === 5 ? { background: '#0550b3' } : {}}>Finish</TabButton>
+                <TabButton onClick={() => handleClick(7)} style={lastClicked === 7 ? { background: '#0550b3' } : {}}>Finish</TabButton>
             </div>
         </div>
     );

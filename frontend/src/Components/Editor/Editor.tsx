@@ -9,6 +9,7 @@ import { BehaviorEditor } from './BehaviorEditor/BehaviorEditor'
 import { AvatarEditor } from './AvatarEditor/AvatarEditor'
 import { Articy } from './Articy'
 import { Share } from './Share'
+import { BuildDialog } from '../BuildDialog/BuildDialog'
 
 export const Editor = () => {
     const [viewID, setViewID] = useState(0)
@@ -31,6 +32,7 @@ export const Editor = () => {
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />
             <Share hidden={viewID !== 5} />
+            <BuildDialog hidden={viewID !== 7} />
         </>
     )
 }

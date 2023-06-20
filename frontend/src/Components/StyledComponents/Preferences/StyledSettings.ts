@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 import Accordion from '@mui/material/Accordion'
 
+
+export const Center = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+
 export const StyledSettings = styled.div`
   background-color: #15171b;
   color: white;

@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from 'react'
 import { Scene } from './Scene'
 import { Package } from './Package'
-import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
+import { Center, SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Button } from '../StyledComponents/Button'
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { UnityPackageConfigurations } from './UnityPackageConfigurations'
 import { Select, Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
+import { AvatarEditor } from '../Editor/AvatarEditor/AvatarEditor'
+import { AvatarEditorContainer } from '../Editor/AvatarEditor/Styles'
 
 const InvisibleSelect = () => {
     return (
@@ -18,7 +20,7 @@ const InvisibleSelect = () => {
     )
 }
 
-export const BuildDialog: FC = () => {
+export const BuildDialog = ({hidden}) => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
@@ -120,52 +122,57 @@ export const BuildDialog: FC = () => {
     }
 
     useEffect(() => {
+        console.log('use effect')
+        if(hidden) return
+        console.log('do sth')
         loadScenes()
         loadPackages()
-    }, [])
+    }, [hidden])
 
     return (
-        <StyledSettings>
-            <h1>Generate VIA Experience</h1>
-            {/*Workaround: hidden Select to properly import the style*/}
-            <InvisibleSelect />
+        <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>
+            <StyledSettings>
+                <h1>Generate VIA Experience</h1>
+                {/*Workaround: hidden Select to properly import the style*/}
+                <InvisibleSelect />
 
-            <SettingsContainer>
-                <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings />} />
+                <SettingsContainer>
+                    <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
 
-                <SettingAccordion
-                    summary={'Packages'}
-                    details={
-                        <>
-                            {packages.map(p => (
-                                <Package
-                                    key={p.name}
-                                    name={p.name}
-                                    displayName={p.displayName}
-                                    version={p.version}
-                                    description={p.description}
-                                    isSelected={p.isSelected}
-                                    mandatory={p.mandatory}
-                                    toggleFunction={togglePackageSelected}
-                                />
-                            ))}
-                        </>
-                    }
-                />
+                    <SettingAccordion
+                        summary={'Packages'}
+                        details={
+                            <>
+                                {packages.map(p => (
+                                    <Package
+                                        key={p.name}
+                                        name={p.name}
+                                        displayName={p.displayName}
+                                        version={p.version}
+                                        description={p.description}
+                                        isSelected={p.isSelected}
+                                        mandatory={p.mandatory}
+                                        toggleFunction={togglePackageSelected}
+                                    />
+                                ))}
+                            </>
+                        }
+                    />
 
-                {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
+                    {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
 
-                <br />
-                <div hidden={isBuilding}>
-                    <Button id="btn-build-project" type="button" onClick={build}>
-                        Generate Experience
-                    </Button>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>
-                    <Spinner hidden={!isBuilding} style={{ marginLeft: 10 }} />
-                </div>
-            </SettingsContainer>
-        </StyledSettings>
+                    <br />
+                    <div hidden={isBuilding}>
+                        <Button id="btn-build-project" type="button" onClick={build}>
+                            Generate Experience
+                        </Button>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>
+                        <Spinner hidden={!isBuilding} style={{ marginLeft: 10 }} />
+                    </div>
+                </SettingsContainer>
+            </StyledSettings>
+        </Center>
     )
 }

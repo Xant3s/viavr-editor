@@ -5,17 +5,6 @@ import { Slider } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 
 
-export class Settings {
-    percentValue = 50
-    embedTextures = true
-    embedBuffers = true
-    noNormalMaps = false
-    adjustExistingNormalMaps = false
-    useVertexNormals = false
-    creaseAngle = 70
-    normalDeviation = 10
-}
-
 export const AdvancedSettings = ({setSettings}) => {
     const [percentValue, setPercentValue] = useState<number>(50)
     const [embedTextures, setEmbedTextures] = useState<boolean>(true)

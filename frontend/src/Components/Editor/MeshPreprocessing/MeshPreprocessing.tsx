@@ -2,8 +2,9 @@ import { Pane, toaster } from 'evergreen-ui'
 import React, { useState } from 'react'
 import { Button } from '../../StyledComponents/Button'
 import { FileDrop } from './FileDrop'
-import { AdvancedSettings, Settings } from './AdvancedSettings'
+import { AdvancedSettings } from './AdvancedSettings'
 import { AvatarEditorContainer } from '../AvatarEditor/Styles'
+import { Settings } from '../../../@types/MeshPreprocessing'
 
 
 export const MeshPreprocessing = ({ hidden }) => {

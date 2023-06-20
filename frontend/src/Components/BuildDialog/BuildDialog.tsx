@@ -1,47 +1,18 @@
-import { FC, useEffect, useState } from 'react'
-import { Scene } from './Scene'
+import { useEffect, useState } from 'react'
 import { Package } from './Package'
 import { Center, SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Button } from '../StyledComponents/Button'
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { UnityPackageConfigurations } from './UnityPackageConfigurations'
-import { Select, Spinner, toaster } from 'evergreen-ui'
+import { Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
-import { AvatarEditor } from '../Editor/AvatarEditor/AvatarEditor'
-import { AvatarEditorContainer } from '../Editor/AvatarEditor/Styles'
 
-const InvisibleSelect = () => {
-    return (
-        <div hidden>
-            <Select height={0}>
-                <option value="asd"></option>
-            </Select>
-        </div>
-    )
-}
 
 export const BuildDialog = ({hidden}) => {
     const [scenes, setScenes] = useState<any[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
 
-    const toggleSceneSelected = (sceneFileName: string) => {
-        const updatedScenes = scenes.map(scene => {
-            if (scene.sceneFileName === sceneFileName) {
-                return {
-                    ...scene,
-                    isSelected: !scene.isSelected,
-                }
-            }
-            return scene
-        })
-        setScenes(updatedScenes)
-        api.invoke(
-            api.channels.toMain.setBuildSetting,
-            'selectedScenes',
-            updatedScenes.filter(scene => scene.isSelected).map(scene => scene.sceneFileName)
-        )
-    }
 
     const togglePackageSelected = (packageName: string) => {
         const updatedPackages = packages.map(packageItem => {

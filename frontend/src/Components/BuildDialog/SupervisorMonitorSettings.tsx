@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Checkbox } from '../Utils/UI'
 import { Button } from '../StyledComponents/Button'
 
-export const SupervisorMonitorSettings = () => {
+export const SupervisorMonitorSettings = ({hidden}) => {
     const [useSupervisorMonitor, setUseSupervisorMonitor] = useState(false)
     const [useFloorMap, setUseFloorMap] = useState(false)
 
@@ -17,8 +17,9 @@ export const SupervisorMonitorSettings = () => {
     }
 
     useEffect(() => {
+        if(hidden) return
         loadSettings()
-    }, [])
+    }, [hidden])
 
     const toggleSupervisorMonitor = async () => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'supervisorEnabled', !useSupervisorMonitor)

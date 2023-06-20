@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 import Accordion from '@mui/material/Accordion'
 
+
+export const Center = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+
 export const StyledSettings = styled.div`
   background-color: #15171b;
   color: white;
@@ -23,7 +31,7 @@ export const SettingsEntry = styled.div`
 export const SettingListEntry = styled.div`
   background: #4d535b;
   margin: 10px;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   width: 540px;
   border-radius: 5px;

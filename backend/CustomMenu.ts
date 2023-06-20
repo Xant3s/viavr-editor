@@ -35,17 +35,6 @@ export default class CustomMenu {
                 ],
             },
             {
-                label: 'Generate VIA Experience',
-                submenu: [
-                    {
-                        label: 'Generate VIA Experience',
-                        click: () => ipc.emit('BuildSystem:open-build-menu'),
-                        id: 'GenerateExperience',
-                        enabled: this.projectLoaded,
-                    },
-                ],
-            },
-            {
                 role: 'help',
                 submenu: [
                     {

@@ -63,14 +63,15 @@ export const AvatarEditor = ({ hidden }) => {
     useEffect(() => {
         const loadAvatars = async () => {
             const avatars = await api.invoke(api.channels.toMain.getBuildSetting, 'avatars')
-            console.log(avatars)
             if(avatars === undefined) return
             setAvatars(avatars)
             // TODO: check if avatars are downloaded
         }
 
-        api.on(api.channels.fromMain.projectOpened, loadAvatars)
-        if(!hidden) loadSceneObjects()
+        if(!hidden) {
+            loadSceneObjects()
+            loadAvatars()
+        }
     }, [hidden])
 
 

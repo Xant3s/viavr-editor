@@ -13,7 +13,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, 
         <Table.Head>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>
             <Table.TextHeaderCell>Status</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Scene Object</Table.TextHeaderCell>
+            <Table.TextHeaderCell>Placeholder Object</Table.TextHeaderCell>
             <Table.TextHeaderCell>Show QR Code</Table.TextHeaderCell>
             <Table.TextHeaderCell>Download</Table.TextHeaderCell>
             <Table.TextHeaderCell>Delete</Table.TextHeaderCell>

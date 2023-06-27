@@ -42,7 +42,7 @@ export const Spoke = ({ hidden }) => {
 const CenteredSpinner = () => {
     return <div style={{
         width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center',
-        flexDirection: 'column',
+        flexDirection: 'column', color: 'white'
     }}>
         <Spinner size={64} />
         <div style={{ fontSize: '24px', marginTop: '16px' }}>Loading...</div>

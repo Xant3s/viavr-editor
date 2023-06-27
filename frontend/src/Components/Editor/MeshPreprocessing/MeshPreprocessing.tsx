@@ -32,13 +32,14 @@ export const MeshPreprocessing = ({ hidden }) => {
         <h1>Optimize 3D Objects</h1>
         <form onSubmit={runPreprocessor} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div>You can optimize one file at a time. You can only optimize .gltf file formats.
-                The optimized files will be named &apos;[original name]_optimized.gltf&apos; and saved next to the originals.</div>
+                The optimized files will be named &apos;[original name]_optimized.glb&apos; and saved next to the originals.</div>
             <Pane minWidth={500} maxWidth={654} marginTop={25}>
                 <FileDrop maxFiles={1} setFilePaths={setFilePaths} />
             </Pane>
             <Pane minWidth={500} maxWidth={654} marginBottom={25}>
                 <AdvancedSettings setSettings={setSettings} />
             </Pane>
+            {/*TODO: add spinner while processing*/}
             <Button type='submit' disabled={filePaths.length === 0}>Optimize</Button>
         </form>
     </AvatarEditorContainer>

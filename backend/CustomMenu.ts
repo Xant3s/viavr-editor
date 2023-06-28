@@ -65,6 +65,9 @@ export default class CustomMenu {
                     {
                         role: 'toggleDevTools',
                     },
+                    {
+                        role: 'reload'
+                    }
                 ],
             },
         ])

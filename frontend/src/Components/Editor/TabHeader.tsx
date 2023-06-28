@@ -12,6 +12,7 @@ export const TabHeader = ({ setId, hidden = false }) => {
     return (
         <div hidden={hidden} style={{ textAlign: 'center', backgroundColor: '#15171b' }}>
             <div style={{ padding: 5, display: 'inline-block' }}>
+                <TabButton onClick={() => handleClick(6)} style={lastClicked === 6 ? { background: '#0550b3' } : {}}>Optimize</TabButton>
                 <TabButton onClick={() => handleClick(1)} style={lastClicked === 1 ? { background: '#0550b3' } : {}}>Objects</TabButton>
                 <TabButton onClick={() => handleClick(2)} style={lastClicked === 2 ? { background: '#0550b3' } : {}}>Behaviors</TabButton>
                 <TabButton onClick={() => handleClick(3)} style={lastClicked === 3 ? { background: '#0550b3' } : {}}>Avatars</TabButton>

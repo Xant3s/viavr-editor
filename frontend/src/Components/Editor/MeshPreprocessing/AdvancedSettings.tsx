@@ -13,7 +13,7 @@ export const AdvancedSettings = ({setSettings}) => {
     const [adjustExistingNormalMaps, setAdjustExistingNormalMaps] = useState<boolean>(false)
     const [useVertexNormals, setUseVertexNormals] = useState<boolean>(false)
     const [creaseAngle, setCreaseAngle] = useState<number>(70)
-    const [normalDeviation, setNormalDeviation] = useState<number>(10)
+    const [normalDeviation, setNormalDeviation] = useState<number>(5)
 
 
     useEffect(() => {

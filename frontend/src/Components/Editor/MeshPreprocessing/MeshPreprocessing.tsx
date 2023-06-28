@@ -29,11 +29,9 @@ export const MeshPreprocessing = ({ hidden }) => {
         const status = await api.invoke(api.channels.toMain.runPreprocessor, filePaths, settings)
         if(status === 200) {
             toaster.success('Optimization successful')
-            // handleRemove(files[0])
             setHasPreview(true)
         } else {
             toaster.danger('Could not process this file')
-            // handleRemove(files[0])
         }
         setIsLoading(false)
     }
@@ -68,7 +66,7 @@ export const MeshPreprocessing = ({ hidden }) => {
                     </Column>
                 ) : (
                     hasPreview && (
-                        <View3D tag='div' canvasClass={styles.canvas} src={'D:\\Users\\sat47me\\Desktop\\Duck.glb'} />
+                        <View3D tag='div' canvasClass={styles.canvas} src={filePaths[0].replace('.gltf', '_optimized.glb')} />
                     )
                 )}
             </Column>

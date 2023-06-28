@@ -5,6 +5,10 @@ import { FileDrop } from './FileDrop'
 import { AdvancedSettings } from './AdvancedSettings'
 import { AvatarEditorContainer } from '../AvatarEditor/Styles'
 import { Settings } from '../../../@types/MeshPreprocessing'
+import View3D from '@egjs/react-view3d'
+
+import styles from './style.module.css'
+import { Column, Row } from '../../StyledComponents/Row'
 
 
 export const MeshPreprocessing = ({ hidden }) => {
@@ -30,17 +34,37 @@ export const MeshPreprocessing = ({ hidden }) => {
 
     return <AvatarEditorContainer hidden={hidden}>
         <h1>Optimize 3D Objects</h1>
-        <form onSubmit={runPreprocessor} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div>You can optimize one file at a time. You can only optimize .gltf file formats.
-                The optimized files will be named &apos;[original name]_optimized.glb&apos; and saved next to the originals.</div>
-            <Pane minWidth={500} maxWidth={654} marginTop={25}>
-                <FileDrop maxFiles={1} setFilePaths={setFilePaths} />
-            </Pane>
-            <Pane minWidth={500} maxWidth={654} marginBottom={25}>
-                <AdvancedSettings setSettings={setSettings} />
-            </Pane>
-            {/*TODO: add spinner while processing*/}
-            <Button type='submit' disabled={filePaths.length === 0}>Optimize</Button>
-        </form>
+        <Row>
+            <form onSubmit={runPreprocessor} style={{display: 'flex', flexDirection: 'row'}}>
+                <Column style={{alignItems: 'center', maxWidth: 654, margin: 10}}>
+                    <div>You can optimize one file at a time. You can only optimize .gltf file formats.
+                        The optimized files will be named &apos;[original name]_optimized.glb&apos; and saved next to the originals.</div>
+                    <Pane minWidth={500} maxWidth={654} marginTop={25}>
+                        <FileDrop maxFiles={1} setFilePaths={setFilePaths} />
+                    </Pane>
+                </Column>
+                <Column style={{margin: 10, marginTop: 85}}>
+                    <Pane minWidth={500} maxWidth={654} marginBottom={25}>
+                        <AdvancedSettings setSettings={setSettings} />
+                    </Pane>
+                    {/*TODO: add spinner while processing*/}
+                    <Button type='submit' disabled={filePaths.length === 0}>Optimize</Button>
+                </Column>
+            </form>
+            <Column>
+                <h2>Preview</h2>
+                <View3D
+                    tag="div"
+                    canvasClass={styles.canvas}
+                    src={'Duck.glb'}
+                    onReady={e => {
+                        console.log(e)
+                    }}
+                    onError={e => {
+                        console.log('error', e)
+                    }}
+                />
+            </Column>
+        </Row>
     </AvatarEditorContainer>
 }

@@ -49,6 +49,7 @@ export default class SceneLoadingPage {
     }
 
     private async loadScene(sceneName: string, newSceneButton: JQuery<HTMLElement>) {
+        const sceneFilePath :string = await api.invoke(api.channels.toMain.getSceneFilePath)
         // create new empty scene
         $$('h3:contains("New Scene"):last').trigger('click')
         const newEmptySceneBtn = await htmlElement('h3:contains("New Empty Scene"):last')
@@ -59,7 +60,9 @@ export default class SceneLoadingPage {
         importBtn.trigger('click')
         await htmlElement('div:contains("Warning! This will overwrite your existing scene"):last')
         $$('button:contains("Ok"):last').trigger('click')
+        const diffElement = $$("#container")
 
+        diffElement.text(sceneFilePath)
         // TODO: handle open file dialog: right now the user has to select the json file. We probably want to automate this in the future.
         // add 'el.id = "spoke-import-json-scene-file";' to 'EditorContainer.js' line 783 in Spoke 8aa84fce 2021-12-03 17:36
         const sceneFileElement = await htmlElement('#spoke-import-json-scene-file')

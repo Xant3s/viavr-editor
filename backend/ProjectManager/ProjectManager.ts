@@ -57,7 +57,7 @@ export default class ProjectManager {
         ipc.on('project-manager:save-project', async () => this.saveProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
-        ipc.handle(channels.toMain.getSceneFilePath, async() => this.getSceneFilePath())
+        ipc.handle(channels.toMain.getSceneFileContents, async() => await this.getSceneFileContents())
     }
 
     private async createNewProject() {
@@ -160,19 +160,16 @@ export default class ProjectManager {
         }
     }
 
-    public getSceneFilePath() : string{
+    public async getSceneFileContents() {
         const scenesFolderPath = Path.join(this._presentWorkingDirectory, 'Scenes')
-        let spokeFilePath = " "
-        const files = fs.readdirSync(scenesFolderPath)
+        const files = await fse.readdir(scenesFolderPath)
         const spokeFile = files.find((file) => Path.extname(file) === '.spoke')
-        if(spokeFile){
-            spokeFilePath = Path.join(scenesFolderPath,spokeFile)
-            return spokeFilePath
-        }
-        else{
-            return spokeFilePath;
-        }
+        if(!spokeFile) return ''
+        const spokeFilePath = Path.join(scenesFolderPath, spokeFile)
+        const spokeFileContents = await fse.readJSON(spokeFilePath, 'utf8')
+        return JSON.stringify(spokeFileContents)
     }
+
     private async openPresentWorkingDirectory() {
         await exec(`start "" ${this.presentWorkingDirectory}`)
     }

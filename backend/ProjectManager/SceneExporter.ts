@@ -9,7 +9,7 @@ export default class SceneExporter {
 
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
-        ipcMain.handle('save-current-scene', () => this.exportScene())
+        ipcMain.on('save-current-scene', () => this.exportScene())
     }
 
     private exportScene() {

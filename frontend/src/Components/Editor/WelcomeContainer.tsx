@@ -24,10 +24,10 @@ export const WelcomeContainer = ({ setPage }) => {
                 <Button onClick={() => setPage('preferences')}>
                     Create New Project
                 </Button>
-                <Button onClick={() => api.send(api.channels.toMain.openProject, 'res/Templates')}>
+                <Button onClick={() => api.invoke(api.channels.toMain.openProject, 'res/Templates')}>
                     Open Project
                 </Button>
-                <Button onClick={() => api.send(api.channels.toMain.openProjectFolder)}>
+                <Button onClick={() => api.invoke(api.channels.toMain.openProjectFolder)}>
                     Open Project from Folder
                 </Button>
             </Row>

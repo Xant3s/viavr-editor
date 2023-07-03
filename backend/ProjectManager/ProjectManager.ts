@@ -51,11 +51,11 @@ export default class ProjectManager {
     }
 
     private constructor() {
-        ipc.on(channels.toMain.createNewProject, async () => this.createNewProject())
-        ipc.on(channels.toMain.openProject, async (event, recommendedProjectPath) => this.openProjectFromFile(recommendedProjectPath))
-        ipc.on(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
-        ipc.on('project-manager:save-project', async () => this.saveProject())
-        ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
+        ipc.handle(channels.toMain.createNewProject, async () => this.createNewProject())
+        ipc.handle(channels.toMain.openProject, async (event, recommendedProjectPath) => this.openProjectFromFile(recommendedProjectPath))
+        ipc.handle(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
+        ipc.handle('project-manager:save-project', async () => this.saveProject())
+        ipc.handle('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
         ipc.handle(channels.toMain.getSceneFileContents, async() => await this.getSceneFileContents())
     }

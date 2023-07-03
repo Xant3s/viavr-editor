@@ -27,7 +27,7 @@ export const Settings = ({
     }
 
     const sendSettingUpdateToBackend = (uuid: string, newValue: value_t) => {
-        api.send(changeSettingChannel, uuid, newValue)
+        api.invoke(changeSettingChannel, uuid, newValue)
     }
 
     useEffect(() => {

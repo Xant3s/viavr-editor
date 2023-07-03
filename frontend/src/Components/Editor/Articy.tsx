@@ -2,7 +2,7 @@ import { Button } from 'evergreen-ui'
 
 export const Articy = ({ hidden }) => {
     const openArticyEditor = () => {
-        api.send(api.channels.toMain.openArticyEditor)
+        api.invoke(api.channels.toMain.openArticyEditor)
     }
 
     return <div hidden={hidden} style={{

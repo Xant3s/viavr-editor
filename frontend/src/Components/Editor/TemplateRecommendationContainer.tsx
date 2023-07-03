@@ -17,7 +17,7 @@ export const TemplateRecommendationContainer = ({setPage, preferences}) => {
 
 
     const openTemplate = (link : string) => {
-        api.send(api.channels.toMain.openProject, link)
+        api.invoke(api.channels.toMain.openProject, link)
     }
 
     useEffect(() => {
@@ -86,7 +86,7 @@ export const TemplateRecommendationContainer = ({setPage, preferences}) => {
                 <h2>Or</h2>
             </Row>
             <Row>
-                <Button marginRight={16} appearance="primary" onClick={() => api.send(api.channels.toMain.createNewProject)}>
+                <Button marginRight={16} appearance="primary" onClick={() => api.invoke(api.channels.toMain.createNewProject)}>
                     Start new project
                 </Button>
                 <Button marginRight={16} appearance="primary" onClick={() => setPage('preferences')}>Back</Button>

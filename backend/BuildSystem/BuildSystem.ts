@@ -24,7 +24,7 @@ export default class BuildSystem {
         UnityPackageManager.getInstance()
         BuildSettingsManager.getInstance()
         UnityPackageSettingsManager.getInstance()
-        ipc.on('BuildSystem:open-build-menu', () => this.openBuildMenu())
+        ipc.handle('BuildSystem:open-build-menu', () => this.openBuildMenu())
         ipc.handle('BuildSystem:open-floor-map-editor', () => this.openFloorMapEditor())
         ipc.handle(channels.toMain.floorMapNewPng, (_, image) => this.saveFloorMapImage(image))
         ipc.handle(channels.toMain.floorMapNewSvg, (_, image) => this.saveFloorMapSvg(image))

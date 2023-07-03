@@ -31,8 +31,8 @@ export default class ProjectSettingsManager {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {
             await this.init()
         })
-        ipc.on('projectSettings:open', () => this.openProjectSettings())
-        ipc.on(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
+        ipc.handle('projectSettings:open', () => this.openProjectSettings())
+        ipc.handle(channels.toMain.changeProjectSetting, (_, uuid: string, value: value_t) => this.updateSetting(uuid, value))
         ipc.handle(channels.toMain.requestProjectSetting, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestProjectSettings, () => this.settingsManager.getAll())
         ipc.handle(channels.toMain.unsafeSetProjectSetting, (_, name, value) => this.set<any>(name, value))

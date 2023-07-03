@@ -3,8 +3,8 @@ import { loadPage } from './Utils/ElectronUtils'
 
 export class Prototypes {
     constructor() {
-        ipcMain.on('dev:open-panels-prototype', () => this.openPanels())
-        ipcMain.on('dev:open-tabs-prototype', () => this.openTabs())
+        ipcMain.handle('dev:open-panels-prototype', () => this.openPanels())
+        ipcMain.handle('dev:open-tabs-prototype', () => this.openTabs())
     }
 
     private async openPanels() {

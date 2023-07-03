@@ -58,15 +58,6 @@ class ValidChannels {
     }
 }
 
-const send = (channel: string, ...args: any) => {
-    const validChannels = new ValidChannels()
-    if (validChannels.toMain.includes(channel)) {
-        ipcRenderer.send(channel, ...args)
-    } else {
-        console.error(`Invalid channel: ${channel}`)
-    }
-}
-
 const invoke = async (channel: string, ...args: any) => {
     const validChannels = new ValidChannels()
     if (validChannels.toMain.includes(channel)) {
@@ -91,7 +82,6 @@ const on = (channel: string, func) => {
 }
 
 export const API = {
-    send: send,
     invoke: invoke,
     on: on,
     Path: Path,

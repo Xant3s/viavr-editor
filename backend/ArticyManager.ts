@@ -7,7 +7,7 @@ import ProjectManager from './ProjectManager/ProjectManager'
 
 export class ArticyManager {
     public constructor() {
-        ipcMain.on(channels.toMain.openArticyEditor, this.openArticyEditor)
+        ipcMain.handle(channels.toMain.openArticyEditor, this.openArticyEditor)
     }
 
     private async openArticyEditor() {

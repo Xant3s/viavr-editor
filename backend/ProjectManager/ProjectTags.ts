@@ -4,6 +4,11 @@ import ProjectSettingsManager from './ProjectSettingsManager'
 export class ProjectTags {
     constructor() {
         ProjectManager.getInstance().registerOnProjectLoadedListener(async () => {
+            const version = await ProjectSettingsManager.getInstance().get('dev.viavr.editor.version')
+            if (!version) {
+                const defaultVersionSetting = "0.1.0"
+                await ProjectSettingsManager.getInstance().set('dev.viavr.editor.version', defaultVersionSetting)
+            }
             const tags = await ProjectSettingsManager.getInstance().get('tags')
             if (!tags) {
                 const defaultTagSetting = {

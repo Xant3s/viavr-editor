@@ -64,7 +64,7 @@ export default class UnityBuildManager {
         })
     }
 
-    private async createUnityProject(sceneNames, selectedPackages) {
+    private async createUnityProject(sceneNames: string[], selectedPackages) {
         const outputPath = await UnityBuildManager.promptUserForProjectBuildPath()
         if(outputPath === undefined) {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
@@ -204,7 +204,7 @@ export default class UnityBuildManager {
     }
 
     private async exportBuildSettings(outputPath: string) {
-        const settingsPath = await BuildSettingsManager.getInstance().settingsPath
+        const settingsPath = await BuildSettingsManager.getInstance().settingsPath as string
         await fs.copyFile(settingsPath, `${outputPath}/Assets/Settings/BuildSettings.json`, (err) => {
             if(err) {
                 console.error(err)

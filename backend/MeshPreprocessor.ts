@@ -18,7 +18,7 @@ export default class MeshPreprocessor {
         })
     }
 
-    async runPreprocessor(paths, settings: Settings) {
+    async runPreprocessor(paths: string[], settings: Settings) {
         return new Promise<number>((resolve, reject) => {
             const filePath = paths[0]
             const directory = filePath.substring(0, filePath.lastIndexOf(path.sep))

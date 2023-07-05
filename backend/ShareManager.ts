@@ -49,7 +49,7 @@ export default class ShareManager {
             try {
                 const result = await fetch(`${templateServerAddress}/projects/list`)
                 if (result.status !== 200) return result.status
-                const templateList = await result.json()
+                const templateList = await result.json() as string[]
                 const downloadPromises = templateList.map(async template => {
                     const fileResult = await fetch(`${templateServerAddress}/projects/download?filename=${template}`)
                     if (fileResult.status !== 200) return fileResult.status

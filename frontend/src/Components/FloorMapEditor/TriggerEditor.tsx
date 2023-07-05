@@ -139,7 +139,7 @@ const SaveRestore = () => {
 
     useEffect(() => {
         const loadFloorMap = async () => {
-            const floorMap = await api.invoke(api.channels.toMain.floorMapGetSvg)
+            const floorMap: string = await api.invoke(api.channels.toMain.floorMapGetSvg)
             setFloorMapSrc(floorMap)
             setNodes((nodes) => {
                     nodes.map((node) => {

@@ -32,7 +32,7 @@ export class UnityPackageSettingsManager {
         this.initialized = true
     }
 
-    public async set(name: string, value) {
+    public async set(name: string, value: value_t) {
         const newSetting = {
             'name': name,
             'value': value,

@@ -8,7 +8,8 @@ export class BuildSettingsManager {
     private static instance: BuildSettingsManager
     private settingsManager!: SettingsManager
     private initialized = false
-    private path
+    private path: string | undefined
+
 
     public static getInstance(): BuildSettingsManager {
         if(!BuildSettingsManager.instance) {

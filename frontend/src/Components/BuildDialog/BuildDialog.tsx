@@ -8,8 +8,13 @@ import { Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 
 
+type Scene = {
+    isSelected: boolean
+    sceneFileName: string
+}
+
 export const BuildDialog = ({hidden}) => {
-    const [scenes, setScenes] = useState<any[]>([])
+    const [scenes, setScenes] = useState<Scene[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
 
@@ -41,8 +46,8 @@ export const BuildDialog = ({hidden}) => {
     }
 
     const loadScenes = async () => {
-        const sceneFileNames = await api.invoke(api.channels.toMain.queryScenes)
-        const selectedScenes = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedScenes')
+        const sceneFileNames: string[] = await api.invoke(api.channels.toMain.queryScenes)
+        const selectedScenes: string[] = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedScenes')
         setScenes(
             sceneFileNames.map(sceneFileName => {
                 const settingExists = selectedScenes !== undefined

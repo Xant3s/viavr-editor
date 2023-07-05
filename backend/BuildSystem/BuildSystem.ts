@@ -14,7 +14,7 @@ export default class BuildSystem {
     private readonly mainWindow: BrowserWindow
     private _buildDialog?: BrowserWindow
     private floorMapEditor?: BrowserWindow
-    private floorMapSvg
+    private floorMapSvg: string | undefined
 
 
     constructor(window: BrowserWindow) {
@@ -32,7 +32,7 @@ export default class BuildSystem {
         ipc.handle(channels.toMain.floorMapLoadSvg, () => this.loadFloorMapSvg())
     }
 
-    private async saveFloorMapImage(imageData) {
+    private async saveFloorMapImage(imageData: string) {
         const base64Data = imageData.replace(/^data:image\/png;base64,/, '')
         try {
             await fs.writeFile(path.join(ProjectManager.getInstance().presentWorkingDirectory, 'floorMap.png'), base64Data, "base64")
@@ -41,7 +41,7 @@ export default class BuildSystem {
         }
     }
 
-    private async saveFloorMapSvg(svgData) {
+    private async saveFloorMapSvg(svgData: string) {
         this.floorMapSvg = svgData
         try {
             await fs.writeFile(path.join(ProjectManager.getInstance().presentWorkingDirectory, 'floorMap.xmlsvg'), svgData)

@@ -14,7 +14,6 @@ import { SceneUtils } from './Utils/SceneUtils'
 import { ProjectTags } from './ProjectManager/ProjectTags'
 import ShareManager from './ShareManager'
 import MeshPreprocessor from './MeshPreprocessor'
-import { BuildSettings } from './BuildSystem/BuildSettings'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
@@ -30,7 +29,6 @@ const startup = async () => {
     new Prototypes()
     new ArticyManager()
     new ProjectTags()
-    new BuildSettings()
     new ShareManager()
     new MeshPreprocessor()
     await SceneUtils.register()

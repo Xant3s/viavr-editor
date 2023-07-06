@@ -31,10 +31,9 @@ export default class MainWindow {
     }
 
     public enableMenuOptionsOnArticyClosed(){
-        console.log("Send Too early")
         this.send(channels.fromMain.externalWindowClosed)
         const menu = new CustomMenu()
-        menu.unlockMenuOptionsUponProjectOpened()
+        menu.unlockMenuOptionsUponArticyClosed()
     }
 
     public send(channel: string, ...args: any[]) {

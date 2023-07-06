@@ -30,14 +30,9 @@ export class ArticyManager {
             shell: true,
             detached: true,
         })
-        art.on('close', () => {
-            this.mainWindow.enableMenuOptionsOnArticyClosed()
-            console.log("closed")
-        });
 
         art.on('exit', () => {
             this.mainWindow.enableMenuOptionsOnArticyClosed()
-            console.log("exited")
         });
     }
 }

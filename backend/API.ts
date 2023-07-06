@@ -45,7 +45,7 @@ export const channels = {
         projectOpened: 'project-manager:project-opened',
         spokeExportScene: 'spoke:export-scene',
         spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
-        externalWindowOpened:'articy:open-editor',
+        externalWindowOpened:'articy:open-editor-and-disable-window',
         externalWindowClosed:'articy:open-editor'
     },
 }

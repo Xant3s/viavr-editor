@@ -14,13 +14,8 @@ export const TabHeader = ({ setId, hidden = false }) => {
 
     useEffect(() => {
         api.on(api.channels.fromMain.externalWindowOpened, () => setDisabled(true))
-        api.on(api.channels.fromMain.externalWindowClosed, () =>{ setDisabled(false)
-        console.log("I was called here")
-        })
+        api.on(api.channels.fromMain.externalWindowClosed, () => setDisabled(false))
     }, [])
-
-    const onExternalWindowOpened = () => setDisabled(true)
-    const onExternalWindowClosed = () => setDisabled(false)
 
     return (
         <div hidden={hidden} style={{ textAlign: 'center', backgroundColor: '#15171b' }}>

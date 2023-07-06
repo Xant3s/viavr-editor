@@ -26,14 +26,17 @@ export default class CustomMenu {
                         label: 'Project Settings',
                         click: () => ipc.emit('projectSettings:open'),
                         enabled: this.projectLoaded,
+                        enabled: this.articyNotOpen
                     },
                     {
                         label: 'Preferences',
                         click: () => ipc.emit('preferences:open'),
+                        enabled: this.articyNotOpen
                     },
                     {
                         label: 'Exit',
                         click: () => app.quit(),
+                        enabled: this.articyNotOpen
                     },
                 ],
             },
@@ -84,6 +87,11 @@ export default class CustomMenu {
 
     public lockMenuOptionsUponArticyOpened(){
         this.articyNotOpen = false
+        this.loadCustomMenu()
+    }
+
+    public unlockMenuOptionsUponArticyClosed(){
+        this.articyNotOpen = true
         this.loadCustomMenu()
     }
 }

@@ -93,7 +93,7 @@ const removeListener = (channel: string, func) => {
 
 const removeListeners =  (channel: string) => {
     const validChannels = new ValidChannels()
-    if (validChannels.toMain.includes(channel)) {
+    if (validChannels.fromMain.includes(channel)) {
         return ipcRenderer.removeAllListeners(channel)
     } else {
         console.error(`Invalid channel: ${channel}`)

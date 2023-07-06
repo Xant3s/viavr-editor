@@ -91,6 +91,7 @@ export default class CustomMenu {
 
     public unlockMenuOptionsUponArticyClosed(){
         this.articyNotOpen = true
+        this.projectLoaded = true
         this.loadCustomMenu()
     }
 }

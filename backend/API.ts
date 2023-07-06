@@ -1,5 +1,6 @@
 import { ipcRenderer } from 'electron'
 import Path from 'path'
+import {v4 as uuid} from 'uuid'
 
 export const channels = {
     toMain: {
@@ -71,49 +72,43 @@ const invoke = async (channel: string, ...args: any) => {
     })
 }
 
-/// Used in the renderer process to receive messages from main. See ipcRenderer.on for more info.
+const listeners = new Map<string, any>()    // Map<uuid, function>
+
+/// Used in the renderer process to receive messages from main. Returns an uuid that can be used to remove the listener.
+/// See ipcRenderer.on for more info.
 //@ts-ignore
 const on = (channel: string, func) => {
     const validChannels = new ValidChannels()
     if (validChannels.fromMain.includes(channel)) {
         // Deliberately strip event as it includes `sender`
-        ipcRenderer.on(channel, (event, ...args) => func(...args))
+        const listener = (event, ...args) => func(...args)
+        const id = uuid()
+        ipcRenderer.on(channel, listener)
+        listeners.set(id, listener)
+        return id
     } else {
         console.error(`Invalid channel: ${channel}`)
     }
+    return ''
 }
 
 /// Used in the renderer process to stop receiving messages from main.
 /// Removes the specified listener from the listener array for the specified channel. See ipcRenderer.removeListener for more info.
-const removeListener = (channel: string, func) => {
+const removeListener = (channel: string, funcId: string) => {
     const validChannels = new ValidChannels()
     if (validChannels.fromMain.includes(channel)) {
-        // Deliberately strip event as it includes `sender`
-        ipcRenderer.removeListener(channel, (event, ...args) => func(...args))
+        ipcRenderer.removeListener(channel, listeners.get(funcId))
+        listeners.delete(funcId)
     } else {
         console.error(`Invalid channel: ${channel}`)
     }
 }
 
-/// Used in the renderer process to stop receiving messages from main on the specified channel.
-/// This removes all listeners. See ipcRenderer.removeAllListeners for more info.
-const removeListeners =  (channel: string) => {
-    const validChannels = new ValidChannels()
-    if (validChannels.fromMain.includes(channel)) {
-        return ipcRenderer.removeAllListeners(channel)
-    } else {
-        console.error(`Invalid channel: ${channel}`)
-    }
-    return new Promise((_, reject) => {
-        reject('Invalid channel')
-    })
-}
 
 export const API = {
     invoke: invoke,
     on: on,
     removeListener: removeListener,
-    removeListeners: removeListeners,
     Path: Path,
     channels: channels,
 }

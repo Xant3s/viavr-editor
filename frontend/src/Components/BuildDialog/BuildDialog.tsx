@@ -6,6 +6,7 @@ import { SettingAccordion } from '../Settings/SettingAccordion'
 import { UnityPackageConfigurations } from './UnityPackageConfigurations'
 import { Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
+import { InfoSpinnerBox } from './InfoSpinnerBox'
 
 
 type Scene = {
@@ -17,6 +18,7 @@ export const BuildDialog = ({hidden}) => {
     const [scenes, setScenes] = useState<Scene[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
+    const [isFetchingPackages, setIsFetchingPackages] = useState(false)
 
 
     const togglePackageSelected = (packageName: string) => {
@@ -58,6 +60,7 @@ export const BuildDialog = ({hidden}) => {
     }
 
     const loadPackages = async () => {
+        setIsFetchingPackages(true)
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         const selectedPackages = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedPackages')
         const newPackages = packages.map(p => {
@@ -71,6 +74,7 @@ export const BuildDialog = ({hidden}) => {
             'selectedPackages',
             newPackages.filter(p => p.isSelected).map(packageItem => packageItem.name)
         )
+        setIsFetchingPackages(false)
     }
 
     const getPackagesToDraw = () => {
@@ -107,6 +111,7 @@ export const BuildDialog = ({hidden}) => {
         <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>
             <StyledSettings hidden={hidden}>
                 <Center><h1>Generate VIA Experience</h1></Center>
+                <InfoSpinnerBox hidden={!isFetchingPackages} text='Fetching package info' />
 
                 <SettingsContainer hidden={hidden}>
                     <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />

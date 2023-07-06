@@ -1,6 +1,15 @@
 import { Button } from 'evergreen-ui'
+import { useEffect, useState } from 'react'
 
 export const Articy = ({ hidden }) => {
+
+    const [isDisabled, setDisabled] = useState(false);
+
+    useEffect(() => {
+        api.on(api.channels.fromMain.externalWindowOpened, () => setDisabled(true))
+        api.on(api.channels.fromMain.externalWindowClosed, () => setDisabled(false))
+    }, [])
+
     const openArticyEditor = () => {
         api.invoke(api.channels.toMain.openArticyEditor)
     }
@@ -14,6 +23,6 @@ export const Articy = ({ hidden }) => {
         color: 'white',
     }}>
         <h1>Articy</h1>
-        <Button appearance='primary' onClick={() => openArticyEditor()}>Open Articy Editor</Button>
+        <Button disabled={isDisabled} appearance='primary' onClick={() => openArticyEditor()}>Open Articy Editor</Button>
     </div>
 }

@@ -3,6 +3,7 @@ import * as path from 'path'
 import CustomMenu from './CustomMenu'
 import { loadPage } from './Utils/ElectronUtils'
 import electron_reload from 'electron-reload'
+import { channels } from './API'
 
 export default class MainWindow {
     private static window: Electron.BrowserWindow
@@ -21,6 +22,18 @@ export default class MainWindow {
     public enableMenuOptionsOnProjectOpened() {
         const menu = new CustomMenu()
         menu.unlockMenuOptionsUponProjectOpened()
+    }
+
+    public disableMenuOptionsOnArticyOpened(){
+        this.send(channels.fromMain.externalWindowOpened)
+        const menu = new CustomMenu()
+        menu.lockMenuOptionsUponArticyOpened()
+    }
+
+    public enableMenuOptionsOnArticyClosed(){
+        this.send(channels.fromMain.externalWindowClosed)
+        const menu = new CustomMenu()
+        menu.unlockMenuOptionsUponArticyClosed()
     }
 
     public send(channel: string, ...args: any[]) {

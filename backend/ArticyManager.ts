@@ -1,13 +1,22 @@
+import MainWindow from './MainWindow'
 import { ipcMain } from 'electron'
 import { channels } from './API'
 import PreferencesManager from './Preferences/PreferencesManager'
 import { Setting_t } from '../frontend/src/@types/Settings'
-import child_process from 'child_process'
 import ProjectManager from './ProjectManager/ProjectManager'
+import * as child_process from 'child_process'
 
 export class ArticyManager {
-    public constructor() {
-        ipcMain.handle(channels.toMain.openArticyEditor, this.openArticyEditor)
+    private mainWindow : MainWindow
+
+    public constructor(window : MainWindow) {
+        ipcMain.handle(channels.toMain.openArticyEditor, this.openEditorAndDisableWindow.bind(this))
+        this.mainWindow = window
+    }
+
+    private async openEditorAndDisableWindow(){
+        this.mainWindow.disableMenuOptionsOnArticyOpened()
+        await this.openArticyEditor()
     }
 
     private async openArticyEditor() {
@@ -15,9 +24,14 @@ export class ArticyManager {
         const articyPath = articyPathSetting.value as string
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         const articyStartCommend = `${articyPath} -edit -path ${pwd}`
-        child_process.spawn(articyStartCommend, [], {
+        const art = child_process.spawn(articyStartCommend, [], {
             shell: true,
             detached: true,
         })
+
+        art.on('exit', () => {
+            this.mainWindow.enableMenuOptionsOnArticyClosed()
+        });
     }
 }
+

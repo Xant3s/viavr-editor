@@ -3,6 +3,8 @@ import { app, ipcMain as ipc, Menu, shell } from 'electron'
 export default class CustomMenu {
     private projectLoaded = false
 
+    private articyNotOpen = true;
+
     public loadCustomMenu() {
         const menu = Menu.buildFromTemplate([
             {
@@ -12,13 +14,13 @@ export default class CustomMenu {
                         label: 'Save Current Scene',
                         click: () => ipc.emit('save-current-scene'),
                         id: 'SaveScene',
-                        enabled: this.projectLoaded,
+                        enabled: this.projectLoaded && this.articyNotOpen,
                     },
                     {
                         label: 'Save Project',
                         click: () => ipc.emit('project-manager:save-project'),
                         id: 'SaveProject',
-                        enabled: this.projectLoaded,
+                        enabled: this.projectLoaded && this.articyNotOpen,
                     },
                     {
                         label: 'Project Settings',
@@ -77,6 +79,11 @@ export default class CustomMenu {
 
     public unlockMenuOptionsUponProjectOpened() {
         this.projectLoaded = true
+        this.loadCustomMenu()
+    }
+
+    public lockMenuOptionsUponArticyOpened(){
+        this.articyNotOpen = false
         this.loadCustomMenu()
     }
 }

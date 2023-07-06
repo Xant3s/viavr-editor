@@ -23,6 +23,7 @@ export default class CustomMenu {
                     {
                         label: 'Project Settings',
                         click: () => ipc.emit('projectSettings:open'),
+                        enabled: this.projectLoaded,
                     },
                     {
                         label: 'Preferences',

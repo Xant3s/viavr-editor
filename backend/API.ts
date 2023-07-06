@@ -58,6 +58,7 @@ class ValidChannels {
     }
 }
 
+/// From the renderer process to main. Resolves with the response from main. See ipcRenderer.invoke for more info.
 const invoke = async (channel: string, ...args: any) => {
     const validChannels = new ValidChannels()
     if (validChannels.toMain.includes(channel)) {
@@ -70,6 +71,7 @@ const invoke = async (channel: string, ...args: any) => {
     })
 }
 
+/// Used in the renderer process to receive messages from main. See ipcRenderer.on for more info.
 //@ts-ignore
 const on = (channel: string, func) => {
     const validChannels = new ValidChannels()
@@ -81,6 +83,8 @@ const on = (channel: string, func) => {
     }
 }
 
+/// Used in the renderer process to stop receiving messages from main.
+/// Removes the specified listener from the listener array for the specified channel. See ipcRenderer.removeListener for more info.
 const removeListener = (channel: string, func) => {
     const validChannels = new ValidChannels()
     if (validChannels.fromMain.includes(channel)) {
@@ -91,6 +95,8 @@ const removeListener = (channel: string, func) => {
     }
 }
 
+/// Used in the renderer process to stop receiving messages from main on the specified channel.
+/// This removes all listeners. See ipcRenderer.removeAllListeners for more info.
 const removeListeners =  (channel: string) => {
     const validChannels = new ValidChannels()
     if (validChannels.fromMain.includes(channel)) {

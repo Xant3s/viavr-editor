@@ -1,5 +1,6 @@
 import { ipcRenderer } from 'electron'
 import Path from 'path'
+import {v4 as uuid} from 'uuid'
 
 export const channels = {
     toMain: {
@@ -60,6 +61,7 @@ class ValidChannels {
     }
 }
 
+/// From the renderer process to main. Resolves with the response from main. See ipcRenderer.invoke for more info.
 const invoke = async (channel: string, ...args: any) => {
     const validChannels = new ValidChannels()
     if (validChannels.toMain.includes(channel)) {
@@ -72,20 +74,43 @@ const invoke = async (channel: string, ...args: any) => {
     })
 }
 
+const listeners = new Map<string, any>()    // Map<uuid, function>
+
+/// Used in the renderer process to receive messages from main. Returns an uuid that can be used to remove the listener.
+/// See ipcRenderer.on for more info.
 //@ts-ignore
 const on = (channel: string, func) => {
     const validChannels = new ValidChannels()
     if (validChannels.fromMain.includes(channel)) {
         // Deliberately strip event as it includes `sender`
-        ipcRenderer.on(channel, (event, ...args) => func(...args))
+        const listener = (event, ...args) => func(...args)
+        const id = uuid()
+        ipcRenderer.on(channel, listener)
+        listeners.set(id, listener)
+        return id
+    } else {
+        console.error(`Invalid channel: ${channel}`)
+    }
+    return ''
+}
+
+/// Used in the renderer process to stop receiving messages from main.
+/// Removes the specified listener from the listener array for the specified channel. See ipcRenderer.removeListener for more info.
+const removeListener = (channel: string, funcId: string) => {
+    const validChannels = new ValidChannels()
+    if (validChannels.fromMain.includes(channel)) {
+        ipcRenderer.removeListener(channel, listeners.get(funcId))
+        listeners.delete(funcId)
     } else {
         console.error(`Invalid channel: ${channel}`)
     }
 }
 
+
 export const API = {
     invoke: invoke,
     on: on,
+    removeListener: removeListener,
     Path: Path,
     channels: channels,
 }

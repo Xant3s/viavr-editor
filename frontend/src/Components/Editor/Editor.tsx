@@ -19,8 +19,13 @@ export const Editor = () => {
     const onProjectSelected = () => setViewID(1)
 
     useEffect(() => {
-        api.on(api.channels.fromMain.projectCreated, () => onProjectSelected())
-        api.on(api.channels.fromMain.projectOpened, () => onProjectSelected())
+        const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
+        const id2 = api.on(api.channels.fromMain.projectOpened, onProjectSelected)
+
+        return () => {
+            api.removeListener(api.channels.fromMain.projectCreated, id1);
+            api.removeListener(api.channels.fromMain.projectOpened, id2);
+        }
     }, [])
 
     return (

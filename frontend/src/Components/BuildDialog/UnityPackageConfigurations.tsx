@@ -37,10 +37,6 @@ export const UnityPackageConfigurations = ({ packages }) => {
         }
 
         init()
-
-        return () => {
-            api.removeListeners(api.channels.toMain.setPackageSetting)
-        }
     })
 
     const drawPackageConfig = (packageDescription) => {

@@ -144,10 +144,6 @@ export const TriggerEditor = () => {
                     return [...nodes] // create a clone of nodes to force re-render
                 },
             )
-
-            return () => {
-                api.removeListeners(api.channels.toMain.floorMapGetSvg)
-            }
         }
 
         restore()

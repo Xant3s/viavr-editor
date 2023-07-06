@@ -113,7 +113,7 @@ export const BuildDialog = ({hidden}) => {
                 <Center><h1>Generate VIA Experience</h1></Center>
                 <InfoSpinnerBox hidden={!isFetchingPackages} text='Fetching package info' />
 
-                <SettingsContainer hidden={hidden}>
+                <SettingsContainer hidden={hidden} style={{width: 610}}>
                     <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
 
                     <SettingAccordion

@@ -85,7 +85,7 @@ frontend:
      - docker
 
 package-win:
-  image: electronuserland/builder:wine
+  image: electronuserland/builder:16-wine
   stage: build
   cache:
     paths:

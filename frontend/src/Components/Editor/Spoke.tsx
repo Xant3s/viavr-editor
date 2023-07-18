@@ -1,7 +1,6 @@
 import { SpokeContainer, SpokeIframe } from '../StyledComponents/Editor/StyledEditor'
 import { IframeHTMLAttributes, useEffect, useRef, useState } from 'react'
 import { Spinner } from 'evergreen-ui'
-import SceneEditor from '../../SpokeEditor/SceneEditor'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
 import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
@@ -26,7 +25,6 @@ export const Spoke = ({ hidden }) => {
 
     useEffect(() => {
         if(!spokeReady || hidden) return
-        new SceneEditor()
         new SceneExport()
         new SceneLoadingPage()
         if(spokeIframe.current !== null) {

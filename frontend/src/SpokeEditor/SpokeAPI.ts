@@ -17,4 +17,16 @@ export class SpokeAPI {
     public get IsReady() {
         return this.spokeWindow !== undefined
     }
+
+    public postMessage(message: string, content?: string) {
+        this.spokeWindow?.postMessage({
+            channel: message,
+            content: content
+        }, '*')
+    }
+
+    public readonly Messages = {
+        loadScene: 'viavr:load-scene',
+        // saveScene: 'viavr:export-scene',
+    }
 }

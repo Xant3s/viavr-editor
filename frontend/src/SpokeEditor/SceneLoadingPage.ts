@@ -1,5 +1,6 @@
 import { $$, htmlElement } from './Spoke'
 import $ from 'jquery'
+import { SpokeAPI } from './SpokeAPI'
 
 
 export default class SceneLoadingPage {
@@ -55,11 +56,11 @@ export default class SceneLoadingPage {
             console.error('Scene file contents are empty')
             return
         }
-        const spoke = document.getElementById('iframe-spoke') as HTMLIFrameElement
-        spoke?.contentWindow?.postMessage({
-            channel:'viavr:load-scene',
-            content: sceneFileContents
-        }, '*')
+        if(!SpokeAPI.Instance.IsReady) {
+            console.error('SpokeAPI is not ready')
+            return
+        }
+        SpokeAPI.Instance.postMessage(SpokeAPI.Instance.Messages.loadScene, sceneFileContents)
     }
 
     private async onShowCreateNewScenePage() {

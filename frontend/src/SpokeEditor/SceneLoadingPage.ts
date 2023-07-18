@@ -60,7 +60,7 @@ export default class SceneLoadingPage {
             console.error('SpokeAPI is not ready')
             return
         }
-        SpokeAPI.Instance.postMessage(SpokeAPI.Instance.Messages.loadScene, sceneFileContents)
+        SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.loadScene, sceneFileContents)
     }
 
     private async onShowCreateNewScenePage() {

@@ -1,3 +1,5 @@
+type Callback = (content?: string) => void
+
 export class SpokeAPI {
     private static instance: SpokeAPI
     private spokeWindow: Window | undefined
@@ -10,7 +12,6 @@ export class SpokeAPI {
     }
 
     public set SpokeWindow(spokeWindow: Window) {
-        console.log('SpokeAPI: SpokeWindow set')
         this.spokeWindow = spokeWindow
     }
 
@@ -25,8 +26,29 @@ export class SpokeAPI {
         }, '*')
     }
 
-    public readonly Messages = {
-        loadScene: 'viavr:load-scene',
-        // saveScene: 'viavr:export-scene',
+    public addEventListener(channel: string, func: Callback) {
+        if(this.spokeWindow === undefined) {
+            console.error('Spoke is not ready')
+            return
+        }
+        this.spokeWindow.addEventListener('message', (event) => {
+            if(event.data['channel'] !== channel) return
+            const content = event.data['content']
+            if(content === undefined) {
+                func()
+            } else {
+                func(content)
+            }
+        })
+    }
+
+    public static readonly Messages = {
+        toSpoke: {
+            loadScene: 'viavr:load-scene',
+            // saveScene: 'viavr:export-scene',
+        },
+        fromSpoke: {
+
+        }
     }
 }

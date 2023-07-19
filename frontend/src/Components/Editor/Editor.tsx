@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import SceneEditor from '../../SpokeEditor/SceneEditor'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
 import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
 import { ProjectSelection } from './ProjectSelection'

@@ -1,13 +1,14 @@
 import { SpokeContainer, SpokeIframe } from '../StyledComponents/Editor/StyledEditor'
-import { useEffect, useState } from 'react'
+import { IframeHTMLAttributes, useEffect, useRef, useState } from 'react'
 import { Spinner } from 'evergreen-ui'
-import SceneEditor from '../../SpokeEditor/SceneEditor'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
 import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
+import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 
 
 export const Spoke = ({ hidden }) => {
     const [spokeReady, setSpokeReady] = useState(false)
+    const spokeIframe = useRef<HTMLIFrameElement>(null)
 
     useEffect(() => {
         const checkSpokeReady = async () => {
@@ -24,14 +25,16 @@ export const Spoke = ({ hidden }) => {
 
     useEffect(() => {
         if(!spokeReady || hidden) return
-        new SceneEditor()
+        if(spokeIframe.current !== null) {
+            SpokeAPI.Instance.SpokeWindow = spokeIframe.current.contentWindow as Window
+        }
         new SceneExport()
         new SceneLoadingPage()
     }, [spokeReady, hidden])
 
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         {spokeReady ?
-            <SpokeIframe id={'iframe-spoke'} title={'Spoke Editor'} src={'https://localhost:9090'} />
+            <SpokeIframe id={'iframe-spoke'} ref={spokeIframe} title={'Spoke Editor'} src={'https://localhost:9090'} />
         :
             <CenteredSpinner />
         }

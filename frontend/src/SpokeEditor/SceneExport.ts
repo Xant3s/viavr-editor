@@ -1,56 +1,15 @@
-import { $$, htmlElement } from './Spoke'
 import { toaster } from 'evergreen-ui'
+import { SpokeAPI } from './SpokeAPI'
 
 
 export class SceneExport {
-
     constructor() {
-        api.on('spoke:export-scene', async () => {
-            await Promise.all([
-                this.exportSceneAsGlb(),
-                this.exportSceneAsJson(),
-            ]);
-            toaster.success('Scene has been saved successfully', { duration: 10 });
-        });
-
-        api.on('spoke:project-saved-successfully',  this.projectSavedSuccessfully)
+        api.on(api.channels.fromMain.spokeExportScene, async () => SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene))
+        api.on(api.channels.fromMain.spokeProjectSavedSuccessfully, () => this.showSuccessToaster('Project has been saved successfully'))
+        api.on(api.channels.fromMain.spokeSceneSavedSuccessfully, () => this.showSuccessToaster('Scene has been saved successfully'))
     }
 
-    private projectSavedSuccessfully(){
-        toaster.success('Project has been saved successfully', { duration: 10 });
-    }
-
-    private checkTextExists(resolve) {
-        if ($$('span:contains("Exporting Scene..."):last').length > 0) {
-            setTimeout(this.checkTextExists.bind(this, resolve), 500)
-        } else {
-            resolve()
-        }
-    }
-
-    private async exportSceneAsGlb() {
-        const exportSceneButton = $$('div:contains("Export as binary glTF"):last');
-        exportSceneButton.hide();
-        exportSceneButton.trigger('click');
-        const exportButton = await htmlElement('button:contains("Export Project"):last');
-        await this.handleExportOptionsDialog(exportButton);
-    }
-
-    private async handleExportOptionsDialog(exportProjectBtn) {
-        exportProjectBtn.closest('form').hide();
-        exportProjectBtn.trigger('click');
-        const dialogTitle = await htmlElement('span:contains("Exporting Project"):last');
-        dialogTitle.text('Exporting Scene...');
-        const textForChecking = $$('div:contains("project"):last');
-        textForChecking.text('Exporting scene...');
-        return new Promise((resolve) => {
-            this.checkTextExists(resolve);
-        });
-    }
-
-    private async exportSceneAsJson() {
-        const exportSceneButton = $$('div:contains("Export legacy"):last');
-        exportSceneButton.hide();
-        exportSceneButton.trigger('click');
+    private showSuccessToaster(message) {
+        toaster.success(message, { duration: 10 });
     }
 }

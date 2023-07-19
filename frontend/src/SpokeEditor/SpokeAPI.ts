@@ -45,7 +45,7 @@ export class SpokeAPI {
     public static readonly Messages = {
         toSpoke: {
             loadScene: 'viavr:load-scene',
-            // saveScene: 'viavr:export-scene',
+            saveScene: 'viavr:export-scene',
         },
         fromSpoke: {
             projectPageSelected: 'viavr:projects-page',

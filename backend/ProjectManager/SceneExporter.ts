@@ -28,7 +28,12 @@ export default class SceneExporter {
             item.setSavePath(saveScenePath)
 
             item.once('done', (event, state) => {
-                if (state === 'completed') console.log(`Scene ${item.getFilename()} exported`)
+                if(state === 'completed') {
+                    console.log(`Scene ${item.getFilename()} exported`)
+                    if(item.getFilename().endsWith('.glb')) {
+                        this.mainWindow.send(channels.fromMain.spokeSceneSavedSuccessfully)
+                    }
+                }
                 else {
                     console.log(`Scene export failed: ${state} (Check path)`)
                     console.log(saveScenePath)

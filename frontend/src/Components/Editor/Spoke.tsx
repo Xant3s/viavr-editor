@@ -25,11 +25,11 @@ export const Spoke = ({ hidden }) => {
 
     useEffect(() => {
         if(!spokeReady || hidden) return
-        new SceneExport()
-        new SceneLoadingPage()
         if(spokeIframe.current !== null) {
             SpokeAPI.Instance.SpokeWindow = spokeIframe.current.contentWindow as Window
         }
+        new SceneExport()
+        new SceneLoadingPage()
     }, [spokeReady, hidden])
 
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>

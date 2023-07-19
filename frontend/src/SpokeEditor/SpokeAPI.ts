@@ -48,7 +48,7 @@ export class SpokeAPI {
             // saveScene: 'viavr:export-scene',
         },
         fromSpoke: {
-
+            projectPageSelected: 'viavr:projects-page',
         }
     }
 }

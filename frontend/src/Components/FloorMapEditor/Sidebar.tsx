@@ -15,7 +15,7 @@ export const Sidebar = () => {
     return (
         <aside className={styles.aside}>
             <div className={styles.description}>
-                You can drag these nodes to the pane on the right.
+                Click and drag to place triggers onto the floor map:
             </div>
             <div
                 className={styles.node}
@@ -28,7 +28,10 @@ export const Sidebar = () => {
                 <div className={styles.label}>Trigger</div>
             </div>
             <div className={styles.description}>
-                You can delete selected nodes by pressing backspace.
+                You can delete selected triggers by pressing backspace.
+            </div>
+            <div className={styles.description}>
+                Once a trigger is placed, you can click on it to edit its properties.
             </div>
         </aside>
     )

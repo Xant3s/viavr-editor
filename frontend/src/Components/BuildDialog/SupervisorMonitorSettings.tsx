@@ -24,6 +24,7 @@ export const SupervisorMonitorSettings = ({hidden}) => {
     const toggleSupervisorMonitor = async () => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'supervisorEnabled', !useSupervisorMonitor)
         setUseSupervisorMonitor(!useSupervisorMonitor)
+        setUseFloorMap(false)
     }
 
     const toggleFloorMap = async () => {

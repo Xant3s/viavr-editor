@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Button } from '../StyledComponents/Button'
 import { DrawioEditor } from './DrawioEditor'
 import { TriggerEditor } from './TriggerEditor'
@@ -16,6 +16,16 @@ export const FloorMapEditor: FC = () => {
                 return <TriggerEditor />
         }
     }
+
+    useEffect(() => {
+        const loadFloorMap = async () => {
+            const floorMap = await api.invoke(api.channels.toMain.floorMapLoadSvg)
+            if(floorMap !== undefined) {
+                setFloorMapAvailable(true)
+            }
+        }
+        loadFloorMap()
+    }, [])
 
     return <>
         <Header setId={setTabId} floorMapAvailable={floorMapAvailable}></Header>

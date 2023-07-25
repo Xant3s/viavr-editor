@@ -65,7 +65,7 @@ export const MeshPreprocessing = ({ hidden }) => {
                         <div>Loading...</div>
                     </Column>
                 ) : (
-                    hasPreview && (
+                    hasPreview && filePaths.length > 0 && (
                         <View3D tag='div' canvasClass={styles.canvas} src={filePaths[0].replace('.gltf', '_optimized.glb')} />
                     )
                 )}

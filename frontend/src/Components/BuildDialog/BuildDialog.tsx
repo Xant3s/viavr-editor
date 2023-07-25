@@ -112,10 +112,7 @@ export const BuildDialog = ({hidden}) => {
             <StyledSettings hidden={hidden}>
                 <Center><h1>Generate VIA Experience</h1></Center>
                 <InfoSpinnerBox hidden={!isFetchingPackages} text='Fetching package info' />
-
                 <SettingsContainer hidden={hidden} style={{width: 610}}>
-                    <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
-
                     <SettingAccordion
                         summary={'Packages'}
                         details={
@@ -135,9 +132,8 @@ export const BuildDialog = ({hidden}) => {
                             </>
                         }
                     />
-
+                    <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
                     {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
-
                     <br />
                     <div hidden={isBuilding}>
                         <Center>

@@ -38,7 +38,8 @@ export const channels = {
         shareProject: 'share:project',
         downloadProjectTemplates: 'share:download-projects',
         runPreprocessor: 'preprocessor:run',
-        getSceneFileContents: 'project-manager:get-scene-file-contents'
+        getSceneFileContents: 'project-manager:get-scene-file-contents',
+        saveProject: 'project-manager:save-project'
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

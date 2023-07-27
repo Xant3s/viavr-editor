@@ -36,7 +36,7 @@ export const BuildDialog = ({hidden}) => {
                     <ModalTitle>The project should be saved before generating an experience.</ModalTitle>
                     <ModalTitle>Save the project now?</ModalTitle>
                     <ButtonContainer>
-                        <Button onClick={() =>{
+                        <Button onClick={async () =>{
                             closeModal()
                             saveProjectAndSceneThenBuild()}}>Save Project and Continue</Button>
                         <Button onClick={() => {

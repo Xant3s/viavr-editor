@@ -2,11 +2,18 @@ import { useEffect, useState } from 'react'
 import { Package } from './Package'
 import { Center, SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Button } from '../StyledComponents/Button'
+import {
+    ButtonContainer,
+    ModalBackdrop,
+    ModalContent,
+    ModalTitle
+} from '../StyledComponents/ModalWindow'
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { UnityPackageConfigurations } from './UnityPackageConfigurations'
 import { Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 import { InfoSpinnerBox } from './InfoSpinnerBox'
+import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 
 
 type Scene = {
@@ -19,7 +26,28 @@ export const BuildDialog = ({hidden}) => {
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
     const [isFetchingPackages, setIsFetchingPackages] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
+
+    function ModalWindow({ closeModal }) {
+        return (
+            <ModalBackdrop>
+                <ModalContent>
+                    <ModalTitle>The project should be saved before generating an experience.</ModalTitle>
+                    <ModalTitle>Save the project now?</ModalTitle>
+                    <ButtonContainer>
+                        <Button onClick={async () =>{
+                            closeModal()
+                            saveProjectAndSceneThenBuild()}}>Save Project and Continue</Button>
+                        <Button onClick={() => {
+                            closeModal()
+                            build()}}>Continue without Saving</Button>
+                        <Button onClick={() => closeModal()}>Cancel</Button>
+                    </ButtonContainer>
+                </ModalContent>
+            </ModalBackdrop>
+            );
+        }
 
     const togglePackageSelected = (packageName: string) => {
         const updatedPackages = packages.map(packageItem => {
@@ -57,6 +85,13 @@ export const BuildDialog = ({hidden}) => {
                 return { isSelected: isSelected, sceneFileName }
             })
         )
+    }
+
+    const saveProjectAndSceneThenBuild = async () => {
+        await api.invoke(api.channels.toMain.saveScene)
+        await SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene)
+        await api.invoke(api.channels.toMain.saveProject)
+        await build()
     }
 
     const loadPackages = async () => {
@@ -137,7 +172,9 @@ export const BuildDialog = ({hidden}) => {
                     <br />
                     <div hidden={isBuilding}>
                         <Center>
-                            <Button id="btn-build-project" type="button" onClick={build}>Generate Experience</Button>
+                            <Button id="btn-build-project" type="button" onClick={() => setShowModal(true)}>
+                                Generate Experience
+                            </Button>
                         </Center>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -146,6 +183,10 @@ export const BuildDialog = ({hidden}) => {
                     </div>
                 </SettingsContainer>
             </StyledSettings>
+
+            {showModal && <ModalWindow closeModal={() => setShowModal(false)} />}
         </Center>
     )
 }
+
+

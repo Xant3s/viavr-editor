@@ -2,7 +2,7 @@ import { ipcMain, session } from 'electron'
 import MainWindow from '../MainWindow'
 import ProjectManager from './ProjectManager'
 import * as Path from 'path'
-import { channels } from '../API'
+import { API, channels } from '../API'
 
 export default class SceneExporter {
     private mainWindow: MainWindow
@@ -10,6 +10,7 @@ export default class SceneExporter {
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
         ipcMain.on('save-current-scene', () => this.exportScene())
+        ipcMain.handle(API.channels.toMain.saveScene, () => this.exportScene())
     }
 
     private exportScene() {

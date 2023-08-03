@@ -1,4 +1,4 @@
-import { app, dialog, ipcMain as ipc } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain as ipc } from 'electron'
 import * as fs from 'fs'
 import * as fse from 'fs-extra'
 import * as Path from 'path'
@@ -83,15 +83,19 @@ export default class ProjectManager {
     }
 
     private async openProjectFromFile(defaultPath: string) {
+        const focusedWindow = BrowserWindow.getFocusedWindow();
+        if(focusedWindow != null) focusedWindow.setEnabled(false);
         const { canceled, filePaths } = await dialog.showOpenDialog({
             properties: ['openFile'],
             defaultPath: Path.join(app.getAppPath(), defaultPath),
             filters: [{ name: 'VIA-VR project files', extensions: ['via'] }],
         })
+        if(focusedWindow != null) focusedWindow.setEnabled(true);
         if(!canceled && filePaths.length > 0) {
             console.log('Opening project from file: ' + filePaths[0])
             await this.openProjectFromFileNoPrompt(filePaths[0])
         }
+        if(focusedWindow != null) focusedWindow.focus();
     }
 
     public async openProjectFromFileNoPrompt(filePath: string) {
@@ -106,15 +110,19 @@ export default class ProjectManager {
     }
 
     private async openProjectFromFolder() {
+        const focusedWindow = BrowserWindow.getFocusedWindow();
+        if(focusedWindow != null) focusedWindow.setEnabled(false);
         const {
             canceled,
             filePaths,
         } = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] })
+        if(focusedWindow != null) focusedWindow.setEnabled(true);
         if(!canceled && filePaths.length > 0) {
             this._projectPath = filePaths[0]
             this._presentWorkingDirectory = this._projectPath
             this.onProjectOpened()
         }
+        if(focusedWindow != null) focusedWindow.focus();
     }
 
     private onProjectOpened() {

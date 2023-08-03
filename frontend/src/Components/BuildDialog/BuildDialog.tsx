@@ -88,9 +88,9 @@ export const BuildDialog = ({hidden}) => {
     }
 
     const saveProjectAndSceneThenBuild = async () => {
-        await api.invoke(api.channels.toMain.saveProject)
         await api.invoke(api.channels.toMain.saveScene)
         await SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene)
+        await api.invoke(api.channels.toMain.saveProject)
         await build()
     }
 

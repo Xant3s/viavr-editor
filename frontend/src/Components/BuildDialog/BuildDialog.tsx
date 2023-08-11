@@ -14,6 +14,7 @@ import { Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 import { InfoSpinnerBox } from './InfoSpinnerBox'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
+import { ModalWindow } from '../Utils/UI'
 
 
 type Scene = {
@@ -27,27 +28,15 @@ export const BuildDialog = ({hidden}) => {
     const [isBuilding, setIsBuilding] = useState(false)
     const [isFetchingPackages, setIsFetchingPackages] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const handleSaveAndContinue = async () => {
+         await saveProjectAndSceneThenBuild();
+    };
 
-
-    function ModalWindow({ closeModal }) {
-        return (
-            <ModalBackdrop>
-                <ModalContent>
-                    <ModalTitle>The project should be saved before generating an experience.</ModalTitle>
-                    <ModalTitle>Save the project now?</ModalTitle>
-                    <ButtonContainer>
-                        <Button onClick={async () =>{
-                            closeModal()
-                            saveProjectAndSceneThenBuild()}}>Save Project and Continue</Button>
-                        <Button onClick={() => {
-                            closeModal()
-                            build()}}>Continue without Saving</Button>
-                        <Button onClick={() => closeModal()}>Cancel</Button>
-                    </ButtonContainer>
-                </ModalContent>
-            </ModalBackdrop>
-            );
-        }
+    const handleContinueWithoutSaving = async () => {
+        // Define the behavior of Continue without Saving
+        // For example:
+        await build();
+    };
 
     const togglePackageSelected = (packageName: string) => {
         const updatedPackages = packages.map(packageItem => {
@@ -182,7 +171,10 @@ export const BuildDialog = ({hidden}) => {
                 </SettingsContainer>
             </StyledSettings>
 
-            {showModal && <ModalWindow closeModal={() => setShowModal(false)} />}
+            {showModal && <ModalWindow closeModal={() => setShowModal(false)}
+                                       onSaveAndContinue={handleSaveAndContinue}
+                                       onContinueWithoutSaving={handleContinueWithoutSaving}
+                                       upperTitle="Project should be saved before an experience is generated."/>}
         </Center>
     )
 }

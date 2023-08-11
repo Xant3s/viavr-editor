@@ -10,10 +10,12 @@ import { BuildDialog } from '../BuildDialog/BuildDialog'
 import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
+import { ModalWindow } from '../Utils/UI'
 
 
 export const Editor = () => {
     const [viewID, setViewID] = useState(0)
+    const [showModal, setShowModal] = useState(false)
     const [isTutorial, setTutorial] = useState(false)
     const [loadSceneWhenSpokeIsReady, setLoadSceneWhenSpokeIsReady] = useState(false)
     let sceneExport : SceneExport | null = null
@@ -49,6 +51,9 @@ export const Editor = () => {
         SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.loadScene, sceneFileContents)
     }
 
+    const onTryingToQuit = () =>{
+        console.log("Got here")
+        setShowModal(true)}
 
     useEffect(() => {
         const onProjectSelected = async () => {
@@ -62,12 +67,25 @@ export const Editor = () => {
         
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
         const id2 = api.on(api.channels.fromMain.projectOpened, onProjectSelected)
+        const id3 = api.on(api.channels.fromMain.tryExitApplication, onTryingToQuit)
 
         return () => {
             api.removeListener(api.channels.fromMain.projectCreated, id1)
             api.removeListener(api.channels.fromMain.projectOpened, id2)
+            api.removeListener(api.channels.fromMain.tryExitApplication, id3)
         }
     }, [])
+
+    const handleSaveAndContinue = async () => {
+        await api.invoke(api.channels.toMain.saveScene)
+        await SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene)
+        await api.invoke(api.channels.toMain.saveProject)
+        await api.invoke(api.channels.toMain.exitApplication)
+    };
+
+    const handleContinueWithoutSaving = async () => {
+        await api.invoke(api.channels.toMain.exitApplication)
+    };
 
     return (
         <>
@@ -82,6 +100,10 @@ export const Editor = () => {
             <Articy hidden={viewID !== 4} />
             <Share hidden={viewID !== 5} />
             <BuildDialog hidden={viewID !== 7} />
+            {showModal && <ModalWindow closeModal={() => setShowModal(false)}
+                                       onSaveAndContinue={handleSaveAndContinue}
+                                       onContinueWithoutSaving={handleContinueWithoutSaving}
+                                       upperTitle="Project should be saved before closing."/>}
         </>
     )
 }

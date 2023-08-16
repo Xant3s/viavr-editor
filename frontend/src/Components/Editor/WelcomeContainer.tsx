@@ -1,9 +1,26 @@
-import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
+import { SpokeContainer, WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
 import { toaster } from 'evergreen-ui'
 import { Row } from '../StyledComponents/Row'
 import { Button } from '../StyledComponents/Button'
+import { TabButton } from '../StyledComponents/TabButton'
+import { Spoke } from './Spoke'
+import React, { useState } from 'react'
+import { $$ } from '../../SpokeEditor/Spoke'
 
 export const WelcomeContainer = ({ setPage }) => {
+    const [iframeSrc, setIframeSrc] = React.useState('');
+
+    const [viewID, setViewID] = useState(0)
+
+    const onProjectSelected = () => setViewID(1)
+
+    const openIframeLink = () => {
+        onProjectSelected()
+        const tutButton = $$('a.Button-sc-1ykpui0-0:contains("Start Tutorial")')
+        tutButton[0].click()
+    };
+
+    const closeSpoke = () => setViewID(0)
     const downloadProjectTemplates = async () => {
         const status = await api.invoke(api.channels.toMain.downloadProjectTemplates)
         if (status === 200) {
@@ -18,8 +35,12 @@ export const WelcomeContainer = ({ setPage }) => {
     }
 
     return (
-        <WelcomeContainerStyle>
+        <><WelcomeContainerStyle hidden={viewID === 1}>
             <h1>VIA-VR Editor</h1>
+            <Row>
+                <Button onClick={openIframeLink}>Start Tutorial</Button>
+
+            </Row>
             <Row>
                 <Button onClick={() => setPage('preferences')}>
                     Create New Project
@@ -34,6 +55,13 @@ export const WelcomeContainer = ({ setPage }) => {
             <Row>
                 <Button onClick={async () => downloadProjectTemplates()}>Download Template Projects</Button>
             </Row>
-        </WelcomeContainerStyle>
+        </WelcomeContainerStyle><SpokeContainer id={'spoke-container'} hidden={viewID !== 1}>
+            <div hidden={viewID !== 1} style={{ textAlign: 'center', backgroundColor: '#15171b' }}>
+                <div style={{ padding: 5, display: 'inline-block' }}>
+                    <TabButton hidden={viewID !== 1} onClick={closeSpoke}> Back </TabButton>
+                </div>
+            </div>
+            <Spoke hidden={viewID !== 1} />
+        </SpokeContainer></>
     )
 }

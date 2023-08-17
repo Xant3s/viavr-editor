@@ -23,12 +23,5 @@ def template_route():
 def asset_route():
     return asset()
 
-@app.route('/session', methods=['POST'])
-def session_route():
-    session_data = {}
-    with open('./session.json') as f:
-        session_data = json.load(f)
-    return jsonify(session_data)
-
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

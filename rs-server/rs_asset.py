@@ -67,8 +67,8 @@ def asset():
         recommeded_asset = asset_df.iloc[index]
         asset_dict = {
             "id": i,
-            "name": recommeded_asset["name"],
-            "theme": recommeded_asset["theme"]
+            "name": recommeded_asset["name"]
+            #"theme": recommeded_asset["theme"]
         }
         session_profile.append(asset_dict)
 
@@ -83,9 +83,9 @@ def asset():
 
     print("\nNames of assets: ", names_of_assets)
     
-    
+    return jsonify(response)
 
-    return fetchFromSketchfab(user_theme)
+    # return fetchFromSketchfab(user_theme)
     
     """    # Data from user
     dataForAssets = request.get_json() # Get data from user -  READ FROM SESSON.JSON

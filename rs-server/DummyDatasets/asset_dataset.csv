@@ -1,32 +1,32 @@
-id,name,type,domain,theme,keyword,usageCount,link
-1,House,gltf,Therapy,BT,fire,0,dummylink1
-2,Table,gltf,Therapy,BT,fire,0,dummylink2
-3,Lamp,gltf,Therapy,BT,fire,0,dummylink3
-4,Candle,gltf,Therapy,BT,fire,0,dummylink4
-5,Chair,gltf,Therapy,BT,fire,0,dummylink5
-6,Cloths,gltf,Therapy,BT,fire,0,dummylink6
-7,Fire Extinguisher,gltf,Therapy,BT,fire,0,dummylink7
-8,Paper,gltf,Therapy,BT,fire,0,dummylink8
-9,Burning Cloth,gltf,Therapy,BT,fire,0,dummylink9
-10,Fireplace,gltf,Therapy,BT,fire,0,dummylink10
-11,Wood,gltf,Therapy,BT,fire,0,dummylink11
-12,Smoke,gltf,Therapy,BT,fire,0,dummylink12
-13,Cushion,gltf,Therapy,BT,fire,0,dummylink13
-14,Sofa,gltf,Therapy,BT,fire,0,dummylink14
-15,Matchbox,gltf,Therapy,BT,fire,0,dummylink15
-16,Lighter,gltf,Therapy,BT,fire,0,dummylink16
-17,Cigarette,gltf,Therapy,BT,fire,0,dummylink17
-18,Flame thrower,gltf,Therapy,BT,fire,0,dummylink18
-19,House,gltf,Rehab,Physical,gait,0,dummylink19
-20,Table,gltf,Rehab,Physical,gait,0,dummylink20
-21,Lamp,gltf,Rehab,Physical,gait,0,dummylink21
-22,Candle,gltf,Rehab,Physical,gait,0,dummylink22
-23,Chair,gltf,Rehab,Physical,gait,0,dummylink23
-24,Stretcher,gltf,Rehab,Physical,gait,0,dummylink24
-25,Walker,gltf,Rehab,Physical,gait,0,dummylink25
-26,Wheelchair,gltf,Rehab,Physical,gait,0,dummylink26
-27,Walking stick,gltf,Rehab,Physical,gait,0,dummylink27
-28,Treadmill,gltf,Rehab,Physical,gait,0,dummylink28
-29,Gym ball,gltf,Rehab,Physical,gait,0,dummylink29
-30,Relaxing chair,gltf,Rehab,Physical,gait,0,dummylink30
-31,Dog,gltf,Rehab,Physical,gait,0,dummylink31
+id,domain,theme,keyword,usageCount,name
+1,Therapy,BT,fire,0,House
+2,Therapy,BT,fire,0,Table
+3,Therapy,BT,fire,0,Lamp
+4,Therapy,BT,fire,0,Candle
+5,Therapy,BT,fire,0,Chair
+6,Therapy,BT,fire,0,Cloths
+7,Therapy,BT,fire,0,Fire Extinguisher
+8,Therapy,BT,fire,0,Paper
+9,Therapy,BT,fire,0,Burning Cloth
+10,Therapy,BT,fire,0,Fireplace
+11,Therapy,BT,fire,0,Wood
+12,Therapy,BT,fire,0,Smoke
+13,Therapy,BT,fire,0,Cushion
+14,Therapy,BT,fire,0,Sofa
+15,Therapy,BT,fire,0,Matchbox
+16,Therapy,BT,fire,0,Lighter
+17,Therapy,BT,fire,0,Cigarette
+18,Therapy,BT,fire,0,Flame thrower
+19,Rehab,Physical,gait,0,House
+20,Rehab,Physical,gait,0,Table
+21,Rehab,Physical,gait,0,Lamp
+22,Rehab,Physical,gait,0,Candle
+23,Rehab,Physical,gait,0,Chair
+24,Rehab,Physical,gait,0,Stretcher
+25,Rehab,Physical,gait,0,Walker
+26,Rehab,Physical,gait,0,Wheelchair
+27,Rehab,Physical,gait,0,Walking stick
+28,Rehab,Physical,gait,0,Treadmill
+29,Rehab,Physical,gait,0,Gym ball
+30,Rehab,Physical,gait,0,Relaxing chair
+31,Rehab,Physical,gait,0,Dog

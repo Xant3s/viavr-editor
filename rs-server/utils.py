@@ -72,3 +72,30 @@ def fetchFromSketchfab(query):
         # Print an error message
         print('Error: {}'.format(response.status_code))
         return 'Error'
+
+#############################################################################################
+
+def fetchFromCollectionID(query):
+    """ Fetches models from Sketchfab using the API """
+    # API reference: https://docs.sketchfab.com/data-api/v3/index.html#!/collections/get_v3_collections
+
+    url = 'https://api.sketchfab.com/v3/search?type=collections&q=' + query
+
+    # Send a GET request to the API endpoint
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the JSON response
+        data = response.json()
+
+        # Get the collection ID from the first result (if any)
+        if len(data['results']) > 0:
+            collection_id = data['results'][0]['uid']
+            return collection_id
+        else:
+            return None
+    else:
+        # Print an error message
+        print('Error: {}'.format(response.status_code))
+        return None

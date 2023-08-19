@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from utils import asset_master, fetchFromSketchfab, computeUtilityMatrixCB, template_master
+from utils import asset_master, fetchFromSketchfab,fetchFromCollectionID, computeUtilityMatrixCB, template_master
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import requests
@@ -67,10 +67,12 @@ def asset():
         recommeded_asset = asset_df.iloc[index]
         asset_dict = {
             "id": i,
-            "name": recommeded_asset["name"]
+            "name": recommeded_asset["name"],
             #"theme": recommeded_asset["theme"]
+            "collection": fetchFromCollectionID(recommeded_asset["name"])
         }
         session_profile.append(asset_dict)
+
 
     response = {
         "assets": session_profile,

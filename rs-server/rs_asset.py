@@ -36,7 +36,6 @@ def asset():
         user_domain = "Therapy"
         user_theme = "Physical"
         user_keyword = "Walk"
-        return "error': 'No data received, default values used"
     
     # We don not need exact asset matches but gathher keywords from the asset dataset
     

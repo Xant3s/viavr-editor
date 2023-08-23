@@ -1,8 +1,9 @@
 import { CapturePreferecesContainerStyle } from '../StyledComponents/Editor/StyledEditor'
-import { Button, TextInput, toaster } from 'evergreen-ui'
+import { Button, TextInput, toaster, Combobox } from 'evergreen-ui'
 import { PreferenceLabel } from '../StyledComponents/WelcomeScreen'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getTemplates } from '../RS/Communication'
+import { getDataForAutoComplete } from '../RS/Communication'
 
 export const CapturePreferencesContainer = ({setPage, setPreferences}) => {
     const [domainName, setDomainName] = useState('')
@@ -11,8 +12,26 @@ export const CapturePreferencesContainer = ({setPage, setPreferences}) => {
     const [username, setUsername] = useState('')
     const [specialisation, setSpecialisation] = useState('')
 
+    const [domainList, setDomainList] = useState([])
+    const [themeList, setThemeList] = useState([])
+    
+    useEffect(() => {
+        const queryAutoCompleteData = async () => {
+            const data = await getDataForAutoComplete()
+            setDomainList(data?.domains ?? [])
+            setThemeList(data?.themes ?? [])
+        }
+        queryAutoCompleteData()
+    }, [])
+
     const updatePreferences = async event => {
         event.preventDefault()
+
+        if(!domainName || !themeName || !keyword) {
+            toaster.warning('Please fill all the fields')
+            return
+        }
+
         setPage('recommendation')
 
         const preferences = {
@@ -58,16 +77,35 @@ export const CapturePreferencesContainer = ({setPage, setPreferences}) => {
                     {' '}
                     <br />
                     <h3>What kind of project would you like to create?</h3>
-                    <PreferenceLabel htmlFor="domainName">Domain</PreferenceLabel>
-                    <TextInput placeholder="Domain Name (eg. Rehab)" onChange={e => setDomainName(e.target.value)} required />
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <PreferenceLabel htmlFor="domainName" style={{ marginRight: '10px', textAlign: 'right' }}>Domain</PreferenceLabel>
+                        <Combobox
+                            items={domainList}
+                            onChange={selected => setDomainName(selected)}
+                            placeholder="Domain Name (eg. Therapy)"
+                            required
+                        />
+                    </div>
+                    {/* <TextInput placeholder="Domain Name (eg. Therapy)" onChange={e => setDomainName(e.target.value)} required /> */}
                     {' '}
                     <br />
-                    <PreferenceLabel htmlFor="themeName">Theme</PreferenceLabel>
-                    <TextInput placeholder="Theme Name (eg. Speech)" onChange={e => setThemeName(e.target.value)} required />
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <PreferenceLabel htmlFor="themeName" >Theme</PreferenceLabel>
+                        <Combobox
+                            items={themeList}
+                            onChange={selected => setThemeName(selected)}
+                            placeholder="Theme Name (eg. Speech)"
+                            required
+                        />
+                    </div>
+                    {/* <TextInput placeholder="Theme Name (eg. Speech" onChange={e => setThemeName(e.target.value)} required /> */}
                     {' '}
                     <br />
-                    <PreferenceLabel htmlFor="keyword">Keyword</PreferenceLabel>
-                    <TextInput placeholder="Keyword" onChange={e => setKeyword(e.target.value)} required />
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <PreferenceLabel htmlFor="keyword">Keyword</PreferenceLabel>
+                        <TextInput placeholder="Keyword" onChange={e => setKeyword(e.target.value)} required />
+                    </div>
                     {' '}
                     <br />
                     <br />

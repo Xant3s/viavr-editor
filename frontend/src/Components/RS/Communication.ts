@@ -11,3 +11,17 @@ export const getTemplates = async (preferences: any) => {
     return data
 
 }
+
+// Write getDataForAutoComplete without a parameter
+export const getDataForAutoComplete = async () => {
+    
+    const response = await fetch('http://localhost:5000/autocomplete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json()
+    return data
+    
+}

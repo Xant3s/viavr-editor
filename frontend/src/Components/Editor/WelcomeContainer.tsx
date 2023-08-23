@@ -8,9 +8,9 @@ import React, { useState } from 'react'
 import { $$ } from '../../SpokeEditor/Spoke'
 
 export const WelcomeContainer = ({ setPage }) => {
-    const [iframeSrc, setIframeSrc] = React.useState('');
 
     const [viewID, setViewID] = useState(0)
+    const [tutorialButton, setButtonText] = useState("Start Tutorial")
 
     const onProjectSelected = () => setViewID(1)
 
@@ -18,7 +18,9 @@ export const WelcomeContainer = ({ setPage }) => {
         onProjectSelected()
         const tutButton = $$('a.Button-sc-1ykpui0-0:contains("Start Tutorial")')
         tutButton[0].click()
+        setButtonText("Continue Tutorial")
     };
+
 
     const closeSpoke = () => setViewID(0)
     const downloadProjectTemplates = async () => {
@@ -38,8 +40,7 @@ export const WelcomeContainer = ({ setPage }) => {
         <><WelcomeContainerStyle hidden={viewID === 1}>
             <h1>VIA-VR Editor</h1>
             <Row>
-                <Button onClick={openIframeLink}>Start Tutorial</Button>
-
+                <Button onClick={openIframeLink}>{tutorialButton}</Button>
             </Row>
             <Row>
                 <Button onClick={() => setPage('preferences')}>

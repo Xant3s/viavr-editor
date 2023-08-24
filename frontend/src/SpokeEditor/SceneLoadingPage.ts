@@ -14,9 +14,6 @@ export default class SceneLoadingPage {
             await this.loadScene()
             return
         }
-        const newSceneLabel = $$('h3:contains("New Scene")')
-        const sceneLoadButton = newSceneLabel.parent()
-        if (sceneLoadButton.length > 0) sceneLoadButton.trigger("click")
     }
     private async loadScene() {
         const sceneFileContents = await api.invoke(api.channels.toMain.getSceneFileContents)

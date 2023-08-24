@@ -4,23 +4,21 @@ import { Row } from '../StyledComponents/Row'
 import { Button } from '../StyledComponents/Button'
 import { TabButton } from '../StyledComponents/TabButton'
 import { Spoke } from './Spoke'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { $$ } from '../../SpokeEditor/Spoke'
 
 export const WelcomeContainer = ({ setPage }) => {
 
     const [viewID, setViewID] = useState(0)
     const [tutorialButton, setButtonText] = useState("Start Tutorial")
+   
 
     const onProjectSelected = () => setViewID(1)
 
     const openIframeLink = () => {
         onProjectSelected()
-        const tutButton = $$('a.Button-sc-1ykpui0-0:contains("Start Tutorial")')
-        tutButton[0].click()
         setButtonText("Continue Tutorial")
     };
-
 
     const closeSpoke = () => setViewID(0)
     const downloadProjectTemplates = async () => {
@@ -62,7 +60,7 @@ export const WelcomeContainer = ({ setPage }) => {
                     <TabButton hidden={viewID !== 1} onClick={closeSpoke}> Back </TabButton>
                 </div>
             </div>
-            <Spoke hidden={viewID !== 1} />
+            <Spoke hidden={viewID !== 1}isTutorial={true} />
         </SpokeContainer></>
     )
 }

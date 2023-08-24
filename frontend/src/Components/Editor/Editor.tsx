@@ -34,7 +34,7 @@ export const Editor = () => {
                 <ProjectSelection hidden={viewID !== 0} />
             </div>
             <MeshPreprocessing hidden={viewID !== 6} />
-            <Spoke hidden={viewID !== 1} />
+            <Spoke hidden={viewID !== 1} isTutorial={false} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />

@@ -6,13 +6,13 @@ import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { CenteredSpinner } from '../Utils/CenteredSpinner'
 
 
-export const Spoke = ({ hidden }) => {
+export const Spoke = ({ hidden, isTutorial }) => {
     const [spokeReady, setSpokeReady] = useState(false)
     const spokeIframe = useRef<HTMLIFrameElement>(null)
 
     useEffect(() => {
         const checkSpokeReady = async () => {
-            const url = 'https://localhost:9090'
+            const url =  isTutorial ? 'https://localhost:9090/projects/tutorial' : 'https://localhost:9090'
             const response = await fetch(url)
             if(response.ok) {
                 setSpokeReady(true)
@@ -32,9 +32,11 @@ export const Spoke = ({ hidden }) => {
         new SceneLoadingPage()
     }, [spokeReady, hidden])
 
+    const iframeSrc = isTutorial ? 'https://localhost:9090/projects/tutorial' : 'https://localhost:9090';
+
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         {spokeReady ?
-            <SpokeIframe id={'iframe-spoke'} ref={spokeIframe} title={'Spoke Editor'} src={'https://localhost:9090'} />
+            <SpokeIframe id={'iframe-spoke'} ref={spokeIframe} title={'Spoke Editor'} src={iframeSrc} />
         :
             <CenteredSpinner />
         }

@@ -7,6 +7,8 @@ import { AvatarEditorContainer } from './Styles'
 import { QRCodePreview } from './QRCodePreview'
 import { AddAvatarForm } from './AddAvatarForm'
 import { AvatarList } from './AvatarList'
+import { InlineAlert } from 'evergreen-ui'
+import { AvatarServerWarning } from './AvatarServerWarning'
 
 
 export const AvatarEditor = ({ hidden }) => {
@@ -14,7 +16,8 @@ export const AvatarEditor = ({ hidden }) => {
     const [qrCode, setQrCode] = useState<string>('')
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
     const [sceneObjects, setSceneObjects] = React.useState<any[]>([])
-
+    const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
+    
 
     const updateQrCode = (avatarId) => {
         const token = avatars.find(avatar => avatar.id === avatarId)?.token || ''
@@ -67,15 +70,23 @@ export const AvatarEditor = ({ hidden }) => {
             setAvatars(avatars)
             // TODO: check if avatars are downloaded
         }
+        
+        const loadAvatarServerUrl = async () => {
+            const urlPref = await api.invoke(api.channels.toMain.requestPreference, 'avatarServer')
+            console.log('loadAvatarServerUrl', urlPref.value)
+            setAvatarServerUrl(urlPref.value)
+        }
 
         if(!hidden) {
             loadSceneObjects()
             loadAvatars()
+            loadAvatarServerUrl()
         }
     }, [hidden])
 
 
     return <AvatarEditorContainer hidden={hidden}>
+        <AvatarServerWarning avatarServerUrl={avatarServerUrl} />
         <h1>Avatar Editor</h1>
         {qrCode !== '' && <QRCodePreview qrCode={qrCode} />}
         <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} assignSceneObject={assignSceneObject} />

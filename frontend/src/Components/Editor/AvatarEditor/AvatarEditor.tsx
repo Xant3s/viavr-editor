@@ -7,7 +7,7 @@ import { AvatarEditorContainer } from './Styles'
 import { QRCodePreview } from './QRCodePreview'
 import { AddAvatarForm } from './AddAvatarForm'
 import { AvatarList } from './AvatarList'
-import { InlineAlert } from 'evergreen-ui'
+import { toaster } from 'evergreen-ui'
 import { AvatarServerWarning } from './AvatarServerWarning'
 
 
@@ -28,7 +28,16 @@ export const AvatarEditor = ({ hidden }) => {
 
     const addAvatar = async (name: string) => {
         const uuid = uuid4()
-        const token = 'dummy-token'   // TODO: request token from TUD server
+        const response = await fetch(`${avatarServerUrl}/scanid`)
+        if(!response.ok) {
+            toaster.danger('Could not get scan id from the avatar server', {
+                description: response.statusText,
+            })
+            console.log('error', response)
+            return
+        }
+        const json = await response.json()
+        const token = json['scan_id']
         const newAvatar = { name: name, id: uuid, token: token, articyId: '', sceneObject: '' }
         const newAvatars = [...avatars, newAvatar]
         setAvatars(newAvatars)

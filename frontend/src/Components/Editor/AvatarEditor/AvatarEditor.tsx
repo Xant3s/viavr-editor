@@ -51,11 +51,11 @@ export const AvatarEditor = ({ hidden }) => {
         // TODO: send delete request to TUD server?
         saveAll(newAvatars)
     }
-
-    const assignSceneObject = (avatarId, sceneObjectId) => {
+    
+    const updateAvatar = (avatarId: string, modifier: (a: AvatarInfo) => AvatarInfo) => {
         const newAvatars = avatars.map(avatar => {
             if(avatar.id === avatarId) {
-                avatar.sceneObject = sceneObjectId
+                avatar = modifier(avatar)
             }
             return avatar
         })
@@ -98,7 +98,7 @@ export const AvatarEditor = ({ hidden }) => {
         <AvatarServerWarning avatarServerUrl={avatarServerUrl} />
         <h1>Avatar Editor</h1>
         {qrCode !== '' && <QRCodePreview qrCode={qrCode} />}
-        <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} assignSceneObject={assignSceneObject} />
+        <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} updateAvatar={updateAvatar}/>
         <AddAvatarForm addAvatar={addAvatar} />
     </AvatarEditorContainer>
 }

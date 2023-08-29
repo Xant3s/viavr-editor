@@ -11,7 +11,7 @@ export const QRCodePreview = ({ qrCode }) => {
             marginBottom: '20px',
             marginTop: '5px',
         }}>
-            <SVG src={qrCode} width={256} height='auto' />
+            <SVG src={qrCode} width={256} />
         </div>
     </div>
 }

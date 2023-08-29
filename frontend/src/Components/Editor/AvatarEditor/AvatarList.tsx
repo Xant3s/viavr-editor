@@ -4,7 +4,7 @@ import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 
-export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, updateAvatar }) => {
+export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }) => {
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
     // TODO: auto update status
     // TODO: only enable download button if ready
@@ -25,8 +25,15 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, 
         })
     }
     
-    const handleDeleteDialog = (avatarId: string, dialogResponse: DeleteDialogResponse) => {
-        console.log(avatarId, dialogResponse)
+    const handleDeleteDialog = async (avatarId: string, dialogResponse: DeleteDialogResponse) => {
+        if(dialogResponse === 'abort') return
+        let errorCode = 0
+        if(dialogResponse === 'deleteFromServer') {
+            errorCode = await deleteAvatarFromServer(avatarId)
+        }
+        if(errorCode === 0) {
+            deleteAvatar(avatarId)
+        }
     }
 
     return <Table>

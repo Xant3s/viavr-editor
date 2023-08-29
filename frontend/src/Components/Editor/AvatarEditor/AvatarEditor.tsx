@@ -47,12 +47,32 @@ export const AvatarEditor = ({ hidden }) => {
         saveAll(newAvatars)
     }
 
-    const deleteAvatar = (avatarId) => {
+    const deleteAvatar = (avatarId: string) => {
         const newAvatars = avatars.filter(avatar => avatar.id !== avatarId)
         setAvatars(newAvatars)
         // Todo: delete downloaded avatar from project files
         // TODO: send delete request to TUD server?
         saveAll(newAvatars)
+    }
+    
+    const deleteAvatarFromServer = async (avatarId: string) => {
+        try {
+            const response = await fetch(`${avatarServerUrl}/scans/delete`, {
+                method: 'POST',
+                headers: {
+                    'x-scan-id': avatarId
+                }
+            })
+            if(!response.ok) {
+                notifyUserAboutError(response.statusText)
+                return 1
+            }
+        } catch(e) {
+            notifyUserAboutError(e as string)
+            return 1
+        }
+        toaster.success('Avatar deleted from server')
+        return 0
     }
     
     const updateAvatar = (avatarId: string, modifier: (a: AvatarInfo) => AvatarInfo) => {
@@ -101,7 +121,9 @@ export const AvatarEditor = ({ hidden }) => {
         <AvatarServerWarning avatarServerUrl={avatarServerUrl} />
         <h1>Avatar Editor</h1>
         {qrCode !== '' && <QRCodePreview qrCode={qrCode} />}
-        <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} updateAvatar={updateAvatar}/>
+        <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} 
+                    deleteAvatarFromServer={deleteAvatarFromServer}
+                    sceneObjects={sceneObjects} updateAvatar={updateAvatar}/>
         <AddAvatarForm addAvatar={addAvatar} />
     </AvatarEditorContainer>
 }

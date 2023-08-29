@@ -28,16 +28,19 @@ export const AvatarEditor = ({ hidden }) => {
 
     const addAvatar = async (name: string) => {
         const uuid = uuid4()
-        const response = await fetch(`${avatarServerUrl}/scanid`)
-        if(!response.ok) {
-            toaster.danger('Could not get scan id from the avatar server', {
-                description: response.statusText,
-            })
-            console.log('error', response)
+        let token = ''
+        try {
+            const response = await fetch(`${avatarServerUrl}/scanid`)
+            const json = await response.json()
+            token = json['scan_id']
+            if(!response.ok) {
+                notifyUserAboutError(response.statusText)
+                return
+            }
+        } catch(e) {
+            notifyUserAboutError(e as string)
             return
         }
-        const json = await response.json()
-        const token = json['scan_id']
         const newAvatar = { name: name, id: uuid, token: token, articyId: '', sceneObject: '' }
         const newAvatars = [...avatars, newAvatar]
         setAvatars(newAvatars)
@@ -101,4 +104,12 @@ export const AvatarEditor = ({ hidden }) => {
         <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} sceneObjects={sceneObjects} updateAvatar={updateAvatar}/>
         <AddAvatarForm addAvatar={addAvatar} />
     </AvatarEditorContainer>
+}
+
+
+function notifyUserAboutError(msg: string) {
+    toaster.danger('Failed to contact the avatar server', {
+        description: msg,
+    })
+    console.log('error', msg)
 }

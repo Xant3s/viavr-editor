@@ -2,8 +2,10 @@ import { Button, Table, TextInput, TrashIcon } from 'evergreen-ui'
 import { AvatarInfo } from '../../../@types/AvatarInfo'
 import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
+import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, updateAvatar }) => {
+    const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
     // TODO: auto update status
     // TODO: only enable download button if ready
     // TODO: download avatars
@@ -21,6 +23,10 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, 
             avatar.sceneObject = sceneObjectId
             return avatar
         })
+    }
+    
+    const handleDeleteDialog = (avatarId: string, dialogResponse: DeleteDialogResponse) => {
+        console.log(avatarId, dialogResponse)
     }
 
     return <Table>
@@ -73,13 +79,11 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, sceneObjects, 
                         </Button>
                     </Table.TextCell>
                     <Table.TextCell>
+                        <DeleteAlertDialog open={showDeletePrompt} setOpen={setShowDeletePrompt} handleDialog={(res) => handleDeleteDialog(avatar.id, res)} />
                         <Button iconBefore={TrashIcon}
                                 appearance='minimal'
                                 intent='danger'
-                                onClick={() => {
-                                    // TODO: ask for confirmation
-                                    deleteAvatar(avatar.id)
-                                }}
+                                onClick={async () => setShowDeletePrompt(true)}
                         >
                             Delete
                         </Button>

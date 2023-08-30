@@ -1,4 +1,4 @@
-import { Button, Table, TextInput, TrashIcon } from 'evergreen-ui'
+import { Button, Table, TextInput, toaster, TrashIcon } from 'evergreen-ui'
 import { AvatarInfo } from '../../../@types/AvatarInfo'
 import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
@@ -78,8 +78,13 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                     <Table.TextCell>
                         <Button appearance='primary'
                                 style={{ width: '100%' }}
-                                onClick={() => {
-                                    throw new Error('Not implemented')
+                                onClick={async () => {
+                                    const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.id)
+                                    if(result === 0) {
+                                        toaster.success('Avatar downloaded successfully')
+                                    } else {
+                                        toaster.danger('Avatar download failed')
+                                    }
                                 }}
                         >
                             Download

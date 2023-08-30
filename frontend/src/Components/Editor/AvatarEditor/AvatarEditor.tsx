@@ -104,7 +104,6 @@ export const AvatarEditor = ({ hidden }) => {
         
         const loadAvatarServerUrl = async () => {
             const urlPref = await api.invoke(api.channels.toMain.requestPreference, 'avatarServer')
-            console.log('loadAvatarServerUrl', urlPref.value)
             setAvatarServerUrl(urlPref.value)
         }
 

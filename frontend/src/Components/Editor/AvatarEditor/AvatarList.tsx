@@ -3,13 +3,13 @@ import { AvatarInfo } from '../../../@types/AvatarInfo'
 import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
+import { useEffect } from 'react'
 
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }) => {
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
+    const [status, setStatus] = React.useState<string>('unknown')
     // TODO: auto update status
     // TODO: only enable download button if ready
-    // TODO: download avatars
-    // TODO: export to Unity
 
     const changeAvatarName = (avatarId: string, newName: string) => {
         return updateAvatar(avatarId, (avatar: AvatarInfo) => {
@@ -36,6 +36,42 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         }
     }
 
+    useEffect(() => {
+        const updateStatus = async () => {
+            if(avatars.length === 0) {
+                setTimeout(updateStatus, 100)
+                return
+            }
+            const urlPref = await api.invoke(api.channels.toMain.requestPreference, 'avatarServer')
+            const avatarServerUrl = urlPref.value
+            let status
+            try {
+                const response = await fetch(`${avatarServerUrl}/scans`, {
+                    method: 'GET',
+                    headers: {
+                        'x-scan-id': avatars[0].token
+                    }
+                })
+                if(!response.ok) {
+                    console.log(response.statusText)
+                    setStatus('something went wrong')
+                    setTimeout(updateStatus, 100)
+                    return
+                }
+                status = await response.json()
+            } catch(e) {
+                console.log(e)
+                setStatus('something went wrong')
+                setTimeout(updateStatus, 100)
+                return
+            }
+            setStatus(status.status)
+            // console.log(status.status, status?.position || '')
+            setTimeout(updateStatus, 100)
+        }
+        updateStatus()
+    }, [avatars])
+
     return <Table>
         <Table.Head>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>
@@ -55,7 +91,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                                    style={{backgroundColor: avatar.name !== '' ? 'initial' : 'red'}}
                                    onChange={(e) => changeAvatarName(avatar.id, e.target.value)} required />
                     </Table.TextCell>
-                    <Table.TextCell>Please start download</Table.TextCell>
+                    <Table.TextCell>{status}</Table.TextCell>
                     <Table.TextCell>
                         <Select id="sceneObject" value={avatar.sceneObject} style={{minWidth: '100px', height: '30px', backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'}}
                                 onChange={e => assignSceneObject(avatar.id, e.target.value)} required>

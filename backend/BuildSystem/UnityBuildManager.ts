@@ -12,6 +12,7 @@ import { channels } from '../API'
 import { PackageRegistries } from './DataStructures/PackageRegistries'
 import { UnityPackageSettingsManager } from './UnityPackageSettingsManager'
 import fs from 'fs'
+import * as fse from 'fs-extra'
 import { Setting_t } from '../../frontend/src/@types/Settings'
 import Path from 'path'
 import { exec } from 'child_process'
@@ -76,6 +77,7 @@ export default class UnityBuildManager {
         await this.importScenes(outputPath, sceneNames)
         await this.exportPackageConfigurations(outputPath)
         await this.exportBuildSettings(outputPath)
+        await this.exportAvatars(outputPath)
         this.buildPath = outputPath
         return outputPath
     }
@@ -174,6 +176,13 @@ export default class UnityBuildManager {
             fs.mkdirSync(configurationFolder, { recursive: true })
             await fs.promises.writeFile(`${configurationFolder}/Configuration.json`, JSON.stringify(configuration, null, 4))
         }
+    }
+    
+    private async exportAvatars(outputPath: string) {
+        const pwd = ProjectManager.getInstance().presentWorkingDirectory
+        const avatarFolder = `${pwd}/Avatars/`
+        const destinationFolder = `${outputPath}/Assets/Avatars/`
+        await fse.copy(avatarFolder, destinationFolder)
     }
 
     private extractRelevantConfiguration(packageConfig: any) {

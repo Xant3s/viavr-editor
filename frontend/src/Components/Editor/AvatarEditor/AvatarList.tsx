@@ -52,11 +52,12 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                         <TextInput name='avatar-name-input'
                                    placeholder='Avatar name...'
                                    value={avatar.name}
+                                   style={{backgroundColor: avatar.name !== '' ? 'initial' : 'red'}}
                                    onChange={(e) => changeAvatarName(avatar.id, e.target.value)} required />
                     </Table.TextCell>
                     <Table.TextCell>Please start download</Table.TextCell>
                     <Table.TextCell>
-                        <Select id="sceneObject" value={avatar.sceneObject} style={{minWidth: '100px', height: '30px'}}
+                        <Select id="sceneObject" value={avatar.sceneObject} style={{minWidth: '100px', height: '30px', backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'}}
                                 onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
                             {sceneObjects.map((object, index) => (
                                 <MenuItem key={index} value={object.uuid}>

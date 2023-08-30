@@ -6,7 +6,7 @@ import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { CenteredSpinner } from '../Utils/CenteredSpinner'
 
 
-export const Spoke = ({ hidden, isTutorial }) => {
+export const Spoke = ({ hidden, isTutorial, onSpokeReady }) => {
     const [spokeReady, setSpokeReady] = useState(false)
     const spokeIframe = useRef<HTMLIFrameElement>(null)
 
@@ -16,6 +16,7 @@ export const Spoke = ({ hidden, isTutorial }) => {
             const response = await fetch(url)
             if(response.ok) {
                 setSpokeReady(true)
+                onSpokeReady()
             } else {
                 setTimeout(checkSpokeReady, 100)
             }

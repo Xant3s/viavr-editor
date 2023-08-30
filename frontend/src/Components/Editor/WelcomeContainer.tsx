@@ -7,17 +7,35 @@ import { Spoke } from './Spoke'
 import React, { useEffect, useState } from 'react'
 import { $$ } from '../../SpokeEditor/Spoke'
 
-export const WelcomeContainer = ({ setPage }) => {
+
+enum SpokeSite{
+    UNDEFINED,
+    OPEN_PROJECT,
+    OPEN_TUTORIAL
+}
+export const WelcomeContainer = ({ setPage, startTutorial }) => {
 
     const [viewID, setViewID] = useState(0)
     const [tutorialButton, setButtonText] = useState("Start Tutorial")
-   
+    const [spokeSite, setSpokeSite] = useState(SpokeSite.UNDEFINED)
 
     const onProjectSelected = () => setViewID(1)
 
+    const onSpokeReady = () => {
+        console.log("is Ready")
+    }
+
+    useEffect(() => {
+        const id1 = api.on(api.channels.fromMain.spokeReady, onSpokeReady)
+
+        return () => {
+            api.removeListener(api.channels.fromMain.spokeReady, id1);
+        }
+    }, [])
+
     const openIframeLink = () => {
-        onProjectSelected()
         setButtonText("Continue Tutorial")
+        startTutorial()
     };
 
     const closeSpoke = () => setViewID(0)
@@ -35,7 +53,7 @@ export const WelcomeContainer = ({ setPage }) => {
     }
 
     return (
-        <><WelcomeContainerStyle hidden={viewID === 1}>
+        <WelcomeContainerStyle hidden={viewID === 1}>
             <h1>VIA-VR Editor</h1>
             <Row>
                 <Button onClick={openIframeLink}>{tutorialButton}</Button>
@@ -44,7 +62,9 @@ export const WelcomeContainer = ({ setPage }) => {
                 <Button onClick={() => setPage('preferences')}>
                     Create New Project
                 </Button>
-                <Button onClick={() => api.invoke(api.channels.toMain.openProject, 'res/Templates')}>
+                <Button onClick={() => {
+                    api.invoke(api.channels.toMain.openProject, 'res/Templates');
+                }}>
                     Open Project
                 </Button>
                 <Button onClick={() => api.invoke(api.channels.toMain.openProjectFolder)}>
@@ -54,13 +74,6 @@ export const WelcomeContainer = ({ setPage }) => {
             <Row>
                 <Button onClick={async () => downloadProjectTemplates()}>Download Template Projects</Button>
             </Row>
-        </WelcomeContainerStyle><SpokeContainer id={'spoke-container'} hidden={viewID !== 1}>
-            <div hidden={viewID !== 1} style={{ textAlign: 'center', backgroundColor: '#15171b' }}>
-                <div style={{ padding: 5, display: 'inline-block' }}>
-                    <TabButton hidden={viewID !== 1} onClick={closeSpoke}> Back </TabButton>
-                </div>
-            </div>
-            <Spoke hidden={viewID !== 1}isTutorial={true} />
-        </SpokeContainer></>
+        </WelcomeContainerStyle>
     )
 }

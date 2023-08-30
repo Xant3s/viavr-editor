@@ -13,9 +13,23 @@ import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
 
 
 export const Editor = () => {
-    const [viewID, setViewID] = useState(0)
+    const [viewID, setViewID] = useState(0);
+    const [isTutorial, setTutorial] = useState(false);
+    const [spokeReady, setSpokeReady] = useState(false);
 
-    const onProjectSelected = () => setViewID(1)
+    const onProjectSelected = () => setViewID(1);
+    const onSpokeReady = () => {
+        setSpokeReady(true);
+    };
+
+    const onStartTutorial = async () => {
+        setTutorial(true);
+        while (!spokeReady) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        setViewID(1); 
+    };
+
 
     useEffect(() => {
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
@@ -31,10 +45,10 @@ export const Editor = () => {
         <>
             <TabHeader setId={setViewID} hidden={viewID === 0} />
             <div>
-                <ProjectSelection hidden={viewID !== 0} />
+                <ProjectSelection hidden={viewID !== 0} startTutorial = {onStartTutorial} />
             </div>
             <MeshPreprocessing hidden={viewID !== 6} />
-            <Spoke hidden={viewID !== 1} isTutorial={false} />
+            <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />

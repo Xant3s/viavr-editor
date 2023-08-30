@@ -3,7 +3,7 @@ import { Button, Select, SelectMenu } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
 
 export const MetaDataEditor = ({isActive}) => {
-    const [options] = useState(["Avatar", "Floor", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label, })))
+    const [options] = useState(["Avatar", "Floor", "Teleport Anchor", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label, })))
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
     const [selectedObject, setSelectedObject] = useState<any>({})
     const [selectButtonText, setSelectButtonText] = useState<string>('')

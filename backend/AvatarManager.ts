@@ -31,5 +31,10 @@ export class AvatarManager {
             }
             return 0
         })
+        
+        ipcMain.handle(channels.toMain.deleteAvatarFromFileSystem, async (event, args) => {
+            const path = `${ProjectManager.getInstance().presentWorkingDirectory}/Avatars/${args}.zip`
+            await fs.promises.rm(path)
+        })
     }
 }

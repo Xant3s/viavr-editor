@@ -42,6 +42,7 @@ export const channels = {
         saveProject: 'project-manager:save-project',
         saveScene: 'scene-exporter:save-current-scene',
         downloadAvatar: 'avatar:download',
+        deleteAvatarFromFileSystem: 'avatar:delete',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

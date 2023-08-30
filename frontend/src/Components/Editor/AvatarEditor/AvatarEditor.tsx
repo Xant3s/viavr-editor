@@ -47,11 +47,10 @@ export const AvatarEditor = ({ hidden }) => {
         saveAll(newAvatars)
     }
 
-    const deleteAvatar = (avatarId: string) => {
+    const deleteAvatar = async  (avatarId: string) => {
         const newAvatars = avatars.filter(avatar => avatar.id !== avatarId)
         setAvatars(newAvatars)
-        // Todo: delete downloaded avatar from project files
-        // TODO: send delete request to TUD server?
+        await api.invoke(api.channels.toMain.deleteAvatarFromFileSystem, avatarId)
         saveAll(newAvatars)
     }
     

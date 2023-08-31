@@ -7,13 +7,7 @@ import React, { useState } from 'react'
 
 export const WelcomeContainer = ({ setPage, startTutorial }) => {
     const [viewID, setViewID] = useState(0)
-    const [tutorialButtonText, setButtonText] = useState("Start Tutorial")
 
-    
-    const handleStartTutorialButton = () => {
-        // setButtonText('Continue Tutorial')
-        startTutorial()
-    }
 
     const downloadProjectTemplates = async () => {
         const status = await api.invoke(api.channels.toMain.downloadProjectTemplates)
@@ -30,9 +24,13 @@ export const WelcomeContainer = ({ setPage, startTutorial }) => {
 
     return (
         <WelcomeContainerStyle hidden={viewID === 1}>
-            <h1>VIA-VR Editor</h1>
-            <Row>
-                <Button onClick={handleStartTutorialButton}>{tutorialButtonText}</Button>
+            <h1>Welcome</h1>
+            <div style={{textAlign: 'center', marginBottom: '10px'}}>
+                If you&apos;re new here we recommend going through the tutorial.<br />
+                Otherwise, jump right in and create a project from scratch or from one of our templates.
+            </div>
+            <Row style={{marginBottom: '50px'}}>
+                <Button onClick={startTutorial}>Start Tutorial</Button>
             </Row>
             <Row>
                 <Button onClick={() => setPage('preferences')}>

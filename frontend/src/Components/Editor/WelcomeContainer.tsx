@@ -1,44 +1,20 @@
-import { SpokeContainer, WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
+import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
 import { toaster } from 'evergreen-ui'
 import { Row } from '../StyledComponents/Row'
 import { Button } from '../StyledComponents/Button'
-import { TabButton } from '../StyledComponents/TabButton'
-import { Spoke } from './Spoke'
-import React, { useEffect, useState } from 'react'
-import { $$ } from '../../SpokeEditor/Spoke'
+import React, { useState } from 'react'
 
 
-enum SpokeSite{
-    UNDEFINED,
-    OPEN_PROJECT,
-    OPEN_TUTORIAL
-}
 export const WelcomeContainer = ({ setPage, startTutorial }) => {
-
     const [viewID, setViewID] = useState(0)
-    const [tutorialButton, setButtonText] = useState("Start Tutorial")
-    const [spokeSite, setSpokeSite] = useState(SpokeSite.UNDEFINED)
+    const [tutorialButtonText, setButtonText] = useState("Start Tutorial")
 
-    const onProjectSelected = () => setViewID(1)
-
-    const onSpokeReady = () => {
-        console.log("is Ready")
+    
+    const handleStartTutorialButton = () => {
+        // setButtonText('Continue Tutorial')
+        startTutorial()
     }
 
-    useEffect(() => {
-        const id1 = api.on(api.channels.fromMain.spokeReady, onSpokeReady)
-
-        return () => {
-            api.removeListener(api.channels.fromMain.spokeReady, id1);
-        }
-    }, [])
-
-    const openIframeLink = () => {
-        setButtonText("Continue Tutorial")
-        startTutorial()
-    };
-
-    const closeSpoke = () => setViewID(0)
     const downloadProjectTemplates = async () => {
         const status = await api.invoke(api.channels.toMain.downloadProjectTemplates)
         if (status === 200) {
@@ -56,14 +32,15 @@ export const WelcomeContainer = ({ setPage, startTutorial }) => {
         <WelcomeContainerStyle hidden={viewID === 1}>
             <h1>VIA-VR Editor</h1>
             <Row>
-                <Button onClick={openIframeLink}>{tutorialButton}</Button>
+                <Button onClick={handleStartTutorialButton}>{tutorialButtonText}</Button>
             </Row>
             <Row>
                 <Button onClick={() => setPage('preferences')}>
                     Create New Project
                 </Button>
-                <Button onClick={() => {
-                    api.invoke(api.channels.toMain.openProject, 'res/Templates');
+                <Button onClick={async () => {
+                    console.log('ask backend to open project')
+                    await api.invoke(api.channels.toMain.openProject, 'res/Templates');
                 }}>
                     Open Project
                 </Button>

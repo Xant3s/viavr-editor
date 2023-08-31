@@ -2,8 +2,13 @@ import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
 import { toaster } from 'evergreen-ui'
 import { Row } from '../StyledComponents/Row'
 import { Button } from '../StyledComponents/Button'
+import React, { useState } from 'react'
 
-export const WelcomeContainer = ({ setPage }) => {
+
+export const WelcomeContainer = ({ setPage, startTutorial }) => {
+    const [viewID, setViewID] = useState(0)
+
+
     const downloadProjectTemplates = async () => {
         const status = await api.invoke(api.channels.toMain.downloadProjectTemplates)
         if (status === 200) {
@@ -18,13 +23,23 @@ export const WelcomeContainer = ({ setPage }) => {
     }
 
     return (
-        <WelcomeContainerStyle>
-            <h1>VIA-VR Editor</h1>
+        <WelcomeContainerStyle hidden={viewID === 1}>
+            <h1>Welcome</h1>
+            <div style={{textAlign: 'center', marginBottom: '10px'}}>
+                If you&apos;re new here we recommend going through the tutorial.<br />
+                Otherwise, jump right in and create a project from scratch or from one of our templates.
+            </div>
+            <Row style={{marginBottom: '50px'}}>
+                <Button onClick={startTutorial}>Start Tutorial</Button>
+            </Row>
             <Row>
                 <Button onClick={() => setPage('preferences')}>
                     Create New Project
                 </Button>
-                <Button onClick={() => api.invoke(api.channels.toMain.openProject, 'res/Templates')}>
+                <Button onClick={async () => {
+                    console.log('ask backend to open project')
+                    await api.invoke(api.channels.toMain.openProject, 'res/Templates');
+                }}>
                     Open Project
                 </Button>
                 <Button onClick={() => api.invoke(api.channels.toMain.openProjectFolder)}>

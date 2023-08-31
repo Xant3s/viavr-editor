@@ -1,40 +1,45 @@
 import { SpokeContainer, SpokeIframe } from '../StyledComponents/Editor/StyledEditor'
 import { useEffect, useRef, useState } from 'react'
-import { SceneExport } from '../../SpokeEditor/SceneExport'
-import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { CenteredSpinner } from '../Utils/CenteredSpinner'
 
 
-export const Spoke = ({ hidden }) => {
+export const Spoke = ({ hidden, isTutorial, onSpokeReady }) => {
     const [spokeReady, setSpokeReady] = useState(false)
     const spokeIframe = useRef<HTMLIFrameElement>(null)
+    const iframeSrc = isTutorial ? 'https://localhost:9090/projects/tutorial' : 'https://localhost:9090';
+    
 
     useEffect(() => {
+        let timeout: NodeJS.Timeout
+        
         const checkSpokeReady = async () => {
-            const url = 'https://localhost:9090'
-            const response = await fetch(url)
-            if(response.ok) {
-                setSpokeReady(true)
-            } else {
-                setTimeout(checkSpokeReady, 100)
-            }
+            if(spokeReady) return
+            try{
+                const response = await fetch('https://localhost:9090')
+                if(response.ok) {
+                    if(spokeIframe.current !== null) {
+                        SpokeAPI.Instance.SpokeWindow = spokeIframe.current.contentWindow as Window
+                    }
+                    setSpokeReady(true)
+                    setTimeout(onSpokeReady, 100)
+                } else {
+                    timeout = setTimeout(checkSpokeReady, 1000)
+                }
+            } catch(e) {
+                console.log(e)
+                timeout = setTimeout(checkSpokeReady, 1000)
+            } 
         }
-        checkSpokeReady()
-    }, [])
 
-    useEffect(() => {
-        if(!spokeReady || hidden) return
-        if(spokeIframe.current !== null) {
-            SpokeAPI.Instance.SpokeWindow = spokeIframe.current.contentWindow as Window
-        }
-        new SceneExport()
-        new SceneLoadingPage()
-    }, [spokeReady, hidden])
+        checkSpokeReady()
+        return () => clearTimeout(timeout)
+    }, [spokeReady, onSpokeReady])
+
 
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         {spokeReady ?
-            <SpokeIframe id={'iframe-spoke'} ref={spokeIframe} title={'Spoke Editor'} src={'https://localhost:9090'} />
+            <SpokeIframe id={'iframe-spoke'} ref={spokeIframe} title={'Spoke Editor'} src={iframeSrc} />
         :
             <CenteredSpinner />
         }

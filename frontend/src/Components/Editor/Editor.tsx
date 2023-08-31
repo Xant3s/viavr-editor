@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import { SceneExport } from '../../SpokeEditor/SceneExport'
-import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
 import { ProjectSelection } from './ProjectSelection'
 import { Spoke } from './Spoke'
 import { TabHeader } from './TabHeader'
@@ -10,31 +8,75 @@ import { Articy } from './Articy'
 import { Share } from './Share'
 import { BuildDialog } from '../BuildDialog/BuildDialog'
 import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
+import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
+import { SceneExport } from '../../SpokeEditor/SceneExport'
 
 
 export const Editor = () => {
     const [viewID, setViewID] = useState(0)
+    const [isTutorial, setTutorial] = useState(false)
+    const [loadSceneWhenSpokeIsReady, setLoadSceneWhenSpokeIsReady] = useState(false)
+    let sceneExport : SceneExport | null = null
+    
+    
+    const returnToWelcomeScreen = () => {
+        setViewID(0)
+        setTutorial(false)
+    }
 
-    const onProjectSelected = () => setViewID(1)
+    const onStartTutorial = async () => {
+        setTutorial(true)
+        setViewID(1)
+    }
+
+    const onSpokeReady = async () => {
+        if(!SpokeAPI.Instance.IsReady) return
+        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.projectPageSelected, async () => {
+            sceneExport = sceneExport || new SceneExport()  // ensures there is only one instance of SceneExport
+            if(loadSceneWhenSpokeIsReady) {
+                setLoadSceneWhenSpokeIsReady(false)
+                await loadScene()
+            }
+        })
+    }
+
+    const loadScene = async () => {
+        const sceneFileContents = await api.invoke(api.channels.toMain.getSceneFileContents)
+        if(sceneFileContents === '') {
+            console.error('Scene file contents are empty')
+            return
+        }
+        SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.loadScene, sceneFileContents)
+    }
+
 
     useEffect(() => {
+        const onProjectSelected = async () => {
+            setViewID(1)
+            if(SpokeAPI.Instance.IsReady) {
+                await loadScene()
+            } else {
+                setLoadSceneWhenSpokeIsReady(true)
+            }
+        }
+        
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
         const id2 = api.on(api.channels.fromMain.projectOpened, onProjectSelected)
 
         return () => {
-            api.removeListener(api.channels.fromMain.projectCreated, id1);
-            api.removeListener(api.channels.fromMain.projectOpened, id2);
+            api.removeListener(api.channels.fromMain.projectCreated, id1)
+            api.removeListener(api.channels.fromMain.projectOpened, id2)
         }
     }, [])
 
     return (
         <>
-            <TabHeader setId={setViewID} hidden={viewID === 0} />
+            <TabHeader setId={setViewID} hidden={viewID === 0} isInTutorialMode={isTutorial} returnToWelcomeScreen={returnToWelcomeScreen} />
             <div>
-                <ProjectSelection hidden={viewID !== 0} />
+                <ProjectSelection hidden={viewID !== 0} startTutorial={onStartTutorial} />
             </div>
             <MeshPreprocessing hidden={viewID !== 6} />
-            <Spoke hidden={viewID !== 1} />
+            <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />

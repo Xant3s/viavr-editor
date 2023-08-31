@@ -2,9 +2,11 @@ import { Button, Table, TextInput, toaster, TrashIcon } from 'evergreen-ui'
 import { AvatarInfo } from '../../../@types/AvatarInfo'
 import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
-import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 import { useEffect } from 'react'
+import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 
+// TODO: waitingforupload the same as uploading?
+type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| 'downloaded' | 'failed to talk to the server'
 
 interface props {
     avatars: AvatarInfo[]
@@ -16,8 +18,11 @@ interface props {
 }
 
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }: props) => {
+    const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
     const [status, setStatus] = React.useState<string>('unknown')
+    const [avatarStatusList, setAvatarStatusList] = React.useState<Map<string, Status>>(new Map<string, Status>())  // token -> status
+    const statusUpdateInterval = 1000
     // TODO: auto update status
     // TODO: only enable download button if ready
 
@@ -47,40 +52,60 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     }
 
     useEffect(() => {
-        const updateStatus = async () => {
-            if(avatars.length === 0) {
-                setTimeout(updateStatus, 100)
-                return
-            }
+        const getAvatarServerUrl = async () => {
             const urlPref = await api.invoke(api.channels.toMain.requestPreference, 'avatarServer')
-            const avatarServerUrl = urlPref.value
-            let status
+            setAvatarServerUrl(urlPref.value)
+            console.log(urlPref.value)
+        }
+        getAvatarServerUrl()
+    }, [])
+
+    // useEffect(() => {
+    //     const newAvatarStatusList = new Map<string, Status>()
+    //     avatars.forEach(avatar => {
+    //         if(!avatarStatusList.has(avatar.token)) {
+    //             newAvatarStatusList.set(avatar.token, 'waitingforupload')
+    //         } else {
+    //             newAvatarStatusList.set(avatar.token, avatarStatusList.get(avatar.token) as Status)
+    //         }
+    //     })
+    //     setAvatarStatusList(newAvatarStatusList)
+    // }, [avatars, avatarStatusList])
+
+    useEffect(() => {
+        const updateStatus = async () => {
+            if(avatars.length === 0 || avatarServerUrl === '') return
+            // avatars.map(async avatar => {
+            //     return await tryFetchStatus(avatar.token, avatarStatusList.get(avatar.token) as Status)
+            // })
+            console.log(avatars.length)
+            const status = await tryFetchStatus(avatars[0].token, 'processing')
+            setStatus(status)
+        }
+
+        async function tryFetchStatus(avatarToken: string, currentStatus: Status) : Promise<Status> {
+            if(currentStatus === 'downloaded') return currentStatus
             try {
                 const response = await fetch(`${avatarServerUrl}/scans`, {
                     method: 'GET',
                     headers: {
-                        'x-scan-id': avatars[0].token
-                    }
+                        'x-scan-id': avatarToken,
+                    },
                 })
                 if(!response.ok) {
-                    console.log(response.statusText)
-                    setStatus('something went wrong')
-                    setTimeout(updateStatus, 100)
-                    return
+                    return 'failed to talk to the server'
                 }
-                status = await response.json()
+                const status = await response.json()
+                return status.status
             } catch(e) {
                 console.log(e)
-                setStatus('something went wrong')
-                setTimeout(updateStatus, 100)
-                return
+                return 'failed to talk to the server'
             }
-            setStatus(status.status)
-            // console.log(status.status, status?.position || '')
-            setTimeout(updateStatus, 100)
         }
-        updateStatus()
-    }, [avatars])
+        
+        const updateStatusInterval = setInterval(updateStatus, statusUpdateInterval)
+        return () => clearInterval(updateStatusInterval)
+    }, [avatars, avatarStatusList, avatarServerUrl])
 
     return <Table>
         <Table.Head>

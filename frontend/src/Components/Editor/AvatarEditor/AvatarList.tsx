@@ -22,8 +22,8 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
     const [avatarStatusList, setAvatarStatusList] = React.useState<Map<string, Status>>(new Map<string, Status>())  // token -> status
     const statusUpdateInterval = 1000
-    // TODO: only enable download button if ready
 
+    
     const changeAvatarName = (avatarId: string, newName: string) => {
         return updateAvatar(avatarId, (avatar: AvatarInfo) => {
             avatar.name = newName
@@ -46,6 +46,18 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         }
         if(errorCode === 0) {
             deleteAvatar(avatarId)
+        }
+    }
+    
+    const getAction = (avatar: AvatarInfo) => {
+        const status = avatarStatusList.get(avatar.token) || 'waitingforupload'
+        switch(status) {
+            case 'waitingforupload':
+                return <ShowQrCodeButton avatar={avatar} updateQrCode={updateQrCode} />
+            case 'done':
+                return <DownloadButton avatar={avatar} />
+            default:
+                return <></>
         }
     }
 
@@ -95,10 +107,9 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     return <Table>
         <Table.Head>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Status</Table.TextHeaderCell>
             <Table.TextHeaderCell>Placeholder Object</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Show QR Code</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Download</Table.TextHeaderCell>
+            <Table.TextHeaderCell>Status</Table.TextHeaderCell>
+            <Table.TextHeaderCell>Action</Table.TextHeaderCell>
             <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
         </Table.Head>
         <Table.Body height={240} minWidth={'600px'}>
@@ -108,13 +119,16 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                         <TextInput name='avatar-name-input'
                                    placeholder='Avatar name...'
                                    value={avatar.name}
-                                   style={{backgroundColor: avatar.name !== '' ? 'initial' : 'red'}}
+                                   style={{ backgroundColor: avatar.name !== '' ? 'initial' : 'red' }}
                                    onChange={(e) => changeAvatarName(avatar.id, e.target.value)} required />
                     </Table.TextCell>
-                    <Table.TextCell>{avatarStatusList.get(avatar.token) || 'unknown'}</Table.TextCell>
                     <Table.TextCell>
-                        <Select id="sceneObject" value={avatar.sceneObject} style={{minWidth: '100px', height: '30px', backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'}}
-                                onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
+                        <Select id="sceneObject" value={avatar.sceneObject} style={{
+                            minWidth: '100px',
+                            height: '30px',
+                            backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'
+                        }}
+                            onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
                             {sceneObjects.map((object, index) => (
                                 <MenuItem key={index} value={object.uuid}>
                                     {object.name}
@@ -122,33 +136,13 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                             ))}
                         </Select>
                     </Table.TextCell>
+                    <Table.TextCell>{avatarStatusList.get(avatar.token) || 'unknown'}</Table.TextCell>
                     <Table.TextCell>
-                        <Button appearance='primary'
-                                style={{ width: '100%' }}
-                                onClick={() => {
-                                    updateQrCode(avatar.id, avatar.name)
-                                }}
-                        >
-                            Show QR Code
-                        </Button>
+                        {getAction(avatar)}
                     </Table.TextCell>
                     <Table.TextCell>
-                        <Button appearance='primary'
-                                style={{ width: '100%' }}
-                                onClick={async () => {
-                                    const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.id)
-                                    if(result === 0) {
-                                        toaster.success('Avatar downloaded successfully')
-                                    } else {
-                                        toaster.danger('Avatar download failed')
-                                    }
-                                }}
-                        >
-                            Download
-                        </Button>
-                    </Table.TextCell>
-                    <Table.TextCell>
-                        <DeleteAlertDialog open={showDeletePrompt} setOpen={setShowDeletePrompt} handleDialog={(res) => handleDeleteDialog(avatar.id, res)} />
+                        <DeleteAlertDialog open={showDeletePrompt} setOpen={setShowDeletePrompt}
+                                           handleDialog={(res) => handleDeleteDialog(avatar.id, res)} />
                         <Button iconBefore={TrashIcon}
                                 appearance='minimal'
                                 intent='danger'
@@ -161,4 +155,31 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
             ))}
         </Table.Body>
     </Table>
+}
+
+const ShowQrCodeButton = ({avatar, updateQrCode}: {avatar: AvatarInfo, updateQrCode: (avatarId: string, avatarName: string) => void}) => {
+    return <Button appearance='primary'
+            style={{ width: '100%' }}
+            onClick={() => {
+                updateQrCode(avatar.id, avatar.name)
+            }}
+    >
+        Show QR Code
+    </Button>
+}
+
+const DownloadButton = ({avatar}: { avatar: AvatarInfo }) => {
+    return <Button appearance='primary'
+                   style={{ width: '100%' }}
+                   onClick={async () => {
+                       const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.id)
+                       if(result === 0) {
+                           toaster.success('Avatar downloaded successfully')
+                       } else {
+                           toaster.danger('Avatar download failed')
+                       }
+                   }}
+    >
+        Download
+    </Button>
 }

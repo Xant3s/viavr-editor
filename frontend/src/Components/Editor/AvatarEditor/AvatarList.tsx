@@ -20,10 +20,8 @@ interface props {
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }: props) => {
     const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
-    const [status, setStatus] = React.useState<string>('unknown')
     const [avatarStatusList, setAvatarStatusList] = React.useState<Map<string, Status>>(new Map<string, Status>())  // token -> status
     const statusUpdateInterval = 1000
-    // TODO: auto update status
     // TODO: only enable download button if ready
 
     const changeAvatarName = (avatarId: string, newName: string) => {
@@ -55,32 +53,19 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         const getAvatarServerUrl = async () => {
             const urlPref = await api.invoke(api.channels.toMain.requestPreference, 'avatarServer')
             setAvatarServerUrl(urlPref.value)
-            console.log(urlPref.value)
         }
         getAvatarServerUrl()
     }, [])
 
-    // useEffect(() => {
-    //     const newAvatarStatusList = new Map<string, Status>()
-    //     avatars.forEach(avatar => {
-    //         if(!avatarStatusList.has(avatar.token)) {
-    //             newAvatarStatusList.set(avatar.token, 'waitingforupload')
-    //         } else {
-    //             newAvatarStatusList.set(avatar.token, avatarStatusList.get(avatar.token) as Status)
-    //         }
-    //     })
-    //     setAvatarStatusList(newAvatarStatusList)
-    // }, [avatars, avatarStatusList])
-
     useEffect(() => {
         const updateStatus = async () => {
             if(avatars.length === 0 || avatarServerUrl === '') return
-            // avatars.map(async avatar => {
-            //     return await tryFetchStatus(avatar.token, avatarStatusList.get(avatar.token) as Status)
-            // })
-            console.log(avatars.length)
-            const status = await tryFetchStatus(avatars[0].token, 'processing')
-            setStatus(status)
+            const newStatusList = avatars.map(async avatar => {
+                const oldStatus = avatarStatusList.get(avatar.token) || 'waitingforupload'
+                const newStatus = await tryFetchStatus(avatar.token, oldStatus)
+                return [avatar.token, newStatus] as [string, Status]
+            })
+            setAvatarStatusList(new Map<string, Status>(await Promise.all(newStatusList)))
         }
 
         async function tryFetchStatus(avatarToken: string, currentStatus: Status) : Promise<Status> {
@@ -126,7 +111,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                                    style={{backgroundColor: avatar.name !== '' ? 'initial' : 'red'}}
                                    onChange={(e) => changeAvatarName(avatar.id, e.target.value)} required />
                     </Table.TextCell>
-                    <Table.TextCell>{status}</Table.TextCell>
+                    <Table.TextCell>{avatarStatusList.get(avatar.token) || 'unknown'}</Table.TextCell>
                     <Table.TextCell>
                         <Select id="sceneObject" value={avatar.sceneObject} style={{minWidth: '100px', height: '30px', backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'}}
                                 onChange={e => assignSceneObject(avatar.id, e.target.value)} required>

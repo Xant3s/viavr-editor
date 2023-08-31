@@ -1,9 +1,9 @@
 import { SpokeContainer, SpokeIframe } from '../StyledComponents/Editor/StyledEditor'
-import { IframeHTMLAttributes, useEffect, useRef, useState } from 'react'
-import { Spinner } from 'evergreen-ui'
+import { useEffect, useRef, useState } from 'react'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
 import SceneLoadingPage from '../../SpokeEditor/SceneLoadingPage'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
+import { CenteredSpinner } from '../Utils/CenteredSpinner'
 
 
 export const Spoke = ({ hidden }) => {
@@ -39,15 +39,4 @@ export const Spoke = ({ hidden }) => {
             <CenteredSpinner />
         }
     </SpokeContainer>
-}
-
-
-const CenteredSpinner = () => {
-    return <div style={{
-        width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center',
-        flexDirection: 'column', color: 'white'
-    }}>
-        <Spinner size={64} />
-        <div style={{ fontSize: '24px', marginTop: '16px' }}>Loading...</div>
-    </div>
 }

@@ -4,6 +4,7 @@ import { MenuItem, Select } from '@mui/material'
 import * as React from 'react'
 import { useEffect } from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
+import { CenteredSpinner } from '../../Utils/CenteredSpinner'
 
 // TODO: waitingforupload the same as uploading?
 type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| 'downloaded' | 'failed to talk to the server'
@@ -55,7 +56,11 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
             case 'waitingforupload':
                 return <ShowQrCodeButton avatar={avatar} updateQrCode={updateQrCode} />
             case 'done':
-                return <DownloadButton avatar={avatar} />
+                return <DownloadButton avatar={avatar} setDownloaded={() => {
+                    const newAvatarStatusList = new Map<string, Status>(avatarStatusList)
+                    newAvatarStatusList.set(avatar.token, 'downloaded')
+                    setAvatarStatusList(newAvatarStatusList)
+                }} />
             default:
                 return <></>
         }
@@ -104,6 +109,11 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         return () => clearInterval(updateStatusInterval)
     }, [avatars, avatarStatusList, avatarServerUrl])
 
+    function statusToText(status: Status): string {
+        if(status === 'done') return 'ready to download'
+        return status
+    }
+
     return <Table>
         <Table.Head>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>
@@ -128,7 +138,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                             height: '30px',
                             backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'
                         }}
-                            onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
+                                onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
                             {sceneObjects.map((object, index) => (
                                 <MenuItem key={index} value={object.uuid}>
                                     {object.name}
@@ -136,7 +146,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                             ))}
                         </Select>
                     </Table.TextCell>
-                    <Table.TextCell>{avatarStatusList.get(avatar.token) || 'unknown'}</Table.TextCell>
+                    <Table.TextCell>{statusToText(avatarStatusList.get(avatar.token) || 'waitingforupload')}</Table.TextCell>
                     <Table.TextCell>
                         {getAction(avatar)}
                     </Table.TextCell>
@@ -168,18 +178,27 @@ const ShowQrCodeButton = ({avatar, updateQrCode}: {avatar: AvatarInfo, updateQrC
     </Button>
 }
 
-const DownloadButton = ({avatar}: { avatar: AvatarInfo }) => {
-    return <Button appearance='primary'
-                   style={{ width: '100%' }}
-                   onClick={async () => {
-                       const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.id)
-                       if(result === 0) {
-                           toaster.success('Avatar downloaded successfully')
-                       } else {
-                           toaster.danger('Avatar download failed')
-                       }
-                   }}
-    >
-        Download
-    </Button>
+const DownloadButton = ({avatar, setDownloaded}: { avatar: AvatarInfo, setDownloaded: () => void }) => {
+    const [downloading, setDownloading] = React.useState(false)
+
+    return <>
+        {downloading ? <CenteredSpinner size={24} showLabel={false} />
+            : <Button appearance='primary'
+                      style={{ width: '100%' }}
+                      onClick={async () => {
+                          setDownloading(true)
+                          const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.id)
+                          if(result === 0) {
+                              toaster.success('Avatar downloaded successfully')
+                              setDownloaded()
+                          } else {
+                              toaster.danger('Avatar download failed')
+                          }
+                          setDownloading(false)
+                      }}
+            >
+                Download
+            </Button>
+        }
+    </> 
 }

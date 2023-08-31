@@ -40,7 +40,9 @@ export const channels = {
         runPreprocessor: 'preprocessor:run',
         getSceneFileContents: 'project-manager:get-scene-file-contents',
         saveProject: 'project-manager:save-project',
-        saveScene: 'scene-exporter:save-current-scene'
+        saveScene: 'scene-exporter:save-current-scene',
+        downloadAvatar: 'avatar:download',
+        deleteAvatarFromFileSystem: 'avatar:delete',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

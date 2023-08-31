@@ -1,17 +1,25 @@
 import SVG from 'react-inlinesvg'
 import * as React from 'react'
 
-export const QRCodePreview = ({ qrCode }) => {
+
+interface props {
+    qrCode: string
+    avatarName: string
+}
+
+export const QRCodePreview = ({ qrCode, avatarName }: props) => {
     return <div>
         Scan this QR code with the VIA-VR avatar app:
         <div style={{
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             marginBottom: '20px',
             marginTop: '5px',
         }}>
-            <SVG src={qrCode} width={256} height='auto' />
+            <SVG src={qrCode} width={256} />
+            <div>Avatar: {avatarName}</div>
         </div>
     </div>
 }

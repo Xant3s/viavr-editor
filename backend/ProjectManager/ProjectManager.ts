@@ -10,6 +10,7 @@ import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
 import { API } from '../API'
+import { FileUtils } from '../Utils/FileUtils'
 
 
 export default class ProjectManager {
@@ -72,9 +73,9 @@ export default class ProjectManager {
             this._projectPath = filePath
             const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project/')
             const scenesFolder = Path.join(tempProjectFolder, 'Scenes/')
-            ProjectManager.ensurePathExists(tempProjectFolder)
+            FileUtils.ensurePathExists(tempProjectFolder)
             fs.rmSync(tempProjectFolder, { recursive: true })
-            ProjectManager.ensurePathExists(scenesFolder)
+            FileUtils.ensurePathExists(scenesFolder)
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)
             this.onProjectOpenedEvent.emit('project-loaded')
@@ -181,12 +182,5 @@ export default class ProjectManager {
 
     private async openPresentWorkingDirectory() {
         await exec(`start "" ${this.presentWorkingDirectory}`)
-    }
-
-    private static ensurePathExists(path: string) {
-        if(!fs.existsSync(path)) {
-            fs.mkdirSync(path, { recursive: true })
-            console.log(`Created folder ${path}`)
-        }
     }
 }

@@ -20,11 +20,11 @@ export const AvatarEditor = ({ hidden }) => {
     const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
     
 
-    const updateQrCode = (avatarId) => {
+    const updateQrCode = (avatarId: string,  avatarName: string) => {
         const token = avatars.find(avatar => avatar.id === avatarId)?.token || ''
         QrToString(token, { type: 'svg' }, (err, svg) => {
             setQrCode(svg)
-            setQrCodeAvatarName(avatars.find(avatar => avatar.id === avatarId)?.name || '')
+            setQrCodeAvatarName(avatarName)
         })
     }
 

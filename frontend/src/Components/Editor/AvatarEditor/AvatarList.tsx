@@ -5,7 +5,17 @@ import * as React from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 import { useEffect } from 'react'
 
-export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }) => {
+
+interface props {
+    avatars: AvatarInfo[]
+    updateQrCode: (avatarId: string, avatarName: string) => void
+    deleteAvatar: (avatarId: string) => void
+    deleteAvatarFromServer: (avatarId: string) => Promise<number>
+    sceneObjects: any[]
+    updateAvatar: (avatarId: string, update: (avatar: AvatarInfo) => AvatarInfo) => void
+}
+
+export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }: props) => {
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
     const [status, setStatus] = React.useState<string>('unknown')
     // TODO: auto update status
@@ -82,7 +92,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
             <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
         </Table.Head>
         <Table.Body height={240} minWidth={'600px'}>
-            {avatars.map((avatar: AvatarInfo) => (
+            {avatars.map(avatar => (
                 <Table.Row key={avatar.id}>
                     <Table.TextCell>
                         <TextInput name='avatar-name-input'
@@ -106,7 +116,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                         <Button appearance='primary'
                                 style={{ width: '100%' }}
                                 onClick={() => {
-                                    updateQrCode(avatar.id)
+                                    updateQrCode(avatar.id, avatar.name)
                                 }}
                         >
                             Show QR Code

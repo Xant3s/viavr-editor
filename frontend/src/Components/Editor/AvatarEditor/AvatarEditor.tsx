@@ -14,6 +14,7 @@ import { AvatarServerWarning } from './AvatarServerWarning'
 export const AvatarEditor = ({ hidden }) => {
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
     const [qrCode, setQrCode] = useState<string>('')
+    const [qrCodeAvatarName, setQrCodeAvatarName] = useState<string>('')
     const [downloadedAvatars, setDownloadedAvatars] = useState<string[]>([])    // uuids
     const [sceneObjects, setSceneObjects] = React.useState<any[]>([])
     const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
@@ -23,6 +24,7 @@ export const AvatarEditor = ({ hidden }) => {
         const token = avatars.find(avatar => avatar.id === avatarId)?.token || ''
         QrToString(token, { type: 'svg' }, (err, svg) => {
             setQrCode(svg)
+            setQrCodeAvatarName(avatars.find(avatar => avatar.id === avatarId)?.name || '')
         })
     }
 
@@ -118,7 +120,7 @@ export const AvatarEditor = ({ hidden }) => {
     return <AvatarEditorContainer hidden={hidden}>
         <AvatarServerWarning avatarServerUrl={avatarServerUrl} />
         <h1>Avatar Editor</h1>
-        {qrCode !== '' && <QRCodePreview qrCode={qrCode} />}
+        {qrCode !== '' && <QRCodePreview qrCode={qrCode} avatarName={qrCodeAvatarName} />}
         <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} 
                     deleteAvatarFromServer={deleteAvatarFromServer}
                     sceneObjects={sceneObjects} updateAvatar={updateAvatar}/>

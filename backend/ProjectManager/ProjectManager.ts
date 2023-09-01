@@ -10,7 +10,8 @@ import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
 import { API } from '../API'
-import { FileUtils } from '../Utils/FileUtils'
+import SceneExporter from './SceneExporter'
+import { SpokeAPI } from '../../frontend/src/SpokeEditor/SpokeAPI'
 
 
 export default class ProjectManager {
@@ -20,6 +21,8 @@ export default class ProjectManager {
     private _projectPath!: string
     private _presentWorkingDirectory!: string
     private onProjectOpenedEvent: EventEmitter = new EventEmitter()
+    private exporter!: SceneExporter
+    private projectExportHasFailed = false;
 
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
@@ -28,8 +31,9 @@ export default class ProjectManager {
         return ProjectManager.instance
     }
 
-    public init(mainWindow: MainWindow) {
+    public init(mainWindow: MainWindow, sceneExporter : SceneExporter) {
         this.mainWindow = mainWindow
+        this.exporter = sceneExporter
     }
 
     /// The path to the current saved project. This may be the path to a .via file.
@@ -56,15 +60,16 @@ export default class ProjectManager {
         ipc.handle(channels.toMain.openProject, async (event, recommendedProjectPath) => this.openProjectFromFile(recommendedProjectPath))
         ipc.handle(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveSceneAndProject())
-        ipc.handle(channels.toMain.saveProject, async () => this.saveSceneAndProject())
+        ipc.handle(channels.toMain.saveProject, async ()   => this.saveSceneAndProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
         ipc.handle(channels.toMain.getSceneFileContents, async() => await this.getSceneFileContents())
+        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.sceneExport, this.saveProject.bind(this))
+        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.sceneExportFailed,() => this.projectExportHasFailed = true)
     }
 
     private async saveSceneAndProject(){
-        await this.mainWindow.send(channels.toMain.saveScene)
-        await this.saveProject()
+        await this.exporter.exportScene()
     }
 
     private async createNewProject() {
@@ -138,6 +143,10 @@ export default class ProjectManager {
     }
 
     public async saveProject() {
+        if(this.projectExportHasFailed){
+            this.projectExportHasFailed = false;
+            return;
+        }
         if(this._projectPath === undefined && this.presentWorkingDirectory === undefined) {
             console.error('No project loaded.')
             return

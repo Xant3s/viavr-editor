@@ -13,7 +13,7 @@ export default class SceneExporter {
         ipcMain.handle(API.channels.toMain.saveScene, () => this.exportScene())
     }
 
-    private exportScene() {
+    public async exportScene() {
         this.setSaveScenePathToProjectFolder()
         this.mainWindow.send(channels.fromMain.spokeExportScene)
     }

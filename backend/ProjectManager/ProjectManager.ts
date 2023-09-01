@@ -147,6 +147,7 @@ export default class ProjectManager {
             this.projectExportHasFailed = false;
             return;
         }
+        console.log("Got here!")
         if(this._projectPath === undefined && this.presentWorkingDirectory === undefined) {
             console.error('No project loaded.')
             return

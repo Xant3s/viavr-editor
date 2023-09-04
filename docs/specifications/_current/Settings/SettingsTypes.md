@@ -261,3 +261,8 @@ Furthermore, some settings can have additional properties.
   "dev.viavr.editor.version": "0.1.0-development"
 }
 ```
+
+Output:  
+![](images/projectSettings1.png)
+![](images/projectSettings2.png)
+![](images/projectSettings3.png)

@@ -94,7 +94,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                         'x-scan-id': avatarToken,
                     },
                 })
-                if(response.status === 404) return 'waitingforupload'
+                if(response.status === 400) return 'waitingforupload'
                 if(!response.ok) return 'failed to talk to the server'
                 const status = await response.json()
                 return status.status

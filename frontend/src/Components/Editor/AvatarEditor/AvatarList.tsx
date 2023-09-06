@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 import { CenteredSpinner } from '../../Utils/CenteredSpinner'
 
-type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| 'downloaded' | 'failed to talk to the server'
+type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| 'downloaded' | 'expired' | 'failed to talk to the server'
 
 interface props {
     avatars: AvatarInfo[]
@@ -85,7 +85,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         }
 
         async function tryFetchStatus(avatarToken: string, currentStatus: Status) : Promise<Status> {
-            if(currentStatus === 'downloaded') return currentStatus
+            const wasDownloaded = currentStatus === 'downloaded'
             try {
                 const response = await fetch(`${avatarServerUrl}/scans`, {
                     method: 'GET',
@@ -93,13 +93,14 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                         'x-scan-id': avatarToken,
                     },
                 })
-                if(response.status === 400) return 'waitingforupload'
+                if(response.status === 400) return wasDownloaded ? 'expired' : 'waitingforupload'
+                if(wasDownloaded) return 'downloaded'
                 if(!response.ok) return 'failed to talk to the server'
                 const status = await response.json()
                 return status.status
             } catch(e) {
                 console.log(e)
-                return 'failed to talk to the server'
+                return wasDownloaded ? 'downloaded' : 'failed to talk to the server'
             }
         }
         
@@ -151,7 +152,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                     <Table.TextCell>
                         <DeleteAlertDialog open={showDeletePrompt} setOpen={setShowDeletePrompt}
                                            handleDialog={(res) => handleDeleteDialog(avatar.id, res)}
-                                           avatarIsOnServer={avatarStatusList.get(avatar.token) !== 'waitingforupload'}
+                                           avatarIsOnServer={avatarStatusList.get(avatar.token) !== 'waitingforupload' && avatarStatusList.get(avatar.token) !== 'expired'}
                         />
                         <Button iconBefore={TrashIcon}
                                 appearance='minimal'

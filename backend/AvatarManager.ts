@@ -34,7 +34,9 @@ export class AvatarManager {
         ipcMain.handle(channels.toMain.deleteAvatarFromFileSystem, async (event, args) => {
             if(!this.isReady()) return 2
             const path = `${this.presentWorkingDirectory}/Avatars/${args}.zip`
-            await fs.promises.rm(path)
+            if(fs.existsSync(path)) {
+                await fs.promises.rm(path)
+            }
         })
     }
 

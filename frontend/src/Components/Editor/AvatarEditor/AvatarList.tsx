@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 import { CenteredSpinner } from '../../Utils/CenteredSpinner'
 
-// TODO: waitingforupload the same as uploading?
 type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| 'downloaded' | 'failed to talk to the server'
 
 interface props {

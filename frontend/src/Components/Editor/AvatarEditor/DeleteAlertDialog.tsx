@@ -13,9 +13,10 @@ interface props {
     open: boolean
     setOpen: (open: boolean) => void
     handleDialog: (response: DeleteDialogResponse) => void
+    avatarIsOnServer: boolean
 }
 
-export default function AlertDialog({open, setOpen, handleDialog}: props) {
+export default function AlertDialog({open, setOpen, handleDialog, avatarIsOnServer}: props) {
     const handle = (response: DeleteDialogResponse) => {
         handleDialog(response)
         setOpen(false)
@@ -33,16 +34,26 @@ export default function AlertDialog({open, setOpen, handleDialog}: props) {
                     {'Delete avatar?'}
                 </DialogTitle>
                 <DialogContent>
-                    <DialogContentText id='alert-dialog-description'>
-                        The avatar will be removed from the project and erased from the disk.
-                        You can choose to additionally delete the avatar from the avatar server.
-                        Deleting the avatar cannot be undone.
-                    </DialogContentText>
+                    {avatarIsOnServer ?
+                        <DialogContentText id='alert-dialog-description'>
+                            The avatar will be removed from the project and erased from the disk.
+                            You can choose to additionally delete the avatar from the avatar server.
+                            Deleting the avatar cannot be undone.
+                        </DialogContentText>
+                    :
+                        <DialogContentText id='alert-dialog-description'>
+                            The avatar will be removed from the project and erased from the disk.
+                            Deleting the avatar cannot be undone.
+                        </DialogContentText>
+                    }
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => handle('abort')}>Abort</Button>
                     <Button onClick={() => handle('delete')} autoFocus>Delete avatar</Button>
-                    <Button onClick={() => handle('deleteFromServer')} autoFocus>Delete avatar also from server</Button>
+
+                    {avatarIsOnServer &&
+                        <Button onClick={() => handle('deleteFromServer')} autoFocus>Delete avatar also from server</Button>
+                    }
                 </DialogActions>
             </Dialog>
         </div>

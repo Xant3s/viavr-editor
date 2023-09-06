@@ -150,7 +150,9 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                     </Table.TextCell>
                     <Table.TextCell>
                         <DeleteAlertDialog open={showDeletePrompt} setOpen={setShowDeletePrompt}
-                                           handleDialog={(res) => handleDeleteDialog(avatar.id, res)} />
+                                           handleDialog={(res) => handleDeleteDialog(avatar.id, res)}
+                                           avatarIsOnServer={avatarStatusList.get(avatar.token) !== 'waitingforupload'}
+                        />
                         <Button iconBefore={TrashIcon}
                                 appearance='minimal'
                                 intent='danger'

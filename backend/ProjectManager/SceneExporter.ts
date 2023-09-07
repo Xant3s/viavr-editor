@@ -6,22 +6,23 @@ import { API, channels } from '../API'
 
 export default class SceneExporter {
     private mainWindow: MainWindow
+    private isDone = false
 
 
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
+        this.setSaveScenePathToProjectFolder(() => this.isDone = true)
         ipcMain.on('save-current-scene', () => this.exportScene())
         ipcMain.handle(API.channels.toMain.saveScene, () => this.exportScene())
     }
 
     public async exportScene(): Promise<void> {
         return new Promise((resolve, reject) => {
-            let isDone = false
-            this.setSaveScenePathToProjectFolder(() => isDone = true)
+            this.isDone = false
             this.mainWindow.send(channels.fromMain.spokeExportScene)
 
             const checkIsDone = () => {
-                if(!isDone) {
+                if(!this.isDone) {
                     setTimeout(checkIsDone, 100)
                 } else {
                     resolve()

@@ -6,7 +6,6 @@ export class SceneExport {
     constructor() {
         api.on(api.channels.fromMain.spokeExportScene, async () => SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene))
         api.on(api.channels.fromMain.spokeProjectSavedSuccessfully, () => this.showSuccessToaster('Project has been saved successfully'))
-        api.on(api.channels.fromMain.spokeSceneSavedSuccessfully, () => this.showSuccessToaster('Scene has been saved successfully'))
     }
 
     private showSuccessToaster(message) {

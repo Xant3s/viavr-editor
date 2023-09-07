@@ -7,13 +7,21 @@ import { API, channels } from '../API'
 export default class SceneExporter {
     private mainWindow: MainWindow
 
+    private sceneSaveDone  = false;
+
+    public SceneSaveComplete() : boolean{ return  this.sceneSaveDone}
+
+    public ResetSceneSaveState() {
+        if(this.sceneSaveDone) this.sceneSaveDone = false;
+    }
+
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
         ipcMain.on('save-current-scene', () => this.exportScene())
         ipcMain.handle(API.channels.toMain.saveScene, () => this.exportScene())
     }
 
-    public async exportScene() {
+    public exportScene() {
         this.setSaveScenePathToProjectFolder()
         this.mainWindow.send(channels.fromMain.spokeExportScene)
     }
@@ -33,6 +41,7 @@ export default class SceneExporter {
                     console.log(`Scene ${item.getFilename()} exported`)
                     if(item.getFilename().endsWith('.glb')) {
                         this.mainWindow.send(channels.fromMain.spokeSceneSavedSuccessfully)
+                        this.sceneSaveDone = true
                     }
                 }
                 else {

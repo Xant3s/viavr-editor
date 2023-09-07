@@ -9,9 +9,9 @@ import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
-import { API } from '../API'
 import SceneExporter from './SceneExporter'
 import { SpokeAPI } from '../../frontend/src/SpokeEditor/SpokeAPI'
+import { FileUtils } from '../Utils/FileUtils'
 
 
 export default class ProjectManager {
@@ -23,6 +23,7 @@ export default class ProjectManager {
     private onProjectOpenedEvent: EventEmitter = new EventEmitter()
     private exporter!: SceneExporter
     private projectExportHasFailed = false;
+    private startedExportFlag = false;
 
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
@@ -64,12 +65,19 @@ export default class ProjectManager {
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
         ipc.handle(channels.toMain.getSceneFileContents, async() => await this.getSceneFileContents())
-        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.sceneExport, this.saveProject.bind(this))
-        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.sceneExportFailed,() => this.projectExportHasFailed = true)
     }
 
     private async saveSceneAndProject(){
-        await this.exporter.exportScene()
+        if (!this.startedExportFlag) {
+            this.exporter.exportScene()
+            this.startedExportFlag = true
+        }
+
+        while (!this.exporter.SceneSaveComplete()) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+        await this.saveProject();
+
     }
 
     private async createNewProject() {
@@ -145,9 +153,9 @@ export default class ProjectManager {
     public async saveProject() {
         if(this.projectExportHasFailed){
             this.projectExportHasFailed = false;
+            console.log("Project Export Failed.")
             return;
         }
-        console.log("Got here!")
         if(this._projectPath === undefined && this.presentWorkingDirectory === undefined) {
             console.error('No project loaded.')
             return
@@ -183,6 +191,8 @@ export default class ProjectManager {
 
             this.mainWindow.send(channels.fromMain.spokeProjectSavedSuccessfully)
         }
+        this.startedExportFlag = false;
+        this.exporter.ResetSceneSaveState()
     }
 
     public async getSceneFileContents() {

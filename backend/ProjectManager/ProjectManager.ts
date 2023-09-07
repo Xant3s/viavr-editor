@@ -9,9 +9,7 @@ import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
-import SceneExporter from './SceneExporter'
-import { SpokeAPI } from '../../frontend/src/SpokeEditor/SpokeAPI'
-import { FileUtils } from '../Utils/FileUtils'
+import { API } from '../API'
 
 
 export default class ProjectManager {
@@ -21,9 +19,6 @@ export default class ProjectManager {
     private _projectPath!: string
     private _presentWorkingDirectory!: string
     private onProjectOpenedEvent: EventEmitter = new EventEmitter()
-    private exporter!: SceneExporter
-    private projectExportHasFailed = false;
-    private startedExportFlag = false;
 
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
@@ -32,9 +27,8 @@ export default class ProjectManager {
         return ProjectManager.instance
     }
 
-    public init(mainWindow: MainWindow, sceneExporter : SceneExporter) {
+    public init(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
-        this.exporter = sceneExporter
     }
 
     /// The path to the current saved project. This may be the path to a .via file.
@@ -61,6 +55,7 @@ export default class ProjectManager {
         ipc.handle(channels.toMain.openProject, async (event, recommendedProjectPath) => this.openProjectFromFile(recommendedProjectPath))
         ipc.handle(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveSceneAndProject())
+        ipc.handle(channels.toMain.saveProject, async () => this.saveSceneAndProject())
         ipc.handle(channels.toMain.saveProject, async ()   => this.saveSceneAndProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
@@ -68,16 +63,8 @@ export default class ProjectManager {
     }
 
     private async saveSceneAndProject(){
-        if (!this.startedExportFlag) {
-            this.exporter.exportScene()
-            this.startedExportFlag = true
-        }
-
-        while (!this.exporter.SceneSaveComplete()) {
-            await new Promise((resolve) => setTimeout(resolve, 100));
-        }
-        await this.saveProject();
-
+        await this.mainWindow.send(channels.toMain.saveScene)
+        await this.saveProject()
     }
 
     private async createNewProject() {
@@ -91,9 +78,9 @@ export default class ProjectManager {
             this._projectPath = filePath
             const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project/')
             const scenesFolder = Path.join(tempProjectFolder, 'Scenes/')
-            FileUtils.ensurePathExists(tempProjectFolder)
+            ProjectManager.ensurePathExists(tempProjectFolder)
             fs.rmSync(tempProjectFolder, { recursive: true })
-            FileUtils.ensurePathExists(scenesFolder)
+            ProjectManager.ensurePathExists(scenesFolder)
             this._presentWorkingDirectory = tempProjectFolder
             this.mainWindow.send(channels.fromMain.projectCreated)
             this.onProjectOpenedEvent.emit('project-loaded')
@@ -151,11 +138,6 @@ export default class ProjectManager {
     }
 
     public async saveProject() {
-        if(this.projectExportHasFailed){
-            this.projectExportHasFailed = false;
-            console.log("Project Export Failed.")
-            return;
-        }
         if(this._projectPath === undefined && this.presentWorkingDirectory === undefined) {
             console.error('No project loaded.')
             return
@@ -191,8 +173,6 @@ export default class ProjectManager {
 
             this.mainWindow.send(channels.fromMain.spokeProjectSavedSuccessfully)
         }
-        this.startedExportFlag = false;
-        this.exporter.ResetSceneSaveState()
     }
 
     public async getSceneFileContents() {

@@ -7,13 +7,6 @@ import { API, channels } from '../API'
 export default class SceneExporter {
     private mainWindow: MainWindow
 
-    private sceneSaveDone  = false;
-
-    public SceneSaveComplete() : boolean{ return  this.sceneSaveDone}
-
-    public ResetSceneSaveState() {
-        if(this.sceneSaveDone) this.sceneSaveDone = false;
-    }
 
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
@@ -21,12 +14,25 @@ export default class SceneExporter {
         ipcMain.handle(API.channels.toMain.saveScene, () => this.exportScene())
     }
 
-    public exportScene() {
-        this.setSaveScenePathToProjectFolder()
-        this.mainWindow.send(channels.fromMain.spokeExportScene)
+    public async exportScene(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            let isDone = false
+            this.setSaveScenePathToProjectFolder(() => isDone = true)
+            this.mainWindow.send(channels.fromMain.spokeExportScene)
+
+            const checkIsDone = () => {
+                if(!isDone) {
+                    setTimeout(checkIsDone, 100)
+                } else {
+                    resolve()
+                }
+            }
+
+            checkIsDone()
+        })
     }
 
-    private setSaveScenePathToProjectFolder() {
+    private setSaveScenePathToProjectFolder(onDone: () => void) {
         session.defaultSession.on('will-download', async (event, item, webContents) => {
             if (!item.getFilename().endsWith('.glb') && !item.getFilename().endsWith('.spoke')) return
             const saveScenePath = Path.join(
@@ -41,13 +47,13 @@ export default class SceneExporter {
                     console.log(`Scene ${item.getFilename()} exported`)
                     if(item.getFilename().endsWith('.glb')) {
                         this.mainWindow.send(channels.fromMain.spokeSceneSavedSuccessfully)
-                        this.sceneSaveDone = true
                     }
                 }
                 else {
                     console.log(`Scene export failed: ${state} (Check path)`)
                     console.log(saveScenePath)
                 }
+                onDone()
             })
         })
     }

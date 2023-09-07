@@ -21,8 +21,8 @@ export default class ProjectManager {
     private _presentWorkingDirectory!: string
     private onProjectOpenedEvent: EventEmitter = new EventEmitter()
     private exporter!: SceneExporter
-    private startedExportFlag = false
 
+    
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
             ProjectManager.instance = new ProjectManager()
@@ -66,15 +66,8 @@ export default class ProjectManager {
     }
 
     private async saveSceneAndProject(){
-        if (!this.startedExportFlag) {
-            this.exporter.exportScene()
-            this.startedExportFlag = true
-        }
-
-        while (!this.exporter.SceneSaveComplete()) {
-            await new Promise((resolve) => setTimeout(resolve, 100));
-        }
-        await this.saveProject();
+        await this.exporter.exportScene()
+        await this.saveProject()
     }
 
     private async createNewProject() {
@@ -183,8 +176,6 @@ export default class ProjectManager {
 
             this.mainWindow.send(channels.fromMain.spokeProjectSavedSuccessfully)
         }
-        this.startedExportFlag = false;
-        this.exporter.ResetSceneSaveState()
     }
 
     public async getSceneFileContents() {

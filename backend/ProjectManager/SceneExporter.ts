@@ -6,23 +6,25 @@ import { API, channels } from '../API'
 
 export default class SceneExporter {
     private mainWindow: MainWindow
-    private isDone = false
+    private exportedSpoke = false
+    private exportedGlb = false
 
 
     constructor(mainWindow: MainWindow) {
         this.mainWindow = mainWindow
-        this.setSaveScenePathToProjectFolder(() => this.isDone = true)
+        this.setSaveScenePathToProjectFolder()
         ipcMain.on('save-current-scene', () => this.exportScene())
         ipcMain.handle(API.channels.toMain.saveScene, () => this.exportScene())
     }
 
     public async exportScene(): Promise<void> {
         return new Promise((resolve, reject) => {
-            this.isDone = false
+            this.exportedSpoke = false
+            this.exportedGlb = false
             this.mainWindow.send(channels.fromMain.spokeExportScene)
 
             const checkIsDone = () => {
-                if(!this.isDone) {
+                if(!this.exportedSpoke || !this.exportedGlb) {
                     setTimeout(checkIsDone, 100)
                 } else {
                     resolve()
@@ -33,7 +35,7 @@ export default class SceneExporter {
         })
     }
 
-    private setSaveScenePathToProjectFolder(onDone: () => void) {
+    private setSaveScenePathToProjectFolder() {
         session.defaultSession.on('will-download', async (event, item, webContents) => {
             if (!item.getFilename().endsWith('.glb') && !item.getFilename().endsWith('.spoke')) return
             const saveScenePath = Path.join(
@@ -54,7 +56,11 @@ export default class SceneExporter {
                     console.log(`Scene export failed: ${state} (Check path)`)
                     console.log(saveScenePath)
                 }
-                onDone()
+                if(item.getFilename().endsWith('.glb')) {
+                    this.exportedGlb = true
+                } else {
+                    this.exportedSpoke = true
+                }
             })
         })
     }

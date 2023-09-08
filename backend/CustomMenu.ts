@@ -11,12 +11,6 @@ export default class CustomMenu {
                 label: 'File',
                 submenu: [
                     {
-                        label: 'Save Current Scene',
-                        click: () => ipc.emit('save-current-scene'),
-                        id: 'SaveScene',
-                        enabled: this.projectLoaded && this.articyNotOpen,
-                    },
-                    {
                         label: 'Save Project',
                         click: () => ipc.emit('project-manager:save-project'),
                         id: 'SaveProject',

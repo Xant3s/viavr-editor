@@ -86,7 +86,7 @@ frontend:
 
 package-win:
   image: electronuserland/builder:16-wine
-  stage: build
+  stage: deploy
   cache:
     paths:
       - node_modules
@@ -105,7 +105,7 @@ package-win:
   tags:
     - docker
   only:
-    - tags
+    - master
 
 #package-linux:
 #  image: node:16

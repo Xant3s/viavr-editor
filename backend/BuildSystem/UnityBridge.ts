@@ -9,6 +9,11 @@ export default class UnityBridge {
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
         } catch (err) {
             console.error(err)
+            try{
+                await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
+            } catch(e) {
+                console.log('failed again', e)
+            }
         }
     }
 

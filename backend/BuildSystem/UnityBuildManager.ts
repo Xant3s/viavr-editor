@@ -13,7 +13,7 @@ import { PackageRegistries } from './DataStructures/PackageRegistries'
 import { UnityPackageSettingsManager } from './UnityPackageSettingsManager'
 import fs from 'fs'
 import * as fse from 'fs-extra'
-import { Setting_t } from '../../frontend/src/@types/Settings'
+import { PathSetting, Setting_t } from '../../frontend/src/@types/Settings'
 import Path from 'path'
 import { exec } from 'child_process'
 import assert = require('assert')
@@ -74,6 +74,7 @@ export default class UnityBuildManager {
         await Utils.extractZipToPath(AppUtils.getResPath() + 'DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, selectedPackages)
+        await this.installPicoSdk(outputPath)
         await this.importScenes(outputPath, sceneNames)
         await this.exportPackageConfigurations(outputPath)
         await this.exportBuildSettings(outputPath)
@@ -142,6 +143,13 @@ export default class UnityBuildManager {
         }
 
         await UnityBuildManager.writeManifest(manifest, outputPath)
+    }
+    
+    private async installPicoSdk(outputPath: string) {
+        const sdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
+        const sdkPath = sdkPathPref.value
+        const sdkParentPath = sdkPath.split(Path.sep).slice(0, -1).join(Path.sep)
+        await fse.copy(sdkParentPath, `${outputPath}/picoxr`)
     }
 
     private async importScenes(outputPath: string, sceneNames: Array<string>) {

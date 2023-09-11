@@ -16,6 +16,12 @@
     "uuid": "5565213a-fd3a-412d-ae8f-cf1f446fcfe9",
     "kind": "path"
   },
+  "picoSdkPath": {
+    "value": "C:\\dev\\SDKs\\picoxr\\package.json",
+    "label": "Path to unzipped Pico SDK",
+    "uuid": "5585213a-fd3a-412d-ae8f-cf1f446fcfe9",
+    "kind": "path"
+  },
   "avatarServer": {
     "value": "https://avatarsrv.cs.tu-dortmund.de",
     "label": "Avatar server URL",

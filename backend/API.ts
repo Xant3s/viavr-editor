@@ -43,6 +43,7 @@ export const channels = {
         saveScene: 'scene-exporter:save-current-scene',
         downloadAvatar: 'avatar:download',
         deleteAvatarFromFileSystem: 'avatar:delete',
+        exitApplication: 'main-window:exit-application'
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
@@ -52,7 +53,8 @@ export const channels = {
         spokeSceneSavedSuccessfully: 'spoke:scene-saved-successfully',
         spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
         externalWindowOpened:'articy:open-editor-and-disable-window',
-        externalWindowClosed:'articy:open-editor'
+        externalWindowClosed:'articy:open-editor',
+        tryExitApplication: 'editor:try-exit'
     },
 }
 

@@ -1,4 +1,5 @@
 import { app, ipcMain as ipc, Menu, shell } from 'electron'
+import { API } from './API'
 
 export default class CustomMenu {
     private projectLoaded = false
@@ -28,7 +29,7 @@ export default class CustomMenu {
                     },
                     {
                         label: 'Exit',
-                        click: () => app.quit(),
+                        click: () => ipc.emit('editor:try-exit'),
                         enabled: this.articyNotOpen
                     },
                 ],

@@ -1,9 +1,9 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow,  ipcMain as ipc } from 'electron'
 import * as path from 'path'
 import CustomMenu from './CustomMenu'
 import { loadPage } from './Utils/ElectronUtils'
 import electron_reload from 'electron-reload'
-import { channels } from './API'
+import { API, channels } from './API'
 
 export default class MainWindow {
     private static window: Electron.BrowserWindow
@@ -13,6 +13,8 @@ export default class MainWindow {
         app.on('activate', MainWindow.activate)
         app.on('window-all-closed', () => MainWindow.onWindowAllClosed(app))
         app.commandLine.appendSwitch('disable-site-isolation-trials') // https://github.com/electron/electron/issues/18214
+        ipc.handle(API.channels.toMain.exitApplication, this.exitApplication.bind(this))
+        ipc.on('editor:try-exit', () =>  MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication))
     }
 
     get window(): Electron.BrowserWindow {
@@ -40,6 +42,12 @@ export default class MainWindow {
         MainWindow.window.webContents.send(channel, ...args)
     }
 
+    private exitApplication(){
+        // @ts-ignore
+        MainWindow.window = null
+        app.exit(0)
+    }
+
     private static createWindow() {
         MainWindow.window = new BrowserWindow({
             webPreferences: {
@@ -48,6 +56,11 @@ export default class MainWindow {
                 preload: path.join(__dirname, 'preload.js'),
             },
         })
+        MainWindow.window.on("close", () =>
+        {
+            console.log("Trying to quit")
+            MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)}
+        )
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()
         loadPage(MainWindow.window, 'index')

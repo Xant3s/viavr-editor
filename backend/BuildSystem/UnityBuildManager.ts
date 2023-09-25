@@ -50,14 +50,8 @@ export default class UnityBuildManager {
             return sceneFiles
         })
         ipc.handle(channels.toMain.createUnityProject, async (_, selectedScenes, selectedPackages) => await this.createUnityProject(selectedScenes, selectedPackages))
-        ipc.handle(channels.toMain.buildUnityProject, async () => await new UnityBridge().build(this.buildPath))
-        ipc.handle(channels.toMain.checkBuildSuccess, async () => {
-            const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
-            const windowsExecutableExists = fs.existsSync(windowsExecutablePath) && fs.readdirSync(windowsExecutablePath).length > 0
-            const androidExecutablePath = Path.join(this.buildPath, 'Build/out.apk')
-            const androidExecutableExists = fs.existsSync(androidExecutablePath)
-            return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
-        })
+        ipc.handle(channels.toMain.buildUnityProject, async () => await this.buildUnityProject())
+        ipc.handle(channels.toMain.checkBuildSuccess, async () => this.checkExecutableExists())
         ipc.handle(channels.toMain.openBuildDirectory, async () => await UnityBuildManager.openBuildDirectory(this.buildPath))
         ipc.handle(channels.toMain.queryJsonScenes, async () => {
             const { sceneFiles } = await UnityBuildManager.findFilesOfTypeInPwd('.spoke')
@@ -227,6 +221,23 @@ export default class UnityBuildManager {
                 console.error(err)
             }
         })
+    }
+
+    private async buildUnityProject() {
+        await new UnityBridge().build(this.buildPath)
+        const executableExists = this.checkExecutableExists()
+        if(executableExists === 'failure') {
+            console.error('Executable does not exist, retrying once.')
+            await new UnityBridge().buildOnly(this.buildPath)
+        }
+    }
+
+    private checkExecutableExists() {
+        const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
+        const windowsExecutableExists = fs.existsSync(windowsExecutablePath) && fs.readdirSync(windowsExecutablePath).length > 0
+        const androidExecutablePath = Path.join(this.buildPath, 'Build/out.apk')
+        const androidExecutableExists = fs.existsSync(androidExecutablePath)
+        return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
     }
 }
 

@@ -16,6 +16,14 @@ export default class UnityBridge {
             }
         }
     }
+    
+    public async buildOnly(projectPath: string) {
+        try {
+            await this.invokeUnityMethod('de.jmu.ge.BuildUtils.BuildManager.BuildPico', projectPath)
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     private async invokeUnityMethod(method: string, projectPath: string) {
         const pathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')

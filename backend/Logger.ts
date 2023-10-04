@@ -76,6 +76,10 @@ export class Logger {
         this.log(`Processor: ${processorName}`)
         this.log(`Available memory: ${availableMemoryInGB} GB`)
         this.log(`Memory: ${memoryInGB} GB`)
+        await this.runCommandAndPrintOutput('node -v', 'Node version')
+        await this.runCommandAndPrintOutput('npm -v', 'NPM version')
+        await this.runCommandAndPrintOutput('yarn -v', 'Yarn version')
+        await this.runCommandAndPrintOutput('python -V', 'Python version')
         this.log(`Unity path: ${unityPath}`)
         this.log(`Articy path: ${articyPath}`)
         this.log(`Avatar server URL: ${avatarServerUrl}`)
@@ -114,6 +118,20 @@ export class Logger {
                     console.log('No uncommited changes')
                     resolve()
                 }
+            })
+        })
+    }
+    
+    private async runCommandAndPrintOutput(command: string, label: string): Promise<void> {
+        return new Promise((resolve) => {
+            exec(command, (error, stdout, stderr) => {
+                if(error) {
+                    this.log(`Error running command ${command}: ${error}`)
+                    resolve()
+                }
+                const output = stdout.trim()
+                this.log(`${label}: ${output}`)
+                resolve()
             })
         })
     }

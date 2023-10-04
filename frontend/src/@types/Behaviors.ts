@@ -1,15 +1,60 @@
-export class TaskInfo {
-    identifier = ''
-    description = ''
-    conditions: ConditionInfo[] = []
-    actions: ActionInfo[] = []
+export class Variable {
+    name = ''
+    type = ''
+    value = ''
 }
 
-export class ConditionInfo {
-    identifier = ''
-    parameter = ''
+export class Event {
+    name = ''
+    id = 0
+    parameters: Parameter[] = []
+    actionSequence: [] = []
 }
 
-export class ActionInfo {
-    identifier = ''
+export class Parameter {
+    name = ''
+    type = ''
+    value = ''
 }
+
+export class Action {
+    name = ''
+    parameters: Parameter[] = []
+}
+
+export class IfElse {
+    variable = ''
+    operator = ''
+    comparison = ''
+    then: [] = []
+    else: [] = []
+}
+
+export const eventTypes =
+    {
+        "OnGrab": {
+            "parameters": []
+        },
+        "OnCollisionEnter": {
+            "parameters": []
+        },
+        "OnPlayerTrigger": {
+            "parameters": []
+        },
+        "OnTimeElapsed": {
+            "parameters": [
+                {
+                    name: "time",
+                    type: "number",
+                    value: "0"
+                }
+            ]
+        },
+        "OnTimeElapsedRepeating": [
+            {
+                name: "time",
+                type: "number",
+                value: "0"
+            }
+        ]
+    }

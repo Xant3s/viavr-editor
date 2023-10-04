@@ -5,6 +5,7 @@ import * as os from 'os'
 import PreferencesManager from './Preferences/PreferencesManager'
 import { PathSetting, Setting_t, StringSetting } from '../frontend/src/@types/Settings'
 import { exec } from 'child_process'
+import ProjectManager from './ProjectManager/ProjectManager'
 
 export class Logger {
     private static instance: Logger
@@ -13,6 +14,10 @@ export class Logger {
     
     private constructor() {
         this.logSystemInfo()
+        ProjectManager.getInstance().registerOnProjectLoadedListener(() => {
+            const projectPath = ProjectManager.getInstance().projectPath
+            this.log(`Project loaded: ${projectPath}`)
+        })
     }
     
     public static get(): Logger {

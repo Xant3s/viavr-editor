@@ -78,6 +78,7 @@ export default class UnityBuildManager {
         await this.exportBuildSettings(outputPath)
         await this.exportAvatars(outputPath)
         Logger.get().log('Finished creating Unity project')
+        await Logger.get().logDir(outputPath)
         await Logger.get().save(outputPath + '/build_log.txt')
         this.buildPath = outputPath
         return outputPath
@@ -232,16 +233,18 @@ export default class UnityBuildManager {
     private async buildUnityProject() {
         Logger.get().log('Start building Unity project')
         await new UnityBridge().openProject(this.buildPath)
+        await Logger.get().logDir(this.buildPath)
         await Logger.get().save(this.buildPath + '/build_log.txt')
-        return
         await new UnityBridge().build(this.buildPath)
+        await Logger.get().logDir(Path.join(this.buildPath, 'Assets/Scenes'))
+        await Logger.get().logDir(Path.join(this.buildPath, 'Build'))
         await Logger.get().save(this.buildPath + '/build_log.txt')
-        const executableExists = this.checkExecutableExists()
-        if(executableExists === 'failure') {
-            console.error('Executable does not exist, retrying once.')
+        if(this.checkExecutableExists() === 'failure') {
+            Logger.get().logVerbose('Executable does not exist, retrying build only.')
             await new UnityBridge().buildOnly(this.buildPath)
+            await Logger.get().logDir(Path.join(this.buildPath, 'Build'))
         }
-        Logger.get().log(`Build finished. Executable exists: ${executableExists}`)
+        Logger.get().log(`Build finished. Executable exists: ${this.checkExecutableExists()}`)
         Logger.get().log(`Build took ${((Date.now() - this.startTime) / 1000 / 60).toFixed(2)} min`)
         await Logger.get().save(this.buildPath + '/build_log.txt')
     }

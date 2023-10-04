@@ -40,6 +40,18 @@ export class Logger {
         const logPath = filePath ?? path.join(app.getPath('userData'), 'build_log.txt')
         await fs.promises.writeFile(logPath, this.lines.join('\n'))
     }
+    
+    public async logDir(dirPath: string) {
+        try {
+            this.log(`Directory ${dirPath}:`)
+            const items = await fs.promises.readdir(dirPath)
+            for(const item of items) {
+                this.log(`\t${item}`)
+            }
+        } catch(err) {
+            this.log(`Error reading directory ${dirPath}: ${err}`)
+        }
+    }
 
     private async logSystemInfo() {
         const isPackaged = app.isPackaged

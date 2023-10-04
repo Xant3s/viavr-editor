@@ -7,10 +7,12 @@ import { Logger } from '../Logger'
 export default class UnityBridge {
     public async build(projectPath: string) {
         try {
+            Logger.get().log('UnityBridge.ExecuteAll')
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
         } catch (err) {
-            console.error(err)
+            Logger.get().logVerbose(err as string)
             try{
+                Logger.get().log('UnityBridge.ExecuteAll')
                 await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
             } catch(e) {
                 console.log('failed again', e)
@@ -22,7 +24,7 @@ export default class UnityBridge {
         try {
             await this.invokeUnityMethod('de.jmu.ge.BuildUtils.BuildManager.BuildPico', projectPath)
         } catch (err) {
-            console.error(err)
+            Logger.get().logVerbose(err as string)
         }
     }
 
@@ -47,11 +49,7 @@ export default class UnityBridge {
 
     private async invokeUnityMethod(method: string, projectPath: string) {
         const args = ['-quit', '-batchmode', '-projectPath', projectPath, '-executeMethod', method]
-        try{
-            await this.runUnity(args)
-        } catch(e) {
-            Logger.get().logVerbose(e as string)
-        }    
+        await this.runUnity(args)
     }
     
     private async runUnity(args: string[]) {

@@ -37,7 +37,6 @@ export class Logger {
     }
 
     private async logSystemInfo() {
-        this.logCommitHash()
         const isPackaged = app.isPackaged
         const hostname = os.hostname()
         const processorName = os.cpus()[0].model
@@ -53,11 +52,13 @@ export class Logger {
         const picoSdkVersion = picoSdkManifest.version
         const avatarServerUrlSetting: StringSetting = await PreferencesManager.getInstance().get('avatarServer')
         const avatarServerUrl = avatarServerUrlSetting.value
+        await this.logCommitHash()
+        await this.logGitHasUncommitedChanges()
         this.log(`Packaged: ${isPackaged}`)
         this.log(`Hostname: ${hostname}`)
         this.log(`Processor: ${processorName}`)
-        this.log(`Memory: ${memoryInGB} GB`)
         this.log(`Available memory: ${availableMemoryInGB} GB`)
+        this.log(`Memory: ${memoryInGB} GB`)
         this.log(`Unity path: ${unityPath}`)
         this.log(`Articy path: ${articyPath}`)
         this.log(`Avatar server URL: ${avatarServerUrl}`)
@@ -65,34 +66,39 @@ export class Logger {
         this.log(`Pico SDK version: ${picoSdkVersion}`)
         await this.logDependenciesExist()
         await this.logPackageRegistryOnline()
-        await this.logGitHasUncommitedChanges()
         this.log('-----------------------')
     }
     
-    private logCommitHash() {
-        exec('git rev-parse HEAD', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error executing Git command: ${error}`)
-                return
-            }
-            const commitHash = stdout.trim()
-            this.log(`Commit hash: ${commitHash}`)
+    private logCommitHash(): Promise<void> {
+        return new Promise((resolve) => {
+            exec('git rev-parse HEAD', (error, stdout, stderr) => {
+                if(error) {
+                    console.error(`Error executing Git command: ${error}`)
+                    resolve()
+                }
+                const commitHash = stdout.trim()
+                this.log(`Commit hash: ${commitHash}`)
+                resolve()
+            })
         })
     }
-    private async logGitHasUncommitedChanges() {
-        exec('git status --porcelain', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error executing Git command: ${error}`)
-                return
-            }
-            const uncommitedChanges = stdout.trim()
-            if(uncommitedChanges !== '') {
-                this.log(`Uncommited changes: ${uncommitedChanges}`)
-            } else {
-                console.log('No uncommited changes')
-            }
+    private async logGitHasUncommitedChanges(): Promise<void> {
+        return new Promise ((resolve) => {
+            exec('git status --porcelain', (error, stdout, stderr) => {
+                if(error) {
+                    console.error(`Error executing Git command git status --porcelain: ${error}`)
+                    resolve()
+                }
+                const uncommitedChanges = stdout.trim()
+                if(uncommitedChanges !== '') {
+                    this.log(`Uncommited changes: ${uncommitedChanges}`)
+                    resolve()
+                } else {
+                    console.log('No uncommited changes')
+                    resolve()
+                }
+            })
         })
-
     }
     
     private async logDependenciesExist() {

@@ -231,6 +231,9 @@ export default class UnityBuildManager {
 
     private async buildUnityProject() {
         Logger.get().log('Start building Unity project')
+        await new UnityBridge().openProject(this.buildPath)
+        await Logger.get().save(this.buildPath + '/build_log.txt')
+        return
         await new UnityBridge().build(this.buildPath)
         await Logger.get().save(this.buildPath + '/build_log.txt')
         const executableExists = this.checkExecutableExists()

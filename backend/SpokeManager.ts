@@ -33,9 +33,9 @@ export default class SpokeManager {
         })
         this.spoke.on('exit', (code, signal) => {
             if (code !== null) {
-                Logger.get().logVerbose(`Spoke process exited with code ${code}`)
+                Logger.get().logVerbose(`Spoke process exited with code ${code}. Perhaps another Spoke process was already running?`)
             } else if (signal !== null) {
-                Logger.get().logVerbose(`Spoke process killed with signal ${signal}. Perhaps another Spoke process was already running?`)
+                Logger.get().logVerbose(`Spoke process killed with signal ${signal}.`)
             } else {
                 Logger.get().log(`Spoke process exited`)
             }

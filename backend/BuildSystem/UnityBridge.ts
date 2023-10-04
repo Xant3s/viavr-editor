@@ -7,8 +7,16 @@ import { Logger } from '../Logger'
 export default class UnityBridge {
     public async build(projectPath: string) {
         try {
-            Logger.get().log('UnityBridge.ExecuteAll')
-            await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
+            Logger.get().log('UnityBridge.Init')
+            await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.Init', projectPath)
+            Logger.get().log('UnityBridge.SetupScene')
+            await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.SetupScene', projectPath)
+            Logger.get().log('UnityBridge.OnConfigureScene')
+            await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnConfigureScene', projectPath)
+            Logger.get().log('UnityBridge.OnPostConfiguration')
+            await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnPostConfiguration', projectPath)
+            // Logger.get().log('UnityBridge.ExecuteAll')
+            // await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
         } catch (err) {
             Logger.get().logVerbose(err as string)
             try{

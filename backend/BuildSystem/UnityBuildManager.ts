@@ -245,6 +245,16 @@ export default class UnityBuildManager {
             await Logger.get().logDir(Path.join(this.buildPath, 'Build'))
         }
         Logger.get().log(`Build finished. Executable exists: ${this.checkExecutableExists()}`)
+        try{
+            Logger.get().log(`Move build/out.apk to build/out1.apk`)
+            await fse.move(Path.join(this.buildPath, 'Build/out.apk'), Path.join(this.buildPath, 'Build/out1.apk'))
+        } catch(e) {
+        Logger.get().logVerbose('Failed moving out.apk to out1.apk')
+        console.error(e)
+        }
+        Logger.get().log(`Build once more.`)
+        await new UnityBridge().buildOnly(this.buildPath)
+        Logger.get().log(`Build finished. Executable exists: ${this.checkExecutableExists()}`)
         Logger.get().log(`Build took ${((Date.now() - this.startTime) / 1000 / 60).toFixed(2)} min`)
         await Logger.get().save(this.buildPath + '/build_log.txt')
     }

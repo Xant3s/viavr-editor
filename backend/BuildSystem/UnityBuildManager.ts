@@ -78,7 +78,7 @@ export default class UnityBuildManager {
         await this.exportBuildSettings(outputPath)
         await this.exportAvatars(outputPath)
         Logger.get().log('Finished creating Unity project')
-        Logger.get().save(outputPath + '/build_log.txt')
+        await Logger.get().save(outputPath + '/build_log.txt')
         this.buildPath = outputPath
         return outputPath
     }
@@ -232,6 +232,7 @@ export default class UnityBuildManager {
     private async buildUnityProject() {
         Logger.get().log('Start building Unity project')
         await new UnityBridge().build(this.buildPath)
+        await Logger.get().save(this.buildPath + '/build_log.txt')
         const executableExists = this.checkExecutableExists()
         if(executableExists === 'failure') {
             console.error('Executable does not exist, retrying once.')

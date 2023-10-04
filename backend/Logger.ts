@@ -58,7 +58,6 @@ export class Logger {
         this.log(`Pico SDK path: ${picoSdkPath}`)
         this.log(`Pico SDK version: ${picoSdkVersion}`)
         this.log('-----------------------')
-        // was spoke running
     }
     
     private logCommitHash() {

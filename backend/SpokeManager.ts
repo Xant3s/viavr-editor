@@ -3,6 +3,7 @@ import * as child_process from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
 import PreferencesManager from './Preferences/PreferencesManager'
+import { Logger } from './Logger'
 
 export default class SpokeManager {
     private static instance: SpokeManager
@@ -26,6 +27,18 @@ export default class SpokeManager {
         this.spoke = child_process.spawn(this.startCommand, [], {
             shell: true,
             detached: true,
+        })
+        this.spoke.on('error', (error) => {
+            Logger.get().logVerbose(`Spoke process error: ${error}`)
+        })
+        this.spoke.on('exit', (code, signal) => {
+            if (code !== null) {
+                Logger.get().logVerbose(`Spoke process exited with code ${code}`)
+            } else if (signal !== null) {
+                Logger.get().logVerbose(`Spoke process killed with signal ${signal}. Perhaps another Spoke process was already running?`)
+            } else {
+                Logger.get().log(`Spoke process exited`)
+            }
         })
     }
 

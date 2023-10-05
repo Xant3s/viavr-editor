@@ -1,0 +1,111 @@
+﻿<ApplicationManifest>
+	<Info>
+		<TechnicalName Value="Articy-via-vr" />
+		<DisplayName Value="articy:draft for VIA/VR" />
+		<PluginDir Value="./plugins/" />
+		<RepositoryDefinition Value="Articy.trd" />
+		<EntryPoint Class="Articy.Editor.Starter" />
+		<AssemblyList>
+			<Entry>Articy*.exe</Entry>
+			<Entry>Articy*.dll</Entry>
+			<Entry>ModelFramework.dll</Entry>
+			<Entry>WpfFramework.dll</Entry>
+			<Entry>Aws*.dll</Entry>
+			<Entry>SourceControlManager.dll</Entry>
+			<Entry>*SourceControlProvider.dll</Entry>
+			<Entry>*.ReportingPlugin.dll</Entry>
+			<Entry>QueryLayer.dll</Entry>
+			<Entry>PublicAPITypes.dll</Entry>
+			<Entry>ReportingShared.dll</Entry>
+			<Entry>ServiceAPI.dll</Entry>
+			<Entry>AccessPlugin.dll</Entry>
+			<Entry>AccessCSAPI.dll</Entry>
+		</AssemblyList>
+	</Info>
+	<Packages>
+
+		<!-- The one and only Package that is loaded from the launcher -->
+		<Package Name="SystemCore" LoadingGroup="Launcher" Use="Required" >
+			<DisplayName Value="Core components" />
+			<Assemblies>
+			</Assemblies>
+		</Package>
+
+		<Package Name="ApplicationCore" LoadingGroup="System" Use="Required" >
+			<DisplayName Value="Articy core components" />
+			<Dependencies>
+				<PackageDependency Name="SystemCore" />
+				<SystemDependency InfoObject="/System/PhysicalMemory" Relation="&gt;=" Value="2" />
+			</Dependencies>
+			<Assemblies>
+				<Assembly Name="ModelFramework.dll" />
+				<Assembly Name="WpfFramework.dll" />
+				<Assembly Name="ArticyApp.dll" />
+				<Assembly Name="ArticyModels.dll" />
+				<Assembly Name="ArticyResources.dll" />
+				<Assembly Name="CustomExports.ReportingPlugin.dll" Mandatory="false" />
+			</Assemblies>
+			<EntryPoint Class="Articy.Editor.Starter" />
+		</Package>
+
+		<!-- Package used for Source Control Manager-->
+		<Package Name="SourceControl" LoadingGroup="Application" Use="required" >
+			<DisplayName Value="Source Control Manager" />
+			<Dependencies>
+				<PackageDependency Name="SystemCore" />
+				<PackageDependency Name="ApplicationCore" />
+			</Dependencies>
+			<NativeModules />
+			<Assemblies>
+				<Assembly Name="SourceControlManager.dll" />
+			</Assemblies>
+			<EntryPoint Class="Articy.SourceControl.Shared.SourceControlManager" />
+		</Package>
+
+		<!-- Package used for reporting services -->
+		<Package Name="Reporting" LoadingGroup="Application" Use="required" >
+			<DisplayName Value="Reporting Manager &amp; Plugins" />
+			<Dependencies>
+				<PackageDependency Name="SystemCore" />
+				<PackageDependency Name="ApplicationCore" />
+			</Dependencies>
+			<NativeModules />
+			<Assemblies>
+				<Assembly Name="ReportingShared.dll" />
+			</Assemblies>
+			<EntryPoint Class="Articy.Reporting.Shared.ReportingManager" />
+		</Package>
+
+		<!-- Package used for test & helper code-->
+		<Package Name="TestCodePackage" LoadingGroup="Application" Use="optional" Switch="dev" >
+			<DisplayName Value="Articy test code package" />
+			<Dependencies>
+				<PackageDependency Name="SystemCore" />
+				<PackageDependency Name="ApplicationCore" />
+			</Dependencies>
+			<NativeModules />
+			<Assemblies>
+				<Assembly Name="ArticyTestCodePackage.dll" />
+			</Assemblies>
+			<EntryPoint Class="Articy.TestCases.PackageHandle" />
+		</Package>
+
+		<!-- Package used for inplace AWS -->
+		<Package Name="AwsServerCore" LoadingGroup="Application" Use="optional" Switch="server" >
+			<DisplayName Value="AWS Server Core" />
+			<Dependencies>
+				<PackageDependency Name="SystemCore" />
+				<PackageDependency Name="ApplicationCore" />
+			</Dependencies>
+			<NativeModules />
+			<Assemblies>
+				<Assembly Name="AwsServer.dll" />
+			</Assemblies>
+			<EntryPoint Class="Articy.Server.Server.InplaceServerHandle" />
+			<Properties>
+				<Property Name="" Value="" />
+			</Properties>
+		</Package>
+
+	</Packages>
+</ApplicationManifest>

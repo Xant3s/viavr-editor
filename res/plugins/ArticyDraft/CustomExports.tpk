@@ -1,0 +1,306 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.Export.CustomExports" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="FolderBrowser.Description">
+			<Context>Description text shown in the "browse for folder" dialog to select the output path</Context>
+			<Text Lang="en">Select the folder where the generated export files should be written to.</Text>
+			<Text Lang="uk">Виберіть папку, куди слід записати створені файли експорту.</Text>
+			<Text Lang="fr">Selectionnez le dossier dans lequels les fichiers exportés doivent être écrits.</Text>
+			<Text Lang="pt-BR">Selecione a pasta onde os arquivos de exportação gerados deveriam ser escritos.</Text>
+			<Text Lang="zh">选择生成的导出文件要写入的文件夹。</Text>
+			<Text Lang="ko">생성된 내보내기 파일을 기록할 폴더를 선택합니다.</Text>
+			<Text Lang="de">Bitte wählen Sie das Verzeichnis in dem die vom Export generierten Daten gespeichert werden sollen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SelectRuleSet.Caption">
+			<Context>Label telling the user to select a ruleset from the combobox underneath the label</Context>
+			<Text Lang="en">Select ruleset:</Text>
+			<Text Lang="uk">Вибір набору правил:</Text>
+			<Text Lang="fr">Sélectionner le jeu de règles :</Text>
+			<Text Lang="pt-BR">Selecione conjunto de regras:</Text>
+			<Text Lang="zh">选择规则集：</Text>
+			<Text Lang="ko">룰셋 선택:</Text>
+			<Text Lang="de">Regelwerk auswählen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NeedFullPath.Text">
+			<Context>Error telling the user that a full qualified path is required for export</Context>
+			<Text Lang="en">Please provide a full qualified path to the export file. (Including drive letter and path)</Text>
+			<Text Lang="uk">Надайте повний кваліфікований шлях до файлу експорту. (У тому числі літера та шлях диска)</Text>
+			<Text Lang="fr">Veuillez fournir un chemin d'accès complet au fichier d'exportation. (Y compris la lettre de lecteur et le chemin d'accès)</Text>
+			<Text Lang="pt-BR">Por favor provenha um caminho completamente qualificado para um arquivo de exportação. (Incluindo letra de unidade e caminho)</Text>
+			<Text Lang="zh">请提供导出文件的完整路径。（包括驱动器符和路径）</Text>
+			<Text Lang="ko">내보내기 파일에 대한 전체 인증 경로를 제공하십시오. (드라이브 문자 및 경로 포함)</Text>
+			<Text Lang="de">Bitte verwenden Sie einen vollständig qualifizierten Pfad zur Exportdatei. (inklusive Laufwerk und Pfad)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PathVeryLong.Text">
+			<Context>Warning telling the user that the output path is very long and might result in export errors</Context>
+			<Text Lang="en">Your selected output path is very long and may result in export errors when writing assets. Windows has a limit of 260 chars for a full filename. Consider placing your project closer to the drives root.</Text>
+			<Text Lang="uk">Обраний вихідний шлях дуже довгий і може призвести до помилок експорту при записі ресурсів. Windows має обмеження 260 символів для повного імені файлу. Розмістіть проект ближче до кореня диску.</Text>
+			<Text Lang="fr">Le chemin de sortie que vous avez sélectionné est très long et peut entraîner des erreurs d'exportation lors de l'écriture des ressources. Windows a une limite de 260 caractères pour un nom de fichier complet. Pensez à placer votre projet plus près de la racine des lecteurs.</Text>
+			<Text Lang="pt-BR">Seu caminho de saída selecionado é muito longo e pode resultar em erros de exportação quando escrevendo recursos. Windows tem um limite de 260 caracteres para um nome de arquivo completo. Considere coloar seu projeto perto da raiz de direção.</Text>
+			<Text Lang="zh">您选择的输出路径很长，在写入资源时可能会导致导出错误。Windows的完整文件名限制为260个字符。可考虑将您的项目靠近驱动器根目录。</Text>
+			<Text Lang="ko">선택한 출력 경로가 너무 길어 에셋을 저장할 때 내보내기 오류가 발생할 수 있습니다. Windows에는 전체 파일 이름에 대해 260자 제한이 있습니다. 드라이브 루트에 가까운 프로젝트를 배치하는 것을 고려하십시오.</Text>
+			<Text Lang="de">Der von Ihnen ausgewählte Exportpfad ist sehr lang. Dies könnte beim schreiben der Assets zu folgefehlern führen, da Windows Dateilängen auf 260 Zeichen limitiert.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="JSON" Namespace=".JSON">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">.json</Text>
+			<Text Lang="uk">.json</Text>
+			<Text Lang="fr">.json</Text>
+			<Text Lang="pt-BR">.json</Text>
+			<Text Lang="zh">.json</Text>
+			<Text Lang="ko">.json</Text>
+			<Text Lang="de">.json</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChooseOutputFile.Filter">
+			<Context>File filter for the save file dialog. First part until the '|' is the description, the 2nd the wildcard string for file filtering</Context>
+			<Text Lang="en">articy:draft JSON Ruleset export (*.json)|*.json</Text>
+			<Text Lang="uk">articy:draft експорт набору правил JSON (*.json)|*.json</Text>
+			<Text Lang="fr">articy:draft Jeu de règles d'exportation JSON (*.json)|*.json</Text>
+			<Text Lang="pt-BR">Conjunto de regras de exportação articy:draft JSON (*.json) |*.json</Text>
+			<Text Lang="zh">articy:draft JSON规则集导出 (*.json)|*.json</Text>
+			<Text Lang="ko">articy:draft JSON 룰셋 내보내기 (*.json)|*.json</Text>
+			<Text Lang="de">articy:draft JSON Regelwerk Export (*.json)|*.json</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChooseNodes.Caption">
+			<Context>label asking the user which top level nodes to export</Context>
+			<Text Lang="en">Which top-level nodes should be created in the json file</Text>
+			<Text Lang="uk">Які вітки верхнього рівня слід створити у файлі json</Text>
+			<Text Lang="fr">Quels nœuds de niveau supérieur doivent être créés dans le fichier json</Text>
+			<Text Lang="pt-BR">Quais nós de auto-nível deveriam ser criados nos arquivos json</Text>
+			<Text Lang="zh">应在JSON文件中创建哪些顶级节点</Text>
+			<Text Lang="ko">json파일에서 생성할 최상위 노드를 선택하십시오.</Text>
+			<Text Lang="de">Welche Haupt Knoten sollen in der json Datei erstellt werden</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.AssetAlreadyPresent">
+			<Context>label asking the user which top level nodes to export</Context>
+			<Text Lang="en">Asset "{0}" was already copied but now overwritten with another file with the same name. Consider renaming one of the affected assets.</Text>
+			<Text Lang="uk">Ресурс "{0}" вже скопійований, але тепер перезаписаний іншим файлом з тією ж назвою. Подумайте про перейменування одного з ресурсів.</Text>
+			<Text Lang="fr">L'élément "{0}" a déjà été copié, mais il est désormais remplacé par un autre fichier du même nom. Envisagez de renommer l'un des actifs concernés.</Text>
+			<Text Lang="pt-BR">Recurso "{0}" já foi copiado mas agora sobrescrito com outro arquivo com o mesmo nome. Considere renomear um dos recursos afetados.</Text>
+			<Text Lang="zh">资源"{0}"已被复制，但现在被另一个同名文件覆盖。您可以考虑重命名一个受影响的资源。</Text>
+			<Text Lang="ko">에셋 "{0}"은(는) 이미 복사되었지만 이름이 같은 다른 파일로 덮어썼습니다. 영향을 받는 에셋 중 하나의 이름을 바꾸는 것을 고려해 보십시오.</Text>
+			<Text Lang="de">Asset "{0}" ist bereits kopiert worden und wird nun durch eine andere gleich lautende Datei überschrieben. Sie sollten eine der beiden Dateien umbenennen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Warnings.AssetFileRetry">
+			<Context/>
+			<Text Lang="en">Failed to copy asset file '{0}', {1} retries remaining.</Text>
+			<Text Lang="de">Kopieren der Asset-Datei '{0}' fehlgeschlagen, {1} Versuche verbleibend.</Text>
+			<Text Lang="pt-BR">Falha ao copiar o arquivo de ativo '{0}', {1} tentativas restantes.</Text>
+			<Text Lang="zh">复制资产文件'{0}'失败，剩余{1}重试。</Text>
+			<Text Lang="ko">자산 파일 '{0}'을 (를) 복사하지 못했습니다. {1} 번의 재 시도가 남아 있습니다.</Text>
+			<Text Lang="fr">Échec de la copie du fichier d'éléments "{0}", {1} tentatives restantes.</Text>
+			<Text Lang="uk">Не вдалося скопіювати файл активу "{0}", залишилось {1} спроб.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Unity3D" Namespace=".Unity3D">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">Unity® export</Text>
+			<Text Lang="uk">Експорт Unity®</Text>
+			<Text Lang="fr">Exportation Unity®</Text>
+			<Text Lang="pt-BR">Exportação Unity®</Text>
+			<Text Lang="zh">Unity® 导出</Text>
+			<Text Lang="ko">Unity® 내보내기</Text>
+			<Text Lang="de">Unity® Export</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChooseOutputFile.Filter">
+			<Context>File filter for the save file dialog. First part until the '|' is the description, the 2nd the wildcard string for file filtering</Context>
+			<Text Lang="en">Unity Ruleset export (*.articyu3d)|*.articyu3d</Text>
+			<Text Lang="uk">Експорт Набору правил Unity Ruleset (*.articyu3d)|*.articyu3d</Text>
+			<Text Lang="fr">Jeu de règles d'exportation Unity (*.articyu3d)|*.articyu3d</Text>
+			<Text Lang="pt-BR">Conjunto de regras de exportação Unity (*.articyu3d) |*.articyu3d</Text>
+			<Text Lang="zh">Unity 规则集导出 (*.articyu3d)|*.articyu3d</Text>
+			<Text Lang="ko">Unity 룰셋 내보내기 (*.articyu3d)|*.articyu3d</Text>
+			<Text Lang="de">Unity Regelwerk Export (*.articyu3d)|*.articyu3d</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UseLoca.Label">
+			<Context>Use Loca option on Unity Export</Context>
+			<Text Lang="en">Enable localization support and create MS Excel® file(s)</Text>
+			<Text Lang="uk">Увімкніть підтримку локалізації та створіть файли MS Excel®</Text>
+			<Text Lang="fr">Activer la prise en charge de la localisation et créer des fichiers MS Excel®</Text>
+			<Text Lang="pt-BR">Permitir suporte de localização e criar arquivo(s) MS Excel®</Text>
+			<Text Lang="zh">启用本地化支持并创建 MS Excel® 文件</Text>
+			<Text Lang="ko">번역 활성화 지원 및 MS Excel® 파일 생성</Text>
+			<Text Lang="de">Lokalisierung unterstützen und MS Excel®-Datei(en) erzeugen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UseRichText.Label">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">Markup for text formatting:</Text>
+			<Text Lang="uk">Розмітка для форматування тексту:</Text>
+			<Text Lang="fr">Annotation pour la mise en forme du texte :</Text>
+			<Text Lang="pt-BR">Marcação para formatação de texto:</Text>
+			<Text Lang="zh">文本格式标记：</Text>
+			<Text Lang="ko">텍스트 서식 마크업:</Text>
+			<Text Lang="de">Markup für Textformatierung:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TextFormatters.Plain.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">Plain text</Text>
+			<Text Lang="uk">Простий текст</Text>
+			<Text Lang="fr">Texte brut</Text>
+			<Text Lang="pt-BR">Texto simples</Text>
+			<Text Lang="zh">纯文本</Text>
+			<Text Lang="ko">평문</Text>
+			<Text Lang="de">Text ohne Formattierung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TextFormatters.Unity.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">Convert text markup to Unity Rich Text</Text>
+			<Text Lang="uk">Перетворити розмітку тексту в Unity Rich Text</Text>
+			<Text Lang="fr">Convertir le balisage de texte en texte riche Unity</Text>
+			<Text Lang="pt-BR">Converter marcação de texto para Texto rico em Unity.</Text>
+			<Text Lang="zh">将文本标记转换为Unity格式文本</Text>
+			<Text Lang="ko">텍스트 마크업을 유니티 Rich 텍스트로 변환</Text>
+			<Text Lang="de">Textformattierung nach Unity Rich Text konvertieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TextFormatters.TextMeshPro.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">Convert text markup to extended markup (e.g. TextMeshPro)</Text>
+			<Text Lang="uk">Перетворити розмітку тексту в розширену розмітку (наприклад, TextMeshPro)</Text>
+			<Text Lang="fr">Convertir le balisage de texte en balisage étendu (par exemple TextMeshPro)</Text>
+			<Text Lang="pt-BR">Converter marcação de texto para marcação extendida (exemplo TextMeshPro)</Text>
+			<Text Lang="zh">将文本标记转换为扩展标记(例如TextMeshPro)</Text>
+			<Text Lang="ko">텍스트 마크업을 확장된 마크업(예: TextMeshPro)으로 변환</Text>
+			<Text Lang="de">Erweiterte Textformattierung verwenden (z.B. für TextMeshPro)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DownloadURL.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">[url=http://www.articy.com/redirect/downloadunityplugin]Get Unity® plugin[/url]</Text>
+			<Text Lang="uk">[url=http://www.articy.com/redirect/downloadunityplugin]Get Unity® plugin[/url]</Text>
+			<Text Lang="fr">[url=http://www.articy.com/redirect/downloadunityplugin]Get Unity® plugin[/url]</Text>
+			<Text Lang="pt-BR"><![CDATA[[url=http://www.articy.com/redirect/downloadunityplugin]Adquira o plugin Unity®[/url]
+]]></Text>
+			<Text Lang="zh">[url=http://www.articy.com/redirect/downloadunityplugin]获取 Unity® 插件[/url]</Text>
+			<Text Lang="ko">[url=http://www.articy.com/redirect/downloadunityplugin] Unity® 플러그인 받기[/url]</Text>
+			<Text Lang="de">[url=http://www.articy.com/redirect/downloadunityplugin]Zum Unity® Plugin[/url]</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UsedLanguage.Label">
+			<Context>label showing the current export language</Context>
+			<Text Lang="en">Using language</Text>
+			<Text Lang="uk">Використання мови</Text>
+			<Text Lang="fr">Langage utilisé</Text>
+			<Text Lang="pt-BR">Usando idioma</Text>
+			<Text Lang="zh">使用语言</Text>
+			<Text Lang="ko">언어 사용</Text>
+			<Text Lang="de">Verwendete Sprache</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.NoValidUnityFolder">
+			<Context>The resulting Loca folder is not within an unity Assets folder</Context>
+			<Text Lang="en">The folder "{0}" is not a subdirectory of the Unity projects "Assets" folder.</Text>
+			<Text Lang="uk">Папка "{0}" не є підкаталогом папки проектів Unity "Assets".</Text>
+			<Text Lang="fr">Le dossier "{0}" n'est pas un sous-répertoire du dossier "Atouts" des projets Unity.</Text>
+			<Text Lang="pt-BR">A pasta "{0}" não é um subdiretório de uma das pastas de projetos Unity "Recursos".</Text>
+			<Text Lang="zh">文件夹"{0}"不是Unity项目"Assets"文件夹的子目录。</Text>
+			<Text Lang="ko">"{0}" 폴더는 Unity 프로젝트 "Assets" 폴더의 하위 디렉토리가 아닙니다.</Text>
+			<Text Lang="de">Das Verzeichnis "{0}" liegt nicht unterhalb des "Assets" Ordners eines Unity Projektes.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.NoValidUnityOutputFolder">
+			<Context>The resulting Loca folder is not within an unity Assets folder</Context>
+			<Text Lang="en">The folder "{0}" is neither the "Assets" folder of the Unity project nor a subdirectory of it.</Text>
+			<Text Lang="uk">Папка "{0}" не є папкою "Assets" проекту Unity чи його підкаталогом.</Text>
+			<Text Lang="fr">Le dossier "{0}" n'est ni le dossier "Atouts" du projet Unity ni un sous-répertoire de celui-ci.</Text>
+			<Text Lang="pt-BR">A pasta "{0}" não é a pasta "Recursos" do projeto Unity nem um subdiretório do mesmo.</Text>
+			<Text Lang="zh">文件夹"{0}"既不是Unity项目的"Assets"文件夹，也不是其子目录。</Text>
+			<Text Lang="ko">"{0}" 폴더는 Unity프로젝트의 "Assets" 폴더도 아니고 하위 디렉토리도 아닙니다.</Text>
+			<Text Lang="de">Das Verzeichnis "{0}" ist weder das "Assets" Verzeichnis des Unity Projektes noch eines seiner Unterverzeichnisse.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.DifferentProjectFolders">
+			<Context>label asking the user which top level nodes to export</Context>
+			<Text Lang="en">Is is not allowed to use two different Unity projects for localization and the other export files.</Text>
+			<Text Lang="uk">Не дозволяється використовувати два різні проекти Unity для локалізації та інші експортні файли.</Text>
+			<Text Lang="fr">Il n'est pas autorisé à utiliser deux projets Unity différents pour la localisation et les autres fichiers d'exportation.</Text>
+			<Text Lang="pt-BR">Não é permitido usar dois projetos Unity diferentes para localização e os outros arquivos de exportação.</Text>
+			<Text Lang="zh">不允许将两个不同的Unity项目用于进行本地化和其他导出文件操作。</Text>
+			<Text Lang="ko">지역화 및 다른 내보내기 파일에 서로 다른 두 Unity프로젝트를 사용할 수 없습니다.</Text>
+			<Text Lang="de">Es ist nicht möglich zwei verschiedene Unity Projekt Verzeichisse für Lokalisationsdateien und die anderen Export Dateien zu verwenden.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Unreal" Namespace=".Unreal">
+
+		<TextDefinition Key="ChooseOutputFile.Filter">
+			<Context>File filter for the save file dialog. First part until the '|' is the description, the 2nd the wildcard string for file filtering</Context>
+			<Text Lang="en">Unreal Ruleset export (*.articyue4)|*.articyue4</Text>
+			<Text Lang="uk">Експорт Набору правил Unreal (*.articyue4)|*.articyue4</Text>
+			<Text Lang="fr">Exportation d'un jeu de règles irréel (*.articyue4)|*.articyue4</Text>
+			<Text Lang="pt-BR">Conjunto de regras de exportação Unreal (*articyu4) |*.articyue4</Text>
+			<Text Lang="zh">Unreal 规则集导出 (*.articyue4)|*.articyue4</Text>
+			<Text Lang="ko">Unreal 룰셋 내보내기 (*.articyue4)|*.articyue4</Text>
+			<Text Lang="de">Unreal Regelwerk Export (*.articyue4)|*.articyue4</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DownloadURL.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">[url=http://www.articy.com/redirect/downloadunrealplugin]Get Unreal® plugin[/url]</Text>
+			<Text Lang="uk">[url=http://www.articy.com/redirect/downloadunrealplugin]Get Unreal® plugin[/url]</Text>
+			<Text Lang="fr">[url=http://www.articy.com/redirect/downloadunrealplugin]Get Unreal® plugin[/url]</Text>
+			<Text Lang="pt-BR">[url=http://www.articy.com/redirect/downloadunrealplugin]Adquira o plugin Unreal®[/url]</Text>
+			<Text Lang="zh">[url=http://www.articy.com/redirect/downloadunrealplugin]获取 Unreal® 插件[/url]</Text>
+			<Text Lang="ko">[url=http://www.articy.com/redirect/downloadunrealplugin] Unreal® 플러그인 받기[/url]</Text>
+			<Text Lang="de">[url=http://www.articy.com/redirect/downloadunrealplugin]Zum Unreal® Plugin[/url]</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.NoZeroValuedEnumEntry">
+			<Context/>
+			<Text Lang="en">Unreal® requires that an enumerated type has a zero valued entry. Can't find one in type '{0}'.</Text>
+			<Text Lang="de">Unreal® verlangt, dass ein Aufzälungstyp (enum) einen Eintrag mit dem Wert Null hat. Für den Typ '{0}' ist keiner definiert.</Text>
+			<Text Lang="fr">Unreal® exige qu'un type énuméré ait une entrée de valeur zéro. Je n'en trouve pas dans le type '{0}'.</Text>
+			<Text Lang="pt-BR">Unreal® requer que um tipo enumerado tenha uma entrada de valor zero. Não é possível encontrar um do tipo '{0}'.</Text>
+			<Text Lang="zh">Unreal ®要求一个枚举类型有一个零值的条目。在类型'{0}'中找不到一个。</Text>
+			<Text Lang="pl">Unreal® wymaga, aby typ wyliczeniowy miał wpis o wartości zero. Nie można znaleźć takiego w typie '{0}'.</Text>
+			<Text Lang="es">Unreal® requiere que un tipo enumerado tenga una entrada de valor cero. No se encuentra ninguna en el tipo '{0}'.</Text>
+			<Text Lang="it">Unreal® richiede che un tipo enumerato abbia una voce con valore zero. Non è possibile trovarne una nel tipo '{0}'.</Text>
+			<Text Lang="ru">Unreal® требует, чтобы перечисляемый тип имел элемент с нулевым значением. В типе '{0}' такой записи нет.</Text>
+			<Text Lang="ja">Unreal® では、列挙型に 0 値のエントリがあることが必要です。タイプ '{0}' に 1 つもありません。</Text>
+			<Text Lang="ko">Unreal® 에서는 열거 형에 값이 0 인 항목이 있어야합니다. '{0}' 유형에서 찾을 수 없습니다.</Text>
+			<Text Lang="uk">Для перерахованих типів Unreal® потрібні записи з нульовим значенням. Нікого не знайдено для типу "{0}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.EnumOutOfRange">
+			<Context/>
+			<Text Lang="en">Unreal® requires that values of an enumerated type are in the range 0-255. This is not the case for type '{0}'.</Text>
+			<Text Lang="de">Unreal® verlangt, dass ein Aufzälungstyp (enum) nur Werte im Bereich 0-255 hat. Für den Typ '{0}' ist das nicht der Fall.</Text>
+			<Text Lang="fr">Unreal® exige que les valeurs d'un type énuméré soient comprises entre 0 et 255. Ce n'est pas le cas pour le type '{0}'.</Text>
+			<Text Lang="pt-BR">Unreal® exige que os valores de um tipo enumerado estejam na faixa de 0-255. Este não é o caso para o tipo '{0}'.</Text>
+			<Text Lang="zh">Unreal® 要求一个枚举类型的值是在0-255的范围内。对于'{0}'类型来说，情况并非如此。</Text>
+			<Text Lang="pl">Unreal® wymaga, aby wartości typu wyliczeniowego były z zakresu 0-255. W przypadku typu "{0}" tak nie jest.</Text>
+			<Text Lang="es">Unreal® requiere que los valores de un tipo enumerado estén en el rango 0-255. Este no es el caso del tipo '{0}'.</Text>
+			<Text Lang="it">Unreal® richiede che i valori di un tipo enumerato siano compresi nell'intervallo 0-255. Questo non è il caso del tipo "{0}".</Text>
+			<Text Lang="ru">Unreal® требует, чтобы значения перечисляемого типа находились в диапазоне 0-255. Для типа '{0}' это не так.</Text>
+			<Text Lang="ja">Unreal® では、列挙型の値は 0 ～ 255 の範囲であることが要求されます。これは、タイプ '{0}' の場合ではありません。</Text>
+			<Text Lang="ko">Unreal® 에서는 열거형 값이 0-255 범위에 있어야 합니다. 이는 '{0}' 유형의 경우가 아닙니다.</Text>
+			<Text Lang="uk">Unreal® вимагає, щоб значення перерахованого типу були в діапазоні 0-255. Це не стосується типу "{0}".</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

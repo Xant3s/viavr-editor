@@ -6,6 +6,7 @@ import PreferencesManager from './Preferences/PreferencesManager'
 import { PathSetting, Setting_t, StringSetting } from '../frontend/src/@types/Settings'
 import { exec } from 'child_process'
 import ProjectManager from './ProjectManager/ProjectManager'
+import { ArticyManager } from './ArticyManager'
 
 export class Logger {
     private static instance: Logger
@@ -61,8 +62,7 @@ export class Logger {
         const availableMemoryInGB = Math.round(os.freemem() / 1024 / 1024 / 1024)
         const unityPathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
         const unityPath = unityPathSetting.value
-        const articyPathSetting = await PreferencesManager.getInstance().get<Setting_t>('articyPath')
-        const articyPath = articyPathSetting.value as string
+        const articyPath = ArticyManager.articyPath
         const picoSdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
         const picoSdkPath = picoSdkPathPref.value
         const picoSdkManifest = await JSON.parse(fs.readFileSync(picoSdkPath, 'utf8'))

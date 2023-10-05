@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.SourceControl" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Text.DisplayName">
+			<Context>The display-name of the SCM provider</Context>
+			<Text Lang="de">Text-Dateien (External Source Control)</Text>
+			<Text Lang="uk">Текстові файли (зовнішній контроль)</Text>
+			<Text Lang="fr">Fichiers Texte (contrôle externe)</Text>
+			<Text Lang="pt-BR">Arquivos de texto (Controle Externo).</Text>
+			<Text Lang="zh">文本文件（外部控制）</Text>
+			<Text Lang="ko">텍스트 파일 (외부 제어)</Text>
+			<Text Lang="pl">Pliki tekstowe (zewnętrzna kontrola źródła)</Text>
+			<Text Lang="en">Text files (External control)</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

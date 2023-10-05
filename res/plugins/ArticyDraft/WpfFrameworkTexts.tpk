@@ -1,0 +1,4738 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.WpfFramework" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<!--
+	  misc buttons
+	-->
+	<Category Name="System" Key="Buttons">
+
+		<TextDefinition Key="Navigation.Cancel">
+			<Context>Text for a cancel command, like "Cancel wizard" or similiar</Context>
+			<Text Lang="en">Cancel</Text>
+			<Text Lang="uk">скасування</Text>
+			<Text Lang="fr">Annuler</Text>
+			<Text Lang="pt-BR">Cancelar</Text>
+			<Text Lang="zh">取消</Text>
+			<Text Lang="ko">취소</Text>
+			<Text Lang="pl">Anuluj</Text>
+			<Text Lang="es">Cancelar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Отмена</Text>
+			<Text Lang="de">Abbrechen</Text>
+			<Text Lang="ja">キャンセル</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Navigation.Previous">
+			<Context>Text for a previous command, like "Previous page" or similiar</Context>
+			<Text Lang="en">Previous</Text>
+			<Text Lang="uk">Назад</Text>
+			<Text Lang="fr">Précédent</Text>
+			<Text Lang="pt-BR">Anterior</Text>
+			<Text Lang="zh">上一个</Text>
+			<Text Lang="ko">이전</Text>
+			<Text Lang="pl">Wstecz</Text>
+			<Text Lang="es">Anterior</Text>
+			<Text Lang="it">Precedente</Text>
+			<Text Lang="ru">Назад</Text>
+			<Text Lang="de">Vorherige</Text>
+			<Text Lang="ja">戻る</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Navigation.Next">
+			<Context>Text for a next command, like "Next page" or similiar</Context>
+			<Text Lang="en">Next</Text>
+			<Text Lang="uk">Вперед</Text>
+			<Text Lang="fr">Suivant</Text>
+			<Text Lang="pt-BR">Próximo</Text>
+			<Text Lang="zh">下一步</Text>
+			<Text Lang="ko">다음</Text>
+			<Text Lang="pl">Dalej</Text>
+			<Text Lang="es">Siguiente</Text>
+			<Text Lang="it">Successivo</Text>
+			<Text Lang="ru">Далее</Text>
+			<Text Lang="de">Nächste</Text>
+			<Text Lang="ja">次</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Navigation.Up">
+			<Context>parent/go-up command</Context>
+			<Text Lang="en">Up</Text>
+			<Text Lang="uk">Вверх</Text>
+			<Text Lang="fr">Haut</Text>
+			<Text Lang="pt-BR">Cima</Text>
+			<Text Lang="zh">向上</Text>
+			<Text Lang="ko">위로</Text>
+			<Text Lang="pl">Do góry</Text>
+			<Text Lang="es">Subir</Text>
+			<Text Lang="it">Superiore</Text>
+			<Text Lang="ru">Вверх</Text>
+			<Text Lang="de">Hoch</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Navigation.Parent">
+			<Context>parent/go-up command in parent silhouette</Context>
+			<Text Lang="en">Emerge to the layer above</Text>
+			<Text Lang="uk">Підняти на шар вверх</Text>
+			<Text Lang="fr">Fusionner au calque supérieur</Text>
+			<Text Lang="pt-BR">Emergir para a camada acima</Text>
+			<Text Lang="zh">显示在上一层</Text>
+			<Text Lang="ko">위의 레이어로 이동</Text>
+			<Text Lang="pl">Pokaż na warstwie wyżej</Text>
+			<Text Lang="es">Acceder a la capa superior</Text>
+			<Text Lang="it">Vai al livello superiore</Text>
+			<Text Lang="ru">Поднять на слой выше</Text>
+			<Text Lang="de">Auftauchen zur darüberliegenden Ebene</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Navigation.Finish">
+			<Context>Text for a finish command</Context>
+			<Text Lang="en">Finish</Text>
+			<Text Lang="uk">Завершити</Text>
+			<Text Lang="fr">Terminer</Text>
+			<Text Lang="pt-BR">Terminar</Text>
+			<Text Lang="zh">结束</Text>
+			<Text Lang="ko">완료</Text>
+			<Text Lang="pl">Zakończ</Text>
+			<Text Lang="es">Finalizar</Text>
+			<Text Lang="it">Completa</Text>
+			<Text Lang="ru">Завершить</Text>
+			<Text Lang="de">Fertig</Text>
+			<Text Lang="ja">完了</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Button.Language">
+			<Context>Text for the "Change language" button</Context>
+			<Text Lang="en">Language</Text>
+			<Text Lang="uk">Мова</Text>
+			<Text Lang="fr">Langue</Text>
+			<Text Lang="pt-BR">Idioma</Text>
+			<Text Lang="zh">语言</Text>
+			<Text Lang="ko">언어</Text>
+			<Text Lang="pl">Język</Text>
+			<Text Lang="es">Idioma</Text>
+			<Text Lang="it">Lingua</Text>
+			<Text Lang="ru">Язык</Text>
+			<Text Lang="de">Sprache</Text>
+			<Text Lang="ja">言語</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CommandStack.Caption">
+			<Context>Text "CommandStack" button in the ribbon toolbar</Context>
+			<Text Lang="en">History</Text>
+			<Text Lang="uk">Історія</Text>
+			<Text Lang="fr">Historique</Text>
+			<Text Lang="pt-BR">História</Text>
+			<Text Lang="zh">历史</Text>
+			<Text Lang="ko">작업 내역</Text>
+			<Text Lang="pl">Historia</Text>
+			<Text Lang="es">Historia</Text>
+			<Text Lang="it">Cronologia</Text>
+			<Text Lang="ru">История</Text>
+			<Text Lang="de">Verlauf</Text>
+			<Text Lang="ja">履歴</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".Buttons" Key="Buttons">
+
+		<TextDefinition Key="Exit.Caption">
+			<Context>Text for the "Exit" button</Context>
+			<Text Lang="en">Exit</Text>
+			<Text Lang="uk">Вихід</Text>
+			<Text Lang="fr">Sortie</Text>
+			<Text Lang="pt-BR">Saída</Text>
+			<Text Lang="zh">退出</Text>
+			<Text Lang="ko">종료</Text>
+			<Text Lang="pl">Wyjście</Text>
+			<Text Lang="es">Salir</Text>
+			<Text Lang="it">Esci</Text>
+			<Text Lang="ru">Выход</Text>
+			<Text Lang="de">Beenden</Text>
+			<Text Lang="ja">終了</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Cancel.Caption">
+			<Context>Text for the "Cancel" button</Context>
+			<Text Lang="en">Cancel</Text>
+			<Text Lang="uk">скасування</Text>
+			<Text Lang="fr">Annuler</Text>
+			<Text Lang="pt-BR">Cancelar</Text>
+			<Text Lang="zh">取消</Text>
+			<Text Lang="ko">취소</Text>
+			<Text Lang="pl">Anuluj</Text>
+			<Text Lang="es">Cancelar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Отмена</Text>
+			<Text Lang="de">Abbrechen</Text>
+			<Text Lang="ja">キャンセル</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Close.Caption">
+			<Context>Text for a "Close" button</Context>
+			<Text Lang="en">Close</Text>
+			<Text Lang="uk">Закрити</Text>
+			<Text Lang="fr">Fermer</Text>
+			<Text Lang="pt-BR">Fechar</Text>
+			<Text Lang="zh">关闭</Text>
+			<Text Lang="ko">닫기</Text>
+			<Text Lang="pl">Zamknij</Text>
+			<Text Lang="es">Cerrar</Text>
+			<Text Lang="it">Chiudi</Text>
+			<Text Lang="ru">Закрыть</Text>
+			<Text Lang="de">Schließen</Text>
+			<Text Lang="ja">閉じる</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Ok.Caption">
+			<Context>Text for a "OK" button</Context>
+			<Text Lang="en">OK</Text>
+			<Text Lang="uk">ОК</Text>
+			<Text Lang="fr">OK</Text>
+			<Text Lang="pt-BR">Ok</Text>
+			<Text Lang="zh">好的</Text>
+			<Text Lang="ko">확인</Text>
+			<Text Lang="pl">OK</Text>
+			<Text Lang="es">Aceptar</Text>
+			<Text Lang="it">OK</Text>
+			<Text Lang="ru">ОК</Text>
+			<Text Lang="de">OK</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Yes.Caption">
+			<Context>Text for a "Yes" button</Context>
+			<Text Lang="en">Yes</Text>
+			<Text Lang="uk">Так</Text>
+			<Text Lang="fr">Oui</Text>
+			<Text Lang="pt-BR">Sim</Text>
+			<Text Lang="zh">是</Text>
+			<Text Lang="ko">네</Text>
+			<Text Lang="pl">Tak</Text>
+			<Text Lang="es">Sí</Text>
+			<Text Lang="it">Sì</Text>
+			<Text Lang="ru">Да</Text>
+			<Text Lang="de">Ja</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="No.Caption">
+			<Context>Text for a "No" button</Context>
+			<Text Lang="en">No</Text>
+			<Text Lang="uk">Ні</Text>
+			<Text Lang="fr">Non</Text>
+			<Text Lang="pt-BR">Não</Text>
+			<Text Lang="zh">否</Text>
+			<Text Lang="ko">아니오</Text>
+			<Text Lang="pl">Nie</Text>
+			<Text Lang="es">No</Text>
+			<Text Lang="it">No</Text>
+			<Text Lang="ru">Нет</Text>
+			<Text Lang="de">Nein</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Apply.Caption">
+			<Context>Text for the "Apply" button</Context>
+			<Text Lang="en">Apply</Text>
+			<Text Lang="uk">Застосувати</Text>
+			<Text Lang="fr">Appliquer</Text>
+			<Text Lang="pt-BR">Aplicar</Text>
+			<Text Lang="zh">应用</Text>
+			<Text Lang="ko">적용</Text>
+			<Text Lang="pl">Zastosuj</Text>
+			<Text Lang="es">Aplicar</Text>
+			<Text Lang="it">Applica</Text>
+			<Text Lang="ru">Применить</Text>
+			<Text Lang="de">Übernehmen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Back.Caption">
+			<Context>button text for jumping a page back</Context>
+			<Text Lang="en">Back</Text>
+			<Text Lang="uk">Назад</Text>
+			<Text Lang="fr">Retour</Text>
+			<Text Lang="pt-BR">Anterior</Text>
+			<Text Lang="zh">上一页</Text>
+			<Text Lang="ko">뒤로</Text>
+			<Text Lang="pl">Cofnij</Text>
+			<Text Lang="es">Atrás</Text>
+			<Text Lang="it">Indietro</Text>
+			<Text Lang="ru">Назад</Text>
+			<Text Lang="de">Zurück</Text>
+			<Text Lang="ja">戻る</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Back.ToolTip">
+			<Context>tooltip text for the button of jumping a page back</Context>
+			<Text Lang="en">Goes to the previous page</Text>
+			<Text Lang="uk">Перейти на попердню сторінку</Text>
+			<Text Lang="fr">Revient à la page précédente</Text>
+			<Text Lang="pt-BR">Ir para página anterior</Text>
+			<Text Lang="zh">转到上一页</Text>
+			<Text Lang="ko">이전 페이지로 가기</Text>
+			<Text Lang="pl">Przechodzi do poprzedniej strony.</Text>
+			<Text Lang="es">Vuelve a la página anterior</Text>
+			<Text Lang="it">Vai alla pagina precedente</Text>
+			<Text Lang="ru">Перейти на предыдущую страницу</Text>
+			<Text Lang="de">Geht eine Seite zurück</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Next.Caption">
+			<Context>button text for jumping a page ahead</Context>
+			<Text Lang="en">Next</Text>
+			<Text Lang="uk">Наступна</Text>
+			<Text Lang="fr">Suivant</Text>
+			<Text Lang="pt-BR">Próximo</Text>
+			<Text Lang="zh">下一页</Text>
+			<Text Lang="ko">다음</Text>
+			<Text Lang="pl">Dalej</Text>
+			<Text Lang="es">Siguiente</Text>
+			<Text Lang="it">Successivo</Text>
+			<Text Lang="ru">Следующая</Text>
+			<Text Lang="de">Weiter</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Next.ToolTip">
+			<Context>tooltip text for the button of jumping a page ahead</Context>
+			<Text Lang="en">Advances to the next page</Text>
+			<Text Lang="uk">Перейти на наступну сторінку</Text>
+			<Text Lang="fr">Passe à la page suivante</Text>
+			<Text Lang="pt-BR">Ir para próxima página</Text>
+			<Text Lang="zh">转到下一页</Text>
+			<Text Lang="ko">다음 페이지로 가기</Text>
+			<Text Lang="pl">Przechodzi do następnej strony.</Text>
+			<Text Lang="es">Lleva a la página siguiente</Text>
+			<Text Lang="it">Vai alla pagina successiva</Text>
+			<Text Lang="ru">Перейти на следующую страницу</Text>
+			<Text Lang="de">Geht eine Seite vor</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ShowDetails.ToolTip">
+			<Context>Tooltip-Text for togglebuttons that show more detail (e.g. ProgressDialog)</Context>
+			<Text Lang="en">Show details</Text>
+			<Text Lang="uk">Показати деталі</Text>
+			<Text Lang="fr">Afficher les détails</Text>
+			<Text Lang="pt-BR">Mostrar detalhes</Text>
+			<Text Lang="zh">显示详情</Text>
+			<Text Lang="ko">세부내용 보이기</Text>
+			<Text Lang="pl">Pokaż więcej detali</Text>
+			<Text Lang="es">Muestra más detalles</Text>
+			<Text Lang="it">Mostra più dettagli</Text>
+			<Text Lang="ru">Показать более подробно</Text>
+			<Text Lang="de">Details anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HideDetails.ToolTip">
+			<Context>Tooltip-Text for togglebuttons that hide extra detail (e.g. ProgressDialog)</Context>
+			<Text Lang="en">Hide details</Text>
+			<Text Lang="uk">Приховати деталі</Text>
+			<Text Lang="fr">Cacher les détails</Text>
+			<Text Lang="pt-BR">Esconder detalhes</Text>
+			<Text Lang="zh">隐藏详情</Text>
+			<Text Lang="ko">세부내용 숨기기</Text>
+			<Text Lang="pl">Ukryj detale</Text>
+			<Text Lang="es">Ocultar detalles</Text>
+			<Text Lang="it">Nascondi dettagli</Text>
+			<Text Lang="ru">Скрыть подробности</Text>
+			<Text Lang="de">Details ausblenden</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Help view
+	-->
+	<Category Name="System" Key="HelpView">
+
+		<TextDefinition Key="HelpView.Button.HelpMouseCursor.Caption" Unused="1">
+			<Context>Text for the "Help" button</Context>
+			<Text Lang="en">Help</Text>
+			<Text Lang="uk">Довідка</Text>
+			<Text Lang="fr">Aide</Text>
+			<Text Lang="pt-BR">Ajuda</Text>
+			<Text Lang="zh">帮助</Text>
+			<Text Lang="ko">도움말</Text>
+			<Text Lang="pl">Pomoc</Text>
+			<Text Lang="de">Hilfe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Button.HelpMouseCursor.ToolTip" Unused="1">
+			<Context>Tool tip for the "Help" button</Context>
+			<Text Lang="en">Switches the mouse cursor to question mark mode</Text>
+			<Text Lang="uk">Перемикає курсор миші на режим знаку запитання</Text>
+			<Text Lang="fr">Change le curseur de la souris en point d’interrogation</Text>
+			<Text Lang="pt-BR">Troca o cursor do Mouse para modo de ponto de interrogação.</Text>
+			<Text Lang="zh">将鼠标光标切换为问号模式</Text>
+			<Text Lang="ko">마우스 커서를 물음표 모드로 전환</Text>
+			<Text Lang="pl">Zmienia kursor w pytajnik w trybie pomocy</Text>
+			<Text Lang="de">Schaltet den Mauscursor in den Fragezeichenmodus</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.CheckBox.Sticky.Caption" Unused="1">
+			<Context>Text for the "Sticky" check box</Context>
+			<Text Lang="en">Sticky</Text>
+			<Text Lang="uk">Прикріпити</Text>
+			<Text Lang="fr">Collant</Text>
+			<Text Lang="pt-BR">Colar</Text>
+			<Text Lang="zh">告示贴</Text>
+			<Text Lang="ko">스티커</Text>
+			<Text Lang="pl">Przypnij</Text>
+			<Text Lang="de">Festgelegt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.CheckBox.Sticky.ToolTip" Unused="1">
+			<Context>Tool tip for the "Sticky" check box</Context>
+			<Text Lang="en">Pins this help topic to the view</Text>
+			<Text Lang="uk">Закріплює цю тему довідки для перегляду</Text>
+			<Text Lang="fr">Épingle cette rubrique d’aide à la vue</Text>
+			<Text Lang="pt-BR">Fixa esse tópico de ajuda para a visualização.</Text>
+			<Text Lang="zh">将此帮助主题固定至视图</Text>
+			<Text Lang="ko">이 도움말 항목을 보기에 고정 합니다.</Text>
+			<Text Lang="pl">Przypina temat pomocy do widoku</Text>
+			<Text Lang="de">Fixiert das Hilfethema in dieser Ansicht</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Button.OpenInChmViewer.Caption" Unused="1">
+			<Context>Text for the "Open in Chm viewer" button</Context>
+			<Text Lang="en">CHM Viewer</Text>
+			<Text Lang="uk">Переглядач формату CHM</Text>
+			<Text Lang="fr">Visionneuse CHM</Text>
+			<Text Lang="pt-BR">Visualizador CHM</Text>
+			<Text Lang="zh">CHM查看器</Text>
+			<Text Lang="ko">CHM 뷰어</Text>
+			<Text Lang="pl">Pogląd CHM</Text>
+			<Text Lang="de">CHM-Betrachter</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Button.OpenInChmViewer.ToolTip" Unused="1">
+			<Context>Tool tip for the "Open in CHM viewer" button</Context>
+			<Text Lang="en">Opens the help topic in an external CHM viewer</Text>
+			<Text Lang="uk">Відкриває тему довідки у зовнішньому переглядачі CHM</Text>
+			<Text Lang="fr">Ouvre la rubrique d’aide dans une visionneuse CHM externe</Text>
+			<Text Lang="pt-BR">Abre o tópico de ajuda em um visualizador CHM externo.</Text>
+			<Text Lang="zh">在外部CHM查看器中打开帮助主题</Text>
+			<Text Lang="ko">외부 CHM 뷰어의 도움말 열기</Text>
+			<Text Lang="pl">Otwiera okno pomocy w osobnym podglądzie CHM</Text>
+			<Text Lang="de">Öffnet das Hilfethema in einem externen CHM-Betrachter</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Tab.All.Caption" Unused="1">
+			<Context>Text for the help view tab containing all matching articles.</Context>
+			<Text Lang="en">All</Text>
+			<Text Lang="uk">Все</Text>
+			<Text Lang="fr">Tout</Text>
+			<Text Lang="pt-BR">Tudo</Text>
+			<Text Lang="zh">全部</Text>
+			<Text Lang="ko">모두</Text>
+			<Text Lang="pl">Wszystko</Text>
+			<Text Lang="de">Alle</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Tab.Internal.Caption" Unused="1">
+			<Context>Text for the help view tab containing all app internal help articles.</Context>
+			<Text Lang="en">Help pages</Text>
+			<Text Lang="uk">Сторінки довідки</Text>
+			<Text Lang="fr">Pages d’aide</Text>
+			<Text Lang="pt-BR">Páginas de ajuda</Text>
+			<Text Lang="zh">帮助页面</Text>
+			<Text Lang="ko">도움말 창</Text>
+			<Text Lang="pl">Strony pomocy</Text>
+			<Text Lang="de">Hilfeseiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Tab.Chm.Caption" Unused="1">
+			<Context>Text for the help view tab containing help articles only available in a CHM file.</Context>
+			<Text Lang="en">Help pages (CHM)</Text>
+			<Text Lang="uk">Сторінки довідки (CHM)</Text>
+			<Text Lang="fr">Pages d’aide (CHM)</Text>
+			<Text Lang="pt-BR">Páginas de ajuda(CHM)</Text>
+			<Text Lang="zh">帮主页面（CHM）</Text>
+			<Text Lang="ko">도움말 창(CHM)</Text>
+			<Text Lang="pl">Strony pomocy (CHM)</Text>
+			<Text Lang="de">Hilfeseiten (CHM)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HelpView.Tab.Web.Caption" Unused="1">
+			<Context>Text for the help view tab containing all matching web articles.</Context>
+			<Text Lang="en">Web</Text>
+			<Text Lang="uk">Веб</Text>
+			<Text Lang="fr">Web</Text>
+			<Text Lang="pt-BR">Rede</Text>
+			<Text Lang="zh">网络</Text>
+			<Text Lang="ko">웹</Text>
+			<Text Lang="pl">Internet</Text>
+			<Text Lang="de">Web</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Logger view
+	-->
+	<Category Name="System" Key="Logger">
+
+		<TextDefinition Key="Aspects.Logger.Clear.Caption" Unused="1">
+			<Context>Text for the "Clear" button inside the logger aspect</Context>
+			<Text Lang="en">Clear all</Text>
+			<Text Lang="uk">Очистити все</Text>
+			<Text Lang="fr">Tout désélectionner</Text>
+			<Text Lang="pt-BR">Limpar tudo</Text>
+			<Text Lang="zh">全部清除</Text>
+			<Text Lang="ko">모두 지우기</Text>
+			<Text Lang="pl">Wyczyść wszystkie</Text>
+			<Text Lang="ru">Очистить все</Text>
+			<Text Lang="de">Alles löschen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Logger.Save.Caption" Unused="1">
+			<Context>Text for the "Save" button inside the logger aspect</Context>
+			<Text Lang="en">Save log</Text>
+			<Text Lang="uk">Зберегти журнал</Text>
+			<Text Lang="fr">Sauvegarder l'historique</Text>
+			<Text Lang="pt-BR">Salvar histórico</Text>
+			<Text Lang="zh">保存日志</Text>
+			<Text Lang="ko">로그 저장</Text>
+			<Text Lang="pl">Zapisz log</Text>
+			<Text Lang="ru">Сохранить журнал</Text>
+			<Text Lang="de">Speichern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Logger.IncludeChildren.Caption" Unused="1">
+			<Context>Text for the "include children" checkbox inside the logger aspect</Context>
+			<Text Lang="en">Include children</Text>
+			<Text Lang="uk">Включити дочірні</Text>
+			<Text Lang="fr">Inclure les enfants</Text>
+			<Text Lang="pt-BR">Incluir crianças</Text>
+			<Text Lang="zh">包括子项</Text>
+			<Text Lang="ko">자식 포함</Text>
+			<Text Lang="pl">Obejmij podkategorie</Text>
+			<Text Lang="de">Kinder miteinbeziehen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Logger.TextFilter.Caption" Unused="1">
+			<Context>Text for the "Textfilter" label inside the logger aspect</Context>
+			<Text Lang="en">Text filter:</Text>
+			<Text Lang="uk">Текстовий фільтр:</Text>
+			<Text Lang="fr">Filtre de texte :</Text>
+			<Text Lang="pt-BR">Filtro de texto:</Text>
+			<Text Lang="zh">文本筛选器：</Text>
+			<Text Lang="ko">텍스트 필터:</Text>
+			<Text Lang="pl">Filtr tekstu:</Text>
+			<Text Lang="de">Textfilter:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Logger.Filters.Caption" Unused="1">
+			<Context>Text for the "Filters" label inside the logger aspect</Context>
+			<Text Lang="en">Filters:</Text>
+			<Text Lang="uk">Фільтри:</Text>
+			<Text Lang="fr">Filtres :</Text>
+			<Text Lang="pt-BR">Filtros:</Text>
+			<Text Lang="zh">筛选器：</Text>
+			<Text Lang="ko">필터:</Text>
+			<Text Lang="pl">Filtry:</Text>
+			<Text Lang="de">Filter:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Undo/Redo
+	-->
+	<Category Name="System" Key="UndoRedo">
+
+		<TextDefinition Key="Undo.Caption">
+			<Context>Short caption of user action "Undo", to be used in menus</Context>
+			<Text Lang="en">Undo</Text>
+			<Text Lang="uk">Скасувати</Text>
+			<Text Lang="fr">Annuler</Text>
+			<Text Lang="pt-BR">Desfazer</Text>
+			<Text Lang="zh">撤销</Text>
+			<Text Lang="ko">실행 취소</Text>
+			<Text Lang="pl">Cofnij</Text>
+			<Text Lang="es">Deshacer</Text>
+			<Text Lang="it">Annulla</Text>
+			<Text Lang="ru">Отменить</Text>
+			<Text Lang="de">Rückgängig</Text>
+			<Text Lang="ja">元に戻す</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Undo.Description">
+			<Context>Long description of the user action "Undo" for use in tooltips, can contain markup</Context>
+			<Text Lang="en">Undo the latest change</Text>
+			<Text Lang="uk">Скасувати останню дію</Text>
+			<Text Lang="fr">Annuler la dernière modification</Text>
+			<Text Lang="pt-BR">Desfazer última mudança</Text>
+			<Text Lang="zh">撤销最新更改</Text>
+			<Text Lang="ko">최신 변경 내용 실행 취소</Text>
+			<Text Lang="pl">Cofnij ostatnią zmianę</Text>
+			<Text Lang="es">Deshace el último cambio</Text>
+			<Text Lang="it">Annulla l'ultima modifica</Text>
+			<Text Lang="ru">Отменить последнее изменение</Text>
+			<Text Lang="de">Macht die letzte Änderung am Projekt rückgängig.</Text>
+			<Text Lang="ja">元に戻す</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Redo.Caption">
+			<Context>Short caption of user action "Redo", to be used in menus</Context>
+			<Text Lang="en">Redo</Text>
+			<Text Lang="uk">Повернути</Text>
+			<Text Lang="fr">Rétablir</Text>
+			<Text Lang="pt-BR">Refazer</Text>
+			<Text Lang="zh">重做</Text>
+			<Text Lang="ko">다시 실행</Text>
+			<Text Lang="pl">Przywróć</Text>
+			<Text Lang="es">Rehacer</Text>
+			<Text Lang="it">Ripeti</Text>
+			<Text Lang="ru">Вернуть</Text>
+			<Text Lang="de">Wiederholen</Text>
+			<Text Lang="ja">やり直し</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Redo.Description">
+			<Context>Long description of the user action "Redo" for use in tooltips, can contain markup</Context>
+			<Text Lang="en">Redo the last undone action</Text>
+			<Text Lang="uk">Повернути останню скасовану дію</Text>
+			<Text Lang="fr">Rétablir la dernière action annulée</Text>
+			<Text Lang="pt-BR">Refazer última ação desfeita</Text>
+			<Text Lang="zh">重做撤销的操作</Text>
+			<Text Lang="ko">실행 취소 한 마지막 작업 다시 실행</Text>
+			<Text Lang="pl">Przyróć ostatnią zmianę</Text>
+			<Text Lang="es">Rehace la última acción deshecha</Text>
+			<Text Lang="it">Ripeti l'ultima azione</Text>
+			<Text Lang="ru">Вернуть последнее отмененное действие</Text>
+			<Text Lang="de">Wiederholt die letzte rückgängig gemachte Aktion.</Text>
+			<Text Lang="ja">やり直し</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CommandStack.Description">
+			<Context>Long description of the ribbon bar button that opens the undo/redo stack</Context>
+			<Text Lang="en">Last changes</Text>
+			<Text Lang="uk">Останні зміни</Text>
+			<Text Lang="fr">Dernières modifications</Text>
+			<Text Lang="pt-BR">Últimas mudanças</Text>
+			<Text Lang="zh">上次更改</Text>
+			<Text Lang="ko">마지막 변경 사항</Text>
+			<Text Lang="pl">Ostatnie zmiany</Text>
+			<Text Lang="es">Últimos cambios</Text>
+			<Text Lang="it">Ultime modifiche</Text>
+			<Text Lang="ru">Последние изменения</Text>
+			<Text Lang="de">Letzte Änderungen</Text>
+			<Text Lang="ja">最近の変更</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  FlexPane Tab
+	-->
+	<Category Name="System" Key="FlexPaneTab">
+
+		<TextDefinition Key="FlexPane.Tab.ToggleVisibility.Tooltip">
+			<Context>a tooltip in the FlexPane Tab area</Context>
+			<Text Lang="en">Toggles the visibility of the navigation bar.</Text>
+			<Text Lang="uk">Перемкнути режим режим видимості панелі навігації</Text>
+			<Text Lang="fr">Active/désactive la visibilité de la barre de navigation.</Text>
+			<Text Lang="pt-BR">Habilitar a visibilidade da barra de navegação</Text>
+			<Text Lang="zh">切换导航栏的可见性。</Text>
+			<Text Lang="ko">네비게이션 바 가시성 토글</Text>
+			<Text Lang="pl">Zmień widoczność paska nawigacji</Text>
+			<Text Lang="es">Muestra u oculta la barra de navegación.</Text>
+			<Text Lang="it">Nascondi la barra di navigazione.</Text>
+			<Text Lang="ru">Переключить режим видимости панели навигации</Text>
+			<Text Lang="de">Schaltet die Sichtbarkeit der Navigationsleiste ein/aus.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FlexPane.Tab.AddNewTab.Tooltip">
+			<Context>a tooltip in the FlexPane Tab area</Context>
+			<Text Lang="en">Adds a new tab.</Text>
+			<Text Lang="uk">Додати нову вкладку</Text>
+			<Text Lang="fr">Ajoute un nouvel onglet.</Text>
+			<Text Lang="pt-BR">Adiciona uma nova aba</Text>
+			<Text Lang="zh">添加新选项卡。</Text>
+			<Text Lang="ko">새 탭 추가합니다.</Text>
+			<Text Lang="pl">Dodaj zakładkę</Text>
+			<Text Lang="es">Añade una pestaña nueva.</Text>
+			<Text Lang="it">Aggiungi un nuovo tab.</Text>
+			<Text Lang="ru">Добавить новую вкладку.</Text>
+			<Text Lang="de">Fügt einen neuen Reiter hinzu.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FlexPane.Tab.HomePage.Tooltip">
+			<Context>a tooltip for the flexpane home page button</Context>
+			<Text Lang="en">Switches to the jumpstart page.</Text>
+			<Text Lang="uk">Перемкнутися на сторінку швидкого запуску.</Text>
+			<Text Lang="fr">Bascule vers la page d'accueil.</Text>
+			<Text Lang="pt-BR">Troca para a página inicial</Text>
+			<Text Lang="zh">切换至跳转开始页面</Text>
+			<Text Lang="ko">점프스타트 페이지로 전환합니다.</Text>
+			<Text Lang="pl">Zmień na stronę szybkiego dostępu</Text>
+			<Text Lang="es">Lleva a la página de inicio rápido.</Text>
+			<Text Lang="it">Raggiungi la pagina di avvio.</Text>
+			<Text Lang="ru">Переключиться на страницу быстрого запуска.</Text>
+			<Text Lang="de">Wechselt zur Schnellstartseite.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FlexPane.Tab.Close.Tooltip">
+			<Context>a tooltip for the close button of a tab</Context>
+			<Text Lang="en">Closes this tab.</Text>
+			<Text Lang="uk">Закрити цю вкладку.</Text>
+			<Text Lang="fr">Ferme cet onglet.</Text>
+			<Text Lang="pt-BR">Fecha essa aba</Text>
+			<Text Lang="zh">关闭此选项卡。</Text>
+			<Text Lang="ko">이 탭을 종료합니다.</Text>
+			<Text Lang="pl">Zamknij zakładkę.</Text>
+			<Text Lang="es">Cierra esta pestaña</Text>
+			<Text Lang="it">Chiudi questo tab.</Text>
+			<Text Lang="ru">Закрыть эту вкладку</Text>
+			<Text Lang="de">Schließt diesen Reiter.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Aspects
+	-->
+	<Category Name="System" Key="Aspects">
+
+		<TextDefinition Key="Aspect.Caption">
+			<Context>The label for the aspect selection</Context>
+			<Text Lang="en">View:</Text>
+			<Text Lang="uk">Вигляд:</Text>
+			<Text Lang="fr">Vue :</Text>
+			<Text Lang="pt-BR">Visualizar:</Text>
+			<Text Lang="zh">视图：</Text>
+			<Text Lang="ko">뷰:</Text>
+			<Text Lang="pl">Podgląd:</Text>
+			<Text Lang="es">Vista:</Text>
+			<Text Lang="it">Vista:</Text>
+			<Text Lang="ru">Вид:</Text>
+			<Text Lang="de">Ansicht:</Text>
+			<Text Lang="ja">ビュ</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspect.NoneSelected.Caption">
+			<Context>Used to tell the user that no aspect was selected</Context>
+			<Text Lang="en">No View selected</Text>
+			<Text Lang="uk">Вигляд не вибрано</Text>
+			<Text Lang="fr">Aucune vue sélectionnée</Text>
+			<Text Lang="pt-BR">Nenhuma visualização selecionada</Text>
+			<Text Lang="zh">未选择视图</Text>
+			<Text Lang="ko">뷰를 선택하지 않음</Text>
+			<Text Lang="pl">Żaden podląd nie został wybrany</Text>
+			<Text Lang="es">No hay ninguna vista seleccionada</Text>
+			<Text Lang="it">Nessuna Vista selezionata</Text>
+			<Text Lang="ru">Вид не выбран</Text>
+			<Text Lang="de">Es wurde keine Ansicht ausgewählt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspect.Synchronized.Caption">
+			<Context>Tooltip of synchronize icon</Context>
+			<Text Lang="en">Synchronize this pane to objects selected in other panes to view them here in the currently selected view.</Text>
+			<Text Lang="uk">Синхронізуйвати цю панель з об’єктами, вибраними на інших панелях, щоб переглянути їх тут, у поточно вибраному вигляді.</Text>
+			<Text Lang="fr">Synchronisez ce volet aux objets sélectionnés dans d’autres volets pour les voir dans la vue actuellement sélectionnée.</Text>
+			<Text Lang="pt-BR">Sincronizar esse painel para objetos selecionados em outros paineis para vê-los aqui na atual visualização.</Text>
+			<Text Lang="zh">将此窗格与其他窗格中选定的对象同步，以便在当前选定的视图中查看它们。</Text>
+			<Text Lang="ko">이 창을 다른 창에서 선택한 객체에 동기화하여 현재 선택한 보기에서 여기를 볼 수 있습니다.</Text>
+			<Text Lang="pl">Zsynchronizuj panel, by zawsze pokazywał zaznaczony obiekt w aktywnym widoku</Text>
+			<Text Lang="es">Sincroniza el panel para ver siempre un objeto seleccionado en la vista activa actual</Text>
+			<Text Lang="it">Sincronizza il pannello per mostrare sempre l'oggetto selezionato nella vista attiva.</Text>
+			<Text Lang="ru">Синхронизировать панель для постоянного отображения объекта в её текущем виде.</Text>
+			<Text Lang="de">Bereich synchronisieren, sodass Objekte, die in anderen Bereichen selektiert werden, hier in der ausgewählten Ansicht dargestellt werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspect.SynchronizationGroup.Caption">
+			<Context>The label for the synchronization groups</Context>
+			<Text Lang="en">Synchronization Group:</Text>
+			<Text Lang="uk">Синхронізація групи:</Text>
+			<Text Lang="fr">Groupe de synchronisation :</Text>
+			<Text Lang="pt-BR">Grupo de sincronização:</Text>
+			<Text Lang="zh">同步组：</Text>
+			<Text Lang="ko">동기화 그룹:</Text>
+			<Text Lang="pl">Zsynchronizuj grupy:</Text>
+			<Text Lang="es">Grupo de sincronización:</Text>
+			<Text Lang="it">Gruppo Sincronizzazione:</Text>
+			<Text Lang="ru">Синхронизация группы:</Text>
+			<Text Lang="de">Synchronizations Gruppe:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Commands
+	-->
+	<Category Name="System" Key="Commands">
+
+		<TextDefinition Key="Commands.Print.Caption">
+			<Context>Label for the Print command</Context>
+			<Text Lang="en">Print</Text>
+			<Text Lang="uk">Друк</Text>
+			<Text Lang="fr">Imprimer</Text>
+			<Text Lang="pt-BR">Cópia</Text>
+			<Text Lang="zh">打印</Text>
+			<Text Lang="ko">인쇄</Text>
+			<Text Lang="pl">Drukuj</Text>
+			<Text Lang="es">Imprimir</Text>
+			<Text Lang="it">Stampa</Text>
+			<Text Lang="ru">Печать</Text>
+			<Text Lang="de">Drucken</Text>
+			<Text Lang="ja">プリント</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Cut.Caption">
+			<Context>Label for the cut command</Context>
+			<Text Lang="en">Cut</Text>
+			<Text Lang="uk">Вирізати</Text>
+			<Text Lang="fr">Couper</Text>
+			<Text Lang="pt-BR">Cortar</Text>
+			<Text Lang="zh">剪切</Text>
+			<Text Lang="ko">잘라내기</Text>
+			<Text Lang="pl">Wytnij</Text>
+			<Text Lang="es">Cortar</Text>
+			<Text Lang="it">Taglia</Text>
+			<Text Lang="ru">Вырезать</Text>
+			<Text Lang="de">Auschneiden</Text>
+			<Text Lang="ja">切り取り</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Copy.Caption">
+			<Context>Label for the copy command</Context>
+			<Text Lang="en">Copy</Text>
+			<Text Lang="uk">Копіювати</Text>
+			<Text Lang="fr">Copier</Text>
+			<Text Lang="pt-BR">Copiar</Text>
+			<Text Lang="zh">复制</Text>
+			<Text Lang="ko">복사</Text>
+			<Text Lang="pl">Skopiuj</Text>
+			<Text Lang="es">Copiar</Text>
+			<Text Lang="it">Copia</Text>
+			<Text Lang="ru">Копировать</Text>
+			<Text Lang="de">Kopieren</Text>
+			<Text Lang="ja">コピー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Paste.Caption">
+			<Context>Label for the paste command</Context>
+			<Text Lang="en">Paste</Text>
+			<Text Lang="uk">Вставити</Text>
+			<Text Lang="fr">Coller</Text>
+			<Text Lang="pt-BR">Colar</Text>
+			<Text Lang="zh">粘贴</Text>
+			<Text Lang="ko">붙여넣기</Text>
+			<Text Lang="pl">Wklej</Text>
+			<Text Lang="es">Pegar</Text>
+			<Text Lang="it">Incolla</Text>
+			<Text Lang="ru">Вставить</Text>
+			<Text Lang="de">Einfügen</Text>
+			<Text Lang="ja">貼り付け</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Paste.CopySuffix">
+			<Context>Suffix for the display name of copied objects.</Context>
+			<Text Lang="en">Copy</Text>
+			<Text Lang="uk">Копія</Text>
+			<Text Lang="fr">Copier</Text>
+			<Text Lang="pt-BR">Copiar</Text>
+			<Text Lang="zh">复制</Text>
+			<Text Lang="ko">복사</Text>
+			<Text Lang="pl">Skopiuj</Text>
+			<Text Lang="es">Copiar</Text>
+			<Text Lang="it">Copia</Text>
+			<Text Lang="ru">Копия</Text>
+			<Text Lang="de">Kopie</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Delete.Caption">
+			<Context>Label for the delete command</Context>
+			<Text Lang="en">Delete</Text>
+			<Text Lang="uk">Видалити</Text>
+			<Text Lang="fr">Effacer</Text>
+			<Text Lang="pt-BR">Deletar</Text>
+			<Text Lang="zh">删除</Text>
+			<Text Lang="ko">삭제</Text>
+			<Text Lang="pl">Usuń</Text>
+			<Text Lang="es">Eliminar</Text>
+			<Text Lang="it">Elimina</Text>
+			<Text Lang="ru">Удалить</Text>
+			<Text Lang="de">Löschen</Text>
+			<Text Lang="ja">消去</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.Caption">
+			<Context>Label for the order command group</Context>
+			<Text Lang="en">Order</Text>
+			<Text Lang="uk">Впорядкувати</Text>
+			<Text Lang="fr">Ordonner</Text>
+			<Text Lang="pt-BR">Ordenar</Text>
+			<Text Lang="zh">指令</Text>
+			<Text Lang="ko">순서</Text>
+			<Text Lang="pl">Zorganizuj</Text>
+			<Text Lang="es">Ordenar</Text>
+			<Text Lang="it">Ordina</Text>
+			<Text Lang="ru">Упорядочить</Text>
+			<Text Lang="de">Anordnen</Text>
+			<Text Lang="ja">順番</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Align.Caption">
+			<Context>Label for the order command group</Context>
+			<Text Lang="en">Align</Text>
+			<Text Lang="uk">Вирівняти</Text>
+			<Text Lang="fr">Aligner</Text>
+			<Text Lang="pt-BR">Alinhar</Text>
+			<Text Lang="zh">对齐</Text>
+			<Text Lang="ko">정렬</Text>
+			<Text Lang="pl">Wyrównaj</Text>
+			<Text Lang="es">Alinear</Text>
+			<Text Lang="it">Allinea</Text>
+			<Text Lang="ru">Выровнять</Text>
+			<Text Lang="de">Ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.BringForward.Caption">
+			<Context>Label for the bring forward command</Context>
+			<Text Lang="en">Bring forward</Text>
+			<Text Lang="uk">Висунути наперед</Text>
+			<Text Lang="fr">Avancer</Text>
+			<Text Lang="pt-BR">Trazer para frente</Text>
+			<Text Lang="zh">上移一层</Text>
+			<Text Lang="ko">앞으로 가져오기</Text>
+			<Text Lang="pl">Przesuń do przodu</Text>
+			<Text Lang="es">Traer hacia adelante</Text>
+			<Text Lang="it">Porta sopra</Text>
+			<Text Lang="ru">Выдвинуть</Text>
+			<Text Lang="de">Eine Ebene nach vorne</Text>
+			<Text Lang="ja">前に</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.SendBackward.Caption">
+			<Context>Label for the send backward command</Context>
+			<Text Lang="en">Send backward</Text>
+			<Text Lang="uk">Засунути назад</Text>
+			<Text Lang="fr">Reculer</Text>
+			<Text Lang="pt-BR">Enviar para trás</Text>
+			<Text Lang="zh">下移一层</Text>
+			<Text Lang="ko">뒤로 보내기</Text>
+			<Text Lang="pl">Przesuń do tyłu</Text>
+			<Text Lang="es">Llevar hacia atrás</Text>
+			<Text Lang="it">Manda sotto</Text>
+			<Text Lang="ru">Задвинуть</Text>
+			<Text Lang="de">Eine Ebene nach hinten</Text>
+			<Text Lang="ja">後ろに</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.BringToFront.Caption">
+			<Context>Label for the bring to front command</Context>
+			<Text Lang="en">Bring to front</Text>
+			<Text Lang="uk">На передній план</Text>
+			<Text Lang="fr">Mettre à l’avant</Text>
+			<Text Lang="pt-BR">Trazer para a frente</Text>
+			<Text Lang="zh">置于顶层</Text>
+			<Text Lang="ko">맨 앞으로 가져오기</Text>
+			<Text Lang="pl">Przenieś na przód</Text>
+			<Text Lang="es">Traer al frente</Text>
+			<Text Lang="it">Porta in primo piano</Text>
+			<Text Lang="ru">На передний план</Text>
+			<Text Lang="de">In den Vordergrund</Text>
+			<Text Lang="ja">一番前に</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.SendToBack.Caption">
+			<Context>Label for the send to back command</Context>
+			<Text Lang="en">Send to back</Text>
+			<Text Lang="uk">На задній план</Text>
+			<Text Lang="fr">Mettre à l’arrière</Text>
+			<Text Lang="pt-BR">Enviar para o fundo</Text>
+			<Text Lang="zh">置于底层</Text>
+			<Text Lang="ko">맨 뒤로 보내기</Text>
+			<Text Lang="pl">Przenieś na tył</Text>
+			<Text Lang="es">Llevar al fondo</Text>
+			<Text Lang="it">Manda in secondo piano</Text>
+			<Text Lang="ru">На задний план</Text>
+			<Text Lang="de">In den Hintergrund</Text>
+			<Text Lang="ja">一番後ろに</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignLeft.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Align left</Text>
+			<Text Lang="uk">Вирівняти по лівому краю</Text>
+			<Text Lang="fr">Aligner à gauche</Text>
+			<Text Lang="pt-BR">Alinhar para à esquerda</Text>
+			<Text Lang="zh">左对齐</Text>
+			<Text Lang="ko">왼쪽 정렬</Text>
+			<Text Lang="pl">Wyrównaj do lewej</Text>
+			<Text Lang="es">Alinear a la izquierda</Text>
+			<Text Lang="it">Allinea a sinistra</Text>
+			<Text Lang="ru">Выровнять по левому краю</Text>
+			<Text Lang="de">Links ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignRight.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Align right</Text>
+			<Text Lang="uk">Вирівняти по правому краю</Text>
+			<Text Lang="fr">Aligner à droite</Text>
+			<Text Lang="pt-BR">Alinhar para à direita</Text>
+			<Text Lang="zh">右对齐</Text>
+			<Text Lang="ko">오른쪽 정렬</Text>
+			<Text Lang="pl">Wyrównaj do prawej</Text>
+			<Text Lang="es">Alinear a la derecha</Text>
+			<Text Lang="it">Allinea a destra</Text>
+			<Text Lang="ru">Выровнять по правому краю</Text>
+			<Text Lang="de">Rechts ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignTop.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Align top</Text>
+			<Text Lang="uk">Вирівняти по верхньому краю</Text>
+			<Text Lang="fr">Aligner en haut</Text>
+			<Text Lang="pt-BR">Alinhar para à topo</Text>
+			<Text Lang="zh">顶端对齐</Text>
+			<Text Lang="ko">위쪽 정렬</Text>
+			<Text Lang="pl">Wyrównaj do góry</Text>
+			<Text Lang="es">Alinear arriba</Text>
+			<Text Lang="it">Allinea in alto</Text>
+			<Text Lang="ru">Выровнять по верхнему краю</Text>
+			<Text Lang="de">Oben ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignBottom.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Align bottom</Text>
+			<Text Lang="uk">Вирівняти по нижньому краю</Text>
+			<Text Lang="fr">Aligner en bas</Text>
+			<Text Lang="pt-BR">Alinhar para à fundo</Text>
+			<Text Lang="zh">底端对齐</Text>
+			<Text Lang="ko">아래쪽 정렬</Text>
+			<Text Lang="pl">Wyrównaj do dołu</Text>
+			<Text Lang="es">Alinear abajo</Text>
+			<Text Lang="it">Allinea in basso</Text>
+			<Text Lang="ru">Выровнять по нижнему краю</Text>
+			<Text Lang="de">Unten ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignCenterX.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Center horizontally</Text>
+			<Text Lang="uk">Відцентрувати по горизонталі</Text>
+			<Text Lang="fr">Centrer horizontalement</Text>
+			<Text Lang="pt-BR">Centralizar horizontalmente</Text>
+			<Text Lang="zh">水平居中</Text>
+			<Text Lang="ko">수평 중앙</Text>
+			<Text Lang="pl">Wycentruj horyzontalnie</Text>
+			<Text Lang="es">Centrar horizontalmente</Text>
+			<Text Lang="it">Centra orizzontalmente</Text>
+			<Text Lang="ru">Отцентровать по горизонтали</Text>
+			<Text Lang="de">Horizontal zentrieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignCenterY.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Center vertically</Text>
+			<Text Lang="uk">Відцентрувати по вертикалі</Text>
+			<Text Lang="fr">Centrer verticalement</Text>
+			<Text Lang="pt-BR">Centralizar verticalmente</Text>
+			<Text Lang="zh">垂直居中</Text>
+			<Text Lang="ko">수직 중앙</Text>
+			<Text Lang="pl">Wycentruj wertykalnie</Text>
+			<Text Lang="es">Centrar verticalmente</Text>
+			<Text Lang="it">Centra verticalmente</Text>
+			<Text Lang="ru">Отцентровать по вертикали</Text>
+			<Text Lang="de">Vertikal zentrieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignDistributeX.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Distribute horizontally</Text>
+			<Text Lang="uk">Розподілити по горизонталі</Text>
+			<Text Lang="fr">Distribuer horizontalement</Text>
+			<Text Lang="pt-BR">Distribuir horizontalmente</Text>
+			<Text Lang="zh">水平分布</Text>
+			<Text Lang="ko">수평 간격 동일</Text>
+			<Text Lang="pl">Rozmieść horyzontalnie</Text>
+			<Text Lang="es">Distribuir horizontalmente</Text>
+			<Text Lang="it">Distribuisci orizzontalmente</Text>
+			<Text Lang="ru">Распределить по горизонтали</Text>
+			<Text Lang="de">Horizontal verteilen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Order.AlignDistributeY.Caption">
+			<Context>Label for the alignment command</Context>
+			<Text Lang="en">Distribute vertically</Text>
+			<Text Lang="uk">розподілити по вертикалі</Text>
+			<Text Lang="fr">Distribuer verticalement</Text>
+			<Text Lang="pt-BR">Distribuir verticalmente</Text>
+			<Text Lang="zh">垂直分布</Text>
+			<Text Lang="ko">수직 간격 동일</Text>
+			<Text Lang="pl">Rozmieść wertykalnie</Text>
+			<Text Lang="es">Distribuir verticalmente</Text>
+			<Text Lang="it">Distribuisci verticalmente</Text>
+			<Text Lang="ru">Распределить по вертикали</Text>
+			<Text Lang="de">Vertikal verteilen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.New.Caption">
+			<Context>Label for the new node command</Context>
+			<Text Lang="en">New</Text>
+			<Text Lang="uk">Новий</Text>
+			<Text Lang="fr">Nouveau</Text>
+			<Text Lang="pt-BR">Novo</Text>
+			<Text Lang="zh">新建</Text>
+			<Text Lang="ko">새 노드</Text>
+			<Text Lang="pl">Nowy</Text>
+			<Text Lang="es">Nuevo</Text>
+			<Text Lang="it">Nuovo</Text>
+			<Text Lang="ru">Новый</Text>
+			<Text Lang="de">Neu</Text>
+			<Text Lang="ja">新規ノードを作成</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Partition.Caption">
+			<Context>Partition submenu</Context>
+			<Text Lang="en">Partition</Text>
+			<Text Lang="uk">Розділ</Text>
+			<Text Lang="fr">Partition</Text>
+			<Text Lang="pt-BR">Partição</Text>
+			<Text Lang="zh">分区</Text>
+			<Text Lang="ko">파티션</Text>
+			<Text Lang="pl">Partycje</Text>
+			<Text Lang="es">Partición</Text>
+			<Text Lang="it">Partiziona</Text>
+			<Text Lang="ru">Раздел</Text>
+			<Text Lang="de">Partition</Text>
+			<Text Lang="ja">パーティション</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Command.AddInputPin.Caption">
+			<Context>contextmenu command for...</Context>
+			<Text Lang="en">New input pin</Text>
+			<Text Lang="uk">Новий вхідний контакт</Text>
+			<Text Lang="fr">Nouvelle épingle d'entrée</Text>
+			<Text Lang="pt-BR">Novo pino de entrada</Text>
+			<Text Lang="zh">新输入pin</Text>
+			<Text Lang="ko">새 입력 핀</Text>
+			<Text Lang="pl">Nowy punkt wejściowy</Text>
+			<Text Lang="es">Nuevo conector de entrada</Text>
+			<Text Lang="it">Nuovo connettore di input</Text>
+			<Text Lang="ru">Новый входящий контакт</Text>
+			<Text Lang="de">Neuer Eingangs-Pin</Text>
+			<Text Lang="ja">新規入り口を作成</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Command.AddOutputPin.Caption">
+			<Context>contextmenu command for...</Context>
+			<Text Lang="en">New output pin</Text>
+			<Text Lang="uk">Новий вихідний контакт</Text>
+			<Text Lang="fr">Nouvelle épingle de sortie</Text>
+			<Text Lang="pt-BR">Novo pino de saída</Text>
+			<Text Lang="zh">新输出pin</Text>
+			<Text Lang="ko">새 출력 핀</Text>
+			<Text Lang="pl">Nowy punkt wyjściowy</Text>
+			<Text Lang="es">Nuevo conector de salida</Text>
+			<Text Lang="it">Nuovo connettore di output</Text>
+			<Text Lang="ru">Новый выходящий контакт</Text>
+			<Text Lang="de">Neuer Ausgangs-Pin</Text>
+			<Text Lang="ja">新規出口を作成</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Command.OpenSheet.Caption">
+			<Context>contextmenu command for...</Context>
+			<Text Lang="en">Open properties</Text>
+			<Text Lang="uk">Відкрити властивості</Text>
+			<Text Lang="fr">Ouvrir les propriétés</Text>
+			<Text Lang="pt-BR">Abrir propriedades</Text>
+			<Text Lang="zh">打开属性</Text>
+			<Text Lang="ko">속성 열기</Text>
+			<Text Lang="pl">Otwórz właściwości</Text>
+			<Text Lang="es">Abrir propiedades</Text>
+			<Text Lang="it">Apri proprietà</Text>
+			<Text Lang="ru">Открыть свойства</Text>
+			<Text Lang="de">Öffne Eigenschaften</Text>
+			<Text Lang="ja">プロパティを開ける</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Command.OpenSheetResolved.Caption">
+			<Context>contextmenu command for...</Context>
+			<Text Lang="en">Open properties of linked object</Text>
+			<Text Lang="uk">Відкрити властивості з'єднаного об'єкту</Text>
+			<Text Lang="fr">Ouvrir les propriétés des objets reliés</Text>
+			<Text Lang="pt-BR">Abrir propriedades do objeto ligado</Text>
+			<Text Lang="zh">打开链接对象的属性</Text>
+			<Text Lang="ko">링크된 객체 속성 열기</Text>
+			<Text Lang="de">Öffne Eigenschaften des verlinkten Objekts</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Command.Submerge.Caption">
+			<Context>contextmenu command for...</Context>
+			<Text Lang="en">Submerge</Text>
+			<Text Lang="uk">Submerge</Text>
+			<Text Lang="fr">Submerger</Text>
+			<Text Lang="pt-BR">Submergir</Text>
+			<Text Lang="zh">沉浸</Text>
+			<Text Lang="ko">컨테이너/폴더 열기</Text>
+			<Text Lang="pl">Podstaw</Text>
+			<Text Lang="es">Desplegar</Text>
+			<Text Lang="it">Immergiti</Text>
+			<Text Lang="ru">Погрузиться</Text>
+			<Text Lang="de">Eintauchen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Rename.Caption">
+			<Context>Label for the rename command</Context>
+			<Text Lang="en">Rename</Text>
+			<Text Lang="uk">Перейменувати</Text>
+			<Text Lang="fr">Renommer</Text>
+			<Text Lang="pt-BR">Renomear</Text>
+			<Text Lang="zh">重命名</Text>
+			<Text Lang="ko">이름 바꾸기</Text>
+			<Text Lang="pl">Zmień nazwę</Text>
+			<Text Lang="es">Renombrar</Text>
+			<Text Lang="it">Rinomina</Text>
+			<Text Lang="ru">Переименовать</Text>
+			<Text Lang="de">Umbenennen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.ActivateLicense.Caption">
+			<Context>Label for the "Activate License" command</Context>
+			<Text Lang="en">Register...</Text>
+			<Text Lang="uk">Зареєструватися…</Text>
+			<Text Lang="fr">Activer...</Text>
+			<Text Lang="pt-BR">Registrar...</Text>
+			<Text Lang="zh">注册...</Text>
+			<Text Lang="ko">등록…</Text>
+			<Text Lang="pl">Zarejestruj</Text>
+			<Text Lang="es">Registrarse</Text>
+			<Text Lang="it">Registrati…</Text>
+			<Text Lang="ru">Зарегистрироваться…</Text>
+			<Text Lang="de">Registrieren...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.ActivateLicense.ToolTip">
+			<Context>ToolTip for the "Activate License" command</Context>
+			<Text Lang="en">Opens a dialog for the registration of a license key.</Text>
+			<Text Lang="uk">Відкриває вікно, що дозволяє зареєструвати ліцензійний ключ.</Text>
+			<Text Lang="fr">Ouvre une boîte de dialogue pour activer une clé de licence.</Text>
+			<Text Lang="pt-BR">Abre um diálogo para o registro de chave de licença.</Text>
+			<Text Lang="zh">打开注册许可证密钥的对话框。</Text>
+			<Text Lang="ko">라이선스 등록을 위한 다이얼로그를 엽니다.</Text>
+			<Text Lang="pl">Otwórz okno pozwalające na rejestrację klucza licencyjnego</Text>
+			<Text Lang="es">Abre un cuadro de diálogo para activar una licencia.</Text>
+			<Text Lang="it">Apri una finestra che ti permette di registrare una licenza.</Text>
+			<Text Lang="ru">Открывает окно, позволяющее зарегистрировать лицензионный ключ.</Text>
+			<Text Lang="de">Öffnet eine Dialogbox, in welcher man einen Lizenzschlüssel registrieren kann.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.UpdateLicense.Caption">
+			<Context>Label for the "update license" command</Context>
+			<Text Lang="en">Refresh</Text>
+			<Text Lang="uk">Оновити</Text>
+			<Text Lang="fr">Rafraîchir</Text>
+			<Text Lang="pt-BR">Atualizar</Text>
+			<Text Lang="zh">刷新</Text>
+			<Text Lang="ko">라이선스 갱신</Text>
+			<Text Lang="pl">Odśwież</Text>
+			<Text Lang="es">Actualizar</Text>
+			<Text Lang="it">Aggiorna</Text>
+			<Text Lang="ru">Обновить</Text>
+			<Text Lang="de">Aktualisieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.UpdateLicense.ToolTip">
+			<Context>ToolTip for the "update license" command</Context>
+			<Text Lang="en">Contacts the Articy license server to activate your new purchases.</Text>
+			<Text Lang="uk">Зв'язатися з сервісом ліцензій Articy для активації ваших покупок.</Text>
+			<Text Lang="fr">Contacte le serveur de licence d’Articy pour activer vos nouveaux achats.</Text>
+			<Text Lang="pt-BR">Contata o servidor de licença Articy para ativar suas comprars.</Text>
+			<Text Lang="zh">连接Articy许可证服务器以激活您的新购买请求。</Text>
+			<Text Lang="ko">새로 구입한 라이선스의 활성화를 위해 Articy 라이선스 서버와 연결합니다.</Text>
+			<Text Lang="pl">Skontaktuj się z serwerami Articy by zaktywować twój produkt</Text>
+			<Text Lang="es">Contacta con el servidor de licencias de Articy para activar tus nuevas compras.</Text>
+			<Text Lang="it">Contatta il server delle licenze Articy per attivare i tuoi nuovi acquisti.</Text>
+			<Text Lang="ru">Связаться с сервисом лицензий Articy для активации ваших покупок.</Text>
+			<Text Lang="de">Kontaktiert den Articy-Lizenzserver um Zukäufe zu aktivieren.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.DeactivateLicense.Caption">
+			<Context>Label for the "deactivate License" command</Context>
+			<Text Lang="en">Unregister</Text>
+			<Text Lang="uk">Скасувати реєстрацію</Text>
+			<Text Lang="fr">Désactiver</Text>
+			<Text Lang="pt-BR">Cancelar o registro</Text>
+			<Text Lang="zh">取消注册</Text>
+			<Text Lang="ko">등록 해제</Text>
+			<Text Lang="pl">Cofnij rejestrację</Text>
+			<Text Lang="es">Desactivar licencia</Text>
+			<Text Lang="it">Rimuovi registrazione</Text>
+			<Text Lang="ru">Отменить регистрацию</Text>
+			<Text Lang="de">Zurückgeben</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.DeactivateLicense.ToolTip">
+			<Context>ToolTip for the "deactivate License" command</Context>
+			<Text Lang="en">Allows to transfer the currently registered license to another system or installation.</Text>
+			<Text Lang="uk">Дозволяє перенести вже зареєстровану ліцензію на іншу систеу чи інсталяцію.</Text>
+			<Text Lang="fr">Autorise le transfert de la licence actuellement activée vers un autre système ou une autre installation.</Text>
+			<Text Lang="pt-BR">Permite a transferência de atual licença registrada para outro sistema ou instalação.</Text>
+			<Text Lang="zh">允许将当前注册的许可证转移到其他系统或设备。</Text>
+			<Text Lang="ko">현재 등록한 라이선스를 다른 시스템 또는 다른 프로그램에 등록을 허용합니다.</Text>
+			<Text Lang="pl">Pozwól na transfer zarejestrowanej licencji na inny system</Text>
+			<Text Lang="es">Permite transferir la licencia activa en otro equipo o instalación</Text>
+			<Text Lang="it">Permette di trasferire la licenza attualmente registrata verso un altro sistema o installazione.</Text>
+			<Text Lang="ru">Позволяет перенести уже зарегистрированную лицензию на другую систему или инсталляцию.</Text>
+			<Text Lang="de">Ermöglicht es, die aktuell registrierte Lizenz auf ein anderes System oder eine andere Installation zu übertragen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.CancelSubscription.Caption">
+			<Context>Label for the "Cancel Subscription" command</Context>
+			<Text Lang="en">Cancel subscription</Text>
+			<Text Lang="de">Abonnement kündigen</Text>
+			<Text Lang="fr">Annuler l'abonnement</Text>
+			<Text Lang="pt-BR">Cancelar a assinatura</Text>
+			<Text Lang="zh">取消订阅</Text>
+			<Text Lang="pl">Anuluj subskrypcję</Text>
+			<Text Lang="es">Cancelar la suscripción</Text>
+			<Text Lang="it">Cancella l'abbonamento</Text>
+			<Text Lang="ru">Отменить подписку</Text>
+			<Text Lang="uk">Скасувати підписку</Text>
+			<Text Lang="ko">구독 취소</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.CancelSubscription.ToolTip">
+			<Context>ToolTip for the "Cancel License" command</Context>
+			<Text Lang="en">Allows you to cancel your license subscription at the end of the current billing cycle.</Text>
+			<Text Lang="de">Ermöglicht Ihnen, Ihr Lizenzabonnement zum Ende des aktuellen Abrechnungszeitraums zu kündigen.</Text>
+			<Text Lang="ru">Позволяет отменить подписку на лицензию в конце текущего расчетного цикла.</Text>
+			<Text Lang="fr">Permet d'annuler votre abonnement de licence à la fin du cycle de facturation en cours.</Text>
+			<Text Lang="pt-BR">Permite cancelar sua assinatura de licença no final do ciclo de faturamento atual.</Text>
+			<Text Lang="zh">允许你在当前帐单周期结束时取消你的许可证订阅。</Text>
+			<Text Lang="pl">Umożliwia anulowanie subskrypcji licencji po zakończeniu bieżącego cyklu rozliczeniowego.</Text>
+			<Text Lang="es">Permite cancelar la suscripción a la licencia al final del ciclo de facturación actual.</Text>
+			<Text Lang="it">Permette di cancellare l'abbonamento alla licenza alla fine del ciclo di fatturazione corrente.</Text>
+			<Text Lang="ko">현재 청구 주기가 끝나면 라이선스 구독을 취소할 수 있습니다.</Text>
+			<Text Lang="uk">Дозволяє скасувати підписку на ліцензію в кінці поточного платіжного циклу.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Categories
+	-->
+	<Category Name="System" Key="Categories">
+
+		<TextDefinition Key="Categories.Default.Name">
+			<Context>The Name for the Default Category</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="de">Sonstiges</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Default.ToolTip">
+			<Context>The ToolTip for the Default Category</Context>
+			<Text Lang="en">This category contains all properties that are not classified otherwhise.</Text>
+			<Text Lang="uk">Ця категорія містить всі властивості, що ніяк інакше не класифікуються.</Text>
+			<Text Lang="fr">Cette catégorie contient toutes les propriétés qui ne sont pas classées.</Text>
+			<Text Lang="pt-BR">Essa categoria contém todas as propriedades que não são apresentadas normalmente.</Text>
+			<Text Lang="zh">此类别包含所有未分类的属性。</Text>
+			<Text Lang="ko">이 범주는 otherwhise 분류 되지 않은 모든 속성을 포함 합니다.</Text>
+			<Text Lang="pl">Ta kategoria zawiera wszystkie nie sklasyfikowane właściwości</Text>
+			<Text Lang="es">Esta categoría incluye todas las propiedades no contenidas en otros lugares</Text>
+			<Text Lang="it">Questa categoria contiene tutte le proprietà che non sono inserite in altre categorie.</Text>
+			<Text Lang="ru">Эта категория содержит все свойства, не классифицирующиеся никак иначе.</Text>
+			<Text Lang="de">Diese Kategorie enthält Eigenschaften, die nicht anderswertig einsortiert wurden</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Common.Name">
+			<Context>The Name for the Data 'Common'</Context>
+			<Text Lang="en">Common</Text>
+			<Text Lang="uk">Загальні</Text>
+			<Text Lang="fr">Commun</Text>
+			<Text Lang="pt-BR">Comum</Text>
+			<Text Lang="zh">公共</Text>
+			<Text Lang="ko">공용</Text>
+			<Text Lang="pl">Dane współdzielone</Text>
+			<Text Lang="es">Común</Text>
+			<Text Lang="it">Generali</Text>
+			<Text Lang="ru">Общие</Text>
+			<Text Lang="de">Allgemein</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Common.ToolTip">
+			<Context>The ToolTip for the 'Common' Category</Context>
+			<Text Lang="en">This category contains common properties used by many node types.</Text>
+			<Text Lang="uk">Ця категорія містить всі загальні властивості, використовувані багатьма типами віток.</Text>
+			<Text Lang="fr">Cette catégorie contient les propriétés communes utilisées par de nombreux types de nœuds.</Text>
+			<Text Lang="pt-BR">Essa categoria contém propriedades comuns usadas por vários tipos de nó.</Text>
+			<Text Lang="zh">此类别包含多数节点类型使用的公共属性。</Text>
+			<Text Lang="ko">이 범주에는 여러 노드 형식에서 사용 된 공통 속성이 포함 되어 있습니다.</Text>
+			<Text Lang="pl">Ta kategoria zawiera najczęściej używane właściwości</Text>
+			<Text Lang="es">Esta categoría incluye las propiedades de uso común</Text>
+			<Text Lang="it">Questa categoria contiene le proprietà più comuni</Text>
+			<Text Lang="ru">Эта категория содержит все часто используемые свойства.</Text>
+			<Text Lang="de">Diese Kategory enthält Eigenschaften, die vielen Knoten gemeinsam sind</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Advanced.Name">
+			<Context>The Name for the 'Advanced' category</Context>
+			<Text Lang="en">Advanced</Text>
+			<Text Lang="uk">Просунуті</Text>
+			<Text Lang="fr">Avancé</Text>
+			<Text Lang="pt-BR">Avançado</Text>
+			<Text Lang="zh">高级</Text>
+			<Text Lang="ko">고급</Text>
+			<Text Lang="pl">Zaawansowane</Text>
+			<Text Lang="es">Avanzado</Text>
+			<Text Lang="it">Avanzate</Text>
+			<Text Lang="ru">Продвинутые</Text>
+			<Text Lang="de">Erweitert</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Advanced.ToolTip">
+			<Context>The ToolTip for the 'Advanced' Category</Context>
+			<Text Lang="en">This category contains properties for advanced users.</Text>
+			<Text Lang="uk">Ця категорія містить властивості для досвідчених користувачів.</Text>
+			<Text Lang="fr">Cette catégorie contient des propriétés pour les utilisateurs avancés.</Text>
+			<Text Lang="pt-BR">Essa categoria contém propriedade para usuários avançados.</Text>
+			<Text Lang="zh">此类别包含高级用户属性。</Text>
+			<Text Lang="ko">이 범주에는 고급 사용자의 속성이 포함 됩니다.</Text>
+			<Text Lang="pl">Ta kategoria zawiera właściwości dla zaawansowanych użytkowników.</Text>
+			<Text Lang="es">Esta categoría contiene propiedades para usuarios avanzados</Text>
+			<Text Lang="it">Questa categoria contiene le proprietà avanzate</Text>
+			<Text Lang="ru">Эта категория содержит свойства для продвинутых пользователей.</Text>
+			<Text Lang="de">Diese Kategory enthält Eigenschaften, die von erfahrenen Benutzer verwendet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Debug.Name">
+			<Context>The Name for the Data 'Debug'</Context>
+			<Text Lang="en">Debug</Text>
+			<Text Lang="uk">Налагодження</Text>
+			<Text Lang="fr">Débuguer</Text>
+			<Text Lang="pt-BR">Depurar</Text>
+			<Text Lang="zh">调试</Text>
+			<Text Lang="ko">디버그</Text>
+			<Text Lang="pl">Debug</Text>
+			<Text Lang="es">Depuración</Text>
+			<Text Lang="it">Debug</Text>
+			<Text Lang="ru">Отладка</Text>
+			<Text Lang="de">Debug</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Debug.ToolTip">
+			<Context>The ToolTip for the 'Common' Category</Context>
+			<Text Lang="en">This category contains properties used for debugging purposes.</Text>
+			<Text Lang="uk">Ця категорія містить властивості, що використовуються для налагодження.</Text>
+			<Text Lang="fr">Cette catégorie contient des propriétés utilisées pour le débogage.</Text>
+			<Text Lang="pt-BR">Essa categora contém propriedas usadas para propósitos de depuração.</Text>
+			<Text Lang="zh">此类别包含用于调试的属性。</Text>
+			<Text Lang="ko">이 범주에는 디버깅 목적으로 사용 된 속성이 포함 됩니다.</Text>
+			<Text Lang="pl">Ta kategoria zawiera właściwości przeznaczone do debuggowania.</Text>
+			<Text Lang="es">Esta categoría contiene propiedades que se utilizan con fines de depuración del programa (debug)</Text>
+			<Text Lang="it">Questa categoria contiene le proprietà utili a fini di debug</Text>
+			<Text Lang="ru">Эта категория содержит свойства используемые для отладки.</Text>
+			<Text Lang="de">Diese Kategory enthält Eigenschaften, die zur Fehlersuche verwendet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Data.Name">
+			<Context>The Name for the Data Category</Context>
+			<Text Lang="en">Data</Text>
+			<Text Lang="uk">Данні</Text>
+			<Text Lang="fr">Données</Text>
+			<Text Lang="pt-BR">Dados</Text>
+			<Text Lang="zh">数据</Text>
+			<Text Lang="ko">데이터</Text>
+			<Text Lang="pl">Dane</Text>
+			<Text Lang="es">Datos</Text>
+			<Text Lang="it">Dati</Text>
+			<Text Lang="ru">Данные</Text>
+			<Text Lang="de">Daten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Data.ToolTip">
+			<Context>The ToolTip for the Data Category</Context>
+			<Text Lang="en">Data</Text>
+			<Text Lang="uk">Данні</Text>
+			<Text Lang="fr">Données</Text>
+			<Text Lang="pt-BR">Dados</Text>
+			<Text Lang="zh">数据</Text>
+			<Text Lang="ko">데이터</Text>
+			<Text Lang="pl">Dane</Text>
+			<Text Lang="es">Datos</Text>
+			<Text Lang="it">Dati</Text>
+			<Text Lang="ru">Данные</Text>
+			<Text Lang="de">Daten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Visual.Name">
+			<Context>The Name for the Visual Category</Context>
+			<Text Lang="en">Visual</Text>
+			<Text Lang="uk">Візуальні</Text>
+			<Text Lang="fr">Visuel</Text>
+			<Text Lang="pt-BR">Visual</Text>
+			<Text Lang="zh">可视化</Text>
+			<Text Lang="ko">비주얼</Text>
+			<Text Lang="pl">Wizualne</Text>
+			<Text Lang="es">Visualización</Text>
+			<Text Lang="it">Visual</Text>
+			<Text Lang="ru">Визуальные</Text>
+			<Text Lang="de">Anzeige</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Visual.ToolTip">
+			<Context>The ToolTip for the Visual Category</Context>
+			<Text Lang="en">Visual</Text>
+			<Text Lang="uk">Візуальні</Text>
+			<Text Lang="fr">Visuel</Text>
+			<Text Lang="pt-BR">Visual</Text>
+			<Text Lang="zh">可视化</Text>
+			<Text Lang="ko">비주얼</Text>
+			<Text Lang="pl">Wizualne</Text>
+			<Text Lang="es">Visualización</Text>
+			<Text Lang="it">Visual</Text>
+			<Text Lang="ru">Визуальные</Text>
+			<Text Lang="de">Anzeige</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Input.Name">
+			<Context>The Name for the Input Category</Context>
+			<Text Lang="en">Input</Text>
+			<Text Lang="uk">Введення</Text>
+			<Text Lang="fr">Entrée</Text>
+			<Text Lang="pt-BR">Entrada</Text>
+			<Text Lang="zh">输入</Text>
+			<Text Lang="ko">입력</Text>
+			<Text Lang="pl">Dane wejściowe</Text>
+			<Text Lang="es">Entrada</Text>
+			<Text Lang="it">Input</Text>
+			<Text Lang="ru">Ввод</Text>
+			<Text Lang="de">Eingang</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Input.ToolTip">
+			<Context>The ToolTip for the Input Category</Context>
+			<Text Lang="en">Input</Text>
+			<Text Lang="uk">Введення</Text>
+			<Text Lang="fr">Entrée</Text>
+			<Text Lang="pt-BR">Entrada</Text>
+			<Text Lang="zh">输入</Text>
+			<Text Lang="ko">입력</Text>
+			<Text Lang="pl">Dane wejściowe</Text>
+			<Text Lang="es">Entrada</Text>
+			<Text Lang="it">Input</Text>
+			<Text Lang="ru">Ввод</Text>
+			<Text Lang="de">Eingang</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Output.Name">
+			<Context>The Name for the Output Category</Context>
+			<Text Lang="en">Output</Text>
+			<Text Lang="uk">Вивід</Text>
+			<Text Lang="fr">Sortie</Text>
+			<Text Lang="pt-BR">Saída</Text>
+			<Text Lang="zh">输出</Text>
+			<Text Lang="ko">출력</Text>
+			<Text Lang="pl">Dane wyjściowe</Text>
+			<Text Lang="es">Salida</Text>
+			<Text Lang="it">Output</Text>
+			<Text Lang="ru">Вывод</Text>
+			<Text Lang="de">Ausgang</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Output.ToolTip">
+			<Context>The ToolTip for the Output Category</Context>
+			<Text Lang="en">Output</Text>
+			<Text Lang="uk">Вивід</Text>
+			<Text Lang="fr">Sortie</Text>
+			<Text Lang="pt-BR">Saída</Text>
+			<Text Lang="zh">输出</Text>
+			<Text Lang="ko">출력</Text>
+			<Text Lang="pl">Dane wyjściowe</Text>
+			<Text Lang="es">Salida</Text>
+			<Text Lang="it">Output</Text>
+			<Text Lang="ru">Вывод</Text>
+			<Text Lang="de">Ausgang</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Position.Name">
+			<Context>The Name for the Position Category</Context>
+			<Text Lang="en">Position</Text>
+			<Text Lang="uk">Позиція</Text>
+			<Text Lang="fr">Position</Text>
+			<Text Lang="pt-BR">Posição</Text>
+			<Text Lang="zh">位置</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Pozycja</Text>
+			<Text Lang="es">Posición</Text>
+			<Text Lang="it">Posizioni</Text>
+			<Text Lang="ru">Позиция</Text>
+			<Text Lang="de">Position</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Categories.Position.ToolTip">
+			<Context>The ToolTip for the Position Category</Context>
+			<Text Lang="en">Position</Text>
+			<Text Lang="uk">Позиція</Text>
+			<Text Lang="fr">Position</Text>
+			<Text Lang="pt-BR">Posição</Text>
+			<Text Lang="zh">位置</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Pozycja</Text>
+			<Text Lang="es">Posición</Text>
+			<Text Lang="it">Posizioni</Text>
+			<Text Lang="ru">Позиция</Text>
+			<Text Lang="de">Position</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Color picker
+	-->
+	<Category Name="System" Key="ColorPicker">
+
+		<TextDefinition Key="ColorPicker.RGBA.Caption">
+			<Context>Caption for RGBA Expander</Context>
+			<Text Lang="en">Custom color</Text>
+			<Text Lang="uk">Користувацький колір</Text>
+			<Text Lang="fr">Couleur personnalisée</Text>
+			<Text Lang="pt-BR">Cor customizada</Text>
+			<Text Lang="zh">自定义颜色</Text>
+			<Text Lang="ko">사용자 정의 색상</Text>
+			<Text Lang="pl">Własny kolor</Text>
+			<Text Lang="es">Color personalizado</Text>
+			<Text Lang="it">Colore personalizzato</Text>
+			<Text Lang="ru">Пользовательский цвет</Text>
+			<Text Lang="de">Eigene Farbe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.RGBA.Description">
+			<Context>Description for RGBA Expander</Context>
+			<Text Lang="en">Red, Green and Blue</Text>
+			<Text Lang="uk">Червоний, Зелений та Синій</Text>
+			<Text Lang="fr">Rouge, Vert et Bleu</Text>
+			<Text Lang="pt-BR">Vermelho, Verde e Azul</Text>
+			<Text Lang="zh">红、绿、蓝</Text>
+			<Text Lang="ko">빨강, 초록 및 파랑</Text>
+			<Text Lang="pl">Czerwony, Zielony i Niebieski</Text>
+			<Text Lang="es">Rojo, verde y azul</Text>
+			<Text Lang="it">Rosso, Verde e Blu</Text>
+			<Text Lang="ru">Красный, Зеленый и Синий</Text>
+			<Text Lang="de">Rot, Grün und Blau</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.R.Description">
+			<Context>Description for R component</Context>
+			<Text Lang="en">Red</Text>
+			<Text Lang="uk">Червоний</Text>
+			<Text Lang="fr">Rouge</Text>
+			<Text Lang="pt-BR">Vermelho</Text>
+			<Text Lang="zh">红</Text>
+			<Text Lang="ko">빨강</Text>
+			<Text Lang="pl">Czerwony</Text>
+			<Text Lang="es">Rojo</Text>
+			<Text Lang="it">Rosso</Text>
+			<Text Lang="de">Rot</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.G.Description">
+			<Context>Description for G component</Context>
+			<Text Lang="en">Green</Text>
+			<Text Lang="uk">Зелений</Text>
+			<Text Lang="fr">Vert</Text>
+			<Text Lang="pt-BR">Verde</Text>
+			<Text Lang="zh">绿</Text>
+			<Text Lang="ko">초록</Text>
+			<Text Lang="pl">Zielony</Text>
+			<Text Lang="es">Verde</Text>
+			<Text Lang="it">Verde</Text>
+			<Text Lang="de">Grün</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.B.Description">
+			<Context>Description for B component</Context>
+			<Text Lang="en">Blue</Text>
+			<Text Lang="uk">Синій</Text>
+			<Text Lang="fr">Bleu</Text>
+			<Text Lang="pt-BR">Azul</Text>
+			<Text Lang="zh">蓝</Text>
+			<Text Lang="ko">파랑</Text>
+			<Text Lang="pl">Niebieski</Text>
+			<Text Lang="es">Azul</Text>
+			<Text Lang="it">Blu</Text>
+			<Text Lang="de">Blau</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.A.Description">
+			<Context>Description for A component</Context>
+			<Text Lang="en">Alpha</Text>
+			<Text Lang="uk">Альфа</Text>
+			<Text Lang="fr">Alpha</Text>
+			<Text Lang="pt-BR">Alfa</Text>
+			<Text Lang="zh">Alpha</Text>
+			<Text Lang="ko">알파</Text>
+			<Text Lang="pl">Kanał alpha</Text>
+			<Text Lang="es">Αlfa</Text>
+			<Text Lang="it">Alpha</Text>
+			<Text Lang="de">Transparenz</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.HSL.Caption">
+			<Context>Caption for HSL Expander</Context>
+			<Text Lang="en">HSL</Text>
+			<Text Lang="uk">HSL</Text>
+			<Text Lang="fr">HSL</Text>
+			<Text Lang="pt-BR">HSL</Text>
+			<Text Lang="zh">HSL</Text>
+			<Text Lang="ko">HSL</Text>
+			<Text Lang="pl">HSL</Text>
+			<Text Lang="es">HSL</Text>
+			<Text Lang="it">HSL</Text>
+			<Text Lang="ru">HSL</Text>
+			<Text Lang="de">HSL</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.HSL.Description">
+			<Context>Description for HSL Expander</Context>
+			<Text Lang="en">Hue, Saturation and Luminance</Text>
+			<Text Lang="uk">Відтінок, насиченість та яскравість</Text>
+			<Text Lang="fr">Teinte, saturation et luminosité</Text>
+			<Text Lang="pt-BR">Tonalidade, Saturação e luminância</Text>
+			<Text Lang="zh">色调、饱和度和亮度</Text>
+			<Text Lang="ko">색조,채도 및 휘도</Text>
+			<Text Lang="pl">Odcień, Nasycenie i Luminacja</Text>
+			<Text Lang="es">Matiz, saturación y luminosidad</Text>
+			<Text Lang="it">Tonalità, Saturazione e Luminosità</Text>
+			<Text Lang="ru">Тон, насыщенность и интенсивность света</Text>
+			<Text Lang="de">Farbton, Sättigung und Helligkeit</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.Name.Caption">
+			<Context>Caption for Name Expander</Context>
+			<Text Lang="en">Name</Text>
+			<Text Lang="uk">Ім'я</Text>
+			<Text Lang="fr">Nom</Text>
+			<Text Lang="pt-BR">Nome</Text>
+			<Text Lang="zh">名称</Text>
+			<Text Lang="ko">이름</Text>
+			<Text Lang="pl">Nazwa</Text>
+			<Text Lang="es">Nombre</Text>
+			<Text Lang="it">Nome</Text>
+			<Text Lang="ru">Имя</Text>
+			<Text Lang="de">Name</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.Name.Description">
+			<Context>Description for Name Expander</Context>
+			<Text Lang="en">Color names</Text>
+			<Text Lang="uk">Назва кольорів</Text>
+			<Text Lang="fr">Nom des couleurs</Text>
+			<Text Lang="pt-BR">Nomes das cores</Text>
+			<Text Lang="zh">颜色名称</Text>
+			<Text Lang="ko">색상 이름</Text>
+			<Text Lang="pl">Kolory</Text>
+			<Text Lang="es">Nombres de color</Text>
+			<Text Lang="it">Nomi colore</Text>
+			<Text Lang="ru">Название цветов</Text>
+			<Text Lang="de">Farbnamen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.LastUsed.Caption">
+			<Context>Caption for LastUsed Expander</Context>
+			<Text Lang="en">Last Used</Text>
+			<Text Lang="uk">Останні використовувані</Text>
+			<Text Lang="fr">Utilisée récemment</Text>
+			<Text Lang="pt-BR">Última usada</Text>
+			<Text Lang="zh">上次使用</Text>
+			<Text Lang="ko">마지막에 사용한 색상</Text>
+			<Text Lang="pl">Ostatnio używane</Text>
+			<Text Lang="es">Usados recientemente</Text>
+			<Text Lang="it">Ultimo usato</Text>
+			<Text Lang="ru">Последние использованные</Text>
+			<Text Lang="de">Zuletzt benutzt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ColorPicker.LastUsed.Description">
+			<Context>Description for LastUsed Expander</Context>
+			<Text Lang="en">A list of last used colors</Text>
+			<Text Lang="uk">Список останніх використовуваних кольорів</Text>
+			<Text Lang="fr">Liste des couleurs récemment utilisées</Text>
+			<Text Lang="pt-BR">Uma lista de todas as últimas cores usadas</Text>
+			<Text Lang="zh">上次使用的颜色列表</Text>
+			<Text Lang="ko">마지막에 사용한 색상 목록</Text>
+			<Text Lang="pl">Lista ostatnio użytych kolorów</Text>
+			<Text Lang="es">Lista de los últimos colores usados</Text>
+			<Text Lang="it">Una lista degli ultimi colori utilizzati</Text>
+			<Text Lang="ru">Список последних используемых цветов</Text>
+			<Text Lang="de">Eine Liste der zuletzt benutzten Farben</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Preview apply popup
+	-->
+	<Category Name="System" Key="PreviewApplyPopup">
+
+		<TextDefinition Key="Popup.OK">
+			<Context>Caption OK Button</Context>
+			<Text Lang="en">OK</Text>
+			<Text Lang="uk">ОК</Text>
+			<Text Lang="fr">OK</Text>
+			<Text Lang="pt-BR">Ok</Text>
+			<Text Lang="zh">好的</Text>
+			<Text Lang="ko">확인</Text>
+			<Text Lang="pl">OK</Text>
+			<Text Lang="es">Aceptar</Text>
+			<Text Lang="it">OK</Text>
+			<Text Lang="ru">ОК</Text>
+			<Text Lang="de">OK</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Popup.Cancel">
+			<Context>Caption for Cancel Button</Context>
+			<Text Lang="en">Cancel</Text>
+			<Text Lang="uk">Скасувати</Text>
+			<Text Lang="fr">Annuler</Text>
+			<Text Lang="pt-BR">Cancelar</Text>
+			<Text Lang="zh">取消</Text>
+			<Text Lang="ko">취소</Text>
+			<Text Lang="pl">Anuluj</Text>
+			<Text Lang="es">Cancelar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Отменить</Text>
+			<Text Lang="de">Abbrechen</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Toolbox
+	-->
+	<Category Name="System" Key="ToolBox">
+
+		<TextDefinition Key="ToolBox.Condensed.Description">
+			<Context>Tooltip for condensed toolbox containers</Context>
+			<Text Lang="en">More options</Text>
+			<Text Lang="uk">Додаткові параметри</Text>
+			<Text Lang="fr">Plus d’options</Text>
+			<Text Lang="pt-BR">Mais opções</Text>
+			<Text Lang="zh">更多选项</Text>
+			<Text Lang="ko">추가 옵션</Text>
+			<Text Lang="pl">Więcej opcji</Text>
+			<Text Lang="es">Más opciones</Text>
+			<Text Lang="it">Mostra più opzioni</Text>
+			<Text Lang="ru">Дополнительные параметры</Text>
+			<Text Lang="de">Mehr Optionen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ToolBox.ContentFactory.Caption">
+			<Context>Caption of the Popupbutton for the content factory button</Context>
+			<Text Lang="en">Create object</Text>
+			<Text Lang="uk">Створити об'єкт</Text>
+			<Text Lang="fr">Créer un objet</Text>
+			<Text Lang="pt-BR">Criar objeto</Text>
+			<Text Lang="zh">创建对象</Text>
+			<Text Lang="ko">객체 생성</Text>
+			<Text Lang="pl">Stwórz obiekt</Text>
+			<Text Lang="es">Crear objeto</Text>
+			<Text Lang="it">Crea oggetto</Text>
+			<Text Lang="ru">Создать объект</Text>
+			<Text Lang="de">Erstelle objekt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ToolBox.ContentFactory.Description">
+			<Context>Description of the Popupbutton for the content factory button</Context>
+			<Text Lang="en">Shows a list of items you can drag into the current view.</Text>
+			<Text Lang="uk">Показує список предметів, які ви можете пересунути на даний момент.</Text>
+			<Text Lang="fr">Affiche une liste des objets que vous pouvez faire glisser dans la vue actuelle.</Text>
+			<Text Lang="pt-BR">Mostrar uma lista de todos os itens que você pode arrastar para a atual visualização.</Text>
+			<Text Lang="zh">显示可拖动到当前视图中的道具列表。</Text>
+			<Text Lang="ko">현재 뷰로 드래그 할 수 있는 아이템 목록을 보여줍니다.</Text>
+			<Text Lang="pl">Pokaż listę obiektów które można przeciągnąć w aktywnym widoku</Text>
+			<Text Lang="es">Muestra una lista de elementos que se pueden arrastrar a la vista actual</Text>
+			<Text Lang="it">Mostro una lista degli oggetti che puoi trascinare nella vista corrente.</Text>
+			<Text Lang="ru">Показывает список предметов, которые вы можете перетащить в текущий вид.</Text>
+			<Text Lang="de">Zeigt einer Liste von neuen Objekten die in dieser Ansicht plaziert werden kann.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Debug monitor
+	-->
+	<Category Name="System" Key="DebugMonitor">
+
+		<TextDefinition Key="DebugMonitor.UpdateInterval">
+			<Context>Label for UpdateInterval</Context>
+			<Text Lang="en">Update Interval</Text>
+			<Text Lang="uk">Інтервал оновлень</Text>
+			<Text Lang="fr">Mettre à jour l’intervalle</Text>
+			<Text Lang="pt-BR">Atualizar intervalo</Text>
+			<Text Lang="zh">更新时间间隔</Text>
+			<Text Lang="ko">업데이트 간격</Text>
+			<Text Lang="pl">Odśwież interwał</Text>
+			<Text Lang="es">Intervalo de actualización</Text>
+			<Text Lang="it">Aggiorna intervallo</Text>
+			<Text Lang="ru">Интервал обновлений</Text>
+			<Text Lang="de">Update Intervall</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DebugMonitor.Freeze">
+			<Context>Label for Freeze</Context>
+			<Text Lang="en">Freeze</Text>
+			<Text Lang="uk">Заморозити</Text>
+			<Text Lang="fr">Figer</Text>
+			<Text Lang="pt-BR">Congelar</Text>
+			<Text Lang="zh">冻结</Text>
+			<Text Lang="ko">동결</Text>
+			<Text Lang="pl">Zatrzymaj</Text>
+			<Text Lang="es">Congelar</Text>
+			<Text Lang="it">Congela</Text>
+			<Text Lang="ru">Заморозить</Text>
+			<Text Lang="de">Anhalten</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Aspects
+	-->
+	<Category Name="System" Key="Aspects">
+
+		<TextDefinition Key="Aspects.Graph.Name">
+			<Context>Name of the diagram aspect</Context>
+			<Text Lang="en">Flow Editor</Text>
+			<Text Lang="uk">Редактор Потоку</Text>
+			<Text Lang="fr">Éditeur de flux</Text>
+			<Text Lang="pt-BR">Editor de Fluxo</Text>
+			<Text Lang="zh">流编辑器</Text>
+			<Text Lang="ko">흐름 편집기</Text>
+			<Text Lang="pl">Edytor Flow</Text>
+			<Text Lang="es">Editor de flujo</Text>
+			<Text Lang="it">Editor diagramma di flusso</Text>
+			<Text Lang="ru">Редактор Потока</Text>
+			<Text Lang="de">Flow-Editor</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Explorer.Name">
+			<Context>Name of the explorer aspect</Context>
+			<Text Lang="en">Explorer</Text>
+			<Text Lang="uk">Провідник</Text>
+			<Text Lang="fr">Explorateur</Text>
+			<Text Lang="pt-BR">Explorador</Text>
+			<Text Lang="zh">资源管理器</Text>
+			<Text Lang="ko">익스플로러</Text>
+			<Text Lang="pl">Eksplorer</Text>
+			<Text Lang="es">Explorador</Text>
+			<Text Lang="it">Explorer</Text>
+			<Text Lang="ru">Проводник</Text>
+			<Text Lang="de">Explorer</Text>
+			<Text Lang="ja">エクスプローラ</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Console.Name">
+			<Context>Name of the console aspect</Context>
+			<Text Lang="en">Console</Text>
+			<Text Lang="uk">Консоль</Text>
+			<Text Lang="fr">Console</Text>
+			<Text Lang="pt-BR">Console</Text>
+			<Text Lang="zh">控制台</Text>
+			<Text Lang="ko">콘솔</Text>
+			<Text Lang="pl">Konsola</Text>
+			<Text Lang="es">Consola</Text>
+			<Text Lang="it">Console</Text>
+			<Text Lang="ru">Консоль</Text>
+			<Text Lang="de">Konsole</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Logger.Name" Unused="1">
+			<Context>Name of the logger aspect</Context>
+			<Text Lang="en">Events</Text>
+			<Text Lang="uk">Події</Text>
+			<Text Lang="fr">Événements</Text>
+			<Text Lang="pt-BR">Eventos</Text>
+			<Text Lang="zh">事件</Text>
+			<Text Lang="ko">이벤트</Text>
+			<Text Lang="pl">Zdarzenia</Text>
+			<Text Lang="ru">События</Text>
+			<Text Lang="de">Ereignisse</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.PropertyGrid.Name">
+			<Context>Name of the logger aspect</Context>
+			<Text Lang="en">Properties</Text>
+			<Text Lang="uk">Властивості</Text>
+			<Text Lang="fr">Propriétés</Text>
+			<Text Lang="pt-BR">Propriedades</Text>
+			<Text Lang="zh">属性</Text>
+			<Text Lang="ko">속성</Text>
+			<Text Lang="pl">Właściwości</Text>
+			<Text Lang="es">Propiedades</Text>
+			<Text Lang="it">Proprietà</Text>
+			<Text Lang="ru">Свойства</Text>
+			<Text Lang="de">Eigenschaften</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.DebugMonitor.Name">
+			<Context>Name of the debug monitor aspect</Context>
+			<Text Lang="en">Debug Monitor</Text>
+			<Text Lang="uk">Налагодження монітору</Text>
+			<Text Lang="fr">Moniteur de débogage</Text>
+			<Text Lang="pt-BR">Monitor de depuração</Text>
+			<Text Lang="zh">调试监视器</Text>
+			<Text Lang="ko">디버그 모니터</Text>
+			<Text Lang="pl">Monitor debugowy</Text>
+			<Text Lang="es">Monitor de depuración</Text>
+			<Text Lang="it">Debug Monitor</Text>
+			<Text Lang="ru">Отладка монитора</Text>
+			<Text Lang="de">Debug Monitor</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.Jumpstart.Name" Unused="1">
+			<Context>Name of the jumpstart aspect</Context>
+			<Text Lang="en">Jumpstart</Text>
+			<Text Lang="fr">Relancer</Text>
+			<Text Lang="pt-BR">Alavancar</Text>
+			<Text Lang="zh">快速启动</Text>
+			<Text Lang="ko">점프스타트</Text>
+			<Text Lang="pl">Szybki start</Text>
+			<Text Lang="de">Schnellstart</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Aspects.ContextHelp.Name">
+			<Context>Name of the context help aspect</Context>
+			<Text Lang="en">Context Help</Text>
+			<Text Lang="uk">Контекстна довідка</Text>
+			<Text Lang="fr">Aide contextuelle</Text>
+			<Text Lang="pt-BR">Ajuda Contextual</Text>
+			<Text Lang="zh">关联帮助</Text>
+			<Text Lang="ko">맥락 도움말</Text>
+			<Text Lang="pl">Pomoc kontekstowa</Text>
+			<Text Lang="es">Ayuda contextual</Text>
+			<Text Lang="it">Help contestuale</Text>
+			<Text Lang="ru">Контекстная справка</Text>
+			<Text Lang="de">Kontexthilfe</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Media 3D
+	-->
+	<Category Name="System" Namespace="System.Windows.Media.Media3D" Key="System">
+
+		<TextDefinition Key="Vector3D.X.Caption">
+			<Context>Name of the Vector3D X component</Context>
+			<Text Lang="en">Vector X</Text>
+			<Text Lang="uk">Вектор Х</Text>
+			<Text Lang="fr">Vecteur X</Text>
+			<Text Lang="pt-BR">Vetor X</Text>
+			<Text Lang="zh">向量X</Text>
+			<Text Lang="ko">벡터 X</Text>
+			<Text Lang="pl">Wektor X</Text>
+			<Text Lang="es">Vector X</Text>
+			<Text Lang="it">Vettore X</Text>
+			<Text Lang="ru">Вектор X</Text>
+			<Text Lang="de">Vektor X</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Vector3D.X.Description">
+			<Context>Description of the Vector3D X component</Context>
+			<Text Lang="en">Cartesian x coordinate</Text>
+			<Text Lang="uk">Декартові координати Х</Text>
+			<Text Lang="fr">Coordonnée cartésienne x</Text>
+			<Text Lang="pt-BR">Coordenada da cartesiana X</Text>
+			<Text Lang="zh">笛卡尔X坐标</Text>
+			<Text Lang="ko">직교 X 좌표</Text>
+			<Text Lang="pl">Kartezjańska współrzędna X</Text>
+			<Text Lang="es">Coordenada cartesiana X</Text>
+			<Text Lang="it">Coordinata cartesiana X</Text>
+			<Text Lang="ru">Декартовы координаты X</Text>
+			<Text Lang="de">Kartesische X-Koordinate</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Vector3D.Y.Caption">
+			<Context>Name of the Vector3D Y component</Context>
+			<Text Lang="en">Vector Y</Text>
+			<Text Lang="uk">Вектор Y</Text>
+			<Text Lang="fr">Vecteur Y</Text>
+			<Text Lang="pt-BR">Vetor Y</Text>
+			<Text Lang="zh">向量Y</Text>
+			<Text Lang="ko">벡터 Y</Text>
+			<Text Lang="pl">Wektor Y</Text>
+			<Text Lang="es">Vector Y</Text>
+			<Text Lang="it">Vettore Y</Text>
+			<Text Lang="ru">Вектор Y</Text>
+			<Text Lang="de">Vektor Y</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Vector3D.Y.Description">
+			<Context>Description of the Vector3D Y component</Context>
+			<Text Lang="en">Cartesian y coordinate</Text>
+			<Text Lang="uk">Декартові координати Y</Text>
+			<Text Lang="fr">Coordonnée cartésienne y</Text>
+			<Text Lang="pt-BR">Coordenada da cartesiana Y</Text>
+			<Text Lang="zh">笛卡尔Y坐标</Text>
+			<Text Lang="ko">직교 y 좌표</Text>
+			<Text Lang="pl">Kartezjańska współrzędna Y</Text>
+			<Text Lang="es">Coordenada cartesiana Y</Text>
+			<Text Lang="it">Coordinata cartesiana Y</Text>
+			<Text Lang="ru">Декартовы координаты Y</Text>
+			<Text Lang="de">Kartesische Y-Koordinate</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Vector3D.Z.Caption">
+			<Context>Name of the Vector3D Z component</Context>
+			<Text Lang="en">Vector Z</Text>
+			<Text Lang="uk">Вектор Z</Text>
+			<Text Lang="fr">Vecteur Z</Text>
+			<Text Lang="pt-BR">Vetor Z</Text>
+			<Text Lang="zh">向量Z</Text>
+			<Text Lang="ko">벡터 Z</Text>
+			<Text Lang="pl">Wektor Z</Text>
+			<Text Lang="es">Vector Z</Text>
+			<Text Lang="it">Vettore Z</Text>
+			<Text Lang="ru">Вектор Z</Text>
+			<Text Lang="de">Vektor Z</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Vector3D.Z.Description">
+			<Context>Description of the Vector3D Z component</Context>
+			<Text Lang="en">Cartesian zcoordinate</Text>
+			<Text Lang="uk">Декартові координати Z</Text>
+			<Text Lang="fr">Coordonnée cartésienne z</Text>
+			<Text Lang="pt-BR">Coordenada da cartesiana Z</Text>
+			<Text Lang="zh">笛卡尔Z坐标</Text>
+			<Text Lang="ko">직교 z 좌표</Text>
+			<Text Lang="pl">Kartezjańska współrzędna Z</Text>
+			<Text Lang="es">Coordenada cartesiana Y</Text>
+			<Text Lang="it">Coordinata cartesiana Z</Text>
+			<Text Lang="ru">Декартовы координаты Z</Text>
+			<Text Lang="de">Kartesische Z-Koordinate</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Graph
+	-->
+	<Category Name="System" Namespace=".Graph" Key="Graph">
+
+		<TextDefinition Key="InputPin.EmptyToolTip">
+			<Context>Tooltip to show when hovering an inpin without a displayname</Context>
+			<Text Lang="en">Double-click to view and edit the pin's label.</Text>
+			<Text Lang="uk">Двічі клацніть для перегляду та редагування мітки контакту.</Text>
+			<Text Lang="fr">Double-cliquez pour voir et éditer le nom de l’épingle.</Text>
+			<Text Lang="pt-BR">Clique duas vezes para ver e editar o rótulo do pino.</Text>
+			<Text Lang="zh">双击可查看和编辑Pin的标签。</Text>
+			<Text Lang="ko">더블-클릭하여 고정된 레이블을 수정합니다</Text>
+			<Text Lang="pl">Kliknij dwukrotnie, żeby wyświetlić i zedytować etykietę punktu.</Text>
+			<Text Lang="es">Haz doble clic para ver y editar la etiqueta del conector.</Text>
+			<Text Lang="it">Doppio click per vedere e modificare l'etichetta del connettore.</Text>
+			<Text Lang="ru">Двойной клик для просмотра и редактирования метки контакта.</Text>
+			<Text Lang="de">Doppelklicken Sie um den Pin-Text zu sehen und zu bearbeiten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="OutputPin.EmptyToolTip">
+			<Context>Tooltip to show when hovering an outpin without a displayname</Context>
+			<Text Lang="en">Use a single-click to create branches quickly. Double-click to view and edit the pin's label.</Text>
+			<Text Lang="uk">Клацніть один раз для швидкого створення гілок. Клацніть двічі для прегляду та редагування мітки контакту.</Text>
+			<Text Lang="fr">Faites un seul clic pour créer des branches rapidement. Double-cliquez pour voir et éditer le nom de l’épingle.</Text>
+			<Text Lang="pt-BR">Clique uma vez para criar branchos rapidamente. Clique duas vezes para editar o rótulo do pino.</Text>
+			<Text Lang="zh">单击可快速创建分支。双击可查看和编辑Pin的标签。</Text>
+			<Text Lang="ko">한 번 클릭 하여 분기를 빠르게 만들 수 있습니다. 더블-클릭 하 여 핀의 레이블을 보고 편집 합니다.</Text>
+			<Text Lang="pl">Pojedyncze kliknięcie tworzy szybkie rozgałęzienia. Podwójne kliknięcie wyświetla i edytuje etykietę punktu.</Text>
+			<Text Lang="es">Crea ramas rápidamente con un solo clic. Haz doble clic para ver y editar la etiqueta del conector.</Text>
+			<Text Lang="it">Usa un click singolo per creare un ramo velocemente. Doppio click per vedere e modificare l'etichetta del connettore.</Text>
+			<Text Lang="ru">Используйте один клик для быстрого создания ветвей. Двойной клик для просмотра и редактирования метки контакта.</Text>
+			<Text Lang="de">Mit einem einfachen Klick können Sie schnell Verzweigungen anlegen. Doppelklicken Sie um den Pin-Text zu sehen und zu bearbeiten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ContextMenu.DefaultNode.Description">
+			<Context/>
+			<Text Lang="en">Set this as the default node for quick creation.</Text>
+			<Text Lang="uk">Встановити в якості вітки за замовчуванням.</Text>
+			<Text Lang="fr">Définir ce nœud comme nœud par défaut pour des créations rapides.</Text>
+			<Text Lang="pt-BR">Estabelecer esse como o nó padrão para criação rápida.</Text>
+			<Text Lang="zh">将此设置为快速创建的默认节点。</Text>
+			<Text Lang="ko">이 노드를 빠른 생성의 기본 노드로 설정합니다.</Text>
+			<Text Lang="pl">Ustaw to jako domyślny węzeł.</Text>
+			<Text Lang="es">Hacer de este nodo el predeterminado.</Text>
+			<Text Lang="it">Imposta come snodo di default.</Text>
+			<Text Lang="ru">Установить в качестве узла по умолчанию.</Text>
+			<Text Lang="de">Diesen Knotentyp für die Schnellerzeugung nutzen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ContextMenu.Cancel.Caption">
+			<Context/>
+			<Text Lang="en">Cancel</Text>
+			<Text Lang="uk">Скасувати</Text>
+			<Text Lang="fr">Annuler</Text>
+			<Text Lang="pt-BR">Cancelar</Text>
+			<Text Lang="zh">取消</Text>
+			<Text Lang="ko">취소</Text>
+			<Text Lang="pl">Anuluj</Text>
+			<Text Lang="es">Cancelar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Отменить</Text>
+			<Text Lang="de">Abbrechen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ContainsElements.Caption">
+			<Context>Tooltip for an icon that signals, that this node has content elements</Context>
+			<Text Lang="en">Contains child nodes.</Text>
+			<Text Lang="uk">Містить дочірні вітки</Text>
+			<Text Lang="fr">Contient des nœuds enfants.</Text>
+			<Text Lang="pt-BR">Contém nós infantis</Text>
+			<Text Lang="zh">包含子节点。</Text>
+			<Text Lang="ko">자식 노드 포함</Text>
+			<Text Lang="pl">Zawiera elementy</Text>
+			<Text Lang="es">Contiene elementos</Text>
+			<Text Lang="it">Contiene elementi</Text>
+			<Text Lang="ru">Содержит элементы</Text>
+			<Text Lang="de">Enthält innere Kind-Knoten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ShowGrid.Caption">
+			<Context/>
+			<Text Lang="en">Show grid</Text>
+			<Text Lang="uk">Показати сітку</Text>
+			<Text Lang="fr">Afficher la grille</Text>
+			<Text Lang="pt-BR">Mostrar grade</Text>
+			<Text Lang="zh">显示网格</Text>
+			<Text Lang="ko">그리드 보기</Text>
+			<Text Lang="pl">Pokaż siatkę</Text>
+			<Text Lang="es">Mostrar cuadrícula</Text>
+			<Text Lang="it">Mostra griglia</Text>
+			<Text Lang="ru">Показать сетку</Text>
+			<Text Lang="de">Raster anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ShowGrid.Description">
+			<Context/>
+			<Text Lang="en">Toggles the visibility of the grid in the flow editor's background.</Text>
+			<Text Lang="uk">Вмикає видимість сітки на тлі редактору потоків.</Text>
+			<Text Lang="fr">Active/désactive la visibilité de la grille à l’arrière-plan de l’éditeur de flux.</Text>
+			<Text Lang="pt-BR">Habilita a visibilidade da grade no fluxo do plano de fundo do editor.</Text>
+			<Text Lang="zh">切换流编辑器背景中网格的可见性。</Text>
+			<Text Lang="ko">흐름 편집기의 배경에 그리드의 가시성을 토글합니다.</Text>
+			<Text Lang="pl">Pokaż siatkę</Text>
+			<Text Lang="es">Mostrar cuadrícula</Text>
+			<Text Lang="it">Mostra griglia</Text>
+			<Text Lang="ru">Показать сетку</Text>
+			<Text Lang="de">Schaltet das Raster im Hintergrund des Flow-Editors ein/aus.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SnapToGrid.Caption">
+			<Context/>
+			<Text Lang="en">Snap to grid</Text>
+			<Text Lang="uk">Прив'язати до сітки</Text>
+			<Text Lang="fr">Accrocher à la grille.</Text>
+			<Text Lang="pt-BR">Encaixar na grade</Text>
+			<Text Lang="zh">对齐网格</Text>
+			<Text Lang="ko">그리드에 맞춤</Text>
+			<Text Lang="pl">Przyciągaj do siatki</Text>
+			<Text Lang="es">Ajustar a la rejilla</Text>
+			<Text Lang="it">Attacca alla griglia</Text>
+			<Text Lang="ru">Привязать к сетке</Text>
+			<Text Lang="de">An Raster ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SnapToGrid.Description">
+			<Context/>
+			<Text Lang="en">Toggles the snapping of nodes. They'll snap to grid lines when being dragged around.</Text>
+			<Text Lang="uk">Вмикає переривання віток. Вони перетягнуться до ліній сітки, коли їх перетягнуть.</Text>
+			<Text Lang="fr">Active/désactive l’accrochage des nœuds. Ils s'accrochent sur les lignes de la grille lorsqu'ils sont déplacés manuellement.</Text>
+			<Text Lang="pt-BR"><![CDATA[Habilita o encaixe de nós.
+Eles vão se encaixar nas linhas das grades quandos eles forem arrastados.]]></Text>
+			<Text Lang="zh">切换节点的吸附效果。它们在被拖动时会吸附到网格线。</Text>
+			<Text Lang="ko">노드의 스내핑를 토글합니다. 노드를 드래그 할 때 그리드 선에 맞춥니다.</Text>
+			<Text Lang="pl">Przyciągaj do siatki</Text>
+			<Text Lang="es">Ajustar a la rejilla</Text>
+			<Text Lang="it">Attacca alla griglia</Text>
+			<Text Lang="ru">Привязать к сетке</Text>
+			<Text Lang="de">Schaltet das magnetische Annähern an die Rasterlinien bei der Bewegung von Knoten an/aus.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoItemsInView.Caption">
+			<Context>Text in center of graph if no item is in view</Context>
+			<Text Lang="en">Click here to scroll the content back into view:</Text>
+			<Text Lang="uk">Натисніть тут, щоб прокрутити вміст назад до вигляду:</Text>
+			<Text Lang="fr">Cliquez ici pour réafficher le contenu :</Text>
+			<Text Lang="pt-BR">Clique aqui para rolar o conteúdo de volta em visualização:</Text>
+			<Text Lang="zh">单击此处将内容回滚至视图：</Text>
+			<Text Lang="ko">컨텐츠를 다시 보려면 여기를 클릭:</Text>
+			<Text Lang="pl">Kliknij tutaj, aby przesunąć widok z powrotem do treści:</Text>
+			<Text Lang="it">Clicca qui per riportare la visualizzazione al tuo contenuto:</Text>
+			<Text Lang="de">Klicken Sie hier, um die Ansicht wieder zu ihrem Inhalt zu bewegen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoItems.Caption">
+			<Context>Text in center of graph if there are no items (in flow)</Context>
+			<Text Lang="en">This flow layer is empty. You can create new flow objects via the toolbar or the right-click context menu.</Text>
+			<Text Lang="uk">Цей потоковий шар порожній. Ви можете створити нові об'єкти потоку за допомогою панелі інструментів або контекстного меню правою кнопкою миші.</Text>
+			<Text Lang="fr">Ce calque de flux est vide. Vous pouvez créer de nouveaux objets avec la barre d’outils ou en faisant un clic droit pour accéder au menu contextuel.</Text>
+			<Text Lang="pt-BR">Essa camada de fluxo está vazia. Você pode criar novos objetos de fluxo através de barra de ferramentas or o menu de contexto clicando duas vezes.</Text>
+			<Text Lang="zh">该流层面为空。您可以通过工具栏或右键单击上下文菜单创建新的流对象。</Text>
+			<Text Lang="ko">이 흐름 레이어는 비어있습니다. 툴바 또는 우클릭하여 컨텍스트 메뉴에서 새 흐름 객체를 생성하세요.</Text>
+			<Text Lang="pl">Warstwa flow jest pusta. Możesz stworzyć nowe obiekty przez pasek narzędzi lub w menu po kliknięciu prawym przyciskiem myszy.</Text>
+			<Text Lang="it">Questo livello è vuoto. Puoi creare nuovi oggetti del diagramma tramite la toolbar o cliccando col bottone destro sul menu contestuale.</Text>
+			<Text Lang="de">Diese Flow-Ebene ist leer. Sie können neue Flow-Objekte über die Toolbar oder das Rechtsklick-Menü erstellen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoItemsButSilhouette.Caption">
+			<Context>Text in center of graph if there are no items but the parent silhouette</Context>
+			<Text Lang="en">Click here to scroll the content back into view:</Text>
+			<Text Lang="uk">Натисніть тут, щоб прокрутити вміст назад до вигляду:</Text>
+			<Text Lang="fr">Cliquez ici pour réafficher le contenu :</Text>
+			<Text Lang="pt-BR">Clique aqui para rolar o conteúdo de volta em visualização:</Text>
+			<Text Lang="zh">单击此处将内容回滚至视图：</Text>
+			<Text Lang="ko">컨텐츠를 다시 보려면 여기를 클릭:</Text>
+			<Text Lang="pl">Kliknij tutaj, aby przesunąć widok z powrotem do treści:</Text>
+			<Text Lang="it">Clicca qui per riportare la visualizzazione al tuo contenuto:</Text>
+			<Text Lang="de">Klicken Sie hier, um die Ansicht wieder zu ihrem Inhalt zu bewegen:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Order names
+	-->
+	<Category Name="Ui" Namespace=".Orders">
+
+		<TextDefinition Key="ChangeTextboxText.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Change text</Text>
+			<Text Lang="uk">Змінити текст</Text>
+			<Text Lang="fr">Modifier le texte</Text>
+			<Text Lang="pt-BR">Mudar texto</Text>
+			<Text Lang="zh">更改文本</Text>
+			<Text Lang="ko">텍스트 변경</Text>
+			<Text Lang="pl">Zmień tekst</Text>
+			<Text Lang="es">Cambiar texto</Text>
+			<Text Lang="it">Cambia testo</Text>
+			<Text Lang="ru">Изменить текст</Text>
+			<Text Lang="de">Ändere Text</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AddGraphPin.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Add pin</Text>
+			<Text Lang="uk">Додати контакт</Text>
+			<Text Lang="fr">Ajouter une épingle</Text>
+			<Text Lang="pt-BR">Adicionar pino</Text>
+			<Text Lang="zh">添加Pin</Text>
+			<Text Lang="ko">핀 추가</Text>
+			<Text Lang="pl">Dodaj punkt</Text>
+			<Text Lang="es">Añadir conector</Text>
+			<Text Lang="it">Aggiungi connettore</Text>
+			<Text Lang="ru">Добавить контакт</Text>
+			<Text Lang="de">Neuer Pin</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeGraphConnectionStyle.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Change connection style</Text>
+			<Text Lang="uk">Змінити вид з'єднання</Text>
+			<Text Lang="fr">Changer le style de connexion</Text>
+			<Text Lang="pt-BR">Mudar o estilo de conexão</Text>
+			<Text Lang="zh">更改连接样式</Text>
+			<Text Lang="ko">연결 스타일 변경</Text>
+			<Text Lang="pl">Zmień styl połączenia</Text>
+			<Text Lang="es">Cambiar estilo de conexión</Text>
+			<Text Lang="it">Cambia lo stile di connessione</Text>
+			<Text Lang="ru">Изменить вид соединения</Text>
+			<Text Lang="de">Ändere Verbindungstyp</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveGraphPin.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Remove pin</Text>
+			<Text Lang="uk">Вилучити контакт</Text>
+			<Text Lang="fr">Supprimer l’épingle</Text>
+			<Text Lang="pt-BR">Remover pino</Text>
+			<Text Lang="zh">删除Pin</Text>
+			<Text Lang="ko">핀 제거</Text>
+			<Text Lang="pl">Usuń punkt</Text>
+			<Text Lang="es">Eliminar conector</Text>
+			<Text Lang="it">Rimuovi connettore</Text>
+			<Text Lang="ru">Убрать контакт</Text>
+			<Text Lang="de">Pin löschen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CreateBusinessModel.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Create</Text>
+			<Text Lang="uk">Створити</Text>
+			<Text Lang="fr">Créer</Text>
+			<Text Lang="pt-BR">Criar</Text>
+			<Text Lang="zh">新建</Text>
+			<Text Lang="ko">생성</Text>
+			<Text Lang="pl">Stwórz</Text>
+			<Text Lang="es">Crear</Text>
+			<Text Lang="it">Crea</Text>
+			<Text Lang="ru">Создать</Text>
+			<Text Lang="de">Neu</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Copy.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Copy</Text>
+			<Text Lang="uk">Копіювати</Text>
+			<Text Lang="fr">Copier</Text>
+			<Text Lang="pt-BR">Copiar</Text>
+			<Text Lang="zh">复制</Text>
+			<Text Lang="ko">복사</Text>
+			<Text Lang="pl">Kopiuj</Text>
+			<Text Lang="es">Copiar</Text>
+			<Text Lang="it">Copia</Text>
+			<Text Lang="ru">Копировать</Text>
+			<Text Lang="de">Kopieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Cut.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Cut</Text>
+			<Text Lang="uk">Вирізати</Text>
+			<Text Lang="fr">Couper</Text>
+			<Text Lang="pt-BR">Cortar</Text>
+			<Text Lang="zh">剪切</Text>
+			<Text Lang="ko">잘라내기</Text>
+			<Text Lang="pl">Wytnij</Text>
+			<Text Lang="es">Cortar</Text>
+			<Text Lang="it">Taglia</Text>
+			<Text Lang="ru">Вырезать</Text>
+			<Text Lang="de">Ausschneiden</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Paste.Caption" Unused="1">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Paste</Text>
+			<Text Lang="uk">Вставити</Text>
+			<Text Lang="fr">Coller</Text>
+			<Text Lang="pt-BR">Colar</Text>
+			<Text Lang="zh">粘贴</Text>
+			<Text Lang="ko">붙여넣기</Text>
+			<Text Lang="pl">Wklej</Text>
+			<Text Lang="ru">Вставить</Text>
+			<Text Lang="de">Einfügen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Delete.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Delete</Text>
+			<Text Lang="uk">Видалити</Text>
+			<Text Lang="fr">Supprimer</Text>
+			<Text Lang="pt-BR">Deletar</Text>
+			<Text Lang="zh">删除</Text>
+			<Text Lang="ko">삭제</Text>
+			<Text Lang="pl">Usuń</Text>
+			<Text Lang="es">Eliminar</Text>
+			<Text Lang="it">Elimina</Text>
+			<Text Lang="ru">Удалить</Text>
+			<Text Lang="de">Löschen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Clear.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Clear</Text>
+			<Text Lang="uk">Очистити</Text>
+			<Text Lang="fr">Effacer</Text>
+			<Text Lang="pt-BR">Limpar</Text>
+			<Text Lang="zh">清除</Text>
+			<Text Lang="ko">지우기</Text>
+			<Text Lang="pl">Wyczyść</Text>
+			<Text Lang="es">Borrar</Text>
+			<Text Lang="it">Pulisci</Text>
+			<Text Lang="ru">Очистить</Text>
+			<Text Lang="de">Leeren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Edit.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Edit</Text>
+			<Text Lang="uk">Редагувати</Text>
+			<Text Lang="fr">Éditer</Text>
+			<Text Lang="pt-BR">Editar</Text>
+			<Text Lang="zh">编辑</Text>
+			<Text Lang="ko">편집</Text>
+			<Text Lang="pl">Edytuj</Text>
+			<Text Lang="es">Editar</Text>
+			<Text Lang="it">Modifica</Text>
+			<Text Lang="ru">Редактировать</Text>
+			<Text Lang="de">Editieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModifyProperty.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Modify property</Text>
+			<Text Lang="uk">Змінити властивість</Text>
+			<Text Lang="fr">Modifier la propriété</Text>
+			<Text Lang="pt-BR">Modificar propriedade</Text>
+			<Text Lang="zh">修改属性</Text>
+			<Text Lang="ko">수정 속성</Text>
+			<Text Lang="pl">Modyfikuj właściwość</Text>
+			<Text Lang="es">Modificar propiedad</Text>
+			<Text Lang="it">Modifica proprietà</Text>
+			<Text Lang="ru">Изменить свойства</Text>
+			<Text Lang="de">Ändere Eigenschaft</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Graph.ChangePosition.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Change position</Text>
+			<Text Lang="uk">Змінити розташування</Text>
+			<Text Lang="fr">Modifier la position</Text>
+			<Text Lang="pt-BR">Mudar posição</Text>
+			<Text Lang="zh">更改位置</Text>
+			<Text Lang="ko">위치 변경</Text>
+			<Text Lang="pl">Zmień pozycję</Text>
+			<Text Lang="es">Cambiar posición</Text>
+			<Text Lang="it">Cambia posizione</Text>
+			<Text Lang="ru">Изменить позицию</Text>
+			<Text Lang="de">Ändere Position</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Graph.CreateConnection.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Create connection</Text>
+			<Text Lang="uk">Створити з'єднання</Text>
+			<Text Lang="fr">Créer une connexion</Text>
+			<Text Lang="pt-BR">Criar conexão</Text>
+			<Text Lang="zh">新建连接</Text>
+			<Text Lang="ko">연결 생성</Text>
+			<Text Lang="pl">Stwórz połączenie</Text>
+			<Text Lang="es">Crear conexión</Text>
+			<Text Lang="it">Crea connessione</Text>
+			<Text Lang="ru">Создать соединение</Text>
+			<Text Lang="de">Neue Verbindung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Graph.ReassignConnectionOrder.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Reassign connection order</Text>
+			<Text Lang="uk">Переназначити порядок з'єднання</Text>
+			<Text Lang="fr">Réassigner l’ordre de connexion</Text>
+			<Text Lang="pt-BR">Reatribuir a ordem de conexão</Text>
+			<Text Lang="zh">重新分配连接顺序</Text>
+			<Text Lang="ko">연결 순서 재지정</Text>
+			<Text Lang="pl">Zmień kolejność połączeń</Text>
+			<Text Lang="es">Reasignar orden de conexión</Text>
+			<Text Lang="it">Reimposta ordine di connessione</Text>
+			<Text Lang="ru">Переназначение порядка соединения</Text>
+			<Text Lang="de">Ändere Verbindungsreihenfolge</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Graph.Resize.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Resize</Text>
+			<Text Lang="uk">Змінити розмір</Text>
+			<Text Lang="fr">Redimensionner</Text>
+			<Text Lang="pt-BR">Redimensionar</Text>
+			<Text Lang="zh">调整大小</Text>
+			<Text Lang="ko">크기 조절</Text>
+			<Text Lang="pl">Zmień rozmiar</Text>
+			<Text Lang="es">Cambiar tamaño</Text>
+			<Text Lang="it">Ridimensiona</Text>
+			<Text Lang="ru">Изменить размер</Text>
+			<Text Lang="de">Ändere Größe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeBackgroundColor.Caption">
+			<Context>Change color of selected items</Context>
+			<Text Lang="en">Change color</Text>
+			<Text Lang="uk">Змінити колір</Text>
+			<Text Lang="fr">Modifier la couleur</Text>
+			<Text Lang="pt-BR">Mudar cor</Text>
+			<Text Lang="zh">更改颜色</Text>
+			<Text Lang="ko">색상 변경</Text>
+			<Text Lang="pl">Zmień kolor</Text>
+			<Text Lang="es">Cambiar color</Text>
+			<Text Lang="it">Cambia colore</Text>
+			<Text Lang="ru">Изменить свет</Text>
+			<Text Lang="de">Ändere Farbe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeBackgroundColor.NotAllClaimed">
+			<Context>Change color of selected items</Context>
+			<Text Lang="en"><![CDATA[Can't change [col=#ffa61a][b]{0}[/b][/col] objects that are affected by this operation due to missing claiming.
+			
+Proceed anyway and change only those that are claimed?]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо змінити
+[col=#ffa61a][b]{0}[/b][/col] об'єкти, на які впливає ця операція через відсутність присвоєння.
+
+Все-таки продовжити та змінити лише ті, що присвоєнні? ]]></Text>
+			<Text Lang="fr"><![CDATA[Impossible de modifier [col=#ffa61a][b]{0}[/b][/col] objets affectés par cette opération car ils n’ont pas été revendiqués.
+   
+Continuer quand même et ne modifier que ceux qui sont revendiqués ?]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pode mudar [col=#ffa61a][b]{0}[/b][/col] objetos que são afetados por essa operação devido a falta de reividicação.
+
+Continuar mesmo assim e trocar apenas os objetos reinvidicados? ]]></Text>
+			<Text Lang="zh"><![CDATA[无法更改由于认领失效而受此操作影响的[col=#ffa61a][b]{0}[/b][/col] 个对象。
+			
+当前将只更改已认领的内容，是否继续？]]></Text>
+			<Text Lang="ko"><![CDATA[할당이 누락되어 이 작업의 영향을 받는 [col=#ffa61a][b]{0}[/b][/col]개의 객체를 변경할 수 없습니다.
+
+그래도 진행하고 할당된 항목만 변경하시겠습니까?]]></Text>
+			<Text Lang="de"><![CDATA[[col=#ffa61a][b]{0}[/b][/col] Objekte die von dieser Operation betroffen sind könenn nicht geändert werden (Partition nicht beansprucht).
+			
+Trotzdem weiter machen und nur beschreibbare Objekte ändern?]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeBackgroundColor.TotalCount">
+			<Context>Text for bulk operation result</Context>
+			<Text Lang="en">[col=#ffa61a][b]{0}[/b][/col] objects were processed.</Text>
+			<Text Lang="uk">[col=#ffa61a][b]{0}[/b][/col] об'єкти обраховані</Text>
+			<Text Lang="fr">[col=#ffa61a][b]{0}[/b][/col] objets ont été traités.</Text>
+			<Text Lang="pt-BR">[col=#ffa61a][b]{0}[/b][/col] objetos foram processados.</Text>
+			<Text Lang="zh">已处理 [col=#ffa61a][b]{0}[/b][/col] 个对象。</Text>
+			<Text Lang="ko">[col=#ffa61a][b]{0}[/b][/col] 객체가 처리되었습니다.</Text>
+			<Text Lang="de">[col=#ffa61a][b]{0}[/b][/col] Objekte verarbeitet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeBackgroundColor.SkippedCount">
+			<Context>Text for bulk operation result</Context>
+			<Text Lang="en">[col=#ffa61a][b]{0}[/b][/col] objects that are not claimed were skipped.</Text>
+			<Text Lang="uk">[col=#ffa61a][b]{0}[/b][/col] об'єкти, що пропущені, через відсутність затвердження</Text>
+			<Text Lang="fr">[col=#ffa61a][b]{0}[/b][/col] objets non revendiqués ont été sautés.</Text>
+			<Text Lang="pt-BR">[col=#ffa61a][b]{0}[/b][/col] objetos não reivindicados foram pulados.</Text>
+			<Text Lang="zh">已跳过[col=#ffa61a][b]{0}[/b][/col] 个未认领对象。</Text>
+			<Text Lang="ko">할당되지 않은[col=#ffa61a][b]{0}[/b][/col] 객체가 건너뛰었습니다.</Text>
+			<Text Lang="de">[col=#ffa61a][b]{0}[/b][/col] Objekte die nicht beansprucht sind, wurden übersprungen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeTechnicalName.Caption">
+			<Context>Change the technical name of an items</Context>
+			<Text Lang="en">Change technical name</Text>
+			<Text Lang="uk">Змінити технічну назву</Text>
+			<Text Lang="fr">Modifier le nom technique</Text>
+			<Text Lang="pt-BR">Mudar nome técnico</Text>
+			<Text Lang="zh">更改技术名称</Text>
+			<Text Lang="ko">기술 이름 변경</Text>
+			<Text Lang="pl">Zmień nazwę techniczną</Text>
+			<Text Lang="es">Cambiar nombre técnico</Text>
+			<Text Lang="it">Cambia nome tecnico</Text>
+			<Text Lang="ru">Изменить техническое имя</Text>
+			<Text Lang="de">Ändere technischen Namen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RelocateModel.Caption">
+			<Context>Relocate a model per drag and drop</Context>
+			<Text Lang="en">Move object to another parent</Text>
+			<Text Lang="uk">Перемістити об'єкт до іншого батька</Text>
+			<Text Lang="fr">Déplacer l’objet vers un autre parent</Text>
+			<Text Lang="pt-BR">Mover objeto para outro pai</Text>
+			<Text Lang="zh">将对象移动到另一个父级</Text>
+			<Text Lang="ko">다른 상위 객체 이동</Text>
+			<Text Lang="pl">Przenieś obiekt</Text>
+			<Text Lang="es">Cambiar un objeto de posición</Text>
+			<Text Lang="it">Sposta un oggetto</Text>
+			<Text Lang="ru">Переместить объект</Text>
+			<Text Lang="de">Verschiebe ein Object</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CloneModel.Caption">
+			<Context>Clone a model per drag and drop</Context>
+			<Text Lang="en">Clone object</Text>
+			<Text Lang="uk">Клонувати об'єкт</Text>
+			<Text Lang="fr">Cloner l’objet</Text>
+			<Text Lang="pt-BR">Clonar objeto</Text>
+			<Text Lang="zh">克隆对象</Text>
+			<Text Lang="ko">객체 복제</Text>
+			<Text Lang="pl">Sklonuj obiekt</Text>
+			<Text Lang="es">Clonar un objeto</Text>
+			<Text Lang="it">Clona un oggetto</Text>
+			<Text Lang="ru">Клонировать объект</Text>
+			<Text Lang="de">Erstelle eine Objektkopie</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AlignToGrid.Caption">
+			<Context/>
+			<Text Lang="en">Align to grid</Text>
+			<Text Lang="uk">Вирівняти по сітці</Text>
+			<Text Lang="fr">Aligner à la grille</Text>
+			<Text Lang="pt-BR">Alinhar com a grade</Text>
+			<Text Lang="zh">对齐网格</Text>
+			<Text Lang="ko">그리드에 정렬</Text>
+			<Text Lang="pl">Wyrównaj do siatki</Text>
+			<Text Lang="es">Alinear a la cuadrícula</Text>
+			<Text Lang="it">Allinea alla griglia</Text>
+			<Text Lang="ru">Выровнять по сетке</Text>
+			<Text Lang="de">Am Raster ausrichten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ZoomToBounds.Caption">
+			<Context>zoom to bounding box</Context>
+			<Text Lang="en">Fit content</Text>
+			<Text Lang="uk">Підігнати під вміст</Text>
+			<Text Lang="fr">Ajuster le contenu</Text>
+			<Text Lang="pt-BR">Ajustar conteúdo</Text>
+			<Text Lang="zh">调整内容</Text>
+			<Text Lang="ko">컨텐츠에 맞추기</Text>
+			<Text Lang="pl">Dopasuj treść</Text>
+			<Text Lang="es">Ajustar al contenido</Text>
+			<Text Lang="it">Adatta contenuto</Text>
+			<Text Lang="ru">Подогнать под содержимое</Text>
+			<Text Lang="de">Kompletten Inhalt zeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ZoomToDefault.Caption">
+			<Context>zoom to bounding box</Context>
+			<Text Lang="en">1:1</Text>
+			<Text Lang="uk">1:1</Text>
+			<Text Lang="fr">30.12.1899 01:01:00</Text>
+			<Text Lang="pt-BR">1:1</Text>
+			<Text Lang="zh">1:1</Text>
+			<Text Lang="ko">1:1</Text>
+			<Text Lang="es">1:1</Text>
+			<Text Lang="it">1:1</Text>
+			<Text Lang="ru">1:1</Text>
+			<Text Lang="de">1:1</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ContentBrowser
+	-->
+	<Category Name="Ui">
+
+		<TextDefinition Key="ContentBrowser.UserInfo">
+			<Context>Information on who's working here</Context>
+			<Text Lang="en">{0}</Text>
+			<Text Lang="uk">{0}</Text>
+			<Text Lang="fr">{0}</Text>
+			<Text Lang="pt-BR">{0}</Text>
+			<Text Lang="zh">{0}</Text>
+			<Text Lang="ko">{0}</Text>
+			<Text Lang="pl">{0}</Text>
+			<Text Lang="es">{0}</Text>
+			<Text Lang="it">{0}</Text>
+			<Text Lang="ru">{0}</Text>
+			<Text Lang="de">{0}</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Options Dialog
+	-->
+	<Category Name="System" Key="OptionsDialog">
+
+		<TextDefinition Key="OptionsDialog.Caption">
+			<Context>Text for the dialog Caption</Context>
+			<Text Lang="en">Options</Text>
+			<Text Lang="uk">Параметри</Text>
+			<Text Lang="fr">Options</Text>
+			<Text Lang="pt-BR">Opções</Text>
+			<Text Lang="zh">选项</Text>
+			<Text Lang="ko">옵션</Text>
+			<Text Lang="pl">Opcje</Text>
+			<Text Lang="es">Opciones</Text>
+			<Text Lang="it">Opzioni</Text>
+			<Text Lang="ru">Опции</Text>
+			<Text Lang="de">Optionen</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Explorer
+	-->
+	<Category Name="System" Namespace=".Explorer" Key="ExplorerAspect">
+
+		<TextDefinition Key="Filter.Description" Unused="1">
+			<Context>description of the filter text box</Context>
+			<Text Lang="en">Enter the name of an object or folder you're looking for</Text>
+			<Text Lang="uk">Введіть назву об'єкту або папки яку ви шукаєте</Text>
+			<Text Lang="fr">Saisissez le nom de l’objet ou du dossier que vous cherchez</Text>
+			<Text Lang="pt-BR">Entre o nome de um objeto ou pasta que você está procurando</Text>
+			<Text Lang="zh">输入要查找的对象或文件夹的名称</Text>
+			<Text Lang="ko">찾고 있는 객체 또는 폴더의 이름을 입력</Text>
+			<Text Lang="pl">Wpisz nazwę obiektu lub folderu, którego szukasz</Text>
+			<Text Lang="es">Escribe el nombre del objeto o de la carpeta que estás buscando</Text>
+			<Text Lang="it">Inserisci il nome di un oggetto o della cartella che stai cercando</Text>
+			<Text Lang="ru">Введите имя объекта или папки которую вы ищите</Text>
+			<Text Lang="de">Geben Sie einen Text ein. Nur Objekte oder Ordner deren Namen den eingegebenen Text enthalten werden angezeigt.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Dialogs
+	-->
+	<Category Name="Ui" Namespace=".ProgressDialog">
+
+		<TextDefinition Key="SaveToFile.Caption">
+			<Context/>
+			<Text Lang="en">Save to file...</Text>
+			<Text Lang="uk">Зберегти у файл...</Text>
+			<Text Lang="fr">Enregistrer dans un fichier...</Text>
+			<Text Lang="pt-BR">Salvar em arquivo...</Text>
+			<Text Lang="zh">保存到文件...</Text>
+			<Text Lang="ko">파일로 저장...</Text>
+			<Text Lang="pl">Zapisz do pliku...</Text>
+			<Text Lang="es">Guardar en archivo...</Text>
+			<Text Lang="it">Salva su file...</Text>
+			<Text Lang="ru">Сохранить в файл...</Text>
+			<Text Lang="de">Speichern unter...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CopyToClipboard.Caption">
+			<Context/>
+			<Text Lang="en">Copy to clipboard</Text>
+			<Text Lang="uk">Копіювати в буфер обміну</Text>
+			<Text Lang="fr">Copier dans le presse-papier</Text>
+			<Text Lang="pt-BR">Copiar para área de transferência</Text>
+			<Text Lang="zh">复制到剪贴板</Text>
+			<Text Lang="ko">클립 보드에 복사</Text>
+			<Text Lang="pl">Skopiuj do schowka</Text>
+			<Text Lang="es">Copiar al portapapeles</Text>
+			<Text Lang="it">Copia negli appunti</Text>
+			<Text Lang="ru">Скопировать в буфер обмена</Text>
+			<Text Lang="de">In die Zwischenablage kopieren</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Dialogs
+	-->
+	<Category Name="Ui" Namespace=".Dialogs">
+
+		<TextDefinition Key="Cancel.Caption">
+			<Context/>
+			<Text Lang="en">Cancel</Text>
+			<Text Lang="uk">Скасувати</Text>
+			<Text Lang="fr">Annuler</Text>
+			<Text Lang="pt-BR">Cancelar</Text>
+			<Text Lang="zh">取消</Text>
+			<Text Lang="ko">취소</Text>
+			<Text Lang="pl">Anuluj</Text>
+			<Text Lang="es">Cancelar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Отмена</Text>
+			<Text Lang="de">Abbrechen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="OK.Caption">
+			<Context/>
+			<Text Lang="en">OK</Text>
+			<Text Lang="uk">ОК</Text>
+			<Text Lang="fr">OK</Text>
+			<Text Lang="pt-BR">Ok</Text>
+			<Text Lang="zh">好的</Text>
+			<Text Lang="ko">확인</Text>
+			<Text Lang="pl">OK</Text>
+			<Text Lang="es">Aceptar</Text>
+			<Text Lang="it">OK</Text>
+			<Text Lang="ru">ОК</Text>
+			<Text Lang="de">OK</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.Title">
+			<Context/>
+			<Text Lang="en">Error</Text>
+			<Text Lang="uk">Помилка</Text>
+			<Text Lang="fr">Erreur</Text>
+			<Text Lang="pt-BR">Erro</Text>
+			<Text Lang="zh">错误</Text>
+			<Text Lang="ko">오류</Text>
+			<Text Lang="pl">Błąd</Text>
+			<Text Lang="es">Error</Text>
+			<Text Lang="it">Errore</Text>
+			<Text Lang="ru">Ошибка</Text>
+			<Text Lang="de">Fehler</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.Title.Caption">
+			<Context/>
+			<Text Lang="en">Save in Project</Text>
+			<Text Lang="uk">Зберегти в проекті</Text>
+			<Text Lang="fr">Sauvegarder dans le Projet</Text>
+			<Text Lang="pt-BR">Salvar no projeto</Text>
+			<Text Lang="zh">保存至项目</Text>
+			<Text Lang="ko">프로젝트 저장</Text>
+			<Text Lang="pl">Zapisz w Projekcie</Text>
+			<Text Lang="es">Guardar en el proyecto</Text>
+			<Text Lang="it">Salva in Progetti</Text>
+			<Text Lang="ru">Сохранить в Проекте</Text>
+			<Text Lang="de">In Projekt speichern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.InfoText.Caption">
+			<Context/>
+			<Text Lang="en">Please choose a project path.</Text>
+			<Text Lang="uk">Будь ласка, виберіть шлях до проекту.</Text>
+			<Text Lang="fr">Veuillez sélectionner un chemin de projet.</Text>
+			<Text Lang="pt-BR">Por favor escolha um caminho do projeto</Text>
+			<Text Lang="zh">请选择项目路径。</Text>
+			<Text Lang="ko">프로젝트의 경로를 선택하여 주십시오.</Text>
+			<Text Lang="pl">Prosimy wybrać ścieżkę projektu</Text>
+			<Text Lang="es">Elige una nueva ruta para el archivo.</Text>
+			<Text Lang="it">Per favore scegli un percorso per il progetto.</Text>
+			<Text Lang="ru">Пожалуйста, выберите путь к проекту.</Text>
+			<Text Lang="de">Bitte wählen Sie einen Projektpfad.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.Name">
+			<Context/>
+			<Text Lang="en">Name:</Text>
+			<Text Lang="uk">Назва:</Text>
+			<Text Lang="fr">Nom :</Text>
+			<Text Lang="pt-BR">Nome:</Text>
+			<Text Lang="zh">名称：</Text>
+			<Text Lang="ko">이름:</Text>
+			<Text Lang="pl">Nazwa:</Text>
+			<Text Lang="es">Nombre:</Text>
+			<Text Lang="it">Nome:</Text>
+			<Text Lang="ru">Имя:</Text>
+			<Text Lang="de">Name:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.CreateFolder.Caption">
+			<Context/>
+			<Text Lang="en">Create new folder...</Text>
+			<Text Lang="uk">Створити нову папку…</Text>
+			<Text Lang="fr">Créer un nouveau dossier...</Text>
+			<Text Lang="pt-BR">Criar nova pasta...</Text>
+			<Text Lang="zh">创建新文件夹...</Text>
+			<Text Lang="ko">새 폴더 생성…</Text>
+			<Text Lang="pl">Stwórz nowy folder...</Text>
+			<Text Lang="es">Crear nueva carpeta...</Text>
+			<Text Lang="it">Crea nuova cartella…</Text>
+			<Text Lang="ru">Создать новую папку…</Text>
+			<Text Lang="de">Neuen Ordner erstellen...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.CreateFolder.Description">
+			<Context/>
+			<Text Lang="en">Creates a new folder in the selected folder.</Text>
+			<Text Lang="uk">Створює нову папку в вибраній папці.</Text>
+			<Text Lang="fr">Crée un nouveau dossier dans le dossier sélectionné.</Text>
+			<Text Lang="pt-BR">Cria uma nova pasta na pasta selecionada.</Text>
+			<Text Lang="zh">在所选文件夹中创建新文件夹。</Text>
+			<Text Lang="ko">선택한 폴더에 새 폴더를 생성합니다.</Text>
+			<Text Lang="pl">Tworzy nowy folder w wybranym folderze.</Text>
+			<Text Lang="es">Crea una nueva carpeta en la carpeta seleccionada</Text>
+			<Text Lang="it">Crea una nuova cartella nella cartella selezionata</Text>
+			<Text Lang="ru">Создает новую папку в выбранной папке</Text>
+			<Text Lang="de">Erzeugt einen neuen Unterordner im ausgewählten Ordner.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.CreateFolderDialog.Title">
+			<Context/>
+			<Text Lang="en">Create new folder...</Text>
+			<Text Lang="uk">Створити нову папку…</Text>
+			<Text Lang="fr">Créer un nouveau dossier...</Text>
+			<Text Lang="pt-BR">Criar nova pasta...</Text>
+			<Text Lang="zh">创建新文件夹...</Text>
+			<Text Lang="ko">새 폴더 생성…</Text>
+			<Text Lang="pl">Stwórz nowy folder...</Text>
+			<Text Lang="es">Crear nueva carpeta...</Text>
+			<Text Lang="it">Crea nuova cartella…</Text>
+			<Text Lang="ru">Создать новую папку…</Text>
+			<Text Lang="de">Neuen Ordner erstellen...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.CreateFolderDialog.Text">
+			<Context/>
+			<Text Lang="en">Please enter a valid name for the new folder:</Text>
+			<Text Lang="uk">Будь ласка, введіть дійсну назву для нової папки:</Text>
+			<Text Lang="fr">Veuillez saisir un nom valide pour le nouveau dossier :</Text>
+			<Text Lang="pt-BR">Por favor entre um nome válido para a nova pasta:</Text>
+			<Text Lang="zh">请输入新文件夹的名称：</Text>
+			<Text Lang="ko">새 폴더의 유효한 이름을 입력하십시오:</Text>
+			<Text Lang="pl">Proszę wpisać poprawną nazwę nowego folderu:</Text>
+			<Text Lang="es">Introduce un nombre para la nueva carpeta:</Text>
+			<Text Lang="it">Per favore inserisci un nome valido per la nuova cartella:</Text>
+			<Text Lang="ru">Пожалуйста, введите разрешенное имя для новой папки:</Text>
+			<Text Lang="de">Bitte geben Sie einen gültigen Namen für den neuen Ordner ein:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StoreInProject.NoTargetAvailable.Text">
+			<Context/>
+			<Text Lang="en">There is no claimed partition available where this object could be created.</Text>
+			<Text Lang="uk">Не існує присвоєного розділу в якому поточний об'єкт міг би створитися.</Text>
+			<Text Lang="fr">Aucune partition revendiquée disponible à l’endroit où cet objet pourrait être créé.</Text>
+			<Text Lang="pt-BR">Não há partição reivindicada disponível onde este objeto poderia ser criado.</Text>
+			<Text Lang="zh">没有可用于创建此对象的认领分区。</Text>
+			<Text Lang="ko">이 개체를 만들 수 있는 사용 가능한 파티션이 없습니다.</Text>
+			<Text Lang="pl">Nie można określić dostępności partycji, na której obiekt miał zostać utworzony.</Text>
+			<Text Lang="es">No tienes bloqueada ninguna partición en la que puedas crear este objeto.</Text>
+			<Text Lang="it">Non esiste una partizione disponibile dove questo oggetto dovrebbe essere creato.</Text>
+			<Text Lang="ru">Не существует присвоенного раздела где мог бы быть создан данный объект.</Text>
+			<Text Lang="de">Sie haben keine Projekt-Partition beansprucht, in der dieses Objekt abgelegt werden kann.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.Title.Caption">
+			<Context/>
+			<Text Lang="en">Please choose</Text>
+			<Text Lang="uk">Будь ласка, оберіть</Text>
+			<Text Lang="fr">Veuillez choisir</Text>
+			<Text Lang="pt-BR">Por favor escolha</Text>
+			<Text Lang="zh">请选择</Text>
+			<Text Lang="ko">선택하십시오</Text>
+			<Text Lang="pl">Proszę wybrać</Text>
+			<Text Lang="es">Por favor, elige</Text>
+			<Text Lang="it">Per favore scegli</Text>
+			<Text Lang="ru">Пожалуйста, выберите</Text>
+			<Text Lang="de">Bitte auswählen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.InfoText.Caption">
+			<Context/>
+			<Text Lang="en">Please choose an object to reference.</Text>
+			<Text Lang="uk">Будь ласка, оберіть об'єкт для посилання.</Text>
+			<Text Lang="fr">Veuillez sélectionner un objet à référencer.</Text>
+			<Text Lang="pt-BR">Por favor escolha um objeto como referência</Text>
+			<Text Lang="zh">请选择要引用的对象。</Text>
+			<Text Lang="ko">참조할 객체를 선택하십시오</Text>
+			<Text Lang="pl">Proszę wybrać obiekt do odniesienia.</Text>
+			<Text Lang="es">Elige el objeto a referenciar.</Text>
+			<Text Lang="it">Per favore scegli un oggetto da referenziare.</Text>
+			<Text Lang="ru">Пожалуйста, выберите объект для ссылки.</Text>
+			<Text Lang="de">Wählen Sie ein Objekt als Referenz.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.IsHierarchical.Caption">
+			<Context/>
+			<Text Lang="en">Show hierarchy</Text>
+			<Text Lang="uk">Показати ієрархію</Text>
+			<Text Lang="fr">Afficher la hiérarchie</Text>
+			<Text Lang="pt-BR">Mostrar hierarquia</Text>
+			<Text Lang="zh">显示层次结构</Text>
+			<Text Lang="ko">계층 보기</Text>
+			<Text Lang="pl">Pokaż hierarchię</Text>
+			<Text Lang="es">Mostrar jerarquía</Text>
+			<Text Lang="it">Mostra gerarchia</Text>
+			<Text Lang="ru">Показать иерархию</Text>
+			<Text Lang="de">Hierarchie anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SortAlphabetical.Caption">
+			<Context/>
+			<Text Lang="en">Sort alphabetically</Text>
+			<Text Lang="uk">Відсортувати за алфавітом</Text>
+			<Text Lang="fr">Classer par ordre alphabétique</Text>
+			<Text Lang="pt-BR">Ordernar alfabeticamente</Text>
+			<Text Lang="zh">按字母顺序排序</Text>
+			<Text Lang="ko">알파벳 순서로 정렬</Text>
+			<Text Lang="pl">Sortuj alfabetycznie</Text>
+			<Text Lang="es">Ordenar alfabéticamente</Text>
+			<Text Lang="it">Ordina alfabeticamente</Text>
+			<Text Lang="ru">Отсортировать по алфавиту</Text>
+			<Text Lang="de">Alphabetisch sortieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.Search.Caption">
+			<Context/>
+			<Text Lang="en">Filter:</Text>
+			<Text Lang="uk">Фільтр:</Text>
+			<Text Lang="fr">Filtre :</Text>
+			<Text Lang="pt-BR">Filtrar:</Text>
+			<Text Lang="zh">筛选器：</Text>
+			<Text Lang="ko">필터:</Text>
+			<Text Lang="pl">Filtr:</Text>
+			<Text Lang="es">Filtrar:</Text>
+			<Text Lang="it">Filtro:</Text>
+			<Text Lang="ru">Фильтр:</Text>
+			<Text Lang="de">Filter:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.RecentlyUsed.Caption">
+			<Context/>
+			<Text Lang="en">Recently used</Text>
+			<Text Lang="uk">Недавно використовувані</Text>
+			<Text Lang="fr">Utilisé récemment</Text>
+			<Text Lang="pt-BR">Recentemente usado</Text>
+			<Text Lang="zh">最近使用</Text>
+			<Text Lang="ko">최근 사용한 객체</Text>
+			<Text Lang="pl">Ostatnio używane</Text>
+			<Text Lang="es">Usados recientemente</Text>
+			<Text Lang="it">Usati di recente</Text>
+			<Text Lang="ru">Недавно использованные</Text>
+			<Text Lang="de">Zuletzt genutzt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.Add.Caption">
+			<Context/>
+			<Text Lang="en">Add</Text>
+			<Text Lang="uk">Додати</Text>
+			<Text Lang="fr">Ajouter</Text>
+			<Text Lang="pt-BR">Adicionar</Text>
+			<Text Lang="zh">添加</Text>
+			<Text Lang="ko">추가</Text>
+			<Text Lang="pl">Dodaj</Text>
+			<Text Lang="es">Añadir</Text>
+			<Text Lang="it">Aggiungi</Text>
+			<Text Lang="ru">Добавить</Text>
+			<Text Lang="de">Hinzufügen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.Remove.Caption">
+			<Context/>
+			<Text Lang="en">Remove</Text>
+			<Text Lang="uk">Забрати</Text>
+			<Text Lang="fr">Supprimer</Text>
+			<Text Lang="pt-BR">Remover</Text>
+			<Text Lang="zh">删除</Text>
+			<Text Lang="ko">제거</Text>
+			<Text Lang="pl">Usuń</Text>
+			<Text Lang="es">Eliminar</Text>
+			<Text Lang="it">Rimuovi</Text>
+			<Text Lang="ru">Убрать</Text>
+			<Text Lang="de">Entfernen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.AddAll.Caption">
+			<Context/>
+			<Text Lang="en">Add all</Text>
+			<Text Lang="uk">Додати все</Text>
+			<Text Lang="fr">Tout ajouter</Text>
+			<Text Lang="pt-BR">Adicionar todos</Text>
+			<Text Lang="zh">全部添加</Text>
+			<Text Lang="ko">모두 추가</Text>
+			<Text Lang="pl">Dodaj wszystko</Text>
+			<Text Lang="es">Añadir todo</Text>
+			<Text Lang="it">Aggiungi tutto</Text>
+			<Text Lang="ru">Добавить все</Text>
+			<Text Lang="de">Alle hinzufügen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.RemoveAll.Caption">
+			<Context/>
+			<Text Lang="en">Remove all</Text>
+			<Text Lang="uk">Забрати все</Text>
+			<Text Lang="fr">Tout supprimer</Text>
+			<Text Lang="pt-BR">Remover todos</Text>
+			<Text Lang="zh">全部删除</Text>
+			<Text Lang="ko">모두 제거</Text>
+			<Text Lang="pl">Usuń wszystko</Text>
+			<Text Lang="es">Eliminar todo</Text>
+			<Text Lang="it">Rimuovi tutto</Text>
+			<Text Lang="ru">Убрать все</Text>
+			<Text Lang="de">Alle entfernen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SourceTitle.Caption">
+			<Context/>
+			<Text Lang="en">Available objects</Text>
+			<Text Lang="uk">Доступні об'єкти</Text>
+			<Text Lang="fr">Objets disponibles</Text>
+			<Text Lang="pt-BR">Objetos disponíveis</Text>
+			<Text Lang="zh">可用对象</Text>
+			<Text Lang="ko">사용 가능한 객체</Text>
+			<Text Lang="pl">Dostępne podmioty</Text>
+			<Text Lang="es">Entidades disponibles</Text>
+			<Text Lang="it">Entità disponibili</Text>
+			<Text Lang="ru">Доступные лица</Text>
+			<Text Lang="de">Vorhandene Objekte</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.TargetTitle.Caption">
+			<Context/>
+			<Text Lang="en">Selected objects</Text>
+			<Text Lang="uk">Вибрані об'єкти</Text>
+			<Text Lang="fr">Objets sélectionnés</Text>
+			<Text Lang="pt-BR">Objetos selecionados</Text>
+			<Text Lang="zh">选择的对象</Text>
+			<Text Lang="ko">선택한 객체</Text>
+			<Text Lang="pl">Wybrane podmioty</Text>
+			<Text Lang="es">Entidades escogidas</Text>
+			<Text Lang="it">Entità selezionate</Text>
+			<Text Lang="ru">Выбранные лица</Text>
+			<Text Lang="de">Ausgewählte Objekte</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SelectObject.Caption">
+			<Context/>
+			<Text Lang="de">Wählen Sie ein Objekt.</Text>
+			<Text Lang="uk">Будь ласка, виберіть об'єкт.</Text>
+			<Text Lang="fr">Veuillez sélectionner un objet.</Text>
+			<Text Lang="pt-BR">Por favor escolha um objeto.</Text>
+			<Text Lang="zh">请选择一个对象。</Text>
+			<Text Lang="ko">객체를 선택하십시오.</Text>
+			<Text Lang="pl">Proszę wybrać obiekt.</Text>
+			<Text Lang="es">Por favor, elige un objeto.</Text>
+			<Text Lang="it">Per favore scegli un oggetto.</Text>
+			<Text Lang="ru">Пожалуйста, выберите объект.</Text>
+			<Text Lang="en">Please choose an object.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SelectSpeaker.Caption">
+			<Context>Used in Dialogfragment Modelsheet</Context>
+			<Text Lang="de">Wählen Sie einen Sprecher.</Text>
+			<Text Lang="uk">Будь ласка, оберіть мовця.</Text>
+			<Text Lang="fr">Veuillez sélectionner un locuteur.</Text>
+			<Text Lang="pt-BR">Por favor escolha um auto-falante.</Text>
+			<Text Lang="zh">请选择一个发言者。</Text>
+			<Text Lang="ko">연설자를 선택하십시오.</Text>
+			<Text Lang="pl">Proszę wybrać mówcę.</Text>
+			<Text Lang="es">Por favor, elige un emisor.</Text>
+			<Text Lang="it">Per favore scegli un attore.</Text>
+			<Text Lang="ru">Пожалуйста, выберите говорящего.</Text>
+			<Text Lang="en">Please choose a speaker.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SelectPreviewImage.Caption">
+			<Context>Used in modelsheets</Context>
+			<Text Lang="de">Wählen Sie ein Vorschaubild.</Text>
+			<Text Lang="uk">Будь ласка, оберіть зображення для попереднього перекладу.</Text>
+			<Text Lang="fr">Veuillez sélectionner une image d’aperçu.</Text>
+			<Text Lang="pt-BR">Por favor escolha uma imagem  de pré-visualização.</Text>
+			<Text Lang="zh">请选择预览图像。</Text>
+			<Text Lang="ko">미리보기 이미지를 선택하십시오.</Text>
+			<Text Lang="pl">Proszę wybrać obrazek podglądu.</Text>
+			<Text Lang="es">Por favor, elige una imagen de vista previa</Text>
+			<Text Lang="it">Per favore scegli un'immagine di anteprima.</Text>
+			<Text Lang="ru">Пожалуйста, выберите изображение для предварительного просмотра.</Text>
+			<Text Lang="en">Please choose a preview image.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SelectLocationIcon.Caption">
+			<Context>Used in Location Editor Modelsheet</Context>
+			<Text Lang="de">Wählen Sie ein Vorschaubild.</Text>
+			<Text Lang="uk">Будь ласка, оберіть зображення для попереднього перекладу.</Text>
+			<Text Lang="fr">Veuillez sélectionner une image d’aperçu.</Text>
+			<Text Lang="pt-BR">Por favor escolha uma imagem  de pré-visualização.</Text>
+			<Text Lang="zh">请选择预览图像。</Text>
+			<Text Lang="ko">미리보기 이미지를 선택하십시오.</Text>
+			<Text Lang="pl">Proszę wybrać obrazek podglądu.</Text>
+			<Text Lang="es">Por favor, elige una imagen de vista previa</Text>
+			<Text Lang="it">Per favore scegli un'immagine di anteprima.</Text>
+			<Text Lang="ru">Пожалуйста, выберите изображение для предварительного просмотра.</Text>
+			<Text Lang="en">Please choose a preview image.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.SelectBackground.Caption">
+			<Context>Used in Location Editor Modelsheet</Context>
+			<Text Lang="de">Wählen Sie ein Hintergrundbild.</Text>
+			<Text Lang="uk">Будь ласка, оберіть фонове зображення.</Text>
+			<Text Lang="fr">Veuillez sélectionner une image d’arrière-plan.</Text>
+			<Text Lang="pt-BR">Por favor escolha uma imagem de plano de fundo.</Text>
+			<Text Lang="zh">请选择背景图像。</Text>
+			<Text Lang="ko">배경 이미지를 선택하십시오.</Text>
+			<Text Lang="pl">Proszę wybrać obrazek tła.</Text>
+			<Text Lang="es">Por favor, elige una imagen de fondo</Text>
+			<Text Lang="it">Per favore scegli un'immagine di sfondo.</Text>
+			<Text Lang="ru">Пожалуйста, выберите фоновый рисунок.</Text>
+			<Text Lang="en">Please choose a background image.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.NoSelection.Caption">
+			<Context/>
+			<Text Lang="en">No selection</Text>
+			<Text Lang="uk">Область виділення порожня</Text>
+			<Text Lang="fr">Aucune sélection</Text>
+			<Text Lang="pt-BR">Sem seleção</Text>
+			<Text Lang="zh">未选择</Text>
+			<Text Lang="ko">선택 사항 없음</Text>
+			<Text Lang="pl">Brak zaznaczenia</Text>
+			<Text Lang="es">Sin selección</Text>
+			<Text Lang="it">Nessuna selezione</Text>
+			<Text Lang="ru">Область выделения пуста</Text>
+			<Text Lang="de">Keine Auswahl</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.Check">
+			<Context/>
+			<Text Lang="en">Ctrl+click to change only this element</Text>
+			<Text Lang="uk">Ctrl+ЛКМ, щоб змінити лише цей елемент</Text>
+			<Text Lang="fr">Ctrl+clic pour modifier uniquement cet élément</Text>
+			<Text Lang="pt-BR">Ctrl+click para mudar apenas este elemento</Text>
+			<Text Lang="zh">按住Ctrl并单击可仅更改此元素</Text>
+			<Text Lang="ko">이 요소만 변경하려면 Ctrl+클릭</Text>
+			<Text Lang="pl">Ctrl+klik, żeby zmienić tylko ten element</Text>
+			<Text Lang="it">Ctrl+Click per cambiare solo questo elemento</Text>
+			<Text Lang="de">Strg+Klick um nur dieses Element zu ändern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ModelPicker.CheckInverse">
+			<Context/>
+			<Text Lang="en">Ctrl+click to change this element and all children</Text>
+			<Text Lang="uk">Ctrl+ЛКМ, щоб змінити цей та всі дочірні елементи</Text>
+			<Text Lang="fr">Ctrl+clic pour modifier cet élément et tous les enfants</Text>
+			<Text Lang="pt-BR">Ctrl+click para mudar esse elemente e todas suas crianças</Text>
+			<Text Lang="zh">按住Ctrl并单击可更改此元素及所有子元素</Text>
+			<Text Lang="ko">이 요소와 모든 자식을 변경하려면 Ctrl+클릭</Text>
+			<Text Lang="pl">Ctrl+klik, żeby zmienić tylko ten element i wszystkie dziedziczne.</Text>
+			<Text Lang="it">Ctrl+Click per cambiare questo elemento e tutti i figli</Text>
+			<Text Lang="de">Strg+Klick um dieses Element und seine Kinder zu ändern</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Navigator
+	-->
+	<Category Name="Ui" Namespace=".Navigator">
+
+		<TextDefinition Key="Sort.Caption">
+			<Context/>
+			<Text Lang="en">View options</Text>
+			<Text Lang="uk">Показати налаштування</Text>
+			<Text Lang="fr">Voir les options</Text>
+			<Text Lang="pt-BR">Ver opções</Text>
+			<Text Lang="zh">视图选项</Text>
+			<Text Lang="ko">뷰 옵션</Text>
+			<Text Lang="pl">Zobacz opcje</Text>
+			<Text Lang="es">Ver opciones</Text>
+			<Text Lang="it">Mostra opzioni</Text>
+			<Text Lang="ru">Показать настройки</Text>
+			<Text Lang="de">Ansichtsoptionen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.PartitionRoots">
+			<Context/>
+			<Text Lang="en">Show only partition roots</Text>
+			<Text Lang="uk">Показувати тільки коріння розділу</Text>
+			<Text Lang="fr">Afficher uniquement les racines des partitions</Text>
+			<Text Lang="pt-BR">Mostrar apenas raizes da partição</Text>
+			<Text Lang="zh">仅显示分区根</Text>
+			<Text Lang="ko">최상위 파티션만 보기</Text>
+			<Text Lang="pl">Pokaż tylko partycje</Text>
+			<Text Lang="es">Mostrar sólo las particiones raíz</Text>
+			<Text Lang="it">Mostra solo partizioni di origine</Text>
+			<Text Lang="ru">Показывать только корни раздела</Text>
+			<Text Lang="de">Nur Partitionen anzeigen</Text>
+			<Text Lang="ja">パーティションの元表示だけ</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowLeafs">
+			<Context/>
+			<Text Lang="en">Show leafs (objects w/o children)</Text>
+			<Text Lang="uk">Показувати листи (об'єкти без дочірних елементів)</Text>
+			<Text Lang="fr">Afficher les feuilles (objets sans enfants)</Text>
+			<Text Lang="pt-BR">Mostrar folhas (objetos com crianças)</Text>
+			<Text Lang="zh">显示叶（无子对象）</Text>
+			<Text Lang="ko">하위 보기(자식을 위한 객체)</Text>
+			<Text Lang="pl">Pokaż węzły końcowe</Text>
+			<Text Lang="es">Mostrar hojas</Text>
+			<Text Lang="it">Mostra foglie</Text>
+			<Text Lang="ru">Показывать листы</Text>
+			<Text Lang="de">Endknoten anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowDocumentNumber">
+			<Context/>
+			<Text Lang="en">Show numbering in document objects</Text>
+			<Text Lang="uk">Показувати нумерацію в об’єктах документа</Text>
+			<Text Lang="fr">Afficher la numérotation des objets du document</Text>
+			<Text Lang="pt-BR">Mostrar numeração em objetos de documento</Text>
+			<Text Lang="zh">在文档对象中显示编号</Text>
+			<Text Lang="ko">문서 개체의 번호 지정 표시</Text>
+			<Text Lang="pl">Pokaż numerację działów dokumentu</Text>
+			<Text Lang="it">Mostra numero dei capitoli del documento</Text>
+			<Text Lang="de">Kapitelnummerierung in Dokument anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowUnrelatedJourneyPoints">
+			<Context/>
+			<Text Lang="en">Show empty journey points</Text>
+			<Text Lang="uk">Показувати порожні точки Journey</Text>
+			<Text Lang="fr">Afficher les points de passage vides</Text>
+			<Text Lang="pt-BR">Mostrar pontos de jornada vazios</Text>
+			<Text Lang="zh">显示空旅程点</Text>
+			<Text Lang="ko">빈 여정 지점 표시</Text>
+			<Text Lang="pl">Pokaż puste punkty tury</Text>
+			<Text Lang="de">Zeige Journey Points ohne Inhalt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowStructure">
+			<Context/>
+			<Text Lang="en">Show folder structure only</Text>
+			<Text Lang="uk">Показувати тільки структуру папок</Text>
+			<Text Lang="fr">Afficher uniquement la structure du dossier</Text>
+			<Text Lang="pt-BR">Mostrar apenas estrutura da pasta</Text>
+			<Text Lang="zh">仅显示文件夹结构</Text>
+			<Text Lang="ko">폴더 구조만 표시</Text>
+			<Text Lang="pl">Pokaż tylko strukturę</Text>
+			<Text Lang="es">Mostrar solo la estructura</Text>
+			<Text Lang="it">Mostra solo struttura</Text>
+			<Text Lang="ru">Показывать только структуру</Text>
+			<Text Lang="de">Nur Ordnerstruktur anzeigen</Text>
+			<Text Lang="ja">構造表示だけ</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.HierarchicalClaimState">
+			<Context/>
+			<Text Lang="en">Show hierarchical claiming states</Text>
+			<Text Lang="uk">Показувати ієрархічні стани присвоєння.</Text>
+			<Text Lang="fr">Afficher les états hiérarchiques de revendication</Text>
+			<Text Lang="pt-BR">Mostrar estados de reivindicação hierárquicos</Text>
+			<Text Lang="zh">显示分级认领状态</Text>
+			<Text Lang="ko">계층적 할당 상태 표시</Text>
+			<Text Lang="pl">Pokaż status partycji macierzystych</Text>
+			<Text Lang="es">Mostrar estado de particiones padre bloqueadas</Text>
+			<Text Lang="it">Mostra stato delle partizioni padre</Text>
+			<Text Lang="ru">Показывать состояние присвоенности родительских разделов</Text>
+			<Text Lang="de">Zeige hierarchische Partitions-Icons</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowColors">
+			<Context/>
+			<Text Lang="en">Show object colors</Text>
+			<Text Lang="uk">Показувати колір об'єкту</Text>
+			<Text Lang="fr">Afficher la couleur des objets</Text>
+			<Text Lang="pt-BR">Mostrar cores dos objetos</Text>
+			<Text Lang="zh">显示对象颜色</Text>
+			<Text Lang="ko">객체 색 보기</Text>
+			<Text Lang="pl">Pokaż kolor obiektu</Text>
+			<Text Lang="es">Mostrar color del objeto</Text>
+			<Text Lang="it">Mostra colore dell'oggetto</Text>
+			<Text Lang="ru">Показывать цвет объекта</Text>
+			<Text Lang="de">Objektfarben anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowClaimingStates">
+			<Context/>
+			<Text Lang="en">Show partition states</Text>
+			<Text Lang="uk">Показувати стан розділів</Text>
+			<Text Lang="fr">Afficher l’état des partitions</Text>
+			<Text Lang="pt-BR">Mostrar estados das partições</Text>
+			<Text Lang="zh">显示分区状态</Text>
+			<Text Lang="ko">파티션 상태 표시</Text>
+			<Text Lang="pl">Pokaż stan partycji</Text>
+			<Text Lang="es">Mostrar estado de la partición</Text>
+			<Text Lang="it">Mostra stato della partizione</Text>
+			<Text Lang="ru">Показывать состояние разделов</Text>
+			<Text Lang="de">Partitions-Icons anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ShowOnlyMyPartitions">
+			<Context/>
+			<Text Lang="en">Show my partitions only</Text>
+			<Text Lang="uk">Показувати лише мої розділи</Text>
+			<Text Lang="fr">Afficher uniquement mes partitions</Text>
+			<Text Lang="pt-BR">Mostrar apenas minhas partições</Text>
+			<Text Lang="zh">仅显示我的分区</Text>
+			<Text Lang="ko">나의 파티션만 보기</Text>
+			<Text Lang="pl">Pokaż tylko moje partycje</Text>
+			<Text Lang="es">Mostrar solo mis particiones</Text>
+			<Text Lang="it">Mostra solo le mie partizioni</Text>
+			<Text Lang="ru">Показывать только мои разделы</Text>
+			<Text Lang="de">Zeige nur meine Partitionen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.GroupByPath">
+			<Context/>
+			<Text Lang="en">Group by object path</Text>
+			<Text Lang="uk">Групувати за шляхом до об'єкту</Text>
+			<Text Lang="fr">Regrouper par chemins d’objet</Text>
+			<Text Lang="pt-BR">Agrupar por caminho de objeto</Text>
+			<Text Lang="zh">按对象路径分组</Text>
+			<Text Lang="ko">객체 경로 그룹</Text>
+			<Text Lang="pl">Grupuj ścieżkami obiektów</Text>
+			<Text Lang="es">Agrupar por ruta de objeto</Text>
+			<Text Lang="it">Raggruppa per percorso dell'oggetto</Text>
+			<Text Lang="ru">Группировать по пути к объекту</Text>
+			<Text Lang="de">Nach Objektpfad gruppieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.CollapseAll">
+			<Context/>
+			<Text Lang="en">Collapse all</Text>
+			<Text Lang="uk">Згорнути все</Text>
+			<Text Lang="fr">Tout réduire</Text>
+			<Text Lang="pt-BR">Desmoronar todos</Text>
+			<Text Lang="zh">全部折叠</Text>
+			<Text Lang="ko">모두 접기</Text>
+			<Text Lang="pl">Zwiń wszystko</Text>
+			<Text Lang="es">Contraer todo</Text>
+			<Text Lang="it">Minimizza tutto</Text>
+			<Text Lang="ru">Свернуть все</Text>
+			<Text Lang="de">Alles einklappen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Sort.ExpandAll">
+			<Context/>
+			<Text Lang="en">Expand all</Text>
+			<Text Lang="uk">Розгорнути все</Text>
+			<Text Lang="fr">Tout développer</Text>
+			<Text Lang="pt-BR">Expandir todos</Text>
+			<Text Lang="zh">全部展开</Text>
+			<Text Lang="ko">모두 펼치기</Text>
+			<Text Lang="pl">Rozwiń wszystko</Text>
+			<Text Lang="es">Expandir todo</Text>
+			<Text Lang="it">Espandi tutto</Text>
+			<Text Lang="ru">Развернуть все</Text>
+			<Text Lang="de">Alles aufklappen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AdditionalInformation.Caption">
+			<Context/>
+			<Text Lang="en">Additional information</Text>
+			<Text Lang="uk">Додаткова інформація</Text>
+			<Text Lang="fr">Informations supplémentaires</Text>
+			<Text Lang="pt-BR">Informação adicional</Text>
+			<Text Lang="zh">附加信息</Text>
+			<Text Lang="ko">추가 정보</Text>
+			<Text Lang="pl">Dodatkowe informacje</Text>
+			<Text Lang="es">Información adicional</Text>
+			<Text Lang="it">Informazioni aggiuntive</Text>
+			<Text Lang="ru">Дополнительная информация</Text>
+			<Text Lang="de">Zusatzinformation</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AdditionalInformation.None.Caption">
+			<Context/>
+			<Text Lang="en">None</Text>
+			<Text Lang="uk">Не існує</Text>
+			<Text Lang="fr">Aucun</Text>
+			<Text Lang="pt-BR">Nada</Text>
+			<Text Lang="zh">无</Text>
+			<Text Lang="ko">없음</Text>
+			<Text Lang="pl">Brak</Text>
+			<Text Lang="es">Ninguna</Text>
+			<Text Lang="it">Vuoto</Text>
+			<Text Lang="ru">Не существует</Text>
+			<Text Lang="de">Keine</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AdditionalInformation.TechnicalName.Caption">
+			<Context/>
+			<Text Lang="en">Technical name</Text>
+			<Text Lang="uk">Технічна назва</Text>
+			<Text Lang="fr">Nom technique</Text>
+			<Text Lang="pt-BR">Nome técnico</Text>
+			<Text Lang="zh">技术名称</Text>
+			<Text Lang="ko">기술 이름</Text>
+			<Text Lang="pl">Nazwa techniczna</Text>
+			<Text Lang="es">Nombre técnico</Text>
+			<Text Lang="it">Nome tecnico</Text>
+			<Text Lang="ru">Техническое имя</Text>
+			<Text Lang="de">Technischer Name</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AdditionalInformation.TemplateName.Caption">
+			<Context/>
+			<Text Lang="en">Template name</Text>
+			<Text Lang="uk">Назва шаблону</Text>
+			<Text Lang="fr">Nom du modèle</Text>
+			<Text Lang="pt-BR">Nome do modelo</Text>
+			<Text Lang="zh">模板名称</Text>
+			<Text Lang="ko">템플릿 이름</Text>
+			<Text Lang="pl">Nazwa szablonu</Text>
+			<Text Lang="es">Nombre de plantilla</Text>
+			<Text Lang="it">Nome template</Text>
+			<Text Lang="ru">Имя шаблона</Text>
+			<Text Lang="de">Name der Vorlage</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Perspectives">
+
+		<TextDefinition Key="Graph.Caption">
+			<Context/>
+			<Text Lang="en">Flow Editor</Text>
+			<Text Lang="uk">Редактор потоку</Text>
+			<Text Lang="fr">Éditeur de flux</Text>
+			<Text Lang="pt-BR">Editor de Fluxo</Text>
+			<Text Lang="zh">流编辑器</Text>
+			<Text Lang="ko">흐름 편집기</Text>
+			<Text Lang="pl">Edytor Flow</Text>
+			<Text Lang="es">Editor de flujo</Text>
+			<Text Lang="it">Editor Diagramma di flusso</Text>
+			<Text Lang="ru">Редактор потока</Text>
+			<Text Lang="de">Flow-Editor</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TemplateEditor.Caption">
+			<Context/>
+			<Text Lang="en">Template Editor</Text>
+			<Text Lang="uk">Редактор шаблонів</Text>
+			<Text Lang="fr">Éditeur de modèle</Text>
+			<Text Lang="pt-BR">Editor de modelo</Text>
+			<Text Lang="zh">模板编辑器</Text>
+			<Text Lang="ko">템플릿 편집기</Text>
+			<Text Lang="pl">Edytor szablonów</Text>
+			<Text Lang="es">Editor de plantillas</Text>
+			<Text Lang="it">Template Editor</Text>
+			<Text Lang="ru">Редактор шаблонов</Text>
+			<Text Lang="de">Template-Editor</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Enter License Key Dialog
+	-->
+	<Category Name="Ui" Namespace=".Dialogs.EnterLicenseKey">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>Dialogbox 'Enter license key': Title</Context>
+			<Text Lang="de">Lizenzschlüssel eingeben</Text>
+			<Text Lang="uk">Введіть ліцензійний ключ</Text>
+			<Text Lang="fr">Saisir la clé de licence</Text>
+			<Text Lang="pt-BR">Entrar chave de licença</Text>
+			<Text Lang="zh">输入许可证密钥</Text>
+			<Text Lang="ko">라이선스 키 입력</Text>
+			<Text Lang="pl">Wpisz klucz licencyjny</Text>
+			<Text Lang="es">Introduce una clave de licencia</Text>
+			<Text Lang="it">Inserisci la licenza</Text>
+			<Text Lang="ru">Введите лицензионный ключ</Text>
+			<Text Lang="en">Enter license key</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Key.Label">
+			<Context>Dialogbox 'Enter license key': Label for license key textbox</Context>
+			<Text Lang="de">Lizenzschlüssel:</Text>
+			<Text Lang="uk">Ліцензійний ключ:</Text>
+			<Text Lang="fr">Clé de licence :</Text>
+			<Text Lang="pt-BR">Chave de licença:</Text>
+			<Text Lang="zh">许可证密钥：</Text>
+			<Text Lang="ko">라이선스 키:</Text>
+			<Text Lang="pl">Klucz licencyjny</Text>
+			<Text Lang="es">Clave de licencia:</Text>
+			<Text Lang="it">Licenza:</Text>
+			<Text Lang="ru">Лицензионный ключ:</Text>
+			<Text Lang="en">License key:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.EmptyKey">
+			<Context>Dialogbox 'Enter license key': Error label when no key is entered</Context>
+			<Text Lang="en">A valid license key is required.</Text>
+			<Text Lang="uk">Необхідний дісний ліцензійний ключ.</Text>
+			<Text Lang="fr">Une clé de licence valide est nécessaire.</Text>
+			<Text Lang="pt-BR">Uma chave de licença valido é requerida.</Text>
+			<Text Lang="zh">需要有效的许可证密钥。</Text>
+			<Text Lang="ko">유효한 라이선스 키가 필요합니다.</Text>
+			<Text Lang="pl">Wymagany jest poprawny klucz licencyjny</Text>
+			<Text Lang="es">Se requiere una clave de licencia válida.</Text>
+			<Text Lang="it">È richiesta una licenza valida.</Text>
+			<Text Lang="ru">Требуется действительный лицензионный ключ.</Text>
+			<Text Lang="de">Ein Lizenzschlüssel wird benötigt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.InvalidKey">
+			<Context>Dialogbox 'Enter license key': Error label when the entered key is invalid</Context>
+			<Text Lang="en">The entered key is invalid.</Text>
+			<Text Lang="uk">Введений ключ не дісйний.</Text>
+			<Text Lang="fr">La clé saisie est invalide.</Text>
+			<Text Lang="pt-BR">A chave utilizada é inválida.</Text>
+			<Text Lang="zh">输入的密钥无效。</Text>
+			<Text Lang="ko">입력된 키가 유효하지 않습니다.</Text>
+			<Text Lang="pl">Klucz jest niepoprawny</Text>
+			<Text Lang="es">La clave introducida no es válida.</Text>
+			<Text Lang="it">Il codice inserito non è valido.</Text>
+			<Text Lang="ru">Введенный ключ недействителен.</Text>
+			<Text Lang="de">Der Lizenzschlüssel ist ungültig.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.InvalidPrefix">
+			<Context>Dialogbox 'Enter license key': Error label when the license key prefix code is not valid</Context>
+			<Text Lang="en">Product code in license key is invalid.</Text>
+			<Text Lang="uk">Код продукту ліцензійного ключа не дійсний.</Text>
+			<Text Lang="fr">Code produit de la clé de licence invalide.</Text>
+			<Text Lang="pt-BR">Código de produto na chave de licença é inválido.</Text>
+			<Text Lang="zh">许可证密钥中的产品代码无效。</Text>
+			<Text Lang="ko">라이선스 키의 제품 코드가 유효하지 않습니다.</Text>
+			<Text Lang="pl">Kod produktu dla klucza licencyjnego jest niepoprawny</Text>
+			<Text Lang="es">El código del producto de la clave de licencia no es válido.</Text>
+			<Text Lang="it">Il codice prodotto della licenza non è valido.</Text>
+			<Text Lang="ru">Код продукта лицензионного ключа не действителен.</Text>
+			<Text Lang="de">Produktcode im Lizenzschlüssel ungültig.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  License Info Dialog
+	-->
+	<Category Name="Ui" Namespace=".Dialogs.LicenseInfo">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>Title for LicenseInfo-Dialog</Context>
+			<Text Lang="de">Lizenzinformation</Text>
+			<Text Lang="uk">Інформація про ліцензію</Text>
+			<Text Lang="fr">Informations sur la licence</Text>
+			<Text Lang="pt-BR">Informação da Licença</Text>
+			<Text Lang="zh">许可证信息</Text>
+			<Text Lang="ko">라이선스 정보</Text>
+			<Text Lang="pl">Informacje licencyjne</Text>
+			<Text Lang="es">Información de la licencia</Text>
+			<Text Lang="it">Informazioni sulla licenza</Text>
+			<Text Lang="ru">Информация о лицензии</Text>
+			<Text Lang="en">License information</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EnterLicense.Caption">
+			<Context>Button on LicenseInfo-Dialog</Context>
+			<Text Lang="de">Lizenzschlüssel eingeben</Text>
+			<Text Lang="uk">Введіть ліцензійний ключ</Text>
+			<Text Lang="fr">Saisir la clé de licence</Text>
+			<Text Lang="pt-BR">Entrar chave de licença</Text>
+			<Text Lang="zh">输入许可证密钥</Text>
+			<Text Lang="ko">라이선스 키 입력</Text>
+			<Text Lang="pl">Wpisz klucz licencyjny</Text>
+			<Text Lang="es">Introduce una clave de licencia</Text>
+			<Text Lang="it">Inserisci la licenza</Text>
+			<Text Lang="ru">Введите лицензионный ключ</Text>
+			<Text Lang="en">Enter license key</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RefreshLicense.Caption">
+			<Context>Button on LicenseInfo-Dialog</Context>
+			<Text Lang="de">Lizenz aktualisieren</Text>
+			<Text Lang="uk">Оновити ліцензію</Text>
+			<Text Lang="fr">Rafraîchir la licence</Text>
+			<Text Lang="pt-BR">Atualizar licença</Text>
+			<Text Lang="zh">刷新许可证</Text>
+			<Text Lang="ko">라이선스 갱신</Text>
+			<Text Lang="pl">Odśwież licencję</Text>
+			<Text Lang="es">Actualizar licencia</Text>
+			<Text Lang="it">Aggiorna la licenza</Text>
+			<Text Lang="ru">Обновить лицензию</Text>
+			<Text Lang="en">Refresh license</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveLicense.Caption">
+			<Context>Button on LincenseInfo-Dialog</Context>
+			<Text Lang="de">Lizenz zurückgeben</Text>
+			<Text Lang="uk">Повернути ліцензію</Text>
+			<Text Lang="fr">Retourner la licence</Text>
+			<Text Lang="pt-BR">Retornar Licença</Text>
+			<Text Lang="zh">注销许可证</Text>
+			<Text Lang="ko">라이선스 반환</Text>
+			<Text Lang="pl">Zwróć licencję</Text>
+			<Text Lang="es">Devolver licencia</Text>
+			<Text Lang="it">Restituisci licenza</Text>
+			<Text Lang="ru">Вернуть лицензию</Text>
+			<Text Lang="en">Return license</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  common licensing texts
+	-->
+	<Category Name="Ui" Namespace=".Licensing">
+
+		<TextDefinition Key="NoLicense.Text">
+			<Context/>
+			<Text Lang="de">(Keine Lizenz --> bitte 'Registrieren' klicken)</Text>
+			<Text Lang="uk">(Немає ліцензії --> будь ласка нажміть «Реєстрація»)</Text>
+			<Text Lang="fr">(Aucune licence --> veuillez cliquer sur « Activer »)</Text>
+			<Text Lang="pt-BR">(Sem licença --> por favor clicar em 'registrar')</Text>
+			<Text Lang="zh">(无许可证 --> 请单击 '注册')</Text>
+			<Text Lang="ko">(라이선스 없음 --> '등록' 클릭하십시오)</Text>
+			<Text Lang="pl">(Brak licencji --> proszę nacisnąć 'Zarejestruj')</Text>
+			<Text Lang="es">(Sin licencia -> Por favor, haz clic en "Registrarse")</Text>
+			<Text Lang="it">(Nessuna licenza --> per favore clicca 'Registrati')</Text>
+			<Text Lang="ru">(Нет лицензии--> пожалуйста, нажмите "Регистрация")</Text>
+			<Text Lang="en">(No license --> please click 'Register')</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseExpiring.Text">
+			<Context/>
+			<Text Lang="de">Lizenz läuft am {0:d} ab</Text>
+			<Text Lang="uk">Ліцензія минає {0:d}</Text>
+			<Text Lang="fr">La licence expire le {0:d}</Text>
+			<Text Lang="pt-BR">Licença expira em {0:d}</Text>
+			<Text Lang="zh">许可证有效期至 {0:d}</Text>
+			<Text Lang="ko">라이선스의 만료일은 {0:d}일 입니다.</Text>
+			<Text Lang="pl">Licencja wygasa za {0:d}</Text>
+			<Text Lang="es">La licencia caducará en {0: d}</Text>
+			<Text Lang="it">La licenza scade il {0:d}</Text>
+			<Text Lang="ru">Лицензия истекает {0:d}</Text>
+			<Text Lang="en">License expires on {0:d}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseExpired.Text">
+			<Context/>
+			<Text Lang="de">Lizenz ist abgelaufen</Text>
+			<Text Lang="uk">Термін дії ліцензії минув</Text>
+			<Text Lang="fr">Licence expirée</Text>
+			<Text Lang="pt-BR">Licença expirada</Text>
+			<Text Lang="zh">许可证有效期</Text>
+			<Text Lang="ko">라이선스 만료됨</Text>
+			<Text Lang="pl">Licencja wygasła</Text>
+			<Text Lang="es">La licencia ha caducado.</Text>
+			<Text Lang="it">Licenza scaduta</Text>
+			<Text Lang="ru">Срок действия лицензии истек</Text>
+			<Text Lang="en">License expired</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Licensee.Label">
+			<Context/>
+			<Text Lang="de">Lizenznehmer:</Text>
+			<Text Lang="uk">Ліцензіат:</Text>
+			<Text Lang="fr">Titulaire :</Text>
+			<Text Lang="pt-BR">Licenciado:</Text>
+			<Text Lang="zh">许可证：</Text>
+			<Text Lang="ko">라이선스:</Text>
+			<Text Lang="pl">Właściciel:</Text>
+			<Text Lang="es">Propietario de la licencia:</Text>
+			<Text Lang="it">Licenziatario:</Text>
+			<Text Lang="ru">Лицензиат:</Text>
+			<Text Lang="en">Licensee:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseKey.Label">
+			<Context/>
+			<Text Lang="de">Lizenzschlüssel:</Text>
+			<Text Lang="uk">Ліцензійний ключ:</Text>
+			<Text Lang="fr">Clé de licence :</Text>
+			<Text Lang="pt-BR">Chave de licença:</Text>
+			<Text Lang="zh">许可证密钥：</Text>
+			<Text Lang="ko">라이선스 키:</Text>
+			<Text Lang="pl">Klucz licencyjny:</Text>
+			<Text Lang="es">Clave de licencia:</Text>
+			<Text Lang="it">Codice licenza:</Text>
+			<Text Lang="ru">Лицензионный ключ:</Text>
+			<Text Lang="en">License key:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CalOverview.Label">
+			<Context/>
+			<Text Lang="de">Übersicht der Zugriffslizenzen:</Text>
+			<Text Lang="uk">Огляд ліцензії доступу клієнта:</Text>
+			<Text Lang="fr">Aperçu de la licence d’accès client :</Text>
+			<Text Lang="pt-BR">Visão geral da licença de acesso do cliente</Text>
+			<Text Lang="zh">客户端访问许可证概述：</Text>
+			<Text Lang="ko">클라이언트 액세스 라이선스 개요:</Text>
+			<Text Lang="pl">Przegląd licencji:</Text>
+			<Text Lang="es">Resumen de la licencia de acceso de cliente</Text>
+			<Text Lang="it">Overview della licenza di accesso del Client:</Text>
+			<Text Lang="ru">Обзор лицензии доступа клиента:</Text>
+			<Text Lang="en">Client access license overview:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CompOverview.Label">
+			<Context/>
+			<Text Lang="de">Übersicht der Erweiterungslizenzen:</Text>
+			<Text Lang="uk">Огляд ліцензії додаткового компонента:</Text>
+			<Text Lang="fr">Licences des composants supplémentaires :</Text>
+			<Text Lang="pt-BR">Componentes de licença adicionais:</Text>
+			<Text Lang="zh">其他组件许可证：</Text>
+			<Text Lang="ko">추가 컴포넌트 라이선스:</Text>
+			<Text Lang="pl">Przegląd rozszerzonych licencji:</Text>
+			<Text Lang="es">Resumen de licencias de add-ons:</Text>
+			<Text Lang="it">Overview della licenza del componente Add-On:</Text>
+			<Text Lang="ru">Обзор лицензии дополнительного компонента:</Text>
+			<Text Lang="en">Additional component licenses:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseInformation.Label">
+			<Context/>
+			<Text Lang="de">Lizenzinformationen</Text>
+			<Text Lang="uk">Інформація про ліцензію</Text>
+			<Text Lang="fr">Informations sur la licence</Text>
+			<Text Lang="pt-BR">Informação de licença</Text>
+			<Text Lang="zh">许可证信息</Text>
+			<Text Lang="ko">라이선스 정보</Text>
+			<Text Lang="pl">Informacje licencyjne</Text>
+			<Text Lang="es">Información de la licencia</Text>
+			<Text Lang="it">Informazioni sulla licenza</Text>
+			<Text Lang="ru">Информация о лицензии</Text>
+			<Text Lang="en">License information</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Working.Text">
+			<Context>Text that is shown when a licensing request is on the way</Context>
+			<Text Lang="de">Anfrage wird zum Lizenz-Server geschickt...</Text>
+			<Text Lang="uk">Зв'язується з сервером ліцензій…</Text>
+			<Text Lang="fr">Contact du serveur de licence...</Text>
+			<Text Lang="pt-BR">Contatando servidor de licença...</Text>
+			<Text Lang="zh">正在连接许可证服务器...</Text>
+			<Text Lang="ko">라이선스 서버와 연결중…</Text>
+			<Text Lang="pl">Wysyłanie zapytania d serwera licencyjnego</Text>
+			<Text Lang="es">Enviando solicitud al servidor de licencias...</Text>
+			<Text Lang="it">Contatto il server delle licenze…</Text>
+			<Text Lang="ru">Запрашивается сервер лицензий…</Text>
+			<Text Lang="en">Contacting license server...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Success.Text">
+			<Context>Text that is shown when a licensing request was done successfully</Context>
+			<Text Lang="de">Operation erfolgreich.</Text>
+			<Text Lang="uk">Вдалось!</Text>
+			<Text Lang="fr">Succès de l’opération.</Text>
+			<Text Lang="pt-BR">Operação bem-sucedida!</Text>
+			<Text Lang="zh">操作成功。</Text>
+			<Text Lang="ko">작업이 성공적으로 완료되었습니다.</Text>
+			<Text Lang="pl">Operacja powiodła się!</Text>
+			<Text Lang="es">¡Solicitud satisfactoria!</Text>
+			<Text Lang="it">Successo!</Text>
+			<Text Lang="ru">Успех!</Text>
+			<Text Lang="en">Operation successful.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Failed.Text">
+			<Context>Text that is shown when a licensing request has failed without an available status code</Context>
+			<Text Lang="de">Operation fehlgeschlagen!</Text>
+			<Text Lang="uk">Невдалось!</Text>
+			<Text Lang="fr">Échec de l’opération !</Text>
+			<Text Lang="pt-BR">Operação falhou!</Text>
+			<Text Lang="zh">操作失败！</Text>
+			<Text Lang="ko">작업이 실패했습니다!</Text>
+			<Text Lang="pl">Operacja nie powiodła się!</Text>
+			<Text Lang="es">¡Ha ocurrido un error!</Text>
+			<Text Lang="it">Fallito!</Text>
+			<Text Lang="ru">Неудача!</Text>
+			<Text Lang="en">Operation failed!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicensesPurchased.Text">
+			<Context/>
+			<Text Lang="de">{0} erworben</Text>
+			<Text Lang="uk">{0} куплено</Text>
+			<Text Lang="fr">{0} achetée(s)</Text>
+			<Text Lang="pt-BR">{0} comprado(s)</Text>
+			<Text Lang="zh">{0} 购买</Text>
+			<Text Lang="ko">{0}개 구매</Text>
+			<Text Lang="pl">{0} kupione</Text>
+			<Text Lang="es">Has adquirido {0}</Text>
+			<Text Lang="it">{0} acquistato</Text>
+			<Text Lang="ru">{0} куплено</Text>
+			<Text Lang="en">{0} purchased</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicensesUsed.Text">
+			<Context/>
+			<Text Lang="de">{0} verwendet</Text>
+			<Text Lang="uk">{0} використано</Text>
+			<Text Lang="fr">{0} utilisée(s)</Text>
+			<Text Lang="pt-BR">{0} usados(s)</Text>
+			<Text Lang="zh">{0} 使用</Text>
+			<Text Lang="ko">{0}개 사용</Text>
+			<Text Lang="pl">{0} użyte</Text>
+			<Text Lang="es">{0} usado</Text>
+			<Text Lang="it">{0} utilizzato</Text>
+			<Text Lang="ru">{0} использовано</Text>
+			<Text Lang="en">{0} used</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicensesAvailable.Text">
+			<Context/>
+			<Text Lang="de">{0} verfügbar</Text>
+			<Text Lang="uk">{0} готових до використання</Text>
+			<Text Lang="fr">{0} vacante(s)</Text>
+			<Text Lang="pt-BR">{0} vago(s)</Text>
+			<Text Lang="zh">{0} 空闲</Text>
+			<Text Lang="ko">{0}개 미사용</Text>
+			<Text Lang="pl">{0} możliwe do użycia</Text>
+			<Text Lang="es">{0} utilizable</Text>
+			<Text Lang="it">{0} utilizzabile</Text>
+			<Text Lang="ru">{0} готовых к употреблению</Text>
+			<Text Lang="en">{0} vacant</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicensesMissing.Text">
+			<Context/>
+			<Text Lang="de">{0} fehlend</Text>
+			<Text Lang="uk">{0} відсутньо</Text>
+			<Text Lang="fr">{0} manquante(s)</Text>
+			<Text Lang="pt-BR">{0} faltando</Text>
+			<Text Lang="zh">{0} 缺失</Text>
+			<Text Lang="ko">{0}개 누락</Text>
+			<Text Lang="pl">{0} brakujące</Text>
+			<Text Lang="es">Falta {0}</Text>
+			<Text Lang="it">{0} mancante</Text>
+			<Text Lang="ru">{0} отсутствует</Text>
+			<Text Lang="en">{0} missing</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CouldNotSaveLicense.Text">
+			<Context/>
+			<Text Lang="en">Could not save a local copy of the license.</Text>
+			<Text Lang="uk">Не вдалось зберегти локальну копію ліцензії</Text>
+			<Text Lang="fr">Impossible d’effectuer une copie locale de la licence.</Text>
+			<Text Lang="pt-BR">Não foi possivel salvar uma cópia local da licença.</Text>
+			<Text Lang="zh">无法保存许可证的本地副本。</Text>
+			<Text Lang="ko">라이선스의 로컬 사본을 저장할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można było zapisać lokalnej wersji licencji</Text>
+			<Text Lang="es">No se ha podido guardar una copia local de la licencia.</Text>
+			<Text Lang="it">Impossibile salvare in locale una copia della licenza.</Text>
+			<Text Lang="ru">Не удалось сохранить локальную копию лицензии</Text>
+			<Text Lang="de">Lokale Kopie der Lizenz kann nicht abgespeichert werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ExpireWarning.Text">
+			<Context/>
+			<Text Lang="en">Your license will expire in {0} day(s).</Text>
+			<Text Lang="uk">Ваша ліцензія сплине через {0} днів</Text>
+			<Text Lang="fr">Votre licence expire dans {0} jour(s).</Text>
+			<Text Lang="pt-BR">Sua licença irá expirar em {0} dia(s)</Text>
+			<Text Lang="zh">您的许可证将在 {0} 天内到期。</Text>
+			<Text Lang="ko">당신의 라이선스는 {0}일 뒤 만료됩니다.</Text>
+			<Text Lang="de">Ihre Lizenz läuft in {0} Tag(en) aus.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InvalidLicense.Text">
+			<Context/>
+			<Text Lang="en">You don't have a valid license.</Text>
+			<Text Lang="uk">У вас немає дійсної ліцензії</Text>
+			<Text Lang="fr">Vous n’avez pas de licence valide.</Text>
+			<Text Lang="pt-BR">Você não tem uma chave de licença válida.</Text>
+			<Text Lang="zh">您没有有效的许可证。</Text>
+			<Text Lang="ko">유효한 라이선스를 가지고 있지 않습니다.</Text>
+			<Text Lang="de">Sie haben keine gültige Lizenz.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ContactSales.Text">
+			<Context/>
+			<Text Lang="en">Contact sales@articy.com</Text>
+			<Text Lang="uk">Звяжіться до sales@articy.com</Text>
+			<Text Lang="fr">Contacter sales@articy.com</Text>
+			<Text Lang="pt-BR">Contate sales@articy.com</Text>
+			<Text Lang="zh">请联系 sales@articy.com</Text>
+			<Text Lang="ko">sales@articy.com 에 문의</Text>
+			<Text Lang="de">Kontaktieren Sie sales@articy.com</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="VisitShop.Text">
+			<Context/>
+			<Text Lang="en">Visit our shop.</Text>
+			<Text Lang="uk">Відвідайте наш магазин.</Text>
+			<Text Lang="fr">Visiter notre boutique.</Text>
+			<Text Lang="pt-BR">Visite nossa loja.</Text>
+			<Text Lang="zh">浏览商店</Text>
+			<Text Lang="ko">우리 상점을 방문하십시오.</Text>
+			<Text Lang="de">Besuchen Sie unseren Shop.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="VisitSteam.Text">
+			<Context/>
+			<Text Lang="en">Goto Steam shop page.</Text>
+			<Text Lang="uk">Сторінка гри Goto в крамниці Steam</Text>
+			<Text Lang="fr">Aller à la boutique Steam.</Text>
+			<Text Lang="pt-BR">Vá para nossa página na loja Steam.</Text>
+			<Text Lang="zh">前往Steam商店页面。</Text>
+			<Text Lang="de">Zur Steam Produktseite.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MultiUserReminder.Text">
+			<Context/>
+			<Text Lang="en"><![CDATA[[fs=14][b]Working in a Team?[/b][/fs]
+[fs=12]Try our [col=#ffa619]multi-user[/col] version.[/fs]]]></Text>
+			<Text Lang="uk"><![CDATA[[fs=14][b]Працюєте в команді?[/b][/fs]
+[fs=12]Спробуйте нашу [col=#ffa619]багатокористувацьку[/col] версію.[/fs]]]></Text>
+			<Text Lang="fr"><![CDATA[[fs=14][b]Vous travaillez en équipe ? [/b][/fs]
+[fs=12]Essayez notre version [col=#ffa619]utilisateurs multiples[/col].[/fs]]]></Text>
+			<Text Lang="pt-BR">[fs=14][b]Trabalhando em time?[/b][/fs][fs=12] Tente nossa [col=#ffa619] versão[/col] multi-usuário.[/fs]</Text>
+			<Text Lang="zh"><![CDATA[[fs=14][b]与团队一同工作？[/b][/fs]
+[fs=12]尝试我们的 [col=#ffa619]多人用户[/col] 版本。[/fs]]]></Text>
+			<Text Lang="de"><![CDATA[[fs=14][b]Arbeitest du in einem Team?[/b][/fs]
+[fs=12]Teste unsere [col=#ffa619]Multi-user[/col] Version.[/fs]]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnregisterQuery.Title">
+			<Context/>
+			<Text Lang="en">Unregister License?</Text>
+			<Text Lang="de">Lizenz zurückgeben?</Text>
+			<Text Lang="fr">Désenregistrer la licence ?</Text>
+			<Text Lang="pt-BR">Licença para cancelar o registro?</Text>
+			<Text Lang="zh">取消注册许可？</Text>
+			<Text Lang="pl">Wyrejestrować licencję?</Text>
+			<Text Lang="es">¿Desregistrar la licencia?</Text>
+			<Text Lang="it">Non registrare la licenza?</Text>
+			<Text Lang="ru">Снять с регистрации лицензию?</Text>
+			<Text Lang="ja">ライセンス登録の解除は？</Text>
+			<Text Lang="uk">Скасувати реєстрацію ліцензії?</Text>
+			<Text Lang="ko">라이선스를 등록 취소하시겠습니까?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnregisterQuery.Description">
+			<Context/>
+			<Text Lang="en">Do you really want to unregister your license?</Text>
+			<Text Lang="de">Wollen Sie ihre Lizenz wirklich zurückgeben?</Text>
+			<Text Lang="fr">Voulez-vous vraiment désenregistrer votre licence ?</Text>
+			<Text Lang="pt-BR">Você realmente quer cancelar o registro de sua licença?</Text>
+			<Text Lang="zh">你真的想取消你的执照吗？</Text>
+			<Text Lang="pl">Czy naprawdę chcesz wyrejestrować swoje prawo jazdy?</Text>
+			<Text Lang="es">¿Realmente quiere anular su licencia?</Text>
+			<Text Lang="it">Volete davvero disdire la vostra licenza?</Text>
+			<Text Lang="ru">Вы действительно хотите снять с регистрации свои права?</Text>
+			<Text Lang="ja">本当にライセンスの登録を解除するのですか？</Text>
+			<Text Lang="uk">Ви дійсно хочете скасувати реєстрацію ліцензії?</Text>
+			<Text Lang="ko">라이센스 등록을 취소하시겠습니까?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnregisterQuery.CheckBoxText">
+			<Context/>
+			<Text Lang="en">Copy license key to clipboard?</Text>
+			<Text Lang="de">Lizenzschlüssel in Zwischenablage kopieren?</Text>
+			<Text Lang="fr">Copier la clé de licence dans le presse-papiers ?</Text>
+			<Text Lang="pt-BR">Copiar chave de licença para a prancheta?</Text>
+			<Text Lang="zh">复制许可证密钥到剪贴板？</Text>
+			<Text Lang="pl">Skopiować klucz licencyjny do schowka?</Text>
+			<Text Lang="es">¿Copiar la clave de licencia en el portapapeles?</Text>
+			<Text Lang="it">Copiare la chiave di licenza negli appunti?</Text>
+			<Text Lang="ru">Копировать лицензионный ключ в буфер обмена?</Text>
+			<Text Lang="ja">ライセンスキーをクリップボードにコピーしますか？</Text>
+			<Text Lang="uk">Скопіювати ліцензійний ключ у буфер обміну?</Text>
+			<Text Lang="ko">라이센스 키를 클립보드에 복사하시겠습니까?</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Toolbox group names (Shared)
+	-->
+	<Category Name="Ui" Namespace=".ToolboxGroup.Shared">
+
+		<TextDefinition Key="Grid.Description">
+			<Context>Tooltip of a toolbox group icon</Context>
+			<Text Lang="en">Grid</Text>
+			<Text Lang="uk">Сітка</Text>
+			<Text Lang="fr">Grille</Text>
+			<Text Lang="pt-BR">Grade</Text>
+			<Text Lang="zh">网格</Text>
+			<Text Lang="ko">그리드</Text>
+			<Text Lang="pl">Siatka</Text>
+			<Text Lang="es">Cuadrícula</Text>
+			<Text Lang="it">Griglia</Text>
+			<Text Lang="ru">Сетка</Text>
+			<Text Lang="de">Raster</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Alignment.Description">
+			<Context>Tooltip of a toolbox group icon</Context>
+			<Text Lang="en">Alignment</Text>
+			<Text Lang="uk">Вирівнювання</Text>
+			<Text Lang="fr">Alignement</Text>
+			<Text Lang="pt-BR">Alinhamento</Text>
+			<Text Lang="zh">对齐</Text>
+			<Text Lang="ko">정렬</Text>
+			<Text Lang="pl">Wyrównianie</Text>
+			<Text Lang="es">Alineación</Text>
+			<Text Lang="it">Allineamento</Text>
+			<Text Lang="ru">Выравнивание</Text>
+			<Text Lang="de">Ausrichtung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Selection.Description">
+			<Context>Tooltip of a toolbox group icon</Context>
+			<Text Lang="en">Selection</Text>
+			<Text Lang="uk">Виділення</Text>
+			<Text Lang="fr">Sélection</Text>
+			<Text Lang="pt-BR">Seleção</Text>
+			<Text Lang="zh">选择</Text>
+			<Text Lang="ko">선택</Text>
+			<Text Lang="pl">Wybór</Text>
+			<Text Lang="es">Selección</Text>
+			<Text Lang="it">Selezione</Text>
+			<Text Lang="ru">Выделение</Text>
+			<Text Lang="de">Auswahl</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Ordering.Description">
+			<Context>Tooltip of a toolbox group icon</Context>
+			<Text Lang="en">Order</Text>
+			<Text Lang="uk">Впорядкування</Text>
+			<Text Lang="fr">Ordonner</Text>
+			<Text Lang="pt-BR">Ordem</Text>
+			<Text Lang="zh">指令</Text>
+			<Text Lang="ko">순서</Text>
+			<Text Lang="pl">Kolejność</Text>
+			<Text Lang="es">Orden</Text>
+			<Text Lang="it">Ordinamento</Text>
+			<Text Lang="ru">Упорядочивание</Text>
+			<Text Lang="de">Reihenfolge</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="New.Description">
+			<Context>Tooltip of a toolbox group icon</Context>
+			<Text Lang="en">New</Text>
+			<Text Lang="uk">Новий</Text>
+			<Text Lang="fr">Nouveau</Text>
+			<Text Lang="pt-BR">Novo</Text>
+			<Text Lang="zh">新建</Text>
+			<Text Lang="ko">새</Text>
+			<Text Lang="pl">Nowy</Text>
+			<Text Lang="es">Nuevo</Text>
+			<Text Lang="it">Nuovo</Text>
+			<Text Lang="ru">Новый</Text>
+			<Text Lang="de">Neu</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Hover Toolbar
+	-->
+	<Category Name="System" Namespace=".HoverToolBar" Key="HoverToolBar">
+
+		<TextDefinition Key="ToolBar.Description">
+			<Context/>
+			<Text Lang="en">Formatting</Text>
+			<Text Lang="uk">Форматування</Text>
+			<Text Lang="fr">Mise en forme</Text>
+			<Text Lang="pt-BR">Formatação</Text>
+			<Text Lang="zh">格式化</Text>
+			<Text Lang="ko">글꼴</Text>
+			<Text Lang="pl">Formatowanie</Text>
+			<Text Lang="es">Formato</Text>
+			<Text Lang="it">Formattazione</Text>
+			<Text Lang="ru">Форматирование</Text>
+			<Text Lang="de">Formatierung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FontSize.Description">
+			<Context/>
+			<Text Lang="en">Font size</Text>
+			<Text Lang="uk">Рошмір шрифту</Text>
+			<Text Lang="fr">Taille de police</Text>
+			<Text Lang="pt-BR">Tamanho da fonte</Text>
+			<Text Lang="zh">字体大小</Text>
+			<Text Lang="ko">글꼴 크기</Text>
+			<Text Lang="pl">Rozmiar czcionki</Text>
+			<Text Lang="es">Tamaño de fuente</Text>
+			<Text Lang="it">Dimensione font</Text>
+			<Text Lang="ru">Размер шрифта</Text>
+			<Text Lang="de">Schriftgröße</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IncreaseFontSize.Description">
+			<Context/>
+			<Text Lang="en">Increase font size</Text>
+			<Text Lang="uk">Збільшити розмір шрифту</Text>
+			<Text Lang="fr">Augmenter la taille de police</Text>
+			<Text Lang="pt-BR">Aumentar tamanho da fonte</Text>
+			<Text Lang="zh">增大字体大小</Text>
+			<Text Lang="ko">글꼴 크기 크게</Text>
+			<Text Lang="pl">Zwiększ rozmiar czcionki</Text>
+			<Text Lang="es">Aumentar tamaño de fuente</Text>
+			<Text Lang="it">Aumenta dimensione font</Text>
+			<Text Lang="ru">Увеличить размер шрифта</Text>
+			<Text Lang="de">Schriftgröße erhöhen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DecreaseFontSize.Description">
+			<Context/>
+			<Text Lang="en">Decrease font size</Text>
+			<Text Lang="uk">Зменшити розмір шрифту</Text>
+			<Text Lang="fr">Réduire la taille de police</Text>
+			<Text Lang="pt-BR">Diminuir tamanho da fonte</Text>
+			<Text Lang="zh">减小字体大小</Text>
+			<Text Lang="ko">글꼴 크기 작게</Text>
+			<Text Lang="pl">Zmniejsz rozmiar czcionki</Text>
+			<Text Lang="es">Disminuir tamaño de fuente</Text>
+			<Text Lang="it">Riduci dimensione font</Text>
+			<Text Lang="ru">Уменьшить размер шрифта</Text>
+			<Text Lang="de">Schriftgröße verringern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AlignLeft.Description">
+			<Context/>
+			<Text Lang="en">Align left</Text>
+			<Text Lang="uk">Вирівняти по лівому краю</Text>
+			<Text Lang="fr">Aligner à gauche</Text>
+			<Text Lang="pt-BR">Alinhar com a esquerda</Text>
+			<Text Lang="zh">左对齐</Text>
+			<Text Lang="ko">왼쪽 정렬</Text>
+			<Text Lang="pl">Wyrównaj do lewej</Text>
+			<Text Lang="es">Alinear a la izquierda</Text>
+			<Text Lang="it">Allineamento a sinistra</Text>
+			<Text Lang="ru">Выровнять по левому краю</Text>
+			<Text Lang="de">Linksbündig</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AlignRight.Description">
+			<Context/>
+			<Text Lang="en">Align right</Text>
+			<Text Lang="uk">Вирівняти по правому краю</Text>
+			<Text Lang="fr">Aligner à droite</Text>
+			<Text Lang="pt-BR">Alinhar com a direita</Text>
+			<Text Lang="zh">右对齐</Text>
+			<Text Lang="ko">오른쪽 정렬</Text>
+			<Text Lang="pl">Wyrównaj do prawej</Text>
+			<Text Lang="es">Alinear a la derecha</Text>
+			<Text Lang="it">Allineamento a destra</Text>
+			<Text Lang="ru">Выровнять по правому краю</Text>
+			<Text Lang="de">Rechtsbündig</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AlignCenter.Description">
+			<Context/>
+			<Text Lang="en">Align center</Text>
+			<Text Lang="uk">Вирівняти по центру</Text>
+			<Text Lang="fr">Aligner au centre</Text>
+			<Text Lang="pt-BR">Alinhar com o centro</Text>
+			<Text Lang="zh">居中对齐</Text>
+			<Text Lang="ko">중앙 정렬</Text>
+			<Text Lang="pl">Wyśrodkuj</Text>
+			<Text Lang="es">Centrar</Text>
+			<Text Lang="it">Allineamento centrato</Text>
+			<Text Lang="ru">Выровнять по центру</Text>
+			<Text Lang="de">Zentriert</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AlignJustify.Description">
+			<Context/>
+			<Text Lang="en">Align justify</Text>
+			<Text Lang="uk">Вирівняти по ширині</Text>
+			<Text Lang="fr">Justifier</Text>
+			<Text Lang="pt-BR">Alinhar justificadamento</Text>
+			<Text Lang="zh">两端对齐</Text>
+			<Text Lang="ko">균등 정렬</Text>
+			<Text Lang="pl">Wyjustuj</Text>
+			<Text Lang="es">Justificar</Text>
+			<Text Lang="it">Allineamento giustificato</Text>
+			<Text Lang="ru">Выравнивание по ширине</Text>
+			<Text Lang="de">Blockformatierung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bold.Description">
+			<Context/>
+			<Text Lang="en">Bold</Text>
+			<Text Lang="uk">Жирний шрифт</Text>
+			<Text Lang="fr">Gras</Text>
+			<Text Lang="pt-BR">Negrito</Text>
+			<Text Lang="zh">黑体</Text>
+			<Text Lang="ko">굵게</Text>
+			<Text Lang="pl">Pogrubienie</Text>
+			<Text Lang="es">Negrita</Text>
+			<Text Lang="it">Grassetto</Text>
+			<Text Lang="ru">Жирный шрифт</Text>
+			<Text Lang="de">Fett</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Italic.Description">
+			<Context/>
+			<Text Lang="en">Italic</Text>
+			<Text Lang="uk">Курсив</Text>
+			<Text Lang="fr">Italique</Text>
+			<Text Lang="pt-BR">Itálico</Text>
+			<Text Lang="zh">斜体</Text>
+			<Text Lang="ko">기울임꼴</Text>
+			<Text Lang="pl">Kursywa</Text>
+			<Text Lang="es">Cursiva</Text>
+			<Text Lang="it">Corsivo</Text>
+			<Text Lang="ru">Курсив</Text>
+			<Text Lang="de">Kursiv</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Underlined.Description">
+			<Context/>
+			<Text Lang="en">Underlined</Text>
+			<Text Lang="uk">Підкреслений</Text>
+			<Text Lang="fr">Souligné</Text>
+			<Text Lang="pt-BR">Sublinhado</Text>
+			<Text Lang="zh">下划线</Text>
+			<Text Lang="ko">밑줄</Text>
+			<Text Lang="pl">Podkreślenie</Text>
+			<Text Lang="es">Subrayado</Text>
+			<Text Lang="it">Sottolineato</Text>
+			<Text Lang="ru">Подчеркнутый</Text>
+			<Text Lang="de">Unterstrichen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Color.Description">
+			<Context/>
+			<Text Lang="en">Color</Text>
+			<Text Lang="uk">Колір</Text>
+			<Text Lang="fr">Couleur</Text>
+			<Text Lang="pt-BR">Cor</Text>
+			<Text Lang="zh">颜色</Text>
+			<Text Lang="ko">글꼴 색</Text>
+			<Text Lang="pl">Kolor</Text>
+			<Text Lang="es">Color</Text>
+			<Text Lang="it">Colore</Text>
+			<Text Lang="ru">Цвет</Text>
+			<Text Lang="de">Textfarbe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subscript.Description">
+			<Context/>
+			<Text Lang="en">Subscript</Text>
+			<Text Lang="uk">Підрядковий індекс</Text>
+			<Text Lang="fr">Indice</Text>
+			<Text Lang="pt-BR">Subscrito</Text>
+			<Text Lang="zh">下标</Text>
+			<Text Lang="ko">아래 첨자</Text>
+			<Text Lang="pl">Indeks dolny</Text>
+			<Text Lang="es">Subíndice</Text>
+			<Text Lang="it">Pedice</Text>
+			<Text Lang="ru">Нижний индекс</Text>
+			<Text Lang="de">Tiefgestellt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Superscript.Description">
+			<Context/>
+			<Text Lang="en">Superscript</Text>
+			<Text Lang="uk">Надрядковий індекс</Text>
+			<Text Lang="fr">Exposant</Text>
+			<Text Lang="pt-BR">Sobrescrito</Text>
+			<Text Lang="zh">上标</Text>
+			<Text Lang="ko">위 첨자</Text>
+			<Text Lang="pl">Indeks górny</Text>
+			<Text Lang="es">Superíndice</Text>
+			<Text Lang="it">Apice</Text>
+			<Text Lang="ru">Верхний индекс</Text>
+			<Text Lang="de">Hochgestellt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveFormat.Description">
+			<Context/>
+			<Text Lang="en">Remove format</Text>
+			<Text Lang="uk">Усунути форматування</Text>
+			<Text Lang="fr">Effacer la mise en forme</Text>
+			<Text Lang="pt-BR">Remover formato</Text>
+			<Text Lang="zh">删除格式</Text>
+			<Text Lang="ko">글꼴 제거</Text>
+			<Text Lang="pl">Usuń formatowanie</Text>
+			<Text Lang="es">Eliminar formato</Text>
+			<Text Lang="it">Rimuovi formato</Text>
+			<Text Lang="ru">Убрать форматирование</Text>
+			<Text Lang="de">Format entfernen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnorderedList.Description">
+			<Context/>
+			<Text Lang="en">Bullet point list</Text>
+			<Text Lang="uk">Маркерований список</Text>
+			<Text Lang="fr">Liste à puces</Text>
+			<Text Lang="pt-BR">Lista de pontos essenciais</Text>
+			<Text Lang="zh">点句符列表</Text>
+			<Text Lang="ko">글머리 기호 목록</Text>
+			<Text Lang="pl">Usuń sortowanie</Text>
+			<Text Lang="es">Lista desordenada</Text>
+			<Text Lang="it">Lista non ordinata</Text>
+			<Text Lang="ru">Неупорядоченный список</Text>
+			<Text Lang="de">Liste ohne Nummerierung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="OrderedList.Description">
+			<Context/>
+			<Text Lang="en">Numbered list</Text>
+			<Text Lang="uk">Цифровий список</Text>
+			<Text Lang="fr">Liste numérotée</Text>
+			<Text Lang="pt-BR">Lista numerada</Text>
+			<Text Lang="zh">编号列表</Text>
+			<Text Lang="ko">번호순으로 배열된 목록</Text>
+			<Text Lang="pl">Sortuj</Text>
+			<Text Lang="es">Lista ordenada</Text>
+			<Text Lang="it">Lista ordinata</Text>
+			<Text Lang="ru">Упорядоченный список</Text>
+			<Text Lang="de">Liste mit Nummerierung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InsertLink.Description">
+			<Context/>
+			<Text Lang="en">Hyperlink...</Text>
+			<Text Lang="uk">Гіперпосилання…</Text>
+			<Text Lang="fr">Lien hypertexte...</Text>
+			<Text Lang="pt-BR">Hyperlink...</Text>
+			<Text Lang="zh">超链接...</Text>
+			<Text Lang="ko">하이퍼링크…</Text>
+			<Text Lang="pl">Hiperlink...</Text>
+			<Text Lang="es">Hipervínculo</Text>
+			<Text Lang="it">Collegamento ipertestuale…</Text>
+			<Text Lang="ru">Гиперссылка...</Text>
+			<Text Lang="de">Verknüpfung...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveLink.Description">
+			<Context/>
+			<Text Lang="en">Remove hyperlink</Text>
+			<Text Lang="uk">Усунути гіперпосилання</Text>
+			<Text Lang="fr">Supprimer le lien hypertexte</Text>
+			<Text Lang="pt-BR">Remover hyperlink</Text>
+			<Text Lang="zh">删除超链接</Text>
+			<Text Lang="ko">하이퍼링크 제거</Text>
+			<Text Lang="pl">Usuń link</Text>
+			<Text Lang="es">Eliminar hipervínculo</Text>
+			<Text Lang="it">Rimuovi collegamento</Text>
+			<Text Lang="ru">Убрать ссылку</Text>
+			<Text Lang="de">Verknüpfung entfernen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UseSpellChecking.Description">
+			<Context/>
+			<Text Lang="en">Use spell checking</Text>
+			<Text Lang="uk">Використовувати перевірку орфографії</Text>
+			<Text Lang="fr">Utiliser le correcteur orthographique</Text>
+			<Text Lang="pt-BR">Usar verificação ortográfica</Text>
+			<Text Lang="zh">使用拼写检查</Text>
+			<Text Lang="ko">맞춤법 검사 사용</Text>
+			<Text Lang="pl">Sprawdź pisownię</Text>
+			<Text Lang="es">Usar corrector ortográfico</Text>
+			<Text Lang="it">Utilizza correttore ortografico</Text>
+			<Text Lang="ru">Использовать проверку орфографии</Text>
+			<Text Lang="de">Rechtschreibprüfung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LinkToolTip.ReadOnly.Internal">
+			<Context/>
+			<Text Lang="en"><![CDATA[Click to open link in this pane
+Shift+Click to open the link in a new window]]></Text>
+			<Text Lang="uk"><![CDATA[Клацніть щоб відкрити посилання в цій панелі.
+Shift+ЛКМ щоб відкрити посилання у новому вікні]]></Text>
+			<Text Lang="fr"><![CDATA[Cliquez pour ouvrir le lien dans ce volet
+Shift+Clic pour ouvrir le lien dans une nouvelle fenêtre]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Clique para abrir o link neste painel.
+Shift+Clique para abrir este link em uma nova janela.]]></Text>
+			<Text Lang="zh"><![CDATA[单击此处打开此窗格中的链接。
+按住Shift并单击可在新窗口中打开链接]]></Text>
+			<Text Lang="ko"><![CDATA[이 창에서 링크를 열려면 클릭
+새 창에서 링크를 열려면 Shift+클릭]]></Text>
+			<Text Lang="pl"><![CDATA[Kliknij aby otworzyć link w tym panelu
+Przytrzymaj Shift i kliknij by otworzyć w nowym oknie]]></Text>
+			<Text Lang="es"><![CDATA[Haz clic para abrir el enlace en este panel
+Mayús + clic para abrir el enlace en una nueva ventana]]></Text>
+			<Text Lang="it"><![CDATA[Clicca per aprire il collegamento in questo pannello
+Shift+Click per aprire il collegamento in una nuova finestra]]></Text>
+			<Text Lang="ru"><![CDATA[Click чтобы открыть ссылку в этой панели
+Shift+Click чтобы открыть ссылку в новом окне]]></Text>
+			<Text Lang="de"><![CDATA[Klick um Link in diesem Fenster zu öffnen
+Umschalt+Klick um Link in neuem Fenster zu öffnen]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LinkToolTip.Editable.Internal">
+			<Context/>
+			<Text Lang="en"><![CDATA[Ctrl+Click to open link in this pane
+Ctrl+Shift+Click to open the link in a new window]]></Text>
+			<Text Lang="uk"><![CDATA[Ctrl+ЛКМ щоб відкрити посилання в цій панелі
+Ctrl+Shift+ЛКМ щоб відкрити посилання у новому вікні]]></Text>
+			<Text Lang="fr"><![CDATA[Ctrl+Clic pour ouvrir le lien dans ce volet
+Ctrl+Shift+Clic pour ouvrir le lien dans une nouvelle fenêtre]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Ctrl+Click para abrir o link nesse painel.
+Ctrl+Shift+Click para abrir o link em uma nova janela.]]></Text>
+			<Text Lang="zh"><![CDATA[按住Ctrl并单击此处打开此窗格中的链接。
+Ctrl+Shift+单击可在新窗口中打开链接]]></Text>
+			<Text Lang="ko"><![CDATA[이 창에서 링크를 열려면 Ctrl+클릭
+새 창에서 링크를 열려면 Ctrl+Shift+클릭]]></Text>
+			<Text Lang="pl"><![CDATA[Przytrzymaj Ctrl i kliknij aby otworzyć link w tym panelu
+Przytrzymaj Ctrl+Shift i kliknij aby otworzyć link w nowym oknie]]></Text>
+			<Text Lang="es"><![CDATA[Haz clic para abrir el enlace en este panel
+Mayús + clic para abrir el enlace en una nueva ventana]]></Text>
+			<Text Lang="it"><![CDATA[Ctrl+Click per aprire il collegamento in questo pannello
+Ctrl+Shift+Click per aprire il collegamento in una nuova finestra]]></Text>
+			<Text Lang="ru"><![CDATA[Ctrl+Click чтобы открыть ссылку в этой панели
+Ctrl+Shift+Click чтобы открыть ссылку в новом окне]]></Text>
+			<Text Lang="de"><![CDATA[Strg+Klick um Link in diesem Fenster zu öffnen
+Strg+Umschalt+Klick um Link in neuem Fenster zu öffnen]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LinkToolTip.ReadOnly.External">
+			<Context/>
+			<Text Lang="en">Click to follow link</Text>
+			<Text Lang="uk">Клацніть щоб перейти по посиланню</Text>
+			<Text Lang="fr">Cliquez pour suivre le lien</Text>
+			<Text Lang="pt-BR">Clique para seguir o link</Text>
+			<Text Lang="zh">单击以跟踪链接</Text>
+			<Text Lang="ko">링크를 따라가려면 클릭</Text>
+			<Text Lang="pl">Naciśnij aby śledzić link</Text>
+			<Text Lang="es">Haz clic para seguir el enlace</Text>
+			<Text Lang="it">Clicca per seguire il collegamento</Text>
+			<Text Lang="ru">Click чтобы проследовать по ссылке</Text>
+			<Text Lang="de">Klick um Link zu folgen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LinkToolTip.Editable.External">
+			<Context/>
+			<Text Lang="en">Ctrl+Click to follow link</Text>
+			<Text Lang="uk">Ctrl+ЛКМ щоб перейти по посиланню</Text>
+			<Text Lang="fr">Ctrl+Clic pour suivre le lien</Text>
+			<Text Lang="pt-BR">Ctrl+Click para seguir o link</Text>
+			<Text Lang="zh">按住Ctrl并单击以跟踪链接</Text>
+			<Text Lang="ko">링크를 따라가려면 Ctrl+클릭</Text>
+			<Text Lang="pl">Przytrzymaj Ctrl i kliknij aby śledzić link</Text>
+			<Text Lang="es">Ctrl + clic para seguir el enlace</Text>
+			<Text Lang="it">Ctrl+Click per seguire il collegamento</Text>
+			<Text Lang="ru">Ctrl+Click чтобы проследовать по ссылке</Text>
+			<Text Lang="de">Strg+Klick um Link zu folgen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LinkToolTip.Broken">
+			<Context/>
+			<Text Lang="en">The referenced object does not exist.</Text>
+			<Text Lang="uk">Об'єкт на який посилаєтесь, не існує.</Text>
+			<Text Lang="fr">L’objet référencé n’existe pas.</Text>
+			<Text Lang="pt-BR">O objeto referenciado não existe.</Text>
+			<Text Lang="zh">引用的对象不存在。</Text>
+			<Text Lang="ko">참조된 객체가 없습니다.</Text>
+			<Text Lang="pl">Opisywany obiekt nie istnieje</Text>
+			<Text Lang="es">El objeto referenciado no existe.</Text>
+			<Text Lang="it">L'oggetto referenziato non esiste.</Text>
+			<Text Lang="ru">Указанный объект не существует.</Text>
+			<Text Lang="de">Das referenzierte Objekt existiert nicht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.LimitReached">
+			<Context/>
+			<Text Lang="en">The maximum word count for this text is reached. Please split your text into multiple texts.</Text>
+			<Text Lang="uk">Досягнуто максимальної кількості слів для цього тексту. Будь ласка, розділіть текст на кілька частин.</Text>
+			<Text Lang="fr">Le nombre de mots maximum pour ce texte est atteint. Veuillez diviser votre texte en plusieurs parties.</Text>
+			<Text Lang="pt-BR">Q quantidade máxima de palavras para esse texto foi alcançada. Por favor divida seu texto em múltiplos textos.</Text>
+			<Text Lang="zh">已达到该文本的最大字数。请将您的文本拆分为多个文本。</Text>
+			<Text Lang="ko">이 텍스트의 최대 단어 수에 도달 했습니다. 텍스트를 여러 개의 텍스트로 분할 하십시오.</Text>
+			<Text Lang="pl">Został osiągnięty maksymalny rozmiar tekstu. Proszę go podzielić na kilka tekstów</Text>
+			<Text Lang="es">Se ha alcanzado el número máximo de palabras por texto. Por favor, divide el texto en varias partes.</Text>
+			<Text Lang="it">Hai raggiunto il numero massimo di parole per testo. Per favore dividi il tuo testo in più parti.</Text>
+			<Text Lang="ru">Максимальный лимит слов для текста достигнут. Пожалуйста, разделите ваш текст на несколько частей.</Text>
+			<Text Lang="de">Die maximale Textlänge für einen Text wurde erreicht. Bitte teilen Sie den Text auf mehrere Texte auf.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Hover Toolbar
+	-->
+	<Category Name="System" Namespace=".Assistant" Key="Assistant">
+
+		<TextDefinition Key="Errors.Caption">
+			<Context>caption for the errors dialog</Context>
+			<Text Lang="en">Errors</Text>
+			<Text Lang="uk">Помилки</Text>
+			<Text Lang="fr">Erreurs</Text>
+			<Text Lang="pt-BR">Erros</Text>
+			<Text Lang="zh">错误</Text>
+			<Text Lang="ko">오류</Text>
+			<Text Lang="pl">Błąd</Text>
+			<Text Lang="es">Errores</Text>
+			<Text Lang="it">Errori</Text>
+			<Text Lang="ru">Ошибки</Text>
+			<Text Lang="de">Fehler</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Errors.Text">
+			<Context>text for the errors dialog</Context>
+			<Text Lang="en"><![CDATA[The assistant can't be finished because errors were found in the configuration.
+Please check the left side of the assistant dialog for exclamation marks besides pages.
+Select these page(s) by clicking on them or by using the 'Back' and 'Next' buttons. Fields with errors are highlighted on the pages.
+
+The following errors are currently present:
+
+{0}]]></Text>
+			<Text Lang="uk"><![CDATA[Помічника не можливо завершити, оскільки знайдені помилки в конфігурації. Будь ласка, перевірте ліву сторону вікна помічника на наявність сторінок помічених знаком оклику. Виберіть ці сторінки натисканням або кнопками «Назад» і «Вперед». Поля з помилками виділені.
+
+На даний момент присутні наступні помилки:
+
+{0}]]></Text>
+			<Text Lang="fr"><![CDATA[L’assistant ne peut pas terminer car des erreurs ont été trouvées dans la configuration.
+Veuillez vérifier s’il y a des points d’exclamation à côté des pages dans la partie gauche de la boîte de dialogue de l’assistant.
+Sélectionnez la/les page(s) en cliquant dessus ou en utilisant les boutons « Précédent » et « Suivant ». Les champs qui contiennent des erreurs sont signalés sur les pages.
+
+Les erreurs suivantes sont actuellement présentes : 
+
+{0}]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O auxiliar não pôde ser finalizado porquê erros foram encontrados na configuração.
+Por favor cheque o lado esquerdo do diálogo auxiliar por pontos de exclamação do lado das páginas.
+Selecione essa(s) página(s) clicando nelas ou usando os botões "Anterior" e "Próximo". Campos com erros ficam destacados nas páginas.
+
+Os erros a seguir estão atualmente presentes:
+
+{0}]]></Text>
+			<Text Lang="zh"><![CDATA[无法完成操作，因为在配置中发生错误。
+请检查“助手”对话框左侧，页面之外是否有感叹号。
+通过单击或使用“上一步”和“下一步”按钮选择这些页面。页面上突出显示有错误的字段。
+
+当前存在以下错误：
+
+{0}]]></Text>
+			<Text Lang="ko"><![CDATA[구성에서 오류가 발견 되었으므로 마법사를 끝낼 수 없습니다.
+
+페이지 이외의 느낌표에 대 한 마법사 다이얼로그의 왼쪽을 확인 하십시오.
+
+이 페이지를 클릭 하거나 '뒤로' 및 '다음' 버튼을 사용 하 여 선택 합니다. 오류가 있는 필드는 페이지에서 강조 표시 됩니다.
+
+
+
+다음 오류가 현재 존재 합니다: 
+
+{0} ]]></Text>
+			<Text Lang="pl"><![CDATA[Asystent nie może zakończyć zadania, ponieważ znaleziono błędy konfiguracyjne. Proszę sprawdzić lewe okno dialogowe asystenta strony oznaczone wykrzyknikami. Zaznacz te strony poprzez klikanie lub przyciski 'Wstecz' i 'Dalej'. Są tam zaznaczone pola z błędami.
+
+Zostały znalezione następujące błędy:
+
+{0}]]></Text>
+			<Text Lang="es"><![CDATA[El asistente no puede finalizar porque se han encontrado errores en la configuración.
+Por favor, consulta una página marcada con un signo de exclamación en la parte izquierda del cuadro de diálogo del asistente.
+Selecciona esta(s) página(s) haciendo clic o usando los botones "Atrás" y "Siguiente". Los campos con errores aparecerán resaltados.
+
+Se han encontrado los siguientes errores:
+
+{0}]]></Text>
+			<Text Lang="it"><![CDATA[Il wizard non può essere terminato a causa di alcuni errori nella configurazione.
+Per favore controlla la presenza di una pagina contrassegnata con un punto esclamativo nella parte sinistra della finestra del wizard.
+Seleziona questa/queste pagine cliccandole o utilizzando i pulsanti 'Back' e 'Next'. I campi con degli errori verranno così evidenziati.
+
+Sono presenti gli errori seguenti:
+
+{0}]]></Text>
+			<Text Lang="ru"><![CDATA[Помощник не может быть закончен потому что были найдены ошибки в конфигурации. Пожалуйста, проверьте левую сторону окна помощника на предмет страницы помеченной восклицательным знаком. Выберите эту страницу(-ы) нажатием или кнопками "Назад" и "Вперед". Там будут выделены поля с ошибками.
+
+На данный момент присутствуют следующие ошибки:
+
+{0}]]></Text>
+			<Text Lang="de"><![CDATA[Der Assistent kann nicht fertiggestellt werden, da die Konfiguration fehlerhaft ist.
+Bitte überprüfen Sie die Liste auf der linken Seite auf Ausrufezeichen. Diese markieren Seiten, in denen Fehler gefunden worden sind.
+Sie können diese Seiten direkt anklicken oder durch Verwendung der Schaltflächen 'Voherige' und 'Nächste' erreichen.
+Fehlerhafte Felder sind dort hervorgehoben.
+
+Die folgenden Fehler müssen korrigiert werden:
+
+{0}]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Spellchecker
+	-->
+	<Category Name="System" Namespace=".Spellcheck">
+
+		<TextDefinition Key="AddToIgnoreList.Caption">
+			<Context>context menu entry for spellchecker, command that adds the given word ({0}) to the list of always ignored words</Context>
+			<Text Lang="en">Add '{0}' to dictionary</Text>
+			<Text Lang="uk">Додати '{0}' до словника</Text>
+			<Text Lang="fr">Ajouter « {0} » au dictionnaire</Text>
+			<Text Lang="pt-BR">Adicionar '{0}' ao dicionário</Text>
+			<Text Lang="zh">将 '{0}' 添加至字典</Text>
+			<Text Lang="ko">디렉토리에 '{0}' 추가</Text>
+			<Text Lang="de">'{0}' zum Wörterbuch hinzufügen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveFromIgnoreList.Caption">
+			<Context>context menu entry for spellchecker, command that removes the given word ({0}) from the list of always ignored words</Context>
+			<Text Lang="en">Remove '{0}' from dictionary</Text>
+			<Text Lang="uk">Вилучити '{0}' зі словника</Text>
+			<Text Lang="fr">Supprimer « {0} » du dictionnaire</Text>
+			<Text Lang="pt-BR">Remover '{0}' do dicionário</Text>
+			<Text Lang="zh">将 '{0}' 从字典移除</Text>
+			<Text Lang="ko">디렉토리에 '{0}' 제거</Text>
+			<Text Lang="de">'{0}' aus dem Wörterbuch entfernen</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  QueryBox
+	-->
+	<Category Name="System" Namespace=".QueryBox">
+
+		<TextDefinition Key="Default.Title">
+			<Context>Window title of the Query Box of no other title was given.</Context>
+			<Text Lang="en">articy:draft</Text>
+			<Text Lang="uk">articy:draft</Text>
+			<Text Lang="fr">articy:draft</Text>
+			<Text Lang="pt-BR">articy:draft</Text>
+			<Text Lang="zh">articy:draft</Text>
+			<Text Lang="ko">articy:draft</Text>
+			<Text Lang="de">articy:draft</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Default.InfoText">
+			<Context>Default info text of QueryBox if there is no given other one</Context>
+			<Text Lang="en">Please enter your value.</Text>
+			<Text Lang="uk">Будь ласка введіть ваше значення.</Text>
+			<Text Lang="fr">Veuillez saisir votre valeur.</Text>
+			<Text Lang="pt-BR">Por favor insira seu valor.</Text>
+			<Text Lang="zh">请输入您的值。</Text>
+			<Text Lang="ko">값을 입력하십시오.</Text>
+			<Text Lang="de">Bitte gewünschten Wert eingeben.</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

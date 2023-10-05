@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TextPackage BaseNamespace="Articy.HitmanPlugin" GenerateIds="true" xmlns="http://articy.com/TextPackage.xsd" xml:space="preserve" >
+
+  <Category Name="System" >
+    <TextDefinition Key="Plugin.Name">
+      <Context></Context>
+      <Text Lang="en">Demo Plugin</Text>
+      <Text Lang="de">Demo Plugin</Text>
+    </TextDefinition>
+
+  </Category>
+</TextPackage>

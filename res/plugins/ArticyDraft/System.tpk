@@ -1,0 +1,286 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Bootstrap.LoadingTexts">
+			<Context>Splash screen message when loading texts</Context>
+			<Text Lang="en">Loading texts...</Text>
+			<Text Lang="uk">Завантаження тексту…</Text>
+			<Text Lang="fr">Chargement des textes...</Text>
+			<Text Lang="pt-BR">Carregando textos...</Text>
+			<Text Lang="zh">正在加载文本...</Text>
+			<Text Lang="ko">텍스트 로딩 중…</Text>
+			<Text Lang="pl">Wczytywanie tekstów...</Text>
+			<Text Lang="es">Cargando textos...</Text>
+			<Text Lang="it">Caricamento testi…</Text>
+			<Text Lang="ru">Загрузка текста…</Text>
+			<Text Lang="de">Lade Texte...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.CheckingDependencies">
+			<Context>Splash screen message when loading texts</Context>
+			<Text Lang="en">Checking dependencies…</Text>
+			<Text Lang="uk">Перевірка залежностей…</Text>
+			<Text Lang="fr">Vérification des dépendances...</Text>
+			<Text Lang="pt-BR">Checando dependências ...</Text>
+			<Text Lang="zh">正在检查依赖项…</Text>
+			<Text Lang="ko">종속 확인 중…</Text>
+			<Text Lang="pl">Sprawdzanie współzależności...</Text>
+			<Text Lang="es">Comprobando dependencias...</Text>
+			<Text Lang="it">Controllo dipendenze…</Text>
+			<Text Lang="ru">Проверка взаимозависимостей…</Text>
+			<Text Lang="de">Überpüfe Abhängigkeiten…</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.LoadPackage">
+			<Context>Splash screen message when loading a package</Context>
+			<Text Lang="en">Loading package '{0}'…</Text>
+			<Text Lang="uk">Завантаження модуля '{0}'</Text>
+			<Text Lang="fr">Chargement du pack « {0} »...</Text>
+			<Text Lang="pt-BR">Carregando Pacote '{0}'...</Text>
+			<Text Lang="zh">正在加载包 '{0}'…</Text>
+			<Text Lang="ko">{0}' 패키지 로딩 중…</Text>
+			<Text Lang="pl">Wczytywanie pakietu '{0}'...</Text>
+			<Text Lang="es">Cargando paquete '{0}'</Text>
+			<Text Lang="it">Caricamento Package '{0}'</Text>
+			<Text Lang="ru">Загрузка модуля '{0}'</Text>
+			<Text Lang="de">Lade Paket '{0}'…</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.Starting">
+			<Context>Splash screen message when starting the main application</Context>
+			<Text Lang="en">Starting...</Text>
+			<Text Lang="uk">Запуск...</Text>
+			<Text Lang="fr">Démarrage...</Text>
+			<Text Lang="pt-BR">Iniciando...</Text>
+			<Text Lang="zh">正在启动...</Text>
+			<Text Lang="ko">시작하는 중…</Text>
+			<Text Lang="pl">Rozpoczynanie...</Text>
+			<Text Lang="es">Iniciando...</Text>
+			<Text Lang="it">Avvio…</Text>
+			<Text Lang="ru">Запуск…</Text>
+			<Text Lang="de">Starte...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.DllMissing">
+			<Context>shown in a message box if a required dll could not be found</Context>
+			<Text Lang="en"><![CDATA[The required DLL '{0}' could not be found or initialized.
+Program will be terminated.]]></Text>
+			<Text Lang="uk"><![CDATA[Необхідну dll '{0}' не знайдено або не розпізнано.
+Програма припиниться.]]></Text>
+			<Text Lang="fr"><![CDATA[Le DLL « {0} » nécessaire n’a pas été trouvé ou initialisé.
+Le logiciel va être arrêté.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O DLL requerido '{0}' não pôde ser encontrado ou inicializado.  
+Programa será encerrado.]]></Text>
+			<Text Lang="zh"><![CDATA[无法找到或初始化所需的DLL '{0}' 。
+程序将终止。]]></Text>
+			<Text Lang="ko"><![CDATA[DLL '{0}'을(를) 찾을 수 없거나 초기화되지 않았습니다.
+프로그램을 종료합니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Wymagana biblioteka DLL '{0}' nie została znaleziona lub uruchomiona.
+Program zostanie zakończony.]]></Text>
+			<Text Lang="es"><![CDATA[La dll requerida '{0}' no se ha podido encontrar o inicializar.
+El programa se cerrará.]]></Text>
+			<Text Lang="it"><![CDATA[La dll '{0}' è necessaria ma non è stata trovata o non può essere inizializzata.
+Il programma verrà arrestato.]]></Text>
+			<Text Lang="ru"><![CDATA[Необходимый dll '{0}' не обнаружен или не опознан. 
+Программа будет завершена. ]]></Text>
+			<Text Lang="de"><![CDATA[Die benötigte DLL '{0}' konnte nicht gefunden oder initialisiert werden.
+Programm wird beendet.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.RequiredPackageNotFound">
+			<Context>shown in a message box if a required package was not found</Context>
+			<Text Lang="en"><![CDATA[The required package '{0}' could not be found.
+Program will be terminated.]]></Text>
+			<Text Lang="uk"><![CDATA[Необхідний модуль '{0}' не виявлено.
+Програма припинеться.]]></Text>
+			<Text Lang="fr"><![CDATA[Le pack « {0} » nécessaire n’a pas été trouvé.
+Le logiciel va être arrêté.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O pacote requerido '{0}' não foi encontrado.
+Programa será encerrado.]]></Text>
+			<Text Lang="zh"><![CDATA[无法找到所需的包 '{0}' 。
+程序将终止。]]></Text>
+			<Text Lang="ko"><![CDATA[패키지 '{0}'을(를) 이(가) 없거나 초기화되지 않았습니다.
+프로그램을 종료합니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Wymagany pakiet '{0}' nie został znaleziony.
+Program zostanie zakończony.]]></Text>
+			<Text Lang="es"><![CDATA[El paquete requerido '{0}' no se ha podido encontrar o inicializar.
+El programa se cerrará.]]></Text>
+			<Text Lang="it"><![CDATA[Il Package '{0}' è necessario ma non è stato trovato.
+Il programma verrà arrestato.]]></Text>
+			<Text Lang="ru"><![CDATA[Необходимый модуль '{0}' не обнаружен. 
+Программа будет завершена.]]></Text>
+			<Text Lang="de"><![CDATA[Das benötigte Paket '{0}' konnte nicht gefunden werden.
+Programm wird beendet.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.RequiredPackageNotLoadable">
+			<Context>shown in a message box if a required package could not be loaded</Context>
+			<Text Lang="en"><![CDATA[The required package '{0}' could not be loaded but dependant packages exist.
+Program will be terminated.]]></Text>
+			<Text Lang="uk">Необхідний модуль '{0}' неможливо завантажити, але залежні модулі існують. Програма припинеться.</Text>
+			<Text Lang="fr"><![CDATA[Le pack « {0} » nécessaire n’a pas pu être chargé mais des packs dépendants existent. 
+Le logiciel va être arrêté.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O pacote requerido '{0}' não pôde ser carregado mas pacotes dependentes existem.
+Programa será encerrado.]]></Text>
+			<Text Lang="zh"><![CDATA[无法加载所需的包 '{0}' ，但存在依赖包。
+程序将终止。]]></Text>
+			<Text Lang="ko"><![CDATA[패키지 '{0}'을(를) 종속된 패키지가 있음에도 로딩되지 않았습니다.
+프로그램을 종료합니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Wymagany pakiet '{0}' nie został wczytany, a istnieją pakiety zależne.
+Program zostanie zakończony.]]></Text>
+			<Text Lang="es"><![CDATA[El paquete requerido '{0}' no se ha podido cargar pero existen paquetes dependientes.
+El programa se cerrará.]]></Text>
+			<Text Lang="it"><![CDATA[Il Package '{0}' è necessario ma non può essere caricato tuttavia i Package dipendenti da esso esistono.
+Il programma verrà arrestato.]]></Text>
+			<Text Lang="ru">Необходимый модуль '{0}' не может быть загружен, но зависимые модули существуют . Программа будет завершена.</Text>
+			<Text Lang="de"><![CDATA[Das benötigte Paket '{0}' kann nicht geladen werden aber es existieren weitere Pakete die davon abhängig sind.
+Programm wird beendet.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.NetFrameworkNotUpToDate">
+			<Context>Shown in a message box if .NET Framework 4.0 was not found</Context>
+			<Text Lang="en">The required .NET framework 4.0 full install was not found. Please install.</Text>
+			<Text Lang="uk">Необхідна повна інсталяція .NET Framework 4.0 не знайдена. Будь ласка, встановіть.</Text>
+			<Text Lang="fr">L’installation complète nécessaire de .NET framework 4.0 n’a pas été trouvée. Veuillez l’installer.</Text>
+			<Text Lang="pt-BR">A instalação completa rquerida de .NET framework 4.0 não foi encontrada. Por favor Instale.</Text>
+			<Text Lang="zh">找不到完整安装的 .NET framework 4.0 ，请安装后重试。</Text>
+			<Text Lang="ko">.NET 프레임워크 4.0이 설치되어 있지 않거나 찾을 수 없습니다. 설치하시기 바랍니다.</Text>
+			<Text Lang="pl"><![CDATA[Wymagany .NET Framework 4.0 nie został znaleziony.
+Prosimy o instalację tego oprogramowania.]]></Text>
+			<Text Lang="es">No se ha encontrado instalada una versión completa de NET Framework 4.0. Por favor, instálala.</Text>
+			<Text Lang="it"><![CDATA[L'installazione completa del framework .NET 4.0 non è stata trovata.
+Si prega di installarla.]]></Text>
+			<Text Lang="ru">Требуемая полная установка .NET Framework 4.0 не была найдена. Пожалуйста, установите.</Text>
+			<Text Lang="de">Das benötigte .NET Framework 4.0 'full install' wurde nicht gefunden. Bitte installieren Sie dieses.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.DependencyCheckFailed">
+			<Context>shown in a message box if .NET Framework 4.0 full install was not found</Context>
+			<Text Lang="en">The required .NET framework 4.0 full install was not found. Please install.</Text>
+			<Text Lang="uk">Необхідна повна інсталяція .NET Framework 4.0 не знайдена. Будь ласка, встановіть.</Text>
+			<Text Lang="fr">L’installation complète nécessaire de .NET framework 4.0 n’a pas été trouvée. Veuillez l’installer.</Text>
+			<Text Lang="pt-BR">A instalação completa rquerida de .NET framework 4.0 não foi encontrada. Por favor Instale.</Text>
+			<Text Lang="zh">找不到完整安装的 .NET framework 4.0 ，请安装后重试。</Text>
+			<Text Lang="ko">.NET 프레임워크 4.0이 전부 설치되어 있지 않거나 찾을 수 없습니다. 설치하시기 바랍니다.</Text>
+			<Text Lang="pl"><![CDATA[Pełna instalacja wymaganego .NET Framework 4.0 nie została znaleziona.
+Prosimy o instalację tego oprogramowania.]]></Text>
+			<Text Lang="es">No se ha encontrado instalada una versión completa de NET Framework 4.0. Por favor, instálala.</Text>
+			<Text Lang="it"><![CDATA[L'installazione completa del framework .NET 4.0 non è stata trovata.
+Si prega di installarla.]]></Text>
+			<Text Lang="ru">Требуемая полная установка .NET Framework 4.0 не была найдена. Пожалуйста, установите.</Text>
+			<Text Lang="de">Das Benötigte .NET Framework 4.0 full install wurde nicht gefunden. Bitte installieren Sie dieses.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.CrashWithInfo">
+			<Context><![CDATA[shown in a message box the program has crashed and a CrashInfo zip file was created.
+{0} is the programs display name
+{1} is the full qualified name of the crashinfo zip]]></Context>
+			<Text Lang="en"><![CDATA[We are sorry but {0} has just crashed.
+To help us detect the bug and remove it, a ZIP package has been created and stored as
+{1}
+This ZIP file contains logs and screenshot of all {0} windows at the time of the crash.
+Please email this file to support@articy.com.
+For your convenience, we copied the above filename to the clipboard. Just use CTRL-V to paste its name into an attachment file selector of your email client.]]></Text>
+			<Text Lang="uk"><![CDATA[Нам шкода, але {0} щойно вийшов з ладу.
+Щоб допомогти нам виявити помилку та усунути її, створено ZIP-пакет і зберігається як
+{1}
+Цей ZIP-файл містить журнали та скріншот усіх вікон {0} на момент аварії.
+Надішліть цей файл електронною поштою support@articy.com.
+Для вашої зручності ми скопіювали вищезазначену назву файлу в буфер обміну. Просто використайте CTRL-V щоб вставити його назву в поле назви прикріплення файлів вашого поштового клієнта.]]></Text>
+			<Text Lang="fr"><![CDATA[Désolé, {0} a planté.
+Pour nous aider à trouver et supprimer le bug, un dossier ZIP a été créé et sauvegardé sous
+{1}
+Ce dossier ZIP contient les historiques et des captures d’écran de toutes les fenêtres {0} au moment du plantage.
+Veuillez envoyer ce dossier à support@articy.com.
+Pour vous aider, nous avons copié le nom du dossier ci-dessus vers le presse-papiers. Utilisez CTRL+V pour coller son nom dans l’outil de sélection de pièce-jointe de votre service de messagerie.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Pedimos perdão mas {0} teve uma falha.
+Para nos ajudar a detectar o problema e removê-lo, um pacote ZIP foi criado e armazenado como {1}
+Este arquivo ZIP contém históricos e capturas de tela de todas as janelas {0} no momento da falha.
+Por favor, envia este arquivo por email para support@articy.com.
+Para sua conveniência, nós copiamos o nome do arquivo acima para seu clipboard. Simplesmente utilize CTRL-V para copiar seu nome no seletor de arquivos anexos no seu cliente de email. ]]></Text>
+			<Text Lang="zh"><![CDATA[很抱歉 {0} 出现问题崩溃。
+为了帮助我们定位与移除BUG，已创建一个ZIP文件并将其保存至
+{1}
+该ZIP文件包含 {0} 崩溃时的所有窗口日志与屏幕截图。
+请将该文件发送至 support@articy.com。
+为方便您操作，我们已将该文件的路径复制至剪贴板。只需使用 CTRL-V 将该名称粘贴至电子邮件客户端的附件文件选择器中即可。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}이(가) 충돌하였습니다.
+충돌한 파일 정보가 생성되었습니다.
+이 압축파일은 로그와 충돌 시점의 모든 {0} 창의 스크린샷을 포함하고 있습니다.
+이 파일을 이메일 support@articy.com 로 보내주시기 바랍니다.
+당신의 편의를 위해 우리가 클립보드에 위의 파일 이름을 복사하였습니다. 이메일에 보낼 때, 파일 선택 창에서 CTRL-V를 이용하여 붙여넣기 하여 파일을 바로 선택할 수 있습니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Przepraszamy, ale {0} został zatrzymany.
+By pomóc nam znaleźć i usunąć błąd, paczka ZIP została utworzona w folderze
+{1}
+Ten plik ZIP zawiera informacje i zrzut ekranu wszystkich okien {0} podczas napotkania błędu.
+Prosimy przesłać ten plik na adres support@articy.com.
+Dla Twojej wygody skopiowaliśmy ścieżkę pliku do schowka. Po prostu użyj CTRL+V, by wkleić ją w pole załącznika w Twoim programie pocztowym.]]></Text>
+			<Text Lang="es"><![CDATA[Lo sentimos pero {0} se ha cerrado.
+Para que puedas ayudarnos a detectar y eliminar el error, se ha creado el paquete {1}. Este archivo ZIP contiene registros y capturas de pantalla de todas las ventanas de{0} abiertas en el momento del error.
+Por favor, envía este archivo a support@articy.com. Para tu comodidad, hemos copiado el archivo en el portapapeles. Solo tienes que usar CTRL-V para pegarlo en el campo de archivos adjuntos de tu cliente de correo.]]></Text>
+			<Text Lang="it"><![CDATA[Ci dispiace ma {0} si è appena arrestato in modo anomalo.
+Per aiutarci a individuare il bug e a rimuoverlo, un file ZIP è stato creato e memorizzato come {1} 
+Questo file ZIP contiene i log e gli screenshot di tutte le finestre {0} al momento dell'arresto. 
+Si prega di inviare questo file via mail a support@articy.com
+Per la tua comodità, abbiamo copiato il nome del file suddetto nella clipboard. Basta utilizzare CTRL-V per incollarne il nome nello spazio allegati del tuo client di posta.]]></Text>
+			<Text Lang="ru"><![CDATA[Приносим свои извинения, но в {0}  произошел сбой. 
+Чтобы помочь нам обнаружить и удалить ошибку был создан и сохранен ZIP пакет {1}.
+
+Этот ZIP файл содержит журнал и скриншот всех окон {0} в момент сбоя.
+Пожалуйста, отправьте нам этот файл на support@articy.com
+Для вашего удобства мы скопировали выше обозначенное имя файла в буфер обмена. Просто используйте CTRL-V, чтобы вставить его в графе "прикрепить файл" вашего почтового клиента.]]></Text>
+			<Text Lang="de"><![CDATA[Es tut uns leid aber {0} ist gerade abgestüzt.
+Um uns bei der Fehlersuche zu helfen ist eine ZIP-Datei erstellt worden. Diesen finden sie unter:
+{1}
+Diese ZIP-Datei enthält Log-Dateien und Screenshots aller {0}-Fenster zum Zeitpunkt des Absturzes.
+Bitte senden Sie diese Datei an support@articy.com.
+Um Ihnen das Anhängen der Daten zu erleichtern, haben wir den Dateinamen in die Zwischenablage kopiert. Bitte fügen Sie diesen mithilfe von STRG-V in einem Dateiauswahl-Dialog für Anhänge ein.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Bootstrap.CrashWithoutInfo">
+			<Context><![CDATA[shown in a message box the program has crashed and a CrashInfo zip was not possible to create
+{0} is the programs display name]]></Context>
+			<Text Lang="en"><![CDATA[We are sorry but {0} has just crashed.
+A crash info file could not be created.]]></Text>
+			<Text Lang="uk"><![CDATA[Нам шкода, але в {0} щойно стався збій.
+Цей збій настільки серйозний, що не вдалося створити файл аварійної інформації. ]]></Text>
+			<Text Lang="fr"><![CDATA[Désolé, {0} a planté.
+Le dossier d’information sur le plantage n’a pas pu être créé.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Pedimos perdão mas {0} teve uma falha.
+Um arquivo de informação de falha não pôde ser criado.]]></Text>
+			<Text Lang="zh"><![CDATA[很抱歉， {0} 刚刚崩溃。
+无法创建崩溃信息文件。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}이(가) 충돌하였습니다.
+충돌한 파일 정보가 생성되었습니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Przepraszamy, ale {0} został zatrzymany.
+Ten błąd był na tyle poważny, że nie udało się utworzyć pliku z informacjami o nim.]]></Text>
+			<Text Lang="es"><![CDATA[Lo sentimos pero {0} se ha cerrado.
+El error ha sido tan grave que no ha sido posible crear un archivo de información del mismo.]]></Text>
+			<Text Lang="it"><![CDATA[Ci dispiace ma {0} si è appena arrestato in modo anomalo.
+L'arresto è stato grave e non è stato possibile creare un file di report.]]></Text>
+			<Text Lang="ru"><![CDATA[Приносим свои извинения, но в {0}  произошел сбой. 
+Этот сбой был настолько серьезным, что не удалось создать файл аварийной информации.]]></Text>
+			<Text Lang="de"><![CDATA[Es tut uns leid aber {0} ist gerade abgestüzt.
+Eine Datei mit Informationen zum Absturz konnte leider nicht mehr erstellt werden.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Utils.PositionedItem">
+			<Context>Text for a text-position display, {0} is replaced by the line-number {1} with the column-number</Context>
+			<Text Lang="en">Line {0}, Column {1}</Text>
+			<Text Lang="uk">Рядок {0}, стовпець {1}</Text>
+			<Text Lang="fr">Ligne {0}, Colonne {1}</Text>
+			<Text Lang="pt-BR">Linha {0}, Coluna {1}</Text>
+			<Text Lang="zh">行 {0}，列 {1}</Text>
+			<Text Lang="ko">{0} 행, {1} 열</Text>
+			<Text Lang="pl">Linia {0}, Kolumna {1}</Text>
+			<Text Lang="es">Fila {0}, Columna {1}</Text>
+			<Text Lang="it">Linea {0}, Colonna {1}</Text>
+			<Text Lang="ru">Строка {0}, Колонка {1}</Text>
+			<Text Lang="de">Zeile {0}, Spalte {1}</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

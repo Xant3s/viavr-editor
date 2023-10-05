@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TextRepositoryDefinition xmlns="http://nevigo.com/TextRepositoryDefinition.xsd">
+	<Languages>
+		<Language Name="en" Full="true" />
+		<Language Name="de" Full="true" FallbackLanguage="en" />
+		<Language Name="ru" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="ja" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="it" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="es" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="fr" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="pl" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="zh" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="ko" Full="true" FallbackLanguage="en" Community="true" />
+		<Language Name="pt-BR" Full="true" FallbackLanguage="en" Community="true"/>
+		<Language Name="ro" Full="true" FallbackLanguage="en" Community="true" Hide="true" />
+		<Language Name="uk" Full="true" FallbackLanguage="en" Community="true" />
+	</Languages>
+	<TextPackages>
+		<TextPackage Source="System.tpk" Priority="0" />
+		<TextPackage Source="*SourceControl*.tpk" Priority="1" />
+		<TextPackage Source="*FrameworkTexts.tpk" Priority="2" />
+		<TextPackage Source="*FrameworkOverrides.tpk" Priority="3" />
+		<TextPackage Source="Articy*.tpk" Priority="4" />
+		<TextPackage Source="*Export*.tpk" Priority="5" />
+	</TextPackages>
+</TextRepositoryDefinition>

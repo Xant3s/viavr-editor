@@ -1,0 +1,1425 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Tools.CommercialUseDenied">
+			<Context>Text shown when commercial use is denied</Context>
+			<Text Lang="en">(non-commercial use only)</Text>
+			<Text Lang="uk">(лише для некомерційного використання)</Text>
+			<Text Lang="fr">(usage non commercial seulement)</Text>
+			<Text Lang="pt-BR">(Apenas para usos não-comerciais)</Text>
+			<Text Lang="zh">（仅限非商业用途）</Text>
+			<Text Lang="ko">(비-상업적 용도만 사용)</Text>
+			<Text Lang="pl">(tylko dla niekomercyjnego użytku)</Text>
+			<Text Lang="es">(solo para uso no comercial)</Text>
+			<Text Lang="it">(ad uso esclusivamente non commerciale)</Text>
+			<Text Lang="ru">(только для не коммерческого использования)</Text>
+			<Text Lang="de">(nur für nicht-kommerzielle Verwendung)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Unlicensed">
+			<Context>no license has been found</Context>
+			<Text Lang="en">No license</Text>
+			<Text Lang="uk">Немає ліцензії</Text>
+			<Text Lang="fr">Aucune licence</Text>
+			<Text Lang="pt-BR">Sem licença</Text>
+			<Text Lang="zh">无许可证</Text>
+			<Text Lang="ko">라이선스 없음</Text>
+			<Text Lang="pl">Brak licencji</Text>
+			<Text Lang="es">Sin licencia</Text>
+			<Text Lang="it">Nessuna licenza</Text>
+			<Text Lang="ru">Нет лицензии</Text>
+			<Text Lang="de">Unlizensiert</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_A">
+			<Context>Prefix for license info (single-user)</Context>
+			<Text Lang="en">Single-User</Text>
+			<Text Lang="uk">Однокористувацька</Text>
+			<Text Lang="fr">Utilisateur unique</Text>
+			<Text Lang="pt-BR">Usuário-Único</Text>
+			<Text Lang="zh">个人用户</Text>
+			<Text Lang="ko">단일-사용자</Text>
+			<Text Lang="de">Einzelplatz</Text>
+			<Text Lang="ru">Одно место</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_B">
+			<Context>Prefix for license info (server)</Context>
+			<Text Lang="en">Server</Text>
+			<Text Lang="uk">Сервер</Text>
+			<Text Lang="fr">Serveur</Text>
+			<Text Lang="pt-BR">Servidor</Text>
+			<Text Lang="zh">服务器</Text>
+			<Text Lang="ko">서버</Text>
+			<Text Lang="de">Server</Text>
+			<Text Lang="ru">Сервер</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_C">
+			<Context>Prefix for license info (steam)</Context>
+			<Text Lang="en">Steam</Text>
+			<Text Lang="uk">Steam</Text>
+			<Text Lang="fr">Steam</Text>
+			<Text Lang="pt-BR">Steam</Text>
+			<Text Lang="zh">Steam</Text>
+			<Text Lang="ko">스팀</Text>
+			<Text Lang="de">Steam</Text>
+			<Text Lang="ru">Steam</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_D">
+			<Context>Prefix for license info (steam subscription)</Context>
+			<Text Lang="en">Steam Subscription</Text>
+			<Text Lang="uk">Steam підписка</Text>
+			<Text Lang="fr">Abonnement Steam</Text>
+			<Text Lang="pt-BR">Inscrição Steam</Text>
+			<Text Lang="zh">Steam订阅</Text>
+			<Text Lang="ko">스팀 구독</Text>
+			<Text Lang="de">Steam Abo</Text>
+			<Text Lang="ru">Подписка Steam</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_E">
+			<Context>Prefix for license info (steam v3)</Context>
+			<Text Lang="en">Steam</Text>
+			<Text Lang="uk">Steam</Text>
+			<Text Lang="fr">Steam</Text>
+			<Text Lang="pt-BR">Steam</Text>
+			<Text Lang="zh">Steam</Text>
+			<Text Lang="ko">스팀</Text>
+			<Text Lang="de">Steam</Text>
+			<Text Lang="ru">Steam</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_F">
+			<Context>Prefix for Custom versions empty string for not showing any prefix text</Context>
+			<Text Lang="en"></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_G">
+			<Context>Prefix for license info (steam v3 demo/free version)</Context>
+			<Text Lang="en">Free Steam version</Text>
+			<Text Lang="uk">Безкоштовна версія Steam</Text>
+			<Text Lang="fr">Version Steam gratuite</Text>
+			<Text Lang="pt-BR">Versão gratuita do Steam</Text>
+			<Text Lang="zh">Steam 免费版</Text>
+			<Text Lang="ko">무료 스팀 버전</Text>
+			<Text Lang="de">Steam "Free" Version</Text>
+			<Text Lang="ru">Бесплатная версия Steam</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Prefix_H">
+			<Context>Prefix for license info (Free Version)</Context>
+			<Text Lang="en">Free Version</Text>
+			<Text Lang="de">"FREE" Version</Text>
+			<Text Lang="zh">免费版</Text>
+			<Text Lang="ru">Бесплатная версия</Text>
+			<Text Lang="fr">Version gratuite</Text>
+			<Text Lang="ko">무료 버전</Text>
+			<Text Lang="uk">Безкоштовна версія</Text>
+			<Text Lang="pt-BR">Versão gratuita</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.Licensed">
+			<Context>correctly licensed</Context>
+			<Text Lang="en">license:</Text>
+			<Text Lang="uk">Ліцензія</Text>
+			<Text Lang="fr">licence :</Text>
+			<Text Lang="pt-BR">Licença:</Text>
+			<Text Lang="zh">许可证:</Text>
+			<Text Lang="ko">라이선스:</Text>
+			<Text Lang="pl">Licencja:</Text>
+			<Text Lang="es">licencia:</Text>
+			<Text Lang="it">licenza:</Text>
+			<Text Lang="ru">Лицензия:</Text>
+			<Text Lang="de">Lizenz:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.LicenseExpired">
+			<Context>expired license</Context>
+			<Text Lang="en">license: [col=red](expired)[/col]</Text>
+			<Text Lang="uk">Ліцензія: [col=red](сплинула)[/col]</Text>
+			<Text Lang="fr">licence : [col=red](expirée)[/col]</Text>
+			<Text Lang="pt-BR">Licença: [col=red](expired)[/col]</Text>
+			<Text Lang="zh">许可证: [col=red](expired)[/col]</Text>
+			<Text Lang="ko">라이선스: [col=red](expired)[/col]</Text>
+			<Text Lang="pl">Licencja: license: [col=red](wygasła)[/col]</Text>
+			<Text Lang="es">licencia: [col=red](caducada)[/col]</Text>
+			<Text Lang="it">licenza: [col=red](scaduta)[/col]</Text>
+			<Text Lang="ru">Лицензия: [col=red](истекла)[/col]</Text>
+			<Text Lang="de">Lizenz: [col=red](abgelaufen)[/col]</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.LicenseAboutToExpire">
+			<Context>license about to expire</Context>
+			<Text Lang="en">license: [col=#FFA619](expires in {0} days)[/col]</Text>
+			<Text Lang="uk">Ліцензія: [col=#FFA619](спливає через {0} днів)[/col]</Text>
+			<Text Lang="fr">licence : [col=#FFA619](expire dans {0} jours)[/col]</Text>
+			<Text Lang="pt-BR">Licença: [col=#FFA619](expira em {0} dias)[/col]</Text>
+			<Text Lang="zh">许可证: [col=#FFA619](expires in {0} days)[/col]</Text>
+			<Text Lang="ko">라이선스: [col=#FFA619](만료까지 {0}일)[/col]</Text>
+			<Text Lang="pl">Licencja: [col=#FFA619](wygasa za {0} dni)[/col]</Text>
+			<Text Lang="es">licencia: [col=#FFA619](vence en {0} días)[/col]</Text>
+			<Text Lang="it">licenza: [col=#FFA619](scade in {0} giorni)[/col]</Text>
+			<Text Lang="ru">Лицензия: [col=#FFA619](истечет через {0} дней)[/col]</Text>
+			<Text Lang="de">Lizenz: [col=#FFA619](läuft in {0} Tagen ab)[/col]</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.LicenseInGracePeriod">
+			<Context>license in grace period</Context>
+			<Text Lang="en">The license could not be verified for {0} day(s). Please check your internet connection!</Text>
+			<Text Lang="uk">Не вдалося підтвердити ліцензію впродовж {0} днів. Будь ласка, перевірте підключення до Інтернету!</Text>
+			<Text Lang="fr">La licence n’a pas pu être vérifiée pendant {0} jour(s). Veuillez vérifier votre connexion internet !</Text>
+			<Text Lang="pt-BR">A licença não pôde ser verificada por {0} dia(s). Por favor cheque sua conexão com a Internet!</Text>
+			<Text Lang="zh">已有 {0} 天无法验证许可证。 请检查您的互联网连接！</Text>
+			<Text Lang="ko">라이선스가 {0}일동안 확인하지 않았습니다. 인터넷 연결을 확인해 주세요.</Text>
+			<Text Lang="pl">Licencja nie może zostać zweryfikowana od {0} dni. Prosimy sprawdzić swoje połączenie internetowe!</Text>
+			<Text Lang="es">La licencia no ha podido ser verificada durante {0} día(s), comprueba tu conexión a internet, por favor.</Text>
+			<Text Lang="it">La licenza non può essere verificata da {0} giorni, si prega di verificare la connessione internet!</Text>
+			<Text Lang="ru">Лицензия не подтверждалась в течении {0} дней, пожалуйста, проверьте ваше интернет соединение!</Text>
+			<Text Lang="de">Die Lizenz konnte seit {0} Tag(en) nicht überprüft werden. Bitte überprüfen Sie Ihre Internetverbindung!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Tools.LicenseStatus.LicenseNeedsVerification">
+			<Context>license out of grace period</Context>
+			<Text Lang="en">The Articy license server needs to be contacted, please check your internet connection!</Text>
+			<Text Lang="uk">Необхідно встановити зв'язок з сервером ліцензій Articy, будь ласка, перевірте ваше інтернет з'єднання!</Text>
+			<Text Lang="fr">Le serveur de licence d'Articy doit être contacté, veuillez vérifier votre connexion internet !</Text>
+			<Text Lang="pt-BR">A licença de servidor Articy precisa ser contatada, por favor cheque sua conexão com a Internet!</Text>
+			<Text Lang="zh">需要访问Articy许可证服务器，请检查您的互联网连接！</Text>
+			<Text Lang="ko">Articy 라이선스 서버와 연결이 되지 않습니다. 인터넷 연결을 확인해주세요.</Text>
+			<Text Lang="pl">Nie można nawiązać kontaktu z serwerem licencji Articy. Prosimy sprawdzić swoje połączenie internetowe!</Text>
+			<Text Lang="es">Es necesario contactar con el servidor de licencias de Articy. Por favor, comprueba tu conexión a internet.</Text>
+			<Text Lang="it">È necessario contattare il server delle licenze Articy, si prega di verificare la connessione internet!</Text>
+			<Text Lang="ru">Необходимо установить связь с сервером лицензий Articy, пожалуйста, проверьте ваше интернет соединение!</Text>
+			<Text Lang="de">Der Articy-Lizenzserver muss kontaktiert werden. Bitte überprüfen Sie Ihre Internetverbindung!</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  localized texts for status codes. ".Label" values are short texts used in the lower area of the dialog,
+	  the ".Description" are texts that are used as message in a MessageBox in case of an error that needs
+	  further information (any deletes the local license).
+	  Key name starts with the enum (NlsStatusCode) value name.
+	-->
+	<Category Name="Errors" Namespace=".NlsStatusCodes">
+
+		<TextDefinition Key="Ok.Label">
+			<Context>"No error" short text</Context>
+			<Text Lang="en">Operation completed successfully!</Text>
+			<Text Lang="uk">Операція успішно завершена!</Text>
+			<Text Lang="fr">Opération exécutée avec succès !</Text>
+			<Text Lang="pt-BR">Operação completa com sucesso!</Text>
+			<Text Lang="zh">操作完成！</Text>
+			<Text Lang="ko">작업이 성공적으로 완료 되었습니다!</Text>
+			<Text Lang="pl">Operacja zakończona sukcesem!</Text>
+			<Text Lang="es">¡Operación completada satisfactoriamente!</Text>
+			<Text Lang="it">Operazione completata con successo!</Text>
+			<Text Lang="ru">Операция успешно завершена!</Text>
+			<Text Lang="de">Operation erfolgreich!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Busy.Label">
+			<Context>"NlsConnector busy" short text</Context>
+			<Text Lang="en">Licensing component currently busy.</Text>
+			<Text Lang="uk">Наразі служба ліцензування зайнята.</Text>
+			<Text Lang="fr">Composant de licence actuellement occupé.</Text>
+			<Text Lang="pt-BR"><![CDATA[Componente de licenciamento atualmente ocupado.
+]]></Text>
+			<Text Lang="zh">授权组件当前正忙。</Text>
+			<Text Lang="ko">라이선싱 컴포넌트가 바쁩니다.</Text>
+			<Text Lang="pl">Komponent licencjonowania jest obecnie zajęty.</Text>
+			<Text Lang="es">El comprobador de licencias está ocupado en estos momentos.</Text>
+			<Text Lang="it">Componente gestione licenze al momento occupato.</Text>
+			<Text Lang="ru">Узел лицензирования сейчас занят.</Text>
+			<Text Lang="de">Lizensierungskomponente derzeit beschäftigt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Busy.Description">
+			<Context>"NlsConnector busy" long text</Context>
+			<Text Lang="en"><![CDATA[The articy:draft licensing component has temporarily been busy.
+Please try again.]]></Text>
+			<Text Lang="uk"><![CDATA[Служба ліцензування articy:draft тимчасово зайнята.
+Будь ласка, спробуйте знову.]]></Text>
+			<Text Lang="fr"><![CDATA[Le composant de licence de articy:draft est temporairement occupé.
+Veuillez réessayer.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O componente de licenciamento articy:draft está temporariamente ocupado.
+Por favor, tente novamente mais tarde!]]></Text>
+			<Text Lang="zh"><![CDATA[ articy:draft 许可组件当前正忙。
+请再试一次。]]></Text>
+			<Text Lang="ko"><![CDATA[articy:draft 라이선싱 컴포넌트가 일시적으로 바쁩니다.
+다시 시도해 주세요.]]></Text>
+			<Text Lang="pl"><![CDATA[Komponent licencjonowania articy:draft jest tymczasowo zajęty.
+Spróbuj ponownie.]]></Text>
+			<Text Lang="es"><![CDATA[El comprobador de licencias de articy:draft ha estado ocupado temporalmente.
+Por favor, vuelve a intentarlo.]]></Text>
+			<Text Lang="it">Il componente della gestione licenze articy:draft è stato temporaneamente occupato. Si prega di riprovare.</Text>
+			<Text Lang="ru"><![CDATA[Узел лицензирования articy:draft временно занят.
+Пожалуйста, попробуйте снова. ]]></Text>
+			<Text Lang="de"><![CDATA[Die articy:draft Lizensierungskomponente war kurzzeitig beschäftigt.
+Bitte versuchen Sie Ihre Anfrage erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InfoPresent.Label">
+			<Context>"Info Present" short text (User does not need to know that extended information is available)</Context>
+			<Text Lang="en">Operation completed successfully!</Text>
+			<Text Lang="uk">Операція успішно завершена!</Text>
+			<Text Lang="fr">Opération exécutée avec succès !</Text>
+			<Text Lang="pt-BR">Operação completa com sucesso!</Text>
+			<Text Lang="zh">操作完成！</Text>
+			<Text Lang="ko">작업이 성공적으로 완료 되었습니다!</Text>
+			<Text Lang="pl">Operacja zakończona sukcesem!</Text>
+			<Text Lang="es">¡Operación completada satisfactoriamente!</Text>
+			<Text Lang="it">Operazione completata con successo!</Text>
+			<Text Lang="ru">Операция успешно завершена!</Text>
+			<Text Lang="de">Operation erfolgreich!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.Label">
+			<Context>"Exception" short text  (implementation code has an exception)</Context>
+			<Text Lang="en">Operation failed!</Text>
+			<Text Lang="uk">Операція не вдалася!</Text>
+			<Text Lang="fr">Échec de l’opération !</Text>
+			<Text Lang="pt-BR">Operação falhou!</Text>
+			<Text Lang="zh">操作失败！</Text>
+			<Text Lang="ko">작업이 실패하였습니다!</Text>
+			<Text Lang="pl">Operacja nie powiodła się!</Text>
+			<Text Lang="es">¡Operación fallida!</Text>
+			<Text Lang="it">Operazione fallita!</Text>
+			<Text Lang="ru">Операция не удалась!</Text>
+			<Text Lang="de">Operation fehlgeschlagen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.Description">
+			<Context>"Exception" long text  (implementation code has an exception)</Context>
+			<Text Lang="en">An exception occured while processing your request.</Text>
+			<Text Lang="uk">При обробці запиту, сталася непередбачена ситуація.</Text>
+			<Text Lang="fr">Une exception s’est produite lors du traitement de votre requête.</Text>
+			<Text Lang="pt-BR">uma exceção ocorreu durante o processamento de seu pedido.</Text>
+			<Text Lang="zh">处理请求时发生异常。</Text>
+			<Text Lang="ko">당신의 요청을 처리하는 동안 예외가 발생하였습니다.</Text>
+			<Text Lang="pl">Wystąpił błąd podczas przetwarzania żądania.</Text>
+			<Text Lang="es">Se ha producido un error al procesar tu solicitud.</Text>
+			<Text Lang="it">È stata lanciata una eccezione mentre si processava la richiesta.</Text>
+			<Text Lang="ru">При обработки вашего запроса, произошла непредвиденная ситуация.</Text>
+			<Text Lang="de">Eine Ausnahme ist bei der Bearbeitung Ihrer Anfrage aufgetreten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NotImplemented.Label">
+			<Context>"NotImplemented" short text</Context>
+			<Text Lang="en">The action is not available.</Text>
+			<Text Lang="uk">Дія недоступна.</Text>
+			<Text Lang="fr">Cette action est indisponible.</Text>
+			<Text Lang="pt-BR">A ação não está disponível</Text>
+			<Text Lang="zh">操作不可用。</Text>
+			<Text Lang="ko">이 행동은 할 수 없습니다.</Text>
+			<Text Lang="pl">To działanie jest niedostępne.</Text>
+			<Text Lang="es">La acción solicitada no está disponible.</Text>
+			<Text Lang="it">L'azione non è disponibile.</Text>
+			<Text Lang="ru">Действие недоступно.</Text>
+			<Text Lang="de">Die angeforderte Operation ist nicht verfügbar.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TamperedRequest.Label">
+			<Context>"TamperedRequest" short text</Context>
+			<Text Lang="en">Request tampering detected.</Text>
+			<Text Lang="uk">Помічений несанкціонований запит.</Text>
+			<Text Lang="fr">Altération de la requête détectée.</Text>
+			<Text Lang="pt-BR">Solicitação de adultaração detectada.</Text>
+			<Text Lang="zh">检测到请求篡改。</Text>
+			<Text Lang="ko">요청 변조가 감지되었습니다.</Text>
+			<Text Lang="pl">Wykryto zmodyfikowane żadanie.</Text>
+			<Text Lang="es">Detectada solicitud de falsificación de datos.</Text>
+			<Text Lang="it">Rilevata richiesta di modifica.</Text>
+			<Text Lang="ru">Замечен несанкционнированый запрос.</Text>
+			<Text Lang="de">Anfragedaten wurden verändert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Denied.Label">
+			<Context>"Denied" short text</Context>
+			<Text Lang="en">Operation not allowed due to missing rights</Text>
+			<Text Lang="uk">Операція не дозволена через відсутні права</Text>
+			<Text Lang="fr">Opération non autorisée en raison de droits manquants</Text>
+			<Text Lang="pt-BR">Operação não permitida por falta de direitos.</Text>
+			<Text Lang="zh">由于缺少权限，不允许操作</Text>
+			<Text Lang="ko">누락 된 권한으로 인해 작업이 허용 되지 않음</Text>
+			<Text Lang="pl">Niedozwolona operacja.</Text>
+			<Text Lang="es">Operación no permitida.</Text>
+			<Text Lang="it">Operazione non consentita.</Text>
+			<Text Lang="ru">Эта операция запрещена.</Text>
+			<Text Lang="de">Fehlende Rechte zur Ausführung der Operation</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Denied.Description">
+			<Context>"Denied" long text</Context>
+			<Text Lang="en"><![CDATA[The operation you issued is not allowed due to missing access rights.
+If you think this is an error, please contact the Articy support team at support@articy.com.]]></Text>
+			<Text Lang="uk"><![CDATA[Запитувана операція - не дозволена.
+Якщо ви вважаєте це помилкою, будь ласка, зв'яжіться з командою підтримки Articy за адресою support@articy.com]]></Text>
+			<Text Lang="fr"><![CDATA[L’opération demandée n’est pas autorisée en raison de droits d’accès manquants.
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy à support@articy.com.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A operação que você requisitou não é permitida por falta de direitos de acesso.
+Se você acha que isso é um erro, por favor contate time de suporte Articy em support@articy.com.]]></Text>
+			<Text Lang="zh"><![CDATA[由于没有对应的操作权限，操作被禁止。
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[액세스 권한이 없기 때문에  작업이 허용 되지 않습니다.
+오류라고 생각 된다면 support@articy.com에서 articy 지원 팀에 문의 하십시오. ]]></Text>
+			<Text Lang="pl"><![CDATA[Wydane polecenie jest niedozwolone.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[La operación solicitada no está permitida.
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com.]]></Text>
+			<Text Lang="it"><![CDATA[L'operazione richiesta non è consentita.
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy a support@articy.com.]]></Text>
+			<Text Lang="ru"><![CDATA[Запрашиваемая операция - не разрешена. 
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy по адресу support@articy.com]]></Text>
+			<Text Lang="de"><![CDATA[Die von Ihnen angeforderte Aktion ist Aufgrund von Zugriffsrechten nicht erlaubt.
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team unter support@articy.com .]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MandatoryParameterMissing.Label">
+			<Context>"MandatoryParameterMissing" short text</Context>
+			<Text Lang="en">Request is missing some data.</Text>
+			<Text Lang="uk">У запиті відсутні деякі дані.</Text>
+			<Text Lang="fr">Données manquantes dans la requête.</Text>
+			<Text Lang="pt-BR">Pedido está faltando algumas informações.</Text>
+			<Text Lang="zh">该请求缺少部分数据</Text>
+			<Text Lang="ko">이 오류가 있다고 생각 되 면 support@articy.com에서 articy 지원 팀에 문의 하십시오.</Text>
+			<Text Lang="pl">Żądanie zawiera brakujące dane.</Text>
+			<Text Lang="es">Algunos datos de tu solicitud no han sido completados correctamente.</Text>
+			<Text Lang="it">Mancano alcuni dati nella richiesta.</Text>
+			<Text Lang="ru">Запросу не хватает некоторых данных.</Text>
+			<Text Lang="de">Anfragedaten unvollständig.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NotANumber.Label">
+			<Context>"NotANumber" short text</Context>
+			<Text Lang="en">A value that was expected to be a number was not.</Text>
+			<Text Lang="uk">Значення, яке повинно бути числом, таким не виявилось.</Text>
+			<Text Lang="fr">Une valeur qui doit être numérique ne l’est pas.</Text>
+			<Text Lang="pt-BR">Um valor que era esperado ser número não era.</Text>
+			<Text Lang="zh">需要为数字的值不匹配。</Text>
+			<Text Lang="ko">숫자가 될 것으로 예상되는 값이 아닙니다.</Text>
+			<Text Lang="pl">Wartość, która powinna być liczbą, nią nie jest.</Text>
+			<Text Lang="es">Un valor que debe ser un número no lo es.</Text>
+			<Text Lang="it">Il valore atteso dovrebbe essere un numero.</Text>
+			<Text Lang="ru">Значение, которое должно было быть числом, таковым не являлось.</Text>
+			<Text Lang="de">Ein Wert, der eine Zahl sein muss, ist es nicht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DataNotValid.Label">
+			<Context>"DataNotValid" short text</Context>
+			<Text Lang="en">Invalid data received.</Text>
+			<Text Lang="uk">Отримано невірні дані.</Text>
+			<Text Lang="fr">Données invalides reçues.</Text>
+			<Text Lang="pt-BR">Dados inválidos recebidos.</Text>
+			<Text Lang="zh">接收到无效数据。</Text>
+			<Text Lang="ko">잘못된 데이터가 수신되었습니다.</Text>
+			<Text Lang="pl">Otrzymano nieprawidłowe dane.</Text>
+			<Text Lang="es">Datos no válidos recibidos.</Text>
+			<Text Lang="it">I dati ricevuti non sono validi.</Text>
+			<Text Lang="ru">Получены неверные данные.</Text>
+			<Text Lang="de">Ungültige Daten erhalten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnknownKey.Label">
+			<Context>"UnknownKey" short text</Context>
+			<Text Lang="en">The given license code is unknown.</Text>
+			<Text Lang="uk">Даний ліцензійний код невідомий.</Text>
+			<Text Lang="fr">Le code de licence fourni est inconnu.</Text>
+			<Text Lang="pt-BR">O código de licença dado é desconhecido.</Text>
+			<Text Lang="zh">给定的许可证代码未知。</Text>
+			<Text Lang="ko">입력한 라이선스 코드가 알 수 없습니다.</Text>
+			<Text Lang="pl">Podany kod licencyjny jest nieznany.</Text>
+			<Text Lang="es">Código de licencia desconocido.</Text>
+			<Text Lang="it">Il codice licenza inserito è sconosciuto.</Text>
+			<Text Lang="ru">Данный лицензионный код неизвестен.</Text>
+			<Text Lang="de">Der eingegebene Lizenzcode ist unbekannt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnknownKey.Description">
+			<Context>"Unknown Key" long text</Context>
+			<Text Lang="en"><![CDATA[The license code you have entered is not known to the server. Please check the entered value for typos and try again.
+If you think that is an error, please contact the Articy support team at support@articy.com .]]></Text>
+			<Text Lang="uk"><![CDATA[Введений вами ліцензійний код невідомий для сервера. Будь ласка перевірте введені дані на помилки і спробуйте знову.
+Якщо ви вважаєте це помилкою, будь ласка, зв'яжіться з командою підтримки Articy за адресою support@articy.com.]]></Text>
+			<Text Lang="fr"><![CDATA[Le code de licence saisi n’est pas reconnu par le serveur. Veuillez vérifier si la valeur saisie n’a pas d’erreur et réessayer.
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy à support@articy.com.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O código de licença que você utilizou não é conhecido pelo servidor. Por favor cheque os valores utilizados por erros e tente novamente.
+Se você acha que isso é um erro, por favor contate time de suporte Articy em support@articy.com.]]></Text>
+			<Text Lang="zh"><![CDATA[您输入了一个错误的许可证代码。请检查输入的代码数值是否有误，然后重试。
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[서버가 모르는 라이선스 코드를 입력하여습니다. 다시 코드를 확인 및 입력하여 주세요.
+오류라고 생각한다면, Nvigo 지원 팀의 이메일 support@articy.com 으로 문의하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Wprowadzony kod licencyjny nie został rozpoznany przez serwer. Sprawdź, czy nie ma w nim literówek i spróbuj ponownie.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[El código de licencia que has introducido no consta en el servidor. Por favor, comprueba que no hay errores en el valor introducido y vuelve a intentarlo.
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com.]]></Text>
+			<Text Lang="it"><![CDATA[Il codice licenza che hai inserito non è stato riconosciuto dal server.
+Per favore controlla se sono presenti degli errori di battitura nel codice e riprova.
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy a support@articy.com .]]></Text>
+			<Text Lang="ru"><![CDATA[Введенный вами лицензионный код неизвестен серверу. Пожалуйста проверьте введенные данные на опечатки и попробуйте снова.
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy по адресу support@articy.com .]]></Text>
+			<Text Lang="de"><![CDATA[Der von Ihnen eingegebene Lizenzcode ist dem Lizenzserver unbekannt. Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut.
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team unter support@articy.com .]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RegistrationNotAllowed.Label">
+			<Context>"RegistrationNotAllowed" short text</Context>
+			<Text Lang="en">Registration not allowed!</Text>
+			<Text Lang="uk">Реєстрація заборонена!</Text>
+			<Text Lang="fr">Activation non autorisée !</Text>
+			<Text Lang="pt-BR">Registro não autorizado!</Text>
+			<Text Lang="zh">不允许注册！</Text>
+			<Text Lang="ko">등록이 허용되지 않습니다!</Text>
+			<Text Lang="pl">Niedozwolona rejestracja!</Text>
+			<Text Lang="es">Operación no permitida.</Text>
+			<Text Lang="it">La registrazione non è consentita!</Text>
+			<Text Lang="ru">Регистрация запрещена!</Text>
+			<Text Lang="de">Registrierung nicht gestattet!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RegistrationNotAllowed.Description">
+			<Context>"RegistrationNotAllowed" long text</Context>
+			<Text Lang="en"><![CDATA[Registration was denied because the given license code is already used on another computer. 
+Please choose "unregister" on the other machine and retry registering the license here. 
+If the "unregister" command can not be executed, you can use our form at http://www.articy.com/unregister to unregister your license online.
+
+If you think this is an error, please contact the Articy support team at support@articy.com.]]></Text>
+			<Text Lang="uk"><![CDATA[Реєстрація скасована оскільки введений ліцензійний код вже використовується на іншому комп'ютері.
+Будь ласка, виберіть «Скасувати реєстрацію» на іншому комп'ютері і повторіть спробу реєстрації ліцензії.
+Якщо команду «Скасувати реєстрацію» неможливо виконати,  скористайтесь нашою формою за адресою http://www.articy.com/unregister, щоб скасувати реєстрацію онлайн.
+Якщо ви вважаєте це помилкою, будь ласка, зв'яжіться з командою підтримки Articy за адресою support@articy.com.]]></Text>
+			<Text Lang="fr"><![CDATA[L'activation a été refusée car le code de licence saisi est déjà utilisé sur un autre ordinateur. 
+Veuillez sélectionner « désactiver » sur l’autre appareil et réessayer d’activer la licence ici. 
+Si la commande « désactiver » ne peut pas être exécutée, vous pouvez utiliser notre formulaire à l’adresse http://www.articy.com/unregister pour désactiver votre licence en ligne.
+
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy à support@articy.com.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Registro foi negado porquê o código de licença dado já foi utilizado em outro computador.
+Por favor escolha "cancelar o registro" na outra máquina e tente registrar a licença novamente.
+Se o  comando "cancelar o registro" não pôde ser executado, você pode utilizar seu formulário em http://www/articy.com/unregister to cancelar o registro de seu licença online.
+
+Se você acha que isso é um erro, por favor contate time de suporte Articy em support@articy.com.]]></Text>
+			<Text Lang="zh"><![CDATA[注册被拒绝，输入的许可证代码已在另一台计算机上使用。请在使用该许可证代码的计算机上进行“注销”操作后再重试注册许可证。 
+如无法执行“注销”命令，您可前往http://www.articy.com/unregister 在线注销您的许可证。
+
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[입력하신 라이선스 코드는 이미 다른 컴퓨터에서 사용 중이므로 등록이 거부되었습니다.
+다른 컴퓨터에서 "등록 해제"를 하신 후 다시 라이선스 등록 시도하시기 바랍니다.
+"등록 해제" 명령이 실행되지 않는다면,  http://www.articy.com/unregister 에서 등록 해제 할 수 있습니다.
+
+오류라고 생각한다면, Nvigo 지원 팀의 이메일 support@articy.com 으로 문의하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Rejestracja została odrzucona, ponieważ podany klucz licencyjny jest już używany na innym komputerze. Prosimy wybrać 'Cofnij rejestrację' na tamtym urządzeniu i ponowić próbę rejestracji tutaj.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[La activación ha sido denegada porque el código de licencia introducido ya está siendo usado en otro equipo.
+Por favor, selecciona "Desactivar licencia" en el otro equipo y vuelve a intentar activar tu licencia en este.
+
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com.]]></Text>
+			<Text Lang="it"><![CDATA[La registrazione è stata rifiutata perché il codice licenza inserito è già stato utilizzato su un altro computer.
+Per favore selezionare "Rimuovi registrazione" sull'altro computer e riprova ad inserire la licenza qui.
+
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy a support@articy.com.]]></Text>
+			<Text Lang="ru"><![CDATA[Регистрация отменена поскольку введенный лицензионный код уже используется на другом компьютере. 
+Пожалуйста, выберите "Отменить регистрацию" на другом компьютере и повторите попытку регистрацию лицензии.
+
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy по адресу support@articy.com.]]></Text>
+			<Text Lang="de"><![CDATA[Die Registrierung wurde abgelehnt, da der eingegebene Lizenz-Code bereits für einen anderen Computer registriert wurde. 
+Bitte wählen Sie auf dem anderen Computer 'Lizenz zurückgeben' und versuchen Sie die Registrierung dann hier erneut. 
+Sollte dies nicht möglich sein, können Sie auch unser Online-Formular http://www.articy.com/unregister verwenden.
+
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team unter support@articy.com.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RegistrationCountExceeded.Label">
+			<Context>"RegistrationCountExceeded" short text</Context>
+			<Text Lang="en">Unable to register license. Too many requests.</Text>
+			<Text Lang="uk">Не вдалося зареєструвати ліцензію. Занадто багато запитів.</Text>
+			<Text Lang="fr">Impossible d’activer la licence. Trop de requêtes.</Text>
+			<Text Lang="pt-BR">Incapaz de registrar linceça. Pedidos demais.</Text>
+			<Text Lang="zh">无法注册许可证。请求过多。</Text>
+			<Text Lang="ko">라이선스를 등록 할 수 없습니다. 요청이 너무 많습니다.</Text>
+			<Text Lang="pl">Nie można zarejestrować licencji. Zbyt wiele zapytań.</Text>
+			<Text Lang="es">Imposible activar la licencia. Demasiadas solicitudes.</Text>
+			<Text Lang="it">Impossibile registrare la licenza. Troppe richieste.</Text>
+			<Text Lang="ru">Не удалось зарегистрировать лицензию. Слишком много запросов.</Text>
+			<Text Lang="de">Lizenz kann nicht registriert werden. Zu häufig registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RegistrationCountExceeded.Description">
+			<Context>"RegistrationNotAllowed" long text</Context>
+			<Text Lang="en"><![CDATA[Registration was denied because you used the registration code too often.
+If you had to reinstall your system and have not been able to return the license beforehand please contact the Articy support team at support@articy.com .]]></Text>
+			<Text Lang="uk"><![CDATA[Реєстрацію скасовано, оскільки ви використовували цей реєстраційний код занадто часто.
+Якщо вам довелося переустановити систему і ви не здатні повернути раніше використовувану ліцензію, будь ласка, зв'яжіться з командою підтримки Articy за адресою support@articy.com.]]></Text>
+			<Text Lang="fr"><![CDATA[L’activation a été refusée car vous avez utilisé le code trop souvent.
+Si vous avez du réinstallé votre système et que vous n’avez pas pu retourner votre licence au préalable, veuillez contacter l’équipe de soutien d’Articy à support@articy.com.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Registro foi negado porquê você utilizou o código de registro com muita frequência.
+Se você teve que reinstalar seu sistema and não foi capaz de recuperar com antecedência a licença, por favor contate o time de suporte Articy em support@articy.com.]]></Text>
+			<Text Lang="zh"><![CDATA[注册被拒绝，该许可证代码使用太过频繁。
+如果您必须重装系统且无法预先注销许可证，请通过support@articy.com 联系Articy用户支持团队。]]></Text>
+			<Text Lang="ko"><![CDATA[등록 코드를 너무 자주 사용했기 때문에 등록이 거부되었습니다.
+시스템을 재설치 해야하고, 라이선스를 반환할 수 없으면 사전에 Articy 지원 팀의 이메일 support@articy.com 로 문의하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Rejestracja została odrzucona, ponieważ kod rejestracyjny był stosowany zbyt często.
+Jeśli musiałeś wykonać reinstalację systemu i nie byłeś w stanie przywrócić licencji skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[La activación ha sido denegada, ya que el código de activación ha sido usado con demasiada frecuencia.
+Si has tenido que volver a instalar el sistema y no has podido desactiva la licencia con anterioridad, por favor, ponte en contacto con el equipo de soporte Articy en support@articy.com.]]></Text>
+			<Text Lang="it"><![CDATA[La registrazione è stata rifiutata perché hai utilizzato il codice di registrazione troppe volte.
+Se hai reinstallato il tuo sistema e non sei stato in grado di reinserire la licenza per favore contatta il team di supporto Articy a support@articy.com .]]></Text>
+			<Text Lang="ru"><![CDATA[Регистрация была отменена поскольку вы использовали этот регистрационный код слишком часто. 
+Если вам пришлось переустановить систему и вы не способны вернуть ранее используемую лицензию, пожалуйста, свяжитесь с командой поддержки Articy по адресу support@articy.com .]]></Text>
+			<Text Lang="de"><![CDATA[Die Registrtrierung wurde abgelehnt, da der angegebene Lizenzcode zu häufig registriert wurde.
+Sollten sie z.B. Aufgrund einer Neuinstallation nicht in der Lage gewesen sein, die Lizenz vorher zurückzugeben, kontaktieren sie bitte das Articy-Support-Team unter support@articy.com .]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseExpired.Label">
+			<Context>"LicenseExpired" short text</Context>
+			<Text Lang="en">License has expired.</Text>
+			<Text Lang="uk">Термін дії ліцензії закінчився.</Text>
+			<Text Lang="fr">Licence expirée.</Text>
+			<Text Lang="pt-BR">Licença expirou.</Text>
+			<Text Lang="zh">许可证已过期。</Text>
+			<Text Lang="ko">라이선스가 만료되었습니다.</Text>
+			<Text Lang="pl">Licencja wygasła.</Text>
+			<Text Lang="es">La licencia ha caducado.</Text>
+			<Text Lang="it">La licenza è scaduta.</Text>
+			<Text Lang="ru">Срок действия лицензии истек.</Text>
+			<Text Lang="de">Lizenz ist abgelaufen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseExpired.Description">
+			<Context>"LicenseExpired" long text</Context>
+			<Text Lang="en"><![CDATA[Your license has expired.
+Please contact sales@articy.com to extend your license.]]></Text>
+			<Text Lang="uk"><![CDATA[Термін дії вашої ліцензії закінчився.
+Зверніться до sales@articy.com, щоб продовжити ліцензію.]]></Text>
+			<Text Lang="fr"><![CDATA[Votre licence a expirée.
+Veuillez contacter sales@articy.com pour prolonger votre licence.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Sua licença expirou.
+Por favor contate sales@articy.com para extender sua licença.]]></Text>
+			<Text Lang="zh"><![CDATA[您的许可证已过期。
+请联系sales@articy.com以延长您的许可证期限。]]></Text>
+			<Text Lang="ko"><![CDATA[당신의 라이선스가 만료되었습니다.
+라이선스 기간을 늘리고 싶으시면 sales@articy.com 로 문의하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Twoja licencja wygasła.
+Prosimy skontaktować się z sales@articy.com, żeby ją odnowić. ]]></Text>
+			<Text Lang="es"><![CDATA[Tu licencia ha caducado.
+Por favor, ponte en contacto con sales@articy.com para prolongar tu licencia.]]></Text>
+			<Text Lang="it"><![CDATA[La tua licenza è scaduta.
+Per favore contatta sales@articy.com per estendere la tua licenza.]]></Text>
+			<Text Lang="ru"><![CDATA[Срок действия вашей лицензии истек.
+Пожалуйста, свяжитесь с sales@articy.com для продления лицензии. ]]></Text>
+			<Text Lang="de"><![CDATA[Ihre Lizenz ist abgelaufen.
+Bitte setzen Sie sich mit sales@articy.com in Verbindung, um die Lizenz zu verlängern.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CustomerLocked.Label">
+			<Context>"CustomerLocked" short text</Context>
+			<Text Lang="en">This customer account is locked.</Text>
+			<Text Lang="uk">Цей обліковий запис клієнта заблоковано.</Text>
+			<Text Lang="fr">Ce compte client est verrouillé.</Text>
+			<Text Lang="pt-BR">A conta desse cliente está bloqueada.</Text>
+			<Text Lang="zh">此客户账户已锁定。</Text>
+			<Text Lang="ko">이 고객 계정은 잠겼습니다.</Text>
+			<Text Lang="pl">Konto jest zablokowane.</Text>
+			<Text Lang="es">El cliente está bloqueado.</Text>
+			<Text Lang="it">Il cliente è bloccato.</Text>
+			<Text Lang="ru">Клиент заблокирован.</Text>
+			<Text Lang="de">Ihr Kundenkonto ist gesperrt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CustomerLocked.Description">
+			<Context>"CustomerLocked" long text</Context>
+			<Text Lang="en"><![CDATA[Your license was revoked because your customer account was locked. Please check with your licensing department.
+If you think that is an error, please contact the Articy support team. (support@articy.com)]]></Text>
+			<Text Lang="uk"><![CDATA[Вашу ліцензію відкликано, оскільки ваш обліковий запис клієнта заблокований. Будь ласка, зверніться до вашого відділу ліцензування.
+Якщо ви вважаєте, що це помилка, зв’яжіться зі службою підтримки Articy. (support@articy.com)]]></Text>
+			<Text Lang="fr"><![CDATA[Votre licence a été révoquée car votre compte client a été verrouillé. Veuillez contacter votre service d'octroi de licences.
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy.
+(support@articy.com)]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Sua licença foi revogada porquê sua conta de cliente com trancada.
+Por favor cheque com seu departamento de licenciamento.
+Se você acha que isso é um erro, por favor contate time de suporte Articy. (support@articy.com)]]></Text>
+			<Text Lang="zh"><![CDATA[您的许可证已被吊销，客户账户被锁定。请与您的许可部门联系。
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[당신의 고객 계정이 잠겼으므로 당신의 라이선스가 철회되었습니다. 당신의 라이선스 부서에서 확인하시기 바랍니다.
+오류라고 생각한다면, Articy 지원 팀으로 문의하십시오. (support@articy.com)]]></Text>
+			<Text Lang="pl"><![CDATA[Cofnięto twoją licencję, ponieważ firma została zamknięta.  Prosimy skontaktować się z działem licencjonowania.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[Tu licencia ha sido anulada debido a que tu empresa está bloqueada. Por favor, consulta con tu departamento de licencias.
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com. (support@articy.com)]]></Text>
+			<Text Lang="it"><![CDATA[La tua licenza è stata revocata perché la tua compagnia è stata bloccata.
+Per favore chiedi informazioni al tuo dipartimento licenze.
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy. (support@articy.com)]]></Text>
+			<Text Lang="ru"><![CDATA[Ваша лицензия была отозвана, потому что ваша компания была заблокирована. Пожалуйста, свяжитесь с вашим отделом лицензирования.
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy. (support@articy.com)]]></Text>
+			<Text Lang="de"><![CDATA[Ihre Lizenz wurde entzogen, da Ihr Kundenkonto gesperrt wurde. Bitte kontaktieren Sie Ihre Lizensierungsabteilung.
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team. (support@articy.com)]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseLocked.Label">
+			<Context>"LicenseLocked" short text</Context>
+			<Text Lang="en">License is locked.</Text>
+			<Text Lang="uk">Ліцензія заблокована.</Text>
+			<Text Lang="fr">Licence verrouillée.</Text>
+			<Text Lang="pt-BR">Licença está bloqueada.</Text>
+			<Text Lang="zh">许可证已锁定。</Text>
+			<Text Lang="ko">라이선스가 잠겼습니다.</Text>
+			<Text Lang="pl">Licencja jest zablokowana.</Text>
+			<Text Lang="es">La licencia está bloqueada.</Text>
+			<Text Lang="it">La licenza è bloccata.</Text>
+			<Text Lang="ru">Лицензия заблокирована.</Text>
+			<Text Lang="de">Lizenz ist gesperrt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LicenseLocked.Description">
+			<Context>"LicenseLocked" long text</Context>
+			<Text Lang="en"><![CDATA[The license code you are using was revoked. This may be because of a fraudulent use of that code.
+Please contact your licensing department to check if there is a replacement license code to use instead.
+If you think that is an error please contact the Articy support team. (support@articy.com)]]></Text>
+			<Text Lang="uk"><![CDATA[Ліцензійний код, який ви використовуєте, анульовано. Це моєливо пов’язано з неправомірним використанням цього коду.
+Зверніться до вашого відділу ліцензування, щоб перевірити, чи є  ліцензійний код для заміни щоб використати замість цього.
+Якщо ви вважаєте, що це помилка, зверніться до служби підтримки Articy. (support@articy.com)]]></Text>
+			<Text Lang="fr"><![CDATA[Le code de licence que vous utilisez a été révoqué. Cela peut être dû à un usage frauduleux de ce code.
+Veuillez contacter votre service d'octroi de licences pour savoir si vous pouvez utiliser un code de licence de remplacement à la place.
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy.
+(support@articy.com)]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O código de licença que você está utilizando foi revogado. Isso pode ser por conta de uso fradulento daquele código.
+Por favor contate seu departamento de licenciamento para checar se existe um código de licença de reposição para usar em vez disso.
+Se você acha que isso é um erro, por favor contate time de suporte Articy. (support@articy.com)]]></Text>
+			<Text Lang="zh"><![CDATA[您使用的许可证代码已被吊销。可能原因为该许可证代码涉嫌欺诈使用。
+请与您的许可部门联系，检查是否有可替代的许可证代码。
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[위조된 코드를 사용하여 당신이 사용한 라이선스가 철회되었습니다. 당신의 라이선스 부서에서 대신에 사용할 라이선스 코드로 교체할 수 있는 지 확인하십시오.
+오류라고 생각한다면, Articy 지원 팀으로 문의하십시오. (support@articy.com)]]></Text>
+			<Text Lang="pl"><![CDATA[Licencja, której używasz została cofnięta. Może to być spowodowane nieuprawnionym użyciem tego kodu. Prosimy skontaktować się z działem licencjonowania, żeby sprawdzić, czy istnieje kod zastępczy.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[El código de licencia que estás utilizando ha sido anulado. Este puede ser debido a un uso fraudulento de tal código.
+Por favor, ponte en contacto con tu departamento de licencias, para comprobar si hay disponible un código de licencia alternativo.
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com. (support@articy.com)]]></Text>
+			<Text Lang="it"><![CDATA[Il codice licenza che stavi utilizzando è stato revocato. Questo potrebbe essere dovuto ad un uso fraudolento di quel codice.
+Per favore chiedi informazioni al tuo dipartimento licenze per controllare se è disponibile un codice sostitutivo da utilizzare.
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy. (support@articy.com)]]></Text>
+			<Text Lang="ru"><![CDATA[Используемый вами лицензионный код был отозван. Это может быть связано с мошенническим использованием кода.
+Пожалуйста, свяжитесь с вашим отделом лицензирования, чтобы проверить, есть ли замена лицензионного кода.
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy. (support@articy.com)]]></Text>
+			<Text Lang="de"><![CDATA[Der Lizenzcode mit dem Sie arbeiten wurde gesperrt. Dies kann z.B. bei einer Diebstahlmeldung der Fall sein.
+Bitte kontaktieren Sie Ihre Lizensierungsabteilung um zu überprüfen ob ein Ersatz-Lizenzcode verfügbar ist.
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team. (support@articy.com)]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ProgramVersionToNew.Label">
+			<Context>"ProgramVersionToNew" short text</Context>
+			<Text Lang="en">Program version too new.</Text>
+			<Text Lang="uk">Версія програми занадто нова.</Text>
+			<Text Lang="fr">Version du logiciel trop récente.</Text>
+			<Text Lang="pt-BR">Versão do programa nova demais.</Text>
+			<Text Lang="zh">程序版本太新。</Text>
+			<Text Lang="ko">프로그램이 너무 새 버전입니다.</Text>
+			<Text Lang="pl">Wersja progamu jest zbyt nowa.</Text>
+			<Text Lang="es">Versión del programa demasiado nueva.</Text>
+			<Text Lang="it">La versione del programma è troppo recente.</Text>
+			<Text Lang="ru">Версия программы слишком новая.</Text>
+			<Text Lang="de">Programmversion ist zu neu.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ProgramVersionToNew.Description">
+			<Context>"ProgramVersionToNew" long text</Context>
+			<Text Lang="en"><![CDATA[The version of articy:draft or articy:server you have installed is not covered by the license you just specified.
+Please install an older version covered by your license or contact sales@articy.com to upgrade to a newer license.
+If you think that this is an error, please contact the Articy support team at support@articy.com .]]></Text>
+			<Text Lang="uk"><![CDATA[На встановлену вами версію articy:draft або articy:server введена ліцензія не поширюється.
+Будь ласка, встановіть старішу версію, що входить до вашої ліцензії або зв'яжіться з sales@articy.com для покупки нової ліцензії.
+Якщо ви вважаєте це помилкою, будь ласка, зв'яжіться з командою підтримки Articy за адресою support@articy.com]]></Text>
+			<Text Lang="fr"><![CDATA[La version de articy:draft ou de articy:server que vous avez installée n’est pas comprise dans la licence que vous avez indiquée. 
+Veuillez installer une version plus ancienne comprise dans votre licence ou contacter sales@articy.com pour obtenir une licence plus récente.
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy à support@articy.com.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A versão de articy:draft or articy:server que você instalou não é coberta pela licença que você específicou.
+Por favor instale uma versão mais velha coberta por sua licença or contate sales@articy.com para aprimorar para uma licença mais nova.
+Se você acha que isso é um erro, por favor contate time de suporte Articy em support@articy.com.]]></Text>
+			<Text Lang="zh"><![CDATA[您所安装的 articy:draft 或 articy:server 产品不在您指定的许可证范围内。
+请安装许可证中包含的正确版本，或联系sales@articy.com以升级到最新版本的许可证。
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[설치한 articy:draft 또는 articy:server의 버전은 방금 명시한 라이선스가 적용되지 않습니다.
+라이선스가 적용되는 이전 버전을 설치하시거나 sales@articy.com 에 연락하여 새 라이선스로 업그레이드 하십시오.
+오류라고 생각한다면, Nvigo 지원 팀의 이메일 support@articy.com 으로 문의하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Wersja articy:draft lub articy:server, którą masz zainstalowaną, nie jest obejmowana przez wskazaną licencję.
+Prosimy zainstalować starszą wersję programu lub skontaktować się z sales@articy.com, żeby kupić nową licencję.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[La versión de articy:draft o articy:server que has instalado no está incluida en la licencia que acabas de especificar.
+Por favor, instala una versión anterior incluida en la licencia o contacta con sales@articy.com para adquirir una licencia nueva.
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com.]]></Text>
+			<Text Lang="it"><![CDATA[La versione di articy:draft o articy:server che hai installato non è coperta dalla licenza che hai appena specificato.
+Per favore installa una versione meno recente per cui la tua licenza è valida o contatta sales@articy.com per acquistare una nuova licenza.
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy a support@articy.com .]]></Text>
+			<Text Lang="ru"><![CDATA[На установленную вами версию articy:draft или articy:server введенная лицензия не распространяется. 
+Пожалуйста, установите более старую версию, покрываемую вашей лицензией или свяжитесь с sales@articy.com для покупки новой лицензии. 
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy по адресу support@articy.com]]></Text>
+			<Text Lang="de"><![CDATA[Die von Ihnen installierte Version von articy:draft oder articy:server wird durch die Lizenz, welche Sie gerade angegeben haben, nicht abgedeckt.
+Bitte installieren Sie eine ältere Version oder kontaktieren sie sales@articy.com um eine neuere Lizenz zu erwerben.
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team unter support@articy.com .]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Unregistered.Label">
+			<Context>"Unregistered" short text</Context>
+			<Text Lang="en">Can't update a non-registered license code.</Text>
+			<Text Lang="uk">Не вдалося відновити не зареєстрований ліцензійний код.</Text>
+			<Text Lang="fr">Impossible de mettre à jour un code de licence non activé.</Text>
+			<Text Lang="pt-BR">Não é possível atualizar um código de licença não registrado.</Text>
+			<Text Lang="zh">无法更新未注册的许可证代码。</Text>
+			<Text Lang="ko">등록되지 않은 라이선스 코드를 업데이트 할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można zaktualizować niezarejestrowanego kodu licencji.</Text>
+			<Text Lang="es">No se puede actualizar un código de licencia no activado.</Text>
+			<Text Lang="it">Non è possibile aggiornare un codice licenza non registrato.</Text>
+			<Text Lang="ru">Не удалось обновить не зарегистрированный лицензионный код.</Text>
+			<Text Lang="de">Update mit nicht registriertem Lizenzcode.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Unregistered.Description">
+			<Context>"Unregistered" long text</Context>
+			<Text Lang="en"><![CDATA[You tried to update a license that has not yet been registered on this computer.
+Please use 'Register License' first.]]></Text>
+			<Text Lang="uk"><![CDATA[Ви спробували оновити ліцензію, яка ще не зареєстрована на цьому комп'ютері.
+Будь ласка, спочатку скористайтеся функцією «Зареєструвати ліцензію»]]></Text>
+			<Text Lang="fr"><![CDATA[Vous avez essayé de mettre à jour une licence qui n’a pas encore été activée sur cet ordinateur.
+Veuillez d’abord utiliser « Activer la licence ».]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Você tentou atualizar uma licença que ainda não foi registrada nesse computador.
+Por favor use 'Registrar Licença' primeiro.]]></Text>
+			<Text Lang="zh"><![CDATA[您试图更新尚未在此计算机上注册的许可证。
+请先使用“注册许可证”。]]></Text>
+			<Text Lang="ko"><![CDATA[등록되지 않은 컴퓨터에서 라이선스 업데이트를 시도하였습니다.
+'라이선스 등록' 부터 하시기 바랍니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Próbowano zaktualizować licencję, która nie została jeszcze zarejestrowana na tym komputerze.
+Prosimy najpierw użyć 'Rejestruj licencję'.]]></Text>
+			<Text Lang="es"><![CDATA[Has intentado actualizar una licencia que aún no ha sido activada en este equipo.
+Antes debes hacerlo en "Activar licencia".]]></Text>
+			<Text Lang="it"><![CDATA[Stai provando ad aggiornare una licenza che non è ancora stata registrata per questo computer.
+Si prega di usare prima 'Registra licenza'.]]></Text>
+			<Text Lang="ru"><![CDATA[Вы попытались обновить лицензию, которая ещё не зарегистрирована на этом компьютере. 
+Пожалуйста, сначала воспользуйтесь функцией "Зарегистрировать лицензию"]]></Text>
+			<Text Lang="de"><![CDATA[Sie haben versucht eine Lizenz zu aktualisieren, die nicht für diesen Computer registriert ist.
+Bitte verwenden sie 'Lizenz Registrieren', um einen Lizenz-Code an diesen Computer zu binden.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WrongSalesChannel.Label">
+			<Context>"WrongSalesChannel" short text</Context>
+			<Text Lang="en">The license code does not match the program's edition.</Text>
+			<Text Lang="uk">Ліцензійний код не відповідає виданню програми.</Text>
+			<Text Lang="fr">Le code de licence ne correspond pas à l’édition du logiciel.</Text>
+			<Text Lang="pt-BR">O código de licença não coincide com a edição do programa.</Text>
+			<Text Lang="zh">许可证代码与程序版本不匹配。</Text>
+			<Text Lang="ko">라이선스 코드가 프로그램의 에디션과 일치하지 않습니다.</Text>
+			<Text Lang="pl">Kod licencji nie zgadza się z edycją programu.</Text>
+			<Text Lang="es">El código de licencia no coincide con la versión del programa.</Text>
+			<Text Lang="it">Il codice licenza non corrisponde alla versione dei programmi.</Text>
+			<Text Lang="ru">Лицензионный код не соответствует изданию программы.</Text>
+			<Text Lang="de">Lizenz-Code passt nicht zur Programm-Edition.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WrongSalesChannel.Description">
+			<Context>"WrongSalesChannel" long text</Context>
+			<Text Lang="en">You tried to use a license code that was not issued for use with this edition of articy:draft.</Text>
+			<Text Lang="uk">Ви спробували використовувати ліцензійний код, який не призначений для використання з даним виданням articy:draft.</Text>
+			<Text Lang="fr">Vous avez essayé d’utiliser un code de licence qui n’a pas été distribué pour cette édition de articy:draft.</Text>
+			<Text Lang="pt-BR">Você tentou atualizar um código de licença que não foi emitido para uso com essa edição de articy:draft.</Text>
+			<Text Lang="zh">您试图使用的许可证代码不是为使用该版本 articy:draft 而颁发的。</Text>
+			<Text Lang="ko">이 articy:draft 에디션에서 발급되지 않은 라이선스 코드를 사용하려 하였습니다.</Text>
+			<Text Lang="pl">Próbowano użyć kodu licencji, która nie została wydana do użytku z tą edycją articy:draft.</Text>
+			<Text Lang="es">Has intentado activar un código de licencia que no está pensado para ser usado con esta edición de articy:draft.</Text>
+			<Text Lang="it">Hai provato ad utilizzare un codice licenza che non era predisposto per questa versione di articy:draft.</Text>
+			<Text Lang="ru">Вы попытались использовать лицензионный код, который не предназначен для использования с данным изданием articy:draft.</Text>
+			<Text Lang="de">Der von Ihnen eingegebene Lizenzcode passt nicht zur installierten Edition von articy:draft.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ServerUnreachable.Label">
+			<Context>"ServerUnreachable" short text</Context>
+			<Text Lang="en">The Articy license server is unreachable.</Text>
+			<Text Lang="uk">Сервер ліцензій Articy недоступний.</Text>
+			<Text Lang="fr">Le serveur de licence d’Articy est injoignable.</Text>
+			<Text Lang="pt-BR">A licença de servidor Articy é inacessível.</Text>
+			<Text Lang="zh">无法访问 Articy 许可证服务器。</Text>
+			<Text Lang="ko">Articy 라이선스 서버에 연결할 수 없습니다.</Text>
+			<Text Lang="pl">Serwer licencji Articy jest niedostępny.</Text>
+			<Text Lang="es">Imposible acceder al servidor de licencias de Articy.</Text>
+			<Text Lang="it">Il server delle licenze Articy non è raggiungibile.</Text>
+			<Text Lang="ru">Сервер лицензий Articy недоступен.</Text>
+			<Text Lang="de">Der Articy-Lizenzserver ist nicht erreichbar.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ServerUnreachable.Description">
+			<Context>"ServerUnreachable" long text</Context>
+			<Text Lang="en"><![CDATA[articy:draft was unable to contact the server. Possible reasons are:
+      
+- You don't have an active internet connection or are not allowed to access the internet.
+- The server name could not be resolved to the destination IP.
+- There is a network problem somewhere between your computer and the server.
+- The Articy license server is currently down for maintenance.
+If your computer or network is protected by a firewall please ensure that articy:draft can access the internet.
+If your network uses a non-transparent proxy that is not configured in the "Internet settings" of Internet Explorer please ask your system adminitrator to configure those settings.
+This problem could be temporary, so please try again later.]]></Text>
+			<Text Lang="uk"><![CDATA[articy:draft не зміг встановити зв'язок з сервером. Можливі причини:
+- У вас немає активного підключення до Інтернету чи немає доступу до інтернету.
+- Ім'я сервера не може бути перетворено в кінцевий IP-адреса.
+- Проблема в мережі, десь між вашим комп'ютером і сервером.
+- Сервер ліцензій Articy в даний час закритий на технічне обслуговування.
+Якщо ваш комп'ютер або мережа захищені за допомогою firewall, переконайтеся, що articy:draft може отримати доступ до інтернету.
+Якщо ваша мережа використовує не прозорий проксі сервер, що не налагоджений у «Властивості браузера»  Internet Explorer зверніться до системного адміністратора для налаштування цих параметрів. Ця неполадка може бути тимчасовою, будь ласка, спробуйте ще раз пізніше.]]></Text>
+			<Text Lang="fr"><![CDATA[articy:draft n’a pas pu joindre le serveur. Raisons potentielles : 
+
+- Vous n’avez pas de connexion internet active ou n’êtes pas autorisé à accéder à internet.
+- Le nom du serveur n’a pas pu être relié à l’IP de destination.
+- Il y a un problème de réseau entre votre ordinateur et le serveur.
+- Le serveur de licence d’Articy est en cours de maintenance.
+Si votre ordinateur ou votre réseau est protégé par un pare-feu, veuillez vous assurer que articy:draft puisse accéder à internet.
+Si votre réseau utilise un proxy non transparent qui n’est pas configuré dans les « Paramètres internet » d’Internet Explorer, veuillez demander à votre administrateur système de configurer ces paramètres.
+Ce problème peut être temporaire, veuillez réessayer ultérieurement.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[articity:draft foi incapaz de contatar o servidor. Possíveis razões são:
+
+-Você não possui uma conexão com a internet ativa ou não é permitido acessar a internet.
+-O nome do servidor não pode ser resolvido para o destino IP.
+- Existe um problema de rede em algum lugar entre seu computador e o servidor.
+-O servidor de licença Articy está em manutenção no instante. Se seu computador ou rede é protegido por um firewall por favor garanta que articy:draft possa acessar a internet.
+Se  sua rede usa um proxy não-transparente que não está configurado em "Configurações da Internet" do seu explorador de internet por favor peça a seu administrador de internet para configurar essas configurações.
+Esse problema pode ser temporário, então por favor tente novamente mais tarde.]]></Text>
+			<Text Lang="zh"><![CDATA[articy:draft 无法连接至服务器。可能原因如下：
+      
+- 您没有连接至 internet ，或被禁止访问 internet。
+- DNS服务出现故障，无法解析服务器IP。
+- 您的计算机与服务器之间某个网络链路存在故障。
+- Articy许可证服务器当前处于关闭维护状态。
+如果您的计算机及网络受到防火墙保护，请确保articy:draft能不受影响正确访问互联网。
+如果您的网络使用了IE的“Internet设置”中未配置的非透明代理，请联系系统管理员进行配置设置。
+该问题可能是暂时性的，请稍后再试。]]></Text>
+			<Text Lang="ko"><![CDATA[articy:draft가 서버에 연결할 수 없습니다. 가능한 이유는 다음과 같습니다.
+
+- 인터넷에 연결되어 있지 않거나 인터넷에 접속할 수 없습니다.
+- 목적지 IP로 서버 이름을 확인할 수 없습니다.
+- 컴퓨터와 서버 사이에 네트워크 문제가 있습니다.
+- 현재 유지 관리를 위해 Articy 라이선스 서버가 다운되었습니다.
+컴퓨터 또는 네트워크가 방화벽으로 보호되는 경우 articy : draft가 인터넷에 액세스 할 수 있는지 확인하십시오.
+네트워크가 Internet Explorer의 "인터넷 설정"에서 구성되지 않은 투명하지 않은 프록시를 사용하는 경우 시스템 관리자에게 해당 설정을 구성 해 줄 것을 요청하십시오.
+이 문제는 일시적 일 수 있으므로 나중에 다시 시도하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[articy:draft nie może połączyć się z serwerem. Możiliwe przyczyny:
+
+- Nie masz aktywnego połączenia internetowego lub nie może ono uzyskać dostępu do Internetu.
+- Serwer nazw nie może znaleźć docelowego IP.
+- Wystąpił jakiś problem sieciowy między twoim komputerem a serwerem.
+- Serwer licencji Articy jest w trakcie prac konserwacyjnych.
+Jeśli twój komputer lub sieć chronione są przez zaporę ogniową prosimy upewnić się, że articy:draft ma dostęp do Internetu.
+Jeśli twoja sieć używa proxy, które nie jest skonfigurowane w 'Ustawieniach internetowych' programu Internet Explorer, zapytaj administratora systemu o zmianę tych ustawień.
+Ten problem może być tymczasowy, dlatego prosimy spróbować ponownie później.]]></Text>
+			<Text Lang="es"><![CDATA[No se ha podido establecer la conexión con el servidor. Las posibles razones son:
+      
+- No cuentas con una conexión activa a internet o no se te permite acceder a internet.
+- El nombre del servidor no ha podido encontrar la IP de destino.
+- Hay un problema de red en algún lugar entre tu equipo y el servidor.
+- El servidor de licencias de Articy está fuera de servicio en estos momentos debido al mantenimiento.
+Si tu ordenador o red están protegidos por un firewall, por favor asegúrate de que articy:draft puede acceder a internet.
+Si tu red utiliza un servidor proxy no transparente no configurado en "Opciones de internet" de Internet Explorer, solicita a tu administrador sistemas que efectúe los ajustes pertinentes.
+Este problema podría ser temporal, así que vuelve a intentarlo más tarde.]]></Text>
+			<Text Lang="it"><![CDATA[articy:draft non è stato in grado di contattare il server. Le possibili cause sono:
+
+- Non hai una connessione internet attiva o non hai i permessi per accedere a internet.
+- Il nome del server non può essere elaborato per l'indirizzo IP associato.
+- C'è un problema di rete sconosciuto tra il tuo computer e il server.
+- Il server delle licenze Articy è attualmente fuori servizio per manutenzione.
+Se il tuo computer o la tua rete sono protetti da un firewall per favore assicurati che articy:draft possa accedere a internet.
+Se la tua rete utilizza un proxy non trasparente che non è configurato nelle "impostazioni internet" di Internet Explorer per favore chiedi al tuo amministratore di rete di configurare queste impostazioni.
+Questo problema può essere temporaneo, quindi si prega di riprovare più tardi.]]></Text>
+			<Text Lang="ru"><![CDATA[articy:draft не смог установить связь с сервером. Возможные причины: 
+- У вас нет активного подключения к Интернету или нет разрешения на выход в интернет.
+- Имя сервера не может быть преобразовано в конечный IP-адрес.
+- Проблема в сети, где-то между вашим компьютером и сервером.
+- Сервер лицензий Articy в настоящее время закрыт на техническое обслуживание.
+Если ваш компьютер или сеть защищены при помощи firewall, убедитесь, что articy:draft может получить доступ к интернету.
+Если ваша сеть использует не прозрачный прокси сервер, не отлаженный в "Настройки Интернета" Internet Explorer обратитесь к системному администратору для настройки этих параметров. Эта неполадка может быть временной, пожалуйста, повторите попытку позже.]]></Text>
+			<Text Lang="de"><![CDATA[articy:draft konnte den Server nicht kontaktieren. Als Gründe kommen in Frage:
+      
+- Sie haben keine aktive Internetverbindung oder Ihnen wird der Internetzugriff nicht erlaubt.
+- Der Servername konnte nicht zur benötigten IP aufgelöst werden.
+- Es existiert ein Netzwerk Problem auf der Strecke zwischen Ihrem Computer und dem Server.
+- Der Articy-Lizenzserver ist aufgrund von Wartungsarbeiten gerade nicht verfügbar.
+Wenn Ihr Computer oder Netzwerk durch eine Firewall geschützt wird, stellen Sie bitte sicher, dass articy:draft Internet-Zugriff erhält.
+Wenn Ihr Netzwerk einen Proxy-Server verwendet, stellen Sie bitte sicher, dass dieser in den "Internet-Einstellungen" des Internet Explorers richtig eingestellt ist.
+Diese Störung könnte vorrübergehend sein. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ServerException.Label">
+			<Context>"ServerException" short text (webserver code has an exception)</Context>
+			<Text Lang="en">Operation failed!</Text>
+			<Text Lang="uk">Операція не вдалася!</Text>
+			<Text Lang="fr">Échec de l’opération !</Text>
+			<Text Lang="pt-BR">Operação falhou!</Text>
+			<Text Lang="zh">操作失败！</Text>
+			<Text Lang="ko">작업이 실패하였습니다!</Text>
+			<Text Lang="pl">Operacja nie powiodła się!</Text>
+			<Text Lang="es">¡Operación fallida!</Text>
+			<Text Lang="it">Operazione fallita!</Text>
+			<Text Lang="ru">Операция не удалась!</Text>
+			<Text Lang="de">Operation fehlgeschlagen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ServerException.Description">
+			<Context>"Exception" long text  (implementation code has an exception)</Context>
+			<Text Lang="en">A web server exception has occured while processing your request.</Text>
+			<Text Lang="uk">При обробці вашого запиту, сталася помилка на веб сервері.</Text>
+			<Text Lang="fr">Une exception de serveur web s’est produite pendant le traitement de votre requête.</Text>
+			<Text Lang="pt-BR">Uma exceção de servidor da web ocorreu durante o processamento de seu pedido.</Text>
+			<Text Lang="zh">处理请求时发生Web服务器异常。</Text>
+			<Text Lang="ko">웹 서버가 요청을 처리하는 중에 예외가 발생했습니다.</Text>
+			<Text Lang="pl">Wystąpił błąd serwera podczas przetwarzania żądania.</Text>
+			<Text Lang="es">Se ha producido un error en el servidor web al procesar tu solicitud.</Text>
+			<Text Lang="it">È stata lanciata una eccezione web server mentre si processava la richiesta.</Text>
+			<Text Lang="ru">При обработки вашего запроса, произошла ошибка на веб сервере.</Text>
+			<Text Lang="de">Bei der Bearbeitung Ihrer Anfrage durch den Web-Server ist eine Ausnahme aufgetreten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Timeout.Label">
+			<Context>"Timeout" short text</Context>
+			<Text Lang="en">Articy license server request timed out.</Text>
+			<Text Lang="uk">Термін запиту серверу ліцензій Articy минув.</Text>
+			<Text Lang="fr">Requête du serveur de licence d’Articy interrompue.</Text>
+			<Text Lang="pt-BR">Tempo esgotado de pedido do servidor de licença Articy.</Text>
+			<Text Lang="zh">Articy许可证服务器请求超时。</Text>
+			<Text Lang="ko">Articy 라이선스 서버 요청 시간이만료되었습니다.</Text>
+			<Text Lang="pl">Upłynął czas oczekiwania na serwer licencjonowania Articy.</Text>
+			<Text Lang="es">La solicitud al servidor de licencias de Articy ha caducado.</Text>
+			<Text Lang="it">La richiesta verso il server delle licenze Articy è scaduta.</Text>
+			<Text Lang="ru">Время запроса сервера лицензий Articy истекло.</Text>
+			<Text Lang="de">Bei der Anfrage an den Articy-Lizenzserver ist eine Zeitüberschreitung aufgetreten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Timeout.Description">
+			<Context>"Timeout" long text</Context>
+			<Text Lang="en"><![CDATA[The server was not able to report back in time. Possible reasons:
+      
+- There is a network problem somewhere between your computer and the server.
+- The server is currently too busy to answer the request in time.
+This problem could be temporary, so please try again later.]]></Text>
+			<Text Lang="uk"><![CDATA[У встановлений час від сервера не прийшло відповіді. Можливі причини:
+
+- Проблема в мережі, десь між вашим комп'ютером і сервером.
+- Сервер в даний час перевантажений і не зміг опрацювати запит вчасно.
+Можливо це тимчасова неполадка, будь ласка, спробуйте ще раз пізніше.]]></Text>
+			<Text Lang="fr"><![CDATA[Le serveur n’a pas pu répondre à temps. Raisons potentielles : 
+      
+- Il y a un problème de réseau entre votre ordinateur et le serveur.
+- Le serveur est actuellement trop occupé pour répondre à temps.
+Ce problème peut être temporaire, veuillez réessayer ultérieurement.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O servidor não foi capaz de reportar a tempo. Possíveis razões:
+
+- Existe um problema de rede em algum lugar entre seu computador e o servidor.
+-O servidor está no momento muito ocupado para responder o pedido em tempo.
+Esse problema pode ser temporário, tente novamente mais tarde.]]></Text>
+			<Text Lang="zh"><![CDATA[服务器无响应。可能原因如下：
+      
+- 您的计算机与服务器之间某个网络链路存在故障。
+- 服务器正忙，无法及时相应请求。
+该问题可能是暂时性的，请稍后再试。]]></Text>
+			<Text Lang="ko"><![CDATA[서버가 시간 내에 응답을 할 수 없었습니다. 가능한 이유:
+
+- 컴퓨터와 서버 사이에 네트워크 문제가 있습니다.
+- 서버가 현재 너무 바빠서 요청에 응답할 수 없습니다.
+이 문제는 일시적 일 수 있으므로 나중에 다시 시도하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Serwer nie był w stanie odpowiedzieć w wymaganym czasie. Możliwe przyczyny:
+
+- Wystąpił jakiś problem sieciowy między twoim komputerem a serwerem.
+- Serwer jest obecnie przeciążony i nie mógł przetworzyć żądania w czasie.
+Ten problem może być tymczasowy, dlatego prosimy spróbować ponownie później.]]></Text>
+			<Text Lang="es"><![CDATA[El servidor no ha podido devolver la información a tiempo. Las razones pueden ser:
+      
+- Hay un problema de red en algún lugar entre tu equipo y el servidor.
+- El servidor está sobrecargado en estos momentos y no es capaz de atender la solicitud a tiempo.
+Este problema podría ser temporal, así que vuelve a intentarlo más tarde.]]></Text>
+			<Text Lang="it"><![CDATA[Il server non è stato in grado di rispondere in tempo. Le cause possono essere:
+- C'è un problema di rete sconosciuto tra il tuo computer e il server.
+- Il server è attualmente sovraccarico e non è stato in grado di fornire la risposta in tempo.
+Questo problema può essere temporaneo, quindi di prega di riprovare più tardi.]]></Text>
+			<Text Lang="ru"><![CDATA[В установленное время от сервера не пришло ответа. Возможные причины:
+      
+- Проблема в сети, где-то между вашим компьютером и сервером.
+- Сервер в настоящее время перегружен и не смог обслужить запрос в срок.
+Эта неполадка может быть временной, пожалуйста, повторите попытку позже.]]></Text>
+			<Text Lang="de"><![CDATA[Der Server konnte innerhalb des gegebenen Zeitraums keine Antwort senden. Als Gründe kommen in Frage:
+      
+- Es existiert ein Netzwerk Problem auf der Strecke zwischen Ihrem Computer und dem Server.
+- Der Articy-Lizenzserver ist derzeit überlastet und konnte Ihre Anfrage nicht rechtzeitig bearbeiten.
+Diese Störung könnte vorrübergehend sein. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="GatewayError.Label">
+			<Context>"GatewayError" short text (AWS objected NLS request)</Context>
+			<Text Lang="en">An upstream server denied the request.</Text>
+			<Text Lang="uk">Вищий сервер відхилив запит.</Text>
+			<Text Lang="fr">Un serveur en amont a refusé la requête.</Text>
+			<Text Lang="pt-BR">Um servidor upstream negou seu pedido.</Text>
+			<Text Lang="zh">上游服务器拒绝了该请求。</Text>
+			<Text Lang="ko">업스트림 서버가 요청을 거부했습니다.</Text>
+			<Text Lang="pl">Serwer odrzucił żądanie.</Text>
+			<Text Lang="es">Un servidor upstream ha denegado la petición.</Text>
+			<Text Lang="it">Un server ha negato la richiesta.</Text>
+			<Text Lang="ru">Вышестоящий сервер отклонил запрос.</Text>
+			<Text Lang="de">Ein Zwischenserver hat die Anfrage abgewiesen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SteamLoginRequired.Label">
+			<Context>"SteamLoginRequired" short text (AWS objected NLS request)</Context>
+			<Text Lang="en">An active connection to Steam is required.</Text>
+			<Text Lang="uk">Потрібно онлайн з'єднання зі Steam.</Text>
+			<Text Lang="fr">Une connexion active à Steam est nécessaire.</Text>
+			<Text Lang="pt-BR">Uma conexão ativa com Steam é necessária.</Text>
+			<Text Lang="zh">需要主动连接至Steam。</Text>
+			<Text Lang="ko">스팀과 연결이 필요합니다.</Text>
+			<Text Lang="pl">Połączenie ze steam jest wymagane.</Text>
+			<Text Lang="es">Se requiere una conexión online con Steam.</Text>
+			<Text Lang="it">È richiesta una connessione attiva a steam.</Text>
+			<Text Lang="ru">Требуется онлайн соединение со Steam.</Text>
+			<Text Lang="de">Aktive Verbindung mit Steam wird benötigt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SteamLoginRequired.Description">
+			<Context>"SteamLoginRequired" long text (AWS objected NLS request)</Context>
+			<Text Lang="en">An active connection to Steam is required to perform a license check.</Text>
+			<Text Lang="uk">Для перевірки ліцензії потрібне онлайн підключення до Steam.</Text>
+			<Text Lang="fr">Une connexion active à Steam est nécessaire pour vérifier la licence.</Text>
+			<Text Lang="pt-BR">Uma conexão ativa com Steam é requerida para performar a checagem da licença.</Text>
+			<Text Lang="zh">需要与Steam进行有效连接以进行许可证检查。</Text>
+			<Text Lang="ko">라이선스 검사를 수행하려면 스팀과 연결이 필요합니다.</Text>
+			<Text Lang="pl">Połączenie ze steam jest wymagane, żeby przeprowadzić sprawdzenie DRM</Text>
+			<Text Lang="es">Se requiere una conexión online con Steam para comprobar los DRM.</Text>
+			<Text Lang="it">È richiesta una connessione attiva a steam per eseguire un controllo di DRM.</Text>
+			<Text Lang="ru">Требуется онлайн соединение со Steam для проведения DRM проверки.</Text>
+			<Text Lang="de">Um die Lizenz zu überprüfen ist es notwendig, dass eine aktive Internetverbindung zu Steam besteht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SteamWrongAccount.Label">
+			<Context>"SteamWrongAccount" short text (AWS objected NLS request)</Context>
+			<Text Lang="en">CD key is already used by another account.</Text>
+			<Text Lang="uk">CD ключ вже використовується іншим обліковим записом.</Text>
+			<Text Lang="fr">Clé CD déjà utilisée par un autre compte.</Text>
+			<Text Lang="pt-BR">Chave de CD já é usada por outra conta.</Text>
+			<Text Lang="zh">另一个账户已使用CD密钥。</Text>
+			<Text Lang="ko">시디키가 이미 다른 계정에서 사용되었습니다.</Text>
+			<Text Lang="pl">Klucz CD jest już używany na innym koncie.</Text>
+			<Text Lang="es">El código del CD está siendo usado por otra cuenta.</Text>
+			<Text Lang="it">La CD key è già stata utilizzata su un altro account.</Text>
+			<Text Lang="ru">CD ключ уже используется на другом аккаунте.</Text>
+			<Text Lang="de">CD-Key ist bereits an ein anderes Konto gebunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SteamWrongAccount.Description">
+			<Context>"SteamWrongAccount" short text (AWS objected NLS request)</Context>
+			<Text Lang="en">The CD key you are using is already bound to another Steam account. Please contact the Steam support.</Text>
+			<Text Lang="uk">CD ключ який ви використовуєте, вже прив'язаний до іншого Steam аккаунту. Будь ласка, зв'яжіться до сервісу підтримки Steam.</Text>
+			<Text Lang="fr">La clé CD que vous utilisez est déjà reliée à un autre compte Steam. Veuillez contacter le Support Steam.</Text>
+			<Text Lang="pt-BR"><![CDATA[A chave de CD que você está usando já está vinculada com outra conta Steam.
+Por favor contate o suporte Steam.]]></Text>
+			<Text Lang="zh">您当前使用的CD密钥已绑定至另一个Steam账户。请联系Steam客服。</Text>
+			<Text Lang="ko">시디키가 이미 다른 스팀 계정에 사용되어 연동되었습니다. 스팀 지원 팀에 연락하시기 바랍니다.</Text>
+			<Text Lang="pl">Klucz CD, którego używasz, jest już podpięty do innego konta Steam. Prosimy skontaktować się z działem pomocy Steam.</Text>
+			<Text Lang="es">El código del CD que estás usando está vinculado a otra cuenta de Steam. Por favor, ponte en contacto con el servicio de atención al cliente de Steam.</Text>
+			<Text Lang="it">La CD key che stai utilizzando è già collegata ad un altro account Steam. Per favore contatta il supporto di Steam.</Text>
+			<Text Lang="ru">CD ключ который вы используете, уже привязан к другому Steam аккаунту. Пожалуйста, свяжитесь с группой поддержки Steam.</Text>
+			<Text Lang="de">Der benutzte CD-Key ist bereits mit einem anderen Steam-Konto verbunden. Bitte kontaktieren Sie den Steam-Support.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Unknown.Label">
+			<Context>"Unknown" short text</Context>
+			<Text Lang="en">An unknown error occured.</Text>
+			<Text Lang="uk">Сталася невідома помилка.</Text>
+			<Text Lang="fr">Erreur inconnue.</Text>
+			<Text Lang="pt-BR">Um erro desconhecido ocorreu.</Text>
+			<Text Lang="zh">发生未知错误。</Text>
+			<Text Lang="ko">알 수 없는 오류가 발생했습니다.</Text>
+			<Text Lang="pl">Wystąpił nieznany błąd.</Text>
+			<Text Lang="es">Ha ocurrido un error desconocido.</Text>
+			<Text Lang="it">Si è verificato un errore sconosciuto.</Text>
+			<Text Lang="ru">Произошла неизвестная ошибка.</Text>
+			<Text Lang="de">Ein unbekannter Fehler ist aufgetreten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="GenericError.Description">
+			<Context>long text for any licensing status that is categorized 'severe' but does not have its own '.Description' text (see above)</Context>
+			<Text Lang="en"><![CDATA[A licensing status was reported that doesn't allow you to use the program any longer.
+If you think that is an error, please contact the Articy support team. (support@articy.com)]]></Text>
+			<Text Lang="uk"><![CDATA[Повідомлялося про статус ліцензування, який більше не дозволяє використовувати програму.
+Якщо ви вважаєте, що це помилка, зв’яжіться зі службою підтримки Articy. (support@articy.com)]]></Text>
+			<Text Lang="fr"><![CDATA[Un état de licence signalé vous empêche de continuer à utiliser ce logiciel.
+Si vous pensez que ceci est une erreur, veuillez contacter l’équipe de soutien d’Articy.
+(support@articy.com)]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Um status de licenciamento foi reportado que não lhe permite utilizar o programa mais.
+Se você acha que isso é um erro, por favor contate o time de suporte Articy. (support@articy.com)]]></Text>
+			<Text Lang="zh"><![CDATA[根据许可状态信息，您已无法继续使用本程序。
+如果您认为这是一个错误反馈，请与Articy用户支持团队取得联系。 (support@articy.com)]]></Text>
+			<Text Lang="ko"><![CDATA[라이선스 상태가 보고되어 더 이상 프로그램을 사용할 수 없습니다.
+오류라고 생각되면 Articy 지원 팀에 문의하십시오. (support@articy.com) ]]></Text>
+			<Text Lang="pl"><![CDATA[Status licencji nie pozwala na dalsze korzystanie z tego programu.
+Jeśli uważasz, że to błąd, skontaktuj się z działem pomocy Articy - support@articy.com]]></Text>
+			<Text Lang="es"><![CDATA[Dado el estado de tu licencia, no se te permite seguir usando el programa.
+Si crees que es un error, por favor ponte en contacto con el equipo de soporte de Articy en support@articy.com. (support@articy.com)]]></Text>
+			<Text Lang="it"><![CDATA[È stato riportato uno stato di licenza che non ti autorizza più all'utilizzo del programma.
+Se pensi che questo sia un errore per favore contatta il team di supporto Articy. (support@articy.com)]]></Text>
+			<Text Lang="ru"><![CDATA[Был сообщен статус лицензии, не позволяющий вам более  использовать программу. 
+Если вы считаете это ошибкой, пожалуйста, свяжитесь с командой поддержки Articy. (support@articy.com)]]></Text>
+			<Text Lang="de"><![CDATA[Der Lizenz-Server hat eine Antwort gesendet, die es Ihnen nicht länger erlaubt die Applikation zu nutzen.
+Wenn Sie der Meinung sind, dass dies ein Fehlverhalten ist, kontaktieren sie bitte das Articy-Support-Team. (support@articy.com)]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".LicenseNames">
+
+		<TextDefinition Key="UnknownLicense.DisplayName">
+			<Context>Pattern used to display an unknown license-type</Context>
+			<Text Lang="en">Unknown license component key '{0}' found.</Text>
+			<Text Lang="uk">Виявлено невідомий компонент ключа {0}.</Text>
+			<Text Lang="fr">Composant de clé de licence inconnue « {0} » repéré.</Text>
+			<Text Lang="pt-BR">Componente chave '{0}' de licenciamento desconhecido encontrado.</Text>
+			<Text Lang="zh">找到未知的许可证组件密钥 '{0}' 。</Text>
+			<Text Lang="ko">알 수 없는 컴포넌트 키 '{0}' 를 찾았습니다.</Text>
+			<Text Lang="pl">Znaleziono nieznany składnik licencji {0}</Text>
+			<Text Lang="es">Se ha encontrado un componente desconocido de clave de licencia '{0}'.</Text>
+			<Text Lang="it">Trovato un componente chiave delle licenze '{0}' sconosciuto.</Text>
+			<Text Lang="ru">Обнаружен неизвестный компонент ключа {0}.</Text>
+			<Text Lang="de">Unbekannte Lizenz-Komponente '{0}' gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DraftMultiUserLicense.DisplayName">
+			<Context/>
+			<Text Lang="en">articy:draft multi-user</Text>
+			<Text Lang="uk">articy:draft multi-user</Text>
+			<Text Lang="fr">Utilisateurs multiples articy:draft</Text>
+			<Text Lang="pt-BR">articy:draft multi-usuário</Text>
+			<Text Lang="zh">articy:draft 多人用户</Text>
+			<Text Lang="ko">articy:draft 다중-사용자</Text>
+			<Text Lang="pl">articy:draft multi-user</Text>
+			<Text Lang="es">articy:draft multiusuario</Text>
+			<Text Lang="it">articy:draft multi utente</Text>
+			<Text Lang="ru">articy:draft multi-user</Text>
+			<Text Lang="de">articy:draft Multi-User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DraftFloatingMultiUserLicense.DisplayName">
+			<Context/>
+			<Text Lang="en">articy:draft floating multi-user</Text>
+			<Text Lang="uk">articy:draft floating multi-user</Text>
+			<Text Lang="fr">Utilisateurs multiples flottants articy:draft</Text>
+			<Text Lang="pt-BR">articy:draft multi-usuário flutuante</Text>
+			<Text Lang="zh">articy:draft 浮动多人用户</Text>
+			<Text Lang="ko">articy:draft floating 다중-사용자</Text>
+			<Text Lang="de">articy:draft Multi-User (floating)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DraftViewerLicense.DisplayName">
+			<Context/>
+			<Text Lang="en">articy:draft viewer</Text>
+			<Text Lang="uk">articy:draft viewer</Text>
+			<Text Lang="fr">Visionneuse articy:draft</Text>
+			<Text Lang="pt-BR">visualizador articy:draft</Text>
+			<Text Lang="zh">articy:draft 查看器</Text>
+			<Text Lang="ko">articy:draft 뷰어</Text>
+			<Text Lang="pl">articy:draft viewer</Text>
+			<Text Lang="es">articy:draft de lectura</Text>
+			<Text Lang="it">articy:draft viewer</Text>
+			<Text Lang="ru">articy:draft viewer</Text>
+			<Text Lang="de">articy:draft Viewer</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ApiUsage.DisplayName">
+			<Context>display name of API component license</Context>
+			<Text Lang="en">articy:draft API</Text>
+			<Text Lang="uk">articy:draft API usage</Text>
+			<Text Lang="fr">API de articy:draft</Text>
+			<Text Lang="pt-BR">API articy:draft</Text>
+			<Text Lang="zh">articy:draft API</Text>
+			<Text Lang="ko">articy:draft API</Text>
+			<Text Lang="pl">articy:draft API</Text>
+			<Text Lang="es">articy:draft API</Text>
+			<Text Lang="it">articy:draft API</Text>
+			<Text Lang="ru">articy:draft API usage</Text>
+			<Text Lang="de">articy:draft API</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CommercialUse.DisplayName">
+			<Context>display name of commercial use component license</Context>
+			<Text Lang="en">Commercial use of articy:draft project data is permitted</Text>
+			<Text Lang="uk">Комерційне використання даних проекту articy:draft дозволено</Text>
+			<Text Lang="fr">L’utilisation commerciale des données de projet articy:draft est autorisée.</Text>
+			<Text Lang="pt-BR">Uso comercial de dados projetos articy:draft é permitido</Text>
+			<Text Lang="zh">允许 articy:draft 项目数据的商业用途</Text>
+			<Text Lang="ko">articy:draft 프로젝트 데이터의 상업적인 사용이 허용되었습니다.</Text>
+			<Text Lang="pl">Komercyjne wykorzystanie projektów articy:draft jest dozwolone</Text>
+			<Text Lang="es">El uso comercial de los datos del proyecto de articy:draft está permitido.</Text>
+			<Text Lang="it">L'uso commerciale dei dati di progetto articy:draft è permesso</Text>
+			<Text Lang="ru">Дано разрешение на коммерческое использование данных проекта  articy:draft</Text>
+			<Text Lang="de">Erlaubnis zur kommerziellen Verwendung von articy:draft</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="XmlExport.DisplayName">
+			<Context>display name of the full content xml export component license</Context>
+			<Text Lang="en">Exporting project data as .XML</Text>
+			<Text Lang="uk">Експорт даних проекту в .XML</Text>
+			<Text Lang="fr">Exportation des données du projet en .XML</Text>
+			<Text Lang="pt-BR">Exportanto dados de projeto como .XML</Text>
+			<Text Lang="zh">将项目数据导出为 .XML 文件</Text>
+			<Text Lang="ko">XML파일로 프로젝트 데이터 내보내기</Text>
+			<Text Lang="pl">Eksport danych projektu jako .XML</Text>
+			<Text Lang="es">Exportando datos del proyecto como XML</Text>
+			<Text Lang="it">Export dei dati di progetto come XML</Text>
+			<Text Lang="ru">Экспорт данных проекта в XML</Text>
+			<Text Lang="de">Export von Projektdaten als .XML</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="XlsxExport.DisplayName">
+			<Context>display name of the xml export license</Context>
+			<Text Lang="en">Exporting project data as .XLSX</Text>
+			<Text Lang="uk">Експорт даних проекту в Microsoft Excel workbook (* .xlsx)</Text>
+			<Text Lang="fr">Exportation des données du projet en .XLSX</Text>
+			<Text Lang="pt-BR">Exportanto dados de projeto como .XLSX</Text>
+			<Text Lang="zh">将项目数据导出为 .XLSX 文件</Text>
+			<Text Lang="ko">엑셀(XLSX) 파일로 프로젝트 데이터 내보내기</Text>
+			<Text Lang="pl">Eksport danych projektu jako .XLSX</Text>
+			<Text Lang="es">Exportando datos del proyecto como XMSX</Text>
+			<Text Lang="it">Export dei dati di progetto come XLSX</Text>
+			<Text Lang="ru">Экспорт данных проекта в Microsoft Excel workbook (*.xlsx)</Text>
+			<Text Lang="de">Export von Projektdaten als .XLSX</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AccessExport.DisplayName">
+			<Context>display name of the articy:draft export component license to create access data packages</Context>
+			<Text Lang="en">Exporting project data for use with articy:access</Text>
+			<Text Lang="uk">Експорт даних проекту для використання з articy:access</Text>
+			<Text Lang="fr">Exportation des données du projet pour un usage avec articy:access</Text>
+			<Text Lang="pt-BR">Exportanto dados de projeto para uso com articy:access</Text>
+			<Text Lang="zh">导出项目数据以用于 articy:access</Text>
+			<Text Lang="ko">articy:access 로 프로젝트 데이터 내보내기</Text>
+			<Text Lang="pl">Eksport danych projektu do użytku z articy:access</Text>
+			<Text Lang="es">Exportando datos del proyecto para su uso en articy:access</Text>
+			<Text Lang="it">Export dei dati di progetto per l'utilizzo con articy:access</Text>
+			<Text Lang="ru">articy:access экспорт</Text>
+			<Text Lang="de">Export von Projektdaten für die Verwendung mit articy:access</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FlowToDocx.DisplayName">
+			<Context>display name of the articy:draft flow to docx component license</Context>
+			<Text Lang="en">articy:draft - flow to DOCX export</Text>
+			<Text Lang="uk">articy:draft - експорт потоку в docx файл</Text>
+			<Text Lang="fr">articy:draft - flux vers l'exportation en DOCX</Text>
+			<Text Lang="pt-BR">articy:draft - corrente para exportação DOCX</Text>
+			<Text Lang="zh">articy:draft - 流导出为 DOCX 文件</Text>
+			<Text Lang="ko">articy:draft - 흐름 to 워드(DOCX) 내보내기</Text>
+			<Text Lang="pl">articy:draft eksport flowu do DOCX</Text>
+			<Text Lang="es">Exportación del flujo de articy:draft a DOCX</Text>
+			<Text Lang="it">articy:draft - esporta il diagramma di flusso in DOCX</Text>
+			<Text Lang="ru">articy:draft - экспорт потока в docx файл</Text>
+			<Text Lang="de">articy:draft - Flow nach .DOCX Export</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AccessLibs.DisplayName">
+			<Context>display name of the library license for articy:access</Context>
+			<Text Lang="en">articy:access - library</Text>
+			<Text Lang="uk">articy:access - бібліотека</Text>
+			<Text Lang="fr">articy:access - bibliothèque</Text>
+			<Text Lang="pt-BR">articy:access - biblioteca</Text>
+			<Text Lang="zh">articy:access - 库</Text>
+			<Text Lang="ko">articy:access - 라이브러리</Text>
+			<Text Lang="pl">articy:access - biblioteka</Text>
+			<Text Lang="es">articy:access - librería</Text>
+			<Text Lang="it">articy:access - libreria</Text>
+			<Text Lang="ru">articy:access - библиотека</Text>
+			<Text Lang="de">articy:access - Bibliotheken</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AccessSource.DisplayName">
+			<Context>display name of the source code license for articy:access</Context>
+			<Text Lang="en">articy:access - source code</Text>
+			<Text Lang="uk">articy:access - вихідний код</Text>
+			<Text Lang="fr">articy:access - code source</Text>
+			<Text Lang="pt-BR">articy:access - código fonte</Text>
+			<Text Lang="zh">articy:access - 源代码</Text>
+			<Text Lang="ko">articy:access - 소스 코드</Text>
+			<Text Lang="pl">articy:access - kod źródłowy</Text>
+			<Text Lang="es">articy:access - código fuente</Text>
+			<Text Lang="it">articy:access - codice sorgente</Text>
+			<Text Lang="ru">articy:access - исходный код</Text>
+			<Text Lang="de">articy:access - Quellcode</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ConvertPrj.DisplayName">
+			<Context>display name of an internal project converion component (only used articy internal)</Context>
+			<Text Lang="en">articy:draft - internal project conversion</Text>
+			<Text Lang="uk">articy:draft - внутрішня конверсія проекту</Text>
+			<Text Lang="fr">articy:draft - conversion interne du projet</Text>
+			<Text Lang="pt-BR">articy:draft - conversão de projeto interno</Text>
+			<Text Lang="zh">articy:draft - 内部项目转换</Text>
+			<Text Lang="ko">articy:draft - 내부 프로젝트 전환</Text>
+			<Text Lang="pl">articy:draft - konwersja projektu wewnętrznego</Text>
+			<Text Lang="es">articy:draft - conversión interna del proyecto</Text>
+			<Text Lang="it">articy:draft - conversione interna del progetto</Text>
+			<Text Lang="de">articy:draft - Projektkonvertierung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TextBasedSave.DisplayName">
+			<Context>display name of an custom project handling component</Context>
+			<Text Lang="en">articy:draft - mergeable text based save</Text>
+			<Text Lang="uk">articy:draft - збереження на основі з'єднуваного тексту</Text>
+			<Text Lang="fr">articy:draft - sauvegarde en texte fusionnable</Text>
+			<Text Lang="pt-BR">articy:draft - salvamento mesclável baseado em texto</Text>
+			<Text Lang="zh">articy:draft - 基于可合并文本的保存</Text>
+			<Text Lang="ko">articy:draft - 병합 가능 베이스로 저장</Text>
+			<Text Lang="pl">articy:draft - zapis oparty o tekst do scalenia</Text>
+			<Text Lang="de">articy:draft - Text-basiertes Dateiformat</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CustomerCustomCode.DisplayName">
+			<Context>display name for license components that are special for a customer</Context>
+			<Text Lang="en">articy:draft - Customer custom code</Text>
+			<Text Lang="uk">Спеціальний код клієнта</Text>
+			<Text Lang="fr">articy:draft - Code client personnalisé</Text>
+			<Text Lang="pt-BR">articy:draft - código personalizado do cliente</Text>
+			<Text Lang="zh">articy:draft - 客户自定义代码</Text>
+			<Text Lang="ko">articy:draft - 고객 커스텀 코드</Text>
+			<Text Lang="pl">articy:draft - niestandardowy kod klienta</Text>
+			<Text Lang="de">articy:draft - Kundenspezifische Anpassungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subscription.DisplayName">
+			<Context>display name for license components that tags a version that uses a subscription payment model</Context>
+			<Text Lang="en">articy:draft - Subscription</Text>
+			<Text Lang="uk">articy:draft - Підписка</Text>
+			<Text Lang="fr">articy:draft - Abonnement</Text>
+			<Text Lang="pt-BR">articy:draft - inscrição</Text>
+			<Text Lang="zh">articy:draft - 订阅</Text>
+			<Text Lang="ko">articy:draft - 구독</Text>
+			<Text Lang="de">articy:draft - Abo Model</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CloudHosting.DisplayName">
+			<Context>display name for license components that tags a version that uses managed cloud hosting</Context>
+			<Text Lang="en">articy:draft - Managed cloud hosting</Text>
+			<Text Lang="uk">articy:draft - керований хмарний хостинг</Text>
+			<Text Lang="fr">articy:draft - Gestion de l’hébergement dans le cloud</Text>
+			<Text Lang="pt-BR">articy:draft - Hospedagem manuzeada por nuvem</Text>
+			<Text Lang="zh">articy:draft - 管理云托管</Text>
+			<Text Lang="ko">articy:draft - 클라우드 호스팅 관리</Text>
+			<Text Lang="de">articy:draft - Cloud Hosting</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LDAPConnector.DisplayName">
+			<Context>display name of the LDAP/Active Directory connector</Context>
+			<Text Lang="en">articy:server - LDAP/Active Directory connector</Text>
+			<Text Lang="uk">articy:server - LDAP/Активний конектор директорії</Text>
+			<Text Lang="fr">articy:server - LDAP/connecteur de répertoire actif</Text>
+			<Text Lang="pt-BR">articy:server - LDAP/Conector de diretório ativo</Text>
+			<Text Lang="zh">articy:server - LDAP/Active Directory 连接器</Text>
+			<Text Lang="ko">articy:server - LDAP/활성 디렉토리 커넥터</Text>
+			<Text Lang="pl">articy:server - LDAP/Active Directory connector</Text>
+			<Text Lang="es">articy:server - conector LDAP / Directorio Activo</Text>
+			<Text Lang="it">articy:server - connettore LDAP/Active Directory</Text>
+			<Text Lang="de">articy:server - LDAP/Active-Directory-Anbindung</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

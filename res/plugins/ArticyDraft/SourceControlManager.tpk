@@ -1,0 +1,537 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.SourceControl" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System" Namespace=".Shared">
+
+		<TextDefinition Key="NodeKind.File.Label">
+			<Context>NodeKind value 'File'</Context>
+			<Text Lang="en">File</Text>
+			<Text Lang="uk">файл</Text>
+			<Text Lang="fr">Fichier</Text>
+			<Text Lang="pt-BR">Arquivo</Text>
+			<Text Lang="zh">文件</Text>
+			<Text Lang="ko">파일</Text>
+			<Text Lang="pl">Plik</Text>
+			<Text Lang="es">Archivo</Text>
+			<Text Lang="it">File</Text>
+			<Text Lang="ru">Файл</Text>
+			<Text Lang="de">Datei</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NodeKind.File.Text">
+			<Context>NodeKind value 'File'</Context>
+			<Text Lang="en">file</Text>
+			<Text Lang="uk">файл</Text>
+			<Text Lang="fr">fichier</Text>
+			<Text Lang="pt-BR">arquivo</Text>
+			<Text Lang="zh">文件</Text>
+			<Text Lang="ko">파일</Text>
+			<Text Lang="pl">plik</Text>
+			<Text Lang="es">archivo</Text>
+			<Text Lang="it">file</Text>
+			<Text Lang="ru">файл</Text>
+			<Text Lang="de">Datei</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NodeKind.Directory.Label">
+			<Context>NodeKind value 'Directory'</Context>
+			<Text Lang="en">Directory</Text>
+			<Text Lang="uk">Директорія</Text>
+			<Text Lang="fr">Répertoire</Text>
+			<Text Lang="pt-BR">Diretório</Text>
+			<Text Lang="zh">目录</Text>
+			<Text Lang="ko">디렉토리</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Directorio</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Директория</Text>
+			<Text Lang="de">Verzeichnis</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NodeKind.Directory.Text">
+			<Context>NodeKind value 'Directory'</Context>
+			<Text Lang="en">directory</Text>
+			<Text Lang="uk">директорія</Text>
+			<Text Lang="fr">Répertoire</Text>
+			<Text Lang="pt-BR">diretório</Text>
+			<Text Lang="zh">目录</Text>
+			<Text Lang="ko">디렉토리</Text>
+			<Text Lang="pl">folder</Text>
+			<Text Lang="es">directorio</Text>
+			<Text Lang="it">cartella</Text>
+			<Text Lang="ru">директория</Text>
+			<Text Lang="de">Verzeichnis</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NodeKind.Unknown.Label">
+			<Context>NodeKind value 'Unknown'</Context>
+			<Text Lang="en">Unknown</Text>
+			<Text Lang="uk">Невідомий</Text>
+			<Text Lang="fr">Inconnu</Text>
+			<Text Lang="pt-BR">Desconhecido</Text>
+			<Text Lang="zh">未知</Text>
+			<Text Lang="ko">알수없음</Text>
+			<Text Lang="pl">Nieznany</Text>
+			<Text Lang="es">Desconocido</Text>
+			<Text Lang="it">Sconosciuto</Text>
+			<Text Lang="ru">Неизвестный</Text>
+			<Text Lang="de">Unbekannt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NodeKind.Unknown.Text">
+			<Context>NodeKind value 'Unknown'</Context>
+			<Text Lang="en">object</Text>
+			<Text Lang="uk">об'єкт</Text>
+			<Text Lang="fr">objet</Text>
+			<Text Lang="pt-BR">objeto</Text>
+			<Text Lang="zh">对象</Text>
+			<Text Lang="ko">객체</Text>
+			<Text Lang="pl">obiekt</Text>
+			<Text Lang="es">objeto</Text>
+			<Text Lang="it">oggetto</Text>
+			<Text Lang="ru">объект</Text>
+			<Text Lang="de">Objekt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Add.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Add</Text>
+			<Text Lang="uk">Додати</Text>
+			<Text Lang="fr">Ajouter</Text>
+			<Text Lang="pt-BR">Adicionar</Text>
+			<Text Lang="zh">添加</Text>
+			<Text Lang="ko">추가</Text>
+			<Text Lang="pl">Dodaj</Text>
+			<Text Lang="es">Agregar</Text>
+			<Text Lang="it">Aggiungi</Text>
+			<Text Lang="ru">Добавить</Text>
+			<Text Lang="de">Add</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Add.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Added</Text>
+			<Text Lang="uk">Додано</Text>
+			<Text Lang="fr">Ajouté</Text>
+			<Text Lang="pt-BR">Adicionado</Text>
+			<Text Lang="zh">已添加</Text>
+			<Text Lang="ko">추가됨</Text>
+			<Text Lang="pl">Dodano</Text>
+			<Text Lang="es">Agregado</Text>
+			<Text Lang="it">Aggiunto</Text>
+			<Text Lang="ru">Добавлено</Text>
+			<Text Lang="de">wurde hinzugefügt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Delete.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Delete</Text>
+			<Text Lang="uk">Видалити</Text>
+			<Text Lang="fr">Supprimer</Text>
+			<Text Lang="pt-BR">Deletar</Text>
+			<Text Lang="zh">删除</Text>
+			<Text Lang="ko">삭제</Text>
+			<Text Lang="pl">Usuń</Text>
+			<Text Lang="es">Eliminar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Удалить</Text>
+			<Text Lang="de">Delete</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Delete.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Deleted</Text>
+			<Text Lang="uk">Видалено</Text>
+			<Text Lang="fr">Supprimé</Text>
+			<Text Lang="pt-BR">Deletado</Text>
+			<Text Lang="zh">已删除</Text>
+			<Text Lang="ko">삭제됨</Text>
+			<Text Lang="pl">Usunięto</Text>
+			<Text Lang="es">Eliminado</Text>
+			<Text Lang="it">Cancellato</Text>
+			<Text Lang="ru">Удалено</Text>
+			<Text Lang="de">wurde gelöscht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Lock.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Lock</Text>
+			<Text Lang="uk">Заблокувати</Text>
+			<Text Lang="fr">Verrouiller</Text>
+			<Text Lang="pt-BR">Travar</Text>
+			<Text Lang="zh">锁定</Text>
+			<Text Lang="ko">잠금</Text>
+			<Text Lang="pl">Zablokuj</Text>
+			<Text Lang="es">Bloquear</Text>
+			<Text Lang="it">Blocca</Text>
+			<Text Lang="ru">Заблокировать</Text>
+			<Text Lang="de">Lock</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Lock.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Locked</Text>
+			<Text Lang="uk">Заблоковано</Text>
+			<Text Lang="fr">Vérrouillé</Text>
+			<Text Lang="pt-BR">Travado</Text>
+			<Text Lang="zh">已锁定</Text>
+			<Text Lang="ko">잠김</Text>
+			<Text Lang="pl">Zablokowano</Text>
+			<Text Lang="es">Bloqueado</Text>
+			<Text Lang="it">Bloccato</Text>
+			<Text Lang="ru">Заблокировано</Text>
+			<Text Lang="de">wurde zum Bearbeiten gesperrt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Unlock.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Unlock</Text>
+			<Text Lang="uk">Розблокувати</Text>
+			<Text Lang="fr">Dévérouiller</Text>
+			<Text Lang="pt-BR">Desbloquear</Text>
+			<Text Lang="zh">解锁</Text>
+			<Text Lang="ko">잠금 해제</Text>
+			<Text Lang="pl">Odblokuj</Text>
+			<Text Lang="es">Desbloquear</Text>
+			<Text Lang="it">Sblocca</Text>
+			<Text Lang="ru">Разблокировать</Text>
+			<Text Lang="de">Unlock</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Unlock.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Unlocked</Text>
+			<Text Lang="uk">Розблоковано</Text>
+			<Text Lang="fr">Dévérouillé</Text>
+			<Text Lang="pt-BR">Desbloqueado</Text>
+			<Text Lang="zh">已解锁</Text>
+			<Text Lang="ko">잠금 해제됨</Text>
+			<Text Lang="pl">Odblokowano</Text>
+			<Text Lang="es">Desbloqueado</Text>
+			<Text Lang="it">Sbloccato</Text>
+			<Text Lang="ru">Разблокировано</Text>
+			<Text Lang="de">wurde zur Bearbeitung durch andere freigegeben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Commit.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Commit</Text>
+			<Text Lang="uk">Довірити</Text>
+			<Text Lang="fr">Engager</Text>
+			<Text Lang="pt-BR">Comprometer</Text>
+			<Text Lang="zh">提交</Text>
+			<Text Lang="ko">커밋</Text>
+			<Text Lang="pl">Dołącz</Text>
+			<Text Lang="es">Subir cambios</Text>
+			<Text Lang="it">Invia</Text>
+			<Text Lang="ru">Вверить</Text>
+			<Text Lang="de">Commit</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Commit.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Committed to source control system</Text>
+			<Text Lang="uk">Довірено системі керування вихідними даними</Text>
+			<Text Lang="fr">Engagé envers le gestionnaire de code source</Text>
+			<Text Lang="pt-BR">Comprometido para o sistema de fonte de controle</Text>
+			<Text Lang="zh">提交至源代码管理系统</Text>
+			<Text Lang="ko">소스 제어 시스템에 커밋 됨</Text>
+			<Text Lang="pl">Dołącz do systemu kontroli źródła</Text>
+			<Text Lang="es">Cambios subidos al control de versiones</Text>
+			<Text Lang="it">Inviato al sistema di controllo dei sorgenti</Text>
+			<Text Lang="ru">Вверено системе управления исходными данными</Text>
+			<Text Lang="de">wurde zum Source-Control-System gesendet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Update.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Update</Text>
+			<Text Lang="uk">Оновити</Text>
+			<Text Lang="fr">Mise à jour</Text>
+			<Text Lang="pt-BR">Atualizar</Text>
+			<Text Lang="zh">更新</Text>
+			<Text Lang="ko">업데이트</Text>
+			<Text Lang="pl">Aktualizuj</Text>
+			<Text Lang="es">Actualizar</Text>
+			<Text Lang="it">Aggiorna</Text>
+			<Text Lang="ru">Обновить</Text>
+			<Text Lang="de">Update</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Update.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Updated</Text>
+			<Text Lang="uk">Оновлено</Text>
+			<Text Lang="fr">Mis à jour</Text>
+			<Text Lang="pt-BR">Atualizado</Text>
+			<Text Lang="zh">已更新</Text>
+			<Text Lang="ko">업데이트됨</Text>
+			<Text Lang="pl">Zaktualizowano</Text>
+			<Text Lang="es">Actualizado</Text>
+			<Text Lang="it">Aggiornato</Text>
+			<Text Lang="ru">Обновлено</Text>
+			<Text Lang="de">wurde im Projektordner aktualisiert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.CheckOut.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Checkout</Text>
+			<Text Lang="uk">Налагодження</Text>
+			<Text Lang="fr">Checkout</Text>
+			<Text Lang="pt-BR">Verificar</Text>
+			<Text Lang="zh">检测</Text>
+			<Text Lang="ko">체크아웃</Text>
+			<Text Lang="pl">Zaznacz</Text>
+			<Text Lang="es">Registrar copia</Text>
+			<Text Lang="it">Checkout</Text>
+			<Text Lang="ru">Отладка</Text>
+			<Text Lang="de">Checkout</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.CheckOut.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Checked out</Text>
+			<Text Lang="uk">Налагоджено</Text>
+			<Text Lang="fr">Checked out</Text>
+			<Text Lang="pt-BR">Verificado</Text>
+			<Text Lang="zh">已检测</Text>
+			<Text Lang="ko">체크아웃됨</Text>
+			<Text Lang="pl">Zaznaczono</Text>
+			<Text Lang="es">Copia registrada</Text>
+			<Text Lang="it">Checked out</Text>
+			<Text Lang="ru">Отлажено</Text>
+			<Text Lang="de">wurde dem Projektordner hinzugefügt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Export.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Export</Text>
+			<Text Lang="uk">Експорт</Text>
+			<Text Lang="fr">Exporter</Text>
+			<Text Lang="pt-BR">Exportar</Text>
+			<Text Lang="zh">导出</Text>
+			<Text Lang="ko">내보내기</Text>
+			<Text Lang="pl">Eksportuj</Text>
+			<Text Lang="es">Exportar</Text>
+			<Text Lang="it">Esporta</Text>
+			<Text Lang="ru">Экспорт</Text>
+			<Text Lang="de">Export</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Export.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Exported</Text>
+			<Text Lang="uk">Експортовано</Text>
+			<Text Lang="fr">Exporté</Text>
+			<Text Lang="pt-BR">Exportado</Text>
+			<Text Lang="zh">已导出</Text>
+			<Text Lang="ko">내보냄</Text>
+			<Text Lang="pl">Wyeksportowano</Text>
+			<Text Lang="es">Exportado</Text>
+			<Text Lang="it">Esportato</Text>
+			<Text Lang="ru">Экспортировано</Text>
+			<Text Lang="de">wurde in den Projektordner exportiert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Revert.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Revert</Text>
+			<Text Lang="uk">Повернути</Text>
+			<Text Lang="fr">Revenir</Text>
+			<Text Lang="pt-BR">Reverter</Text>
+			<Text Lang="zh">还原</Text>
+			<Text Lang="ko">되돌리기</Text>
+			<Text Lang="pl">Przywróć</Text>
+			<Text Lang="es">Revertir</Text>
+			<Text Lang="it">Annulla le modifiche</Text>
+			<Text Lang="ru">Вернуть</Text>
+			<Text Lang="de">Revert</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Revert.Text">
+			<Context>Command</Context>
+			<Text Lang="en">Reverted</Text>
+			<Text Lang="uk">Повернено</Text>
+			<Text Lang="fr">Revenu</Text>
+			<Text Lang="pt-BR">Revertido</Text>
+			<Text Lang="zh">已还原</Text>
+			<Text Lang="ko">되돌려짐</Text>
+			<Text Lang="pl">Przywrócono</Text>
+			<Text Lang="es">Revertido</Text>
+			<Text Lang="it">Annullate le modifiche</Text>
+			<Text Lang="ru">Возвращено</Text>
+			<Text Lang="de">wurde von einer vorherigen Version wieder hergestellt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Commands.Custom.Label">
+			<Context>Command</Context>
+			<Text Lang="en">Custom Command ({0})</Text>
+			<Text Lang="uk">Користувацька команда ({0})</Text>
+			<Text Lang="fr">Commande Personnalisée ({0})</Text>
+			<Text Lang="pt-BR">Comando customizado ({0})</Text>
+			<Text Lang="zh">自定义命令 ({0})</Text>
+			<Text Lang="ko">사용자 지정 명령 ({0})</Text>
+			<Text Lang="pl">Własna komenda ({0})</Text>
+			<Text Lang="es">Comando personalizado ({0})</Text>
+			<Text Lang="it">Comando personalizzato ({0})</Text>
+			<Text Lang="ru">Пользовательская команда ({0})</Text>
+			<Text Lang="de">Spezielles Kommando ({0})</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ShortNotification.Pattern">
+			<Context><![CDATA[Formatting pattern used for a short text of a SCM operation.
+{0} is the commandname (localized from Commands.*.Text
+{1} the object kind (localized from KindName.*.Text
+{2} the file/directory/object name]]></Context>
+			<Text Lang="en">{0} {1} '{2}'.</Text>
+			<Text Lang="uk">{0} {1} '{2}'.</Text>
+			<Text Lang="fr">{0} {1} '{2}'.</Text>
+			<Text Lang="pt-BR">{0} {1} '{2}'</Text>
+			<Text Lang="zh">{0} {1} '{2}'。</Text>
+			<Text Lang="ko"><![CDATA[{0} {1} '{2}'.
+]]></Text>
+			<Text Lang="pl">{0} {1} '{2}'.</Text>
+			<Text Lang="es">{0} {1} '{2}'.</Text>
+			<Text Lang="it">{0} {1} '{2}'.</Text>
+			<Text Lang="ru">{0} {1} '{2}'.</Text>
+			<Text Lang="de">{1} '{2}' {0}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ShortCustomCommand.Pattern">
+			<Context>Formatting pattern used for a short text of a SCM operation</Context>
+			<Text Lang="en">Executed the source control system provider specific command '{0}' on '{1}'.</Text>
+			<Text Lang="uk">Виконана, характерна для системи керування вихідними даними, команда '{0}' в '{1}'.</Text>
+			<Text Lang="fr">A éxécuté la commande spécifique au fournisseur du gestionnaire de code source '{0}' sur '{1}'.</Text>
+			<Text Lang="pt-BR">Executado o comando específico do provedor de sistema de fonte de controle '{0}' em '{1}'.</Text>
+			<Text Lang="zh">已在'{1}'上执行源代码管理系统提供的特定命令  '{0}' 。</Text>
+			<Text Lang="ko">{1}'에서 소스 제어 시스템 제공자 관련 명령 '{0}'을 실행했습니다.</Text>
+			<Text Lang="pl">Uruchomiono dostawcę systemu kontroli źródła dla komendy '{0}' na '{1}'</Text>
+			<Text Lang="es">Se ha ejecutado el comando específico del proveedor de control de versiones '{0}' en '{1}'.</Text>
+			<Text Lang="it">Eseguito il comando '{0}' su '{1}' specificato dal fornitore del sistema di controllo.</Text>
+			<Text Lang="ru">Выполнена, характерная для системы управления исходными данными, команда  '{0}' в '{1}'.</Text>
+			<Text Lang="de">Das Source-Control-System-Kommando '{0}' wurde für '{1}' ausgeführt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WorkingCopy.Caption">
+			<Context>A label for WorkingCopy</Context>
+			<Text Lang="de">Projektordner:</Text>
+			<Text Lang="uk">Папка проекту:</Text>
+			<Text Lang="fr">Dossier du projet :</Text>
+			<Text Lang="pt-BR">Pasta de projeto:</Text>
+			<Text Lang="zh">项目文件夹：</Text>
+			<Text Lang="ko">프로젝트 폴더:</Text>
+			<Text Lang="pl">Folder projektu:</Text>
+			<Text Lang="es">Carpeta del proyecto:</Text>
+			<Text Lang="it">Cartella del progetto:</Text>
+			<Text Lang="ru">Папка проекта:</Text>
+			<Text Lang="en">Project folder:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Dialogs.ScmLogin">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>window title</Context>
+			<Text Lang="en">Login to source control</Text>
+			<Text Lang="uk">Увійти в систему керування вихідними даними</Text>
+			<Text Lang="fr">Connectez-vous au contrôle de code source</Text>
+			<Text Lang="pt-BR">Login para fonte de controle</Text>
+			<Text Lang="zh">登录至源代码管理</Text>
+			<Text Lang="ko">소스 제어에 로그인</Text>
+			<Text Lang="pl">Zaloguj się do kontroli źródła</Text>
+			<Text Lang="es">Iniciando sesión en el repositorio</Text>
+			<Text Lang="it">Login nel controllo di sorgenti</Text>
+			<Text Lang="ru">Войти в систему управления исходными данными</Text>
+			<Text Lang="de">Anmeldung bei der Source Control</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Info.Caption">
+			<Context>Default into text</Context>
+			<Text Lang="en">Please provide credentials to log on to the selected source-control system</Text>
+			<Text Lang="uk">Будь ласка, введіть облікові дані, щоб підключитися до системи керування вихідними даними</Text>
+			<Text Lang="fr">Veuillez fournir des informations d'identification pour vous connecter au système de contrôle de source sélectionné</Text>
+			<Text Lang="pt-BR">Por favor providencie credências para logar no sistema de fonte de controle selecionado</Text>
+			<Text Lang="zh">请提供登录至源代码管理系统的凭据</Text>
+			<Text Lang="ko">선택한 소스 제어 시스템에 로그온 할 자격 증명을 제공하십시오.</Text>
+			<Text Lang="pl">Prosimy o podanie poświadczeń, żeby zalogować się do wybranego systemu kontroli źródła</Text>
+			<Text Lang="es">Introduce tus datos de usuario para iniciar sesión en el repositorio seleccionado</Text>
+			<Text Lang="it">Si prega di fornire le credenziali per eseguire l'accesso al sistema di controllo dei sorgenti selezionato.</Text>
+			<Text Lang="ru">Пожалуйста, предоставьте параметры доступа, чтобы подключиться к системе управления исходными данными</Text>
+			<Text Lang="de">Bitte geben Sie die Anmeldedaten ein, um sich beim ausgewählten Source-Control System anzumelden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SavePassword.Caption">
+			<Context>Checkbox text</Context>
+			<Text Lang="en">Save password</Text>
+			<Text Lang="uk">Зберегти пароль</Text>
+			<Text Lang="fr">Sauvegarder mot de passe</Text>
+			<Text Lang="pt-BR">Salvar senha</Text>
+			<Text Lang="zh">保存密码</Text>
+			<Text Lang="ko">비밀 번호 저장</Text>
+			<Text Lang="pl">Zapisz hasło</Text>
+			<Text Lang="es">Guardar contraseña</Text>
+			<Text Lang="it">Salva password</Text>
+			<Text Lang="ru">Сохранить пароль</Text>
+			<Text Lang="de">Passwort speichern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Username.Label">
+			<Context>'Username' label</Context>
+			<Text Lang="en">Username:</Text>
+			<Text Lang="uk">Ім'я користувача:</Text>
+			<Text Lang="fr">Identifiant :</Text>
+			<Text Lang="pt-BR">Nome do usuário</Text>
+			<Text Lang="zh">用户名：</Text>
+			<Text Lang="ko">사용자 이름:</Text>
+			<Text Lang="pl">Login:</Text>
+			<Text Lang="es">Usuario:</Text>
+			<Text Lang="it">Nome utente:</Text>
+			<Text Lang="ru">Имя пользователя:</Text>
+			<Text Lang="de">Benutzername:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Password.Label">
+			<Context>'Password' label</Context>
+			<Text Lang="en">Password:</Text>
+			<Text Lang="uk">Пароль:</Text>
+			<Text Lang="fr">Mot de passe :</Text>
+			<Text Lang="pt-BR">Senha:</Text>
+			<Text Lang="zh">密码：</Text>
+			<Text Lang="ko">비밀 번호</Text>
+			<Text Lang="pl">Hasło:</Text>
+			<Text Lang="es">Contraseña:</Text>
+			<Text Lang="it">Password:</Text>
+			<Text Lang="ru">Пароль:</Text>
+			<Text Lang="de">Passwort:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InvalidCredentials.Text">
+			<Context>default text when the credentials can't be used</Context>
+			<Text Lang="en"><![CDATA[Unable to login with the given credentials.
+Please consult the log for more information.]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо авторизуватися за введеними обліковими даними!
+Будь ласка, зверніться до журналу для додаткової інформації. ]]></Text>
+			<Text Lang="fr"><![CDATA[Impossible de se connecter avec les informations d'identification fournies.
+Veuillez consulter l'historique pour plus d'informations.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Incapaz de logar com as credências dadas.
+Por favor consulte o histórico por mais informações.]]></Text>
+			<Text Lang="zh"><![CDATA[无法使用给定的凭据登录。
+相关详细信息，请查阅日志。]]></Text>
+			<Text Lang="ko"><![CDATA[지정한 자격 증명으로 로그인할 수 없습니다.
+자세한 내용은 로그를 참조하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Nie można zalogować się z podanymi poświadczeniami.
+Przejrzyj dziennik, żeby uzyskać więcej informacji.]]></Text>
+			<Text Lang="es"><![CDATA[No se ha podido iniciar sesión con los datos de usuario facilitados.
+Consulta el registro para más información.]]></Text>
+			<Text Lang="it"><![CDATA[Impossibile eseguire l'accesso con le credenziali fornite!
+Si prega di consultare il log per maggiori informazioni.]]></Text>
+			<Text Lang="ru"><![CDATA[Не удалось авторизироваться с данными параметрами доступа!
+Пожалуйста, обратитесь к журналу для дополнительной информации.]]></Text>
+			<Text Lang="de"><![CDATA[Anmeldung mit eingegebenen Anmeldedaten gescheitert.
+Bitte schauen Sie in das Log, um weitere Informationen zu erhalten.]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

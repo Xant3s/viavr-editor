@@ -1,0 +1,1025 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.SourceControl" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Subversion.DisplayName">
+			<Context>The display-name of the SCM provider</Context>
+			<Text Lang="de">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="uk">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="fr">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="pt-BR">Subversão (SVN) 1.6/1.7</Text>
+			<Text Lang="zh">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="ko">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="pl">Subwersja (SVN) 1.6/1.7</Text>
+			<Text Lang="es">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="it">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="ru">Subversion (SVN) 1.6/1.7</Text>
+			<Text Lang="en">Subversion (SVN) 1.6/1.7</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InternalSubversion.DisplayName">
+			<Context>The display-name of the internal SCM provider</Context>
+			<Text Lang="en">Internal Articy Subversion</Text>
+			<Text Lang="uk">Внутрішня Підверсія (Subversion) Articy</Text>
+			<Text Lang="fr">Subversion Interne d'Articy</Text>
+			<Text Lang="pt-BR">Subversão interna Articy</Text>
+			<Text Lang="zh">Articy内部SVN</Text>
+			<Text Lang="ko">내부 Articy Subversion</Text>
+			<Text Lang="pl">Wewnętrzna Subwersja Articy</Text>
+			<Text Lang="es">Subversion interno de Articy</Text>
+			<Text Lang="it">Subversion interno ad Articy</Text>
+			<Text Lang="ru">Внутренний Articy Subversion</Text>
+			<Text Lang="de">Internal Articy Subversion</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InternalSubversion.Unavailable">
+			<Context>Error text when trying to log-on to an internal SVN that has become unavailable</Context>
+			<Text Lang="en">The internal SVN server of the connected articy:server is unavailable. Please ask your system administrator to check the logs/settings.</Text>
+			<Text Lang="uk">Внутрішній сервер SVN, що підключений до articy:server, недоступний. Будь ласка попросіть вашого системного адміністратора перевірити журнали/налаштування.</Text>
+			<Text Lang="fr">Le serveur SVN interne de l'articy:serveur connecté n'est pas disponible. Veuillez demander à votre administrateur système de vérifier les historiques/paramètres.</Text>
+			<Text Lang="pt-BR">O servidor interno SVN od articy:server conectado está indisponível. Por favor peça seu adminstrador de sistema para checar o login/configurações.</Text>
+			<Text Lang="zh">所连接的articy:server内部SVN服务器不可用。请联系系统管理员检查日志/设置。</Text>
+			<Text Lang="ko">연결 된 articy:server의 내부 SVN 서버는 사용할 수 없습니다. 로그/설정을 확인 하려면 시스템 관리자에 문의 하시기 바랍니다.</Text>
+			<Text Lang="pl">Wewnętrzny serwer SVN połączony z articy:server jest niedostępny. Proszę zapytać administratora systemy o log/ustawienia.</Text>
+			<Text Lang="es">El servidor de SVN interno del articy:server conectado no está disponible. Solicita al administrador del sistema que compruebe los registros o la configuración.</Text>
+			<Text Lang="it">Il server SVN interno al articy:server a cui si è connessi non è disponibile. Si prega di chiedere al proprio amministratore di sistema un controllo dei log e settaggi.</Text>
+			<Text Lang="ru">Внутренний SVN сервер подключенного articy:server недоступен. Пожалуйста, попросите вашего системного администратора проверить журналы и настройки.</Text>
+			<Text Lang="de">Der interne SVN-Server des verbundenen articy:servers ist nicht verfügbar. Bitte informieren sie Ihren System-Administrator.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.EnterCredentials.Title">
+			<Context>The window caption for the password dialog</Context>
+			<Text Lang="en">Login to subversion</Text>
+			<Text Lang="uk">Підключитись до Subversion</Text>
+			<Text Lang="fr">Se connercter à subversion</Text>
+			<Text Lang="pt-BR">Login para subversão</Text>
+			<Text Lang="zh">登录至SVN</Text>
+			<Text Lang="ko">subversion에 로그인</Text>
+			<Text Lang="pl">Zaloguj się do subversion</Text>
+			<Text Lang="es">Iniciar sesión en Subversion</Text>
+			<Text Lang="it">Login Subversion</Text>
+			<Text Lang="ru">Подключиться к Subversion.</Text>
+			<Text Lang="de">Anmeldung bei Subversion</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.EnterCredentials.Description">
+			<Context>The window header text for the credential dialog</Context>
+			<Text Lang="en">Please provide your credentials to log on to the subversion server at: '{0}'.</Text>
+			<Text Lang="uk">Будь ласка, введіть ваші облікові дані, для підключення до сервера Subversion на: '{0}'</Text>
+			<Text Lang="fr">Veuillez fournir vos informations d'identification pour vous connecter au serveur subversion à : '{0}'.</Text>
+			<Text Lang="pt-BR">Por favor providencie suas credências para logar no servidor de subversão em: '{0}'</Text>
+			<Text Lang="zh">请提供您的凭据以登录位于 '{0}'的SVN服务器。</Text>
+			<Text Lang="ko">subversion 서버에 로그인하여 자격 증명을 제공 하십시오: ' {0} '.</Text>
+			<Text Lang="pl">Proszę podać swoje dane żeby zalogować się do serwera subversion: '{0}'.</Text>
+			<Text Lang="es">Introduce tus datos para iniciar sesión en el servidor de Subversion en: '{0}'.</Text>
+			<Text Lang="it">Si prega di fornire le proprie credenziali per eseguire l'accesso al server di Subversion: '{0}'.</Text>
+			<Text Lang="ru">Пожалуйста, предоставьте ваши параметры доступа, для подключения к серверу Subversion на: '{0}'</Text>
+			<Text Lang="de">Bitte geben Sie die Anmeldedaten ein, um sich bei Subversion '{0}' anzumelden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryPath.Caption">
+			<Context>Label for the property "RepositoryPath"</Context>
+			<Text Lang="de">Repository-Pfad:</Text>
+			<Text Lang="uk">Шлях репозиторія:</Text>
+			<Text Lang="fr">Chemin du référentiel :</Text>
+			<Text Lang="pt-BR">Caminho-repositório:</Text>
+			<Text Lang="zh">存储库路径：</Text>
+			<Text Lang="ko">저장소-경로:</Text>
+			<Text Lang="pl">Ścieżka rezpozytorium:</Text>
+			<Text Lang="es">Ruta del repositorio:</Text>
+			<Text Lang="it">Percorso del Repository:</Text>
+			<Text Lang="ru">Путь-хранилище:</Text>
+			<Text Lang="en">Repository-path:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryPath.Description">
+			<Context>description for the property "RepositoryPath"</Context>
+			<Text Lang="de"><![CDATA[Hier bitte den Pfad des Projektes innerhalb des Repositories eintragen.
+Z.B. '/Mein_Projekt/trunk/']]></Text>
+			<Text Lang="uk"><![CDATA[Використовуйте це поле для вказівки шляху до проекту всередині репозиторія.
+Приклад: '/My_Project/trunk/' ]]></Text>
+			<Text Lang="fr"><![CDATA[Utilisez ce champ pour spécifier le chemin de base du projet dans le référentiel.
+Par exemple '/My_Project/trunk/']]></Text>
+			<Text Lang="pt-BR"><![CDATA[Use este campo para especificar o caminho-base do projeto dentro do repositório.
+Exemplo '/My_Project/trunk/']]></Text>
+			<Text Lang="zh"><![CDATA[使用此字段指定存储库中项目的基本路径。
+例如： '/My_Project/trunk/']]></Text>
+			<Text Lang="ko"><![CDATA[이 필드를 사용하여 저장소 내에서 프로젝트의 기본 경로를 지정 합니다.
+예: '/my_projec/trak/' ]]></Text>
+			<Text Lang="pl">Użyj tego pola by wybrać scieżkę projektu w rezpozytorium. Np. '/Mój_projekt/trunk/'</Text>
+			<Text Lang="es"><![CDATA[Usa este campo para especificar el directorio base del proyecto en el repositorio.
+Ejemplo: '/Mi_Proyecto/trunk/']]></Text>
+			<Text Lang="it"><![CDATA[Usa questo campo per specificare il percorso base del progetto all'interno del Repository.
+Per esempio '/My_Project/trunk/']]></Text>
+			<Text Lang="ru"><![CDATA[Используйте это поле для указания пути к проекту внутри хранилища.
+Пример: '/My_Project/trunk/']]></Text>
+			<Text Lang="en"><![CDATA[Use this field to specify the base-path of the project within the repository.
+E.g. '/My_Project/trunk/']]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.LocalRepositoryUrl.Caption">
+			<Context>Label for the property "LocalRepositoryUrl"</Context>
+			<Text Lang="de">Repository-URL (intern):</Text>
+			<Text Lang="uk">URL репозиторія (локальне):</Text>
+			<Text Lang="fr">URL du référentiel (interne) :</Text>
+			<Text Lang="pt-BR">Repositório-URL (interno):</Text>
+			<Text Lang="zh">存储库URL（内部）：</Text>
+			<Text Lang="ko">저장소-URL (내부):</Text>
+			<Text Lang="pl">URL rezpozytorium (wewnętrzne):</Text>
+			<Text Lang="es">Repositorio-URL (interno):</Text>
+			<Text Lang="it">URL del Repository (interno):</Text>
+			<Text Lang="ru">URL хранилища (внутренний):</Text>
+			<Text Lang="en">Repository-URL (internal):</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.LocalRepositoryUrl.Description">
+			<Context>Description for the property "LocalRepositoryUrl"</Context>
+			<Text Lang="en"><![CDATA[Use this field to specify the base URL used to access the repository server. It consists of schema, server-name and optionally port.
+E.g. svn://subversion:3691]]></Text>
+			<Text Lang="uk"><![CDATA[Використовуйте це поле для вказівки базового URL, використовуваного для доступу до сервера репозиторія. Воно повинне складатися зі схеми, назви сервера і порту (необов'язково).
+Наприклад: svn://subversion:3691]]></Text>
+			<Text Lang="fr"><![CDATA[Utilisez ce champ pour spécifier l'URL de base utilisée pour accéder au serveur de référentiel. Il se compose du schéma, du nom du serveur et éventuellement du port.
+Par exemple svn://subversion:3691]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Use este campo para especificar o URL usado para acessar o servidor de repositório. Isto consiste de esquema, nome de servidor e opcionalmente port.
+Exemplo svn://subversion:3691]]></Text>
+			<Text Lang="zh"><![CDATA[使用此字段指定用于访问存储库服务器的基本URL。它由模式、服务器名和可选端口组成。 
+例如： svn://subversion:3691]]></Text>
+			<Text Lang="ko"><![CDATA[이 필드를 사용하여 리포지토리 서버에 액세스하는 데 사용 되는 기본 URL을 지정 합니다. 스키마, 서버 이름 및 선택적 포트로 구성 됩니다.
+예: svn://subversion:3691 ]]></Text>
+			<Text Lang="pl">Użyj tego pola by wybrać bazowy URL używany do dostępu do serwera rezpozytorium. Składa się on z nazwy serwera i portu. Np. svn://subversion:3691</Text>
+			<Text Lang="es"><![CDATA[Usa este campo para especificar la URL base para acceder al servidor del repositorio. Consiste de esquema, nombre del servidor y, opcionalmente, puerto.
+Ejemplo: svn://subversion:3691]]></Text>
+			<Text Lang="it"><![CDATA[Usa questo campo per specificare l'URL base utilizzato per accedere al Repository del server. È composto da: schema, nome server e porta (opzionale).
+Per esempio svn://subversion:3691]]></Text>
+			<Text Lang="ru"><![CDATA[Используйте это поле для указания базового URL, используемого для доступа к серверу хранилища. Должен состоять из схемы, названия сервера и порта (необязательно).
+Пример: svn://subversion:3691]]></Text>
+			<Text Lang="de"><![CDATA[Benutzen Sie dieses Feld, um die URL anzugeben, unter der der Subversion-Server erreichbar ist.  Diese URL besteht aus Schema, Server-Name und optional dem Port.
+Z.B. svn://subversion:3691]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RemoteRepositoryUrl.Caption">
+			<Context>Label for the property "RemoteRepositoryUrl"</Context>
+			<Text Lang="de">Repository-URL (extern):</Text>
+			<Text Lang="uk">URL репозиторія (зовнішнє):</Text>
+			<Text Lang="fr">URL du référentiel (externe) :</Text>
+			<Text Lang="pt-BR">Repositório-URL (externo):</Text>
+			<Text Lang="zh">存储库URL（外部）：</Text>
+			<Text Lang="ko">저장소-URL (외부):</Text>
+			<Text Lang="pl">URL rezpozytorium (zewnętrzne):</Text>
+			<Text Lang="es">Repositorio-URL (externo):</Text>
+			<Text Lang="it">URL del Repository (esterno):</Text>
+			<Text Lang="ru">URL хранилища (внешний):</Text>
+			<Text Lang="en">Repository-URL (external):</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.FullRepositoryUrl.Caption">
+			<Context>Label for the full repository path</Context>
+			<Text Lang="de">Repository-URL:</Text>
+			<Text Lang="uk">URL репозиторія:</Text>
+			<Text Lang="fr">URL du référentiel :</Text>
+			<Text Lang="pt-BR">Repositório-URL</Text>
+			<Text Lang="zh">存储库URL：</Text>
+			<Text Lang="ko">저장소-URL:</Text>
+			<Text Lang="pl">URL rezpozytorium:</Text>
+			<Text Lang="es">Repositorio-URL:</Text>
+			<Text Lang="it">URL del Repository:</Text>
+			<Text Lang="ru">URL хранилища :</Text>
+			<Text Lang="en">Repository-URL:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RemoteRepositoryUrl.Description">
+			<Context>Description for the property "LocalRepositoryUrl"</Context>
+			<Text Lang="en"><![CDATA[If the SVN Server does not lie in the same network as the clients accessing it, it is feasable to specify an alternate URL.
+E.g. https://mycompany.dyndns.org:4711. If there is no need for this leave this field empty]]></Text>
+			<Text Lang="uk"><![CDATA[Якщо сервер SVN не перебуває у тій же мережі, що і підключені до нього користувачі, рекомендується призначити альтернативні URL.
+Наприклад: https://mycompany.dyndns.org:4711. Залиште це поле порожнім якщо в цьому немає необхідності. ]]></Text>
+			<Text Lang="fr"><![CDATA[Si le serveur SVN ne se trouve pas dans le même réseau que les clients qui y accèdent, il est possible de spécifier un URL alternatif.
+Par exemple https://mycompany.dyndns.org:4711. Si cela n'est pas nécessaire, laissez ce champ vide]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Se o servidor SVN não está na mesma rede que os clientes acessando, é possível específicar um URL alternativo.
+Exemplo https://mycompany.dyndns.org:4711. Se não há mais necessidade para isto deixe este campo vazio]]></Text>
+			<Text Lang="zh"><![CDATA[如果SVN服务器与访问它的客户机不在同一网络中，则可以指定备用URL。
+例如： https://mycompany.dyndns.org:4711。如果不需要，请将此字段留空。]]></Text>
+			<Text Lang="ko"><![CDATA[SVN 서버가 클라이언트가 액세스 하는 클라이언트와 동일한 네트워크에 있지 않을 경우 대체 URL을 지정할 수 있습니다.
+예: https://mycompany.dyndns.org:4711. 이 필드를 비워 둘 필요가 없는 경우 ]]></Text>
+			<Text Lang="pl">Jeśli serwer SVN nie znajduję się w tej samej sieci co klienci używający go można wybrać alternatywny URL. Np. https://mojafirma.dyndns.org:4711. Jeśli jednak nie jest to potrzebne proszę zostawić to pole puste</Text>
+			<Text Lang="es"><![CDATA[Si el servidor de SVN no reside en la misma red que los clientes que acceden a él, es posible especificar una URL alternativa.
+Ejemplo: https://miempresa.dyndns.org:4711. Si no lo necesitas, puedes dejar este campo vacío]]></Text>
+			<Text Lang="it"><![CDATA[Se il server SNV non risiede nella stessa rete a cui accede il client, è possibile specificare un URL alternativo.
+Per esempio https.mycompany.dydns.org:4711. Se non è presente questa necessita, questo campo può essere lasciato vuoto.]]></Text>
+			<Text Lang="ru"><![CDATA[Если сервер SVN не находится в той же сети, что и пользователи подключенные к нему, рекомендуется назначить альтернативные  URL.
+Пример: https://mycompany.dyndns.org:4711. Оставьте это поле пустым если в этом нет необходимости .]]></Text>
+			<Text Lang="de"><![CDATA[Wenn der SVN-Server von extern unter einer anderen Adresse erreichbar ist, kann diese hier eingetragen werden.
+Z.B. https://meinefirma.dyndns.org:4711. Ist dies nicht nötig, sollte dieses Feld frei bleiben.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.UsedRepositoryUrl">
+			<Context>Info log entry to show which repository path is used.</Context>
+			<Text Lang="en">Using Project-URL: {0}</Text>
+			<Text Lang="uk">Використовуваний URL проекту: {0}</Text>
+			<Text Lang="fr">Utilisation de l'URL du projet : {0}</Text>
+			<Text Lang="pt-BR">Usando URL do projeto: {0}</Text>
+			<Text Lang="zh">使用项目URL：{0}</Text>
+			<Text Lang="ko">사용중인 프로젝트-URL : {0}</Text>
+			<Text Lang="pl">Używając URL projektu: {0}</Text>
+			<Text Lang="es">Usando la URL de proyecto: {0}</Text>
+			<Text Lang="it">Utilizzando il'URL di Progetto: {0}</Text>
+			<Text Lang="ru">Используемый URL проекта: {0}</Text>
+			<Text Lang="de">Verwendete Projekt-URL: {0}</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Errors">
+
+		<TextDefinition Key="Subversion.RepositoryPath.Empty">
+			<Context>Error shown when repository path is empty</Context>
+			<Text Lang="en">Repository path must not be empty.</Text>
+			<Text Lang="uk">Шлях до репозиторія не повинен бути порожнім.</Text>
+			<Text Lang="fr">Le chemin du référentiel ne doit pas être vide.</Text>
+			<Text Lang="pt-BR">Caminho de repositório não deve estar vazio.</Text>
+			<Text Lang="zh">存储库路径不能为空。</Text>
+			<Text Lang="ko">저장소 경로는 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Ścieżka rezpozytorium nie może być pusta.</Text>
+			<Text Lang="es">El directorio del repositorio no puede estar vacío.</Text>
+			<Text Lang="it">Il percorso del Repository non deve essere vuoto.</Text>
+			<Text Lang="ru">Путь к хранилищу не должен быть пустым.</Text>
+			<Text Lang="de">Repository-Pfad darf nicht leer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryPath.MustStartWithSlash">
+			<Context>Error shown when repository path does not start with a slash</Context>
+			<Text Lang="en">Repository path must start with a slash.</Text>
+			<Text Lang="uk">Шлях до репозиторія повинен починатися зі скісної риски(/).</Text>
+			<Text Lang="fr">Le chemin du référentiel doit commencer par une barre oblique.</Text>
+			<Text Lang="pt-BR">Caminho de repositório deve começar com uma barra.</Text>
+			<Text Lang="zh">存储库路径必须以斜线开头。</Text>
+			<Text Lang="ko">저장소 경로는 /로 시작해야 합니다.</Text>
+			<Text Lang="pl">Ścieżka rezpozytorium musi zaczynać się od ukośnika.</Text>
+			<Text Lang="es">El directorio del repositorio debe empezar con una barra invertida.</Text>
+			<Text Lang="it">Il percorso del Repository deve iniziare con uno slash.</Text>
+			<Text Lang="ru">Путь к хранилищу должен начитаться со слеша (/).</Text>
+			<Text Lang="de">Repository-Pfad muss mit einem Slash ('/') beginnen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryPath.ForbiddenChars">
+			<Context>Error shown when the repository path contains forbidden characters</Context>
+			<Text Lang="en">Repository path contains forbidden characters. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="uk">Шлях до репозиторія містить заборонені символи. (" \ *? | &lt;>)</Text>
+			<Text Lang="fr">Le chemin du référentiel contient des caractères interdits. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="pt-BR">Caminho do repositório contém caracteres proibidos. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="zh">存储库路径包含非法字符。 ( " \ * ? | &lt; >)</Text>
+			<Text Lang="ko">저장소 경로에 금지 된 문자가 포함 되어 있습니다. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="pl">Ścieżka rezpozytorium zawiera zabronione znaki. ( " \*?|&lt;>)</Text>
+			<Text Lang="es">El directorio del repositorio contiene caracteres prohibidos. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="it">Il percorso del Repository contiene caratteri proibiti. ( " \ * ? | &lt; > )</Text>
+			<Text Lang="ru">Путь к хранилищу содержит запрещенные символы. ("\*?|&lt;>)</Text>
+			<Text Lang="de">Repository-Pfad enthält ungültige Zeichen. ( " \ * ? | &lt; >)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryPath.ForcedPrefixFail">
+			<Context>Error shown when the repository path does not start with the server forced prefix</Context>
+			<Text Lang="en">Repository path does not start with the required path prefix.</Text>
+			<Text Lang="uk">Шлях до репозиторія не починається з необхідного префікса.</Text>
+			<Text Lang="fr">Le chemin du référentiel ne commence pas par le préfixe de chemin requis.</Text>
+			<Text Lang="pt-BR">Caminho de repositório não começa com o prefixo de caminho pedido.</Text>
+			<Text Lang="zh">存储库路径没有以所需的路径前缀开头。</Text>
+			<Text Lang="ko">저장소 경로에 필요한 경로 접두사로 시작 되지 않습니다.</Text>
+			<Text Lang="pl">Ścieżka rezpozytorium nie zaczyna się od wymaganego prefiksu.</Text>
+			<Text Lang="es">La ruta del repositorio no empieza con el prefijo de ruta necesario.</Text>
+			<Text Lang="it">Il percorso del Repository non inizia con il prefisso richiesto.</Text>
+			<Text Lang="ru">Путь к хранилищу не начинается с необходимого префикса.</Text>
+			<Text Lang="de">Repository-Pfad beginnt nicht mit dem Pfad-Prefix.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryPath.CloneToSamePath">
+			<Context>Error shown when the url of a clone source project was not changed for the target project</Context>
+			<Text Lang="en">The cloned project needs a different repository path than the source project.</Text>
+			<Text Lang="uk">Для клонованого проекту потрібен інший шлях до репозиторія, ніж у вихідного проекту.</Text>
+			<Text Lang="fr">Le projet cloné a besoin d'un chemin de référentiel différent de celui du projet source.</Text>
+			<Text Lang="pt-BR">O projeto clonado precisa de um caminho de repositório diferente de uma fonte de projeto.</Text>
+			<Text Lang="zh">克隆项目需要与源项目不同的存储库路径。</Text>
+			<Text Lang="ko">복제 된 프로젝트에는 기존 프로젝트와 다른 저장소 경로가 필요 합니다.</Text>
+			<Text Lang="de">Das geklonte Projekt benötigt einen anderen Repository-Pfad als das Quell-Projekt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.LocalRepositoryUrl.Empty">
+			<Context>Error shown when the local repository url is empty</Context>
+			<Text Lang="en">The repository URL must not be empty.</Text>
+			<Text Lang="uk">URL репозиторія не повинна бути порожньою.</Text>
+			<Text Lang="fr">L'URL du référentiel ne doit pas être vide.</Text>
+			<Text Lang="pt-BR">A URL do repositório não deve estar vazio.</Text>
+			<Text Lang="zh">存储库URL不能为空。</Text>
+			<Text Lang="ko">저장소 URL은 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">URL rezpozytorium nie może być pusty.</Text>
+			<Text Lang="es">La URL del repositorio no puede estar vacía.</Text>
+			<Text Lang="it">L'URL del Repository non deve essere vuoto.</Text>
+			<Text Lang="ru">URL хранилища не должен быть пустым.</Text>
+			<Text Lang="de">Die Repository URL darf nicht leer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.InvalidRepositoryUrl">
+			<Context>Error shown when the a repository url is malformed</Context>
+			<Text Lang="en">Malformed URL: please ensure format: &lt;schema>://&lt;host>[:&lt;Port>]</Text>
+			<Text Lang="uk">Неправильна URL-адреса: будь ласка, перевірте формат: &lt;Схема>://&lt;Хост>[:&lt;Порт>]</Text>
+			<Text Lang="fr">Format URL incorrect : utilisez le format : &lt;schema>://&lt;host>[:&lt;Port>]</Text>
+			<Text Lang="pt-BR">URL mal informada: por favor garanta o formato: &lt;schema>://&lt;host>[:&lt;Port>]</Text>
+			<Text Lang="zh">格式不正确的URL：请确保格式： &lt;schema>://&lt;host>[:&lt;Port>]</Text>
+			<Text Lang="ko">잘못 된 URL: 형식을 확인 하십시오: &lt;schema>://&lt;host>[:&lt;Port>]</Text>
+			<Text Lang="pl">Niepoprawny URL: proszę zapwewnić format: &lt;schema>://&lt;host>[:&lt;Port>]</Text>
+			<Text Lang="es">URL mal formada. Asegúrate de que el formato concuerda con: &lt;esquema>://&lt;host>[:&lt;Puerto>]</Text>
+			<Text Lang="it">URL in formato errato: si assicuri di utilizzare il formato: &lt;schema>://&lt;host>[:&lt;Porta>]</Text>
+			<Text Lang="ru">Плохо сформированный URL: пожалуйста, соблюдайте формат: &lt;схема>://&lt;Хост>[:&lt;Порт>]</Text>
+			<Text Lang="de">Ungültige URL: Bitte Format '&lt;schema>://&lt;host>[:&lt;Port>]' verwenden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.NoTrailingSlashAllowed">
+			<Context>Error shown when the a repository url has a trailing slash</Context>
+			<Text Lang="en">Please don't use a trailing slash on the repository URL.</Text>
+			<Text Lang="uk">Будь ласка, не використовуйте обернену скісну риску URL-репозиторія.(\)</Text>
+			<Text Lang="fr">Veuillez ne pas utiliser de barre oblique de fin sur l'URL du référentiel.</Text>
+			<Text Lang="pt-BR">Por favor não use uma barra final no URL do repositório.</Text>
+			<Text Lang="zh">请不要在存储库URL中使用尾部斜杠。</Text>
+			<Text Lang="ko">저장소 URL에 후행 /를 사용 하지 마십시오.</Text>
+			<Text Lang="pl">Proszę nie używać przeciwnego slasha w URL rezpozytorium.</Text>
+			<Text Lang="es">No uses una barra final en la URL del repositorio.</Text>
+			<Text Lang="it">Si prega di non utilizzare uno slash al termine dell'URL del Repository.</Text>
+			<Text Lang="ru">Пожалуйста, не используйте задний слеш в URL хранилища.</Text>
+			<Text Lang="de">Bitte verwenden Sie keinen abschließenden Slash am Ende der Repository URL.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.UnsupportedScheme">
+			<Context>Error shown when the scheme is unsupported</Context>
+			<Text Lang="en">Unsupported URL scheme. Articy:draft currently only supports http, https and svn protocol schemes.</Text>
+			<Text Lang="uk">Непідтримувана схема URL. Articy:draft наразі підтримує лише схеми протоколів http, https та svn.</Text>
+			<Text Lang="fr">Schéma d'URL non pris en charge. Articy:draft ne prend actuellement en charge que les schémas de protocole http, https et svn.</Text>
+			<Text Lang="pt-BR"><![CDATA[Esquema de URL não suportado.
+Articy:draft atualmente só suporta esquemas de protocólo http, https e svn.]]></Text>
+			<Text Lang="zh">不支持的URL方案。Articy:draft目前只支持http、https和svn协议方案。</Text>
+			<Text Lang="ko">지원 되지 않는 URL 스키마입니다. articy 현재 http, https 및 svn 프로토콜 스키마를 지원 합니다.</Text>
+			<Text Lang="pl">Nie wspierany wzór URL. Articy:draft używa jedynie protokołów http, https i svn</Text>
+			<Text Lang="es">Esquema URL no soportado. Actualmente, articy:draft solo soporta esquemas de protocolo http, https y svn.</Text>
+			<Text Lang="it">Schema Url non supportato. Articy:draft supporta solo gli schemi http, https e protocolli SVN.</Text>
+			<Text Lang="ru">Неподдерживаемый URL протокол. Articy:draft на данный момент поддерживает только http, https and svn схемы протоколов.</Text>
+			<Text Lang="de">Unbekanntes URL Protokol. Derzeit unterstützt articy:draft nur die Protokolle http, https und svn.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.InvalidPortnumber">
+			<Context>Error shown when the port number is invalid</Context>
+			<Text Lang="en">Invalid port number. Port numbers need to be in the range 1-65535.</Text>
+			<Text Lang="uk">Недійсний номер порту. Номери портів повинні бути в межах 1-65535.</Text>
+			<Text Lang="fr">Numéro de port non valide. Les numéros de port doivent être compris entre 1 et 65 535.</Text>
+			<Text Lang="pt-BR">Número de porte inválido. Números de porte precisam estar no alcance de 1-65535.</Text>
+			<Text Lang="zh">端口号无效。端口号必须在1-65535范围内。</Text>
+			<Text Lang="ko">잘못 된 포트 번호입니다. 포트 번호는 1-65535 범위에 있어야 합니다.</Text>
+			<Text Lang="pl">Nieprawidłowy port. Numer musi znajdować się pomiędzy 1-65535.</Text>
+			<Text Lang="es">Número de puerto no válido. El número de puerto debe estar entre 1 y 65535.</Text>
+			<Text Lang="it">Numero di porta non valido. Il numero di porta deve essere tra 1 e 65535.</Text>
+			<Text Lang="ru">Недопустимый номер порта. Номер порта должен быть числом в диапазоне 1-65535.</Text>
+			<Text Lang="de">Ungültige Port Nummber. Die Portnummern müssen im Bereich 1-65535 liegen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.NoAdditionalPathAllowedForSvnScheme">
+			<Context>Error shown when url has a path part when using 'svn'</Context>
+			<Text Lang="en">When using the 'svn' scheme no additional path is allowed.</Text>
+			<Text Lang="uk">При використанні схеми 'svn' додатковий шлях не дозволений.</Text>
+			<Text Lang="fr">Lors de l'utilisation du schéma 'svn', aucun chemin supplémentaire n'est autorisé.</Text>
+			<Text Lang="pt-BR">Quando usando esquema 'svn' nenhuma caminho adicional é permitido.</Text>
+			<Text Lang="zh">当使用'svn'方案时，不允许使用其他路径。</Text>
+			<Text Lang="ko">svn' 스키마를 사용할 때 추가 경로가 허용 되지 않습니다.</Text>
+			<Text Lang="pl">Podczas używania wzoru 'svn' nie można używać dodatkowej ścieżki.</Text>
+			<Text Lang="es">Al usar el esquema 'svn', no se permite ruta adicional.</Text>
+			<Text Lang="it">Quando si usa lo schema 'svn' non sono consentiti percorsi aggiuntivi.</Text>
+			<Text Lang="ru">При использовании схемы 'svn', нет необходимости в указании дополнительных путей.</Text>
+			<Text Lang="de">Beim 'svn' Protokoll kann kein weiterer Pfad angegeben werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.NeedMountAndRepo">
+			<Context>Error shown when a mount path is missing when using 'http' or 'https'</Context>
+			<Text Lang="en">When using the 'http' or 'https' scheme at least two path parts need to be specified (e.g. '/svn/repository)</Text>
+			<Text Lang="uk">При використанні схеми 'http' або 'https' потрібно вказати щонайменше дві частини шляху (наприклад, '/svn/repository)</Text>
+			<Text Lang="fr">Lors de l'utilisation du schéma 'http' ou 'https', au moins deux parties de chemin doivent être spécifiées (par exemple '/svn/repository)</Text>
+			<Text Lang="pt-BR">Quando usando os esquemas 'http' ou 'https' pelo menos duas partes de caminhos precisam ser específicadas (exemplo 'svn/repository)</Text>
+			<Text Lang="zh">当使用'http'或'https'方案时，至少需要指定两个路径部分(例如 '/svn/repository)</Text>
+			<Text Lang="ko">http ' 또는 ' https ' 스키마를 사용 하는 경우 최소한 두 개의 부분 경로를 지정 해야 합니다 (예: '/svn/리포지토리).</Text>
+			<Text Lang="pl">Podczas używania wzorów 'http' i 'https' należy podać co najmnien 2 ścieżki (np. '/svn/respository)</Text>
+			<Text Lang="es">Al usar el esquema 'http' o 'https', al menos dos partes de la ruta deben estar especificadas (ejemplo: '/svn/repositorio').</Text>
+			<Text Lang="it">Quando si utilizza lo schema 'http' o 'https' almeno due parti del percorso devono essere specificate (per esempio '/svn/repository)</Text>
+			<Text Lang="ru">При использовании схемы 'http' или 'https' необходимо указать как минимум два пути (Пример. '/svn/repository)</Text>
+			<Text Lang="de">Wenn das 'http' oder 'https' Protokoll verwendet wird, müssen zwei Pfadebenen vorhanden sein. (z.B. '/svn/repository)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.AccessFailure">
+			<Context>error catched when trying to connect</Context>
+			<Text Lang="de"><![CDATA[Subversion hat den Zugriff mit folgender Meldung abgewiesen:
+'{0}'
+Dies kann an falsch geschriebenen Anmeldedaten oder Verbindungsproblemen liegen. 
+Wenn Sie den Passwortdialog abbrechen, wird auch die gesamte Operation abgebrochen.
+Wenn nicht, wird mit den neuen Anmeldedaten ein neuer Versuch gestartet.]]></Text>
+			<Text Lang="uk"><![CDATA[Даний сервер Subversion відмовив у з'єднанні з таким повідомленням:
+'{0}'
+Найпоширеніша причина - помилки в облікових даних або проблеми з підключенням.
+Якщо ви скасуєте діалогове вікно пароля, вся операція також скасується.
+Якщо ні, то запуститься нова спроба з'єднання. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le serveur Subversion donné a refusé la connexion avec le message suivant :
+'{0}'
+La raison la plus courante est les fautes de frappe dans les informations d'identification ou les problèmes de connexion.
+Si vous annulez la boîte de dialogue du mot de passe, toute l'opération sera annulée.
+Sinon, une nouvelle tentative de connexion sera lancée.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O servidor de subversão dado negou sua conexão com a seguinte mensagem:
+'{0}'
+As razões mais comuns são erros de digitação nas credencias ou problemas de conexão.
+Se você cancelar seu diálogo de senha, a operação inteira será cancelada.
+Se não, uma nova tentativa de conexão será iniciada.]]></Text>
+			<Text Lang="zh"><![CDATA[给定的SVN服务器已拒绝连接并报告以下消息：
+'{0}'
+最常见的原因是凭据或连接问题造成的错误。
+如果取消密码对话框，整个操作将被取消。
+否则，将重新尝试连接。]]></Text>
+			<Text Lang="ko"><![CDATA[주어진 Subversion 서버가 다음 메시지와 함께 연결을 거부함:
+'{0}'
+가장 일반적인 이유는 자격 증명에 오자가 있거나 연결 문제입니다.
+암호다이얼로그를 취소하면 전체 작업이 취소됩니다.
+그렇지 않으면 새 연결 시도가 시작됩니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Podany serwer Subversion odmówił połączęnia poniższą wiadomością:
+'{0}'
+Najpopularniejszym powodem mogą być literówki w podanych danych i problemy z połączeniem. Jeśli anulujesz dialog hasła, zanulujesz cała operację. Jeśli tego nie zrobisz nastąpi ponowna próba połączenia.]]></Text>
+			<Text Lang="es"><![CDATA[El servidor de Subversion facilitado ha denegado la conexión con el siguiente mensaje:
+'{0}'
+Las razones más comunes suelen incluir errores tipográficos en las credenciales, o problemas de conexión.
+Si cancelas el diálogo de contraseña, se cancelará toda la operación.
+Si no, se volverá a intentar conectar.]]></Text>
+			<Text Lang="it"><![CDATA[Il server di Subversion fornito ha rifiutato la connessione con il seguente messaggio:
+'{0}'
+Le possibili cause di ciò sono errori di battitura o problemi di connettività.
+Se si cancella il campo della password l'intera operazione sarà annullata, altrimenti partirà un nuovo tentativo di connessione.]]></Text>
+			<Text Lang="ru"><![CDATA[Выбранный сервер Subversion отклонил подключение со следующим сообщением:
+'{0}'
+Самыми распространенными причинами являются опечатки в параметрах доступа или проблемы с подключением.
+Если вы закроете окно пароля, вся операция будет отменена.
+Если нет, будет предпринята новая попытка подключения.]]></Text>
+			<Text Lang="en"><![CDATA[The given Subversion server has denied the connection with the following message:
+'{0}'
+The most common reason are typos in the credentials or connection issues.
+If you cancel the password dialog, the whole operation will be canceled.
+If not, a new connection attempt will be started.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.AccessForbidden">
+			<Context>error catched when trying to connect</Context>
+			<Text Lang="de"><![CDATA[Subversion hat den Zugriff auf:
+'{0}'
+verweigert. Die üblichen Gründe dafür sind Tippfehler bei den Zugangsdaten oder dass sie nicht über die nötigen Rechte verfügen.
+Wenn die den Passwortdialog abbrechen, wird die gesamte Operation abgebrochen.
+Wenn nicht, wird ein neuer Verbindungsversuch gestartet.]]></Text>
+			<Text Lang="uk"><![CDATA[Даний сервер Subversion відмовив у з'єднанні з:
+'{0}'
+Найпоширеніша причина - помилки в облікових даних або відсутність необхідних прав.
+Якщо ви скасуєте діалогове вікно пароля, вся операція скасується.
+Якщо ні, то запуститься нова спроба з'єднання. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le serveur Subversion donné a refusé la connexion à :
+'{0}'
+La raison la plus courante est les fautes de frappe dans les informations d'identification ou le fait que vous ne disposez pas des droits requis.
+Si vous annulez la boîte de dialogue du mot de passe, toute l'opération sera annulée.
+Sinon, une nouvelle tentative de connexion sera lancée.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O servidor de subversão dado negou sua conexão com a seguinte mensagem:
+'{0}'
+As razões mais comuns são erros de digitação nas credencias ou problemas de conexão.
+Se você cancelar seu diálogo de senha, a operação inteira será cancelada.
+Se não, uma nova tentativa de conexão será iniciada.]]></Text>
+			<Text Lang="zh"><![CDATA[给定的SVN服务器拒绝连接至：
+'{0}'
+最常见的原因是凭据错误或您没有所需的权限。
+如果取消密码对话框，整个操作将被取消。
+否则，将重新尝试连接。]]></Text>
+			<Text Lang="ko"><![CDATA[주어진 Subversion 서버가 다음에 대한 연결을 거부함:
+'{0}'
+가장 일반적인 이유는 자격 증명에 오자가 있거나 사용자가 필요한 권한을 가지고 있지 않기 때문입니다.
+암호 다이얼로그를 취소하면 전체 작업이 취소됩니다.
+그렇지 않으면 새 연결 시도가 시작됩니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Podany serwer Subversion odmówił połączęnia poniższą wiadomością:
+'{0}'
+Najpopularniejszym powodem mogą być literówki w podanych danych i problemy z połączeniem. Jeśli anulujesz dialog hasła, zanulujesz cała operację. Jeśli tego nie zrobisz nastąpi ponowna próba połączenia.]]></Text>
+			<Text Lang="es"><![CDATA[El servidor de Subversion facilitado ha denegado la conexión a:
+'{0}'
+Las razones más comunes son errores tipográficos en las credenciales o ausencia de los permisos necesarios.
+Si cancelas el diálogo de contraseña, se cancelará toda la operación.
+Si no, se volverá a intentar conectar.]]></Text>
+			<Text Lang="it"><![CDATA[La versione di Subversion usata ha rifiutato la connessione a:
+'{0}'
+Le possibili cause di ciò possono essere errori nella scrittura delle credenziali o la mancanza delle autorizzazioni necessarie. 
+Se si cancella il campo della password l'intera operazione sarà annullata, altrimenti partirà un nuovo tentativo di connessione.]]></Text>
+			<Text Lang="ru"><![CDATA[Выбранный сервер Subversion отказал в подключении к:
+'{0}'
+Самыми распространенными причинами являются ошибки в параметрах доступа или то, что у вас нет необходимых прав.
+Если вы закроете окно пароля, вся операция будет отменена.
+Если нет, будет предпринята еще одна попытка подключиться.]]></Text>
+			<Text Lang="en"><![CDATA[The given Subversion server has denied the connection to:
+'{0}'
+The most common reason are typos in the credentials or that you do not have the required rights.
+If you cancel the password dialog, the whole operation will be canceled.
+If not, a new connection attempt will be started.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.ExceptionTitle">
+			<Context>Title of formatted SVN exception</Context>
+			<Text Lang="en">Subversion exception occurred</Text>
+			<Text Lang="uk">Стався виняток Subversion</Text>
+			<Text Lang="fr">Une exception de subversion s'est produite</Text>
+			<Text Lang="pt-BR">Excessão de subversão ocorreu</Text>
+			<Text Lang="zh">发生了SVN异常</Text>
+			<Text Lang="ko">Subversion 예외가 발생했습니다.</Text>
+			<Text Lang="pl">Wystąpił wyjątek Sybversion</Text>
+			<Text Lang="es">Se ha producido una excepción en Subversion</Text>
+			<Text Lang="it">Rilevata eccezione di Subversion.</Text>
+			<Text Lang="ru">Произошло исключение Subversion</Text>
+			<Text Lang="de">Eine Subversion-Ausnahme ist aufgetreten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.DnsResolveFailedBoth">
+			<Context>Error in log when neither local nor remote host/domainname could be resolved</Context>
+			<Text Lang="en">Unable to resolve local ('{0}') and remote ('{1}') repository host names. Please check your DNS settings.</Text>
+			<Text Lang="uk">Неможливо вирішити конфікти пов'язані з локальними ('{0}') та віддаленими ('{1}') іменами хостів репозиторія. Перевірте ваші налаштування DNS.</Text>
+			<Text Lang="fr">Impossible de résoudre les noms d'hôte du référentiel local ('{0}') et distant ('{1}'). Veuillez vérifier vos paramètres DNS.</Text>
+			<Text Lang="pt-BR">Incapaz de resolver local ('{0}') e remóto ('{1}') nomes de anfitrião de repositório. Por favor cheque suas configurações DNS.</Text>
+			<Text Lang="zh">无法解析本地 ('{0}') 和远程 ('{1}') 存储库主机名。请检查您的DNS设置。</Text>
+			<Text Lang="ko">로컬 ('{0}') 및 원격 ('{1}') 저장소 호스트 이름을 확인할 수 없습니다. DNS 설정을 확인하십시오.</Text>
+			<Text Lang="pl">Nie można rozwiązać lokalnej ('{0}') i zdalnej ('{1}') nazwy hosta rezpozytorium. Sprawdź swoje ustawienia DNS.</Text>
+			<Text Lang="es">Imposible resolver nombres de host del repositorio local ('{0}') y remoto ('{1}'). Comprueba tu configuración de DNS.</Text>
+			<Text Lang="it">Impossibile risolvere il nome locale ('{0}') e remoto dell'host del Repository. Si prega di controllare le proprie impostazioni di DNS.</Text>
+			<Text Lang="ru">Не удалось разрешить конфликт между локальным ('{0}') и удаленным ('{1}') именами хостов хранилищ. Пожалуйста, проверьте ваши настройки DNS.</Text>
+			<Text Lang="de">Weder der Lokale- ('{0}') noch der Remote-Domainname ('{1}') der Repository URL konnten aufgelöst werden. Bitte überprüfen Sie Ihre DNS-Einstellungen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.DnsResolveFailedLocal">
+			<Context>Error in log when the local host/domainname could be resolved and no remote was configured</Context>
+			<Text Lang="en">Unable to resolve the local ('{0}') repository host name. Please check your DNS settings.</Text>
+			<Text Lang="uk">Неможливо вирішити конфлікт з ім'ям хоста локального ('{0}') репозиторія. Перевірте ваші налаштування DNS.</Text>
+			<Text Lang="fr">Impossible de résoudre le nom d'hôte du référentiel local ('{0}'). Veuillez vérifier vos paramètres DNS.</Text>
+			<Text Lang="pt-BR">Incapaz de resolver local ('{0}') nome de anfitrião de repositório. Por favor cheque suas configurações DNS.</Text>
+			<Text Lang="zh">无法解析本地 ('{0}') 存储库主机名。请检查您的DNS设置。</Text>
+			<Text Lang="ko">로컬 ('{0}') 저장소 호스트 이름을 확인할 수 없습니다. DNS 설정을 확인하십시오.</Text>
+			<Text Lang="pl">Nie można rozwiązać lokalnej ('{0}') nazwy hosta rezpozytorium. Sprawdź swoje ustawienia DNS.</Text>
+			<Text Lang="es">No se ha podido resolver el nombre del repositorio del host local ('{0}'). Comprueba tu configuración de DNS.</Text>
+			<Text Lang="it">Impossibile risolvere il nome locale ('{0}') dell'host del Repository. Si prega di controllare le proprie impostazioni di DNS.</Text>
+			<Text Lang="ru">Не удалось разрешить конфликт с локальным именем хоста хранилища ('{0}') . Пожалуйста, проверьте ваши настройки DNS.</Text>
+			<Text Lang="de">Der Repository Domainname ('{0}') der Repository URL konnte nicht aufgelöst werden. Bitte überprüfen Sie Ihre DNS-Einstellungen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.UrlDetectionError">
+			<Context>Error in log when neither local nor remote host/domainname could be resolved</Context>
+			<Text Lang="en">An unexpected exception has occured while trying to detect the repository URL to use.</Text>
+			<Text Lang="uk">Під час спроби виявлення URL-адреси репозиторія сталася несподівана виняткова ситуація.</Text>
+			<Text Lang="fr">Une exception inattendue s'est produite lors de la tentative de détection de l'URL du référentiel à utiliser.</Text>
+			<Text Lang="pt-BR">Uma excessão inesperada ocorreu enquanto tentando detecta o URL de repositório para usar.</Text>
+			<Text Lang="zh">尝试检测要使用的存储库URL时发生异常。</Text>
+			<Text Lang="ko">사용할 저장소 URL을 검색하는 동안 예기치 않은 예외가 발생했습니다.</Text>
+			<Text Lang="pl">Wystąpił nieznany wyjatek podczas próby znalezienia URL rezpozytorium do użycia.</Text>
+			<Text Lang="es">Se ha producido una excepción al intentar detectar el repositorio URL a usar.</Text>
+			<Text Lang="it">Un'eccezione inaspettata è stata catturata mentre si tentava di identificare URL del Repository da utilizzare.</Text>
+			<Text Lang="ru">Во время попытки обнаружить URL  хранилища для использования, возникло непредвиденная исключительная ситуация.</Text>
+			<Text Lang="de">Es ist eine unerwartete Ausnahme aufgetreten während versucht wurde festzustellen, welche Repository-URL zu verwenden ist.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.RepositoryUrlDetectionFailed">
+			<Context>Error in log when an exception was caught when trying to resolve repo urls</Context>
+			<Text Lang="en">An unexpected exception was caught while trying to detect which repository URL should be used.</Text>
+			<Text Lang="uk">Під час спроби виявити, яку URL-адресу репозиторія слід використовувати, виникла неочікувана виняткова ситуація.</Text>
+			<Text Lang="fr">Une exception inattendue a été détectée lors de la tentative de détection de l'URL du référentiel à utiliser.</Text>
+			<Text Lang="pt-BR">Uma excessão inesperada foi pega enquanto tentando detectar qual URL de repositório deveria ser usado.</Text>
+			<Text Lang="zh">尝试检测应使用哪个存储库URL时发生异常。</Text>
+			<Text Lang="ko">사용할 저장소 URL을 검색하는 동안 예기치 않은 예외가 발생했습니다.</Text>
+			<Text Lang="pl">Nieznany wyjątek został złapany podczas próby wyszukania który URL rezpozytorium powinien zostać użyty.</Text>
+			<Text Lang="es">Se ha producido una excepción al intentar detectar qué repositorio URL debe usarse.</Text>
+			<Text Lang="it">Un'eccezione inaspettata è stata catturata mentre si tentava di identificare quale URL di Repository bisognasse utilizzare.</Text>
+			<Text Lang="ru">При попытке обнаружения какой URL хранилища следует использовать, возникла непредвиденная исключительная ситуация.</Text>
+			<Text Lang="de">Eine unerwartete Ausnahe ist aufgetreten bei dem Versuch die benötigte Repository URL zu bestimmen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.LocalRepositoryNotInClientDomain">
+			<Context>Warning in log when the local repository domain is not in the clients domain, but no remote is configured</Context>
+			<Text Lang="en">The Repository is configured to be on a server that is not directly reachable from the network your client resides. Trying to connect anyway.</Text>
+			<Text Lang="uk">Репозиторій налаштований на сервері, до якого не можливо підключитися напряму з поточній мережі користувача. Відбувається повторна спроба підключення.</Text>
+			<Text Lang="fr">Le référentiel est configuré pour être sur un serveur qui n'est pas directement accessible à partir du réseau sur lequel réside votre client. Essayer de se connecter quand même.</Text>
+			<Text Lang="pt-BR">O Repositório está configurado para estar em um servidor que não é diretamente alcançável da rede em que seu cliente reside. Tentando se conectar mesmo assim.</Text>
+			<Text Lang="zh">存储库配置在无法从客户机所在网络直接访问的服务器上。仍在尝试进行连接。</Text>
+			<Text Lang="ko">저장소는 클라이언트가 있는 네트워크에서 직접 연결할 수 없는 서버에 있도록 구성되어 있습니다. 어쨌든 연결을 시도하는 중입니다.</Text>
+			<Text Lang="pl">Rezpozytorium zostało skonfigurowane tak żeby znajdowało się na serwerze niedostępnym z sieci w której znajduje się klient. Nastąpi próba połączenia.</Text>
+			<Text Lang="es">El repositorio está configurado para estar en un servidor al que no se puede llegar directamente desde la red en la que reside tu cliente. Pese a ello, se está intentando conectar.</Text>
+			<Text Lang="it">Il Repository è configurato per essere un server che non è raggiungibile direttamente dalla rete in cui risiedere il suo client. SI prega di riprovare a connettersi comunque.</Text>
+			<Text Lang="ru">Хранилище находится на сервере, к которому не возможно подключиться напрямую из сети где находится ваш пользователь. Производится попытка подключения.</Text>
+			<Text Lang="de">Der Repository-Server ist nicht im gleichen Netz wie Ihr Computer. Es wird trotzdem versucht diesen Server zu erreichen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.WorkingCopyFormatDetection.Failed">
+			<Context>Error text when trying to detect the version of the working copy for an 1.7 and above version. (DB access failed)</Context>
+			<Text Lang="en">Failed to detect the SVN version that was used to create the specified working copy. Please delete the working copy and get a clean one.</Text>
+			<Text Lang="uk">Не вдалося виявити версію SVN, яка використовувалася для створення зазначеної робочої копії. Видаліть робочу копію та отримайте чисту.</Text>
+			<Text Lang="fr">Impossible de détecter la version SVN qui a été utilisée pour créer la copie de travail spécifiée. Veuillez supprimer la copie de travail et en obtenir une propre.</Text>
+			<Text Lang="pt-BR">Falhou em detectar uma versão SVN que foi usada para criar a cópia funcional especificada. Por favor delete a cópia funcional e pegue uma limpa.</Text>
+			<Text Lang="zh">检测用于创建指定工作副本的SVN版本失败。请删除工作副本，重新生成一份洁净版。</Text>
+			<Text Lang="ko">지정된 작업 복사본을 생성하는 데 사용된 SVN 버전을 검색하지 못 했습니다. 작업 사본을 삭제하고 깨끗한 것을 받아 오십시오.</Text>
+			<Text Lang="pl">Niemożna było znaleźć wersji SVN która została użyta do stworzenia wybranej kopii. Proszę usunąć tę kopię i użyć czystej.</Text>
+			<Text Lang="it">Errore nello stabilire la versione SVN utilizzata per creare la copia di lavoro in locale. Per favore cancellare la copia locale e scaricarne una nuova.</Text>
+			<Text Lang="de">Die SVN version, welche die Arbeitskopie angelegt hat, konnte nicht bestimmt werden. Bitte löschen Sie das Projekt-Verzeichnis und erstellen es neu.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.ForcedVersionDiffers">
+			<Context>detected that a project folder is for a different subversion version than the one that is forced with the commandline parameter -forcesvn</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was requires Subversion version {2}, but you have used the "-forcesvn {1}" command-line switch to start articy:draft.
+Please remove the command-line switch from your startup link and re-start articy:draft.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, розміщена в '{0}'
+потребувала версію Subversion {2}, але ви використали перемикач командного рядка "-forcesvn{1}" для запуску articy:draft.
+Видаліть перемикач командного рядка зі свого запуску та перезапустіть articy:draft. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' nécessite la version Subversion {2}, mais vous avez utilisé le commutateur de ligne de commande "-forcesvn {1}" pour démarrer articy:draft.
+Veuillez supprimer le commutateur de ligne de commande de votre lien de démarrage et redémarrer articy:draft.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A pasta de projeto localizada em '{0}' requere Subversão versão {2}, mas você usou o interruptor de  linha de comando "-forcevsn {1}" para iniciar o articy:draft.
+Por favor removar o interruptor da linha de comando de seu link de inicialização e re-abra o articy:draft.]]></Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹 
+需要SVN版本{2}，但您已使用"-forcesvn {1}"命令行启动了articy:draft。
+请从启动快捷方式中删除该命令行，然后重新启动articy:draft。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는
+Subversion 버전 {2}이 필요하지만 "-forcesvn {1}" 명령-줄 스위치를 사용하여 articy:draft를 시작했습니다.
+시작 링크에서 명령-줄 스위치를 제거하고 articy:draft를 다시 시작하십시오.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujący się w '{0}' wymaga wersji subversion {2}, ale użyłeś '-forcesvn {1}' w wierszu poleceń włączając articy:draft. Proszę usunąć tę linię i włączyć ponownie articy:draft.</Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto '{0}' richiede la versione Subversion {2}, ma hai utilizzato il comando "-forcesvn {1}" da linea di comando per avviare articy:draft.
+Per favore rimuovi questo parametro dalla linea di comando e riavvia articy:draft.]]></Text>
+			<Text Lang="de"><![CDATA[Im Verzeichnis '{0}'
+wurde ein Projektordner gefunden, für das eine Subversion Version {2} benötigt wird. Sie haben articy:draft aber mit dem Kommandozeilenparameter "-forcesvn {1}" gestartet.
+Bitte entfernen sie diesen Kommandozeilenparameter aus Ihrer Verknüpfung und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.VersionMismatchWithTortoise">
+			<Context>detected that a project folder is for a different subversion version than the one that matches the version of the installed tortoise</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+requires Subversion version {2}, but the detected Tortoise version is for Version {1}.
+You should either delete the project-folder and create a new one, or use tortoise to migrate the existing working-copy.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, розміщена в '{0}'
+потребує версію Subversion {2}, але виявлена версія Tortoise призначена для версії {1}.
+Вам слід або видалити папку проектів і створити нову, або використовувати Tortoise для переміщення існуючої робочої копії. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' nécessite la version Subversion {2}, mais la version Tortoise détectée est pour la version {1}.
+Vous devez soit supprimer le dossier du projet et en créer un nouveau, soit utiliser tortoise pour migrer la copie de travail existante.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A pasta de projeto localizada em '{0}' foi requere Subversão versão {2},  mas detectou que versão Tartaruga é para versão (1).
+Você deveria deletar a pasta de projeto ou criar uma nova, ou usar a tartaruga para migrar a cópia funcional do projeto.]]></Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+需要SVN版本{2}，但检测到的Tortoise版本适用于版本 {1}。
+您应该删除项目文件夹并创建一个新的文件夹，或者使用Tortoise迁移现有的工作副本。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는 
+Subversion 버전 {2}이 필요하지만 검색된 Tortoise 버전은 {1} 버전입니다.
+따라서 프로젝트 폴더를 삭제하고 새 폴더를 생성하거나 Tortoise를 사용하여 기존의 작업 복사본을 마이그레이션 해야 합니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Folder projektu znajdujący się w '{0}' wymaga wersji subversion {2}, ale wykryto że wersje Tortoise to {1}.
+Powinieneś usunąć i stworzyć nowy folder projektu lub użyć Tortoise do migracji obecnej kopii.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto '{0}' richiede la versione Subversion {2}, ma la versione di Tortoise rilevata è la {1}.
+Dovresti cancellare la cartella di progetto e quindi crearne una nuova, o utilizzare Tortoise per migrare la copia di lavoro esistente.]]></Text>
+			<Text Lang="de"><![CDATA[Im Verzeichnis '{0}'
+wurde ein Projektordner gefunden, für den eine Subversion Version {2} benötigt wird. Es wurde jedoch eine Tortoise-Version für Subversion {1} gefunden.
+Bitte löschen Sie das Projektverzeichnis und rufen eine neue Kopie durch öffnen des Projektes ab oder verwenden Sie Tortoise um die Working-Copy auf die aktuelle Version zu migrieren.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.VersionMismatchNoTortoise">
+			<Context>detected that a project folder is for a different subversion version than the one of the loaded sharpSVN library</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+requires Subversion version {2}, but articy:draft has loaded version {1}.
+If you want to use version {2} to better match you standalone SVN client, you should add the command-line switch "-forcesvn {2}" to the startup link for articy:draft.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, розміщена в '{0}'
+потребує версю Subversion {2}, але articy:draft завантажив версію {1}.
+Якщо ви хочете використовувати версію {2}, щоб краще співпадати вашому окремому клієнту SVN, вам слід додати перемикач командного рядка "-forcesvn {2} " до посилання запуску для articy:draft. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' nécessite la version Subversion {2}, mais articy:draft a chargé la version {1}.
+Si vous souhaitez utiliser la version {2} pour mieux correspondre à votre client SVN autonome, vous devez ajouter le commutateur de ligne de commande "-forcesvn {2}" au lien de démarrage pour articy:draft.]]></Text>
+			<Text Lang="pt-BR">A pasta de projeto localizada em '{0}' foi requere Subversão versão {2}, mas articy:draft carregou versõa {1}. Se você deseja usar versão {2} para melhor parear sua versão de cliente solitária SVN, você deveria adicionar o interruptor de linha de comando "-forcevsn {2}" para o link de inicialização para articy:draft.</Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+需要SVN版本{2}，但articy:draft已加载版本{1}。
+如果要使用版本{2}以更好的匹配独立的SVN客户端，则应将命令行"-forcesvn {2}"添加至articy:draft的启动快捷方式中。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는 
+Subversion 버전 {2}이 필요하지만 articy:draft에 {1} 버전이 로드되었습니다.
+독립형 SVN 클라이언트와 더 잘 일치시키기 위해 {2} 버전을 사용하려는 경우 articy:draft의 시작 링크에 "-forcesvn {2}" 명령줄 스위치를 추가해야 합니다.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujący się w '{0}' wymaga wersji subversion {2}, ale articy:draft załadowało wersję {1}. Jeśli chcesz użyć wersji {2}  żeby lepiej dopasować się do twojego klienta SVN powinieneś dodać linię '-forcesvn {2}' do skrótu articy:draft.</Text>
+			<Text Lang="it">La cartella di progetto '{0}' richiede la versione Subversion {2}, ma articy:draft ha caricato la versione {1}. Se desideri utilizzare la versione {2} per accoppiare meglio il tuo client SVN, dovresti aggiungere alla riga di comando di articy:draft il parametro "-forcesvn {2}".</Text>
+			<Text Lang="de"><![CDATA[Im Verzeichnis '{0}'
+wurde ein Projektordner gefunden, für den eine Subversion Version {2} benötigt wird, articy:draft hat aber die Unterstützung für Subversion {1} geladen.
+Bitte fügen Sie den Kommandozeilenparameter "-forcesvn {2}" Ihrer Verknüpfung hinzu und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.Wc17Forced">
+			<Context>detected that a project folder is from a v1.7, but articy was forced to load client lib v1.6</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was created from a Subversion version 1.7, but you have used the "-forcesvn 1.6" command-line switch to start articy:draft.
+Please remove the command-line switch from your startup link and re-start articy:draft.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, що знаходиться в '{0}'
+ створена на Subversion версії 1.7, але ви використовували перемикач командного рядка "-forcesvn 1.6 " щоб запустити articy: draft.
+Будь ласка, видаліть перемикач із посилання запуску і перезапустіть articy:draft. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' a été créé à partir d'une version 1.7 de Subversion, mais vous avez utilisé le commutateur de ligne de commande "-forcesvn 1.6" pour démarrer articy:draft.
+Veuillez supprimer le commutateur de ligne de commande de votre lien de démarrage et redémarrer articy:draft.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[ A pasta de projeto localizada em '{0}' foi criada com a versão 1.7 de subversão, mas você escolheu o interruptor de linha de comando "-forcesvn 1.6".
+Por favor remova o interruptor de linha de comando de seu link de inicialização e reinicie articy:draft.]]></Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+是用1.7版的SVN创建的，但您已使用"-forcesvn 1.6"命令行启动articy:draft。
+请从启动快捷方式中删除该命令行，然后重新启动articy:draft。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는 
+Subversion 버전  1.7에서 생성되었지만"-forcesvn 1.6" 명령-줄 스위치를 사용하여 articy:draft를 시작했습니다.
+시작 링크에서 명령-줄 스위치를 제거하고 articy:draft를 다시 시작하십시오.]]></Text>
+			<Text Lang="pl">Folder projektu znajdującego się w '{0}' został stworzony w wersji subversion 1.7, ale użyłeś komendy '-forcesvn 1.6' żeby włączyc articy:draft. Proszę usunąć tę komendę ze skrótu articy:draft.</Text>
+			<Text Lang="es"><![CDATA[La carpeta de proyecto ubicada en '{0}'
+ha sido creada con la versión 1.7 de Subversion, pero has usado el modificador de la línea de comandos "-forcesvn 1.6" para iniciar articy:draft.
+Elimina el modificador de la línea de comandos de tu enlace de inicio y reinicia articy:draft.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto collocata in '{0}' è stata creata da Subversion 1.7, ma si è utilizzata la linea di comando "-forcesvn 1.6" all'avvio di articy:draft.
+Si prega di rimuovere la linea di comando dal suo collegamento di avvio e riavviare articy:draft.]]></Text>
+			<Text Lang="ru"><![CDATA[Папка проекта находящаяся в  '{0}' 
+была создана на Subversion версии  1.7, но вы использовали переключатель командной строки "-forcesvn 1.6"  чтобы запустить articy:draft.
+Пожалуйста, удалите переключатель из ссылки запуска и перезапустите articy:draft.]]></Text>
+			<Text Lang="de"><![CDATA[Im Verzeichnis '{0}'
+wurde ein Projektordner gefunden, der von einem Subversion 1.7 erzeugt worden ist. Sie haben articy:draft aber mit dem Kommandozeilenparameter "-forcesvn 1.6" gestartet.
+Bitte entfernen sie diesen Kommandozeilenparameter aus Ihrer Verknüpfung und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.Wc17WithTortoise">
+			<Context>detected that a project folder is from a v1.7, but the loaded client lib is v1.6, Tortoise is present on the machine</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was created from a Subversion version 1.7, but you have a tortoise SVN version 1.6.x installed. It is recommended to upgrade your Tortoise to a recent 1.7.x version.
+Alternatively you may add the command-line switch "-forcesvn 1.7" to instruct articy:draft to use the subversion 1.7 client component.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, що знаходиться в '{0}'
+створена на Subversion версії 1.7, але у вас встановлена ​​версія Tortoise SVN 1.6.x. Рекомендується оновити Tortoise до більш нової версії 1.7.x.
+В якості альтернативи ви можете додати перемикач командного рядка "-forcesvn 1.7 ", щоб articy:draft використовував компонент клієнта Subversion 1.7. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' a été créé à partir d'une version 1.7 de Subversion, mais vous avez installé une version 1.6.x de Tortoise SVN. Il est recommandé de mettre à niveau votre Tortoise vers une version 1.7.x récente.
+Vous pouvez également ajouter le commutateur de ligne de commande "-forcesvn 1.7" pour demander à articy:draft d'utiliser le composant client de subversion 1.7.]]></Text>
+			<Text Lang="pt-BR">A pasta de projeto localizada em '{0}' foi criada com a versão 1.7 de subversão, mas você tem uma versão SVN tartaruga 1.6.x instalada. É recomendado atualizar sua tartaruga para uma versão mais recente 1.7.x. Alternativamente você pode adicionar o interruptor de linha de comando "-forcesvn 1.7" para instruir articy:draft para usar o componente de cliente da subersão versão 1.7</Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+是用1.7版的SVN创建的，但您安装了Tortoise SVN的1.6.x版本。建议您将Tortoise升级至最新的1.7.x版本。
+或者，您可以添加命令行"-forcesvn 1.7"来指示articy:draft使用SVN 1.7版本客户端组件。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는 Subversion 버전 1.7에서 생성되었지만 설치된 Tortoise SVN 버전 1.6.x가 있습니다. Tortoise를 최신 1.7.x 버전으로 업그레이드하는 것이 좋습니다.
+또는 명령-줄 스위치 "-forcesvn 1.7"을 추가하여 articy:draft에게 시스템 중단 클라이언트 구성 요소 사용을 지시할 수 있습니다.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujący się w '{0}' został stworzony używając wersji Subversion 1.7, ale używasz SVN Tortoise w wersji 1.6.x. Rekomenduję się zaktualizowanie Tortoise do wersji 1.7.x. Alternatywnie możesz dodać komendę '-forcesvn 1.7' by poinstruować articy:draft do użycia wersji subversion 1.7.</Text>
+			<Text Lang="es"><![CDATA[La carpeta de proyecto ubicada en '{0}'
+ha sido creada con la versión 1.7 de Subversion, pero tienes una versión 1.6.x de Tortoise SVN instalada. Se recomienda que actualices Tortoise a la versión 1.7.x.
+También puede añadir del modificador de línea de comandos "-forcesvn 1.7" para decirle a articy:draft que use el componente de cliente 1.7 de Subversion.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto collocata in '{0}' è stata creata da Subversion 1.7, ma è installata la versione di Tortoise SVN 1.6. Si raccomanda l'aggiornamento di Tortoise a una versione 1.7.x più recente.
+In alternativa si può aggiungere la linea di comando "-forcesvn 1.7" per far utilizzare a articy:draft il componente di Subversion 1.7.]]></Text>
+			<Text Lang="ru"><![CDATA[Папка проекта находящаяся в  '{0}' 
+была создана на Subversion версии 1.7, но у вас установлена версия Tortoise SVN 1.6.x. Рекомендуется обновить Tortoise до более новой версии 1.7.x .
+В качестве альтернативы вы можете добавить переключатель командной строки "-forcesvn 1.7", чтобы articy:draft использовал компонент клиента  Subversion 1.7.]]></Text>
+			<Text Lang="de"><![CDATA[Der Projektordner '{0}'
+wurde von Subversion 1.7 erzeugt, aber auf Ihrem Computer wurde eine Tortoise SVN version 1.6.x gefunden.
+Wir empfehlen Ihnen auf eine aktuelle Tortoise-Version 1.7.x upzugraden.
+Wenn Sie dies nicht möchten, fügen sie bitte den Kommandozeilenparameter "-forcesvn 1.7" Ihrer articy:draft Verknüpfung hinzu und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.Wc17NoTortoise">
+			<Context>detected that a project folder is from a v1.7, but the loaded client lib is v1.6, Tortoise is not present on the machine. This text should normally not be shown because when no forceSVN or Tortoise is present the 1.7 lib gets preselected.</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was created from a Subversion version 1.7, but you have choosen to use a project folder format of subversion 1.6.x. It is recommended to upgrade to a 1.7.x version.
+Alternatively you may add the command-line switch "-forcesvn 1.7" to instruct articy:draft to use the subversion 1.7 client component.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту знаходиться в '{0}'
+була створена на Subversion версії 1.7, але ви вибрали використовувати формат проектної папки з версії Subversion 1.6.x. Рекомендується оновити Tortoise до більш нової версії 1.7.x.
+В якості альтернативи ви можете додати перемикач командного рядка " -forcesvn 1.7 " щоб articy: draft використовував компонент клієнта Subversion 1.7. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' a été créé à partir d'une version 1.7 de Subversion, mais vous avez choisi d'utiliser un format de dossier de projet de subversion 1.6.x. Il est recommandé de passer à une version 1.7.x.
+Vous pouvez également ajouter le commutateur de ligne de commande "-forcesvn 1.7" pour demander à articy: draft d'utiliser le composant client de subversion 1.7.]]></Text>
+			<Text Lang="pt-BR">A pasta de projeto localizada em '{0}' foi criada com a versão 1.7 de subversão, mas você escolheu usar o formato de pasta de projeto de subersão 1.6.x. É recomendado atualizar para uma versão 1.7. Alternativamente você pode adicionar o interruptor de linha de comando "-forcesvn 1.7" para instruir articy:draft para usar o componente de cliente da subersão versão 1.7</Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+是用1.7版的SVN创建的，但您选择使用了SVN 1.6.x版本的项目文件夹格式。建议您升级至最新的1.7.x版本格式。
+或者，您可以添加命令行"-forcesvn 1.7"来指示articy:draft使用SVN 1.7版本客户端组件。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는
+Subversion 버전 1.7에서 생성되었지만 당신은 'Subversion 1.6. x'의 프로젝트 폴더 형식을 사용하도록 선택했습니다. 1.7.x 버전으로 업그레이드하는 것이 좋습니다.
+또는 명령 스위치"-forcesvn 1.7"을 추가하여 articy:draft에게 subversion 1.7  클라이언트 구성 요소 사용을 지시할 수 있습니다.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujący się w '{0}' został stworzony używając wersji subversion 1.7, ale zdecydowałeś się używać formatu folderów projektu z subversion w wersji 1.6.x. Rekomenduje się zaktualizowanie go do wersji 1.7.x. Alternatywnie możesz dodać komendę '-forcesvn 1.7' by poinstruować articy:draft by użyć subversion w wersji 1.7.</Text>
+			<Text Lang="es"><![CDATA[La carpeta de proyecto ubicada en '{0}'
+ha sido creada con la versión 1.7 de Subversion, pero has elegido usar un formato de carpeta de proyecto de Subversion 1.6.x. Se recomienda que actualices a la versión 1.7.x.
+También puedes añadir del modificador de línea de comandos "-forcesvn 1.7" para decirle a articy:draft que use el componente de cliente 1.7 de Subversion.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto collocata in '{0} è stata creata da Subversion 1.7, ma si è scelto di utilizzare un formato di cartella di progetto in versione 1.6.x. È raccomandato l'aggiornamento a una versione 1.7.x.
+In alternativa si può aggiungere la linea di comando "-forcesvn 1.7"  per far utilizzare a articy:draft il componente di Subversion 1.7.]]></Text>
+			<Text Lang="ru"><![CDATA[Папка проекта находящаяся в  '{0}' 
+была создана на Subversion версии 1.7, но вы выбрали использовать формат проектной папки из версии Subversion 1.6.x . Рекомендуется обновить Tortoise до более новой версии 1.7.x .
+В качестве альтернативы вы можете добавить переключатель командной строки "-forcesvn 1.7" чтобы articy:draft использовал компонент клиента Subversion 1.7.]]></Text>
+			<Text Lang="de"><![CDATA[Der Projektordner '{0}'
+wurde von Subversion 1.7 erzeugt, aber Sie verwenden eine Subversion Version 1.6.x.
+Wenn Sie dies nicht möchten, fügen sie bitte den Kommandozeilenparameter "-forcesvn 1.7" Ihrer articy:draft Verknüpfung hinzu und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.Wc16Forced">
+			<Context>detected that a project folder is from a v1.6, but articy was forced to load client lib v1.7</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was created from a Subversion version 1.6, but you have used the "-forcesvn 1.7" command-line switch to start articy:draft.
+Please replace the command-line switch to "-forcesvn 1.7" in your startup link and re-start articy:draft.
+We recommended to upgrade your working copy to version 1.7 using the tools provided by your subversion client software]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, що знаходиться в '{0}'
+ створена на Subversion версії 1.6, але ви використовували перемикач командного рядка "-forcesvn 1.7" щоб запустити articy:draft.
+Будь ласка, замініть перемикач у посиланні запуску на "-forcesvn 1.7" і перезапустіть articy:draft.
+Ми рекомендуємо вам оновити вашу копію програми до версії 1.7, ви можете зробити це за допомогою інструментів вашого програмного клієнта Subversion ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' a été créé à partir d'une version 1.6 de Subversion, mais vous avez utilisé le commutateur de ligne de commande "-forcesvn 1.7" pour démarrer articy:draft.
+Veuillez remplacer le commutateur de ligne de commande par "-forcesvn 1.7" dans votre lien de démarrage et redémarrer articy:draft.
+Nous vous recommandons de mettre à niveau votre copie de travail vers la version 1.7 à l'aide des outils fournis par votre logiciel client subversion]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A pasta de projeto localizada em '{0}' foi criada com a versão 1.6 de subversão, mas você usou um interruptor de linha de comando "-forcesvn 1.7" para iniciar articy:draft.
+Por favor substitua o interruptor de linha de comando para "-forcesvn 1.7" em seu link de inicialização e reinicie articy:draft. Nós recomendamos atualizar sua versão funcional para 1.7 usando as ferramentas provindenciadas pelo programa de cliente de subversão.]]></Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+是用1.6版的SVN创建的，但您已使用"-forcesvn 1.7"命令行启动了articy:draft。
+请将启动快捷方式中的命令行替换为"-forcesvn 1.6"，然后重新启动articy:draft。
+我们建议使用SVN客户端软件提供的工具将您的工作副本升级至1.7版本。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는 
+Subversion 버전 1.6에서 생성되었지만"-forcesvn. 1.7" 명령-줄 스위치를 사용하여 articy:draft를 시작했습니다.
+시작 링크에서 명령-줄 스위치를 "-forcesvn 1.7"로 교체하고 articy:draft를 다시 시작하십시오.
+우리는 당신의 subversion 클라이언트 소프트웨어에서 제공하는 툴을 사용하여 당신의 작업 사본을 1.7 버전으로 업그레이드할 것을 권장합니다.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujacy się w '{0]' został stworzony używając wersji subversion 1.6, ale użyłes komendy '-forcesvn 1.7' żeby włączyć articy:draft. Proszę zmienić tę linię na '-forcesvn 1.7'. Rekomenduję się zaktualizowanie twojej kopii do wersji 1.7 używając narzędzi dostarczonych z twoim klientem subversion.</Text>
+			<Text Lang="es"><![CDATA[La carpeta de proyecto ubicada en '{0}'
+ha sido creada con la versión 1.6 de Subversion, pero has usado el modificador de la línea de comandos "-forcesvn 1.7" para iniciar articy:draft.
+Sustituye el modificador de la línea de comandos por "-forcesvn 1.7" en tu enlace de inicio y reinicia articy:draft.
+Te recomendamos que actualices to copia de trabajo a la versión 1.7 usando las herramientas proporcionadas por tu cliente de Subversion.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto collocata in '{0}' è stata creata da Subversion 1.6, ma hai utilizzato la linea di comando "-forcesvn 1.7" all'avvio di articy:draft.
+Si è pregati di modificare la linea di comando in "-forcesvn 1.6" nel suo collegamento di avvio e riavviare articy:draft.
+Raccomandiamo l'aggiornamento della copia di lavoro alla versione 1.7 utilizzando gli strumenti forniti dal software di Subversion.]]></Text>
+			<Text Lang="ru"><![CDATA[Папка проекта находящаяся в  '{0}' 
+была создана на Subversion версии 1.6,  но вы использовали переключатель командной строки "-forcesvn 1.7" чтобы запустить articy:draft.
+Пожалуйста, замените переключатель в ссылке запуска на "-forcesvn 1.7" и перезапустите articy:draft.
+Мы рекомендуем вам обновить вашу копию программы до версии 1.7, вы можете сделать это при помощи инструментов вашего программного клиента Subversion]]></Text>
+			<Text Lang="de"><![CDATA[Der Projektordner '{0}'
+wurde von Subversion 1.6 erzeugt. Sie haben articy:draft aber mit dem Kommandozeilenparameter "-forcesvn 1.7" gestartet.
+Wir empfehlen Ihnen diese Arbeitskopie unter Zuhilfenahme Ihrer Subversion Client Software auf Version 1.7 zu konvertieren.
+Alternativ könenn sie auch den Kommandozeilenparameter in Ihrer Verknüpfung zu "-forcesvn 1.6" ändern und articy:draft erneut starten.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.Wc16WithTortoise">
+			<Context>detected that a project folder is from a v1.6, but the loaded client lib is v1.7, Tortoise is present on the machine</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was created from a Subversion version 1.6. We recommend you to execute the Tortoise "SVN upgrade working copy" command, that can be found in the windows explorer context menu of your project folder.
+Alternatively you may add the command-line switch "-forcesvn 1.6" to instruct articy:draft to use the subversion 1.6 client component.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, що знаходиться в '{0}'
+ створена на Subversion версії 1.6. Ми рекомендуємо вам скористатися командою Tortoise "SVN upgrade working copy", яку ви знайдете в меню "зміст " провідника Windows в папці вашого проекту.
+В якості альтернативи ви можете додати перемикач командного рядка "-forcesvn 1.6 ", щоб articy:draft використовував компонент клієнта subversion 1.6. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' a été créé à partir d'une version 1.6 de Subversion. Nous vous recommandons d'exécuter la commande Tortoise "SVN amélioration de la copie en fonction", qui se trouve dans le menu contextuel de l'explorateur Windows de votre dossier de projet.
+Vous pouvez également ajouter le commutateur de ligne de commande "-forcesvn 1.6" pour demander à articy:draft d'utiliser le composant client subversion 1.6.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A pasta de projeto localizada em '{0}' foi criada com a versão 1.6 de subversão. Nós recomendamos você executar o comando tartaruga "Atualzar cópia funcional SVN", que pode ser encontrado no menu de context do explorador windows de sua pasta de projeto.
+Alternativamente você pode adicionar o interruptor de linha d comando "-forcesvn 1.6" para instruir articy:draft a usar o componente de cliente 1.6 de subversão.]]></Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+是用1.6版的SVN创建的。我们建议您执行Tortoise指令"SVN upgrade working copy"，该指令可在项目文件夹的Windows资源管理器右键菜单中找到。
+或者，您可以添加命令行"-forcesvn 1.6"来指示articy:draft使用SVN1.6客户端组件。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는 
+Subversion 버전 1.6에서 생성되었습니다. 프로젝트 폴더의 윈도우즈 탐색기 상황에 맞는 메뉴에서 찾을 수 있는 Tortoise "SVN upgrade working copy" 명령을 실행하는 것이 좋습니다.
+또는 명령 스위치"-forcesvn 1.6"을 추가하여 articy:draft가 subversion 1.6클라이언트 구성 요소를 사용하도록 할 수 있습니다.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujący się w '{0}' został stworzony w wersji subversion 1.6. Rekomendujemy abyś wykonał operację w Tortoise 'SVN upgrade working copy', która znajduję się w menu kontekstowym eksploratora windows w twoim folderze projektu. Alternatywnie możesz dodać komendę '-forcesvn 1.6' aby poinstruować articy:draft by użyć subversion 1.6.</Text>
+			<Text Lang="es"><![CDATA[La carpeta de proyecto ubicada en '{0}'
+ha sido creada con la versión 1.6 de Subversion. Te recomendamos que ejecutes el comando "SVN upgrade working copy" de Tortoise, que puede encontrarse en el menú contextual de tu carpeta de trabajo en el explorador de Windows.
+También puedes añadir del modificador de línea de comandos "-forcesvn 1.6" para decirle a articy:draft que use el componente de cliente 1.6 de Subversion.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto collocata in '{0}' è stata creata da Subversion 1.6. Si raccomanda di eseguire il comando di Tortoise "SVN upgrade working copy", che può essere trovato nel menu contestuale di windows della cartella di progetto.
+In alternativa si può eseguire il cambio utilizzando la linea di comando "-forcesvn 1.6" per far utilizzare a articy:draft il componente di Subversion 1.6.]]></Text>
+			<Text Lang="ru"><![CDATA[Папка проекта находящаяся в '{0}' 
+была создана на Subversion версии 1.6. Мы рекомендуем вам воспользоваться командой Tortoise "SVN upgrade working copy", которую вы найдете в меню "содержание" проводника Windows в папке вашего проекта .
+В качестве альтернативы вы можете добавить переключатель командной строки "-forcesvn 1.6", чтобы articy:draft использовал компонент клиента subversion 1.6.]]></Text>
+			<Text Lang="de"><![CDATA[Der Projektordner '{0}'
+wurde mit einem Subversion 1.6 erzeugt. Bitte verwenden Sie das Tortoise Kommando "SVN upgrade working copy", dass Sie im Windows Explorer Kontextmenu Ihres Projektordners finden.
+Wenn Sie dies nicht möchten, fügen sie bitte den Kommandozeilenparameter "-forcesvn 1.6" Ihrer articy:draft Verknüpfung hinzu und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.Wc16NoTortoise">
+			<Context>detected that a project folder is from a v1.6, but the loaded client lib is v1.7, Tortoise is not present on the machine.</Context>
+			<Text Lang="en"><![CDATA[The project folder located in '{0}' 
+was created from a Subversion version 1.6. We recommend you to convert this project folder to the subversion 1.7 format using your subversion client software.
+Alternatively you may add the command-line switch "-forcesvn 1.6" to instruct articy:draft to use the subversion 1.6 client component.]]></Text>
+			<Text Lang="uk"><![CDATA[Папка проекту, що знаходиться в '{0}'
+ створена на Subversion версії 1.6. Ми рекомендуємо вам конвертувати папку проекту в формат версії subversion 1.7 використовуючи ваш програмний клієнт.
+В якості альтернативи ви можете додати перемикач командного рядка "-forcesvn 1.6 ", щоб articy:draft використовував компонент клієнта subversion 1.6. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le dossier du projet situé dans '{0}' a été créé à partir d'une version 1.6 de Subversion. Nous vous recommandons de convertir ce dossier de projet au format subversion 1.7 à l'aide de votre logiciel client subversion.
+Vous pouvez également ajouter le commutateur de ligne de commande "-forcesvn 1.6" pour demander à articy:draft d'utiliser le composant client subversion 1.6.]]></Text>
+			<Text Lang="pt-BR">A pasta de projeto localizada em '{0}' foi criada com a versão 1.6 de subversão. Nós recomendamos você converter esta pasta de projeto para o formato de subversão 1.7 usando seu programa de cliente subversão. Alternativamente você pode adicionar o interruptor de linha d comando "-forcesvn 1.6" para instruir articy:draft a usar o componente de cliente 1.6 de subversão.</Text>
+			<Text Lang="zh"><![CDATA[位于'{0}'的项目文件夹
+是用1.6版的SVN创建的。我们建议您使用SVN客户端软件将此项目文件夹转换为SVN 1.7版本格式。
+或者，您可以添加命令行"-forcesvn 1.6"来指示articy:draft使用SVN1.6客户端组件。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}'에 있는 프로젝트 폴더는
+Subversion 버전 1.6에서 생성되었습니다. 이 프로젝트 폴더를 subversion 클라이언트 소프트웨어를 사용하여 subversion 1.7 형식으로 변환하는 것이 좋습니다.
+또는 명령 스위치"-forcesvn 1.6"을 추가하여 articy:draft가 subversion 1.6 클라이언트 구성 요소를 사용하도록 할 수 있습니다.]]></Text>
+			<Text Lang="pl">Folder projektu znajdujący się w '{0}' został stworzony w wersji subversion 1.6. Rekomendujemy abyś zmienił format folderu projektu do wersji subversion 1.7 używając klienta subversion. Alternatywnie możesz dodać komendę '-forcesvn 1.6' aby poinstruować articy:draft do używania wersji sebversion 1.6.</Text>
+			<Text Lang="es"><![CDATA[La carpeta de proyecto ubicada en '{0}'
+ha sido creada con la versión 1.6 de Subversion. Te recomendamos que conviertas la carpeta de proyecto al formato de Subversion 1.7 usando tu cliente de Subversion.
+También puedes añadir del modificador de línea de comandos "-forcesvn 1.6" para decirle a articy:draft que use el componente de cliente 1.6 de Subversion.]]></Text>
+			<Text Lang="it"><![CDATA[La cartella di progetto collocata in '{0}' è stata creata da Subversion 1.6. Si consiglia di convertira la cartella del progetto Subversion 1.7 utilizzando il software Subversion.
+In alternativa si può eseguire il cambio utilizzando la linea di comando "-forcesvn 1.6" per far utilizzare a articy:draft il componente Subversion 1.6.]]></Text>
+			<Text Lang="ru"><![CDATA[Папка проекта находящаяся в '{0}' 
+была создана на Subversion версии 1.6. Мы рекомендуем вам конвертировать папку проекта в формат версии subversion 1.7 используя ваш программный клиент.
+В качестве альтернативы вы можете добавить переключатель командной строки "-forcesvn 1.6", чтобы articy:draft использовал компонент клиента subversion 1.6.]]></Text>
+			<Text Lang="de"><![CDATA[Der Projektordner '{0}'
+wurde von einem Subversion 1.6 erzeugt. Wir empfehlen diesen Projektordner auf Version 1.7 zu konvertieren.
+Wenn Sie dies nicht möchten, fügen sie bitte den Kommandozeilenparameter "-forcesvn 1.6" Ihrer articy:draft Verknüpfung hinzu und starten articy:draft erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.MissingMetaFile">
+			<Context>Shown if a expected file in the subversion housekeeping area was not found</Context>
+			<Text Lang="en"><![CDATA[The required subversion housekeeping file '{0}' was not found. 
+Please check the integrity of your working copy. You also should consider to remove the working-copy and check out a clean one.]]></Text>
+			<Text Lang="uk"><![CDATA[Необхідний службовий файл subversion '{0}' не був знайдений.
+Будь ласка, перевірте цілісність вашої робочої копії. В якості альтернативи ви можете видалити вашу робочу копію і перевірити чисту. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le fichier de gestion interne de subversion '{0}' est introuvable.
+Veuillez vérifier l'intégrité de votre copie de travail. Vous devez également envisager de supprimer la copie de travail et d'en extraire une propre.]]></Text>
+			<Text Lang="pt-BR">O arquivo de serviço de limpeza de  subversão necessário '{0}' não foi encontrado. Por favor cheque a integridade de sua cópia funcional. Você também deveria considerar remover a cópia funcional e checar uma limpa.</Text>
+			<Text Lang="zh"><![CDATA[未找到所需的SVN管理文件'{0}'。 
+请检查您的工作副本完整性。您还应考虑删除工作副本并重新生成一份洁净版本。]]></Text>
+			<Text Lang="ko"><![CDATA[필요한 subversion housekeeping 파일'{0}'을(를) 찾을 수 없습니다. 
+작동하는 사본이 정상인지 확인하십시오. 그리고 작업용 사본을 없애고 깨끗한 것을 확인하는 것도 고려해야 합니다.]]></Text>
+			<Text Lang="pl">Wymagany plik porządkowy subversion '{0}' nie został znaleziony. Proszę sprawdzić integralność twojej kopii. Należy również przemyśleś usunięcie obecnej kopii i wypróbowanie nowej.</Text>
+			<Text Lang="es"><![CDATA[No se ha encontrado el archivo de mantenimiento de datos de Subversion '{0}'. 
+Comprueba la integridad de tu copia de trabajo. También sería recomendable eliminar la copia de trabajo y comprobar una limpia.]]></Text>
+			<Text Lang="it"><![CDATA[Il file housekeeping '{0}' di subversion non è stato trovato.
+Si è pregati di controllare l'integrità della propria copia di lavoro. Si consideri anche di cancellare la propria copia di lavoro e provare con una pulita.]]></Text>
+			<Text Lang="ru"><![CDATA[Необходимый служебный файл subversion  '{0}'  не был найден.
+Пожалуйста, проверьте целостность вашей рабочей копии. В качестве альтернативы вы можете удалить вашу рабочую копию и проверить чистую.]]></Text>
+			<Text Lang="de"><![CDATA[Die Subversion-Verwaltungsdatei '{0}' wurde nicht gefunden.
+Bitte überprüfen Sie die Integrität Ihrer Arbeitskopie. Das Löschen und neu Erstellen einer Arbeitskopie könnte das Problem beheben.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.UnexpecetedFormat">
+			<Context>Shown if the expected project folder format version in the subversion housekeeping area is not as expected. {0}=filename {1}=expected, {2}=found</Context>
+			<Text Lang="en"><![CDATA[The required subversion housekeeping file '{0}'
+does not contain the expected formatversion. (Formatversion '{2}' found but '{1}' was expected)
+Please check the integrity of your project folder. You also should consider to remove the project folder and check out a clean one.]]></Text>
+			<Text Lang="uk"><![CDATA[Необхідний службовий файл subversion '{0}' не містить очікувану версію формату. (Знайдена версія '{2}' коли очікувалася '{1}')
+Будь ласка, перевірте цілісність вашої папки проекту. В якості альтернативи ви можете видалити вашу папку проекту і перевірити чисту. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le fichier de gestion de subversion requis '{0}'
+ne contient pas la version de format attendue. (Version de format '{2}' trouvée mais '{1}' était attendue)
+Veuillez vérifier l'intégrité de votre dossier de projet. Vous devez également envisager de supprimer le dossier du projet et d'en extraire un nouveau.]]></Text>
+			<Text Lang="pt-BR">O arquivo de serviço de limpeza de subversão necessário '{0}' não contém a esperada versão formato. (Versão formato '{2}' encontrado mas '{1}' foi esperado) Por favor cheque a integridade de sua pasta de projeto. Você também deveria considerar remover a cópia funcional e checar uma limpa.</Text>
+			<Text Lang="zh"><![CDATA[所需的SVN管理文件 '{0}'
+不包含预期的格式版本。（已找到格式版本 '{2}' ，但期望格式版本为 '{1}' ）
+请检查项目文件夹完整性。您也可以考虑删除该项目文件夹并重新整理一个纯净的项目文件夹。]]></Text>
+			<Text Lang="ko"><![CDATA[필요한 subversion housekeeping 파일'{0}'에 예상되는formatversion이 포함되어 있지 않습니다. (Formatversion '{2}'을(를) 찾았지만 '{1}'이(가) 필요했습니다.)
+작동하는 사본이 정상인지 확인하십시오. 그리고 작업용 사본을 없애고 깨끗한 것을 확인하는 것도 고려해야 합니다.]]></Text>
+			<Text Lang="pl">Wymagany plik porządkowy subversion '{0}' nie posiada wymaganego formatu wersji. (Znaleziono format wersji '{2}' jednak spodziewano się '{1}') Proszę sprawdzić interalność folderu projektu. Należy również przemyśleś usunięcie folderu projektu i wypróbowanie nowego.</Text>
+			<Text Lang="es"><![CDATA[El archivo de mantenimiento de datos de Subversion '{0}'
+no contiene la FormatVersion esperada. (Se ha encontrado la Formatversion '{2}' pero se esperaba '{1}').
+Comprueba la integridad de tu carpeta de proyecto. También sería recomendable eliminar la carpeta del proyecto y comprobar una limpia.]]></Text>
+			<Text Lang="it"><![CDATA[Il file housekeeping '{0}' di subversion non è formattato nel modo atteso (Attesa formattazione di tipo '{1}', trovata versione '{2}')
+Si è pregati di controllare l'integrità della cartella di progetto. Si consideri anche di cancellare la cartella di progetto e provare con una pulita.]]></Text>
+			<Text Lang="ru"><![CDATA[Необходимый служебный файл subversion  '{0}' не содержит ожидаемую версию формата . (Найдена версия '{2}' когда ожидалась '{1}' )
+Пожалуйста, проверьте целостность вашей папки проекта. В качестве альтернативы вы можете удалить вашу папку проекта и проверить чистую.]]></Text>
+			<Text Lang="de"><![CDATA[Die Subversion-Verwaltungsdatei '{0}' 
+enthält nicht die erwartete Format Version. (Es wurde '{1}' erwartet aber '{2}' gefunden.)
+Bitte überprüfen Sie die Integrität Ihres Projektordners. Das Löschen und neu Erstellen dieses Projektordners könnte das Problem beheben.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.UpgradeWorkingCopy">
+			<Context>Shown in log, if the an working copy upgrade is required. {0}=the version to be converted to.</Context>
+			<Text Lang="en">The format of your local SVN working copy (your project folder) does not match the loaded SVN library and will now be automatically converted to SVN version {0}.</Text>
+			<Text Lang="uk">Формат вашої локальної робочої копії SVN (папка вашого проекту) не відповідає завантаженій бібліотеці SVN і тепер автоматично буде конвертований у версію SVN {0}.</Text>
+			<Text Lang="fr">Le format de votre copie de travail SVN locale (votre dossier de projet) ne correspond pas à la bibliothèque SVN chargée et sera désormais automatiquement converti en version SVN {0}.</Text>
+			<Text Lang="pt-BR">O formato de sua cópia funcional SVN (sua pasta de projeto) não combina com a biblioteca SVN carregada and será automaticamente convertida para versão SVN {0}.</Text>
+			<Text Lang="zh">本地SVN工作副本（您的项目文件夹）的格式与加载的SVN库不匹配，现在将自动转换为SVN版本{0}。</Text>
+			<Text Lang="ko">로컬 SVN 작업 복사본(프로젝트 폴더)의 형식이 로드된 SVN 라이브러리와 일치하지 않으며 이제 자동으로 SVN 버전 {0}(으)로 변환됩니다.</Text>
+			<Text Lang="pl">Format twojej lokalnej kopii projektu SVN nie odpowiada załadowanej bibliotece SVN i zostanie on automatycznie zmieniony do wersji SVN {0}.</Text>
+			<Text Lang="de">Das Speicherformat Ihrer lokalen SVN working copy (dem Projektverzeichnis) passt nicht zur geladenen SVN-Library version. Es erfolgt nun eine automatische Konvertierung zu SVN Version {0}.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.WorkingCopyUpgraded">
+			<Context>Shown in log, after a successful working copy upgrade process.</Context>
+			<Text Lang="en">The format of your local SVN working copy (your project folder) was successfully converted.</Text>
+			<Text Lang="uk">Формат локальної робочої копії SVN (папка вашого проекту) успішно конвертований.</Text>
+			<Text Lang="fr">Le format de votre copie de travail SVN locale (votre dossier de projet) a été converti avec succès.</Text>
+			<Text Lang="pt-BR">O formato de sua cópia funcional SVN (sua pasta de projeto) foi convertida com sucesso.</Text>
+			<Text Lang="zh">已成功转换本地SVN工作副本（您的项目文件夹）的格式。</Text>
+			<Text Lang="ko">로컬 SVN 작업 복사본(프로젝트 폴더)의 형식이 변환되었습니다.</Text>
+			<Text Lang="pl">Format twojej lokalnej kopii projektu SVN został pomyślnie zmieniony.</Text>
+			<Text Lang="de">Das Speicherformat Ihrer SVN working copy (dem Projektverzeichnis) wurde erfolgreich konvertiert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Subversion.UpgradeWorkingCopyFailed">
+			<Context>Shown in log, after a unsuccessful working copy upgrade process.</Context>
+			<Text Lang="en"><![CDATA[The format of your local SVN working copy (your project folder) could not be converted see following log entries for the error description.
+To recover from this situation you can one of the following tasks:
+- Use your external SVN client (e.g. Tortoise) to upgrade the working copy.
+- Add the command-line switch "-forcesvn {0}" to your articy:draft desktop shortcut (without the quotes) to force articy:draft to load the SVN library that matches this project.
+- Delete the project folder and checkout a fresh one. (WARNING: Unpublished changes will be lost.)]]></Text>
+			<Text Lang="uk"><![CDATA[Не вдалося конвертувати формат вашої локальної робочої копії SVN (папка проекту), дивіться наступні записи журналу щодо опису помилки.
+Вийти з цієї ситуації ви можете одним із наступних способів:
+- Використавши зовнішній клієнт SVN (наприклад, Tortoise) для оновлення робочої копії.
+- Додайте перемикач командного рядка "-forcesvn {0} " до вашого articy:draft ярлику, що на робочому столі (без лапок), щоб змусити articy:draft завантажити бібліотеку SVN, яка відповідає цьому проекту.
+- Видаліть папку з проектом та отримайте чисту. (УВАГА: Неопубліковані зміни будуть втрачені.) ]]></Text>
+			<Text Lang="fr"><![CDATA[Le format de votre copie de travail SVN locale (votre dossier de projet) n'a pas pu être converti. Voir les entrées d'historique suivantes pour la description de l'erreur.
+Pour récupérer de cette situation, vous pouvez effectuer l'une des tâches suivantes :
+- Utilisez votre client SVN externe (par exemple Tortoise) pour mettre à niveau la copie de travail.
+- Ajoutez le commutateur de ligne de commande "-forcesvn {0}" à votre raccourci de bureau articy:draft (sans les guillemets) pour forcer articy:draft à charger la bibliothèque SVN qui correspond à ce projet.
+- Supprimer le dossier du projet et en extraire un nouveau. (AVERTISSEMENT : les modifications non publiées seront perdues.)]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O formato de sua cópia funcional SVN (sua pasta de projeto) não pode ser convertida veja as entradas do histórico para a descrição do erro.
+Para recuperar desta situação você pode fazer uma das seguintes tarefas:
+- Usar seu cliente SVN externo (exemplo tartaruga) para atualizar a cópia funcional.
+- Adicionar um interruptor de linha de comando "forcesvn {0}" para seu atalho na área de trabalho (sem aspas) para forçar o articy:draft a carregar a biblioteca SVN que combina com o projeto.
+- Deletar a pasta de projeto e checar uma nova. (AVISO: Mudanças não publicadas serão perdidas.)]]></Text>
+			<Text Lang="zh"><![CDATA[无法转换本地SVN工作副本（您的项目文件夹）的格式。相关错误描述，请参阅以下日志条目。 
+要从该状况中恢复，您可尝试执行以下方案：
+- 使用外部SVN客户端(例如Tortoise)升级工作副本。
+- 将命令行"-forcesvn {0}"添加至您的articy:draft快捷方式（不包括引号）以强制articy:draft加载与此项目匹配的SVN库。 
+- 删除项目文件夹并重新导出新文件夹。（警告：未上传的更改将丢失。）]]></Text>
+			<Text Lang="ko"><![CDATA[로컬 SVN 작업 복사본(프로젝트 폴더)의 형식을 변환할 수 없습니다. 오류 설명에 대한 다음 로그 항목을 참조하십시오.
+이 상황에서 복구하려면 다음 항목 중 하나를 수행해야 합니다.
+-외부 SVN 클라이언트(예:Tortoise)를 사용하여 작업 복사본을 업그레이드합니다.
+- articy:draft 바탕화면 바로 가기 (따옴표 없음)에 명령줄 스위치"-forcesvn {0}"을 추가하여 이 SVN 라이브러리와 일치하는 SVN 프로젝트를 로드하도록 합니다.
+-프로젝트 폴더를 삭제하고 신규로 체크 아웃 합니다. (경고:게시되지 않은 변경 내용은 손실됩니다.)]]></Text>
+			<Text Lang="pl"><![CDATA[Format twojej lokalnej kopii projektu SVN nie mógł zostać zmieniony, przeanalizuj następujące logi żeby zlokalizować błąd.
+Aby wyjśc z tej sytuacji możesz wykonać jedną z następujących operacji:
+- Użyć zewnętrznego klienta SVN (np Tortoise) i zaktualizować swoją kopię projektu
+- Użyć komendy '-forcesvn {0}' w swoim skróci articy:draft żeby załadować bibliotekę SVN które pokrywa się z projektem.
+- Usunąć folder projektu i wypróbować nowy. (UWAGA: Nieopublikowane zmiany zostaną utracone).]]></Text>
+			<Text Lang="de"><![CDATA[Das Speicherformat Ihrer lokalen SVN working copy (dem Projektverzeichnis) konnte nicht automatisch konvertiert werden. Details finden Sie in den folgenden Log Einträgen.
+Um diese Situation zu beheben können eine der folgenden Lösungen verwenden:
+- Benutzen Sie Ihren exteren SVN Client (z.B. Tortoise) um mit dessen Unterstützung die Working-Copy zu konvertieren (upgrade).
+- Fügen Sie "-forcesvn {0}" den Startparametern des articy:draft Desktop Link hinzu (ohne die Anführungszeichen) um articy:draft zu zwingen die SVN Unterstützung zu laden, die für dieses Projekt verwendet wird.
+- Löschen Sie das Projektverzeichnis und rufen Sie durch erneutes Öffnen des Projektes ein neues an. (ACHTUNG: Nicht publizierte Änderungen gehen dabei verloren.)]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

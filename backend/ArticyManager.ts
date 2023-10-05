@@ -1,17 +1,22 @@
 import MainWindow from './MainWindow'
 import { ipcMain } from 'electron'
 import { channels } from './API'
-import PreferencesManager from './Preferences/PreferencesManager'
-import { Setting_t } from '../frontend/src/@types/Settings'
 import ProjectManager from './ProjectManager/ProjectManager'
 import * as child_process from 'child_process'
+import AppUtils from './Utils/AppUtils'
 
 export class ArticyManager {
     private mainWindow : MainWindow
+    private static path = `${AppUtils.getResPath()}plugins/ArticyDraft/ArticyDraft.exe`
 
+    
     public constructor(window : MainWindow) {
         ipcMain.handle(channels.toMain.openArticyEditor, this.openEditorAndDisableWindow.bind(this))
         this.mainWindow = window
+    }
+    
+    public static get articyPath() {
+        return ArticyManager.path
     }
 
     private async openEditorAndDisableWindow(){
@@ -20,10 +25,8 @@ export class ArticyManager {
     }
 
     private async openArticyEditor() {
-        const articyPathSetting = await PreferencesManager.getInstance().get<Setting_t>('articyPath')
-        const articyPath = articyPathSetting.value as string
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
-        const articyStartCommend = `${articyPath} -edit -path ${pwd}`
+        const articyStartCommend = `${ArticyManager.path} -edit -path ${pwd}`
         const art = child_process.spawn(articyStartCommend, [], {
             shell: true,
             detached: true,

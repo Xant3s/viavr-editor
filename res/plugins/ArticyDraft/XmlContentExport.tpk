@@ -1,0 +1,277 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.Export.Xml" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">.xml</Text>
+			<Text Lang="uk">.xml</Text>
+			<Text Lang="fr">.xml</Text>
+			<Text Lang="pt-BR">.xml</Text>
+			<Text Lang="zh">.xml</Text>
+			<Text Lang="ko">.xml</Text>
+			<Text Lang="pl">.xml</Text>
+			<Text Lang="es">.xml</Text>
+			<Text Lang="it">.xml</Text>
+			<Text Lang="ru">.xml</Text>
+			<Text Lang="de">.xml</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.Description">
+			<Context>tabcontrol tooltip</Context>
+			<Text Lang="en">Export as XML</Text>
+			<Text Lang="uk">Експорт у форматі XML</Text>
+			<Text Lang="fr">Exporter en XML</Text>
+			<Text Lang="pt-BR">Exportar como XML</Text>
+			<Text Lang="zh">以XML格式导出</Text>
+			<Text Lang="ko">XML로 내보내기</Text>
+			<Text Lang="pl">Eksportuj do XML</Text>
+			<Text Lang="es">Exportar como XML</Text>
+			<Text Lang="it">Esporta come XML</Text>
+			<Text Lang="ru">Экспорт в формате  XML</Text>
+			<Text Lang="de">Exportiere nach XML</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChooseOutputFile.Filter">
+			<Context>File filter for the save file dialog. First part until the '|' is the description, the 2nd the wildcard string for file filtering</Context>
+			<Text Lang="en">articy:draft XML export (*.xml)|*.xml</Text>
+			<Text Lang="uk">articy:draft XML export (*.xml)|*.xml</Text>
+			<Text Lang="fr">articy:draft export XML (*.xml)|*.xml</Text>
+			<Text Lang="pt-BR">exportação articy:draft XML (*.xml) | *.xml</Text>
+			<Text Lang="zh">articy:draft XML 导出 (*.xml)|*.xml</Text>
+			<Text Lang="ko">articy:draft XML 내보내기 (*.xml)|*.xml</Text>
+			<Text Lang="de">articy:draft XML Export (*.xml)|*.xml</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteNamespace.Caption">
+			<Context>tabcontrol content</Context>
+			<Text Lang="en">Write XML-Namespace</Text>
+			<Text Lang="uk">Записати Простір імен XML</Text>
+			<Text Lang="fr">Écrire un espace de noms XML</Text>
+			<Text Lang="pt-BR">Escrever nome de espaço-XML</Text>
+			<Text Lang="zh">写入 XML-Namespace</Text>
+			<Text Lang="ko">XML-네임스페이스 저장</Text>
+			<Text Lang="de">XML-Namespace schreiben</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteNamespace.Description">
+			<Context>tabcontrol content</Context>
+			<Text Lang="en">If unchecked, the XML namespace declaration is not written. This eases usage of XPATH since setting a default namespace is not supported for XPATH.</Text>
+			<Text Lang="uk">Якщо прапорець не встановлено, декларація простору імен XML не записується. Це полегшує використання XPATH, оскільки встановлення простори імен за замовчуванням не підтримується для XPATH.</Text>
+			<Text Lang="fr">Si elle n'est pas cochée, la déclaration d'espace de noms XML n'est pas écrite. Cela facilite l'utilisation de XPATH car la définition d'un espace de noms par défaut n'est pas prise en charge pour XPATH.</Text>
+			<Text Lang="pt-BR">Se não checado, declaração de nome de espaço XML não está escrito. Isso facilita o uso de XPATH sendo que configurar um nome de espaço padrão não é suportado por XPATH.</Text>
+			<Text Lang="zh">如未勾选，则不会写入XML namespace声明。这简化了XPATH的使用，因为XPATH不支持设置默认namespace。</Text>
+			<Text Lang="ko">이 옵션을 선택 해제하면 XML 네임스페이스 선언이 작성되지 않습니다. 이는 XPATH에 대해 기본 네임 스페이스를 설정할 수 없기 때문에 XPATH의 사용을 간소화합니다.</Text>
+			<Text Lang="de">Wenn diese Option nicht angewählt ist, wird keine XML Namespace Deklaration geschrieben. Dies erleichtert die Verwendung von XPATH, da XPATH keinen Default Namespace kennt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteAllVariables.Caption">
+			<Context>tabcontrol content</Context>
+			<Text Lang="en">Include all variable values</Text>
+			<Text Lang="uk">Включити всі значення змінних</Text>
+			<Text Lang="fr">Inclure toutes les valeurs de variable</Text>
+			<Text Lang="pt-BR">Incluir todas as variáveis</Text>
+			<Text Lang="zh">包括所有变量值</Text>
+			<Text Lang="ko">모든 변수 값 포함</Text>
+			<Text Lang="de">Alle Variablenwerte einbeziehen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteAllVariables.Description">
+			<Context>tabcontrol content</Context>
+			<Text Lang="en">By default only changed variable values are written for journey points. Check this if you like to always include the full set of variable values.</Text>
+			<Text Lang="uk">За замовчуванням для пунктів Journey записуються лише змінені значення змінних. Поставте прапорець, якщо хочете завжди включати повний набір змінних значень.</Text>
+			<Text Lang="fr">Par défaut, seules les valeurs variables modifiées sont écrites pour les points de trajet. Cochez cette case si vous souhaitez toujours inclure l'ensemble complet des valeurs des variables.</Text>
+			<Text Lang="pt-BR">Por padrão apenas valores variáveis modificados são escritos nos pontos de jornada. Cheque aqui se você deseja sempre incluir o conjunto completo de valores variáveis.</Text>
+			<Text Lang="zh">默认情况下，只为旅程点写入更改的变量值。如果希望始终包含完整的变量值集，请勾选此项。</Text>
+			<Text Lang="ko">기본적으로 변경된 변수 값만 이동 지점에 기록됩니다. 항상 전체 변수 값 세트를 포함하려면 이 옵션을 선택합니다.</Text>
+			<Text Lang="de">Normalerweise werden für Journey Points nur Variablenwerte geschrieben, wenn sie verändert worden sind. Wählen Sie diese Option, wenn sie immer alle Variablenwerte benötigen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoSettings.Caption">
+			<Context>tabcontrol content</Context>
+			<Text Lang="en">Nothing to configure</Text>
+			<Text Lang="uk">Немає об'єктів які можна налаштувати.</Text>
+			<Text Lang="fr">Rien à configurer</Text>
+			<Text Lang="pt-BR">Nada para configurar</Text>
+			<Text Lang="zh">无需配置</Text>
+			<Text Lang="ko">구성할 사항 없음</Text>
+			<Text Lang="pl">Nic do skonfigurowania</Text>
+			<Text Lang="es">No hay nada que configurar</Text>
+			<Text Lang="it">Niente da configurare</Text>
+			<Text Lang="ru">Нет объектов которые можно настроить.</Text>
+			<Text Lang="de">Keine Einstellungsmöglichkeiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="OdtScanning.Info">
+			<Context>Label for the property "OdtScanning.Info"</Context>
+			<Text Lang="en">Analyzing project...</Text>
+			<Text Lang="uk">Проект аналізується...</Text>
+			<Text Lang="fr">Analyse du projet…</Text>
+			<Text Lang="pt-BR">Analizando projeto...</Text>
+			<Text Lang="zh">正在分析项目...</Text>
+			<Text Lang="ko">프로젝트 분석 중…</Text>
+			<Text Lang="pl">Analiza projektu...</Text>
+			<Text Lang="es">Analizar proyecto...</Text>
+			<Text Lang="it">Analizzando il progetto…</Text>
+			<Text Lang="ru">Проект анализируется…</Text>
+			<Text Lang="de">Analysiere Projekt...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteFlatModels.Info">
+			<Context>Label for the property "WriteFlatModels.Info"</Context>
+			<Text Lang="en">Writing flat hierarchy for models...</Text>
+			<Text Lang="uk">Запис плоскої ієрархії моделей...</Text>
+			<Text Lang="fr">Écriture d'une hiérarchie plate pour les modèles...</Text>
+			<Text Lang="pt-BR">Escrevendo hierarquia plana para modelos...</Text>
+			<Text Lang="zh">正在为模型编写平面层次结构...</Text>
+			<Text Lang="ko">모델에 대한 flat hierachy 쓰기 중...</Text>
+			<Text Lang="pl">Pisanie płaskiej hierarchii dla modeli...</Text>
+			<Text Lang="es">Escribiendo jerarquía horizontal para los modelos...</Text>
+			<Text Lang="it">Scrivendo la gerarchia piatta per i modelli…</Text>
+			<Text Lang="ru">Запись плоской иерархии моделей…</Text>
+			<Text Lang="de">Schreibe flache Hierarchie für Modelle...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteTopology.Info">
+			<Context>Label for the property "WriteTopology.Info"</Context>
+			<Text Lang="en">Writing topology for models...</Text>
+			<Text Lang="uk">Запис топології моделей...</Text>
+			<Text Lang="fr">Écriture de la topologie des modèles...</Text>
+			<Text Lang="pt-BR">Escrevendo topologia de modelos...</Text>
+			<Text Lang="zh">正在写入模型的拓扑...</Text>
+			<Text Lang="ko">모델의 토폴로지를 쓰는 중...</Text>
+			<Text Lang="pl">Pisanie topologii dla modeli...</Text>
+			<Text Lang="es">Escribiendo topología para modelos...</Text>
+			<Text Lang="it">Scrivendo la topologia per i modelli…</Text>
+			<Text Lang="ru">Запись топологии моделей…</Text>
+			<Text Lang="de">Schreibe Topologie für Modelle...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteDeadReferences.Info">
+			<Context>Label for the property "WriteDeadReferences.Info"</Context>
+			<Text Lang="en">Logging dead references for models...</Text>
+			<Text Lang="uk">Запис моделей в журнал мертвих посилань...</Text>
+			<Text Lang="fr">Enregistrement des références mortes pour les modèles...</Text>
+			<Text Lang="pt-BR">Carregando referências mortas para modelos.</Text>
+			<Text Lang="zh">正在记录模型的dead references...</Text>
+			<Text Lang="ko">모델의 비활성 참조 로깅 중…</Text>
+			<Text Lang="pl">Logowanie błędnych odniesień dla modeli...</Text>
+			<Text Lang="es">Cargando referencias rotas para modelos...</Text>
+			<Text Lang="it">Creazione di un file di log con tutti i riferimenti mancanti per i modelli…</Text>
+			<Text Lang="ru">Запись моделей в журнал мертвых ссылок …</Text>
+			<Text Lang="de">Vermerke ungültige Referenzen für Modelle...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteExportErrors.Info">
+			<Context>Label for the property "WriteExportErrors.Info"</Context>
+			<Text Lang="en">Dump all export errors...</Text>
+			<Text Lang="uk">Скинути всі помилки експорту.</Text>
+			<Text Lang="fr">Vider toutes les erreurs d'exportation...</Text>
+			<Text Lang="pt-BR">Despejar todos os erros de exportação...</Text>
+			<Text Lang="zh">Dump所有导出错误...</Text>
+			<Text Lang="ko">모든 내보내기 오류 덤프 중…</Text>
+			<Text Lang="pl">Zbieranie wszystkich błędów powstałych podczas eksportowania...</Text>
+			<Text Lang="es">Volcando errores de exportación...</Text>
+			<Text Lang="it">Creazione di un file di Dump con tutti gli errori di esportazione…</Text>
+			<Text Lang="ru">Сбросить все ошибки экспорта.</Text>
+			<Text Lang="de">Gebe alle Export-Fehler aus...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteExportFile.Info">
+			<Context>Label for the property "WriteExportFile.Info"</Context>
+			<Text Lang="en">Writing export information to file...</Text>
+			<Text Lang="uk">Запис інформації експорту в файл...</Text>
+			<Text Lang="fr">Écriture des informations d'exportation dans un fichier...</Text>
+			<Text Lang="pt-BR">Escrevendo informação de exportação para arquivo...</Text>
+			<Text Lang="zh">正在将导出信息写入文件...</Text>
+			<Text Lang="ko">내보내기 정보를 파일에 쓰는 중…</Text>
+			<Text Lang="pl">Pisanie informacji o eksporcie do pliku...</Text>
+			<Text Lang="es">Escribiendo información de exportación al archivo...</Text>
+			<Text Lang="it">Scrivendo le informazioni di esportazione sul file…</Text>
+			<Text Lang="ru">Запись экспорт информации в файл…</Text>
+			<Text Lang="de">Schreibe Export Informationen in die Datei...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WriteExportStream.Info">
+			<Context>Label for the property "WriteExportStream.Info"</Context>
+			<Text Lang="en">Writing export information to stream...</Text>
+			<Text Lang="uk">Запис інформації експортуї в потік…</Text>
+			<Text Lang="fr">Écriture des informations d'exportation à diffuser...</Text>
+			<Text Lang="pt-BR">Escrevendo informação de exportação para corrente...</Text>
+			<Text Lang="zh">正在将导出信息写入Steam...</Text>
+			<Text Lang="ko">내보내기 정보를 스트림에 쓰는 중…</Text>
+			<Text Lang="pl">Pisanie informacji o eksporcie do przesyłania strumieniowego...</Text>
+			<Text Lang="es">Escribiendo información de exportación para su transmisión...</Text>
+			<Text Lang="it">Scrivendo le informazioni di esportazione sullo stream…</Text>
+			<Text Lang="ru">Запись экспорт информации в поток…</Text>
+			<Text Lang="de">Schreibe Export Informationen in den Stream...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InvalidJourneyPointsFound.SoftError">
+			<Context>Export soft-error when a journey contains invalid points</Context>
+			<Text Lang="en">The Journey "{0}" contains some invalid/no longer available references. Export of that journey is incomplete.</Text>
+			<Text Lang="uk">Journey "{0}" містить кілька недійсних/більше недоступних посилань. Експорт цієї Journey є неповним.</Text>
+			<Text Lang="fr">Le Trajet "{0}" contient des références invalides/qui ne sont plus disponibles. L'exportation de ce parcours est incomplète.</Text>
+			<Text Lang="pt-BR">A Jornada "{0}" contém algumas referências inválidas/não mais disponíveis. Exportação daquela jornada está incompleta.</Text>
+			<Text Lang="zh">旅程"{0}"包含一些无效/不再可用的参考。那个旅程的出口还不完整。</Text>
+			<Text Lang="ko">여정 "{0}"에는 유효한 참조가 일부 포함되어 있습니다. 더 이상 사용할 수 없습니다. 그 여정의 내보내기가 불완전합니다.</Text>
+			<Text Lang="pl">Tura "{0}" zawiera niepoprawne/nie istniejące dłużej odniesienia. Eksport tej tury jest niekompletny.</Text>
+			<Text Lang="es">El viaje '{0}' contiene referencias no válidas o que han dejado de estar disponibles. La exportación de ese viaje está incompleta.</Text>
+			<Text Lang="it">Il tragitto "{0}" contiene alcuni riferimenti non validi o non più attivi. L'esportazione di quel tragitto non è completa.</Text>
+			<Text Lang="de">Die Journey "{0}" enthält ungültige/nicht mehr existierende Object Referenzen. Der Export dieser Journey ist unvollständig.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ErrorSummary.Text">
+			<Context>The summary line written after exporting to XML. {0}: Number of warnings {1} number of errors.</Context>
+			<Text Lang="en"><![CDATA[The export was successfully completed, but {0} warnings and {1} errors were detected.
+For a detailed list of those, open the exported file and take a look at the 'ExportErrors' tag at the end of the file.]]></Text>
+			<Text Lang="uk"><![CDATA[Експорт успішно завершено, але {0} попередження та помилки {1} виявлено.
+Щоб отримати їх детальний список, відкрийте експортований файл і подивіться тег ExportErrors в кінці файлу. ]]></Text>
+			<Text Lang="fr"><![CDATA[L'exportation s'est terminée avec succès, mais {0} avertissements et {1} erreurs ont été détectés.
+Pour une liste détaillée de ceux-ci, ouvrez le fichier exporté et jetez un œil à la balise "ExportErrors" à la fin du fichier.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A exportação foi completada com sucesso, mas {0} avisos e {1} erros foram detectados.
+Para uma lista mais detalhada desses, abrir o arquivo exportado e dar uma olhada na etiqueta 'ExportErros' no fim do arquivo.]]></Text>
+			<Text Lang="zh"><![CDATA[导出已成功完成，但检测到{0}警告和{1}错误。
+相关内容的详细报告，请打开导出的文件，并查看文件末尾的'ExportErrors'标记。]]></Text>
+			<Text Lang="ko"><![CDATA[내보내기가 성공적으로 완료되었지만{0}개의 경고 및 {1}개의 오류가 감지되었습니다.
+이러한 태그의 자세한 목록을 보려면 내보낸 파일을 열고 파일 끝에 있는 'ExportErrors'태그를 살펴보십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Eksport został zakończony sukcesem, ale pojawiło się {0} ostrzeżeń i {1} błędów.
+Żeby uzyskać szczegółową listę, otwórz wyeksportowany plik i spójrz na tag 'ExportErrors' znajdujacy się na końcu pliku.]]></Text>
+			<Text Lang="es"><![CDATA[La exportación se ha completado satisfactoriamente, pero se ha(n) detectado {0} advertencia(s) y {1} error.
+Para obtener la lista completa, abre el fichero de exportación y comprueba la pestaña 'ExportErrors" al final del archivo.]]></Text>
+			<Text Lang="it"><![CDATA[Esportazione avvenuta con successo, ma {0} avvertimenti e {1} sono stati identificati.
+Per una lista dettagliata di questi, apri il file esportato e controlla la sezione con tag 'ExportErrors' alla fine del file.]]></Text>
+			<Text Lang="de"><![CDATA[Der Export wurde erfolgreich abgeschlossen, jedoch wurden {0} Warnungen und {1} Fehler festgestellt.
+Für eine detailierte Liste öffnen Sie bitte die exportierte Datei und lesen den durch den Tag 'ExportErrors' geöffneten Bereich.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Unexpected.Error">
+			<Context>Label for the property "Unexpected.Error"</Context>
+			<Text Lang="en"><![CDATA[An unexpected error occured, project was not exported! The following error description was reported:
+{0}]]></Text>
+			<Text Lang="uk"><![CDATA[Через непередбачену помилку не вдався експорт проекту! Отримано наступний опис помилки:
+{0} ]]></Text>
+			<Text Lang="fr"><![CDATA[Une erreur inattendue s'est produite, le projet n'a pas pu être exporté ! La description d'erreur suivante a été signalée :
+{0}]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Um erro inesperado ocorreu, projeto não foi exportado! A seguinte descrição de erro foi reportada:
+{0}]]></Text>
+			<Text Lang="zh"><![CDATA[发生意外错误，未能导出项目报告了以下错误描述：
+{0}]]></Text>
+			<Text Lang="ko"><![CDATA[예기치 않은 오류가 발생했습니다. 프로젝트를 내보내지 않았습니다. 다음 오류 설명이 보고됨:
+{0}]]></Text>
+			<Text Lang="pl"><![CDATA[Wystąpił nieoczekiwany błąd, projekt nie został wyeksportowany! Opis następującego błędu został zgłoszony:
+{0}]]></Text>
+			<Text Lang="es"><![CDATA[Ha ocurrido un error no esperado y el proyecto no se ha exportado. Se ha informado de la siguiente descripción de error:
+{0}]]></Text>
+			<Text Lang="it"><![CDATA[È avvenuto un errore inatteso, il progetto non è stato esportato! La seguente descrizione di errore è stata riportata:
+{0}]]></Text>
+			<Text Lang="ru"><![CDATA[Из-за непредвиденной ошибки не удался экспорт проекта! Было получено следующее описание ошибки:
+{0}]]></Text>
+			<Text Lang="de"><![CDATA[Es ist ein Fehler aufgetreten, Projekt wurde nicht exportiert! Der folgende Fehlertext wurde gemeldet:
+{0}]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

@@ -1,0 +1,23 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.SourceControl" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Null.DisplayName">
+			<Context>The display-name of the SCM provider</Context>
+			<Text Lang="de">Lokale Dateien (kein Source Control)</Text>
+			<Text Lang="uk">Тільки локальні файли (без керування вихідними даними)</Text>
+			<Text Lang="fr">Fichiers locaux uniquement (pas de contrôle de source)</Text>
+			<Text Lang="pt-BR">Arquivos locais apenas (nenhuma fonte de controle)</Text>
+			<Text Lang="zh">仅本地文件（无源代码管理）</Text>
+			<Text Lang="ko">로컬 파일만 해당 (소스 제어 없음)</Text>
+			<Text Lang="pl">Tylko lokalne pliki (bez kontroli źródła)</Text>
+			<Text Lang="es">Solo archivos locales (no en el control de versiones)</Text>
+			<Text Lang="it">File locali solo (non c'è controllo dei sorgenti)</Text>
+			<Text Lang="ru">Только локальные файлы (без  управления исходными данными)</Text>
+			<Text Lang="en">Local files only (no source control)</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

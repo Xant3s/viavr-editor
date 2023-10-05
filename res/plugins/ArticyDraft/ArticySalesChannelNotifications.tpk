@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TextPackage BaseNamespace="Articy.SalesChannel" GenerateIds="true" xmlns="http://articy.com/TextPackage.xsd" xml:space="preserve" >
+
+  <Category Name="System" >
+    <TextDefinition Key="BuyFrom.Articy">
+      <Context></Context>
+      <Text Lang="en"><![CDATA[
+<h1>Component not licensed</h1>
+The usage of this component is not covered by your license.<br/>
+<br/>
+Contact <a href="mailto:sales@articy.com">Articy sales </a> to upgrade your license to cover this component.<br/>
+]]></Text>
+      <Text Lang="de"><![CDATA[
+<h1>Modul nicht lizensiert</h1>
+Die Verwendung dieses Programm Moduls wird von Ihrer derzeitigen Lizenz nicht abgedeckt.<br/>
+<br/>
+Kontaktieren Sie den <a href="mailto:sales@articy.com">Articy Vertrieb</a> um Ihre Lizenz um dieses Modul zu erweitern.<br/>
+]]></Text>
+    </TextDefinition>
+
+  </Category>
+</TextPackage>

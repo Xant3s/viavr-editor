@@ -1,0 +1,1741 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<!--
+	  texts for messageboxes
+	-->
+	<Category Name="System" Namespace=".Api">
+
+		<TextDefinition Key="ParseError.MessageIntro">
+			<Context>Intro text of the query parsing error message box</Context>
+			<Text Lang="en"><![CDATA[Query parsing error detected starting at position [col=yellow]{0}[/col].
+
+]]></Text>
+			<Text Lang="uk">Виявлено ​​помилку синтаксичного розбору починаючи з позиції [col=yellow]{0}[/col].</Text>
+			<Text Lang="fr">Erreur d'analyse de requête détectée à partir de la position [col=yellow]{0}[/col].</Text>
+			<Text Lang="pt-BR">Erro de análise de consulta detectado começando na posição [col=yellow]{0}[/col]</Text>
+			<Text Lang="zh"><![CDATA[从位置[col=yellow]{0}[/col]开始检测到查询分析错误。
+
+]]></Text>
+			<Text Lang="ko">[col=yellow]{0}[/col] 위치에서 시작하는 쿼리 구문 분석 오류가 감지되었습니다.</Text>
+			<Text Lang="pl">Wykryto błąd podczas parsowania zapytania na pozycji [col=yellow]{0}[/col].</Text>
+			<Text Lang="es"><![CDATA[Detectado error de análisis de consulta en la posición [col=yellow]{0}[/col].
+
+]]></Text>
+			<Text Lang="it">Errore di parsing identificato dalla posizione [col=yellow]{0}[/col].</Text>
+			<Text Lang="ru">Была обнаружена ошибка синтаксического разбора начиная с позиции [col=yellow]{0}[/col].</Text>
+			<Text Lang="de"><![CDATA[Beim Überprüfen Ihres Abfrageausdrucks wurde ein Fehler an Position [col=yellow]{0}[/col] festgestellt.
+
+]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Plugins.JobFailed">
+			<Context/>
+			<Text Lang="en"><![CDATA[The execution of the API job '{0}' has faild due to reason below:
+
+]]></Text>
+			<Text Lang="uk">Виконання завдання API '{0}' не вдалося з нижченаведеної причини:</Text>
+			<Text Lang="fr">L'exécution du travail d'API '{0}' a échoué pour la raison ci-dessous :</Text>
+			<Text Lang="pt-BR">A execução do trabalho API '{0}' falhou por conta da razão abaixo:</Text>
+			<Text Lang="zh"><![CDATA[由于以下原因，API任务 '{0}' 的执行失败：
+
+]]></Text>
+			<Text Lang="ko">{0}' API작업의 실행이 아래 이유로 실패했습니다.</Text>
+			<Text Lang="de"><![CDATA[Die ausführung des API Jobs '{0}' ist mit der folgenden Fehlermeldung gescheitert:
+
+]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  texts for the different ParseException cases.
+	  Loca id is calculated from the LocaIdBase set in ModelTypeRegistry
+	  and the error name from the exception text
+	-->
+	<Category Name="Errors" Namespace=".Api">
+
+		<TextDefinition Key="ParseError.UnknownObjectProperty">
+			<Context>thrown when the identifier is not a registered property of an object</Context>
+			<Text Lang="en">Unknown object property '{0}'.</Text>
+			<Text Lang="uk">Невідома властивість об'єкта '{0}'.</Text>
+			<Text Lang="fr">Propriété d'objet inconnue '{0}'.</Text>
+			<Text Lang="pt-BR">Propriedade de objeto desconhecido '{0}'.</Text>
+			<Text Lang="zh">未知的对象属性 '{0}'。</Text>
+			<Text Lang="ko">알 수 없는 객체 속성 '{0}'입니다.</Text>
+			<Text Lang="pl">Nieznana właściwość obiektu '{0}'.</Text>
+			<Text Lang="es">Propiedad de objeto desconocida '{0}'.</Text>
+			<Text Lang="it">Attributo '{0}' sconosciuto per l'oggetto</Text>
+			<Text Lang="ru">Неизвестное свойство объекта '{0}'.</Text>
+			<Text Lang="de">Der Feldname '{0}' ist unbekannt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidFieldName">
+			<Context>Thrown when a name was found that is not in the format "Identifier" or "Identifier.Identifier"</Context>
+			<Text Lang="en">'{0}' is no valid property name.</Text>
+			<Text Lang="uk">'{0}' не є дійсним назвою властивості.</Text>
+			<Text Lang="fr">{0}' n'est pas un nom de propriété valide.</Text>
+			<Text Lang="pt-BR">{0}' não é um nome de propriedade válido.</Text>
+			<Text Lang="zh">{0}' 不是有效的属性名。</Text>
+			<Text Lang="ko">{0}'은(는) 올바른 속성 이름이 아닙니다.</Text>
+			<Text Lang="pl">{0}' nie jest poprawną nazwą właściwości.</Text>
+			<Text Lang="es">'{0}' no es un valor de propiedad válido.</Text>
+			<Text Lang="it">'{0}' non è un nome valido per un attributo.</Text>
+			<Text Lang="ru">'{0}' не является действительным названием свойства.</Text>
+			<Text Lang="de">'{0}' ist kein gültiger Eigenschaftsname.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidTypeIdentifier">
+			<Context/>
+			<Text Lang="en">A type identifier was expected, but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувався ідентифікатор типу, а замість нього виявлено '{0}'.</Text>
+			<Text Lang="fr">Un identifiant de type était attendu, mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">Um identificador de tipo foi esperado, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">需要类型标识符，但找到了 '{0}' 。</Text>
+			<Text Lang="ko">유형 식별자를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano identyfikatora typu, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un identificador de tipo, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un identificatore di tipo, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался идентификатор типа, а вместо него был обнаружен '{0}'.</Text>
+			<Text Lang="de">Ein Typ-Bezeichner wurde erwartet, vorgefunden wurde aber '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidBraceCharacter">
+			<Context/>
+			<Text Lang="en">Unable to match character '{0}' as a valid brace character.</Text>
+			<Text Lang="uk">Комп'ютер не розпізнає '{0}' як дійсний символ дужки.</Text>
+			<Text Lang="fr">Impossible de faire correspondre le caractère '{0}' comme caractère d'accolade valide.</Text>
+			<Text Lang="pt-BR">Incapaz de combinar caractere '{0}' como um caractere de chave válido.</Text>
+			<Text Lang="zh">无法将字符'{0}'匹配为有效的括号字符。</Text>
+			<Text Lang="ko">문자 '{0}'을(를) 올바른 brace 문자로 일치시킬 수 없습니다.</Text>
+			<Text Lang="pl">Nie można dopasować znaku '{0}' jako poprawnego nawiasu.</Text>
+			<Text Lang="es">No ha sido posible aceptar el caracter '{0}' como un caracter de llave válido.</Text>
+			<Text Lang="it">Impossibile abbinare il carattere '{0}' a un tipo valido di parentesi.</Text>
+			<Text Lang="ru">Не удается распознать '{0}' как действительный символ скобки.</Text>
+			<Text Lang="de">Das Zeichen '{0}' ist kein gültiges Klammer-Symbol.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidIdentifierToken">
+			<Context/>
+			<Text Lang="en">Expecting an identifier, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувався ідентифікатор, а замість нього був виявлений '{0}'.</Text>
+			<Text Lang="fr">Attend un identifiant, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando um identificador, mas não encontrou '{0}'.</Text>
+			<Text Lang="zh">需要标识符，但找到了'{0}'。</Text>
+			<Text Lang="ko">식별자를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano identyfikatora, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un identificador, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un parametro, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался идентификатор, а вместо него был обнаружен '{0}'.</Text>
+			<Text Lang="de">Erwarte einen Bezeichner, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidOperator">
+			<Context/>
+			<Text Lang="en">Expected a valid comparison operator, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувався дійсний оператор порівняння, а замість нього виявлено '{0}'.</Text>
+			<Text Lang="fr">Attendait un opérateur de comparaison valide, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado um operador de comparação válido, mas achou '{0}'.</Text>
+			<Text Lang="zh">应输入有效的比较运算符，但找到了 '{0}'。</Text>
+			<Text Lang="ko">비교 연산자를 예상했지만, '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano poprawnego operatora porównania, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un operador de comparaciones válido, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un operatore di confronto valido, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался действительный оператор сравнения, а вместо него был обнаружен '{0}'.</Text>
+			<Text Lang="de">Erwarte einen gültigen Vergleichsoperator, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnknownOperator">
+			<Context/>
+			<Text Lang="en">The comparison operator '{0}' is not recognized.</Text>
+			<Text Lang="uk">Оператор порівняння '{0} "не розпізнано.</Text>
+			<Text Lang="fr">L'opérateur de comparaison '{0}' n'est pas reconnu.</Text>
+			<Text Lang="pt-BR">O operador de comparação '{0}' não é reconhecido.</Text>
+			<Text Lang="zh">无法识别比较运算符'{0}'。</Text>
+			<Text Lang="ko">비교 연산자 '{0}'이(가) 인식되지 않습니다.</Text>
+			<Text Lang="pl">Operator porównania '{0}' nie został rozpoznany.</Text>
+			<Text Lang="es">No se reconoce el comparador de operación '{0}'.</Text>
+			<Text Lang="it">L'operatore di confronto '{0}' non è riconosciuto.</Text>
+			<Text Lang="ru">Оператор сравнения '{0}' не распознан.</Text>
+			<Text Lang="de">Der Vergleichsoperator '{0}' ist unbekannt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.DisallowedOperator">
+			<Context/>
+			<Text Lang="en">The comparison operator '{0}' is not allowed.</Text>
+			<Text Lang="uk">Оператор порівняння '{0}' не дозволено.</Text>
+			<Text Lang="fr">L'opérateur de comparaison '{0}' n'est pas autorisé.</Text>
+			<Text Lang="pt-BR">O operador de comparação '{0}' não é permitido.</Text>
+			<Text Lang="zh">不允许使用比较运算符'{0}'。</Text>
+			<Text Lang="ko">비교 연산자 '{0}'이(가) 허용되지 않습니다.</Text>
+			<Text Lang="pl">Operator porównania '{0}' jest niedozwolony.</Text>
+			<Text Lang="es">El comparador de operación '{0}' no está permitido.</Text>
+			<Text Lang="it">L'operatore di confronto '{0}' non è consentito.</Text>
+			<Text Lang="ru">Оператор сравнения '{0}' не разрешен.</Text>
+			<Text Lang="de">Der Vergleichsoperator '{0}' ist nicht erlaubt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnsupportedRelation">
+			<Context/>
+			<Text Lang="en">The supplied comparison operator '{0}' does not support this data type.</Text>
+			<Text Lang="uk">Наданий оператор порівняння '{0}' не підтримує цей тип даних.</Text>
+			<Text Lang="fr">L'opérateur de comparaison fourni '{0}' ne prend pas en charge ce type de données.</Text>
+			<Text Lang="pt-BR">O operador de comparação suprido '{0}' não suporta este tipo de dados.</Text>
+			<Text Lang="zh">提交的比较运算符'{0}'不支持此数据类型。</Text>
+			<Text Lang="ko">제공된 비교 연산자 '{0}'은(는)이 데이터 유형을 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator porównania '{0}' nie obsługuje tego typu danych.</Text>
+			<Text Lang="es">El operador de comparación facilitado '{0}' no soporta este tipo de dato.</Text>
+			<Text Lang="it">L'operatore di confronto fornito '{0}' non supporta questo tipo di dati.</Text>
+			<Text Lang="ru">Предоставленный оператор сравнения '{0}' не поддерживает этот тип данных.</Text>
+			<Text Lang="de">Der angegebene Vergleichsoperator '{0}' unterstützt diesen Datentypen nicht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ParametersExpectCommaOrEnd">
+			<Context/>
+			<Text Lang="en">Expected either ',' or the end of the parameters, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувася символ ',' або кінець параметрів, а замість нього виявлено: '{0]'.</Text>
+			<Text Lang="fr">Attendait soit ',' soit à la fin des paramètres, mais a trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado tanto ',' or o fim dos parâmetros, mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">应为','或参数结尾，但找到：'{0}'。</Text>
+			<Text Lang="ko">,' 또는'매개 변수'의 끝을 예상했지만 '{0}'이(가) 발견되었습니다.</Text>
+			<Text Lang="pl">Oczekiwano ',' lub końca parametrów, a znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperaba ',' o el fin de los parámetros, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Atteso ',' o la fine dei parametri, trovato invece: '{0}'.</Text>
+			<Text Lang="ru">Ожидалcя символ ',' или конец параметров, а вместо него был обнаружен: '{0]'.</Text>
+			<Text Lang="de">Erwarte entweder ',' oder das Ende der Parameterliste, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectEndOfList">
+			<Context/>
+			<Text Lang="en">Expected end of list, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувався кінець списку, а замість нього виявлено '{0]'.</Text>
+			<Text Lang="fr">Fin de liste attendue, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperada fim da lista, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">应为列表结尾，但找到了'{0}'。</Text>
+			<Text Lang="ko">목록의 끝을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano zakończenia listy, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba el final de la lista, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Attesa fine di una lista, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался конец списка, а вместо него был обнаружен '{0]'.</Text>
+			<Text Lang="de">Erwartetes Listenende, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedComma">
+			<Context/>
+			<Text Lang="en">A separator ',' was expected, but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувався роздільник ',' а замість нього виявлено'{0}'.</Text>
+			<Text Lang="fr">Le séparateur ',' était attendu, mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">Um separador ',' foi esperado, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">需要分隔符','，但找到了'{0}'。</Text>
+			<Text Lang="ko">구분 기호 ','를 예상했지만 '{0}'이(가) 발견되었습니다.</Text>
+			<Text Lang="pl">Oczekiwano separatora ',', a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba el separador ',' pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso separatore ',', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался разделитель ',' , а вместо него был обнаружен '{0}'.</Text>
+			<Text Lang="de">Erwartet wurde das Trennsymbol ',', vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedDot">
+			<Context/>
+			<Text Lang="en">The separator '.' was expected, but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувався роздільник '.' а замість нього виявлено '{0}'.</Text>
+			<Text Lang="fr">Le séparateur '.' était attendu, mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">O separador ',' foi esperado, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">需要分隔符','，但找到了'{0}'。</Text>
+			<Text Lang="ko">구분 기호 '.'를 예상했지만 '{0}'이(가) 발견되었습니다.</Text>
+			<Text Lang="pl">Oczekiwano separatora '.', a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba el separador '.' pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso separatore '.', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался разделитель '.' , а вместо него был обнаружен '{0}'.</Text>
+			<Text Lang="de">Erwartet wurde das Trennsymbol '.', vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnsupportedReferenceType">
+			<Context/>
+			<Text Lang="en">References of type '{0}' are not supported.</Text>
+			<Text Lang="uk">Посилання типу '{0} не підтримуються.</Text>
+			<Text Lang="fr">Les références du type '{0}' ne sont pas supportées.</Text>
+			<Text Lang="pt-BR">Referências de tipo '{0}' não são suportados.</Text>
+			<Text Lang="zh">不支持类型为'{0}'的引用。</Text>
+			<Text Lang="ko">{0}' 유형의 참조는 지원되지 않습니다.</Text>
+			<Text Lang="pl">Odniesienia typu '{0}' nie są obsługiwane.</Text>
+			<Text Lang="es">Las referencias de tipo '{0}' no están soportadas.</Text>
+			<Text Lang="it">I riferimento del tipo '{0}' non sono supportati.</Text>
+			<Text Lang="ru">Ссылки типа '{0}' не поддерживаются.</Text>
+			<Text Lang="de">Referenzen vom Typ '{0}' werden nicht unterstützt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedReferenceType">
+			<Context/>
+			<Text Lang="en">Unexpected reference type '{0}' found.</Text>
+			<Text Lang="uk">Виявлено непередбачений тип посилання '{0}'.</Text>
+			<Text Lang="fr">Type de référence inattendu '{0}' trouvé.</Text>
+			<Text Lang="pt-BR">Tipo de referência '{0}' não esperado encontrado.</Text>
+			<Text Lang="zh">找到意外的引用类型'{0}'。</Text>
+			<Text Lang="ko">예기치 않은 참조 유형 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Nieoczekiwany typ odniesienia '{0}' został znaleziony.</Text>
+			<Text Lang="es">Se ha encontrado una referencia no esperada de tipo '{0}'.</Text>
+			<Text Lang="it">Trovato un riferimento di tipo '{0}' inatteso.</Text>
+			<Text Lang="ru">Был обнаружен непредвиденный тип ссылки '{0}'.</Text>
+			<Text Lang="de">Unerwarteter Referenz-Typ '{0}' vorgefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedReferenceToken">
+			<Context/>
+			<Text Lang="en">Unexpected token '{0}' found when a reference was expected.</Text>
+			<Text Lang="uk">Виявлено непередбачений знак '{0}' коли очікувалось посилання.</Text>
+			<Text Lang="fr">Marque inattendue '{0}' trouvée lorsqu'une référence était attendue.</Text>
+			<Text Lang="pt-BR">Símbolo não esperado '{0}' encontrado quando uma referência foi esperada.</Text>
+			<Text Lang="zh">当需要引用时，发现意外的标记'{0}'。</Text>
+			<Text Lang="ko">참조가 예상되었을 때 예기치 않은 토큰 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Nieoczekiwany token '{0}' został znaleziony, kiedy oczekiwano odniesienia.</Text>
+			<Text Lang="es">Se ha encontrado un identificador '{0}' cuando se esperaba una referencia.</Text>
+			<Text Lang="it">Trovato un token '{0}' inatteso invece che un riferimento.</Text>
+			<Text Lang="ru">Был обнаружен непредвиденный знак '{0}' когда ожидалась ссылка.</Text>
+			<Text Lang="de">Statt einer Referenz wurde das unerwartete Token '{0}' gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedEndOfQuery">
+			<Context/>
+			<Text Lang="en">Unexpected end of query string found.</Text>
+			<Text Lang="uk">Виявлено непередбачений кінець рядка запиту.</Text>
+			<Text Lang="fr">Fin de chaîne de requête inattendue trouvée.</Text>
+			<Text Lang="pt-BR">Linha de fim de consulta inesperada encontrada.</Text>
+			<Text Lang="zh">发现意外的查询字符串结尾。</Text>
+			<Text Lang="ko">예기치 않은 쿼리 문자열의 끝을 찾았습니다.</Text>
+			<Text Lang="pl">Nieoczekiwane zakończenie zapytania zostało znalezione.</Text>
+			<Text Lang="es">Se ha encontrado el final no esperado de la cadena de la consulta.</Text>
+			<Text Lang="it">Trovata una fine inattesa per una stringa contenente una query.</Text>
+			<Text Lang="ru">Обнаружен непредвиденный конец строки запроса.</Text>
+			<Text Lang="de">Unerwartetes Ende des Abfrage-Ausdrucks vorgefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedToken">
+			<Context/>
+			<Text Lang="en">Unexpected token '{0}' found.</Text>
+			<Text Lang="uk">Виявлено непередбачений знак '{0}'.</Text>
+			<Text Lang="fr">Marque inattendue '{0}' trouvée.</Text>
+			<Text Lang="pt-BR">Símbolo não esperado '{0}' encontrado.</Text>
+			<Text Lang="zh">找到意外的标记'{0}'。</Text>
+			<Text Lang="ko">예기치 않은 토큰 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Nieoczekiwany token '{0}' został znaleziony.</Text>
+			<Text Lang="es">Se ha encontrado un identificador '{0}' no esperado.</Text>
+			<Text Lang="it">Trovato un token '{0}' inatteso.</Text>
+			<Text Lang="ru">Был обнаружен непредвиденный знак '{0}'.</Text>
+			<Text Lang="de">Unerwartetes Token '{0}' vorgefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.AmbigiousObjectReference">
+			<Context/>
+			<Text Lang="en">'{0}' does not refer to a single object: {1} hits have been found.</Text>
+			<Text Lang="uk">{0}' не посилається на жоден з об'єктів: виявлено {1} влучень.</Text>
+			<Text Lang="fr">{0}' ne fait référence à aucun objet : {1} résultats ont été trouvés.</Text>
+			<Text Lang="pt-BR">{0}' não se refere á um único objeto: {1} exitos foram encontrados.</Text>
+			<Text Lang="zh">{0}' 不指单个对象：已找到 {1} 个点击。</Text>
+			<Text Lang="ko">{0}'이(가) 단일 개체를 참조하지 않습니다. {1}개의 히트를 찾았습니다.</Text>
+			<Text Lang="pl">{0}' nie odnosi się do pojedynczego obiektu: {1} trafień zostało znalezionych.</Text>
+			<Text Lang="es">'{0}' no se refiere a un solo objeto: Se han encontrado {1} ocurrencias.</Text>
+			<Text Lang="it">{0}' non si riferisce a un singolo oggetto: trovati {1} riferimenti.</Text>
+			<Text Lang="ru">{0}' не ссылается на один единственный объект:  было обнаружено {1} попаданий.</Text>
+			<Text Lang="de">'{0}' verweist nicht auf ein eindeutiges Objekt: {1} Treffer wurden gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UniqueInputForEquality">
+			<Context/>
+			<Text Lang="en">Only one single element is allowed as input for 'equal' and 'not equal' comparison, but we found {0} elements.</Text>
+			<Text Lang="uk">Лише один елемент дозволений для введеня порівняння "рівний" та "не рівний", але знайдено {0} елементи.</Text>
+			<Text Lang="fr">Seulement un élément est autorisé comme entrée pour la comparaison entre 'égal' et 'inégal', mais nous avons trouvé {0} éléments.</Text>
+			<Text Lang="pt-BR">Apenas um único elemento é permitido como entrada para comparição 'igual' e 'não igual', mas nós achamos {0} elementos.</Text>
+			<Text Lang="zh">equal'和'not equal'比较只允许输入一个元素，但我们发现了{0}个元素。</Text>
+			<Text Lang="ko">equal' 및 ' not equal' 비교를 대한 입력으로 단일 요소만 허용되지만 {0}개의 요소를 찾았습니다.</Text>
+			<Text Lang="pl">Tylko pojedynczy obiekt jest dozwolony jako wejście dla porównania 'równe' i 'nierówne', a znaleziono {0} elementów.</Text>
+			<Text Lang="es">Solo se permite un elemento como input para la comparación 'equal' y 'not equal', pero se han encontrado '{0}' elementos.</Text>
+			<Text Lang="it">È consentito un solo elemento per i confronti 'equal' e 'not equal', trovati invece {0} elementi.</Text>
+			<Text Lang="ru">В качестве ввода для сравнений 'равен' и 'не равен' разрешается только один элемент, но было найдено {0} элементов.</Text>
+			<Text Lang="de">Nur ein einziges Element ist erlaubt als Eingabe für die Vergleiche 'gleich' und 'ungleich', aber es wurden {0} Elemente gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.BraceUnderrun">
+			<Context/>
+			<Text Lang="en">Brace underrun while searching for open brace for: '{0}'.</Text>
+			<Text Lang="uk">Під час пошуку відкритої дужки для: '{0}' виявлено недобір дужок.</Text>
+			<Text Lang="fr">Accolade insuffisante lors de la recherche de l'accolade ouverte pour : '{0}'.</Text>
+			<Text Lang="pt-BR">Suporte insuficiente enquanto buscando por suporte aberto para: '{0}'.</Text>
+			<Text Lang="zh">搜索括号时左右括号数量不匹配： '{0}'。</Text>
+			<Text Lang="ko">Brace underrun while searching for open brace for: '{0}'.</Text>
+			<Text Lang="pl">Brakuje klamr podczas wyszukiwania otwartych klamr dla: '{0}'.</Text>
+			<Text Lang="es">Se han encontrado menos llaves de las esperadas al buscar la llave abierta de: '{0}'.</Text>
+			<Text Lang="it">Trovate un numero eccessivo di parentesi chiuse durante la ricerca di una parentesi aperta per '{0}'.</Text>
+			<Text Lang="ru">Во время поиска открытой скобки для: '{0}' был обнаружен недобор скобок.</Text>
+			<Text Lang="de">Klammer-Unterlauf während der Suche nach offener Klammer für: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnmatchingOpeningBrace">
+			<Context/>
+			<Text Lang="en">Unmatching opening brace found for: '{0}'.</Text>
+			<Text Lang="uk">Виявлена невідповідна дужка відкриття для '{0}'.</Text>
+			<Text Lang="fr">Accolade d'ouverture inégale trouvée pour : '{0}'.</Text>
+			<Text Lang="pt-BR">Suporte de abertura não combinando encontrado para: '{0}'.</Text>
+			<Text Lang="zh">找到了未匹配的括号：'{0}'。</Text>
+			<Text Lang="ko">다음에 대한 일치하지 않는 열린 brace를 찾음: '{0}'.</Text>
+			<Text Lang="pl">Znaleziono niepasującą klamrę otwierającą w: '{0}'.</Text>
+			<Text Lang="es">Llave de apertura no cerrada en: '{0}'.</Text>
+			<Text Lang="it">Impossibile trovare la parentesi di apertura per: '{0}'.</Text>
+			<Text Lang="ru">Обнаружена неподходящая открывающая скобка для : '{0}'.</Text>
+			<Text Lang="de">Öffnende Klammer passt nicht für: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.MoreOpeningThanClosingBraces">
+			<Context/>
+			<Text Lang="en">There are more opening than closing braces (Type: {0}).</Text>
+			<Text Lang="uk">Відкривних дужок більше ніж закривних (Тип: {0}).</Text>
+			<Text Lang="fr">Il y a plus d'accolades ouvrantes que fermantes (Type : {0}).</Text>
+			<Text Lang="pt-BR">Há mais aberturas que suportes de fechamento (Tipo: {0}).</Text>
+			<Text Lang="zh">左括号多于右括号 (类型： {0})。</Text>
+			<Text Lang="ko">braces (유형: {0})을(를) 닫은 것보다 더 많은 열려있습니다.</Text>
+			<Text Lang="pl">Jest więcej klamr otwierających niż zamykających (Typ: {0}).</Text>
+			<Text Lang="es">Hay más llaves de apertura que de cierre (Tipo: {0}).</Text>
+			<Text Lang="it">Ci sono più parentesi aperte che chiuse (Tipo di parentesi: {0}).</Text>
+			<Text Lang="ru">Открывающих скобок больше чем закрывающих (Тип: {0}).</Text>
+			<Text Lang="de">Es gibt mehr öffnende als schließende Klammern (Typ: {0}).</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedStringEof">
+			<Context/>
+			<Text Lang="en">Unexpected end of text while reading a literal string.</Text>
+			<Text Lang="uk">Виявлено непередбачений EOF (кінець файлу), під час читання символьного рядка.</Text>
+			<Text Lang="fr">Fin de texte inattendue lors de la lecture d'une chaîne littérale.</Text>
+			<Text Lang="pt-BR">Fim de texto inesperado enquanto lendo uma cadeia literal.</Text>
+			<Text Lang="zh">读取文本字符串时出现意外的文本结尾。</Text>
+			<Text Lang="ko">문자열 읽는 동안 예기치 않은 텍스트 끝이 발생했습니다.</Text>
+			<Text Lang="pl">Nieoczekiwany koniec tekstu podczas czytania zmiennej tekstowej.</Text>
+			<Text Lang="es">Fin de texto inesperado a leer una cadena literal.</Text>
+			<Text Lang="it">Fine inaspettata del testo durante la lettura di una stringa letterale.</Text>
+			<Text Lang="ru">Обнаружен непредвиденный EOF (конец файла), во время чтения символьной строки.</Text>
+			<Text Lang="de">Unerwartetes Textende beim Lesen eines String-Literals.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedStringEscapeChar">
+			<Context/>
+			<Text Lang="en">Unexpected escape character '{0}' found while reading a literal string.</Text>
+			<Text Lang="uk">Неочікуваний символ втечі '{0}' знайдений під час читання літерального рядка.</Text>
+			<Text Lang="fr">Caractère d'échappement inattendu '{0}' trouvé lors de la lecture d'une chaîne littérale.</Text>
+			<Text Lang="pt-BR">Caractere de escape inesperado '{0}' encontrado enquanto lendo uma cadeia literal.</Text>
+			<Text Lang="zh">读取文本字符串时发现意外的转义符'{0}'。</Text>
+			<Text Lang="ko">문자열 읽기 중에 예기치 않은 escape 문자 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Nieoczekiwany znak wyjściowy '{0}' znaleziony podczas czytania zmiennej tekstowej.</Text>
+			<Text Lang="es">Caracter de escape no esperado '{0}' al leer una cadena literal.</Text>
+			<Text Lang="it">Trovato carattere speciale '{0}' inatteso durante la lettura di una stringa di caratteri.</Text>
+			<Text Lang="de">Unerwartetes Escapezeichen '{0}' beim Lesen eines String-Literals gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnableToMatchString">
+			<Context/>
+			<Text Lang="en">Unable to match required string '{0}'.</Text>
+			<Text Lang="uk">Неможливо знайти відповідність необхідної для рядка '{0}'.</Text>
+			<Text Lang="fr">Impossible de faire correspondre la chaîne requise '{0}'.</Text>
+			<Text Lang="pt-BR">Incapaz de combinar cadeia necessária '{0}'.</Text>
+			<Text Lang="zh">无法匹配所需的字符串'{0}'。</Text>
+			<Text Lang="ko">필요한 문자열 '{0}'을(를) 일치시킬 수 없습니다.</Text>
+			<Text Lang="pl">Nie można dopasować wymaganego ciągu '{0}'.</Text>
+			<Text Lang="es">No ha encontrado coincidencia para la cadena necesaria '{0}'.</Text>
+			<Text Lang="it">Impossibile abbinare la stringa richiesta '{0}'.</Text>
+			<Text Lang="ru">Не удается найти соответствие требуемой строке '{0}'.</Text>
+			<Text Lang="de">Kann benötigten String '{0}' nicht finden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidGuid">
+			<Context/>
+			<Text Lang="en">Invalid guid found: {0}.</Text>
+			<Text Lang="uk">Знайдено недійсний GUID:{0}.</Text>
+			<Text Lang="fr">Guide non valide trouvé : {0}.</Text>
+			<Text Lang="pt-BR">Guid inválido encontrado: {0}.</Text>
+			<Text Lang="zh">发现无效的GUID：{0}。</Text>
+			<Text Lang="ko">잘못된 guid를 찾음: {0}.</Text>
+			<Text Lang="pl">Znaleziono niepoprawny Guid: {0}.</Text>
+			<Text Lang="es">Se ha encontrado un GUID no válido: {0}.</Text>
+			<Text Lang="it">Trovato il guid non valido: '{0}'.</Text>
+			<Text Lang="ru">Найден недействительный  GUID:{0}.</Text>
+			<Text Lang="de">Ungültige Guid gefunden: {0}.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidLanguageSpecifier">
+			<Context/>
+			<Text Lang="en">Invalid language specifier found for string.</Text>
+			<Text Lang="uk">У рядку знайдений неприпустимий специфікатор мови.</Text>
+			<Text Lang="fr">Spécificateur de langue non valide trouvé pour la chaîne.</Text>
+			<Text Lang="pt-BR">Especificador de idioma inválido para cadeia.</Text>
+			<Text Lang="zh">字符串找到无效的语言说明符。</Text>
+			<Text Lang="ko">문자열에 대한 언어 지정자가 잘못되었습니다.</Text>
+			<Text Lang="pl">Niepoprawny wyznacznik języka został znaleziony dla zmiennej tekstowej.</Text>
+			<Text Lang="es">Se ha encontrado un especificador de idioma no válido para la cadena.</Text>
+			<Text Lang="it">Linguaggio indicato non valido per la stringa.</Text>
+			<Text Lang="ru">В строке найден недопустимый спецификатор языка.</Text>
+			<Text Lang="de">Ungültige Sprachspezifikation für String.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.EmptyCommandText">
+			<Context/>
+			<Text Lang="en">Command text of query is empty.</Text>
+			<Text Lang="uk">Командний текст запиту порожній.</Text>
+			<Text Lang="fr">Le texte de la commande de la requête est vide.</Text>
+			<Text Lang="pt-BR">Texto de comando de consulta está vazio.</Text>
+			<Text Lang="zh">查询的命令文本为空。</Text>
+			<Text Lang="ko">쿼리의 명령문이 비었습니다.</Text>
+			<Text Lang="pl">Polecenie tekstowe zapytania jest puste.</Text>
+			<Text Lang="es">El texto de comando de la consulta está vacío.</Text>
+			<Text Lang="it">Testo del comando della query vuoto.</Text>
+			<Text Lang="ru">Командный текст запроса пуст.</Text>
+			<Text Lang="de">Abfragetext ist leer.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedFromClause">
+			<Context/>
+			<Text Lang="en">Expecting 'FROM' clause, but reached end of text.</Text>
+			<Text Lang="uk">Очікувався оператор 'FROM', але досягнуто кінеця тексту.</Text>
+			<Text Lang="fr">Attend la clause 'FROM', mais atteint la fin du texte.</Text>
+			<Text Lang="pt-BR">Esperando da cláusula 'FROM', mas alcançou fim de texto.</Text>
+			<Text Lang="zh">应为'FROM'子句，但已到达文本结尾。</Text>
+			<Text Lang="ko">FROM' 조항을 예상했지만 텍스트의 끝까지 왔습니다.</Text>
+			<Text Lang="pl">Oczekiwano słowa kluczowego 'FROM', ale osiągnięto koniec tekstu.</Text>
+			<Text Lang="es">Se esperaba una cláusula 'FROM', pero se ha llegado al final del texto.</Text>
+			<Text Lang="it">Attesa una frase di tipo 'FROM', raggiunta invece la fine del testo.</Text>
+			<Text Lang="ru">Ожидался оператор 'FROM', но был достигнут конец текста.</Text>
+			<Text Lang="de">Erwarte 'FROM'-Klausel, aber das Ende des Textes wurde erreicht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedFromClauseButFound">
+			<Context/>
+			<Text Lang="en">Expecting 'FROM' clause, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувався оператор 'FROM', але виявлено '{0]'.</Text>
+			<Text Lang="fr">Attend la clause 'FROM', mais a trouvé: '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando Cláusula 'FROM', mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">应为'FROM'子句，但找到：'{0}'。</Text>
+			<Text Lang="ko">FROM' 조항을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano słowa kluczowego 'FROM', a znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperaba una cláusula 'FROM', pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Attesa una frase di tipo 'FROM', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался оператор 'FROM', а был обнаружен '{0]'.</Text>
+			<Text Lang="de">Erwarte 'FROM'-Klausel, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedEndOfQueryButFound">
+			<Context/>
+			<Text Lang="en">Expecting end of query, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувався кінець запиту, але знайдено '{0}'.</Text>
+			<Text Lang="fr">Attend la fin de la requête, mais a trouvé: '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando fim de consulta, mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">应为查询结尾，但找到：'{0}'。</Text>
+			<Text Lang="ko">쿼리가 종료될 것으로 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano zakończenia zapytania, a znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperada el fin de la consulta, pero se ha encontrado. '{0}'.</Text>
+			<Text Lang="it">Attesa la fine di una query, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидался конец запроса, а был найден '{0}'.</Text>
+			<Text Lang="de">Erwarte Ende der Abfrage, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.NonExclusiveWildcard">
+			<Context/>
+			<Text Lang="en">The field wildcard '*' is only allowed when used as the only field specifier.</Text>
+			<Text Lang="uk">Підстановлювальний знак '*' дозволений тільки в тому випадку коли він є єдиним специфікатором поля.</Text>
+			<Text Lang="fr">Le caractère générique de champ '*' n'est autorisé que lorsqu'il est utilisé comme seul spécificateur de champ.</Text>
+			<Text Lang="pt-BR">O curinga de campo '*' é apenas permitido quando usado como especificador de campo.</Text>
+			<Text Lang="zh">只有当用作唯一的字段说明符时，才允许使用字段通配符'*'。</Text>
+			<Text Lang="ko">와일드 카드'*' 필드는 필드 지정자로 사용하는 경우에만 허용됩니다.</Text>
+			<Text Lang="pl">Tylko pole wyznacznika '*' jest dozwolone, gdy używa się go jako specyfikatora pola.</Text>
+			<Text Lang="es">El campo comodín '*' solo está permitido cuando se usa como único especificador de campo.</Text>
+			<Text Lang="it">Il campo carattere jolly '*' è utilizzabile solo quando è l'unico indicatore del campo.</Text>
+			<Text Lang="ru">Подстановочный знак '*' разрешен только в том случае когда он является единственным  спецификатором поля.</Text>
+			<Text Lang="de">Die Wildcard '*' is nur dann erlaubt, wenn keine weiteren Spezifizierer verwendet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.DisallowedSelectWildcard">
+			<Context/>
+			<Text Lang="en">Currently only the column wildcard '*' is supported for selects, but '{0}' was found.</Text>
+			<Text Lang="uk">Для вибору підтримується тільки стовпчиковий підстановлювальний знак '*', але виявлено '{0}'</Text>
+			<Text Lang="fr">Actuellement, seul le caractère générique de colonne '*' est pris en charge pour les sélections, mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">Atualmente apenas coluna curinga '*' é suportado para seletos, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">当前只有列通配符'*'支持选择，但找到了'{0}'。</Text>
+			<Text Lang="ko">현재는 와일드 카드 '*'열만 선택할 수 있지만 '{0}'열이 발견되었습니다.</Text>
+			<Text Lang="pl">Obecnie tylko wyznacznik '*' kolumn jest obsługiwany dla opcji wyboru, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Actualmente solo se se soporta el comodín de columna '*' selecciones, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Al momento solo la colonna con carattere jolly '*' è supportata per la selezione, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Для выбора поддерживается только колоночный подстановочный знак '*' , а был обнаружен '{0}'</Text>
+			<Text Lang="de">Momentan ist lediglich die Spalten-Wildcard '*' für Select-Operationen erlaubt, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedByButFound">
+			<Context/>
+			<Text Lang="en">Expected 'BY', but found '{0}'.</Text>
+			<Text Lang="uk">Очікувався 'BY', але знайдено '{0}'.</Text>
+			<Text Lang="fr">Zttendait 'BY', mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado 'POR', mas encontrou '{0}' .</Text>
+			<Text Lang="zh">应为'BY'，但找到了'{0}'。</Text>
+			<Text Lang="ko">BY'를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano 'BY', a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba 'BY', pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso 'BY', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось 'BY', но был найден '{0}'.</Text>
+			<Text Lang="de">Erwarte 'BY', vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedAscOrDescButFound">
+			<Context/>
+			<Text Lang="en">Expecting 'ASC' or 'DESC', but found '{0}'.</Text>
+			<Text Lang="uk">Очікувалося 'ASC' або 'DESC', а знайдено '{0}'.</Text>
+			<Text Lang="fr">Attendait 'ASC' ou 'DESC', mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando 'ASC' ou 'DESC', mas encontrou '{0}'.</Text>
+			<Text Lang="zh">应为'ASC'或'DESC'，但找到了'{0}'。</Text>
+			<Text Lang="ko">ASC' 또는 'DESC'를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano 'ASC' lub 'DESC', a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba 'ASC' o 'DESC', pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso 'ASC' o 'DESC', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось 'ASC' или 'DESC', а был найден '{0}'.</Text>
+			<Text Lang="de">Erwarte 'ASC' oder 'DESC', vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ModelNotFoundByTechName">
+			<Context/>
+			<Text Lang="en">Object with technical name '{0}' not found.</Text>
+			<Text Lang="uk">Об'єкт з технічною назвою '{0}' не знайдено.</Text>
+			<Text Lang="fr">Objet avec le nom technique '{0}' introuvable.</Text>
+			<Text Lang="pt-BR">Objeto com nome técnico '{0}'  não encontrado.</Text>
+			<Text Lang="zh">找不到技术名称为'{0}'的对象。</Text>
+			<Text Lang="ko">기술 이름이 '{0}'인 객체가 없습니다.</Text>
+			<Text Lang="pl">Obiekt z nazwą techniczną '{0}' nie został odnaleziony.</Text>
+			<Text Lang="es">No se ha encontrado el objeto con nombre técnico '{0}'.</Text>
+			<Text Lang="it">Oggetto con nome tecnico '{0}' non trovato.</Text>
+			<Text Lang="ru">Объект с техническим именем '{0}' не найден.</Text>
+			<Text Lang="de">Objekt mit technischem Bezeichner '{0}' nicht gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.SystemFolderNotFoundByName">
+			<Context/>
+			<Text Lang="en">System folder with name '{0}' not found.</Text>
+			<Text Lang="uk">Системна папка з назваою '{0}' не знайдено.</Text>
+			<Text Lang="fr">Dossier système au nom de '{0}' introuvable.</Text>
+			<Text Lang="pt-BR">Pasta de sistema com nome '{0}'  não encontrado.</Text>
+			<Text Lang="zh">找不到名为'{0}'的系统文件夹。</Text>
+			<Text Lang="ko">이름이 '{0}'인 시스템 폴더를 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Systemowy folder z nazwą '{0}' nie został odnaleziony.</Text>
+			<Text Lang="es">No se ha encontrado la carpeta de sistema con nombre '{0}'.</Text>
+			<Text Lang="it">Impossibile trovare una cartella di sistema nominata '{0}'.</Text>
+			<Text Lang="ru">Системная папка с именем '{0}' не найдена.</Text>
+			<Text Lang="de">System-Verzeichnis mit Namen '{0}' wurde nicht gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedClosingBraceButFound">
+			<Context/>
+			<Text Lang="en">Expected ')', but found '{0}'.</Text>
+			<Text Lang="uk">Очікувалася ')', а знайдено '{0}'.</Text>
+			<Text Lang="fr">Attendait ')', mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado ')', mas encontrou '{0}'.</Text>
+			<Text Lang="zh">应为')'，但找到了'{0}'。</Text>
+			<Text Lang="ko">)'를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano ')', ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba ')', pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso ')', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось ')', а было найдено '{0}'.</Text>
+			<Text Lang="de">Erwarte ')', vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ParenthesisUnderrun">
+			<Context/>
+			<Text Lang="en">Parenthesis underrun - more closed parenthesis than opened ones.</Text>
+			<Text Lang="uk">Недобір лапок - більше закритих  ніж відкритих лапок.</Text>
+			<Text Lang="fr">Parenthèse insuffisante - plus de parenthèses fermées que de parenthèses ouvertes.</Text>
+			<Text Lang="pt-BR">Parêntese insuficiente - mais parênteses fechados do que abertos.</Text>
+			<Text Lang="zh">圆括号溢出 - 右括号较左括号更多。</Text>
+			<Text Lang="ko">Parenthesis underrun -  열린 괄호보다 닫은 괄호가 더 많습니다.</Text>
+			<Text Lang="pl">Pominięty nawias - więcej nawiasów zamykających niż otwierających.</Text>
+			<Text Lang="es">Faltan paréntesis: hay más paréntesis cerrados que abiertos.</Text>
+			<Text Lang="it">Errore di parentesi underrun - più parentesi chiuse di quelle aperte.</Text>
+			<Text Lang="ru">Недобор кавычек - больше закрытых кавычек чем открытых.</Text>
+			<Text Lang="de">Klammern-Unterlauf - mehr geschlossene Klammern als geöffnete.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedValidFunctionNameButFound">
+			<Context/>
+			<Text Lang="en">Expected a valid function name, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувалася дійсна назва функції, а знайдено '{0}'.</Text>
+			<Text Lang="fr">Un nom de fonction valide était attendu mais nous avons trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado um nome de função válido, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">应输入有效的函数名，但找到了'{0}'。</Text>
+			<Text Lang="ko">올바른 함수 이름을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano poprawnej nazwy funkcji, ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un nombre de función válido, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un nome valido di funzione, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось действительное название функции, а было найдено '{0}'.</Text>
+			<Text Lang="de">Erwarte einen gültigen Funktionsnamen, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedCommaOrClosingBraceButFound">
+			<Context/>
+			<Text Lang="en">Expecting ',' or ')', but found '{0}'.</Text>
+			<Text Lang="uk">Очікувалася ',' або ')', а знайдено '{0}'.</Text>
+			<Text Lang="fr">Attendait ',' ou ')', mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando ',' or ')', mas encontrou '{0}'.</Text>
+			<Text Lang="zh">应为','或')'，但找到了'{0}'。</Text>
+			<Text Lang="ko">,' 또는 ')' 를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano ',' lub ')', ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba ',' o ')', pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso ',' o ')', trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось ',' или ')', а было найдено '{0}'.</Text>
+			<Text Lang="de">Erwarte ',' oder ')', vorgefunden wurde aber '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedBooleanColumnButFound">
+			<Context/>
+			<Text Lang="en">Boolean column expected, but column of type '{0}' was found.</Text>
+			<Text Lang="uk">Очікувалася колонка boolean, а виявлена ​​колонка типу '{0}'.</Text>
+			<Text Lang="fr">Colonne booléenne attendue, mais une colonne de type '{0}' a été trouvée.</Text>
+			<Text Lang="pt-BR">Esperada coluna boolean, mas coluna de tipo '{0}' foi encontrada.</Text>
+			<Text Lang="zh">应为布尔列，但找到了类型为'{0}'的列。</Text>
+			<Text Lang="ko">Boolean 열을 예상했지만 '{0}' 유형의 열을 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano kolumny logicznej, ale znaleziono kolumnę typu '{0}'.</Text>
+			<Text Lang="es">Se esperaba una columna booleana, pero se ha encontrado una columna del tipo '{0}'.</Text>
+			<Text Lang="it">Attesa colonna di booleani, trovata invece colonna del tipo '{0}'.</Text>
+			<Text Lang="ru">Ожидалась колонка Булевых, а была обнаружена колонка типа '{0}'.</Text>
+			<Text Lang="de">Boolesche Spalte erwartet, vorgefunden wurde aber Spaltentyp '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.MissingDefaultHandler">
+			<Context/>
+			<Text Lang="en">No default handler for data type '{0}' found.</Text>
+			<Text Lang="uk">Для типу даних '{0}' немає обробника за замовчуванням.</Text>
+			<Text Lang="fr">Aucun gestionnaire par défaut pour le type de données '{0}' n'a été trouvé.</Text>
+			<Text Lang="pt-BR">Nenhum manipulador padrão para tipo de dado '{0}' encontrado.</Text>
+			<Text Lang="zh">找不到数据类型'{0}'的默认处理程序。</Text>
+			<Text Lang="ko">데이터 유형 '{0}'의 기본 핸들러를 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Nie znaleziono domyślnej obsługi dla typu danych '{0}'.</Text>
+			<Text Lang="es">No se ha encontrado handler para el tipo de dato '{0}'.</Text>
+			<Text Lang="it">Impossibile trovare un gestore di default per il tipo di dato '{0}'.</Text>
+			<Text Lang="ru">Для типа данных '{0}' нет обработчика по умолчанию.</Text>
+			<Text Lang="de">Kein Standard-Handler für Datentyp '{0}' gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.RegionUnderrun">
+			<Context/>
+			<Text Lang="en">Region underrun while searching for open region for: '{0}'.</Text>
+			<Text Lang="uk">Під час пошуку відкритої області для: '{0}', виявлено недобір областей.</Text>
+			<Text Lang="fr">Région sous-exécutée lors de la recherche d'une région ouverte pour: '{0}'.</Text>
+			<Text Lang="pt-BR">Região insuficiente enquanto procurando por região aberta para: '{0}'.</Text>
+			<Text Lang="zh">在为以下搜索开放区域时发生区域不足： '{0}'。</Text>
+			<Text Lang="ko">Region underrun에서 다음에 대해 열린 영역을 검색하는 중: '{0}'.</Text>
+			<Text Lang="pl">Region wyjechał podczas szukania w otwartym regonie: '{0}'.</Text>
+			<Text Lang="es">Se han encontrado regiones de las esperadas al buscar la región abierta de: '{0}'.</Text>
+			<Text Lang="it">Errore di Region underrun durante la ricerca di una zona aperta per: '{0}'.</Text>
+			<Text Lang="ru">Во время поиска открытой области для: '{0}', был обнаружен недобор областей.</Text>
+			<Text Lang="de">Regionen-Unterlauf während der Suche nach einer offenen Region für: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.MoreOpeningThanClosingRegions">
+			<Context/>
+			<Text Lang="en">There are more opening than closing regions.</Text>
+			<Text Lang="uk">Більше відкритих ніж закритих областей.</Text>
+			<Text Lang="fr">Il y a plus de régions d'ouverture que de fermeture.</Text>
+			<Text Lang="pt-BR">Há mais aberturas que regiões fechadas.</Text>
+			<Text Lang="zh">开放区域多于封闭区域。</Text>
+			<Text Lang="ko">closing regions을 닫은 것보다 더 많은 열려있습니다.</Text>
+			<Text Lang="pl">Jest więcej regionów otwierających niż zamykających.</Text>
+			<Text Lang="es">Hay más regiones de apertura que de cierre.</Text>
+			<Text Lang="it">Ci sono più zone di apertura che di chiusura.</Text>
+			<Text Lang="ru">Больше открытых чем закрытых областей.</Text>
+			<Text Lang="de">Es gibt mehr öffnende als schließende Regionen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedEofReadingDelimitedString">
+			<Context/>
+			<Text Lang="en">Unexpected EOF (end of file) while reading a delimited string.</Text>
+			<Text Lang="uk">Виявлено непередбачений EOF (кінець файлу), під час читання рядка з роздільниками.</Text>
+			<Text Lang="fr">FDF inattendu (fin de fichier) lors de la lecture d'une chaîne délimitée.</Text>
+			<Text Lang="pt-BR">EOF (fim de arquivo), inesperado enquanto lendo uma cadeia delimitada.</Text>
+			<Text Lang="zh">读取分隔字符串时出现意外的EOF（文件结尾）。</Text>
+			<Text Lang="ko">구분된 문자열을 읽는 동안 예기치 않은 EOP(파일 끝)가 발생했습니다.</Text>
+			<Text Lang="pl">Nieoczekiwane zakończenie pliku (EOF) podczas czytania rozdzielonej zmiennej tekstowej.</Text>
+			<Text Lang="es">EOF (fin de fichero) no esperado al leer una cadena delimitada.</Text>
+			<Text Lang="it">Inatteso EOF (fine di file) durante la lettura di una stringa limitata.</Text>
+			<Text Lang="ru">Обнаружен непредвиденный EOF (конец файла), во время чтения строки с разделителями.</Text>
+			<Text Lang="de">Unerwartetes EOF (end of file) beim Lesen eines begrenzten Strings.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidNumber">
+			<Context/>
+			<Text Lang="en">Invalid number found.</Text>
+			<Text Lang="uk">Знайдено недійсне число.</Text>
+			<Text Lang="fr">Nombre invalide trouvé.</Text>
+			<Text Lang="pt-BR">Número inválido encontrado.</Text>
+			<Text Lang="zh">找到无效数字。</Text>
+			<Text Lang="ko">잘못된 숫자를 찾았습니다.</Text>
+			<Text Lang="pl">Znaleziono błędny numer.</Text>
+			<Text Lang="es">Se ha encontrado un número no válido:</Text>
+			<Text Lang="it">Trovato un numero non valido.</Text>
+			<Text Lang="ru">Найдено недопустимое число.</Text>
+			<Text Lang="de">Ungültige Zahl gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectingQuotingChar">
+			<Context/>
+			<Text Lang="en">Expecting quoting character '\"'.</Text>
+			<Text Lang="uk">Очікувався обмежувальний символ '\"'.</Text>
+			<Text Lang="fr">Attend le caractère guillemet '\"'.</Text>
+			<Text Lang="pt-BR">Esperando caractere de citação '\"'.</Text>
+			<Text Lang="zh">应为引号字符'\"'。</Text>
+			<Text Lang="ko">문자 '\"'를 인용할 예정입니다.</Text>
+			<Text Lang="pl">Oczekiwano znaku cudzysłowia '\"'.</Text>
+			<Text Lang="es">Se espera un caracter de cita '\"'</Text>
+			<Text Lang="it">Atteso il carattere '\''' per citare.</Text>
+			<Text Lang="ru">Ожидался ограничивающий символ '\"'.</Text>
+			<Text Lang="de">Erwarte Quoting-Zeichen '\"'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnableToParseString">
+			<Context/>
+			<Text Lang="en">Unable to parse a string.</Text>
+			<Text Lang="uk">Неможливо проаналізувати рядок.</Text>
+			<Text Lang="fr">Impossible d'analyser une chaîne.</Text>
+			<Text Lang="pt-BR">Incapaz de analizar uma cadeia.</Text>
+			<Text Lang="zh">无法分析字符串。</Text>
+			<Text Lang="ko">문자열을 구문 분석할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można przeanalizować zmiennej tekstowej.</Text>
+			<Text Lang="es">No se ha podido analizar una cadena.</Text>
+			<Text Lang="it">Impossibile analizzare una stringa.</Text>
+			<Text Lang="ru">Не удаётся разобрать строку.</Text>
+			<Text Lang="de">Kann String nicht parsen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedCommaParsingList">
+			<Context/>
+			<Text Lang="en">Expected ',' but found '{0}' when parsing an element of a list.</Text>
+			<Text Lang="uk">Під час аналізу елемента списку очікувалася ',' а виявлено: '{0]'.</Text>
+			<Text Lang="fr">Attendait ',' mais a trouvé '{0}' lors de l'analyse d'un élément d'une liste.</Text>
+			<Text Lang="pt-BR">Esperado ',' mas encontrou '{0}' quando analizando um elemento de uma lista.</Text>
+			<Text Lang="zh">分析列表元素时应为','，但找到了'{0}'。</Text>
+			<Text Lang="ko">목록의 요소를 구문 분석하는 동안 ','을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano ',', a znaleziono '{0}' podczas analizowania elementu listy.</Text>
+			<Text Lang="es">Se esperaba ',' al analiza un elemento de una lista, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso ',', trovato '{0} durante l'analisi degli elementi di una lista.</Text>
+			<Text Lang="ru">Во время разбора элемента списка ожидалась ',' а был обнаружен: '{0]'.</Text>
+			<Text Lang="de">Beim Parsen eines Listenelements wurde ',' erwartet aber '{0}' vorgefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ClaimedBy.NotAvailableForSingleUser">
+			<Context>Thrown when the "ClaimedBy" function is used in a single-user project</Context>
+			<Text Lang="en">The 'ClaimedBy' function is not available for single-user projects.</Text>
+			<Text Lang="uk">Функція 'Присвоєний' недоступна для однокористувацьких проектів.</Text>
+			<Text Lang="fr">La fonction 'ClaimedBy' n'est pas disponible pour les projets mono-utilisateur.</Text>
+			<Text Lang="pt-BR">A função 'ReivindicadoPor' não está disponível para projeto de usuário-único.</Text>
+			<Text Lang="zh">'ClaimedBy' 函数不适用于个人用户项目。</Text>
+			<Text Lang="ko">단일-사용자 프로젝트의 경우 'ClaimedBy' 기능을 사용할 수 없습니다.</Text>
+			<Text Lang="pl">Funkcja 'ClaimedBy' nie jest dostępna dla projektów pojedynczych użytkowników.</Text>
+			<Text Lang="es">La función 'ClaimedBy' no está disponible para proyectos de un solo usuario.</Text>
+			<Text Lang="it">La funzione 'ClaimedBy' non è utilizzabile in un progetto con un singolo utente.</Text>
+			<Text Lang="ru">Функция 'Присвоен' не доступна для однопользовательских проектов.</Text>
+			<Text Lang="de">Die 'claimedBy' Funktion ist für Single-User Projekte nicht verfügbar.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ClaimedBy.NoParametersFound">
+			<Context>Thrown when the "ClaimedBy" function has a "AnyOf" or "NoneOf" relation and no names or guid of users are given</Context>
+			<Text Lang="en">Expecting user names or user guids, but parameter list is empty.</Text>
+			<Text Lang="uk">Очікувалися імена користувачів або їх GUID, але список параметрів виявився порожнім.</Text>
+			<Text Lang="fr">Attendait les noms d'utilisateur ou les guides utilisateur, mais la liste des paramètres est vide.</Text>
+			<Text Lang="pt-BR">Esperando nomes de usuários ou usuários guids, mas lista de parâmetro está vazia.</Text>
+			<Text Lang="zh">需要用户名或用户GUID，但参数列表为空。</Text>
+			<Text Lang="ko">사용자 이름이나 사용자 guid를 예상했지만 매개 변수 목록이 비어 있습니다.</Text>
+			<Text Lang="pl">Oczekiwano nazw użytkownika lub sieci użytkowników, ale link parametru jest pusty.</Text>
+			<Text Lang="es">Se esperaban nombres de usuarios o GUIDS de usuario, pero la lista de parámetros está vacía.</Text>
+			<Text Lang="it">Atteso nome utente o guid utente, ma la lista dei parametri è vuota.</Text>
+			<Text Lang="ru">Ожидались имена пользователей или их GUID, но список параметров оказался пустым.</Text>
+			<Text Lang="de">Erwarte Benutzernamen oder Benutzer-Guids, aber die Parameterliste ist leer.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ClaimedBy.NoParametersExpected">
+			<Context>Thrown when the "ClaimedBy" function has a "Me", "AnyOne" or "NoOne" relation and there are additional parameters present for the function</Context>
+			<Text Lang="en">The 'Me', 'AnyOne' &amp; 'NoOne' operator do not expect additional parameters, but '{0}' was supplied.</Text>
+			<Text Lang="uk">Оператори 'Me', 'AnyOne' і 'NoOne' не потребують додаткових параметрів, але надано '{0}'.</Text>
+			<Text Lang="fr">Les opérateurs 'Moi', 'N'ImporteQui' et 'Personne' n'attendent pas de paramètres supplémentaires, mais '{0}' a été fourni.</Text>
+			<Text Lang="pt-BR">O operador 'Me', 'AnyOne' &amp; 'NoOne' não espera parâmetros adicionais, mas '{0}' foi suprido.</Text>
+			<Text Lang="zh">Me', 'AnyOne' &amp; 'NoOne'运算符不需要其他参数，但提供了'{0}'。</Text>
+			<Text Lang="ko">Me', 'Evne' 및 'NoOne' 연산자가 추가 매개 변수를 예상하지 않았지만 '{0}'이(가)제공되었습니다.</Text>
+			<Text Lang="pl">Operatory 'Me', 'AnyOne' i 'NoOne' nie wymagają dodatkowych parametrów, ale '{0}' został podany.</Text>
+			<Text Lang="es">Los operadores 'Yo' 'Cualquiera' y 'Nadie' no conllevan parámetros adicionales, pero se ha proporcionado '{0}'.</Text>
+			<Text Lang="it">Gli operatori 'Me', 'AnyOne' e 'NoOne' non usano parametri aggiuntivi, ma '{0}' è stato fornito.</Text>
+			<Text Lang="ru">Операторы 'Me', 'AnyOne'  и 'NoOne' не нуждаются в дополнительных параметрах, но был предоставлен '{0}'.</Text>
+			<Text Lang="de">Der 'Me', 'AnyOne' &amp; 'NoOne' Operator unterstützen keine zusätzlichen Parameter, aber '{0}' wurde gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ClaimedBy.ExpectUserGuid">
+			<Context>Thrown when the "ClaimedBy" function expects a user-GUID but found something else</Context>
+			<Text Lang="en">Expecting a user guid, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувався GUID користувача, а знайдено '{0}'.</Text>
+			<Text Lang="fr">Attendait un guide utilisateur, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando um guid de usuário, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">需要用户GUID，但找到了'{0}'。</Text>
+			<Text Lang="ko">사용자 guid를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano sieci użytkowników, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba una GUID de usuario, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un guid utente, trovato invece '{0}'</Text>
+			<Text Lang="ru">Ожидался GUID пользователя, а был найден '{0}'.</Text>
+			<Text Lang="de">Erwarte eine Benutzer-Guid, vorgefunden wurde aber '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ClaimedBy.ExpectUserNameOrGuid">
+			<Context>Thrown when the "ClaimedBy" function expectes a user-GUID or user display name but found something else</Context>
+			<Text Lang="en">Expecting either a user name or a user guid, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувалося ім'я користувача або його GUID, а знайдено '{0}'.</Text>
+			<Text Lang="fr">Attendait soit un nom d'utilisateur, soit un guide utilisateur, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando um nome de usuário ou um usuário guid, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">需要用户名或用户用户GUID，但找到了'{0}'。</Text>
+			<Text Lang="ko">사용자 이름 또는 사용자 guid를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano nazwy użytkownika lub sieci użytkowników, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un nombre o una GUID de usuario, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un nome utente o un guid utente, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось имя пользователя либо его GUID, а был найден '{0}'.</Text>
+			<Text Lang="de">Erwarte entweder einen Benutzernamen oder eine Benutzer-Guid, vorgefunden wurde aber '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.HasConflict.ExpectIdentifier">
+			<Context>Thrown when the "HasConflict" function requires an identifier (conflict-type-name) but found something else</Context>
+			<Text Lang="en">Expecting a conflict-type name, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувалася назву типу конфлікту, але знайдено '{0}'.</Text>
+			<Text Lang="fr">Attend un nom de type conflit mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando um nome de tipo-conflito, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">需要冲突类型名称，但找到了'{0}'。</Text>
+			<Text Lang="ko">충돌-유형 이름을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano nazwy konfliktu typu, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un nombre de tipo de conflicto, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso nome di un tipo di conflitto, trovato invece '{0}'.</Text>
+			<Text Lang="de">Erwarte den technischen Namen einer Konflikt-Kategorie, vorgefunden wurde aber '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.HasConflict.InvalidValue">
+			<Context>Thrown when the "HasConflict" has found an unknown conflict-type-name (type names / valid values must not be localized!)</Context>
+			<Text Lang="en"><![CDATA[The given conflict-type name '{0}' is not known. Valid values are:
+  References
+  FeatureValues
+  TechnicalNames
+  Asset
+]]></Text>
+			<Text Lang="uk"><![CDATA[Дана назва типу конфлікту '{0}' невідома. Дійсні значення:
+  References
+  FeatureValues
+  TechnicalNames
+  Asset]]></Text>
+			<Text Lang="fr"><![CDATA[Le nom de type de conflit donné '{0}' n'est pas connu. Les valeurs valides sont :
+  Références
+  Valeurs des Fonctionnalités
+  Noms Techniques
+  Atout]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O nome-conflito dado '{0}' não é conhecido. Valores válidos são:
+Referências
+ValoresDeUtilidades
+NomesTécnicos
+Recurso]]></Text>
+			<Text Lang="zh"><![CDATA[给定的冲突类型 '{0}' 未知。有效值为：
+  References
+  FeatureValues
+  TechnicalNames
+  Asset
+]]></Text>
+			<Text Lang="ko"><![CDATA[지정한 충돌-유형 이름 '{0}'을(를) 알 수 없습니다. 유효한 값은 다음과 같음:
+참조
+페더레일
+테크니 카메스
+에셋]]></Text>
+			<Text Lang="pl"><![CDATA[Podana nazwa konfliktu typu '{0}' nie jest znana. Poprawne wartości to:
+  References
+  FeatureValues
+  TechnicalNames
+  Asset]]></Text>
+			<Text Lang="es"><![CDATA[El nombre de tipo de conflicto especificado '{0}' es desconocido. Los valores válidos son:
+  Referencias
+  ValoresdeCaracterística
+  NombresTécnicos
+  Recurso
+]]></Text>
+			<Text Lang="it"><![CDATA[Il nome del tipo di conflitto '{0}'  dato non è conosciuto. I valori validi sono:
+  Reference
+  FeatureValues
+  TechnicalNames
+  Asset]]></Text>
+			<Text Lang="de"><![CDATA[Die gefundene Konflikt-Kategorie '{0}' ist unbekannt. Gültige Werte sind:
+  References
+  FeatureValues
+  TechnicalNames
+  Asset
+]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Compare.LiteralTextExpected">
+			<Context>Thrown when the "Compare" functions requires a text string, but found something else</Context>
+			<Text Lang="en">Expecting a literal string, but found '{0}'.</Text>
+			<Text Lang="uk">Очікувався літеральний рядок, а знайдено: '{0}'.</Text>
+			<Text Lang="fr">Attendait une chaîne littérale, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando uma cadeia literal, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">需要文本字符串，但找到了'{0}'。</Text>
+			<Text Lang="ko">문자열을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano ciągu liczb, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba una cadena literal, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Attesa stringa di caratteri, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалась символьная строка, а была найдена: '{0}'.</Text>
+			<Text Lang="de">Erwarte ein String-Literal, aber vorgefunden wurde '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Compare.LiteralOptionTextExpected">
+			<Context>Thrown when the "Compare" function found something else where the additional option string was expeceted</Context>
+			<Text Lang="en">Additional option for text compares requires them to be written as literal string, but found '{0}'.</Text>
+			<Text Lang="uk">Додаткова опція для порівняння текстів вимагає, щоб вони записувалися у вигляді літерального рядка, замість якого знайдено '{0}'.</Text>
+			<Text Lang="fr">Une option supplémentaire pour la comparaison de texte nécessite qu'ils soient écrits sous forme de chaîne littérale, mais a trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Opção adicional para comparações de texto requere que sejam escritos como cadeia literal, mas encontrou '{0}'.</Text>
+			<Text Lang="zh">文本比较的附加选项要求将它们作为文本字符串写入，但找到了'{0}'。</Text>
+			<Text Lang="ko">텍스트 비교를 위한 추가 옵션을 사용하려면 문자열로 작성해야 하지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Dodatkowa opcja dla porównania tekstu wymaga zapisania ich w ciągu liczbowym, ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Una opción adicional para comparaciones de textos requiere que estén escritos como cadenas literales, pero se han encontrado '{0}'.</Text>
+			<Text Lang="it">Le opzioni aggiuntive per un confronto testuale sono richieste in formato di stringa di caratteri, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Дополнительная опция для сравнения текстов требует, чтобы они были записаны в виде символьной строки, вместо которой был найден '{0}'.</Text>
+			<Text Lang="de">Zusätzliche Option für Textvergleiche verlangt, dass diese als String-Literal angegeben werden. Vorgefunden wurde aber '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Compare.InvalidDataType">
+			<Context>Thrown when the "Compare" function got a property name whose data-type is not supported by compare (only Text, ObjectRef, ObjectList are supported) Don't localize "Compare"!</Context>
+			<Text Lang="en">Invalid data type '{0}' found in 'Compare'.</Text>
+			<Text Lang="uk">У функції 'Compare' знайдено невідповідний тип даних '{0}'.</Text>
+			<Text Lang="fr">Type de données non valide '{0}' trouvé dans 'Comparer'.</Text>
+			<Text Lang="pt-BR">Tipo de dado inválido '{0}' encontrado em 'Comparar'.</Text>
+			<Text Lang="zh">Compare' 中发现无效的数据类型 '{0}' 。</Text>
+			<Text Lang="ko">비교'에서 잘못된 데이터 유형 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Niepoprawny typ danych '{0}' znaleziono w 'Compare'.</Text>
+			<Text Lang="es">Se ha encontrado un tipo de dato inválido en 'Compare'</Text>
+			<Text Lang="it">Trovato un tipo di dato '{0}' non valido nella funzione 'Compare'.</Text>
+			<Text Lang="ru">В функции 'Compare' был найден неподходящий тип данных '{0}'.</Text>
+			<Text Lang="de">Ungültiger Datentyp '{0}' in Funktion 'Compare' vorgefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Feature.IdentifierExpected">
+			<Context>Thrown when the "Feature" function expected a technical name of a feature but found something else</Context>
+			<Text Lang="en">A feature technical name was expected, but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувалась технічна назва, а знайдено '{0}'.</Text>
+			<Text Lang="fr">Un nom technique de fonctionnalité était attendu, mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">Um nome técnico de utilidade foi esperado, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">需要功能技术名称，但找到了'{0}'。</Text>
+			<Text Lang="ko">기능 기술 이름을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano technicznej nazwy opcji, ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un nombre técnico, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un nome tecnico di caratteristica, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось техническое имя, а было найдено '{0}'.</Text>
+			<Text Lang="de">Der technische Name eines Features wurde erwartet, aber '{0}' wurde gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Feature.UnknownFeature">
+			<Context>Thrown when the "Feature" function did not find the named feature</Context>
+			<Text Lang="en">The supplied feature name '{0}' is unknown or not used in any template.</Text>
+			<Text Lang="uk">Наведена назва функції '{0}' невідома або не використовується в жодному шаблоні.</Text>
+			<Text Lang="fr">Le nom de fonctionnalité fourni '{0}' est inconnu ou n'est utilisé dans aucun modèle.</Text>
+			<Text Lang="pt-BR">Nome de utilidade suprido '{0}' é desconhecido ou não usado em nenhum módulo.</Text>
+			<Text Lang="zh">提供的功能名 '{0}' 未知或未在任何模板中使用。</Text>
+			<Text Lang="ko">제공된 기능 이름 '{0}'은(는) 알 수 없거나 템플릿에 사용되지 않습니다.</Text>
+			<Text Lang="pl">Podana nazwa opcji '{0}' jest nieznana lub nie została użyta w żadnym szablonie.,</Text>
+			<Text Lang="es">El nombre de característica especificado '{0}' es desconocido o no se usa en ninguna plantilla.</Text>
+			<Text Lang="it">Il nome di caratteristica '{0}' fornito è sconosciuto o non usato in nessun template.</Text>
+			<Text Lang="ru">Предоставленное название особенности '{0}' неизвестно.</Text>
+			<Text Lang="de">Der angegebene Feature-Name '{0}' ist unbekannt oder noch von keiner Vorlage verwendet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Feature.MissingNames">
+			<Context>Thrown when the "Feature" function when there are no feature names given in the parameter list</Context>
+			<Text Lang="en">At least one feature's technical name is expected.</Text>
+			<Text Lang="uk">Очікується як мінімум одна технічна назва функції.</Text>
+			<Text Lang="fr">Au moins un nom technique de fonctionnalité est attendu.</Text>
+			<Text Lang="pt-BR">Pelo menos um nome técnico de utilidade é esperado.</Text>
+			<Text Lang="zh">至少需要有一个特性的技术名称。</Text>
+			<Text Lang="ko">적어도 하나의 기능의 기술 이름이 필요합니다.</Text>
+			<Text Lang="pl">Oczekuje się przynajmniej jednej technicznej nazwy opcji.</Text>
+			<Text Lang="es">Se espera al menos un nombre técnico de característica.</Text>
+			<Text Lang="it">Atteso almeno un nome tecnico di caratteristica.</Text>
+			<Text Lang="ru">Ожидается как минимум одно техническое имя особенности.</Text>
+			<Text Lang="de">Erwarte mindestens einen technischen Namen eines Features.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Feature.UnknownProperty">
+			<Context/>
+			<Text Lang="en">The property '{1}' does not exist in feature '{0}'.</Text>
+			<Text Lang="uk">Властивість '{0}' не існує у функції '{1}'.</Text>
+			<Text Lang="fr">La propriété '{1}' n'existe pas dans la fonctionnalité '{0}'.</Text>
+			<Text Lang="pt-BR">A propriedade '{1}' não existe em utilidade '{0}'.</Text>
+			<Text Lang="zh">属性'{1}'在功能'{0}'中不存在。</Text>
+			<Text Lang="ko">{1}' 속성이 '{0}' 기능에 없습니다.</Text>
+			<Text Lang="pl">Właściwość '{1}' nie istnieje w opcji '{0}'.</Text>
+			<Text Lang="es">La propiedad '{1}' no existe en la característica '{0}'.</Text>
+			<Text Lang="it">Attributo '{1}' non esiste nella caratteristica '{0}'.</Text>
+			<Text Lang="ru">В особенности '{0}' не существует  свойства '{1}'.</Text>
+			<Text Lang="de">Die Eigenschaft '{1}' existiert nicht in Feature '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Template.UnknownName">
+			<Context/>
+			<Text Lang="en">No template named '{0}' can be found.</Text>
+			<Text Lang="uk">Неможливо знайти шаблон з назваою '{0}'.</Text>
+			<Text Lang="fr">Aucun modèle nommé '{0}' n'a pu être trouvé.</Text>
+			<Text Lang="pt-BR">Nenhum módulo nomeado '{0}' pôde ser encontrado.</Text>
+			<Text Lang="zh">找不到名为'{0}'的模板。</Text>
+			<Text Lang="ko">이름이 '{0}'인 템플릿을 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Szablon o nazwie '{0}' nie został odnaleziony.</Text>
+			<Text Lang="es">No se ha encontrado ninguna plantilla con el nombre '{0}'.</Text>
+			<Text Lang="it">Impossibile trovare un template di nome '{0}'.</Text>
+			<Text Lang="ru">Не удается найти шаблон с именем '{0}'.</Text>
+			<Text Lang="de">Konnte keine Vorlage namens '{0}' finden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Template.MissingNames">
+			<Context/>
+			<Text Lang="en">At least one object template's technical name is expected.</Text>
+			<Text Lang="uk">Очікується технічна назва як мінімум одного шаблону.</Text>
+			<Text Lang="fr">Au moins un nom technique de modèle d'objet est attendu.</Text>
+			<Text Lang="pt-BR">Pelo menos um nome técnico de módulo é esperado.</Text>
+			<Text Lang="zh">至少需要有一个对象模板的技术名称。</Text>
+			<Text Lang="ko">하나 이상의 객체 템플릿 기술 이름이 필요합니다.</Text>
+			<Text Lang="pl">Oczekiwano przynajmniej jednej technicznej nazwy obiektu szablonu.</Text>
+			<Text Lang="es">Se espera al menos un nombre técnico de plantilla de objeto.</Text>
+			<Text Lang="it">Atteso almeno un nome tecnico di un oggetto template.</Text>
+			<Text Lang="ru">Ожидается техническое имя как минимум одного шаблона.</Text>
+			<Text Lang="de">Erwarte mindestens einen technischen Namen einer Objekt-Vorlage.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ObjectType.NameExpected">
+			<Context>Thrown when the "ObjectType" function expectecs a technical name but found something else</Context>
+			<Text Lang="en">A type name was expected, but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувалася назва типу, а знайдено '{0}'.</Text>
+			<Text Lang="fr">Le nom d'un type était attendu mais nous avons trouvé '{0}'.</Text>
+			<Text Lang="pt-BR">Um nome de tipo foi esperado, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">需要类型名，但找到了'{0}'。</Text>
+			<Text Lang="ko">유형 이름을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano nazwy typu, ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un nombre de tipo, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso il nome di un tipo, trovato invece '{0}'.</Text>
+			<Text Lang="ru">Ожидалось название типа, а было найдено '{0}'.</Text>
+			<Text Lang="de">Erwarte einen Typenamen, aber vorgefunden wurde '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ObjectType.UnknownName">
+			<Context>Thrown when the "ObjectType" function found an identifier this is not a known type name</Context>
+			<Text Lang="en"><![CDATA[The identifier '{0}' is no known object type.
+Valid values:
+{1}.]]></Text>
+			<Text Lang="uk"><![CDATA[Ідентифікатор '{0}' не є відомим типом об'єкта.
+Допустимі значення:
+{1}. ]]></Text>
+			<Text Lang="fr"><![CDATA[L'identifiant '{0}' n'est pas un type d'objet connu.
+Valeurs valides :
+{1}.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O identificador '{0}' não é um tipo de objeto conhecido.
+Valores válidos:
+{1}.]]></Text>
+			<Text Lang="zh"><![CDATA[标识符'{0}'不是已知的对象类型。
+有效值：
+{1}。]]></Text>
+			<Text Lang="ko"><![CDATA[{0}' 식별자는 알려진 객체 유형이 아닙니다.
+유효한 값:
+{1}.]]></Text>
+			<Text Lang="pl"><![CDATA[Identyfikator '{0}' nie jest znanym typem obiektu.
+Prawidłowe wartości:
+{1}.]]></Text>
+			<Text Lang="es"><![CDATA[El identificador '{0}' no es un tipo de objeto conocido.
+Los valores válidos son:
+{1}.]]></Text>
+			<Text Lang="it"><![CDATA[Il parametro '{0}' è un oggetto di tipo sconosciuto.
+Valori validi:
+{1}.]]></Text>
+			<Text Lang="ru"><![CDATA[Идентификатор '{0}' не является действительным типом объекта.
+Допустимые значения:
+{1}.]]></Text>
+			<Text Lang="de"><![CDATA[Der Bezeichner '{0}' ist kein bekannter Objekttyp.
+Gültige Werte:
+{1}.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ObjectType.MissingNames">
+			<Context>Thrown when the "Feature" function when there are no feature names given in the parameter list</Context>
+			<Text Lang="en">At least one type name is expected</Text>
+			<Text Lang="uk">Очікується як мінімум одна назва  типу.</Text>
+			<Text Lang="fr">Au moins un nom de type est attendu</Text>
+			<Text Lang="pt-BR">Pelo menos um nome de tipo é esperado</Text>
+			<Text Lang="zh">应至少输入一个类型名称。</Text>
+			<Text Lang="ko">하나 이상의 유형 이름이 필요합니다.</Text>
+			<Text Lang="pl">Oczekuje się przynajmniej jednej nazwy typu</Text>
+			<Text Lang="es">Se espera al menos un nombre de tipo.</Text>
+			<Text Lang="it">Atteso il nome di almeno un tipo.</Text>
+			<Text Lang="ru">Ожидается как минимум одно имя типа.</Text>
+			<Text Lang="de">Erwarte mindestens einen Typnamen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Bool.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for a boolean data type (e.g. >=)</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported for Boolean properties.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує значень boolean.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge pour les propriétés booléennes.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por propriedades boolean.</Text>
+			<Text Lang="zh">布尔属性不支持提供的运算符'{0}'。</Text>
+			<Text Lang="ko">Boolean 속성에는 제공된 연산자 '{0}이(가) 지원되지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' nie jest obsługiwany dla właściwości logicznych.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado en propiedades booleanas.</Text>
+			<Text Lang="it">Operatore '{0}' fornito non supportato per attributi di tipo booleano.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается для Булевых значений.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht für boolesche Eigenschaften unterstützt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Bool.InvalidValue">
+			<Context>Thrown when a boolean property is not compared to 'true', 'false' or an integer value (0=false, true otherwise)</Context>
+			<Text Lang="en">Expected Boolean literal (i.e. true, false) or an integer value, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувавася літеральний bolean (тобто true, false) або ціле значення, а знайдено: '{0}'.</Text>
+			<Text Lang="fr">Littéral booléen attendu (c'est-à-dire vrai, faux) ou une valeur entière, mais trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado Boolean literal (exemplo true,false) or valor integral, mas encontrado: '{0}'.</Text>
+			<Text Lang="zh">应为布尔文本(即true, false)或整数值，但找到了'{0}'。</Text>
+			<Text Lang="ko">Boolean 리터럴(즉, true, false) 또는 정수 값을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano słownej wartości logicznej (czyli true lub false) lub wartości numerycznej, ale znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperaba un literal booleano (true, false) o un valor entero, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Atteso un booleano in formato di parola (vero o falso) o di valore intero, trovato invece: '{0}'.</Text>
+			<Text Lang="ru">Ожидалось Булево (т.е. true, false) или целое значение, а был найден: '{0}'.</Text>
+			<Text Lang="de">Erwarte booleschen Wert (d.h. true, false) oder einen Integer-Wert, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Color.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for a color data type (e.g. >=) (currently only == and != are supported)</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported for color properties.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує властивості кольору.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge pour les propriétés de couleur.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por propriedades de cores.</Text>
+			<Text Lang="zh">颜色属性不支持提供的运算符'{0}'。</Text>
+			<Text Lang="ko">제공된 연산자 '{0}'은(는) 색상 속성을 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' nie jest obsługiwany dla wartości koloru.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado en propiedades de color.</Text>
+			<Text Lang="it">Operatore '{0}' fornito non supportato per attributi di tipo colore.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается свойствами цвета.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht unterstüzt für Eigenschaften vom Typ Farbe.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Color.UnknownColorName">
+			<Context>Thrown when a color is compared to a named color like 'yellow' but the name is unknown</Context>
+			<Text Lang="en">'{0}' is not a known color.</Text>
+			<Text Lang="uk">{0}' є невідомим кольором.</Text>
+			<Text Lang="fr">{0}' n'est pas une couleur connue.</Text>
+			<Text Lang="pt-BR">{0}' não é uma cor conhecida.</Text>
+			<Text Lang="zh">{0}'不是已知颜色。</Text>
+			<Text Lang="ko">{0}'은(는) 알려진 색상이 아닙니다.</Text>
+			<Text Lang="pl">{0}' nie jest znanym kolorem.</Text>
+			<Text Lang="es">"{0}" no es un color conocido.</Text>
+			<Text Lang="it">{0}' non è un colore conosciuto.</Text>
+			<Text Lang="ru">{0}' является неизвестным цветом.</Text>
+			<Text Lang="de">'{0}' ist keine bekannte Farbe.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Color.UnexpectedToken">
+			<Context>Thrown when a a color data type does not have a color name or value in for #[AA]RRGGBB</Context>
+			<Text Lang="en">Expected color value or known color name, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувалося значення кольору або відома назва кольору, а знайдено: '{0}'.</Text>
+			<Text Lang="fr">Valeur de couleur ou couleur connue attendue mais nous avons trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">Valor de cor esperado ou nome de cor conhecido, mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">需要颜色值或已知的颜色名称，但找到了'{0}'。</Text>
+			<Text Lang="ko">색상 값 또는 알려진 색상 이름을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano wartości koloru lub znanej nazwy koloru, ale znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperaba un valor de color o un nombre de color conocido, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Atteso un valore di colore o un nome di colore conosciuto, ma trovato: '{0}'.</Text>
+			<Text Lang="ru">Ожидалось значение цвета или известное название цвета, а был найден: '{0}'.</Text>
+			<Text Lang="de">Erwarte Farbwert oder bekannten Farbnamen, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.DateTime.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for a date time data type.</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported for date/time properties.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує для властивостей дати/часу.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge pour les propriétés de date/heure.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por propriedades de tempo/data.</Text>
+			<Text Lang="zh">日期/时间属性不支持提供的运算符'{0}'。</Text>
+			<Text Lang="ko">제공된 연산자 '{0}'은(는) 날짜/시간 속성을 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' nie jest obsługiwany dla właściwości daty/czasu.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado en propiedades de fecha/hora.</Text>
+			<Text Lang="it">Operatore '{0}' fornito non supportato per attributi di tipo data/ora.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается для свойств даты/времени.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht unterstüzt für Eigenschaften vom Typ Datum/Zeit.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Number.InvalidValue">
+			<Context>Thrown when a number value is expected but not supplied</Context>
+			<Text Lang="en">Expected a number, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувалося число, а знайдено '{0}'.</Text>
+			<Text Lang="fr">Un nombre était attendu mais nous avons trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado um número, mas achou: '{0}'.</Text>
+			<Text Lang="zh">应为数字，但找到了'{0}'。</Text>
+			<Text Lang="ko">숫자를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano numeru, a znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un número, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Atteso un numero, trovato invece: '{0}'.</Text>
+			<Text Lang="ru">Ожидалось число, а была найдена '{0}'.</Text>
+			<Text Lang="de">Erwarte eine Zahl, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Number.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for a number data type.</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported for number properties.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує числові властивості.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge pour les propriétés de nombre.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por propriedades de número.</Text>
+			<Text Lang="zh">数字属性不支持提供的运算符'{0}'。</Text>
+			<Text Lang="ko">제공된 연산자 '{0}'은(는) 숫자 속성을 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' nie jest obsługiwany przez właściwości numeryczne.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado en propiedades de número.</Text>
+			<Text Lang="it">Operatore '{0}' fornito non supportato per attributi di tipo numerico.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается числовыми свойствами.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht unterstüzt für Eigenschaften vom Typ Zahl.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Number.IllegalIntegerTypeSpecifier">
+			<Context/>
+			<Text Lang="en">Illegal number type specifier for integer number.</Text>
+			<Text Lang="uk">Незаконний специфікатор типу для цілого(integer) числа.</Text>
+			<Text Lang="fr">Spécificateur de type de numéro illégal pour le nombre entier.</Text>
+			<Text Lang="pt-BR">Tipo de especificador de número ilegal por número integral.</Text>
+			<Text Lang="zh">整数的数字类型说明符非法。</Text>
+			<Text Lang="ko">올바르지 않은 숫자 형식의 정수 지정자입니다.</Text>
+			<Text Lang="pl">Niepoprawny typ numeru określony dla liczby całkowitej.</Text>
+			<Text Lang="es">Especificador de tipo de número ilegal para números enteros.</Text>
+			<Text Lang="it">Indicatore del tipo di numero non valido per un numero intero.</Text>
+			<Text Lang="ru">Недопустимый описатель типа для целого числа.</Text>
+			<Text Lang="de">Unerlaubter Zahlentyp-Spezifizierer für Integer-Zahl.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Number.IllegalHexNumber">
+			<Context/>
+			<Text Lang="en">Illegal hexadecimal number. At least one hex-digit is required.</Text>
+			<Text Lang="uk">Неприпустиме шістнадцяткове число. необхідна як мінімум одна шістнадцяткова цифра.</Text>
+			<Text Lang="fr">Nombre hexadécimal illégal. Au moins un chiffre hexadécimal est requis.</Text>
+			<Text Lang="pt-BR">Numero hexadecimal ilegal. Pelo menos um hexa-dígito é necessário.</Text>
+			<Text Lang="zh">非法的十六进制数。至少需要一个十六进制数字。</Text>
+			<Text Lang="ko">올바르지 않은 16진수 숫자입니다. 최소한 6자리가 필요하다.</Text>
+			<Text Lang="pl">Niepoprawna liczba szesnastkowa. Wymagana jest co najmniej wartość jednocyfrowa.</Text>
+			<Text Lang="es">Número hexadecimal ilegal Se requiere al menos un dígito hexadecimal.</Text>
+			<Text Lang="it">Numero esadecimale non valido. Richiesta almeno una cifra esadecimale.</Text>
+			<Text Lang="ru">Недопустимое шестнадцатеричное число. Должна присутствовать как минимум одна шестнадцатеричная цифра.</Text>
+			<Text Lang="de">Ungültige hexadezimale Zahl. Mindestens ein Hex-Digit wird benötigt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Date.InvalidValue">
+			<Context>Thrown when date value is expected but not supplied.</Context>
+			<Text Lang="en">Expected a tick count or a literal string that could be parsed as ISO date, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувалася кількість галочок або літеральний рядок символів, що можна проаналізувати як ISO дату, а знайдено: '{0}'.</Text>
+			<Text Lang="fr">Attendait un nombre de ticks ou une chaîne littérale qui pourrait être analysée comme date ISO, mais a trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">Esperado uma contagem tique-taque ou uma cadeia literal que pudesse ser analisáda como data ISO, mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">应输入可分析为ISO日期的刻度计数或文本字符串，但找到了'{0}'。</Text>
+			<Text Lang="ko">체크 표시나 ISO날짜로 구문 분석할 수 있는 리터럴 문자열을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano liczby cyklów lub ciągu znaków, które mogłyby być przeanalizowane jako daty ISO, ale znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperaba un contador de tics o una cadena literal susceptible de ser analizada como fecha ISO, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Atteso un TickCount o una stringa di caratteri che possa essere interpretata come una data ISO, trovato invece: '{0}'.</Text>
+			<Text Lang="ru">Ожидался счетчик тактов или строка символов, которая могла быть разобрана как ISO дата, а был найден: '{0}'.</Text>
+			<Text Lang="de">Erwarte eine Tick-Anzahl oder ein String-Literal im ISO-Datumsformat. Vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Enum.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for an enum data type.</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported for enumeration properties.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує властивості перелічування.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge pour les propriétés d'énumération.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por propriedades de enumeração.</Text>
+			<Text Lang="zh">枚举属性不支持提供的运算符'{0}'。</Text>
+			<Text Lang="ko">제공된 연산자 '{0}'은(는) enumeration 속성을 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' nie jest obsługiwany dla właściwości wyliczenia.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado en propiedades de enumeración.</Text>
+			<Text Lang="it">L'operatore '{0}' non è supportato per gli attributi dell'enumeratore.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается свойствами перечисления.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht unterstüzt für Aufzählungs-Eigenschaften.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Enum.UnknownName">
+			<Context>Thrown when an unknown value was supplied for an enumn property.</Context>
+			<Text Lang="en"><![CDATA[The values for this enumeration type do not contain the supplied name '{0}'.
+Valid values:
+{1}]]></Text>
+			<Text Lang="uk"><![CDATA[Значення цього типу перелічування не містять наданої назви '{0}'.
+Допустимі значення:
+{1} ]]></Text>
+			<Text Lang="fr"><![CDATA[Les valeurs de ce type d'énumération ne contiennent pas le nom fourni '{0}'.
+Valeurs valides :
+{1}]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Os valores para este tipo de enumeração não contem o número suprido '{0}'.
+Valores válidos:
+{1}]]></Text>
+			<Text Lang="zh"><![CDATA[此枚举类型的值不包含提供的名称'{0}'。
+有效值：
+{1}]]></Text>
+			<Text Lang="ko"><![CDATA[이 enumeration 유형의 값에는 제공된 이름 '{0}'이(가) 없습니다.
+유효한 값:
+{1}]]></Text>
+			<Text Lang="pl"><![CDATA[Wartości dla tego typu wyliczenia nie zawierają podanej nazwy '{0}'. Poprawne wartości:
+{1}]]></Text>
+			<Text Lang="es"><![CDATA[Los valores para este tipo de enumeración no contienen el nombre especificado '{0}'.
+Los valores válidos son:
+{1}]]></Text>
+			<Text Lang="it"><![CDATA[I valori di questo enumeratore non contengono il nome fornito '{0}'.
+Valori validi:
+{1}]]></Text>
+			<Text Lang="ru"><![CDATA[Значения этого типа перечисления не содержат предоставленного имени '{0}'. 
+Допустимые значения:
+{1}]]></Text>
+			<Text Lang="de"><![CDATA[Die Werte dieses Aufzählungstyps enthalten nicht den angegebenen Namen '{0}'.
+Gültige Werte:
+{1}]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Enum.InvalidValue">
+			<Context>Thrown when enum value is expected but not supplied.</Context>
+			<Text Lang="en">Expected numeric value or technical name for enumeration value, but found: '{0}'.</Text>
+			<Text Lang="uk">Очікувалось чисельне значення або технічна назва для значення перелічування, а знайдено: '{0}'.</Text>
+			<Text Lang="fr">Valeur numérique ou nom technique attendu pour la valeur d'énumération, mais a trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">Valor numérico esperado ou valor de enumeração para nome técnico, mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">枚举值需要数字值或技术名称，但找到： '{0}'。</Text>
+			<Text Lang="ko">enumeration 값에 숫자 값 또는 기술 이름을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano numerycznej wartości lub technicznej nazwy dla wartości wyliczenia, ale znaleziono: '{0}'.</Text>
+			<Text Lang="es">Se esperaba un valor numéricos un nombre técnico para el valor de enumeración, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Atteso un valore numerico o un nome tecnico come valore dell'enumeratore, trovato invece: '{0}'.</Text>
+			<Text Lang="ru">Ожидалось численное значение или техническое имя для значения перечисления, а был найден: '{0}'.</Text>
+			<Text Lang="de">Erwarte numerischen Wert oder technischen Namen für Aufzählungswert, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.Slot.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for a reference slot data type.</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported for slot properties.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує властивості слота.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge pour les propriétés de registres.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por propriedades de abertura.</Text>
+			<Text Lang="zh">插槽属性不支持提供的运算符 '{0}' 。</Text>
+			<Text Lang="ko">제공된 연산자 '{0}'은(는) 슬롯 속성을 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' jest nieobsługiwany dla właściwości slotów.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado en propiedades de ranura.</Text>
+			<Text Lang="it">L'operatore '{0}' fornito non è supportato dalle proprietà del campo.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается свойствами слота.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht unterstüzt für Eigenschaften vom Typ Slot.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.TextCompare.UnsupportedRelation">
+			<Context>Thrown when an unsupported relation operator was found for TextCompare function.</Context>
+			<Text Lang="en">The supplied operator '{0}' is not supported by the TextCompare function.</Text>
+			<Text Lang="uk">Наданий оператор '{0}' не підтримує функцію Порівняння Тексту.</Text>
+			<Text Lang="fr">L'opérateur fourni '{0}' n'est pas pris en charge par la fonction TextCompare.</Text>
+			<Text Lang="pt-BR">O operador suprido '{0}' não é suportado por função de comparação de Texto.</Text>
+			<Text Lang="zh">TextCompare函数不支持提供的运算符'{0}'。</Text>
+			<Text Lang="ko">제공된 연산자 '{0}'은(는) TextCompare 함수를 지원하지 않습니다.</Text>
+			<Text Lang="pl">Podany operator '{0}' jest nieobsługiwany przez funkcję TextCompare.</Text>
+			<Text Lang="es">El operador especificado '{0}' no está soportado por la función CompararTexto.</Text>
+			<Text Lang="it">L'operatore '{0}' fornito non è supportato dalla funzione TextCompare.</Text>
+			<Text Lang="ru">Предоставленный оператор '{0}' не поддерживается функцией Сравнение Текста.</Text>
+			<Text Lang="de">Der angegebene Operator '{0}' wird nicht von der Funktion TextCompare unterstüzt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.TextCompare.UnexpectedToken">
+			<Context>Thrown when a a text data type contains an unexpected token.</Context>
+			<Text Lang="en">Unexpected token '{0}' found.</Text>
+			<Text Lang="uk">Виявлено несподіваний знак '{0}'.</Text>
+			<Text Lang="fr">Marqueur inattendu '{0}' trouvé.</Text>
+			<Text Lang="pt-BR">Símbolo inesperado '{0}' encontrado.</Text>
+			<Text Lang="zh">找到意外的标记'{0}'。</Text>
+			<Text Lang="ko">예기치 않은 토큰 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Znaleziono niespodziewany token '{0}'.</Text>
+			<Text Lang="es">Se ha encontrado un identificador '{0}' no esperado.</Text>
+			<Text Lang="it">Trovato un token '{0}' inatteso.</Text>
+			<Text Lang="ru">Обнаружен неожиданный знак '{0}'.</Text>
+			<Text Lang="de">Unerwartetes Token '{0}' vorgefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.LimitNeedsToBePositive">
+			<Context>Thrown when a non positive number was found as parameter to 'LIMIT'</Context>
+			<Text Lang="en">The parameter to the 'LIMIT' constraint needs to be a positive integer value, but found: '{0}'.</Text>
+			<Text Lang="uk">Параметр обмеження 'LIMIT' повинен бути позитивним цілим(integer) числом, а знайдено: '{0}'.</Text>
+			<Text Lang="fr">Le paramètre de la contrainte 'LIMITE' doit être une valeur entière positive, mais trouvé : '{0}'.</Text>
+			<Text Lang="pt-BR">O parâmetro para a restrição 'LIMITE' precisa ser um valor integral positivo, mas encontrou: '{0}'.</Text>
+			<Text Lang="zh">'LIMIT' 规范的参数需要为正整数值，但找到： '{0}'。</Text>
+			<Text Lang="ko">LIMIT'제약 조건에 대한 매개 변수는 양의 정수 값이어야 하지만 찾은 값은 '{0}'입니다.</Text>
+			<Text Lang="pl">Parametr 'LIMIT' musi być dodatnią liczbą całkowitą, lecz znaleziono: '{0}'.</Text>
+			<Text Lang="es">El parámetro para la condición 'LIMIT' debe ser un valor positivo entero, pero se ha encontrado: '{0}'.</Text>
+			<Text Lang="it">Il valore del vincolo 'LIMIT' deve essere un numero intero positivo, ma è stato trovato: '{0}'.</Text>
+			<Text Lang="ru">Параметр к ограничению 'LIMIT' должен быть положительным целым числом, а был найден:'{0}'.</Text>
+			<Text Lang="de">Der Parameter für 'LIMIT' muss eine positive Zahl größer Null sein, vorgefunden wurde aber: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.GroupByReferenceListNotAllowed">
+			<Context>Thrown when a reference list is used as 'GROUP BY' field</Context>
+			<Text Lang="en">Grouping by reference lists is not allowed. Property name: '{0}'.</Text>
+			<Text Lang="uk">Груповання за списками посилань заборонене. Назва властивості: '{0}'.</Text>
+			<Text Lang="fr">Le regroupement par listes de références n'est pas autorisé. Nom de la propriété : '{0}'.</Text>
+			<Text Lang="pt-BR">Agrupamento por lista de referências não é permitido. Nome de propriedade '{0}'.</Text>
+			<Text Lang="zh">不允许按照引用列表分组。属性名：'{0}'。</Text>
+			<Text Lang="ko">참조 목록으로 그룹화할 수 없습니다. 속성 이름: '{0}'.</Text>
+			<Text Lang="pl">Grupowanie według list referencyjnych nie jest dozwolone. Nazwa właściwości: '{0}'.</Text>
+			<Text Lang="es">No está permitido agrupar por listas de referencia. Nombre de propiedad: '{0}'.</Text>
+			<Text Lang="it">Raggruppamento secondo liste di riferimento non permesso. Nome dell'attributo: '{0}'.</Text>
+			<Text Lang="ru">Группировка по спискам ссылок запрещена. Название свойства :'{0}'.</Text>
+			<Text Lang="de">Die Grouppierung nach Eigenschaften vom Typ Referenzliste ist nicht erlaubt. Eigenschaft: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.SortByReferenceListNotAllowed">
+			<Context>Thrown when a reference list is used as 'SORT BY' field</Context>
+			<Text Lang="en">Sorting by reference lists is not allowed. Property name: '{0}'.</Text>
+			<Text Lang="uk">Сортування за списками посилань заборонене. Назва властивості: '{0}'.</Text>
+			<Text Lang="fr">Le tri par liste de références n'est pas autorisé. Nom de la propriété : '{0}'.</Text>
+			<Text Lang="pt-BR">Ordenagem por lista de referências não é permitido. Nome de propriedade: '{0}'.</Text>
+			<Text Lang="zh">不允许按照引用列表排序。属性名：'{0}'。</Text>
+			<Text Lang="ko">참조 목록으로 정렬할 수 없습니다. 속성 이름: '{0}'.</Text>
+			<Text Lang="pl">Sortowanie według list referencyjnych nie jest dozwolone. Nazwa właściwości: '{0}'.</Text>
+			<Text Lang="es">No está permitido ordenar por listas de referencia. Nombre de propiedad: '{0}'.</Text>
+			<Text Lang="it">Ordinamento secondo liste di riferimento non permesso. Nome dell'attributo: '{0}'.</Text>
+			<Text Lang="ru">Сортировка по спискам ссылок запрещена. Название свойства: '{0}'.</Text>
+			<Text Lang="de">Die Sortierung nach Eigenschaften vom Typ Referenzliste ist nicht erlaubt. Eigenschaft: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.SortByColorNotAllowed">
+			<Context>Thrown when a color is used as 'SORT BY' field</Context>
+			<Text Lang="en">Sorting by properties of type 'color' is not supported. Property name: '{0}'.</Text>
+			<Text Lang="uk">Сортування за властивостями типу "колір" не підтримується. Назва властивості: '{0}'.</Text>
+			<Text Lang="fr">Le tri par propriétés de type 'couleur' n'est pas pris en charge. Nom de la propriété : '{0}'.</Text>
+			<Text Lang="pt-BR">Ordenagem por propriedades de tipo 'cor' não é suportado. Nome de propriedade: '{0}'.</Text>
+			<Text Lang="zh">不支持按照“color”类型的属性排序。属性名：'{0}'。</Text>
+			<Text Lang="ko">색상' 유형의 속성으로 정렬할 수 없습니다. 속성 이름: '{0}'.</Text>
+			<Text Lang="pl">Sortowanie przez właściwość typu 'kolor' nie jest obługiwana. Nazwa właściwości: '{0}'.</Text>
+			<Text Lang="es">Ordenar por propiedades del tipo 'color' no está soportado. Nombre de propiedad: '{0}'.</Text>
+			<Text Lang="it">Il riordinamento secondo attributi di tipo 'color' non è supportato. Nome dell'attributo: '{0}'.</Text>
+			<Text Lang="ru">Сортировка по свойствам типа "цвет" не поддерживается. Название свойства :'{0}'.</Text>
+			<Text Lang="de">Die Sortierung nach Eigenschaften vom Typ Farbe ist nicht unterstützt. Eigenschaft: '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectingInteger">
+			<Context>Thrown when an integer value was expected, but another token was found</Context>
+			<Text Lang="en">An integer value was expected but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувалося ціле число(integer), а  знайдено '{0}'.</Text>
+			<Text Lang="fr">Une valeur entière était attendue mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">Um valor íntegro foi esperado mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">应为整数值，但找到了'{0}'。</Text>
+			<Text Lang="ko">정수 값을 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano wartości w typie liczby całkowitej, ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba un valor entero, pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso un valore intero, ma è stato trovato '{0}'.</Text>
+			<Text Lang="ru">Ожидалось целое число, а было найдено '{0}'.</Text>
+			<Text Lang="de">Eine Ganzzahl wurde erwartet, aber '{0}' wurde gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.SelfReferencedButNotSet">
+			<Context>Thrown when a query uses the 'SELF' keyword, but no object for self was given</Context>
+			<Text Lang="en">Query uses the 'SELF' context object, but no object was supplied.</Text>
+			<Text Lang="uk">Запит використовує контекстний об'єкт 'SELF', але об'єкт не був наданий.</Text>
+			<Text Lang="fr">La requête utilise l'objet contextuel «SELF», mais aucun objet n'a été fourni.</Text>
+			<Text Lang="pt-BR">Consulta usa objeto de contexto 'SELF', mas nenhum objeto foi suprido.</Text>
+			<Text Lang="zh">查询使用'SELF'环境对象，但无对象被提供。</Text>
+			<Text Lang="ko">쿼리는 'SELF' 컨텍스트 개체를 사용하지만 제공된 객체가 없습니다.</Text>
+			<Text Lang="pl">Zapytanie używa kontekstu obiektu 'SELF', ale żaden obiekt nie został podany.</Text>
+			<Text Lang="es">La consulta usa el objeto de contexto 'SELF', pero no se ha facilitado ningún objeto.</Text>
+			<Text Lang="it">La query usa la parola chiave 'SELF', ma non è stato fornito nessun oggetto a 'SELF'.</Text>
+			<Text Lang="ru">Запрос использует контекстный объект 'SELF', но объект не был предоставлен.</Text>
+			<Text Lang="de">Die Abfrage verwendet das 'SELF' Kontext Objekt. Allerdings wurde kein solches Objekt der Abfrage übergeben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedDeref">
+			<Context>Thrown when a query uses the 'SELF' keyword, and a fieldname is expected</Context>
+			<Text Lang="en">The dereferencing symbol ('->') was expected, but '{0}' was found.</Text>
+			<Text Lang="uk">Очікувався символ перенаправлення ('->'), а  знайдено '{0}'.</Text>
+			<Text Lang="fr">Le symbole de déréférencement ('->') était attendu, mais '{0}' a été trouvé.</Text>
+			<Text Lang="pt-BR">O símbolo de desreferenciamento ('->') foi esperado, mas '{0}' foi encontrado.</Text>
+			<Text Lang="zh">应为取消引用符号 ('->')，但找到了'{0}'。</Text>
+			<Text Lang="ko">역참조 기호 ('->')를 예상했지만 '{0}'을(를) 찾았습니다.</Text>
+			<Text Lang="pl">Oczekiwano symbolu dereferencji ('->'), ale znaleziono '{0}'.</Text>
+			<Text Lang="es">Se esperaba el símbolo de desreferencia '->' pero se ha encontrado '{0}'.</Text>
+			<Text Lang="it">Atteso il simbolo di dereferenziazione ('->'), ma è stato trovato '{0}'.</Text>
+			<Text Lang="ru">Ожидался символ разыменования ('->') ,а был найден '{0}' .</Text>
+			<Text Lang="de">Das Symbol zur Dereferenzierung ('->') wurde erwartet, aber '{0}' wurde gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ObjectReferencePropertyExpected">
+			<Context>Thrown when a function requires an object reference but another data type was found. 0: Name of property</Context>
+			<Text Lang="en">Expecting a property with data type 'object reference' but property '{0}' has another data type.</Text>
+			<Text Lang="uk">Очікувалася властивість з типом даних 'посилання об'єкта', але у властивості '{0}' інший тип даних.</Text>
+			<Text Lang="fr">Attend une propriété avec le type de données 'référence d'objet' mais la propriété '{0}' a un autre type de données.</Text>
+			<Text Lang="pt-BR">Esperando uma propriedade com tipo de dado 'Referência de objeto' mas propriedade '{0}' tem outro tipo de dado.</Text>
+			<Text Lang="zh">应为数据类型为'object reference'的属性，但属性'{0}'具有其他数据类型。</Text>
+			<Text Lang="ko">데이터 유형이 '객체 참조'인 속성을 예상했지만 '{0}' 속성에 다른 데이터 유형이 있습니다.</Text>
+			<Text Lang="pl">Oczekiwano na wartość z typem danych 'referencja obiektu', ale właściwość '{0}' ma inny typ danych.</Text>
+			<Text Lang="es">Se espera una propiedad del tipo de dato 'object reference' pero la propiedad '{0}' tiene otro tipo de dato.</Text>
+			<Text Lang="it">Atteso un attributo con tipo di dato 'riferimento a oggetto', ma l'attributo '{0}' ha un altro tipo di dato.</Text>
+			<Text Lang="ru">Ожидалось свойство с типом данных  'ссылка объекта' , но у свойства '{0}' другой тип данных.</Text>
+			<Text Lang="de">Es wurde eine Eigenschaft mit Datentyp 'Objekt Referenz' erwartet, aber die Eigenschaft '{0}' hat einen anderen Datentyp.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidSelfStartingPoint">
+			<Context>Thrown when a function requires an object reference but another data type was found. 0: Name of property</Context>
+			<Text Lang="en">The value of property '{0}' of the self object is not set or invalid and can not be used for the query starting point.</Text>
+			<Text Lang="uk">Значення властивості '{0}' самого об'єкта  не задано або недійсне і не може використовуватися як початкова точка запиту.</Text>
+			<Text Lang="fr">La valeur de la propriété '{0}' de l'objet auto n'est pas définie ou non valide et ne peut pas être utilisée pour le point de départ de la requête.</Text>
+			<Text Lang="pt-BR">O valor de propriedade '{0}' odo auto objeto não é definido ou inválido e não pode ser usado por poonto de partida de consulta.</Text>
+			<Text Lang="zh">自身对象的属性'{0}'的值未设置或无效，不能用作查询起点。</Text>
+			<Text Lang="ko">자체 객체의 '{0}' 속성 값이 설정되어 있지 않거나 잘못되어 쿼리 시작 지점에 사용할 수 없습니다.</Text>
+			<Text Lang="pl">Wartość właściwości '{0}' z obiektu na własny nie jest ustawiona lub niepoprawna i nie może być wykorzystywane do rozpoczęcia zapytania.</Text>
+			<Text Lang="es">El valor de la propiedad '{0}' del objeto SELF no se ha especificado o es inválido y no podrá ser usado como punto de partida de la consulta.</Text>
+			<Text Lang="it">Il valore dell'attributo '{0}' dell'oggetto considerato non è impostato o non è valido e quindi non può essere utilizzato come punto iniziale della query.</Text>
+			<Text Lang="ru">Значение свойства '{0}' самого объекта либо не задано, либо недействительно и не может быть использовано в качестве начальной точки запроса.</Text>
+			<Text Lang="de">Der Wert der Eigenschaft '{0}' ist nicht gesetzt oder ungültig und kann daher nicht als Startpunkt der Suche verwendet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnexpectedSelfCompare">
+			<Context>Thrown when a conditions uses 'Self' on the left hand side and the right hand side is not a ref or techname. 0: Name of data type</Context>
+			<Text Lang="en">Unexpected data type ('{0}') for right hand side of 'SELF' compare.</Text>
+			<Text Lang="uk">Непередбачений тип даних ('{0}') для правої сторони порівняння 'SELF'.</Text>
+			<Text Lang="fr">Type de données inattendu ('{0}') pour le côté droit de la comparaison 'SELF'.</Text>
+			<Text Lang="pt-BR">Tipo de dado inesperado ('{0}') pelo lado da mão direita de comparação 'SELF'.</Text>
+			<Text Lang="zh">SELF'对比中右侧的意外数据类型('{0}')。</Text>
+			<Text Lang="ko">SELF' 비교의 오른쪽에 있는 예기치 않은 데이터 유형 ('{0}')입니다.</Text>
+			<Text Lang="pl">Nieoczekiwany typ danych ('{0}') na prawej stronie porównania 'SELF'.</Text>
+			<Text Lang="es">Tipo de dato no esperado ('{0}') para la parte derecha de la comparación 'SELF'.</Text>
+			<Text Lang="it">Il tipo di dato ('{0}') è inatteso per la parte destra di un confronto di tipo 'SELF'</Text>
+			<Text Lang="ru">Непредвиденный тип данных ('{0}') для правой стороны сравнения 'SELF' .</Text>
+			<Text Lang="de">Unerwarteter Datentyp ('{0}') für die rechte Seite der 'SELF' Vergleichsbedingung.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.CycleDetected">
+			<Context>Thrown when a query cycle was detected when executing the query</Context>
+			<Text Lang="en">Unable to evaluate query because a cyclic reference was found.</Text>
+			<Text Lang="uk">Не вдалося обробити запит, оскільки виявлено ​​циклічне посилання.</Text>
+			<Text Lang="fr">Impossible d'évaluer la requête car une référence cyclique a été trouvée.</Text>
+			<Text Lang="pt-BR">Incapaz de avaliar consulta porquê uma referência cíclica foi encontrada.</Text>
+			<Text Lang="zh">无法计算查询，因为发现循环引用。</Text>
+			<Text Lang="ko">순환 참조가 발견되어 쿼리를 평가할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można wykonać zapytania, ponieważ znalezniono cykliczne odwołania.</Text>
+			<Text Lang="es">No se ha podido evaluar la consulta porque se ha encontrado una referencia cíclica.</Text>
+			<Text Lang="it">Impossibile risolvere la query poiché è stato rilevato un riferimento ciclico.</Text>
+			<Text Lang="ru">Не удалось обработать запрос, потому что была обнаружена цикличная ссылка.</Text>
+			<Text Lang="de">Die Abfrage kann nicht ausgewertet werden, da ein Zirkelbezug gefunden wurde.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidQuery">
+			<Context>Thrown when a query produces an exception, but no more specific error reason can be provided</Context>
+			<Text Lang="en">Unable to evaluate query because of an unexpected error.</Text>
+			<Text Lang="uk">Чи не вдалося обробити запит, тому що виникла непередбачена помилка.</Text>
+			<Text Lang="fr">Impossible d'évaluer la requête en raison d'une erreur inattendue.</Text>
+			<Text Lang="pt-BR">Incapaz de avaliar consulta por causa de um erro inesperado.</Text>
+			<Text Lang="zh">由于意外错误，无法计算查询。</Text>
+			<Text Lang="ko">예기치 않은 오류로 인해 쿼리를 평가할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można wykonać zapytania, ponieważ pojawił się nieoczekiwany błąd.</Text>
+			<Text Lang="es">No se ha podido evaluar la consulta porque se ha encontrado un error no esperado.</Text>
+			<Text Lang="it">Impossibile risolvere la query poiché è stato rilevato un errore inatteso.</Text>
+			<Text Lang="ru">Не удалось обработать запрос, потому что возникла непредвиденная ошибка.</Text>
+			<Text Lang="de">Die Abfrage kann nicht ausgewertet werden. Bei der Bearbeitung ist ein nicht näher spezifizierbarer Fehler aufgetreten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.ExpectedBooleanExpression">
+			<Context>Thrown when a part of a where clause can not be parsed as boolean expression</Context>
+			<Text Lang="en">A boolean expression was expected.</Text>
+			<Text Lang="uk">Очікувався bolean вираз.</Text>
+			<Text Lang="fr">Une expression boléenne était attendue.</Text>
+			<Text Lang="pt-BR">Uma expressão boolean era esperada.</Text>
+			<Text Lang="zh">需要布尔表达式。</Text>
+			<Text Lang="ko">Boolean 표현식이 필요합니다.</Text>
+			<Text Lang="pl">Oczekiwano wyrażenia logicznego.</Text>
+			<Text Lang="es">Se esperaba una expresión booleana.</Text>
+			<Text Lang="it">Attesa una espressione booleana.</Text>
+			<Text Lang="ru">Ожидалось булево выражение.</Text>
+			<Text Lang="de">Ein boolscher Ausdruck wurde erwartet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.InvalidExpression">
+			<Context>Thrown when a part of a where clause can not be parsed as expression (should normally not happen, because of earlier detected error conditions)</Context>
+			<Text Lang="en">Invalid expression found.</Text>
+			<Text Lang="uk">Знайдено неправильний вираз.</Text>
+			<Text Lang="fr">Expression invalide trouvée.</Text>
+			<Text Lang="pt-BR">Expressão inválida encontrada.</Text>
+			<Text Lang="zh">找到无效的表达式。</Text>
+			<Text Lang="ko">잘못된 표현식을 찾았습니다.</Text>
+			<Text Lang="pl">Znalezniono niepoprawne wyrażenie.</Text>
+			<Text Lang="es">Se ha encontrado una expresión no válida.</Text>
+			<Text Lang="it">Trovata una espressione non valida.</Text>
+			<Text Lang="ru">Найдено неверное выражение.</Text>
+			<Text Lang="de">Der Ausdruck konnte nicht verarbeitet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.MissingRightSide">
+			<Context>Thrown when a where clause expression is missing a "right hand side" (e.g. "Id = ")</Context>
+			<Text Lang="en">Expecting a value to compare to after '{0}'.</Text>
+			<Text Lang="uk">Після '{0}' очікується значення для порівняння.</Text>
+			<Text Lang="fr">Attend une valeur à comparer après '{0}'.</Text>
+			<Text Lang="pt-BR">Esperando um valor para comparar com '{0}'.</Text>
+			<Text Lang="zh">应在'{0}'之后添加一个用以比较的值。</Text>
+			<Text Lang="ko">{0}' 이후의 값과 비교할 것을 예상합니다.</Text>
+			<Text Lang="pl">Oczekiwanie na wartość do porównania dla '{0}'.</Text>
+			<Text Lang="es">Se espera un valor de comparación tras '{0}'.</Text>
+			<Text Lang="it">Atteso un valore di confronto dopo '{0}'.</Text>
+			<Text Lang="ru">После '{0}' ожидается значение для сравнения.</Text>
+			<Text Lang="de">Es wird nach '{0}' ein Wert zum Vergleichen erwartet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.FunctionNotAllowedHere">
+			<Context>Thrown when a where clause expression uses a function call on the "right hand side" (e.g. "Text = Compare(...)")</Context>
+			<Text Lang="en">Function calls are not allowed on the right hand side of an expression.</Text>
+			<Text Lang="uk">Виклики функції не дозволені на правій стороні виразу.</Text>
+			<Text Lang="fr">Les appels de fonction ne sont pas autorisés sur le côté droit d'une expression.</Text>
+			<Text Lang="pt-BR">Chamadas de função não são permitidos no lado da mão direita de uma expressão.</Text>
+			<Text Lang="zh">表达式右侧不允许使用函数调用。</Text>
+			<Text Lang="ko">함수 호출은 표현식의 오른쪽에 허용되지 않습니다.</Text>
+			<Text Lang="pl">Wywołania funkcji nie są dozwolone na prawej stronie wyrażenia.</Text>
+			<Text Lang="es">No se permiten llamadas de función en la parte derecha de una expresión.</Text>
+			<Text Lang="it">Le chiamate di funzione non sono permesse nella parte destra di una espressione</Text>
+			<Text Lang="ru">Вызовы функции не разрешены на правой стороне выражения.</Text>
+			<Text Lang="de">Funktionsaufrufe auf der rechten Seite des Ausdrucks werden nicht unterstützt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.FailedToCreateFilter">
+			<Context>Thrown when an object filter for a where clause expression could not be created (should not happen and ist most likely a programming bug if shown)")</Context>
+			<Text Lang="en">Failed to create the object filter for the expression starting with '{0}'.</Text>
+			<Text Lang="uk">Не вдалося створити фільтр об'єктів для вираження, що починається з '{0}'.</Text>
+			<Text Lang="fr">Impossible de créer le filtre d'objet pour l'expression commençant par '{0}'.</Text>
+			<Text Lang="pt-BR">Falhou em criar um filtro de objeto para expressão começando com '{0}'.</Text>
+			<Text Lang="zh">未能以'{0}'开头的表达式创建对象筛选器。</Text>
+			<Text Lang="ko">{0}'(으)로 시작하는 식의 객체 필터를 생성하지 못 했습니다.</Text>
+			<Text Lang="pl">Nie udało się utworzyć filtru obiektu dla wyrażenia zaczynającego się od '{0}'.</Text>
+			<Text Lang="es">No se ha podido crear el objeto filtro para la expresión que empieza por '{0}'.</Text>
+			<Text Lang="it">Impossibile creare il filtro per l'espressione che comincia con '{0}'.</Text>
+			<Text Lang="ru">Не удалось создать фильтр объектов для выражения начинающегося с '{0}'.</Text>
+			<Text Lang="de">Der Objekt-Filter für den Ausdruck, der bei '{0}' startet, konnte nicht erstellt werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.UnableToDeterminDataType">
+			<Context>Thrown when an object filter for a where clause expression could not be created (should not happen and ist most likely a programming bug if shown)")</Context>
+			<Text Lang="en">Can't detect data type of identifier '{0}'. Object property name unknown.</Text>
+			<Text Lang="uk">Неможливо визначити тип даних ідентифікатора '{0}'. Невідоме назва властивості об'єкта.</Text>
+			<Text Lang="fr">Impossible de détecter le type de données de l'identifiant '{0}'. Nom de propriété d'objet inconnu.</Text>
+			<Text Lang="pt-BR">Não foi possível detectar tipo de dados de identificador '{0}'. Nome de propriedade de objeto desconhecido.</Text>
+			<Text Lang="zh">无法检测标识符'{0}'的数据类型。对象属性名未知。</Text>
+			<Text Lang="ko">{0}' 데이터 유형의 식별자를 감지할 수 없습니다. 객체 속성 이름을 알 수 없습니다.</Text>
+			<Text Lang="pl">Nie można wykryć typu danych identyfikatora '{0}'. Nazwa właściwości obiektu jest nieznana.</Text>
+			<Text Lang="es">No se puede detectar el tipo de identificador '{0}'. Nombre de tipo de objeto desconocido.</Text>
+			<Text Lang="it">Impossibile trovare il tipo di dato del parametro '{0}'. Attributo dell'oggetto sconosciuto.</Text>
+			<Text Lang="ru">Не удается определить тип данных идентификатора '{0}'. Неизвестное название свойства объекта.</Text>
+			<Text Lang="de">Der Datentyp des Bezeichners '{0}' kann nicht aufgelöst werden. Objekt-Eigenschaft ist nicht bekannt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.CantCompareDifferentDataTypes">
+			<Context>Thrown when data types of a comparison for left- and right-hand-side are different (only used when both side reference the 'SELF' object)</Context>
+			<Text Lang="en">Unable to compare values with different data types. ('{0}' and '{1}').</Text>
+			<Text Lang="uk">Неможливо порівняти значення з різними типами даних. ('{0}' та '{1}').</Text>
+			<Text Lang="fr">Impossible de comparer les valeurs avec différents types de données. ('{0}' et '{1}').</Text>
+			<Text Lang="pt-BR">Incapaz de comparar valores com tipos de dados diferentes. ('{0}' and '{1}').</Text>
+			<Text Lang="zh">无法比较具有不同数据类型的值。 ('{0}'和'{1}')。</Text>
+			<Text Lang="ko">다른 데이터 유형의 값을 비교할 수 없습니다. ('{0}' 및 '{1}').</Text>
+			<Text Lang="de">Werte mit unterschiedlichen Datentypen können nicht verglichen werden. ('{0}' und '{1}')</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ParseError.CantCompareReferenceStrips">
+			<Context>Thrown when trying to compare two reference strips using a relational operator like '==' (only used when both side reference the 'SELF' object)</Context>
+			<Text Lang="en">Unable to compare values of strips using an operator. Please use the 'Compare' function.</Text>
+			<Text Lang="uk">Неможливо порівняти значення рядків за допомогою оператора. Будь ласка, використовуйте функцію "Порівняти".</Text>
+			<Text Lang="fr">Impossible de comparer les valeurs des bordereaux à l'aide d'un opérateur. Veuillez utiliser la fonction «Comparer».</Text>
+			<Text Lang="pt-BR">Incapaz de comparar valores de tiras usando um operador. Por favor use a função "Comparar'.</Text>
+			<Text Lang="zh">无法使用运算符比较Strips的值。请使用“比较”功能。</Text>
+			<Text Lang="ko">연산자를 사용하여 스트립의 값을 비교할 수 없습니다. '비교' 함수를 사용하십시오.</Text>
+			<Text Lang="de">Werte von Strips können nicht mit einem Operator verglichen werden. Bitte verwenden Sie die 'Compare' Funktion.</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

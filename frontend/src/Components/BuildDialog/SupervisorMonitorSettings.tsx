@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Checkbox } from '../Utils/UI'
 import { Button } from '../StyledComponents/Button'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import {Tooltip} from 'react-tooltip'
 
 export const SupervisorMonitorSettings = ({hidden}) => {
     const [useSupervisorMonitor, setUseSupervisorMonitor] = useState(false)
@@ -34,21 +36,37 @@ export const SupervisorMonitorSettings = ({hidden}) => {
 
 
     return <>
-        <Checkbox id={'useSupervisorMonitor'}
-                  title={'Whether to use the supervisor monitor'}
-                  checked={useSupervisorMonitor}
-                  onChange={() => toggleSupervisorMonitor()}
-                  label={'Use supervisor monitor'}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Checkbox
+          id={'useSupervisorMonitor'}
+          checked={useSupervisorMonitor}
+          onChange={() => toggleSupervisorMonitor()}
+          label={'Use supervisor monitor'}
         />
-
+        <HelpOutlineIcon
+          data-tooltip-id="my-tooltip"
+          data-tooltip-html={'Whether to use the supervisor monitor'}
+          data-tooltip-place="right"
+          style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }}
+        />
+      </div>
+      <Tooltip id="my-tooltip" />
         {
             useSupervisorMonitor && <>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Checkbox id={'useFloorMap'}
-                          title={'Whether to use a floor map'}
                           checked={useFloorMap}
                           onChange={() => toggleFloorMap()}
                           label={'Use floor map'}
                 />
+                <HelpOutlineIcon
+                data-tooltip-id="my-tooltip"
+                data-tooltip-html={'Whether to use a floor map'}
+                data-tooltip-place="right"
+                style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }}
+                />
+                </div>
+                <Tooltip id="my-tooltip" />
                 {
                     useFloorMap && <Button id='btn-open-floor-map-editor' type='button' onClick={() => openFloorMapEditor()}>
                         Create Floor Map

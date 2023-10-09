@@ -83,6 +83,7 @@
     "react-inlinesvg": "^3.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-tooltip": "^5.21.5",
     "reactflow": "^11.6.0",
     "styled-components": "^5.3.5",
     "tree-kill": "^1.2.2",

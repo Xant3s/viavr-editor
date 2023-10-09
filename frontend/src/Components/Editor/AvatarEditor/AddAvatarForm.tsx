@@ -22,14 +22,5 @@ export const AddAvatarForm = ({addAvatar}) => {
                 Create new avatar
             </Button>
         </form>
-
-        {/*TODO: load avatar from file*/}
-        <Button appearance='primary'
-                onClick={() => {
-                    throw new Error('Not implemented')
-                }}
-        >
-            Load avatar from file
-        </Button>
     </div>
 }

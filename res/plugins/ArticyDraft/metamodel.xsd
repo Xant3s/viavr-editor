@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MetaModel"
+    targetNamespace="http://nevigo.com/metamodel.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://nevigo.com/metamodel.xsd"
+    xmlns:mstns="http://nevigo.com/metamodel.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <!-- TYPE: Version -->
+  <xs:simpleType name="Version">
+    <xs:restriction base="xs:decimal"/>
+  </xs:simpleType>
+
+  <!-- TYPE: Icon -->
+  <xs:complexType name="Icon">
+    <xs:attribute name="Version" type="Version" use="optional"/>
+    <xs:attribute name="Filename" use="required" type="xs:string"/>
+  </xs:complexType>
+	
+  <!-- TYPE: HelpContextAdvisor -->
+  <xs:complexType name="HelpContextAdvisor">
+    <xs:attribute name="Version" type="Version" use="optional"/>
+    <xs:attribute name="DefaultHelpId" use="required" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- TYPE: PartitionTypeBaseName -->
+  <xs:complexType name="PartitionTypeBaseName">
+    <xs:attribute name="Version" type="Version" use="optional"/>
+    <xs:attribute name="PartitionType" use="required" type="xs:string"/>
+    <xs:attribute name="BaseName" use="required" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- TYPE: ProjectHandling -->
+  <xs:complexType name="ProjectHandling">
+    <xs:choice minOccurs="0">
+      <xs:element name="PartitionTypeBaseName" maxOccurs="unbounded" type="PartitionTypeBaseName"/>
+    </xs:choice>
+    <xs:attribute name="ApplicationPartitionBaseName" use="required" type="xs:string"/>
+    <xs:attribute name="Version" type="Version" use="optional"/>
+  </xs:complexType>
+
+  <!-- TYPE: Icon -->
+  <xs:complexType name="Group">
+    <xs:attribute name="Version" type="Version" use="optional"/>
+    <xs:attribute name="GroupName" use="required" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- TYPE: Aspect -->
+  <xs:complexType name="Aspect" >
+    <xs:attribute name="Key" use="required" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- TYPE: AllowedAspects -->
+  <xs:complexType name="AllowedAspects">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Aspect" type="Aspect"/>
+    </xs:choice>
+    <xs:attribute name="Version" type="Version" use="required"/>
+    <xs:attribute name="Name" type="xs:string" use="optional" />
+    <xs:attribute name="ModelSheet" type="xs:string" use="optional" />
+    <xs:attribute name="DefaultAspect" type="xs:string" use="optional" />
+  </xs:complexType>
+
+  <!-- TYPE: PerspectiveProvider -->
+  <xs:complexType name="PerspectiveProvider" >
+    <xs:attribute name="Key" use="required" type="xs:string"/>
+    <xs:attribute name="DefaultPerspectiveKey" use="optional" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- TYPE: Perspective -->
+  <xs:complexType name="Perspective" >
+    <xs:attribute name="Key" use="required" type="xs:string"/>
+  </xs:complexType>
+  
+  <!-- TYPE: AllowedPerspectivesInfo -->
+  <xs:complexType name="AllowedPerspectivesInfo">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="Provider" type="PerspectiveProvider"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ExcludedPerspective" type="Perspective"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Version" type="Version" use="required"/>
+  </xs:complexType>
+
+  <!-- TYPE: AllowedPerspectiveProviders -->
+  <xs:complexType name="AllowedPerspectiveProviders">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="ProviderInfo" type="AllowedPerspectivesInfo"/>
+    </xs:choice>
+    <xs:attribute name="Version" type="Version" use="required"/>
+  </xs:complexType>
+
+  <!-- TYPE: Child -->
+  <xs:complexType name="Child">
+    <xs:attribute name="Type" use="required" type="xs:string"/>
+	<xs:attribute name="Default" use="optional" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <!-- TYPE: AllowedChildren -->
+  <xs:complexType name="AllowedChildren">
+    <xs:choice minOccurs="0">
+      <xs:element name="Child" type="Child" maxOccurs="unbounded"/>
+    </xs:choice>
+    <xs:attribute name="Version" type="Version" use="required"/>
+  </xs:complexType>
+
+  <!-- TYPE: Model Type -->
+  <xs:complexType name="ModelType">
+    <xs:attribute name="Type" use="required" type="xs:string"/>
+  </xs:complexType>
+  
+  <!-- TYPE: ContainedModelTypes -->
+  <xs:complexType name="ContainedModelTypes">
+    <xs:choice minOccurs="0">
+      <xs:element name="ModelType" type="ModelType" maxOccurs="unbounded"/>
+    </xs:choice>
+    <xs:attribute name="Version" type="Version" use="required"/>
+  </xs:complexType>
+
+  <!-- TYPE: Interface -->
+  <xs:complexType name="Interface">
+    <xs:attribute name="AllowSelection" type="xs:boolean"/>
+    <xs:attribute name="AllowCopy" type="xs:boolean"/>
+    <xs:attribute name="AllowDelete" type="xs:boolean"/>
+    <xs:attribute name="AllowCut" type="xs:boolean"/>
+    <xs:attribute name="IsWalkable" type="xs:boolean"/>
+    <xs:attribute name="IsCommandTarget" type="xs:boolean"/>
+	<xs:attribute name="IsUserInstanceable" type="xs:boolean"/>
+    <xs:attribute name="CommandPriority" type="xs:int"/>
+	<xs:attribute name="DefaultCommand" type="xs:string"/>
+	<xs:attribute name="AllowRename" type="xs:boolean"/>
+  </xs:complexType>
+
+  <!-- TYPE: View -->
+  <xs:complexType name="View">
+    <xs:attribute name="AllowInList" type="xs:boolean"/>
+    <xs:attribute name="AllowChangeZOrder" type="xs:boolean"/>
+    <xs:attribute name="ObjectTypeDisplayName" type="xs:string"/>
+    <xs:attribute name="NewObjectDisplayName" type="xs:string"/>
+	<xs:attribute name="NumberedNewObjectDisplayName" type="xs:boolean"/>
+    <xs:attribute name="UniqueNewObjectDisplayName" type="xs:boolean"/>
+	<xs:attribute name="DefaultWidth" type="xs:int"/>
+	<xs:attribute name="DefaultHeight" type="xs:int"/>  
+  </xs:complexType>
+
+  <!-- TYPE: Edit -->
+  <xs:complexType name="Edit">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="Interface" type="Interface"/>
+      <xs:element name="View" type="View"/>
+    </xs:sequence>
+    <xs:attribute name="Version" type="Version" use="required"/>
+  </xs:complexType>
+
+  <!-- TYPE: Partition Settings -->
+  <xs:complexType name="PartitionSettings">
+    <xs:attribute name="CreatePartition" type="xs:boolean" use="required"/>
+    <xs:attribute name="MayBeUserPartitionRoot" type="xs:boolean" use="optional"/>
+    <xs:attribute name="EditOnlyInExclusiveMode" type="xs:boolean" use="optional"/>
+    <xs:attribute name="MinimumEditingRightLevel" type="xs:int" use="optional"/>
+    <xs:attribute name="Version" type="Version" use="optional"/>
+  </xs:complexType>
+
+  <!-- TYPE: Pin -->
+  <xs:complexType name="Pin">
+    <xs:attribute name="DisplayName" use="required" type="xs:string"/>
+	<xs:attribute name="ShowInVisibilityList" use="optional" type="xs:boolean"/>
+  </xs:complexType>
+
+  <!-- TYPE: Pinbay -->
+  <xs:complexType name="Pinbay">
+    <xs:choice minOccurs="0">
+      <xs:element name="Pin" type="Pin" maxOccurs="unbounded"/>
+    </xs:choice>
+    <xs:attribute name="MinimumPins" type="xs:unsignedByte" use="required" />
+    <xs:attribute name="MaximumPins" type="xs:unsignedByte" use="required" />
+    <xs:attribute name="AllowParallelExecution" type="xs:boolean" use="required" />
+  </xs:complexType>
+
+  <!-- TYPE: Connection -->
+  <xs:complexType name="Connection">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="Input" type="Pinbay" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Output" type="Pinbay" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:decimal" use="required" />
+  </xs:complexType>
+
+  <!-- TYPE: Category -->
+  <xs:complexType name="Category">
+    <xs:attribute name="Name" type="xs:string" use="required" />
+    <xs:attribute name="DisplayNameTextId" type="xs:string" use="required" />
+    <xs:attribute name="DescriptionTextId" type="xs:string" use="required" />
+    <xs:attribute name="SortOrder" type="xs:decimal" use="required" />
+    <xs:attribute name="Icon" type="xs:string" use="required" />
+    <xs:attribute name="Color" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <!-- TYPE: AvailableCategories -->
+  <xs:complexType name="AvailableCategories">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Category" type="Category" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:decimal" use="required" />
+  </xs:complexType>
+
+  <!-- TYPE: Sheet -->
+  <xs:complexType name="Sheet">
+    <xs:attribute name="DisplayNameTextId" type="xs:string" use="required" />
+    <xs:attribute name="DescriptionTextId" type="xs:string" use="required" />
+    <xs:attribute name="View" type="xs:string" use="required" />
+    <xs:attribute name="Target" type="xs:string" use="required" />
+    <xs:attribute name="SortOrder" type="xs:decimal" use="required" />
+  </xs:complexType>
+
+  <!-- TYPE: AvailablePropertySheets -->
+  <xs:complexType name="AvailablePropertySheets">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Sheet" type="Sheet" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:decimal" use="required" />
+  </xs:complexType>
+
+	<!-- TYPE: Priority -->
+	<xs:complexType name="CommandPriority">
+		<xs:attribute name="Command" type="xs:string" use="optional" />
+		<xs:attribute name="Key" type="xs:string" use="optional" />
+		<xs:attribute name="Priority" type="xs:decimal" use="required" />
+	</xs:complexType>
+
+	<!-- TYPE: Priorities for commands on toolbox -->
+	<xs:complexType name="CommandPriorities">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="CommandPriority" type="CommandPriority" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- TYPE: AssetCategory -->
+	<xs:complexType name="AssetCategory">
+		<xs:attribute name="Category" type="xs:string" use="required" />
+		<xs:attribute name="Extensions" type="xs:NMTOKENS" use="required" />
+	</xs:complexType>
+
+	<!-- TYPE: AssetCategories -->
+	<xs:complexType name="AssetCategories">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="AssetCategory" type="AssetCategory" />
+		</xs:sequence>
+		<xs:attribute name="TypeChecker" type="xs:string" use="optional" />
+	</xs:complexType>
+
+
+	<!-- TYPE: MetaModel -->
+  <xs:complexType name="MetaModel">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="AllowedAspects" type="AllowedAspects"/>
+      <xs:element name="AllowedPerspectiveProviders" type="AllowedPerspectiveProviders"/>
+      <xs:element name="AllowedChildren" type="AllowedChildren"/>
+      <xs:element name="ContainedModelTypes" type="ContainedModelTypes"/>
+      <xs:element name="Edit" type="Edit"/>
+      <xs:element name="PartitionSettings" type="PartitionSettings"/>
+      <xs:element name="Connection" type="Connection"/>
+      <xs:element name="AvailableCategories" type="AvailableCategories"/>
+      <xs:element name="AvailablePropertySheets" type="AvailablePropertySheets"/>
+      <xs:element name="Group" type="Group"/>
+      <xs:element name="Icon" type="Icon"/>
+      <xs:element name="HelpContextAdvisor" type="HelpContextAdvisor"/>
+      <xs:element name="ProjectHandling" type="ProjectHandling"/>
+      <xs:element name="CommandPriorities" type="CommandPriorities"/>
+			<xs:element name="AssetCategories" type="AssetCategories"/>
+		</xs:choice>
+    <xs:attribute name="TargetType" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- TYPE: MetaModels -->
+  <xs:complexType name="MetaModels">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="MetaModel" type="MetaModel"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- SCHEMA -->
+  <xs:element name="MetaModels" type="MetaModels" />
+
+</xs:schema>

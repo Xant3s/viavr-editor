@@ -1,0 +1,3036 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.ModelsEx" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="Ui" Namespace=".Assets.File.Error">
+
+		<TextDefinition Key="FileLocked.Description">
+			<Context>Error message when trying to remove some asset whose file is locked by the SCM</Context>
+			<Text Lang="en">One or more asset(s) cannot be removed because their asset files have been locked by a user.</Text>
+			<Text Lang="uk">Один або декілька ресурсів, не можливо видалити, оскільки ресурсні файли закріплені за іншим користувачем.</Text>
+			<Text Lang="fr">Un ou plusieurs atout(s) ne peuvent pas être supprimé(s) car leur(s) fichier(s) ont été verrouillé(s) par un utilisateur.</Text>
+			<Text Lang="pt-BR">Um ou mais recurso(s) não podem ser removidos porquê seus arquivos de recursos foram trancados pelo usuário.</Text>
+			<Text Lang="zh">无法删除一个或多个资源，因为其资源文件已被用户锁定。</Text>
+			<Text Lang="ko">에셋 파일이 사용자에 의해 잠겨 있어 에셋을 제거할 수 없습니다.</Text>
+			<Text Lang="pl">Niektóre assety nie mogły zostać usunięte ponieważ projekt w którym były używane jest używany przez innych użytkowników.</Text>
+			<Text Lang="es">Algunos recursos no se han podido eliminar debido a que los correspondientes archivos de la carpeta de proyecto han sido bloqueados por un usuario.</Text>
+			<Text Lang="it">Alcuni asset non possono essere rimossi perché i loro file nella cartella del progetto sono stati reclamati da qualche utente.</Text>
+			<Text Lang="ru">Некоторые ресурсы не могут быть удалены, поскольку папка с проектными файлами присвоена другим пользователем.</Text>
+			<Text Lang="de">Ein oder mehrere Assets können nicht entfernt werden, weil die Asset-Dateien von einem Benutzer gesperrt wurden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FileIoLocked.Description">
+			<Context>Error message when trying to remove some asset whose file is locked a process</Context>
+			<Text Lang="en">One or more asset(s) cannot be removed because their asset files are blocked by another application.</Text>
+			<Text Lang="uk">Один або декілька ресурсів, не можливо видалити, оскільки ресурсні файли заблоковані іншою програмою.</Text>
+			<Text Lang="fr">Un ou plusieurs atout(s) ne peuvent pas être supprimé(s) car leur(s) fichiers(s) sont bloqué(s) par une autre application.</Text>
+			<Text Lang="pt-BR">Um ou mais recurso(s) não podem ser removidos porquê seus arquivos de recursos foram bloqueados por outra aplicação.</Text>
+			<Text Lang="zh">无法删除一个或多个资源，因为其资源文件已被其他应用程序占用。</Text>
+			<Text Lang="ko">에셋 파일이 다른 응용 프로그램에 의해 차단되어 에셋을 제거할 수 없습니다.</Text>
+			<Text Lang="pl">Niektóre assety nie mogły zostać usunięte ponieważ projekt w którym były używane jest teraz używany przez inną aplikację.</Text>
+			<Text Lang="es">Algunos recursos no se han podido eliminar debido a que los archivos de la carpeta de proyecto correspondientes han sido bloqueados por un usuario.</Text>
+			<Text Lang="it">Alcuni asset non possono essere rimossi perché i loro file nella cartella del progetto sono attualmente in uso.</Text>
+			<Text Lang="ru">Некоторые ресурсы не могут быть удалены, поскольку папка с проектными файлами используется другим приложением.</Text>
+			<Text Lang="de">Ein oder mehrere Assets können nicht entfernt werden, weil ihre zugehörigen Dateien im Projektordner momentan von einer Anwendung verwendet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="OriginalSourceNotAvailable.Description">
+			<Context>Error message when trying to reimport some asset whose original source file is not available anymore</Context>
+			<Text Lang="en">One or more asset(s) cannot be reimported because their original source files are not available anymore.</Text>
+			<Text Lang="uk">Один або декілька ресурсів, не можливо повторно імпортувати, оскільки першоджерело файлів більше не доступне.</Text>
+			<Text Lang="fr">Un ou plusieurs atout(s) ne peuvent pas être réimporté(s) car leur(s) fichier(s) source ne sont plus disponible(s).</Text>
+			<Text Lang="pt-BR">Um ou mais recursos(s) não podem ser reimportados porquê seus arquivos fonte originais não estão mais disponíveis.</Text>
+			<Text Lang="zh">无法重新导入一个或多个资源，因为其原始文件不再可用。</Text>
+			<Text Lang="ko">원본 소스 파일이 더 이상 사용할 수 없기 때문에 에셋을 다시 가져올 수 없습니다.</Text>
+			<Text Lang="pl">Niektóre assety nie mogły zostać ponownie zaimportowane ponieważ ich oryginalne pliki nie są już dostępne.</Text>
+			<Text Lang="es">Algunos recursos no pueden ser reimportados debido a que los archivos originales correspondientes ya no están disponibles.</Text>
+			<Text Lang="it">Alcuni asset non possono essere reimportati perché il loro codice sorgente originale non è più disponibile.</Text>
+			<Text Lang="ru">Некоторые ресурсы не могут быть повторно импортированы, поскольку оригинальный источник файлов более не доступен.</Text>
+			<Text Lang="de">Ein oder mehrere Assets können nicht neu geladen werden, weil ihre ursprünglichen Dateien nicht mehr verfügbar sind.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoEditAssociation.Description">
+			<Context>Error message when trying to edit an asset for which no application association exists</Context>
+			<Text Lang="en">Editing is not possible because the file type has no associated application.</Text>
+			<Text Lang="uk">Редагування неможливо, оскільки тип файлу не має пов'язанної з ним програми.</Text>
+			<Text Lang="fr">Édition impossible car le type de fichier n’a pas d’application associée.</Text>
+			<Text Lang="pt-BR">Editar não é possível porquê o tipo de arquivo não possui aplicação associada.</Text>
+			<Text Lang="zh">无法编辑，因为文件类型没有关联的应用程序。</Text>
+			<Text Lang="ko">파일 유형에 관련된 응용 프로그램이 없으므로 편집 할 수 없습니다.</Text>
+			<Text Lang="pl">Niektóre z wybranych assetów nie mogą być zedytowane ponieważ nie został wybrany program potrzebny do ich uruchomienia.</Text>
+			<Text Lang="es">Algunos de los recursos seleccionados no se pueden editar, ya que su tipo de archivo no está asociado a ninguna aplicación.</Text>
+			<Text Lang="it">Alcune degli asset selezionati non posso essere modificati perché il loro tipo di file non è associato ad un'applicazione.</Text>
+			<Text Lang="ru">Некоторые выбранные ресурсы не могут быть отредактированы, поскольку их тип файла не ассоциирован с приложением .</Text>
+			<Text Lang="de">Bearbeitung nicht möglich, weil dieser Dateityp mit keiner Anwendung verknüpft ist.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoOpenAssociation.Description">
+			<Context>Error message when trying to open an asset for which no application association exists</Context>
+			<Text Lang="en">Opening is not possible because the file type has no associated application.</Text>
+			<Text Lang="uk">Неможливо відкрити файл, оскільки тип файлу не має пов'язанної з ним програми.</Text>
+			<Text Lang="fr">Ouverture impossible car le type de fichier n’a pas d’application associée.</Text>
+			<Text Lang="pt-BR">Abrir não é possível porquê o tipo de arquivo não possui aplicação associada.</Text>
+			<Text Lang="zh">无法编辑，因为文件类型没有关联的应用程序。</Text>
+			<Text Lang="ko">파일 유형에 관련된 응용 프로그램이 없으므로 열수 없습니다.</Text>
+			<Text Lang="pl">Niektóre z wybranych assetów nie mogą być zedytowane ponieważ nie został wybrany program potrzebny do ich uruchomienia.</Text>
+			<Text Lang="es">Algunos de los recursos seleccionados no se pueden editar, ya que su tipo de archivo no está asociado a ninguna aplicación.</Text>
+			<Text Lang="it">Alcune degli asset selezionati non posso essere modificati perché il loro tipo di file non è associato ad un'applicazione.</Text>
+			<Text Lang="ru">Некоторые выбранные ресурсы не могут быть отредактированы, поскольку их тип файла не ассоциирован с приложением .</Text>
+			<Text Lang="de">Datei kann nicht in einer externer Applikation geöffnet werden, weil dieser Dateityp mit keiner Anwendung verknüpft ist.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Assets.Dialog">
+
+		<TextDefinition Key="AssetsBusy.ProgressTitle">
+			<Context>Dialog title</Context>
+			<Text Lang="en">Waiting for asset system</Text>
+			<Text Lang="uk">Очікування ресурсів системи</Text>
+			<Text Lang="fr">Attente du système d’atouts</Text>
+			<Text Lang="pt-BR">Esperando por sistema de recursos</Text>
+			<Text Lang="zh">等待资源系统</Text>
+			<Text Lang="ko">에셋 시스템을 기다리는 중</Text>
+			<Text Lang="pl">Czekanie na system assetów</Text>
+			<Text Lang="es">Esperando al sistema de recursos</Text>
+			<Text Lang="it">Attendere il sistema di asset</Text>
+			<Text Lang="ru">Ожидание ресурсов системы</Text>
+			<Text Lang="de">Warte auf das Asset-System</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetsBusy.InfoLine">
+			<Context>Dialog text</Context>
+			<Text Lang="en">This action is currently unavailable. Please wait until all assets are properly imported and thumbnails are generated.</Text>
+			<Text Lang="uk">В даний момент ця дія недоступна. Будь ласка, зачекайте поки всі ресурси не будуть імпортовані а ескізи згенеровані.</Text>
+			<Text Lang="fr">Action actuellement indisponible. Veuillez attendre que tous les atouts soient correctement importés et que les vignettes soient générées.</Text>
+			<Text Lang="pt-BR">Esta ação está no momento indisponível. Por favor espere até todos os recursos estarem propriamente importados e as miniaturas geradas.</Text>
+			<Text Lang="zh">此操作当前不可用。请等待至所有资源正确导入、缩略图合并完成。</Text>
+			<Text Lang="ko">이 작업은 현재 사용할 수 없습니다. 모든 에셋을제대로 가져와 섬네일이 생성 될 때까지 기다리십시오.</Text>
+			<Text Lang="pl">Ta akcja jest w tej chwili niedostępna. Proszę poczekać aż wszystkie assety będą poprawnie zaimportowane.</Text>
+			<Text Lang="es">La acción solicitada no está disponible en este momento. Por favor, espera hasta que todos los activos están debidamente importados y cuenten con miniatura.</Text>
+			<Text Lang="it">Il comando è temporaneamente non disponibile. Per favore attendere che gli asset siano importati e che sia creata la loro anteprima.</Text>
+			<Text Lang="ru">В настоящее время это действие недоступно. Пожалуйста, дождитесь пока все ресурсы будут импортированы и свернуты.</Text>
+			<Text Lang="de">Diese Aktion ist zurzeit nicht möglich. Bitte warten Sie, bis alle Assets importiert und die Vorschaubilder erstellt wurden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetsBusy.WorkingDetails">
+			<Context>Dialog text</Context>
+			<Text Lang="en">The following assets have to be processed:</Text>
+			<Text Lang="uk">Насутпні ресурси необхідно опрацьовати:</Text>
+			<Text Lang="fr">Les atouts suivants doivent être traités :</Text>
+			<Text Lang="pt-BR">Os recursos asseguir devem ser processados:</Text>
+			<Text Lang="zh">需要处理以下资源：</Text>
+			<Text Lang="ko">다음 에셋이 처리됩니다:</Text>
+			<Text Lang="pl">Następujące assety muszą zostać przetworzone:</Text>
+			<Text Lang="es">Los siguientes recursos deben ser procesados:</Text>
+			<Text Lang="it">I seguenti asset devono essere elaborati:</Text>
+			<Text Lang="ru">Следующие ресурсы должны быть обработаны:</Text>
+			<Text Lang="de">Die folgendes Assets müssen noch behandelt werden:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetsMissing.ProgressTitle">
+			<Context>Title of the progress box when the asset system is clean, but files are missing</Context>
+			<Text Lang="en">Inconsistent asset system state</Text>
+			<Text Lang="uk">Невідповідний стан системних ресурсів</Text>
+			<Text Lang="fr">État du système d’atouts inconsistant</Text>
+			<Text Lang="pt-BR">Estado de sistema de recurso inconsistente</Text>
+			<Text Lang="zh">资源系统状态不一致</Text>
+			<Text Lang="ko">일관성 없는 에셋 시스템 상태</Text>
+			<Text Lang="pl">Niezgodnść stanu systemu assetów</Text>
+			<Text Lang="es">Estado del sistema activo inconsistente</Text>
+			<Text Lang="it">Stato del sistema dell'asset inconsistente</Text>
+			<Text Lang="ru">Несовместимое состояние системных ресурсов</Text>
+			<Text Lang="de">Asset-System inkonsistent</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetsMissing.InfoLine">
+			<Context>Info of the progress box when the asset system is clean, but files are missing</Context>
+			<Text Lang="en">This action is currently unavailable. There are missing asset files.</Text>
+			<Text Lang="uk">В даний момент ця дія недоступна. Відсутні файли ресурсів.</Text>
+			<Text Lang="fr">Action actuellement indisponible. Fichiers d’atouts absents.</Text>
+			<Text Lang="pt-BR">Esta ação está no momento indisponível. Existem arquivos de recursos faltando.</Text>
+			<Text Lang="zh">此操作当前不可用。缺少资源文件。</Text>
+			<Text Lang="ko">이 작업은 현재 사용할 수 없습니다. 에셋 파일이 없습니다.</Text>
+			<Text Lang="pl">Ta akcja nie jest w tej chwili dostępna. Nie można znaleźć niektórych assetów.</Text>
+			<Text Lang="es">La acción solicitada no está disponible en este momento. No se encuentran algunos archivos de recursos.</Text>
+			<Text Lang="it">Il comando non è disponibile al momento. Mancano dei file dell'asset.</Text>
+			<Text Lang="ru">В настоящее время это действие недоступно. Отсутствуют файлы некоторых ресурсов.</Text>
+			<Text Lang="de">Diese Aktion ist zurzeit nicht möglich. Es wurden fehlende Asset-Dateien gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetsMissing.AssetFileMissing">
+			<Context>progress error line that is shown if a publising/closing action finds a missing asset (file).</Context>
+			<Text Lang="en">Asset file for the asset "{0}" is missing.</Text>
+			<Text Lang="uk">Файл ресурсу для ресурсу "{0}" відсутній.</Text>
+			<Text Lang="fr">Le fichier de l’atout « {0} » est absent.</Text>
+			<Text Lang="pt-BR">Arquivo de recurso para o recurso "{0}" está faltando.</Text>
+			<Text Lang="zh">资源 "{0}" 的资源文件缺失。</Text>
+			<Text Lang="ko">에셋 "{0}"에 대한 에셋 파일이 없습니다.</Text>
+			<Text Lang="pl">Nie można znaleźć assetu dla obiektu '{0}'.</Text>
+			<Text Lang="es">No se encuentra recurso para el objeto "{0}".</Text>
+			<Text Lang="it">Il file dell'asset per il l'oggetto "{0}" non è presente.</Text>
+			<Text Lang="ru">Ресурс файла для объекта "{0}" отсутствует.</Text>
+			<Text Lang="de">Die Asset-Datei für das Asset "{0}" fehlt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetsMissing.AssetFileMissingResolveGuide">
+			<Context>progress info line that is shown to guide the user when a AssetFileMissing message is present.</Context>
+			<Text Lang="en"><![CDATA[Possible solutions to solve the above errors are:
+- Re-import the affected asset files.
+- Delete the affected asset objects from your project.
+- Close the project and re-open it again. (Accidentially deleted asset files will be restored as long as they are still present in the repository.)]]></Text>
+			<Text Lang="uk"><![CDATA[Можливі рішення для зазначених вище помилок:
+- Переімпортіруйте постраждалі ресурсні файли
+- Видаліть постраждалі ресурсні об'єкти з вашого проекту
+- Закрийте проект і знову його відкрийте (Випадково видалені файли ресурсів будуть відновлені, поки вони все ще в сховище) ]]></Text>
+			<Text Lang="fr"><![CDATA[Solutions potentielles pour résoudre les erreurs ci-dessus : 
+- Réimporter les fichiers affectés.
+- Supprimer les objets atouts affectés de votre projet.
+- Fermer puis rouvrir le projet. (Les fichiers accidentellement supprimés seront restaurés s’ils sont toujours dans le référentiel.)]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Possível soluções para resolver o problema acima são:
+- Re-importar os arquivos de recursos afetados.
+- Deletar os objetos de recursos afetados do seu projeto.
+- Fechar o projeto e abrí-lo novamente. (Arquivos de recursos deletados acidentalmente serão restaurados enquanto eles ainda estiverem presentes no repositório.)]]></Text>
+			<Text Lang="zh"><![CDATA[解决上述错误的可能解决方案为：
+- 重新导入受影响的资源文件。
+- 从项目中删除受影响的资源文件。
+- 关闭项目并重新打开。（意外删除的资源文件将被还原，条件是他们仍存在于存储库中。）]]></Text>
+			<Text Lang="ko"><![CDATA[위의 오류를 해결 하는 가능한 해결 방법은 다음과 같습니다:
+-영향을 받는 자산 파일을 다시 가져오십시오.
+-프로젝트에서 영향을 받는 자산 개체를 삭제 합니다.
+-프로젝트를 닫은 후 다시 엽니다. 삭제 된 자산 파일은 저장소에 여전히 존재 하는 한 복원 됩니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Możliwe rozwiązania powyższych problemów:
+- Ponowny import assetów
+- Usunięcie niedziałających assetów z projektu
+- Zamknięcie i ponowne uruchomienie projektu (Przypadkowo usunięte assety zostaną przywrócone, jeśli nadal znajdują się w respozytorium)]]></Text>
+			<Text Lang="es"><![CDATA[Las posibles soluciones para resolver los errores mencionados son:
+- Vuelve a importar los archivos de los recursos afectados
+- Elimina del proyecto los objetos relacionados con los recursos afectados
+- Cierra el proyecto y vuelve a abrirlo (los archivos de recursos eliminados por accidente se pueden restaurar siempre que sigan presentes en el repositorio)]]></Text>
+			<Text Lang="it"><![CDATA[Possibili soluzioni per risolvere gli errori:
+- Reimportare i file malfunzionanti dell'asset
+- Cancellare i file malfunzionanti dal tuo progetto
+- Chiudere e riaprire il progetto (I file cancellati accidentalmente saranno ripristinati finché sono presenti sul repository)]]></Text>
+			<Text Lang="ru"><![CDATA[Возможные решения для  указанных выше ошибок:
+- Реимпортируйте затронутые ресурсные файлы
+- Удалите пострадавшие ресурсные объекты из вашего проекта
+- Закройте проект и снова его откройте (Случайно удаленные файлы ресурсов будут восстановлены, пока они все еще в хранилище)]]></Text>
+			<Text Lang="de"><![CDATA[Die obigen Fehler können sie wie folgt beheben:
+- Reimportieren Sie die betroffenen Asset-Dateien.
+- Entfernen Sie die betroffenen Asset-Objekte.
+- Schließen Sie das Projekt und öffnen Sie das Projekt erneut. (In diesem Fall werden Assets erneut abgerufen, wenn sie noch im Repository existieren.)]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReimportAssets.ProgressTitle">
+			<Context>Title of the progress dialog used for re-import assets &amp; change-asset-source commands</Context>
+			<Text Lang="en">Checking assets</Text>
+			<Text Lang="uk">Перевірка ресурсів</Text>
+			<Text Lang="fr">Vérification des atouts</Text>
+			<Text Lang="pt-BR">Checando Recursos</Text>
+			<Text Lang="zh">检查资源</Text>
+			<Text Lang="ko">에셋 확인 중</Text>
+			<Text Lang="pl">Sprawdzanie assetów</Text>
+			<Text Lang="it">Controllo asset</Text>
+			<Text Lang="ru">Проверка ресурсов</Text>
+			<Text Lang="de">Überprüfe Assets</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReimportAssets.InfoLine">
+			<Context>Info-line in the progress dialog used for re-import assets &amp; change-asset-source commands</Context>
+			<Text Lang="en">Checking if any of the assets to be re-imported is currently claimed by another user.</Text>
+			<Text Lang="uk">Перевірка переімпортованих ресусрів чи вони не присвоєнні іншим користувачем.</Text>
+			<Text Lang="fr">Vérification pour voir si les atouts à réimporter sont actuellement revendiqués par un autre utilisateur.</Text>
+			<Text Lang="pt-BR">Checando se algum dos recursos á serem reimportados estão no momento reivindicados por outro usuário.</Text>
+			<Text Lang="zh">检查要重新导入的任何资源当前是否由其他用户认领。</Text>
+			<Text Lang="ko">다시 가져올 에셋을 현재 다른 사용자가 사용하고 있는지 확인 합니다.</Text>
+			<Text Lang="pl">Sprawdzanie, czy jakikolwiek z importowanych assetów jest używany przez innych użytkowników.</Text>
+			<Text Lang="it">Controllo se gli asset che si stanno reimportando sono reclamati da qualche utente.</Text>
+			<Text Lang="ru">Проверка реимпортируемых ресурсов на присвоенность другим пользователем.</Text>
+			<Text Lang="de">Prüfe ob eines oder mehrere der zu re-importierenden Assets momentan von einem Benutzer beansprucht worden sind.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReimportAssets.LockedInSCM">
+			<Context>Warning in progress dialog, when a file that should be changed has an active lock in source control {0}=Filename, {1} name of lock owner</Context>
+			<Text Lang="en">The file "{0}" is currently locked in the source control system by user "{1}". File will be skipped.</Text>
+			<Text Lang="uk">Файл "{0}" наразі заблокований користувачем "{1}" у системі управління вихідного коду. Файл буде пропущено.</Text>
+			<Text Lang="fr">Le fichier « {0} » est actuellement verrouillé dans le gestionnaire de code source par l’utilisateur « {1} ». Le fichier va être sauté.</Text>
+			<Text Lang="pt-BR">O arquivo "{0}" está no momento trancado no sistema de controle de origem pelo usuário "{1}". Arquivo será pulado.</Text>
+			<Text Lang="zh">文件 "{0}" 当前被用户 "{1}"锁定于源代码管理系统中。将跳过该文件。</Text>
+			<Text Lang="ko">{0} 파일은 "{1}" 사용자에 의해 소스 제어 시스템에서 현재 잠겨 있습니다. 파일을 건너뜁니다.</Text>
+			<Text Lang="pl">Plik '{0}' jest zablokowany w kontroli źródła przez użytkownika '{1}'. Plik zostanie pominięty.</Text>
+			<Text Lang="it">Il file "{0}" è al momento bloccato nel sistema Source Control dall'utente "{1}". Il file verrà saltato.</Text>
+			<Text Lang="de">Die Datei "{0}" ist im Source-Control-System durch Benutzer "{1}" gesperrt. Datei wird übersprungen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReimportAssets.TargetFileNotWriteable">
+			<Context>Warning in progress dialog, when a file that should be overwritten is not writeable {0}=Filename</Context>
+			<Text Lang="en">The file "{0}" is not writable. Maybe the file is open in another application. File will be skipped.</Text>
+			<Text Lang="uk">Файл "{0}" не можна записати. Можливо, файл відкритий в іншій програмі. Файл пропуститься.</Text>
+			<Text Lang="fr">Le fichier « {0} » n’est pas enregistrable. Le fichier est peut-être ouvert dans une autre application. Le fichier va être sauté.</Text>
+			<Text Lang="pt-BR">O arquivo "{0}" não é escrevível. Talvez o arquivo esteja aberto em outra aplicação. Arquivo será pulado.</Text>
+			<Text Lang="zh">文件 "{0}" 不可写。可能文件已在另一应用程序中打开。将跳过该文件。</Text>
+			<Text Lang="ko">"{0}" 파일은 쓸 수 없습니다. 파일이 다른 응용 프로그램에서 열려있습니다. 파일을 건너뜁니다.</Text>
+			<Text Lang="pl">Plik '{0}' jest niezapisywalny. Prawdopodobnie program jest otwarty w innym programie. Plik zostanie pominięty.</Text>
+			<Text Lang="it">Il file "{0}" non è scrivibile, potrebbe essere aperto in un'altra applicazione. Il file verrà saltato.</Text>
+			<Text Lang="de">Die Datei "{0}" kann nicht beschrieben werden. Möglicherweise wird sie gerade von einer anderen Applikation verwendet. Datei wird übersprungen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReimportAssets.SourceNotAvailable">
+			<Context>Warning in progress dialog, when The (new) source for an asset is not available {0}=Filename</Context>
+			<Text Lang="en">The file "{0}" can't be found. File will be skipped.</Text>
+			<Text Lang="uk">Файл "{0}" неможливо знайти. Файл пропуститься пропущено.</Text>
+			<Text Lang="fr">Le fichier « {0} » est introuvable. Le fichier va être sauté.</Text>
+			<Text Lang="pt-BR">O arquivo "{0}" não pôde ser encontrado. Arquivo será pulado.</Text>
+			<Text Lang="zh">找不到文件 "{0}" 。将跳过该文件。</Text>
+			<Text Lang="ko">"{0}" 파일을 찾을 수 없습니다. 파일을 건너뜁니다.</Text>
+			<Text Lang="pl">Plik '{0}' nie został znaleziony. Plik zostanie pominięty.</Text>
+			<Text Lang="it">Il file "{0}" non può essere trovato e verrà saltato.</Text>
+			<Text Lang="de">Die Datei "{0}" kann nicht gefunden werden. Datei wird übersprungen.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".PresentationDialogs">
+
+		<TextDefinition Key="ClearMethodReturnValues.Description">
+			<Context>Dialog message when deleting all method return values in presentation view</Context>
+			<Text Lang="en"><![CDATA[This will clear ALL currently defined method return values for this journey point. 
+			
+Do you want to continue?]]></Text>
+			<Text Lang="uk"><![CDATA[Це очистить ВСІ визначені способи повернення значечнь для цієї точки Journey.
+
+Ви хочете продовжити? ]]></Text>
+			<Text Lang="fr"><![CDATA[Cela va effacer TOUTES les valeurs de méthode de renvoi actuellement définies pour ce point de passage.
+   
+Voulez-vous continuer ?]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Isso irá limpar TODOS os atualmente definidos valures de método de retorno desse ponto de jornada.
+
+Deseja continuar?]]></Text>
+			<Text Lang="zh"><![CDATA[这将清除此旅程点当前定义的所有返回值。
+			
+是否继续？]]></Text>
+			<Text Lang="ko"><![CDATA[이 여정 포인트에 대한 현재 정의된 메서드 반환 값을 모두 지웁니다. 
+
+계속 하시겠습니까? ]]></Text>
+			<Text Lang="de"><![CDATA[Hiermit werden ALLE aktuell gesetzten Rückgabewerte für Methoden in diesem Journey Point zurückgesetzt. 
+			
+Wollen Sie fortfahren?]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".ModelCustomization.TechnicalName.Error">
+
+		<TextDefinition Key="NotUnique.Description">
+			<Context>MessageBox error</Context>
+			<Text Lang="en">This name is already used.</Text>
+			<Text Lang="uk">Ця назва вже використовується.</Text>
+			<Text Lang="fr">Ce nom est déjà utilisé.</Text>
+			<Text Lang="pt-BR">Este nome já está em uso.</Text>
+			<Text Lang="zh">此名称已被使用。</Text>
+			<Text Lang="ko">이 이름은 이미 사용 중입니다.</Text>
+			<Text Lang="pl">Ta nazwa jest już używana.</Text>
+			<Text Lang="es">¡Ese nombre ya está en uso!</Text>
+			<Text Lang="it">Questo nome è già in uso!</Text>
+			<Text Lang="ru">Это имя уже используется.</Text>
+			<Text Lang="de">Dieser Name ist bereits vergeben.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Orders.ModelCustomization">
+
+		<TextDefinition Key="SetTemplateIcon.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Change Icon</Text>
+			<Text Lang="uk">Змінити значок</Text>
+			<Text Lang="fr">Modifier l’icône</Text>
+			<Text Lang="pt-BR">Mudar Ícone</Text>
+			<Text Lang="zh">更改图标</Text>
+			<Text Lang="ko">아이콘 변경</Text>
+			<Text Lang="pl">Zmień ikonę</Text>
+			<Text Lang="es">Cambiar icono</Text>
+			<Text Lang="it">Cambia icona</Text>
+			<Text Lang="ru">Сменить значок</Text>
+			<Text Lang="de">Ändere Symbol</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="OverrideTraitValue.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Change property</Text>
+			<Text Lang="uk">Змінити властивість</Text>
+			<Text Lang="fr">Modifier la propriété</Text>
+			<Text Lang="pt-BR">Mudar propriedade</Text>
+			<Text Lang="zh">更改属性</Text>
+			<Text Lang="ko">속성 변경</Text>
+			<Text Lang="pl">Zmień własność</Text>
+			<Text Lang="es">Cambiar propiedad</Text>
+			<Text Lang="it">Cambia attributo</Text>
+			<Text Lang="ru">Изменить свойство</Text>
+			<Text Lang="de">Ändere Eigenschaft</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SealTraitValue.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Lock property value</Text>
+			<Text Lang="uk">Заблокувати властивість значення</Text>
+			<Text Lang="fr">Verrouiller la valeur de la propriété</Text>
+			<Text Lang="pt-BR">trancar valor de propriedade</Text>
+			<Text Lang="zh">锁定属性值</Text>
+			<Text Lang="ko">속성 값 잠금</Text>
+			<Text Lang="pl">Zmień wartość</Text>
+			<Text Lang="es">Bloquear valor de rasgo</Text>
+			<Text Lang="it">Blocca il valore della caratteristica</Text>
+			<Text Lang="ru">Блокировать значение черты</Text>
+			<Text Lang="de">Eigenschaften sperren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReleaseSealTraitValue.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Unlock property value</Text>
+			<Text Lang="uk">Розблокувати властивість значення</Text>
+			<Text Lang="fr">Déverrouiller la valeur de la propriété</Text>
+			<Text Lang="pt-BR">Destrancar valor de propriedade</Text>
+			<Text Lang="zh">解锁属性值</Text>
+			<Text Lang="ko">속성 값 잠금 해제</Text>
+			<Text Lang="pl">Odblokuj cechę wartości</Text>
+			<Text Lang="es">Bloquear valor de rasgo</Text>
+			<Text Lang="it">Sblocca il valore della caratteristica</Text>
+			<Text Lang="ru">Разблокировать значение черты</Text>
+			<Text Lang="de">Eigenschaftssperre aufheben</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SetTraitPosition.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Change position</Text>
+			<Text Lang="uk">Змінити позицію</Text>
+			<Text Lang="fr">Modifier la position</Text>
+			<Text Lang="pt-BR">Mudar posição</Text>
+			<Text Lang="zh">更改位置</Text>
+			<Text Lang="ko">위치 변경</Text>
+			<Text Lang="pl">Zmień pozycję</Text>
+			<Text Lang="es">Cambiar posición</Text>
+			<Text Lang="it">Cambia posizione</Text>
+			<Text Lang="ru">Изменить позицию</Text>
+			<Text Lang="de">Position ändern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ClearTraitOverride.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Reset property</Text>
+			<Text Lang="uk">Скинути властивість</Text>
+			<Text Lang="fr">Réinitialiser la propriété</Text>
+			<Text Lang="pt-BR">Resetar propriedade</Text>
+			<Text Lang="zh">重置属性</Text>
+			<Text Lang="ko">속성 리셋</Text>
+			<Text Lang="pl">Zresetuj własność</Text>
+			<Text Lang="es">Restablecer propiedad</Text>
+			<Text Lang="it">Resetta attributo</Text>
+			<Text Lang="ru">Сбросить свойство</Text>
+			<Text Lang="de">Eigenschaft zurücksetzen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CreateFeatureTrait.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Create property</Text>
+			<Text Lang="uk">Створити властивість</Text>
+			<Text Lang="fr">Créer la propriété</Text>
+			<Text Lang="pt-BR">Criar propriedade</Text>
+			<Text Lang="zh">创建属性</Text>
+			<Text Lang="ko">속성 생성</Text>
+			<Text Lang="pl">Stwórz właśność</Text>
+			<Text Lang="es">Crear propiedad</Text>
+			<Text Lang="it">Crea attributo</Text>
+			<Text Lang="ru">Создать свойство</Text>
+			<Text Lang="de">Eigenschaft erzeugen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveFeatureTrait.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Remove property</Text>
+			<Text Lang="uk">Вилучити властивість</Text>
+			<Text Lang="fr">Supprimer la propriété</Text>
+			<Text Lang="pt-BR">Remover propriedade</Text>
+			<Text Lang="zh">删除属性</Text>
+			<Text Lang="ko">속성 제거</Text>
+			<Text Lang="pl">Usuń własność</Text>
+			<Text Lang="es">Eliminar propiedad</Text>
+			<Text Lang="it">Rimuovi attributo</Text>
+			<Text Lang="ru">Убрать свойство</Text>
+			<Text Lang="de">Eigenschaft entfernen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CreateTemplateFeature.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Create feature</Text>
+			<Text Lang="uk">Створити особливість</Text>
+			<Text Lang="fr">Créer la fonctionnalité</Text>
+			<Text Lang="pt-BR">Criar elemento</Text>
+			<Text Lang="zh">创建特性</Text>
+			<Text Lang="ko">새 기능</Text>
+			<Text Lang="pl">Stwórz właściwość</Text>
+			<Text Lang="es">Crear característica</Text>
+			<Text Lang="it">Crea caratteristica</Text>
+			<Text Lang="ru">Создать особенность</Text>
+			<Text Lang="de">Feature erstellen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveTemplateFeature.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Remove feature</Text>
+			<Text Lang="uk">Вилучити особливість</Text>
+			<Text Lang="fr">Supprimer la fonctionnalité</Text>
+			<Text Lang="pt-BR">Remover elemento</Text>
+			<Text Lang="zh">删除特性</Text>
+			<Text Lang="ko">기능 제거</Text>
+			<Text Lang="pl">Usuń właściwość</Text>
+			<Text Lang="es">Eliminar característica</Text>
+			<Text Lang="it">Rimuovi caratteristica</Text>
+			<Text Lang="ru">Убрать особенность</Text>
+			<Text Lang="de">Feature entfernen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MoveTemplateFeature.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Move feature</Text>
+			<Text Lang="uk">Переставити особливість</Text>
+			<Text Lang="fr">Déplacer la fonctionnalité</Text>
+			<Text Lang="pt-BR">Mover elemento</Text>
+			<Text Lang="zh">移动特性</Text>
+			<Text Lang="ko">기능 이동</Text>
+			<Text Lang="pl">Przesuń właściwość</Text>
+			<Text Lang="es">Mover característica</Text>
+			<Text Lang="it">Sposta caratteristica</Text>
+			<Text Lang="ru">Передвинуть особенность</Text>
+			<Text Lang="de">Feature verschieben</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SwitchModelTemplate.Caption">
+			<Context>Display name for the order in the undo stack</Context>
+			<Text Lang="en">Switch template</Text>
+			<Text Lang="uk">Переключити шаблон</Text>
+			<Text Lang="fr">Changer de modèle</Text>
+			<Text Lang="pt-BR">Trocar módulo</Text>
+			<Text Lang="zh">切换模板</Text>
+			<Text Lang="ko">스위치 템플릿</Text>
+			<Text Lang="pl">Zamień szablon</Text>
+			<Text Lang="es">Cambiar de plantilla</Text>
+			<Text Lang="it">Cambia template</Text>
+			<Text Lang="ru">Переключить шаблоны</Text>
+			<Text Lang="de">Vorlage wechseln</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteFeature.Confirm.Description">
+			<Context>Confirmation text displayed when user is about to delete a feature blueprint</Context>
+			<Text Lang="en">Do you really want to delete this feature? It will be automatically removed from all templates and object instances!</Text>
+			<Text Lang="uk"><![CDATA[Ви справді хочете видалити цю функцію?
+Вона автомачино видалиться з усіх шаблонів для об'єктів та прикладів об'єктів!]]></Text>
+			<Text Lang="fr">Voulez-vous vraiment supprimer cette fonctionnalité ?  Elle sera automatiquement supprimée de tous les modèles et occurrences d’objets !</Text>
+			<Text Lang="pt-BR">Você realmente deseja deletar este elemento? Será automaticamente removido de todos os módulos and objetos de instância!</Text>
+			<Text Lang="zh">是否确定要删除此特性？它将自动从所有模板和对象实例中删除！</Text>
+			<Text Lang="ko">정말로 이 기능을 지우시겠습니까? 이 기능이 자동적으로 모든 템플릿과 객체 인스턴스에서 제거됩니다!</Text>
+			<Text Lang="pl">Jesteś pewien że chcesz usunąć tę właściwość? Spowoduje to usunięcie wszystkich szablonów obiektów i instancji obiektów!</Text>
+			<Text Lang="es">¿Seguro que deseas eliminar este formulario? ¡Se eliminará automáticamente de todas las plantillas de objetos e instancias de objetos!</Text>
+			<Text Lang="it">Sei sicuro di voler cancellare questa caratteristica? Sarà automaticamente rimossa da tutti i template e da tutte le istanze degli oggetti!</Text>
+			<Text Lang="ru">Вы действительно хотите удалить эту функцию? Она автоматически будет  удалена из всех шаблонов для объектов и примеров объектов!</Text>
+			<Text Lang="de">Möchten Sie dieses Feature tatsächlich entfernen? Es wird dann automatisch aus allen Vorlagen und Objektinstanzen entfernt!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteFeatureFolder.Confirm.Description">
+			<Context>Confirmation text displayed when user is about to delete a feature blueprint user folder</Context>
+			<Text Lang="en">Do you really want to delete this non-empty feature folder? The contained features will be removed from all templates and object instances!</Text>
+			<Text Lang="uk">Ви дійсно хочете видалити цю не порожню папку функцій? Вміщені функції видаляться з усіх шаблонів та об'єктів!</Text>
+			<Text Lang="fr">Voulez-vous vraiment supprimer ce dossier de fonctionnalité non vide ?  Les fonctionnalités contenues seront supprimées de tous les modèles et occurrences d’objets !</Text>
+			<Text Lang="pt-BR">Você realmente deseja deletar esta pasta de elemento não-vazia? Os elementos contidos serão removidos de todos os módulos e objetos de instância!</Text>
+			<Text Lang="zh">是否确定要删除此非空特性文件夹？包含的特性将从所有模板和对象实例中删除！</Text>
+			<Text Lang="ko">정말로 이 비어있지 않은 기능 폴더를 지우시겠습니까? 이 폴더에 포함된 기능들은 자동적으로 모든 템플릿과 객체 인스턴스에서 제거됩니다!</Text>
+			<Text Lang="pl">Jesteś pewien że chcesz usunąć ten folder właściwości? Może to spowodować usunięcie właściwości z szablonów obiektów i instancji obiektów!</Text>
+			<Text Lang="es">¿Seguro que deseas eliminar esta carpeta de características no vacío? ¡Esto puede causar la eliminación de características contenidas en plantillas de objetos e instancias de objetos!</Text>
+			<Text Lang="it">Sei sicuro di voler cancellare questa cartella delle caratteristica? Non è vuota! Questo potrebbe causare la cancellazione delle caratteristiche dal template e dalle istanze degli oggetti!</Text>
+			<Text Lang="ru">Эта папка содержит некую информацию. Её удаление может привести к потере содержащихся в ней данных!</Text>
+			<Text Lang="de">Möchten Sie diesen nicht-leeren Feature-Ordner tatsächlich entfernen? Dies kann die Entfernung von enthaltenen Features aus Vorlagen und Objektinstanzen zur Folge haben!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteModelTemplate.Confirm.Description">
+			<Context>Confirmation text displayed when user is about to delete a model template</Context>
+			<Text Lang="en">Do you really want to delete this object template? It will be automatically removed from all object instances!</Text>
+			<Text Lang="uk">Ви дійсно хочете видалити цей шаблон об’єкта? Він автоматично видалиться з усіх об'єктів!</Text>
+			<Text Lang="fr">Voulez-vous supprimer ce modèle d’objet ? Il sera automatiquement supprimé de toutes les occurrences d’objets !</Text>
+			<Text Lang="pt-BR">Você realmente deseja deletar esse módulo de objeto? Será automaticamente removido de todos os objetos de instância!</Text>
+			<Text Lang="zh">是否确定要删除此对象模板？它将自动从所有对象实例中删除！</Text>
+			<Text Lang="ko">정말로 이 객체 템플릿을 지우시겠습니까? 이 객체 템플릿은 자동적으로 모든 객체 인스턴스에서 제거됩니다!</Text>
+			<Text Lang="pl">Jesteś pewien że chcesz usunąć ten szablon obiektu? Spowoduje to automatyczne usunięcie wszystkich instacji obiektów!</Text>
+			<Text Lang="es">¿Seguro que deseas eliminar esta plantilla de objeto? ¡Se eliminará automáticamente de todas las instancias de objetos!</Text>
+			<Text Lang="it">Sei sicuro di voler cancellare questo template di oggetto? Sarà automaticamente rimosso da tutte le istanze degli oggetti!</Text>
+			<Text Lang="ru">Вы действительно хотите удалить этот шаблоны объектов? Он будет автоматически удален из всех примеров объектов!</Text>
+			<Text Lang="de">Möchten Sie diese Objektvorlage tatsächlich entfernen? Sie wird dann automatisch aus allen Objektinstanzen entfernt werden!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteModelTemplateFolder.Confirm.Description">
+			<Context>Confirmation text displayed when user is about to delete a model template user folder</Context>
+			<Text Lang="en">Do you really want to delete this non-empty template folder? This may cause the removal of contained templates from object instances!</Text>
+			<Text Lang="uk">Ви дійсно хочете видалити цю не порожню папку шаблонів? Це може призвести до видалення шаблонів що містяться в екземплярях об'єкту!</Text>
+			<Text Lang="fr">Voulez-vous supprimer ce dossier de modèle non vide ? Cela pourrait supprimer les modèles contenus des occurrences d’objets !</Text>
+			<Text Lang="pt-BR">Você realmente deseja deletar todos as pastas de módulos não-vazias? Isso pode causar a remoção de módulos contidos de instâncias de objetos.</Text>
+			<Text Lang="zh">是否确定要删除此非空模板文件夹？这将导致从对象实例中删除包含的模板！</Text>
+			<Text Lang="ko">정말로 이 비어있지 않은 객체 템플릿 폴더를 지우시겠습니까? 이 폴더에 포함된  객체 템플릿들은 자동적으로 모든 객체 인스턴스에서 제거됩니다!</Text>
+			<Text Lang="pl">Jesteś pewien że chcesz usunąć ten folder szablonów?  Może to spowodować usunięcie szablonów obiektów z instancji obiektu!</Text>
+			<Text Lang="es">¿Seguro que deseas eliminar esta carpeta de plantillas de objetos no vacía? ¡Esto puede causar la eliminación de plantillas de objetos contendidas en instancias de objetos!</Text>
+			<Text Lang="it">Sei sicuro di voler cancellare questa cartella dei template degli oggetti? Non è vuota! Questo potrebbe causare la rimozione template dalle istanze degli oggetti!</Text>
+			<Text Lang="ru">Эта папка содержит некую информацию. Её удаление может привести к потере содержащихся в ней данных!</Text>
+			<Text Lang="de">Möchten Sie diesen nicht-leeren Vorlagenorder tatsächlich entfernen? Dies kann die Entfernung von enthaltenen Vorlagen aus Objektinstanzen zur Folge haben!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteTraitTemplate.Confirm.Description">
+			<Context>Confirmation text displayed when user is about to delete a trait template</Context>
+			<Text Lang="en">Do you really want to delete this property definition? It will be automatically removed from all features, templates and object instances!</Text>
+			<Text Lang="uk">Ви дійсно хочете видалити це визначення властивості? Воно автоматично видалиться з усіх функцій, шаблонів та екземплярів об'єктів!</Text>
+			<Text Lang="fr">Voulez-vous supprimer cette définition de propriété ? Elle sera automatiquement supprimée de toutes les fonctionnalités, modèles et occurrences d’objets !</Text>
+			<Text Lang="pt-BR">Você realmente deseja deletar essa definição de propriedade? Será automaticamente removido de todos os elementos, módulos e objetos de instância.</Text>
+			<Text Lang="zh">是否确定要删除此属性定义？它将自动从所有功能、模板和对象实例中删除！</Text>
+			<Text Lang="ko">정말로 이 속성 정의를 지우시겠습니까? 이 속성 정의는 자동적으로 모든 객체, 템플릿, 그리고 객체 인스턴스에서 제거됩니다.</Text>
+			<Text Lang="pl">Jesteś pewien że chcesz usunąć tę definicję cechy? Zostanie ona usunięta ze wszystkich własności, szablonów obiektów i instacji obiektów!</Text>
+			<Text Lang="es">¿Seguro que deseas eliminar esta definición de propiedades? ¡Se eliminará automáticamente de todas las características, plantillas de objetos e instancias de objetos!</Text>
+			<Text Lang="it">Sei sicuro di voler cancellare questa definizione  di attributo? Sarà automaticamente rimossa dalle caratteristiche, dal template degli oggetti e dalle istanze degli oggetti!</Text>
+			<Text Lang="ru">Вы действительно хотите удалить это определенное свойство? Оно будет автоматически удалено из всех особенностей, шаблонов для объектов и экземпляров объектов!</Text>
+			<Text Lang="de">Möchten Sie diese Eigenschaftsdefinition tatsächlich entfernen? Sie wird dann automatisch aus allen Features, Vorlagen und Objektinstanzen entfernt werden!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteTraitTemplateFolder.Confirm.Description">
+			<Context>Confirmation text displayed when user is about to delete a trait template user folder</Context>
+			<Text Lang="en">Do you really want to delete this non-empty property definition folder? This may cause the removal of contained property definitions from features, templates and object instances!</Text>
+			<Text Lang="uk">Ви дійсно хочете видалити цю не порожню папку визначення властивостей? Це може спричинити видалення визначень властивостей з функцій, шаблонів та об'єктів!</Text>
+			<Text Lang="fr">Voulez-vous supprimer ce dossier de définition de propriété non vide ? Cela pourrait supprimer les définitions de propriété contenues des fonctionnalités, des modèles et des occurrences d’objets !</Text>
+			<Text Lang="pt-BR">Você realmente deseja deletar esta pasta de definição de propriedade não-vazia? Isso pode causar a remocão de elementos de definições de propriedades contidas de elementos, módulos e instâncias de objetos!</Text>
+			<Text Lang="zh">是否确定要删除此非空属性定义文件夹？这可能会导致从特性、模板和对象实例中删除包含的属性定义！</Text>
+			<Text Lang="ko">정말로 이 비어있지 않은 속성 정의 폴더를 지우시겠습니까? 이 폴더에 포함된 속성 정의들은 자동적으로 모든 객체, 템플릿, 그리고 객체 인스턴스에서 제거됩니다.</Text>
+			<Text Lang="pl">Jesteś pewien że chcesz usunąć ten folder definicji? Może to spowodować usunięcie własności definicji z właściwości, szbalonu obiektu i instancji obiektu!</Text>
+			<Text Lang="es">¿Seguro que deseas eliminar esta carpeta de definición de propiedades no vacía? ¡Esto puede causar la eliminación de definiciones de propiedades contenidas en características, plantillas de objetos e instancias de objetos!</Text>
+			<Text Lang="it">Sei sicuro di voler cancellare questa cartella di definizione di attributo? Non è vuota! Questo potrebbe causare la rimozione delle impostazioni dell'attributo dalle caratteristica, dai template di oggetti e dall'istanze degli oggetti!</Text>
+			<Text Lang="ru">Эта папка содержит определенные свойства. Её удаление может привести к потере содержащихся в ней данных!</Text>
+			<Text Lang="de">Möchten Sie diesen nicht-leeren Ordner für Eigenschaftsdefinitionen tatsächlich entfernen? Dies kann die Entfernung von enthaltenen Eigenschaftsdefinitionen aus Features, Vorlagen und Objektinstanzen zur Folge haben!</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".MessageBoxes.ModelCustomization">
+
+		<TextDefinition Key="FinishEditing.Dialog.Title">
+			<Context>Dialog title</Context>
+			<Text Lang="en">Committing changes</Text>
+			<Text Lang="uk">Внесення змін</Text>
+			<Text Lang="fr">Exécution des modifications</Text>
+			<Text Lang="pt-BR">Cometendo mudanças</Text>
+			<Text Lang="zh">正在提交更改</Text>
+			<Text Lang="ko">변경사항 적용</Text>
+			<Text Lang="pl">Zatwierdzanie zmian</Text>
+			<Text Lang="es">Aplicando cambios</Text>
+			<Text Lang="it">Commit delle modifiche</Text>
+			<Text Lang="ru">Внесение изменений</Text>
+			<Text Lang="de">Übernehme Änderungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FinishEditing.Dialog.InfoText">
+			<Context>Dialog text</Context>
+			<Text Lang="en">Committing changes</Text>
+			<Text Lang="uk">Внесення змін</Text>
+			<Text Lang="fr">Exécution des modifications</Text>
+			<Text Lang="pt-BR">Cometendo mudanças</Text>
+			<Text Lang="zh">正在提交更改</Text>
+			<Text Lang="ko">변경사항 적용</Text>
+			<Text Lang="pl">Zatwierdzanie zmian</Text>
+			<Text Lang="es">Aplicando cambios</Text>
+			<Text Lang="it">Commit delle modifiche</Text>
+			<Text Lang="ru">Внесение изменений</Text>
+			<Text Lang="de">Übernehme Änderungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Finish.Caption">
+			<Context>Caption for Finish-Messagebox in ModelCustomization</Context>
+			<Text Lang="en">Save changes</Text>
+			<Text Lang="uk">Зберегти зміни</Text>
+			<Text Lang="fr">Sauvegarder les modifications</Text>
+			<Text Lang="pt-BR">Salvar mudanças</Text>
+			<Text Lang="zh">保存更改</Text>
+			<Text Lang="ko">변경 사항 저장</Text>
+			<Text Lang="pl">Zapisz zmiany</Text>
+			<Text Lang="es">Guardar cambios</Text>
+			<Text Lang="it">Salva modifiche</Text>
+			<Text Lang="ru">Сохранить изменения</Text>
+			<Text Lang="de">Änderungen speichern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Finish.Text">
+			<Context>Text for Finish-MessageBox in ModelCustomization</Context>
+			<Text Lang="en">You are about to save the changes you have made to the template/feature.</Text>
+			<Text Lang="uk">Ви збираєтесь зберегти зміни, внесені до шаблону / функції.</Text>
+			<Text Lang="fr">Vous allez sauvegarder les modifications effectuées au modèle/à la fonctionnalité.</Text>
+			<Text Lang="pt-BR">Você está prestes á salvar as mudanças que você fez ao módulo/elemento.</Text>
+			<Text Lang="zh">您将保存对模板/特性所做的更改。</Text>
+			<Text Lang="ko">당신은 템플릿/기능에 대한 변경 사항을 저장하려 합니다.</Text>
+			<Text Lang="pl">Zapisujesz właśnie zmiany, których dokonałeś w tym szablonie/właściwości</Text>
+			<Text Lang="es">Estás a punto de guardar los cambios realizados en la plantilla o característica.</Text>
+			<Text Lang="it">Stai per salvare le modifiche che hai fatto al template/caratteristica.</Text>
+			<Text Lang="ru">Вы собираетесь сохранить изменения, внесенные в шаблоны / особенности.</Text>
+			<Text Lang="de">Sind sind im Begriff, die Änderungen an der Vorlage bzw. am Feature zu speichern.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Cancel.Caption">
+			<Context>Caption for Cancel-MessageBox in ModelCustomization</Context>
+			<Text Lang="en">Discard changes</Text>
+			<Text Lang="uk">Скасувати зміни</Text>
+			<Text Lang="fr">Annuler les modifications</Text>
+			<Text Lang="pt-BR">Discartar mudanças</Text>
+			<Text Lang="zh">放弃更改</Text>
+			<Text Lang="ko">변경 사항 취소</Text>
+			<Text Lang="pl">Odrzuć zmiany</Text>
+			<Text Lang="es">Descartar cambios</Text>
+			<Text Lang="it">Scarta modifiche</Text>
+			<Text Lang="ru">Отменить изменения</Text>
+			<Text Lang="de">Änderungen verwerfen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Cancel.Text">
+			<Context>Text for Cancel-MessageBox in ModelCustomization</Context>
+			<Text Lang="en">You are about to discard the changes you have made to the template/feature.</Text>
+			<Text Lang="uk">Ви збираєтесь скасувати зміни, внесені до шаблону / функції.</Text>
+			<Text Lang="fr">Vous allez annuler les modifications effectuées au modèle/à la fonctionnalité.</Text>
+			<Text Lang="pt-BR">Você está prestes á discartar as mudanças que você fez ao módulo/elemento.</Text>
+			<Text Lang="zh">您将放弃对模板/特性所做的更改。</Text>
+			<Text Lang="ko">당신은 템플릿/기능에 대한 변경 사항을 취소하려 합니다.</Text>
+			<Text Lang="pl">Odrzucasz właśnie zmiany których dokonałeś w tym szablonie/właściwości</Text>
+			<Text Lang="es">Estás a punto de descartar los cambios realizados en la plantilla o característica.</Text>
+			<Text Lang="it">Stai per scartare le modifiche che hai fatto al template/caratteristica.</Text>
+			<Text Lang="ru">Вы собираетесь отменить изменения, внесенные в шаблоны / особенности.</Text>
+			<Text Lang="de">Sind sind im Begriff, die Änderungen an der Vorlage bzw. am Feature zu verwerfen.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".DefaultEntityTemplates">
+
+		<TextDefinition Key="BasicCharFeature.Caption">
+			<Context>Display name of the Default Basic Char Feature</Context>
+			<Text Lang="en">Basic Character Properties</Text>
+			<Text Lang="uk">Основні властивості персонажа</Text>
+			<Text Lang="fr">Propriétés de base de personnage</Text>
+			<Text Lang="pt-BR">Propriedade de personagem básica</Text>
+			<Text Lang="zh">基本字符属性</Text>
+			<Text Lang="ko">기본 캐릭터 속성</Text>
+			<Text Lang="pl">Podstawowe własności bohatera</Text>
+			<Text Lang="es">Propiedades básicas de personaje</Text>
+			<Text Lang="it">Attributi base del personaggio</Text>
+			<Text Lang="ru">Основные свойства характера</Text>
+			<Text Lang="de">Basic Character Properties</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ExtendedCharFeature.Caption">
+			<Context>Display name of the Default Entity Extended Char Feature</Context>
+			<Text Lang="en">Extended Character Properties</Text>
+			<Text Lang="uk">Розширені властивості персонажа</Text>
+			<Text Lang="fr">Propriétés étendues de personnage</Text>
+			<Text Lang="pt-BR">Propriedade de personagem extendida</Text>
+			<Text Lang="zh">扩展字符属性</Text>
+			<Text Lang="ko">추가 캐릭터 속성</Text>
+			<Text Lang="pl">Rozszerzone własności bohatera</Text>
+			<Text Lang="es">Propiedades ampliadas de personaje</Text>
+			<Text Lang="it">Attributi estesi del personaggio</Text>
+			<Text Lang="ru">Расширенные свойства характера</Text>
+			<Text Lang="de">Extended Character Properties</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MainCharTemplate.Caption">
+			<Context>Display name of the Default Main Char Template</Context>
+			<Text Lang="en">Main characters</Text>
+			<Text Lang="uk">Головні герої</Text>
+			<Text Lang="fr">Personnages principaux</Text>
+			<Text Lang="pt-BR">Personagens principais</Text>
+			<Text Lang="zh">主角</Text>
+			<Text Lang="ko">주연</Text>
+			<Text Lang="pl">Szablon głównego bohatera</Text>
+			<Text Lang="es">Plantilla de personaje principal</Text>
+			<Text Lang="it">Template del protagonista</Text>
+			<Text Lang="ru">Шаблон главного героя</Text>
+			<Text Lang="de">Hauptcharaktere</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SupportingCharTemplate.Caption">
+			<Context>Display name of the Default Supporting Char Template</Context>
+			<Text Lang="en">Supporting characters</Text>
+			<Text Lang="uk">Другорядні персонажі</Text>
+			<Text Lang="fr">Personnages secondaires</Text>
+			<Text Lang="pt-BR">Personagens de apoio</Text>
+			<Text Lang="zh">配角</Text>
+			<Text Lang="ko">조연</Text>
+			<Text Lang="pl">Szablon bohatera drugorzędnego</Text>
+			<Text Lang="es">Plantilla de personaje secundario</Text>
+			<Text Lang="it">Template del personaggio di supporto</Text>
+			<Text Lang="ru">Шаблон второстепенного персонажа</Text>
+			<Text Lang="de">Nebencharaktere</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Description.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Description</Text>
+			<Text Lang="uk">Опис</Text>
+			<Text Lang="fr">Description</Text>
+			<Text Lang="pt-BR">Descrição</Text>
+			<Text Lang="zh">说明</Text>
+			<Text Lang="ko">설명</Text>
+			<Text Lang="pl">Opis</Text>
+			<Text Lang="es">Descripción</Text>
+			<Text Lang="it">Descrizione</Text>
+			<Text Lang="ru">Описание</Text>
+			<Text Lang="de">Beschreibung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.VoiceId.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Voice ID</Text>
+			<Text Lang="uk">Голосовий ID</Text>
+			<Text Lang="fr">Identité de voix</Text>
+			<Text Lang="pt-BR">ID da voz</Text>
+			<Text Lang="zh">音频ID</Text>
+			<Text Lang="ko">음성 ID</Text>
+			<Text Lang="pl">ID głosu</Text>
+			<Text Lang="es">Id de voz</Text>
+			<Text Lang="it">ID voce</Text>
+			<Text Lang="ru">Голосовой ID</Text>
+			<Text Lang="de">Stimmen-ID</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Age.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Age</Text>
+			<Text Lang="uk">Вік</Text>
+			<Text Lang="fr">Âge</Text>
+			<Text Lang="pt-BR">Idade</Text>
+			<Text Lang="zh">年龄</Text>
+			<Text Lang="ko">나이</Text>
+			<Text Lang="pl">Wiek</Text>
+			<Text Lang="es">Edad</Text>
+			<Text Lang="it">Età</Text>
+			<Text Lang="ru">Возраст</Text>
+			<Text Lang="de">Alter</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Sex.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Sex</Text>
+			<Text Lang="uk">Стать</Text>
+			<Text Lang="fr">Sexe</Text>
+			<Text Lang="pt-BR">Sexo</Text>
+			<Text Lang="zh">性别</Text>
+			<Text Lang="ko">성별</Text>
+			<Text Lang="pl">Płeć</Text>
+			<Text Lang="es">Sexo</Text>
+			<Text Lang="it">Sesso</Text>
+			<Text Lang="ru">Пол</Text>
+			<Text Lang="de">Geschlecht</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Species.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Species</Text>
+			<Text Lang="uk">Вид</Text>
+			<Text Lang="fr">Espèce</Text>
+			<Text Lang="pt-BR">Espécie</Text>
+			<Text Lang="zh">物种</Text>
+			<Text Lang="ko">종족</Text>
+			<Text Lang="pl">Gatunek</Text>
+			<Text Lang="es">Especie</Text>
+			<Text Lang="it">Specie</Text>
+			<Text Lang="ru">Вид</Text>
+			<Text Lang="de">Spezies</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Occupation.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Profession</Text>
+			<Text Lang="uk">Професія</Text>
+			<Text Lang="fr">Profession</Text>
+			<Text Lang="pt-BR">Profissão</Text>
+			<Text Lang="zh">职业</Text>
+			<Text Lang="ko">직업</Text>
+			<Text Lang="pl">Zawód</Text>
+			<Text Lang="es">Profesión</Text>
+			<Text Lang="it">Professione</Text>
+			<Text Lang="ru">Профессия</Text>
+			<Text Lang="de">Beruf</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.BornIn.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Born in</Text>
+			<Text Lang="uk">Народився в</Text>
+			<Text Lang="fr">Né en</Text>
+			<Text Lang="pt-BR">Nascido(a) em</Text>
+			<Text Lang="zh">出生地</Text>
+			<Text Lang="ko">출신</Text>
+			<Text Lang="pl">Miejsce urodzenia</Text>
+			<Text Lang="es">Lugar de nacimiento</Text>
+			<Text Lang="it">Nato a</Text>
+			<Text Lang="ru">Родился в</Text>
+			<Text Lang="de">Geboren in</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Accent.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Voice</Text>
+			<Text Lang="uk">Голос</Text>
+			<Text Lang="fr">Voix</Text>
+			<Text Lang="pt-BR">Voz</Text>
+			<Text Lang="zh">声音</Text>
+			<Text Lang="ko">음성</Text>
+			<Text Lang="pl">Głos</Text>
+			<Text Lang="es">Voz</Text>
+			<Text Lang="it">Voce</Text>
+			<Text Lang="ru">Голос</Text>
+			<Text Lang="de">Stimme</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Personality.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Personality</Text>
+			<Text Lang="uk">Особистіть</Text>
+			<Text Lang="fr">Personnalité</Text>
+			<Text Lang="pt-BR">Personalidade</Text>
+			<Text Lang="zh">人格</Text>
+			<Text Lang="ko">성격</Text>
+			<Text Lang="pl">Osobowość</Text>
+			<Text Lang="es">Personalidad</Text>
+			<Text Lang="it">Personalità</Text>
+			<Text Lang="ru">Личность</Text>
+			<Text Lang="de">Persönlichkeit</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Appearance.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Appearance</Text>
+			<Text Lang="uk">Зовнішній вигляд</Text>
+			<Text Lang="fr">Apparence</Text>
+			<Text Lang="pt-BR">Aparência</Text>
+			<Text Lang="zh">外貌</Text>
+			<Text Lang="ko">외관</Text>
+			<Text Lang="pl">Wygląd</Text>
+			<Text Lang="es">Aspecto físico</Text>
+			<Text Lang="it">Aspetto</Text>
+			<Text Lang="ru">Внешний вид</Text>
+			<Text Lang="de">Aussehen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Motivation.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Goals</Text>
+			<Text Lang="uk">Цілі</Text>
+			<Text Lang="fr">Objectifs</Text>
+			<Text Lang="pt-BR">Objetivos</Text>
+			<Text Lang="zh">目的</Text>
+			<Text Lang="ko">목표</Text>
+			<Text Lang="pl">Cele</Text>
+			<Text Lang="es">Objetivos</Text>
+			<Text Lang="it">Obiettivi</Text>
+			<Text Lang="ru">Цели</Text>
+			<Text Lang="de">Ziele</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.InnerConflict.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Inner Conflict</Text>
+			<Text Lang="uk">Внутрішній конфлікт</Text>
+			<Text Lang="fr">Conflit interne</Text>
+			<Text Lang="pt-BR">Conflito interno</Text>
+			<Text Lang="zh">内在冲突</Text>
+			<Text Lang="ko">내적 갈등</Text>
+			<Text Lang="pl">Konflikt wewnętrzny</Text>
+			<Text Lang="es">Conflicto interno</Text>
+			<Text Lang="it">Conflitti interiori</Text>
+			<Text Lang="ru">Внутренний конфликт</Text>
+			<Text Lang="de">Innerer Konflikt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Skills.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Skills</Text>
+			<Text Lang="uk">Вміння</Text>
+			<Text Lang="fr">Compétences</Text>
+			<Text Lang="pt-BR">Habilidades</Text>
+			<Text Lang="zh">技能</Text>
+			<Text Lang="ko">스킬</Text>
+			<Text Lang="pl">Umiejętności</Text>
+			<Text Lang="es">Habilidades</Text>
+			<Text Lang="it">Abilità</Text>
+			<Text Lang="ru">Навыки</Text>
+			<Text Lang="de">Fähigkeiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Fears.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Weaknesses</Text>
+			<Text Lang="uk">Слабкі сторони</Text>
+			<Text Lang="fr">Points faibles</Text>
+			<Text Lang="pt-BR">Fraquezas</Text>
+			<Text Lang="zh">弱点</Text>
+			<Text Lang="ko">약점</Text>
+			<Text Lang="pl">Słabości</Text>
+			<Text Lang="es">Debilidades</Text>
+			<Text Lang="it">Debolezze</Text>
+			<Text Lang="ru">Слабые стороны</Text>
+			<Text Lang="de">Schwächen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.Habits.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Quirks / Habits</Text>
+			<Text Lang="uk">Причуди/Звички</Text>
+			<Text Lang="fr">Singularités / Habitudes</Text>
+			<Text Lang="pt-BR">Peculiaridades / Hábitos</Text>
+			<Text Lang="zh">怪癖 / 习惯</Text>
+			<Text Lang="ko">버릇 / 습관</Text>
+			<Text Lang="pl">Nawyki</Text>
+			<Text Lang="es">Peculiaridades / Hábitos</Text>
+			<Text Lang="it">Stranezze / Abitudini</Text>
+			<Text Lang="ru">Причуды/Привычки</Text>
+			<Text Lang="de">Macken / Gewohnheiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Trait.FurtherDetails.Caption">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Further Details</Text>
+			<Text Lang="uk">Додаткова інформація</Text>
+			<Text Lang="fr">Autres détails</Text>
+			<Text Lang="pt-BR">Detalhes adicionais</Text>
+			<Text Lang="zh">更多详细信息</Text>
+			<Text Lang="ko">부가 세부 사항</Text>
+			<Text Lang="pl">Inne detale</Text>
+			<Text Lang="es">Más detalles</Text>
+			<Text Lang="it">Ulteriori Dettagli</Text>
+			<Text Lang="ru">Дополнительные детали</Text>
+			<Text Lang="de">Weitere Details</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".TraitValidators.Messages">
+
+		<TextDefinition Key="TraitMaximumValueValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is greater than "{1}"!</Text>
+			<Text Lang="uk">"{0}"більше ніж "{1}"!</Text>
+			<Text Lang="fr">« {0} » est plus grand que « {1} » !</Text>
+			<Text Lang="pt-BR">"{0}" é maior que "{1}"!</Text>
+			<Text Lang="zh">"{0}" 大于 "{1}"！</Text>
+			<Text Lang="ko">"{0}"은(는) "{1}"보다 큽니다!</Text>
+			<Text Lang="pl">{0}' jest większe od '{1}'!</Text>
+			<Text Lang="es">¡"{0}" es mayor que "{1}"</Text>
+			<Text Lang="it">"{0}" è più grande di "{1}"!</Text>
+			<Text Lang="ru">"{0}" больше, чем "{1}"!</Text>
+			<Text Lang="de">"{0}" ist größer als "{1}"!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitMinimumValueValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is smaller than "{1}"!</Text>
+			<Text Lang="uk">"{0}"менше ніж "{1}"!</Text>
+			<Text Lang="fr">« {0} » est plus petit que « {1} » !</Text>
+			<Text Lang="pt-BR">"{0}" é menor que "{1}"!</Text>
+			<Text Lang="zh">"{0}" 小于 "{1}"！</Text>
+			<Text Lang="ko">"{0}"은(는) "{1}"보다 작습니다!</Text>
+			<Text Lang="pl">{0}' jest mniejsze '{0}'!</Text>
+			<Text Lang="es">¡"{0}" es más pequeño que "{1}"</Text>
+			<Text Lang="it">"{0}" è più piccolo di "{1}"!</Text>
+			<Text Lang="ru">"{0}" меньше, чем "{1}"!</Text>
+			<Text Lang="de">"{0}" ist kleiner als "{1}"!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitStringNonEmptyValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" must not be empty!</Text>
+			<Text Lang="uk">"{0}" не повинно бути порожнім!</Text>
+			<Text Lang="fr">« {0} » ne doit pas être vide !</Text>
+			<Text Lang="pt-BR">"{0}" não deve estar vazio!</Text>
+			<Text Lang="zh">"{0}" 不能为空！</Text>
+			<Text Lang="ko">"{0}"은(는) 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">{0}' nie może być puste!</Text>
+			<Text Lang="es">¡"{0}" no puede estar vacío!</Text>
+			<Text Lang="it">"{0}" non può essere vuoto!</Text>
+			<Text Lang="ru">"{0}" не должен быть пустым!</Text>
+			<Text Lang="de">"{0}" darf nicht leer sein!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitLocalizedStringNonEmptyValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" must not be empty!</Text>
+			<Text Lang="uk">"{0}" не повинно бути порожнім!</Text>
+			<Text Lang="fr">« {0} » ne doit pas être vide !</Text>
+			<Text Lang="pt-BR">"{0}" não deve estar vazio!</Text>
+			<Text Lang="zh">"{0}" 不能为空！</Text>
+			<Text Lang="ko">"{0}"은(는) 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">{0}' nie może być puste!</Text>
+			<Text Lang="es">¡"{0}" no puede estar vacío!</Text>
+			<Text Lang="it">"{0}" non può essere vuoto!</Text>
+			<Text Lang="ru">"{0}" не должен быть пустым!</Text>
+			<Text Lang="de">"{0}" darf nicht leer sein!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitTechnicalIdentifierFormatValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is not a valid technical name! Technical names may only contain letters (A-Z, a-z), '_' and numbers (0-9). The first character however is not allowed to be a number.</Text>
+			<Text Lang="uk">"{0}" - невірна технічна назва! Технічні назви можуть містити лише літери (A-Z, a-z), '_' та цифри (0-9). Однак перший символ не може бути числом.</Text>
+			<Text Lang="fr">« {0} » n’est pas un nom technique valide ! Les noms techniques doivent contenir uniquement des lettres (A-Z, a-z), « _ » et des chiffres (0-9). Cependant, le premier caractère ne doit pas être un chiffre.</Text>
+			<Text Lang="pt-BR">"{0}" não é um nome técnico válido! Nomes técnicos podem apenas conter letras (A - Z, a - z) '_' e números (0 - 9). Porém, o primeiro caractere não pode ser um número.</Text>
+			<Text Lang="zh">"{0}" 不是有效的技术名称！技术名称只能包含字母 (A-Z, a-z)、 '_' 和数字 (0-9)。以非数字字符开头。</Text>
+			<Text Lang="ko">"{0}"은 잘못된 기술 이름입니다! 기술 이름에는 문자(A-Z, a-z), '_' 및 숫자(0-9) 만 입력할 수 있습니다. 첫번째 글자는 숫자가 들어가서는 안됩니다.</Text>
+			<Text Lang="pl">{0}' to nie nazwa techniczna! Nazwy techniczne mogą zawierać tylko litery (A-Z, a-z), '_' i liczby (0-9). Pierwszy znak nie może byc jednak liczbę.</Text>
+			<Text Lang="es">¡"{0}" no es un nombre técnico válido! Los nombres técnicos solo pueden contener letras (AZ, a), "_" y números (0-9). Sin embargo, el primer caracter no puede ser un número.</Text>
+			<Text Lang="it">"{0}" non è un nome tecnico valido! I nomi tecnici possono contenere solamente lettere (A-Z, a-z), '_' e numeri (0-9). Comunque il primo carattere non può essere un numero.</Text>
+			<Text Lang="ru">"{0}" не является подходящим техническим именем! Технические названия могут содержать только латинские буквы (A-Z, a-z), '_' и цифры (0-9). Первый символ, однако, не может быть цифрой.</Text>
+			<Text Lang="de">"{0}" ist kein gültiger technischer Name! Technische Namen dürfen nur Buchstaben (A-Z, a-z), '_', und Ziffern (0-9) enthalten. Der erste Buchstabe darf allerdings keine Ziffer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitTechnicalIdentifierReservedValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" has a value reserved for articy:draft! Please choose another name.</Text>
+			<Text Lang="uk">"{0}" має значення, зарезервоване для articy:draft! Будь ласка, виберіть іншу назву.</Text>
+			<Text Lang="fr">« {0} » contient une valeur réservée à articy:draft ! Veuillez choisir un autre nom.</Text>
+			<Text Lang="pt-BR">"{0}" tem um valor reservado para articy:draft! Por favor escolha outro nome.</Text>
+			<Text Lang="zh">"{0}" 是一个为 articy:draft 保留的值！请选择其他名称。</Text>
+			<Text Lang="ko">"{0}"는 articy:draft에 예약 된 값입니다. 다른 이름을 선택 하십시오.</Text>
+			<Text Lang="pl">{0}' zawiera wartości zarezerwowane dla articity:draft! Proszę wybrać inną nazwę.</Text>
+			<Text Lang="es">¡"{0}" contiene un valor reservado por articy:draft! Por favor, elige otro nombre.</Text>
+			<Text Lang="it">"{0}" è un valore riservato per articy:draft! Per favore scegli un altro nome.</Text>
+			<Text Lang="ru">"{0}" имеет значение зарезервированное для articy:draft! Пожалуйста, выберите другое имя.</Text>
+			<Text Lang="de">"{0}" besitzt einen Wert, der für articy:draft reserviert ist! Bitte wählen Sie einen anderen Bezeichner.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitStringUniqueValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is not unique, this name is already used!</Text>
+			<Text Lang="uk">"{0}" не унікальна, ця назва вже використовується!</Text>
+			<Text Lang="fr">« {0} » n’est pas unique, ce nom est déjà utilisé !</Text>
+			<Text Lang="pt-BR">"{0}" não é único, este nome já está em uso!</Text>
+			<Text Lang="zh">"{0}" 不唯一，该名称已被使用！</Text>
+			<Text Lang="ko">"{0}"은 고유하지 않습니다.이 이름은 이미 사용 중입니다!</Text>
+			<Text Lang="pl">{0}' nie jest unikalne, ta nazwa jest już używana!</Text>
+			<Text Lang="es">¡"{0}" no es un nombre único, dado que ya está siendo usado!</Text>
+			<Text Lang="it">"{0}" non è unico, questo nome è già in uso!</Text>
+			<Text Lang="ru">"{0}" не уникально, это имя уже используется!</Text>
+			<Text Lang="de">"{0}" ist nicht eindeutig, dieser Bezeichner wird bereits verwendet!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitLocalizedStringUniqueValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is not unique, this name is already used!</Text>
+			<Text Lang="uk">"{0}" не унікальна, ця назва вже використовується!</Text>
+			<Text Lang="fr">« {0} » n’est pas unique, ce nom est déjà utilisé !</Text>
+			<Text Lang="pt-BR">"{0}" não é único, este nome já está em uso!</Text>
+			<Text Lang="zh">"{0}" 不唯一，该名称已被使用！</Text>
+			<Text Lang="ko">"{0}"은 고유하지 않습니다.이 이름은 이미 사용 중입니다!</Text>
+			<Text Lang="pl">{0}' nie jest unikalne, ta nazwa jest już używana!</Text>
+			<Text Lang="es">¡"{0}" no es un nombre único, dado que ya está siendo usado!</Text>
+			<Text Lang="it">"{0}" non è unico, questo nome è già in uso!</Text>
+			<Text Lang="ru">"{0}" не уникально, это имя уже используется!</Text>
+			<Text Lang="de">"{0}" ist nicht eindeutig, dieser Bezeichner wird bereits verwendet!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitMandatoryValueValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Mandatory field "{0}" has no value!</Text>
+			<Text Lang="uk">Обов’язкове поле "{0}" не має значення!</Text>
+			<Text Lang="fr">Le champ obligatoire « {0} » n’a aucune valeur !</Text>
+			<Text Lang="pt-BR">Campo mandatório "{0}" não possui valor!</Text>
+			<Text Lang="zh">强制字段 "{0}" 未赋值！</Text>
+			<Text Lang="ko">필수 입력란 "{0}"에 값이 없습니다.</Text>
+			<Text Lang="pl">Obowiązkowe pole '{0}' nie ma żadnej wartości!</Text>
+			<Text Lang="es">¡El campo obligatorio "{0}" no tiene ningún valor!</Text>
+			<Text Lang="it">Il campo obbligatorio "{0}" non ha valore!</Text>
+			<Text Lang="ru">Обязательному полю "{0}" не задано никакого значения!</Text>
+			<Text Lang="de">Zwingendes Feld "{0}" hat keinen Wert!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitNumberPrecisionValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is violating maximum precision constraint "{1}"!</Text>
+			<Text Lang="uk">"{0}" порушує максимальне обмеження по точності "{1}"!</Text>
+			<Text Lang="fr">« {0} » ne respecte pas la contrainte de précision maximale « {1} » !</Text>
+			<Text Lang="pt-BR">"{0}" é  a restrição de precisão máxima "{1}"!</Text>
+			<Text Lang="zh">"{0}" 违反了最大精度限制 "{1}"！</Text>
+			<Text Lang="ko">"{0}"이(가) 최대 정밀 제한 "{1}"을(를) 위반하고 있습니다!</Text>
+			<Text Lang="pl">{0}' narusza maksymalne wartości precyzji '{1}'!</Text>
+			<Text Lang="es">¡"{0}" viola la restricción de precisión máxima "{1}"!</Text>
+			<Text Lang="it">"{0}" sta violando il limite massimo di precisione "{1}"!</Text>
+			<Text Lang="ru">"{0}" нарушает максимальное ограничение по точности "{1}"!</Text>
+			<Text Lang="de">"{0}" verletzt die Bedingung "{1}" zur maximalen Genauigkeit!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitLocalizedStringValidCharsValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is violating the invalid characters constraint "{1}"!</Text>
+			<Text Lang="uk">"{0}" порушує обмеження по заборонених символах "{1}"!</Text>
+			<Text Lang="fr">« {0} » ne respecte pas la contrainte de caractère invalide « {1} » !</Text>
+			<Text Lang="pt-BR">"{0}" está violando a restrição de caracteres inválido "{1}"!</Text>
+			<Text Lang="zh">"{0}" 违反了无效字符限制 "{1}"！</Text>
+			<Text Lang="ko">"{0}"이(가) 잘못된 문자 제약 조건인 "{1}"을(를) 위반하고 있습니다!</Text>
+			<Text Lang="pl">{0}' narusza zabronione limity znaków '{1}'!</Text>
+			<Text Lang="es">¡"{0}" viola la restricción de caracteres no permitidos"{1}"!</Text>
+			<Text Lang="it">"{0}" sta usando un carattere non permesso "{1}"!</Text>
+			<Text Lang="ru">"{0}" нарушает ограничение на запрещенные символы "{1}"!</Text>
+			<Text Lang="de">"{0}" verletzt die Bedingung "{1}" zu verbotenen Zeichen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitLocalizedTextLengthValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">"{0}" is violating the maximum text length constraint "{1}"!</Text>
+			<Text Lang="uk">{0} порушує максимальне обмеження по довжині тексту "{1}"!</Text>
+			<Text Lang="fr">« {0} » ne respecte pas la contrainte de longueur de texte maximale « {1} » !</Text>
+			<Text Lang="pt-BR">"{0}" está violando a restrição de quantidade de texto máximo "{1}"!</Text>
+			<Text Lang="zh">"{0}" 违反了最大文本长度限制 "{1}"！</Text>
+			<Text Lang="ko">{0}이(가) 최대 텍스트 길이 제약 조건인 "{1}"을(를) 위반하고 있습니다!</Text>
+			<Text Lang="pl">{0}' narusza maksymalny limit długości tekstu '{1}'!</Text>
+			<Text Lang="es">¡"{0}" viola la restricción de número máximo de caracteres "{1}"!</Text>
+			<Text Lang="it">"{0}" sta violando il limite massimo di caratteri in un testo "{1}"!</Text>
+			<Text Lang="ru">"{0}" нарушает максимальное ограничение по длине текста "{1}"!</Text>
+			<Text Lang="de">"{0}" verletzt die Bedingung "{1}" zur maximalen Textlänge!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitEnumValueDefinitionUniqueDisplayNamesValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Drop-down lists must have unique names!</Text>
+			<Text Lang="uk">Випадні списки повинні мати унікальні назви!</Text>
+			<Text Lang="fr">Les listes déroulantes doivent avoir des noms uniques !</Text>
+			<Text Lang="pt-BR">Listas de suspensão devem ter nomes únicos!</Text>
+			<Text Lang="zh">下拉列表必须具有唯一的名称！</Text>
+			<Text Lang="ko">드롭-다운 목록에 고유한  이름이 있어야 합니다!</Text>
+			<Text Lang="pl">Rozwijana lista musi posiadać unikalną nazwę!</Text>
+			<Text Lang="es">¡Las listas desplegables deben tener nombres exclusivos!</Text>
+			<Text Lang="it">Le liste a discesa devono avere nomi unici!</Text>
+			<Text Lang="ru">Раскрывающиеся списки должен иметь уникальные имена!</Text>
+			<Text Lang="de">Dropdown-Listen müssen eindeutige Namen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitEnumValueDefinitionNonEmptyDisplayNamesValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">All drop-down lists must have names!</Text>
+			<Text Lang="uk">Всі випадні списки повинні мати назви!</Text>
+			<Text Lang="fr">Toutes les listes déroulantes doivent avoir un nom !</Text>
+			<Text Lang="pt-BR">Todas as listas de suspensão devem ter nomes técnicos!</Text>
+			<Text Lang="zh">所有下拉列表必须拥有名称！</Text>
+			<Text Lang="ko">모든 드롭-다운 목록은 이름이 있어야 합니다!</Text>
+			<Text Lang="pl">Wszystkie rozwijane listy muszą posiadać nazwę!</Text>
+			<Text Lang="es">¡Todas las listas desplegables deben tener nombre!</Text>
+			<Text Lang="it">Tutte le liste a discesa devono avere dei nomi!</Text>
+			<Text Lang="ru">Все раскрывающиеся списки должны иметь имена!</Text>
+			<Text Lang="de">Alle Dropdown-Listen müssen Namen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitEnumValueDefinitionUniqueTechnicalNamesValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Drop-down lists must have unique technical names!</Text>
+			<Text Lang="uk">Випадні списки повинні мати унікальні технічні назви!</Text>
+			<Text Lang="fr">Les listes déroulantes doivent avoir des noms techniques uniques !</Text>
+			<Text Lang="pt-BR">Listas de suspensão devem ter nomes técnicos únicos!</Text>
+			<Text Lang="zh">下拉列表必须拥有唯一的技术名称！</Text>
+			<Text Lang="ko">드롭-다운 목록에 고유한 기술 이름이 있어야 합니다!</Text>
+			<Text Lang="pl">Rozwijana lista musi posiadać unikalne nazwy techniczne!</Text>
+			<Text Lang="es">¡Las listas desplegables deben tener nombres técnicos exclusivos!</Text>
+			<Text Lang="it">Le liste a discesa devono avere nomi tecnici unici!</Text>
+			<Text Lang="ru">Раскрывающиеся списки должны иметь уникальные технические названия!</Text>
+			<Text Lang="de">Dropdown-Listen müssen eindeutige technische Namen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitEnumValueDefinitionNonEmptyTechnicalNamesValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">All drop-down lists must have technical names!</Text>
+			<Text Lang="uk">Всі випадні списки повинні мати технічні назви!</Text>
+			<Text Lang="fr">Toutes les listes déroulantes doivent avoir un nom technique !</Text>
+			<Text Lang="pt-BR">Toda as listas de suspensão devem ter nomes técnicos!</Text>
+			<Text Lang="zh">所有下拉列表必须拥有技术名称！</Text>
+			<Text Lang="ko">모든 드롭-다운 목록은 기술 이름이 있어야 합니다!</Text>
+			<Text Lang="pl">Wszystkie rozwijane listy muszą posiadać nazwę techniczną!</Text>
+			<Text Lang="es">¡Todas las listas desplegables deben tener nombre técnico!</Text>
+			<Text Lang="it">Tutte le liste a discesa devono avere nomi tecnici!</Text>
+			<Text Lang="ru">Все раскрывающиеся списки должны иметь технические названия!</Text>
+			<Text Lang="de">Alle Dropdown-Listen müssen technische Namen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitEnumValueDefinitionTechnicalNamesFormatValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Technical names may only contain letters (A-Z, a-z), '_' and numbers (0-9). The first character however is not allowed to be a number.</Text>
+			<Text Lang="uk">Технічні назви можуть містити лише літери (A-Z, a-z), '_' та цифри (0-9). Однак перший символ не може бути цифрою.</Text>
+			<Text Lang="fr">Les noms techniques doivent contenir uniquement des lettres (A-Z, a-z), « _ » et des chiffres (0-9). Cependant, le premier caractère ne doit pas être un chiffre.</Text>
+			<Text Lang="pt-BR">Nomes técnicos podem apenas conter letras (A - Z, a - z) '_' e números (0 - 9). Porém, o primeiro caractere não pode ser um número.</Text>
+			<Text Lang="zh">技术名称只能包含字母 (A-Z, a-z),、'_' 和数字 (0-9)。以非数字字符开头。</Text>
+			<Text Lang="ko">기술 이름은 문자(A-Z, a-z), '_' 및 숫자(0-9) 만 입력할 수 있습니다. 첫번째 글자는 숫자가 들어가서는 안됩니다.</Text>
+			<Text Lang="pl">Nazwy techniczne mogą składać się tylko z lite (A-Z, a-z), '_' i liczb (0-9). Pierwszy znak nie może być liczbą.</Text>
+			<Text Lang="es">Los nombres técnicos solo pueden contener letras (AZ, a), "_" y números (0-9). Sin embargo, el primer caracter no puede ser un número.</Text>
+			<Text Lang="it">I nomi tecnici possono contenere solamente lettere (A-Z, a-z), '_' e numeri (0-9). Comunque il primo carattere non può essere un numero.</Text>
+			<Text Lang="ru">Технические названия могут содержать только латинские буквы (A-Z, a-z), '_' и цифры (0-9). Первый символ, однако, не может быть цифрой.</Text>
+			<Text Lang="de">Technische Namen dürfen nur Buchstaben (A-Z, a-z), '_', und Ziffern (0-9) enthalten. Der erste Buchstabe darf allerdings keine Ziffer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitEnumValueDefinitionUniqueValuesValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Drop-down lists must have unique values!</Text>
+			<Text Lang="uk">Випадні списки повинні мати унікальні значення!</Text>
+			<Text Lang="fr">Les listes déroulantes doivent avoir des valeurs uniques !</Text>
+			<Text Lang="pt-BR">Listas de suspensão devem ter valores únicos!</Text>
+			<Text Lang="zh">下拉列表必须具有唯一值！</Text>
+			<Text Lang="ko">드롭-다운 목록에 고유한 값이 있어야 합니다!</Text>
+			<Text Lang="pl">Rozwijane listy muszą posiadać unikalne wartości!</Text>
+			<Text Lang="es">¡Las listas desplegables deben tener nombres exclusivos!</Text>
+			<Text Lang="it">La lista a discesa deve avere dei valori unici!</Text>
+			<Text Lang="ru">Раскрывающиеся списки должны иметь уникальные значения!</Text>
+			<Text Lang="de">Dropdown-Listen müssen eindeutige Werte besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceSlotValueTypeConstraintValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">The type of the target object is not allowed in this reference.</Text>
+			<Text Lang="uk">Посилання вказує на заборонений тип об'єкта!</Text>
+			<Text Lang="fr">Le type de l’objet cible n’est pas autorisé dans cette référence.</Text>
+			<Text Lang="pt-BR">O tipo de objeto alvo não é permitido nesta referência</Text>
+			<Text Lang="zh">此引用中不允许使用目标对象的类型。</Text>
+			<Text Lang="ko">이 참조에서 대상 객체의 형식은 허용되지 않습니다.</Text>
+			<Text Lang="pl">Odniesienie dotyczy niedostępnego typu obiektu!</Text>
+			<Text Lang="es">¡La referencia apunta a un tipo de objeto no permitido!</Text>
+			<Text Lang="it">I riferimenti puntano ad un tipo di oggetto disabilitato!</Text>
+			<Text Lang="ru">Ссылка указывает на запрещенный тип объекта!</Text>
+			<Text Lang="de">Referenz verweist auf unerlaubten Objekttyp!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceStripValueTypeConstraintValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">The following types of target objects are not allowed in this reference:{2}</Text>
+			<Text Lang="uk">Посилання вказує на заборонені типи об'єктів:{2}</Text>
+			<Text Lang="fr">Les types d’objets cibles suivants ne sont pas autorisés dans cette référence : {2}</Text>
+			<Text Lang="pt-BR">Os seguintes tipos de objetos alvo não são permitods nesta referência:{2}</Text>
+			<Text Lang="zh">此引用中不允许使用以下类型的目标对象：{2}</Text>
+			<Text Lang="ko">다음 참조에서 대상 개체의 형식은 허용되지 않습니다: {2}</Text>
+			<Text Lang="pl">Odniesienia dotyczną niedostępnych typów plików:{2}</Text>
+			<Text Lang="es">¡Las referencias apuntan a tipos de objetos no permitidos: {2}!</Text>
+			<Text Lang="it">I riferimenti puntano ad un tipo di oggetto disabilitato:{2}</Text>
+			<Text Lang="ru">Ссылки указывают на запрещенные типы объектов:{2}</Text>
+			<Text Lang="de">Referenzen verweisen auf unerlaubte Objekttypen:{2}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceSlotValueAssetMimeTypeConstraintValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">This asset's file type is not allowed in this reference.</Text>
+			<Text Lang="uk">Посилання вказує на ресурс із забороненим типом файлу!</Text>
+			<Text Lang="fr">Ce type de dossier d’atouts n’est pas autorisé dans cette référence.</Text>
+			<Text Lang="pt-BR">Este arquivo de recurso não é permitido neste referência.</Text>
+			<Text Lang="zh">此引用中不允许使用此资源文件类型。</Text>
+			<Text Lang="ko">이 에셋의 파일 형식은이 참조에서 허용되지 않습니다.</Text>
+			<Text Lang="pl">Odniesienie dotyczy niedostępnego typu pliku!</Text>
+			<Text Lang="es">¡La referencia apunta a un recurso con un tipo de archivo no permitido!</Text>
+			<Text Lang="it">I riferimenti puntano ad un asset con tipo di file disabilitato!</Text>
+			<Text Lang="ru">Ссылка указывает на ресурс с запрещенным типом файла!</Text>
+			<Text Lang="de">Referenz verweist auf Asset mit unerlaubtem Dateityp!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceStripValueAssetMimeTypeConstraintValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">The following asset file types are not allowed in this reference:{2}</Text>
+			<Text Lang="uk">У цьому посиланні недопустимі  такі типи файлу:{2}</Text>
+			<Text Lang="fr">Les types de dossiers d’atouts suivants ne sont pas autorisés dans cette référence : {2}</Text>
+			<Text Lang="pt-BR">O seguintes arquivos de recurso não são permitidos nesta referência:{2}</Text>
+			<Text Lang="zh">此引用中不允许使用以下资源文件类型：{2}</Text>
+			<Text Lang="ko">다음 에셋의 파일 형식은이 참조에서 허용되지 않습니다: {2}</Text>
+			<Text Lang="pl">Odniesienia dotyczą assetów z niedostępnymi typami plików:{2}</Text>
+			<Text Lang="es">¡Las referencias apuntan a recursos con un tipo de archivo no permitido: {2}!</Text>
+			<Text Lang="it">I riferimenti puntano ad un asset con tipo di file disabilitato:{2}</Text>
+			<Text Lang="ru">Ссылки указывает на ресурс с запрещенным типом файла:{2}</Text>
+			<Text Lang="de">Referenzen verweisen auf Assets mit unerlaubten Dateitypen:{2}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceSlotValueModelTemplateConstraintValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">The object's template is not allowed in this reference.</Text>
+			<Text Lang="uk">Посилання вказує на об'єкт із забороненим шаблоном!</Text>
+			<Text Lang="fr">Ce modèle d’objet n’est pas autorisé dans cette référence.</Text>
+			<Text Lang="pt-BR">O módulo de objeto não é permitido nesta referência.</Text>
+			<Text Lang="zh">此引用中不允许使用对象的模板。</Text>
+			<Text Lang="ko">객체의 템플릿은 이 참조에서 허용되지 않습니다.</Text>
+			<Text Lang="pl">Odniesienie dotyczy obiektu z niedostępnym szablonem!</Text>
+			<Text Lang="es">¡La referencia apunta a un objeto con una plantilla no permitida!</Text>
+			<Text Lang="it">I riferimenti puntano ad un oggetto con template disabilitato!</Text>
+			<Text Lang="ru">Ссылка указывает на объект с запрещенным шаблоном!</Text>
+			<Text Lang="de">Referenz verweist auf Objekt mit unerlaubter Vorlage!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceStripValueModelTemplateConstraintValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">The following templates are not allowed in this reference:{2}</Text>
+			<Text Lang="uk">У цьому посиланні недопустимі такі шаблони:{2}</Text>
+			<Text Lang="fr">Les modèles suivants ne sont pas autorisés dans cette référence : {2}</Text>
+			<Text Lang="pt-BR">Os seguintes módulos de referência não são permitidos nessa referência:{2}</Text>
+			<Text Lang="zh">此引用中不允许使用以下模板：{2}</Text>
+			<Text Lang="ko">다음 객체의 템플릿은 이 참조에서 허용되지 않습니다:{2}</Text>
+			<Text Lang="pl">Odniesiena dotyczą obiektów z niedostępnymi szablonami:{2}</Text>
+			<Text Lang="es">¡Las referencias apuntan a objetos con una plantilla no permitida: {2}!</Text>
+			<Text Lang="it">I riferimenti puntano ad un oggetto con template disabilitato:{2}</Text>
+			<Text Lang="ru">Ссылки указывает на объекты с запрещенными шаблонами:{2}</Text>
+			<Text Lang="de">Referenzen verweisen auf Objekte mit unerlaubter Vorlage:{2}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceStripValueMaximumReferenceCountValidator.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">The query contains errors:\r\n{2}</Text>
+			<Text Lang="uk">Запит містить помилки:\r\n{2}</Text>
+			<Text Lang="fr">La requête contient des erreurs : \r\n{2}</Text>
+			<Text Lang="pt-BR">A questão contêm erros:\r\n{2}</Text>
+			<Text Lang="zh">该问题包含错误：\r\n{2}</Text>
+			<Text Lang="ko">쿼리에 오류가 있습니다:\r\n{2}</Text>
+			<Text Lang="pl">Zapytanie zawiera błędy:\r\n{2}</Text>
+			<Text Lang="es">La consulta contiene errores:\r\n{2}</Text>
+			<Text Lang="it">La richiesta contiene errori:\r\n{2}</Text>
+			<Text Lang="ru">Запрос содержит ошибки:\r\n{2}</Text>
+			<Text Lang="de">Die Abfrage enthält Fehler:\r\n{2}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitMandatoryValueValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Value is mandatory and has to be set!</Text>
+			<Text Lang="uk">Значення є обов'язковим і має бути встановлено!</Text>
+			<Text Lang="fr">La valeur est obligatoire et doit être déterminée !</Text>
+			<Text Lang="pt-BR">Valor é mandatório e dever ser estabelecido!</Text>
+			<Text Lang="zh">该值必须设置！</Text>
+			<Text Lang="ko">값은 필수로 설정해야합니다!</Text>
+			<Text Lang="pl">Wartość jest obowiązkowa i musi zostać zmodyfikowana!</Text>
+			<Text Lang="es">¡El valor es obligatorio y debe ser introducido!</Text>
+			<Text Lang="it">Il valore è obbligatorio e deve essere impostato.</Text>
+			<Text Lang="ru">Значение обязательно и должно быть установлено!</Text>
+			<Text Lang="de">Wert ist zwingend und muss gesetzt werden!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitNumberValuePrecisionValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Number must have at most {2} decimal places!</Text>
+			<Text Lang="uk">Число повинно містити не більше {2} десяткових знаків!</Text>
+			<Text Lang="fr">Le nombre doit contenir {2} décimales au maximum !</Text>
+			<Text Lang="pt-BR">Números devem ter no máximo {2} lugares decimais!</Text>
+			<Text Lang="zh">数值不能超过 {2} 小数位数！</Text>
+			<Text Lang="ko">숫자는 소수 점 {2}자리 숫자여야 합니다!</Text>
+			<Text Lang="pl">Numer musi mieć co najwyżej {2} miejsc po przecinku!</Text>
+			<Text Lang="es">¡El número debe tener un máximo de {2} decimales!</Text>
+			<Text Lang="it">I numeri devono avere al massimo {2} cifre decimali!</Text>
+			<Text Lang="ru">Число должен иметь не более {2} знаков после запятой!</Text>
+			<Text Lang="de">Zahl darf höchstens {2} Nachkommastellen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitNumberMaximumValueValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Number is too large, maximum value is {2}!</Text>
+			<Text Lang="uk">Число занадто велике, максимальне значення - {2}!</Text>
+			<Text Lang="fr">Nombre trop élevé, la valeur maximale est {2} !</Text>
+			<Text Lang="pt-BR">Número é muito largo, valor máximo é {2}!</Text>
+			<Text Lang="zh">数值过大，最大数值限制为 {2}！</Text>
+			<Text Lang="ko">숫자가 너무 큽니다. 최대 값은 {2} 입니다!</Text>
+			<Text Lang="pl">Numer jest za duży, maksymalna wartość to {2}!</Text>
+			<Text Lang="es">¡El número es demasiado grande! ¡El valor máximo es {2}!</Text>
+			<Text Lang="it">Il numero è troppo grande, il massimo è {2}!</Text>
+			<Text Lang="ru">Число слишком большое, максимальное значение {2}!</Text>
+			<Text Lang="de">Zahl ist zu groß, maximaler Wert ist {2}!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitNumberMinimumValueValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Number is too small, minimum value is {2}!</Text>
+			<Text Lang="uk">Число занадто мале, мінімальне значення - {2}!</Text>
+			<Text Lang="fr">Nombre trop petit, la valeur minimale est {2} !</Text>
+			<Text Lang="pt-BR">Número é pequeno demais, valor mínimo é {2}!</Text>
+			<Text Lang="zh">数值过小，最小数值限制为 {2}！</Text>
+			<Text Lang="ko">숫자가 너무 작습니다. 최소 값은 {2} 입니다!</Text>
+			<Text Lang="pl">Numer jest za mały, minimalna wartość to {2}!</Text>
+			<Text Lang="es">¡El número es demasiado pequeño! ¡El valor máximo es {2}!</Text>
+			<Text Lang="it">Il numero è troppo piccolo, il minimo è {2}!</Text>
+			<Text Lang="ru">Число слишком маленькое, минимальное значение {2}!</Text>
+			<Text Lang="de">Zahl ist zu klein, minimaler Wert ist {2}!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitNumberMaximumVersusMinimumValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Maximum value is less than minimum value!</Text>
+			<Text Lang="uk">Максимальне значення менше мінімального!</Text>
+			<Text Lang="fr">La valeur maximale est plus petite que la valeur minimale !</Text>
+			<Text Lang="pt-BR">Valor máximo é menor do que o valor mínimo!</Text>
+			<Text Lang="zh">最大值小于最小值！</Text>
+			<Text Lang="ko">최대값이 최소값보다 작습니다.</Text>
+			<Text Lang="pl">Maksymalna wartość jest mniejsza niż minimalna!</Text>
+			<Text Lang="es">¡El valor máximo es menor que el valor mínimo!</Text>
+			<Text Lang="it">Il valore massimo è minore di quello minimo!</Text>
+			<Text Lang="ru">Максимальное значение меньше чем минимальное значение!</Text>
+			<Text Lang="de">Maximaler Wert ist kleiner als minimaler Wert!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitNumberMinimumVersusMaximumValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Minimum value is greater than maximum value!</Text>
+			<Text Lang="uk">Мінімальне значення більше максимального!</Text>
+			<Text Lang="fr">La valeur minimale est plus élevée que la valeur maximale !</Text>
+			<Text Lang="pt-BR">Valor mínimo é maior do que o valor máximo!</Text>
+			<Text Lang="zh">最小值大于最大值！</Text>
+			<Text Lang="ko">최소값이 최대값보다 큽니다.</Text>
+			<Text Lang="pl">Minimalna wartość jest większa niż maksymalna!</Text>
+			<Text Lang="es">¡El valor mínimo es mayor que el valor máximo!</Text>
+			<Text Lang="it">Il valore minimo è maggiore di quello massimo!</Text>
+			<Text Lang="ru">Минимальное значение больше, чем максимальное значение!</Text>
+			<Text Lang="de">Minimaler Wert ist größer als maximaler Wert!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitTextValueValidCharsValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Text must not contain any character from "{2}"!</Text>
+			<Text Lang="uk">Текст не повинен містити символи з "{2}"!</Text>
+			<Text Lang="fr">Le texte ne doit contenir aucun caractère de « {2} » !</Text>
+			<Text Lang="pt-BR">Texto não deve contér nenhum caractere de {2}!</Text>
+			<Text Lang="zh">文本不能包含 "{2}"中的任何字符！</Text>
+			<Text Lang="ko">텍스트는 "{2}"에서 모든 문자를 포함 하지 않아야 합니다!</Text>
+			<Text Lang="pl">Tekst nie może zawierać żadnego znaku z '{2}'!</Text>
+			<Text Lang="es">¡El texto no puede contener caracteres de "{2}"!</Text>
+			<Text Lang="it">Il test non può contenere nessun carattere di "{2}"!</Text>
+			<Text Lang="ru">Текст не должен содержать символы из "{2}"!</Text>
+			<Text Lang="de">Text darf keine Zeichen aus "{2}" enthalten!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitTextValueMaximumLengthValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Text must not be longer than {2} characters!</Text>
+			<Text Lang="uk">Текст повинен мати не більше {2} символів!</Text>
+			<Text Lang="fr">Le texte ne doit pas dépasser {2} caractères !</Text>
+			<Text Lang="pt-BR">Texto não deve ser maior que {2} caracteres!</Text>
+			<Text Lang="zh">文本长度不能超过 {2} 字符！</Text>
+			<Text Lang="ko">텍스트는 {2} 문자 보다 길지 않아야 합니다.</Text>
+			<Text Lang="pl">Tekst musi mieć co najwyżej {2} znaków!</Text>
+			<Text Lang="es">¡El texto debe tener un máximo de {2} caracteres!</Text>
+			<Text Lang="it">Il testo può avere al massimo {2} caratteri!</Text>
+			<Text Lang="ru">Текст должен иметь не более {2} символов!</Text>
+			<Text Lang="de">Text darf höchstens {2} Zeichen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitValueLocalizedNameNonEmptyValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Property name must not be empty!</Text>
+			<Text Lang="uk">Ім'я властивості не повинно бути порожнім!</Text>
+			<Text Lang="fr">Le nom de la propriété ne doit pas être vide !</Text>
+			<Text Lang="pt-BR">Nome de propriedade não deve estar vazio!</Text>
+			<Text Lang="zh">属性名不可留空</Text>
+			<Text Lang="ko">속성 이름은 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Nazwa cechy nie może być pusta!</Text>
+			<Text Lang="es">¡El nombre del rasgo no puede estar vacío!</Text>
+			<Text Lang="it">I nomi dalla caratteristica non possono essere vuoti!</Text>
+			<Text Lang="ru">Имя черты не должно быть пустым!</Text>
+			<Text Lang="de">Eigenschaft darf keinen leeren Namen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitValueTechnicalNameNonEmptyValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Property must not have an empty technical name!</Text>
+			<Text Lang="uk">Технічне ім'я властивості не повинно бути порожнім!</Text>
+			<Text Lang="fr">Le nom technique de la propriété ne doit pas être vide !</Text>
+			<Text Lang="pt-BR">Propriedade não deve ter um nome técnico vazio!</Text>
+			<Text Lang="zh">属性不能有空的技术名称！</Text>
+			<Text Lang="ko">속성에 빈 기술 이름이 없어야 합니다.</Text>
+			<Text Lang="pl">Nazwa techniczna cechy nie może być pusta!</Text>
+			<Text Lang="es">¡El nombre técnico del rasgo no puede estar vacío!</Text>
+			<Text Lang="it">I nomi tecnico della caratteristica non possono essere vuoti!</Text>
+			<Text Lang="ru">Техническое имя черты не должно быть пустым!</Text>
+			<Text Lang="de">Eigenschaft darf keinen leeren technischen Namen besitzen!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitValueTechnicalNameFormatValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Technical names may only contain letters (A-Z, a-z), '_' and numbers (0-9). The first character however is not allowed to be a number.</Text>
+			<Text Lang="uk">Технічні назви можуть містити лише літери (A-Z, a-z), '_' та цифри (0-9). Однак перший символ не може бути цифрою.</Text>
+			<Text Lang="fr">Les noms techniques doivent contenir uniquement des lettres (A-Z, a-z), « _ » et des chiffres (0-9). Cependant, le premier caractère ne doit pas être un chiffre.</Text>
+			<Text Lang="pt-BR">Nomes técnicos podem apenas conter letras (A - Z, a - z) '_' e números (0 - 9). Porém, o primeiro caractere não pode ser um número.</Text>
+			<Text Lang="zh">技术名称只能包含字母 (A-Z, a-z)、 '_' 和数字 (0-9)，以非数字字符开头。</Text>
+			<Text Lang="ko">기술 이름에는 문자(A-Z, a-z), '_' 및 숫자(0-9) 만 입력할 수 있습니다. 첫번째 글자는 숫자가 들어가서는 안됩니다.</Text>
+			<Text Lang="pl">Nazwy techniczne mogą zawierać jedynie litery (A-Z, a-z), '_' i cyfry (0-9). Dodatkowo pierwszy znak nie może być cyfrą.</Text>
+			<Text Lang="es">Los nombres técnicos solo pueden contener letras (AZ, a), "_" y números (0-9). Sin embargo, el primer caracter no puede ser un número.</Text>
+			<Text Lang="it">I nomi tecnici possono contenere solamente lettere (A-Z, a-z), '_' e numeri (0-9). Comunque il primo carattere non può essere un numero.</Text>
+			<Text Lang="ru">Технические названия могут содержать только латинские буквы (A-Z, a-z), '_' и цифры (0-9). Первый символ, однако, не может быть цифрой.</Text>
+			<Text Lang="de">Technische Namen dürfen nur Buchstaben (A-Z, a-z), '_', und Ziffern (0-9) enthalten. Der erste Buchstabe darf allerdings keine Ziffer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitValueTechnicalNameReservedValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Technical name "{2}" is reserved for articy:draft! Please choose another name.</Text>
+			<Text Lang="uk">Технічна назва "{2}" зарезервоване для articy:draft! Будь ласка, виберіть іншу назву.</Text>
+			<Text Lang="fr">Le nom technique « {2} » est réservé à articy:draft ! Veuillez choisir un autre nom.</Text>
+			<Text Lang="pt-BR">Nome técnico "{2}" é reservado para articy:draft! Por favor escolha outro nome!</Text>
+			<Text Lang="zh">技术名称 "{2}" 已被预留给 articy:draft使用！请选择其他名称。</Text>
+			<Text Lang="ko">"{2}" 기술 이름은 articy:draft에 예약되어 있습니다. 다른 이름을 선택 하십시오.</Text>
+			<Text Lang="pl">Nazwa techniczka '{2}' jest zarezerwowana dla artiy:draft! Prosimy wybrać inną nazwę.</Text>
+			<Text Lang="es">¡El nombre técnico "{2}" está reservado por articy:draft! Por favor, elige otro nombre.</Text>
+			<Text Lang="it">Il nome tecnico "{2}" è riservato per articy:draft! Per favore scegli un altro nome.</Text>
+			<Text Lang="ru">Техническое имя "{2}" зарезервированное для articy:draft! Пожалуйста, выберите другое название.</Text>
+			<Text Lang="de">Der technische Name "{2}" ist für articy:draft reserviert! Bitte wählen Sie einen anderen Bezeichner.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitValueLocalizedNameUniqueValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">This name is already used!</Text>
+			<Text Lang="uk">Ця назва вже використовується.</Text>
+			<Text Lang="fr">Ce nom est déjà utilisé !</Text>
+			<Text Lang="pt-BR">Este nome já está em uso!</Text>
+			<Text Lang="zh">该名称已被使用！</Text>
+			<Text Lang="ko">이 이름은 이미 사용 중입니다!</Text>
+			<Text Lang="pl">Ta nazwa jest już w użyciu!</Text>
+			<Text Lang="es">¡Ese nombre ya está en uso!</Text>
+			<Text Lang="it">Questo nome è già in uso!</Text>
+			<Text Lang="ru">Это имя уже используется.</Text>
+			<Text Lang="de">Dieser Name ist bereits vergeben!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitValueTechnicalNameUniqueValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">This technical name is already used!</Text>
+			<Text Lang="uk">Ця технічна назва вже використовується.</Text>
+			<Text Lang="fr">Ce nom technique est déjà utilisé !</Text>
+			<Text Lang="pt-BR">Este nome técnico já está em uso!</Text>
+			<Text Lang="zh">此名称已被使用！</Text>
+			<Text Lang="ko">이 기술 이름은 이미 사용 중입니다!</Text>
+			<Text Lang="pl">Ta techniczna nazwa jest już w użyciu!</Text>
+			<Text Lang="es">¡Ese nombre ya está en uso!</Text>
+			<Text Lang="it">Questo nome tecnico è già stato usato!</Text>
+			<Text Lang="ru">Это техническое имя уже используется.</Text>
+			<Text Lang="de">Dieser technische Name ist bereits vergeben!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TraitReferenceStripValueMaximumReferenceCountValidator.ContextMessage.Caption">
+			<Context>Format string for the error message</Context>
+			<Text Lang="en">Strip must not have more than {2} elements!</Text>
+			<Text Lang="uk">Рядок посилання, не повинен містити більше {2} елементів!</Text>
+			<Text Lang="fr">Le bordereau ne doit pas avoir plus de {2} éléments !</Text>
+			<Text Lang="pt-BR">Tira não deve ter mais do que {2} elementos!</Text>
+			<Text Lang="zh">Strip的元素不能超过 {2} 个！</Text>
+			<Text Lang="ko">스트립은 {2} 요소보다 적어야 합니다.</Text>
+			<Text Lang="pl">Listwa nie może zawierać więcej niż {2} elementów!</Text>
+			<Text Lang="es">¡La tira no puede tener más de {2} elementos!</Text>
+			<Text Lang="it">La zona riferimenti non dovrà avere più di {2} elementi!</Text>
+			<Text Lang="ru">Строка ссылки, не должна содержать более {2} элементов!</Text>
+			<Text Lang="de">Strip darf nicht mehr als {2} Elemente besitzen!</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".TraitValues.Properties">
+
+		<TextDefinition Key="LocalizedName.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Display name</Text>
+			<Text Lang="uk">Показати назва</Text>
+			<Text Lang="fr">Nom affiché</Text>
+			<Text Lang="pt-BR">Nome de exibição</Text>
+			<Text Lang="zh">显示名称</Text>
+			<Text Lang="ko">표시 이름</Text>
+			<Text Lang="pl">Nazwa wyświetlana</Text>
+			<Text Lang="es">Nombre visible</Text>
+			<Text Lang="it">Nome visualizzato</Text>
+			<Text Lang="ru">Показать имя</Text>
+			<Text Lang="de">Anzeigename</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="LocalizedName.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">This text will be displayed as a label above the control.</Text>
+			<Text Lang="uk">Цей текст відображатиметься як мітка над елементом керування.</Text>
+			<Text Lang="fr">Ce texte sera affiché comme nom au-dessus de la commande.</Text>
+			<Text Lang="pt-BR">Este texto será exibido como etiqueta acima do controle.</Text>
+			<Text Lang="zh">此文本将作为控件上方的标签显示。</Text>
+			<Text Lang="ko">이 텍스트는 컨트롤 위에 레이블로 표시됩니다.</Text>
+			<Text Lang="pl">Ten tekst będzie wyświetlany jako etykieta.</Text>
+			<Text Lang="es">Este texto se mostrará en forma de etiqueta sobre el control.</Text>
+			<Text Lang="it">Questo testo sarà visualizzato come etichetta sotto il comando.</Text>
+			<Text Lang="ru">Этот текст будет отображаться как ярлык над управляющим элементом.</Text>
+			<Text Lang="de">Dieser Name wird über dem Eingabefeld der Eigenschaft dargestellt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Value.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Default value</Text>
+			<Text Lang="uk">Значення за замовчуванням</Text>
+			<Text Lang="fr">Valeur par défaut</Text>
+			<Text Lang="pt-BR">Valor padrão</Text>
+			<Text Lang="zh">默认值</Text>
+			<Text Lang="ko">기본 값</Text>
+			<Text Lang="pl">Domyślna wartość</Text>
+			<Text Lang="es">Valor predeterminado</Text>
+			<Text Lang="it">Valore di default</Text>
+			<Text Lang="ru">Значение по умолчанию</Text>
+			<Text Lang="de">Vorgegebener Wert</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Value.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Defines the default value.</Text>
+			<Text Lang="uk">Визначає значення за замовчуванням.</Text>
+			<Text Lang="fr">Définie la valeur par défaut.</Text>
+			<Text Lang="pt-BR">Define o valor padrão.</Text>
+			<Text Lang="zh">定义默认值。</Text>
+			<Text Lang="ko">기본 값을 정의합니다.</Text>
+			<Text Lang="pl">Definiuje domyślną wartość.</Text>
+			<Text Lang="es">Define el valor predeterminado.</Text>
+			<Text Lang="it">Definisce il valore di default.</Text>
+			<Text Lang="ru">Определяет значение по умолчанию.</Text>
+			<Text Lang="de">Definiert den vorgegebenen Wert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Query.Caption">
+			<Context>Label in property editor for query strips</Context>
+			<Text Lang="en">Query</Text>
+			<Text Lang="uk">Запит</Text>
+			<Text Lang="fr">Requête</Text>
+			<Text Lang="pt-BR">Questão</Text>
+			<Text Lang="zh">查询</Text>
+			<Text Lang="ko">쿼리</Text>
+			<Text Lang="de">Abfrage</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Query.Descriptioon">
+			<Context>Tooltip in property editor for query strips</Context>
+			<Text Lang="en">Defines the query used for this strip.</Text>
+			<Text Lang="uk">Визначає запит, використаний для цього рядка.</Text>
+			<Text Lang="fr">Définie la requête utilisée pour ce bordereau.</Text>
+			<Text Lang="pt-BR">Define a questão usada para  esta tira.</Text>
+			<Text Lang="zh">定义用于此strip的查询。</Text>
+			<Text Lang="ko">이 스트립에 사용되는 쿼리를 정의 합니다.</Text>
+			<Text Lang="de">Definiert die Abfrage für diesen Strip.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Value.PlaceHolder">
+			<Context>placeholder in property editor</Context>
+			<Text Lang="en">(enter value)</Text>
+			<Text Lang="uk">(введіть значення)</Text>
+			<Text Lang="fr">(saisir la valeur)</Text>
+			<Text Lang="pt-BR">(entrar valor)</Text>
+			<Text Lang="zh">(输入值)</Text>
+			<Text Lang="ko">(값 입력)</Text>
+			<Text Lang="pl">(wpisz wartość)</Text>
+			<Text Lang="es">(introduce el valor)</Text>
+			<Text Lang="it">(inserisci il valore)</Text>
+			<Text Lang="ru">(введите значение)</Text>
+			<Text Lang="de">(Wert eingeben)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TechnicalName.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Technical name</Text>
+			<Text Lang="uk">Технічна назва</Text>
+			<Text Lang="fr">Nom technique</Text>
+			<Text Lang="pt-BR">Nome técnico</Text>
+			<Text Lang="zh">技术名称</Text>
+			<Text Lang="ko">기술 이름</Text>
+			<Text Lang="pl">Nazwa tehniczna</Text>
+			<Text Lang="es">Nombre técnico</Text>
+			<Text Lang="it">Nome Tecnico</Text>
+			<Text Lang="ru">Техническое имя</Text>
+			<Text Lang="de">Technischer Name</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TechnicalName.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">This name is used to identify this property in queries and exports (like XML).</Text>
+			<Text Lang="uk">Ця назва використовується для ідентифікації цієї властивості в запитах та експорті (як XML).</Text>
+			<Text Lang="fr">Ce nom est utilisé pour identifier cette propriété dans les requêtes et les exportations (comme XML).</Text>
+			<Text Lang="pt-BR">Este nome é usado para identificar esse propriedade em questões e exportações (como XML).</Text>
+			<Text Lang="zh">此名称用于在查询和导出（如XML）中标识此属性。</Text>
+			<Text Lang="ko">이 이름은 쿼리와 내보내기 (XML 등)에서이 속성을 식별 하는 데 사용 됩니다.</Text>
+			<Text Lang="pl">Nazwa służąca do zidentyfikowania tej właściwości w pliku XML.</Text>
+			<Text Lang="es">Este nombre se utiliza para identificar esta propiedad en la exportación XML.</Text>
+			<Text Lang="it">Questo nome identifica questo attributo nel file XML esportato.</Text>
+			<Text Lang="ru">Это имя используется для идентификации этого свойства в экспорте XML .</Text>
+			<Text Lang="de">Dieser Name wird in Abfragen und einigen Exporten (z.B. XML) benutzt, um die Eigenschaft zu identifizieren.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ToolTip.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Tooltip</Text>
+			<Text Lang="uk">Підказка</Text>
+			<Text Lang="fr">Infobulle</Text>
+			<Text Lang="pt-BR">Barra de Ferramentas</Text>
+			<Text Lang="zh">工具提示</Text>
+			<Text Lang="ko">말풍선</Text>
+			<Text Lang="pl">Podpowiedź</Text>
+			<Text Lang="es">Descripción emergente</Text>
+			<Text Lang="it">Suggerimento</Text>
+			<Text Lang="ru">Подсказка</Text>
+			<Text Lang="de">Tooltip</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ToolTip.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Tooltip displayed within articy:draft to describe the property.</Text>
+			<Text Lang="uk">Інформація підказки відображається в articy:draft, щоб описати властивість.</Text>
+			<Text Lang="fr">Infobulle affichée dans articy:draft pour décrire la propriété.</Text>
+			<Text Lang="pt-BR">Barra de Ferramentas exibidas dentro de articy:draft para descrever a propriedade</Text>
+			<Text Lang="zh">在 articy:draft 中显示工具提示用以描述属性。</Text>
+			<Text Lang="ko">말풍선은 속성을 설명 하기 위해 articy:draft에 표시 됩니다.</Text>
+			<Text Lang="pl">Podpowiedź wyświetlana w articy:draft do opisania właściwości.</Text>
+			<Text Lang="es">Información mostrada en articy:draft para describir la propiedad.</Text>
+			<Text Lang="it">Mostra i suggerimenti all'interno di articy:draft per descrivere gli attributi.</Text>
+			<Text Lang="ru">Информация подсказки отображается в articy:draft, чтобы описать свойство.</Text>
+			<Text Lang="de">In articy:draft angezeigter Tooltip zur Beschreibung der Eigenschaft.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IsMandatory.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Is mandatory</Text>
+			<Text Lang="uk">Є обов'язковим</Text>
+			<Text Lang="fr">Est obligatoire</Text>
+			<Text Lang="pt-BR">É mandatório</Text>
+			<Text Lang="zh">强制属性</Text>
+			<Text Lang="ko">필수</Text>
+			<Text Lang="pl">Jest obowiązkowe</Text>
+			<Text Lang="es">Es obligatoria</Text>
+			<Text Lang="it">È obbligatorio</Text>
+			<Text Lang="ru">Является обязательным</Text>
+			<Text Lang="de">Ist zwingend</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IsMandatory.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Mandatory properties must have a value set.</Text>
+			<Text Lang="uk">Обов'язкові властивості повинні мати значення.</Text>
+			<Text Lang="fr">Les propriétés obligatoires doivent avoir une valeur déterminée.</Text>
+			<Text Lang="pt-BR">Propriedades mandatórias devem ter um valor definido.</Text>
+			<Text Lang="zh">强制属性必须设置值。</Text>
+			<Text Lang="ko">필수 속성은 설정 값을 가지고 있어야 합니다.</Text>
+			<Text Lang="pl">Obowiązkowe właściwości muszą mieć wartość</Text>
+			<Text Lang="es">Las propiedades obligatorias no pueden dejarse vacías.</Text>
+			<Text Lang="it">Gli attributi obbligatori devono avere un valore.</Text>
+			<Text Lang="ru">Обязательные свойства должны иметь значение.</Text>
+			<Text Lang="de">Für zwingende Eigenschaften muss ein Wert angegeben werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IsExportRelevant.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Add to XML-export</Text>
+			<Text Lang="uk">додати в експорт XML</Text>
+			<Text Lang="fr">Ajouter à l’exportation XML</Text>
+			<Text Lang="pt-BR">Adicionar ao exporte XML</Text>
+			<Text Lang="zh">添加至XML导出</Text>
+			<Text Lang="ko">XML 내보내기에 추가</Text>
+			<Text Lang="pl">Dodaj do eksportu XML</Text>
+			<Text Lang="es">Añadir a exportación XML</Text>
+			<Text Lang="it">Aggiungi all'esportazione XML</Text>
+			<Text Lang="ru">Добавить в экспорт XML</Text>
+			<Text Lang="de">Dem XML-Export hinzufügen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IsExportRelevant.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Shall articy:draft include this property in the XML export?</Text>
+			<Text Lang="uk">Аarticy:draft повинен включити цю властивість при експорті XML?</Text>
+			<Text Lang="fr">articy:draft doit-il inclure cette propriété dans l’exportation XML ?</Text>
+			<Text Lang="pt-BR">Articy:draft deve incluir essa propriedade no exporte XML?</Text>
+			<Text Lang="zh">articy:draft 是否应在XML导出中包含此属性？</Text>
+			<Text Lang="ko">이 속성을 XML 내보내기에서 포함 해야 합니까?</Text>
+			<Text Lang="pl">Czy artiy:draft powinien dołączać to właściwość do pliku XML?</Text>
+			<Text Lang="es">¿Debe articy:draft incluir esta propiedad al crear la exportación XML?</Text>
+			<Text Lang="it">Articy:draft deve includere questa proprietà quando crea l'XML da esportare?</Text>
+			<Text Lang="ru">Аarticy:draft должен включить это свойство при создании XML экспорта?</Text>
+			<Text Lang="de">Soll diese Eigenschaft im XML-Export aufgenommen werden?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="InheritedFrom.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Inherited from</Text>
+			<Text Lang="uk">Успадковано від</Text>
+			<Text Lang="fr">Hérité de</Text>
+			<Text Lang="pt-BR">Herdado de</Text>
+			<Text Lang="zh">继承自...</Text>
+			<Text Lang="ko">상속</Text>
+			<Text Lang="pl">Dziedziczony od</Text>
+			<Text Lang="es">Heredada de</Text>
+			<Text Lang="it">Ereditato da</Text>
+			<Text Lang="ru">Унаследованные от</Text>
+			<Text Lang="de">Abgeleitet von</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PlaceHolder.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Placeholder</Text>
+			<Text Lang="uk">Заповнювач</Text>
+			<Text Lang="fr">Paramètre fictif</Text>
+			<Text Lang="pt-BR">Texto temporário</Text>
+			<Text Lang="zh">占位符</Text>
+			<Text Lang="ko">플레이스홀더</Text>
+			<Text Lang="pl">Treść zastępcza</Text>
+			<Text Lang="es">Indicador de contenido</Text>
+			<Text Lang="it">Segnaposto</Text>
+			<Text Lang="ru">Заполнитель</Text>
+			<Text Lang="de">Platzhalter</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PlaceHolder.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">The placeholder is displayed when the value is still unset.</Text>
+			<Text Lang="uk">Заповнювач відображається, коли значення все ще не встановлено.</Text>
+			<Text Lang="fr">Le paramètre fictif est affiché lorsque la valeur n’est pas encore déterminée.</Text>
+			<Text Lang="pt-BR">O texto temporário é exibido quando o valor não está definido.</Text>
+			<Text Lang="zh">当值未设置时，将显示占位符。</Text>
+			<Text Lang="ko">값이 아직 설정되지 않은 경우, 플레이스홀더를 표시합니다.</Text>
+			<Text Lang="pl">Treść wyświetlana, gdy wartość jest pusta.</Text>
+			<Text Lang="es">El indicador de contenido se muestra cuando no hay valor.</Text>
+			<Text Lang="it">Il segnaposto è mostrato quando non c'è nessun valore.</Text>
+			<Text Lang="ru">Заполнитель отображается когда не задано значение.</Text>
+			<Text Lang="de">Der Platzhalter wird angezeigt, wenn kein Wert gesetzt wurde.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayAsCombobox.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Display as drop-down list</Text>
+			<Text Lang="uk">Відображати як випадний список</Text>
+			<Text Lang="fr">Afficher comme liste déroulante</Text>
+			<Text Lang="pt-BR">Exibe como lista de lista de suspensão</Text>
+			<Text Lang="zh">显示为下拉列表</Text>
+			<Text Lang="ko">드롭-다운 목록으로 표시</Text>
+			<Text Lang="pl">Wyświetl jako listę rozwijaną</Text>
+			<Text Lang="es">Mostrar como caja combinada</Text>
+			<Text Lang="it">Mostra come casella combinata</Text>
+			<Text Lang="ru">Отображать как комбинированный список</Text>
+			<Text Lang="de">Als Dropdown-Liste anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayAsCombobox.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Shows this property as a two line drop-down list.</Text>
+			<Text Lang="uk">Показує цю властивість у випадному списку з двох рядків.</Text>
+			<Text Lang="fr">Affiche cette propriété sous forme de liste déroulante sur deux lignes</Text>
+			<Text Lang="pt-BR">Mostra esta propriedade como uma lista de suspensão de duas linhas.</Text>
+			<Text Lang="zh">将此属性显示为两行下拉列表。</Text>
+			<Text Lang="ko">이 속성을 두 줄 드롭-다운 목록으로 표시 합니다.</Text>
+			<Text Lang="pl">Wyświetla tą właściwość jako dwuliniową listę rozwijaną.</Text>
+			<Text Lang="es">Muestra esta propiedad como una caja combinada de dos líneas.</Text>
+			<Text Lang="it">Mostra questo attributo come due linee di una casella combinata.</Text>
+			<Text Lang="ru">Показывает это свойство как двух линейный комбинированный список</Text>
+			<Text Lang="de">Zeigt diese Eigenschaft als zweizeilige Dropdown-Liste an.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PreviewIndex.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Show in Flow</Text>
+			<Text Lang="uk">Показати в Потоці</Text>
+			<Text Lang="fr">Afficher dans le flux</Text>
+			<Text Lang="pt-BR">Mostrar no fluxo</Text>
+			<Text Lang="zh">在流中显示</Text>
+			<Text Lang="ko">흐름에 표시</Text>
+			<Text Lang="pl">Pokaż we Flow</Text>
+			<Text Lang="es">Mostrar en flujo</Text>
+			<Text Lang="it">Mostra nel diagramma di flusso</Text>
+			<Text Lang="ru">Показать в Потоке</Text>
+			<Text Lang="de">Im Flow anzeigen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PreviewIndex.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">When the flow nodes are set to 'Display template values' instead of the description text, this property is included in the list displayed on the node if checked.</Text>
+			<Text Lang="uk">Коли вітки потоку встановлені на "Відображати значення шаблону" замість тексту опису, ця властивість включається до списку, що відображається у вітці, якщо встановлений прапорець.</Text>
+			<Text Lang="fr">Lorsque les nœuds du flux sont réglés sur « Afficher les valeurs du modèle » et non sur le texte descriptif, cette propriété est inclue dans la liste affichée dans le nœud si elle est cochée.</Text>
+			<Text Lang="pt-BR">Quando os módulos do fluxo são definidos para "Exibir valores de módulo" em vez do texto de descrição, esta propriedade é incluída na lista exibida no nó se checado.</Text>
+			<Text Lang="zh">当流节点设置为“显示模板值”而不是说明文本时，如勾选此项，则此属性将包含在节点上显示的列表中。</Text>
+			<Text Lang="ko">흐름 노드 설명 텍스트 대신에 '디스플레이 템플릿 값'으로 설정 된 경우, 체크되어 있으면 이 속성은 노드의 목록에 포함되어 표시됩니다.</Text>
+			<Text Lang="pl">Wyświetla tą właściwość we Flow.</Text>
+			<Text Lang="es">Muestra esta propiedad en el flujo.</Text>
+			<Text Lang="it">Mostra questo attributo nel diagramma di flusso.</Text>
+			<Text Lang="ru">Показать эти свойства в потоке.</Text>
+			<Text Lang="de">Wenn Sie den Flow-Editor auf "Zeige Template-Daten" umstellen, wird diese Eigenschaft auf den Flow-Knoten angezeigt, sofern sie das Häkchen hier setzen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MinValue.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Minimum value</Text>
+			<Text Lang="uk">Мінімальне значення</Text>
+			<Text Lang="fr">Valeur minimale</Text>
+			<Text Lang="pt-BR">Valor mínimo</Text>
+			<Text Lang="zh">最小值</Text>
+			<Text Lang="ko">최소값</Text>
+			<Text Lang="pl">Minimalna wartość</Text>
+			<Text Lang="es">Valor mínimo</Text>
+			<Text Lang="it">Valore minimo</Text>
+			<Text Lang="ru">Минимальное значение</Text>
+			<Text Lang="de">Untergrenze</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MinValue.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Defines the minimum value allowed for this property.</Text>
+			<Text Lang="uk">Визначає мінімально допустиме значення для цієї властивості.</Text>
+			<Text Lang="fr">Définie la valeur minimale autorisée pour cette propriété.</Text>
+			<Text Lang="pt-BR">Define o valor mínimo permitido para essa propriedade.</Text>
+			<Text Lang="zh">定义此属性允许的最小值。</Text>
+			<Text Lang="ko">이 속성에 허용되는 최소값을 정의 합니다.</Text>
+			<Text Lang="pl">Określa minimalną wartość dla tej właściwości.</Text>
+			<Text Lang="es">Define el valor mínimo permitido para esta propiedad.</Text>
+			<Text Lang="it">Definisce il valore minimo accettabile per questo attributo.</Text>
+			<Text Lang="ru">Определяет минимально допустимое значение для этого свойства.</Text>
+			<Text Lang="de">Definiert den minimalen Wert dieser Eigenschaft.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MinValue.PlaceHolder">
+			<Context>Placeholder in property editor</Context>
+			<Text Lang="en">(no limit)</Text>
+			<Text Lang="uk">(без обмежень)</Text>
+			<Text Lang="fr">(aucune limite)</Text>
+			<Text Lang="pt-BR">(sem limite)</Text>
+			<Text Lang="zh">（无限制）</Text>
+			<Text Lang="ko">(제한 없음)</Text>
+			<Text Lang="pl">(brak limitu)</Text>
+			<Text Lang="es">(sin límite)</Text>
+			<Text Lang="it">(nessun limite)</Text>
+			<Text Lang="ru">(без ограничений)</Text>
+			<Text Lang="de">(unbeschränkt)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxValue.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Maximum value</Text>
+			<Text Lang="uk">Максимальне значення</Text>
+			<Text Lang="fr">Valeur maximale</Text>
+			<Text Lang="pt-BR">Valor máximo</Text>
+			<Text Lang="zh">最大值</Text>
+			<Text Lang="ko">최대값</Text>
+			<Text Lang="pl">Maksymalna wartość</Text>
+			<Text Lang="es">Valor máximo</Text>
+			<Text Lang="it">Valore massimo</Text>
+			<Text Lang="ru">Максимальное значение</Text>
+			<Text Lang="de">Obergrenze</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxValue.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Defines the maximum value for this property.</Text>
+			<Text Lang="uk">Визначає максимальне допустиме значення для цієї властивості.</Text>
+			<Text Lang="fr">Définie la valeur maximale pour cette propriété.</Text>
+			<Text Lang="pt-BR">Define o valor máximo desta propriedade.</Text>
+			<Text Lang="zh">定义此属性允许的最大值。</Text>
+			<Text Lang="ko">이 속성에 허용되는 최대값을 정의합니다.</Text>
+			<Text Lang="pl">Określa maksymalną wartość dla tej właściwości.</Text>
+			<Text Lang="es">Define el valor máximo permitido para esta propiedad.</Text>
+			<Text Lang="it">Definisce il valore massimo per questo attributo.</Text>
+			<Text Lang="ru">Определяет максимальное допустимое значение для этого свойства.</Text>
+			<Text Lang="de">Definiert den maximalen Wert dieser Eigenschaft.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxValue.PlaceHolder">
+			<Context>Placeholder in property editor</Context>
+			<Text Lang="en">(no limit)</Text>
+			<Text Lang="uk">(без обмежень)</Text>
+			<Text Lang="fr">(aucune limite)</Text>
+			<Text Lang="pt-BR">(sem limite)</Text>
+			<Text Lang="zh">（无限制）</Text>
+			<Text Lang="ko">(제한 없음)</Text>
+			<Text Lang="pl">(brak limitu)</Text>
+			<Text Lang="es">(sin límite)</Text>
+			<Text Lang="it">(nessun limite)</Text>
+			<Text Lang="ru">(без ограничений)</Text>
+			<Text Lang="de">(unbeschränkt)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MinPrecision.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Minimum number precision</Text>
+			<Text Lang="uk">Мінімальна точність числа</Text>
+			<Text Lang="fr">Numéro de précision minimum</Text>
+			<Text Lang="pt-BR">Precisão do número mínimo</Text>
+			<Text Lang="zh">最小精度数值</Text>
+			<Text Lang="ko">최소값 정밀도</Text>
+			<Text Lang="pl">Precyzja liczby minimalnej</Text>
+			<Text Lang="es">Precisión mínima de número</Text>
+			<Text Lang="it">Precisione minima dei numeri</Text>
+			<Text Lang="ru">Минимальная точность числа</Text>
+			<Text Lang="de">Minimale Anzahl Nachkommastellen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MinPrecision.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">The lower bound for the number precision.</Text>
+			<Text Lang="uk">Нижня межа точності числа.</Text>
+			<Text Lang="fr">Limite minimale du numéro de précision</Text>
+			<Text Lang="pt-BR">O limite menor para a precisão do número.</Text>
+			<Text Lang="zh">数值精度的下限。</Text>
+			<Text Lang="ko">숫자 정밀도에 대한 하한값입니다.</Text>
+			<Text Lang="pl">Dolna granica dla precyzji liczb.</Text>
+			<Text Lang="es">El límite inferior de precisión numérica.</Text>
+			<Text Lang="it">Il limite inferiore per la precisione dei numeri.</Text>
+			<Text Lang="ru">Нижняя граница точности числа.</Text>
+			<Text Lang="de">Über die minimale Anzahl Nachkommastellen wird die Untergrenze für die Zahlengenauigkeit definiert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxPrecision.Caption">
+			<Context>currently not used; no loca</Context>
+			<Text Lang="en">Maximum number precision</Text>
+			<Text Lang="uk">Максимальна точність числа</Text>
+			<Text Lang="fr">Numéro de précision maximum</Text>
+			<Text Lang="pt-BR">Precisão do número máximo</Text>
+			<Text Lang="zh">最大精度数值</Text>
+			<Text Lang="ko">최대값 정밀도</Text>
+			<Text Lang="pl">Precyzja liczby maksymalnej</Text>
+			<Text Lang="es">Precisión máxima de número</Text>
+			<Text Lang="it">Precisione massima dei numeri</Text>
+			<Text Lang="ru">Максимальная точность числа</Text>
+			<Text Lang="de">Maximale Anzahl Nachkommastellen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxPrecision.Description">
+			<Context>currently not used; no loca</Context>
+			<Text Lang="en">The upper bound for the number precision.</Text>
+			<Text Lang="uk">Верхня межа точності числа.</Text>
+			<Text Lang="fr">Limite maximale du numéro de précision</Text>
+			<Text Lang="pt-BR">O limite maior para a precisão do número.</Text>
+			<Text Lang="zh">数值精度的上限。</Text>
+			<Text Lang="ko">숫자 정밀도에 대한 상한값입니다.</Text>
+			<Text Lang="pl">Górna granica dla precyzji liczb.</Text>
+			<Text Lang="es">El límite superior de precisión numérica.</Text>
+			<Text Lang="it">Il limite superiore per la precisione dei numeri.</Text>
+			<Text Lang="ru">Верхняя граница точности числа.</Text>
+			<Text Lang="de">Über die maximale Anzahl der Nachkommastellen wird die Obergrenze für die Zahlengenauigkeit definiert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Precision.Caption">
+			<Context>currently not used; no loca</Context>
+			<Text Lang="en">Decimal places</Text>
+			<Text Lang="uk">Розрядність</Text>
+			<Text Lang="fr">Décimales</Text>
+			<Text Lang="pt-BR">Lugares decimais</Text>
+			<Text Lang="zh">小数位数</Text>
+			<Text Lang="ko">소수자리</Text>
+			<Text Lang="pl">Miejsca po przecinku</Text>
+			<Text Lang="es">Número de decimales</Text>
+			<Text Lang="it">Cifre decimali</Text>
+			<Text Lang="ru">Разрядность</Text>
+			<Text Lang="de">Nachkommastellen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Precision.Description">
+			<Context>currently not used; no loca</Context>
+			<Text Lang="en">The maximum number of decimal places.</Text>
+			<Text Lang="uk">Максимальна кількість знаків після коми.</Text>
+			<Text Lang="fr">Nombre maximal de décimales</Text>
+			<Text Lang="pt-BR">O número máximo de lugares decimais.</Text>
+			<Text Lang="zh">小数位数的最大值。</Text>
+			<Text Lang="ko">소수자리의 최대 수입니다.</Text>
+			<Text Lang="pl">Maksymalna liczba miejsc po przecinku.</Text>
+			<Text Lang="es">El número máximo de decimales.</Text>
+			<Text Lang="it">Il maggio numero di cifre decimali.</Text>
+			<Text Lang="ru">Максимальное количество знаков после запятой.</Text>
+			<Text Lang="de">Die höchste Anzahl von Nachkommastellen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Precision.PlaceHolder">
+			<Context>Placeholder in property editor</Context>
+			<Text Lang="en">(default 5)</Text>
+			<Text Lang="uk">(за замовчуванням 5)</Text>
+			<Text Lang="fr">(5 par défaut)</Text>
+			<Text Lang="pt-BR">(default 5)</Text>
+			<Text Lang="zh">（默认值5）</Text>
+			<Text Lang="ko">(기본값 5)</Text>
+			<Text Lang="pl">(brak limitu)</Text>
+			<Text Lang="de">(Standard 5)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Unit.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Unit</Text>
+			<Text Lang="uk">Одиниця</Text>
+			<Text Lang="fr">Unité</Text>
+			<Text Lang="pt-BR">Unidade</Text>
+			<Text Lang="zh">单位</Text>
+			<Text Lang="ko">유닛</Text>
+			<Text Lang="pl">Jednostka</Text>
+			<Text Lang="es">Unidad</Text>
+			<Text Lang="it">Unità</Text>
+			<Text Lang="ru">Единица</Text>
+			<Text Lang="de">Einheit</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Unit.Description">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Adds an (optional) unit like 'years', 'kills' or 'miles' to the number value. This is only a display option and does not affect the number value in any way.</Text>
+			<Text Lang="uk">До числа додає (необов'язково) одиницю, наприклад "роки", "вбивства" або "кілометри". Це лише параметр відображення і жодним чином не впливає на значення числа.</Text>
+			<Text Lang="fr">Ajoute une unité (facultative) telle que « années », « éliminations » ou « kilomètres » à la valeur numérique. C’est uniquement une option d’affichage et n’a absolument aucun effet sur la valeur numérique.</Text>
+			<Text Lang="pt-BR"><![CDATA[Adiciona uma (opcional) unidade como 'anos', 'mortes' ou 'milhas' para o valor numérico.
+Isto é apenas uma opção de exibição e não afeta o valor numérico de modo algum.]]></Text>
+			<Text Lang="zh">在数字值中添加一个（可选）单位，例如“年”、“击杀数”或“英里”。该处只是一个显示选项，不会影响具体数值。</Text>
+			<Text Lang="ko">숫자 값에 'years', 'kills' 또는 'miles'와 같은 (선택적) 단위를 추가한다. 이는 표시 옵션일 뿐이며 어떤 식으로든 숫자 값에 영향을 주지 않습니다.</Text>
+			<Text Lang="pl">Dodaje (opcjonalnie) jednostkę typu 'lat', 'zabić' lub 'mil' do liczb. To jest tylko wyświetlany tekst i nie wpływa na wartości numeryczne w jakikolwiek sposób.</Text>
+			<Text Lang="es">Agrega una unidad (opcional) como "años", "muertes" o "millas" en el valor del número. Este es un simple texto de visualización y no afecta el valor del número en modo alguno.</Text>
+			<Text Lang="it">Aggiunge unità opzionali come 'anni', 'uccisioni' o 'miglia' al numero. Questa opzione visualizza solamente un testo e non ne modifica il valore in alcun modo.</Text>
+			<Text Lang="ru">Добавляет (опционально) единицу измерения, как "годы", "убийства" или "километры" к численному значению. Это не более чем отображение текста и оно не никак не влияет на значение.</Text>
+			<Text Lang="de">Fügt der Zahl eine (optionale) Einheit wie zum Beispiel 'Jahre', 'Siege' oder 'Meilen' hinzu. Es handelt sich um eine reine Anzeigeoption. Der Zahlenwert wird in keinster Weise beeinflusst.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayThousandsSeparator.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Use digit grouping</Text>
+			<Text Lang="uk">Використати груповання цифр.</Text>
+			<Text Lang="fr">Utiliser le groupement de chiffres</Text>
+			<Text Lang="pt-BR">Usar agrupamento por dígito</Text>
+			<Text Lang="zh">使用数字分组</Text>
+			<Text Lang="ko">숫자 그룹 사용</Text>
+			<Text Lang="pl">Użyj grupowania cyfrowego</Text>
+			<Text Lang="es">Usar agrupadores de caracteres</Text>
+			<Text Lang="it">Usa la cifra di raggruppamento</Text>
+			<Text Lang="ru">Воспользоваться цифровой группировкой</Text>
+			<Text Lang="de">Ziffergruppierung verwenden</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayThousandsSeparator.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Should the grouping char ',' be shown? (x,xxx,xxx)</Text>
+			<Text Lang="uk">Чи повинен показуватися групувальний символ ','? (x,xxx,xxx)</Text>
+			<Text Lang="fr">Le caractère de groupement « , » doit-il être affiché ? (x,xxx,xxx)</Text>
+			<Text Lang="pt-BR">Deve o agrupamento  ',' ser mostrado? (x,xxx,xxx)</Text>
+			<Text Lang="zh">是否应显示分组字符',' ？(x,xxx,xxx)</Text>
+			<Text Lang="ko">그룹에 ',' 표시되어야 합니까? (x, xxx, xxx)</Text>
+			<Text Lang="pl">Czy znak grupowania ',' ma być wyświetlany?</Text>
+			<Text Lang="es">¿Debe mostrarse el agrupador de caracteres ','?</Text>
+			<Text Lang="it">Il carattere di raggruppamento ',' dovrebbe essere visualizzato?</Text>
+			<Text Lang="ru">Должен ли быть показан группировочный символ ',' ?</Text>
+			<Text Lang="de">Soll der Tausendetrenner '.' angezeigt werden? (x.xxx.xxx)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisallowedChars.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Invalid characters</Text>
+			<Text Lang="uk">Недійсні символи</Text>
+			<Text Lang="fr">Caractères invalides</Text>
+			<Text Lang="pt-BR">Caracteres inválidos</Text>
+			<Text Lang="zh">无效字符</Text>
+			<Text Lang="ko">잘못된 캐릭터</Text>
+			<Text Lang="pl">Nieprawidłowe znaki</Text>
+			<Text Lang="es">Caracteres no válidos</Text>
+			<Text Lang="it">Caratteri non validi</Text>
+			<Text Lang="ru">Недопустимые символы</Text>
+			<Text Lang="de">Ungültige Zeichen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisallowedChars.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">A list of all invalid characters.</Text>
+			<Text Lang="uk">Список усіх недійсних символів.</Text>
+			<Text Lang="fr">Liste de tous les caractères invalides.</Text>
+			<Text Lang="pt-BR">Uma lista de todos os caracteres inválidos</Text>
+			<Text Lang="zh">所有无效字符的列表。</Text>
+			<Text Lang="ko">모든 잘못된 캐릭터 목록입니다.</Text>
+			<Text Lang="pl">Lista nieprawidłowych znaków.</Text>
+			<Text Lang="es">Una lista con todos los caracteres no válidos.</Text>
+			<Text Lang="it">Una lista dei caratteri non disponibili.</Text>
+			<Text Lang="ru">Список недопустимых символов</Text>
+			<Text Lang="de">Eine Liste aller ungültigen Zeichen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxLength.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Max Length</Text>
+			<Text Lang="uk">Максимальна довжина</Text>
+			<Text Lang="fr">Longueur maximale</Text>
+			<Text Lang="pt-BR">Extensão máxima</Text>
+			<Text Lang="zh">最大长度</Text>
+			<Text Lang="ko">최대 길이</Text>
+			<Text Lang="pl">Maksymalna długość</Text>
+			<Text Lang="es">Longitud máxima</Text>
+			<Text Lang="it">Lunghezza massima</Text>
+			<Text Lang="ru">Максимальная длина</Text>
+			<Text Lang="de">Max. Länge</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxLength.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Defines the maximum text length.</Text>
+			<Text Lang="uk"><![CDATA[Визначає максимальну довжину тексту.
+]]></Text>
+			<Text Lang="fr">Définie la longueur maximale du texte.</Text>
+			<Text Lang="pt-BR">Define a extensão máximo do texto.</Text>
+			<Text Lang="zh">定义最大文本长度。</Text>
+			<Text Lang="ko">최대 텍스트 길이를 정의합니다.</Text>
+			<Text Lang="pl">Określa maksymalną długość tekstu.</Text>
+			<Text Lang="es">Define la longitud máxima del texto</Text>
+			<Text Lang="it">Definisce la lunghezza massima del testo.</Text>
+			<Text Lang="ru">Определить максимальную длину текста.</Text>
+			<Text Lang="de">Legt die maximalen Länge des Texts fest.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxLength.PlaceHolder">
+			<Context>Placeholder in property editor</Context>
+			<Text Lang="en">(no limit)</Text>
+			<Text Lang="uk">(без обмеженьі)</Text>
+			<Text Lang="fr">(aucune limite)</Text>
+			<Text Lang="pt-BR">(sem limite)</Text>
+			<Text Lang="zh">（无限制）</Text>
+			<Text Lang="ko">(제한 없음)</Text>
+			<Text Lang="pl">(brak limitu)</Text>
+			<Text Lang="es">(sin límite)</Text>
+			<Text Lang="it">(nessun limite)</Text>
+			<Text Lang="ru">(без ограничений)</Text>
+			<Text Lang="de">(unbeschränkt)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IsLocalized.Caption">
+			<Context>currently not used; no loca</Context>
+			<Text Lang="en">Multi-language?</Text>
+			<Text Lang="uk">Багатомовна?</Text>
+			<Text Lang="fr">Multilangue ?</Text>
+			<Text Lang="pt-BR">Multi-língua?</Text>
+			<Text Lang="zh">多语言？</Text>
+			<Text Lang="ko">다중-언어?</Text>
+			<Text Lang="pl">Wielojęzyczne?</Text>
+			<Text Lang="es">¿Multilenguaje?</Text>
+			<Text Lang="it">Multi lingua?</Text>
+			<Text Lang="ru">Многоязычная?</Text>
+			<Text Lang="de">Mehrsprachig?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="IsLocalized.Description">
+			<Context>currently not used; no loca</Context>
+			<Text Lang="en">If checked, this property adapts to the currently selected project language. (Project languages are prepared but not yet supported!)</Text>
+			<Text Lang="uk">Якщо встановлено прапорець, ця властивість адаптується до вибраної мови проекту. (Мови проекту підготовлені, але ще не підтримуються!)</Text>
+			<Text Lang="fr">Si elle est cochée, cette propriété s’adapte à la langue du projet actuellement sélectionnée. (Les langues du projet sont préparées mais pas encore prises en charge ! )</Text>
+			<Text Lang="pt-BR">Se checado, esta propriedade se adapta para o atual idioma do projeto. (Línguas do projeto são preparadas mas ainda não suportadas!)</Text>
+			<Text Lang="zh">如勾选，此属性将适应当前选定的项目语言。（已准备好项目语言功能，但尚未支持！）</Text>
+			<Text Lang="ko">이 속성을 선택 하면 현재 선택한 프로젝트 언어에 맞게 조정 됩니다. (프로젝트 언어는 아직 지원되었지만 아직 지원되지 않습니다!)</Text>
+			<Text Lang="pl">Jeśli zaznaczony, to właściwość będzie dopasowywać się do języka projektu. (Języki projektu są przygotowane, ale jeszcze nie wspierane!)</Text>
+			<Text Lang="es">Si se activa, esta propiedad se adapta al idioma actual del proyecto. (¡Los idiomas del proyecto están preparados, pero aún no son compatibles!)</Text>
+			<Text Lang="it"><![CDATA[Se spuntato, questo attributo adatta la lingua del progetto correntemente selezionato.
+(Le lingue del progetto sono preparate ma non supportate!)]]></Text>
+			<Text Lang="ru">Если выбрано, это свойство приспосабливается к выбранному языку проекта. (Языки проектов подготовлены, но пока не поддерживается!)</Text>
+			<Text Lang="de">Wenn angewählt, passt sich diese Eigenschaft automatisch an die ausgewählte Projektsprache an. (Projektsprachen sind vorbereitet aber noch nicht unterstützt!)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowsLinebreaks.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Allows line breaks</Text>
+			<Text Lang="uk">Дозволити розриви рядків</Text>
+			<Text Lang="fr">Autoriser les sauts de ligne</Text>
+			<Text Lang="pt-BR">Permitir linhas de quebra</Text>
+			<Text Lang="zh">允许换行符</Text>
+			<Text Lang="ko">줄 바꿈 허용</Text>
+			<Text Lang="pl">Zezwól na podział wierszy</Text>
+			<Text Lang="es">Permitir saltos de línea</Text>
+			<Text Lang="it">Permette le interruzioni di riga.</Text>
+			<Text Lang="ru">Разрешить разрывы строк</Text>
+			<Text Lang="de">Erlaubt Zeilenumbrüche</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowsLinebreaks.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">If checked, inserting line breaks is allowed.</Text>
+			<Text Lang="uk">Вставка розривів рядків дозволена.</Text>
+			<Text Lang="fr">Si cette option est cochée, l’insertion de sauts de ligne est autorisée.</Text>
+			<Text Lang="pt-BR">Se checada, Inserção de linhas de quebra é permitido.</Text>
+			<Text Lang="zh">如勾选，则允许插入换行符。</Text>
+			<Text Lang="ko">체크하면, 줄 바꿈 삽입을 허용하게됩니다.</Text>
+			<Text Lang="pl">Umieszczanie podziałów wierszy jest dozwolone.</Text>
+			<Text Lang="es">Se permite insertar saltos de línea.</Text>
+			<Text Lang="it">Le interruzioni di riga sono permesse.</Text>
+			<Text Lang="ru">Вставка разрывов строк разрешена.</Text>
+			<Text Lang="de">Wenn angewählt ist das Einfügen von Zeilenumbrüchen erlaubt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EnumItems.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">List of values</Text>
+			<Text Lang="uk">Список значень</Text>
+			<Text Lang="fr">Liste des valeurs</Text>
+			<Text Lang="pt-BR">Lista de valores</Text>
+			<Text Lang="zh">值列表</Text>
+			<Text Lang="ko">목록의 값</Text>
+			<Text Lang="pl">Lista wartości</Text>
+			<Text Lang="es">Lista de valores</Text>
+			<Text Lang="it">Lista dei valori</Text>
+			<Text Lang="ru">Список значений</Text>
+			<Text Lang="de">Werte</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EnumItems.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Shows the drop-down list values.</Text>
+			<Text Lang="uk">Показує можливі значення.</Text>
+			<Text Lang="fr">Affiche les valeurs dans une liste déroulante.</Text>
+			<Text Lang="pt-BR">Mostra os valores da lista de suspensão</Text>
+			<Text Lang="zh">显示下拉列表值。</Text>
+			<Text Lang="ko">드롭-다운 목록의 값을 봅니다.</Text>
+			<Text Lang="pl">Pokaż możliwe wartości</Text>
+			<Text Lang="es">Muestra los valores posibles.</Text>
+			<Text Lang="it">Mostra i valori possibili.</Text>
+			<Text Lang="ru">Показывает возможные значения.</Text>
+			<Text Lang="de">Zeigt die möglichen Werte an.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditEnum.Caption">
+			<Context>Button in property editor</Context>
+			<Text Lang="en">Edit list</Text>
+			<Text Lang="uk">Редагувати список</Text>
+			<Text Lang="fr">Éditer la liste</Text>
+			<Text Lang="pt-BR">Editar lista</Text>
+			<Text Lang="zh">编辑列表</Text>
+			<Text Lang="ko">목록 편집</Text>
+			<Text Lang="pl">Edytuj listę</Text>
+			<Text Lang="es">Editar lista</Text>
+			<Text Lang="it">Modifica lista</Text>
+			<Text Lang="ru">Редактировать список</Text>
+			<Text Lang="de">Liste bearbeiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditEnum.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Edit the values of this drop-down list.</Text>
+			<Text Lang="uk">Редагувати значення цього списку.</Text>
+			<Text Lang="fr">Éditer les valeurs de cette liste déroulante.</Text>
+			<Text Lang="pt-BR">Edita o valor desta lista de suspensão</Text>
+			<Text Lang="zh">编辑此下拉列表的值。</Text>
+			<Text Lang="ko">이 드롭-다운 목록의 값을 편집합니다.</Text>
+			<Text Lang="pl">Edytuj listę wartości rozwijanej listy.</Text>
+			<Text Lang="es">Edita los valores de la lista desplegable.</Text>
+			<Text Lang="it">Modifica i valori di questa lista a discesa.</Text>
+			<Text Lang="ru">Редактировать значения этого выпадающего списка.</Text>
+			<Text Lang="de">Werte dieser Dropdown-Liste bearbeiten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SortByDisplayName.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Sort by display name</Text>
+			<Text Lang="uk">Сортувати за відображуваною назвою</Text>
+			<Text Lang="fr">Classer par nom affiché</Text>
+			<Text Lang="pt-BR">Ordenar por nome de exibição</Text>
+			<Text Lang="zh">按显示名称排序</Text>
+			<Text Lang="ko">표시 이름으로 정렬</Text>
+			<Text Lang="pl">Sortuj według nazw wyświetlanych</Text>
+			<Text Lang="es">Ordenar por nombre de visualización</Text>
+			<Text Lang="it">Ordina per nome visualizzato</Text>
+			<Text Lang="ru">Сортировать по отображаемому имени</Text>
+			<Text Lang="de">Nach Anzeigename sortieren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SortByDisplayName.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Entries will be sorted alphabetically by their display name in usages of this feature.</Text>
+			<Text Lang="uk">Записи посортуються в алфавітному порядку за їх відображуваною назвою у використаннях цієї функції.</Text>
+			<Text Lang="fr">Les entrées seront classées par ordre alphabétique de leur nom affiché utilisé dans cette fonctionnalité.</Text>
+			<Text Lang="pt-BR">Entradas serão ordenadas alfabéticamente pelo nome de exibição no uso deste elemento.</Text>
+			<Text Lang="zh">条目将按其显示名称的字母顺序排列，以用于此功能。</Text>
+			<Text Lang="ko">이 기능의 사용된 표시 이름에 의해 알파벳순으로 정렬 됩니다.</Text>
+			<Text Lang="pl">Sortuje wpisy według ich nazw wyświetlanych.</Text>
+			<Text Lang="es">Ordena las entradas de instancia por sus nombres de visualización.</Text>
+			<Text Lang="it">Ordina gli elementi nelle istanze per il loro nome visualizzato.</Text>
+			<Text Lang="ru">Сортирует записи в примерах по их отображаемым именам.</Text>
+			<Text Lang="de">Sortiert die Einträge nach ihrem Anzeigenamen  in Verwendungen dieses Features.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.SelectAll.Caption">
+			<Context>Button in property editor</Context>
+			<Text Lang="en">Select all</Text>
+			<Text Lang="uk">Виділити все</Text>
+			<Text Lang="fr">Tout sélectionner</Text>
+			<Text Lang="pt-BR">Selecionar todos</Text>
+			<Text Lang="zh">全选</Text>
+			<Text Lang="ko">모두 선택</Text>
+			<Text Lang="pl">Zaznacz wszystko</Text>
+			<Text Lang="es">Seleccionar todo</Text>
+			<Text Lang="it">Seleziona Tutto</Text>
+			<Text Lang="ru">Выделить все</Text>
+			<Text Lang="de">Alle auswählen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.SelectAll.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Select all</Text>
+			<Text Lang="uk">Виділити все</Text>
+			<Text Lang="fr">Tout sélectionner</Text>
+			<Text Lang="pt-BR">Selecionar todos</Text>
+			<Text Lang="zh">全选</Text>
+			<Text Lang="ko">모두 선택</Text>
+			<Text Lang="pl">Zaznacz wszystko</Text>
+			<Text Lang="es">Seleccionar todo</Text>
+			<Text Lang="it">Seleziona Tutto</Text>
+			<Text Lang="ru">Выделить все</Text>
+			<Text Lang="de">Alle auswählen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.UnselectAll.Caption">
+			<Context>Button in property editor</Context>
+			<Text Lang="en">Deselect all</Text>
+			<Text Lang="uk">Скасувати все</Text>
+			<Text Lang="fr">Tout désélectionner</Text>
+			<Text Lang="pt-BR">Desmarcar todos</Text>
+			<Text Lang="zh">取消选择</Text>
+			<Text Lang="ko">모두 선택 해제</Text>
+			<Text Lang="pl">Odznacz wszystko</Text>
+			<Text Lang="es">Deseleccionar todo</Text>
+			<Text Lang="it">Deseleziona Tutto</Text>
+			<Text Lang="ru">Отменить все</Text>
+			<Text Lang="de">Alle abwählen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.UnselectAll.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Deselect all</Text>
+			<Text Lang="uk">Скасувати все</Text>
+			<Text Lang="fr">Tout désélectionner</Text>
+			<Text Lang="pt-BR">Desmarcar todos</Text>
+			<Text Lang="zh">取消选择</Text>
+			<Text Lang="ko">모두 선택 해제</Text>
+			<Text Lang="pl">Odznacz wszystko</Text>
+			<Text Lang="es">Deseleccionar todo</Text>
+			<Text Lang="it">Deseleziona Tutto</Text>
+			<Text Lang="ru">Отменить все</Text>
+			<Text Lang="de">Alle abwählen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.Info" Unused="1">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Selecting a model type allows every model of this type, regardless of its template.</Text>
+			<Text Lang="uk">Вибір типу моделі дозволяє кожній моделі подібного типу, незалежно від їх шаблону.</Text>
+			<Text Lang="fr">Sélectionner un type d'exemple autorise tous les exemples de ce type, peu importe le modèle.</Text>
+			<Text Lang="pt-BR">Selecionar um tipo de modelo permito todos os modelos deste tipo, seja qual for seu módulo.</Text>
+			<Text Lang="zh">选择模型类型允许所有该类型内模型，无视模板。</Text>
+			<Text Lang="ko">모델 유형을 선택 하면 템플릿에 관계 없이 해당 유형의 모든 모델을 사용할 수 있습니다.</Text>
+			<Text Lang="pl">Wybranie typu modelu pozwoli na wybranie wszystkich modeli tego typu niezależnie od szablonu.</Text>
+			<Text Lang="ru">Выбор типа модели позволяет каждой модели подобного типа, независимо от их шаблона.</Text>
+			<Text Lang="de">Selecting a model type allows every model of this type, regardless of its template.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Allowed object types:</Text>
+			<Text Lang="uk">Дозволені типи об'єктів:</Text>
+			<Text Lang="fr">Types d’objet autorisés :</Text>
+			<Text Lang="pt-BR">Tipos de objetos permitidos:</Text>
+			<Text Lang="zh">允许的对象类型：</Text>
+			<Text Lang="ko">허용 된 객체 유형:</Text>
+			<Text Lang="pl">Dozwolone typy obiektów:</Text>
+			<Text Lang="es">Tipos de objeto permitidos:</Text>
+			<Text Lang="it">Tipi di oggetti permessi:</Text>
+			<Text Lang="ru">Разрешенные типы объектов:</Text>
+			<Text Lang="de">Erlaubte Objekt-Typen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTypes.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Allows changing the list of allowed objects.</Text>
+			<Text Lang="uk">Дозволяє змінювати список дозволених об'єктів.</Text>
+			<Text Lang="fr">Autorise la modification de la liste des objets autorisés.</Text>
+			<Text Lang="pt-BR">Permite mudar a lista de objetos permitidos.</Text>
+			<Text Lang="zh">允许以可用对象更改列表内容。</Text>
+			<Text Lang="ko">허용 된 개체의 목록을 변경할 수 있습니다.</Text>
+			<Text Lang="pl">Pozwala zmienić listę dozwolonych obiektów.</Text>
+			<Text Lang="es">Te permite modificar la lista de objetos permitidos.</Text>
+			<Text Lang="it">Ti permette di cambiare la lista degli oggetti permessi.</Text>
+			<Text Lang="ru">Позволяет вам изменить список разрешенных объектов.</Text>
+			<Text Lang="de">Ermöglicht das Ändern der Liste von erlaubten Objekten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllAssets.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">All</Text>
+			<Text Lang="uk">Все</Text>
+			<Text Lang="fr">Tout</Text>
+			<Text Lang="pt-BR">Todos</Text>
+			<Text Lang="zh">所有</Text>
+			<Text Lang="ko">모두</Text>
+			<Text Lang="pl">Wszystko</Text>
+			<Text Lang="es">Todos</Text>
+			<Text Lang="it">Tutti</Text>
+			<Text Lang="ru">Все</Text>
+			<Text Lang="de">Alle</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedAssets.Info" Unused="1">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Selecting a model type allows every model of this type, regardless of its template.</Text>
+			<Text Lang="uk">Вибір типу моделі дозволяє кожній моделі подібного типу, незалежно від їх шаблону.</Text>
+			<Text Lang="fr">Sélectionner un type d'exemple autorise tous les exemples de ce type, peu importe le modèle.</Text>
+			<Text Lang="pt-BR">Selecionar um tipo de modelo permito todos os modelos deste tipo, seja qual for seu módulo.</Text>
+			<Text Lang="zh">选择模型类型允许所有该类型内模型，无视模板。</Text>
+			<Text Lang="ko">모델 유형을 선택 하면 템플릿에 관계 없이 해당 유형의 모든 모델을 사용할 수 있습니다.</Text>
+			<Text Lang="pl">Wybranie typu modelu pozwoli na wybranie wszystkich modeli tego typu niezależnie od szablonu.</Text>
+			<Text Lang="ru">Выбор типа модели позволяет каждой модели подобного типа, независимо от их шаблона.</Text>
+			<Text Lang="de">Selecting a model type allows every model of this type, regardless of its template.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedAssets.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Allowed asset types:</Text>
+			<Text Lang="uk">Дозволені типи ресурсів:</Text>
+			<Text Lang="fr">Types d’atout autorisés :</Text>
+			<Text Lang="pt-BR">Tipos de recursos permitidos:</Text>
+			<Text Lang="zh">允许的资源类型：</Text>
+			<Text Lang="ko">허용 된 에셋 유형:</Text>
+			<Text Lang="pl">Dozwolone typy assetów:</Text>
+			<Text Lang="es">Tipos de recurso permitidos:</Text>
+			<Text Lang="it">Tipi di asset permessi</Text>
+			<Text Lang="ru">Разрешенные типы ресурсов</Text>
+			<Text Lang="de">Erlaubte Asset-Typen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedAssets.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Allows changing the list of allowed assets.</Text>
+			<Text Lang="uk">Дозволяє вам змінити список дозволених ресурсів.</Text>
+			<Text Lang="fr">Autorise la modification de la liste des atouts autorisés.</Text>
+			<Text Lang="pt-BR">Permite mudar a lista de recursos permitidos.</Text>
+			<Text Lang="zh">允许以可用资源更改列表内容。</Text>
+			<Text Lang="ko">허용 된 에셋의 목록을 변경할 수 있습니다.</Text>
+			<Text Lang="pl">Pozwala zmienić listę dozwolonych assetów.</Text>
+			<Text Lang="es">Te permite modificar la lista de objetos permitidos.</Text>
+			<Text Lang="it">Ti permette di modificare la lista degli asset permessi.</Text>
+			<Text Lang="ru">Позволяет вам изменить список разрешенных ресурсов.</Text>
+			<Text Lang="de">Ermöglicht das Ändern der Liste von erlaubten Assets.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTemplates.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Allowed object templates:</Text>
+			<Text Lang="uk">Дозволені шаблони об'єктів</Text>
+			<Text Lang="fr">Modèles d’objet autorisés :</Text>
+			<Text Lang="pt-BR">Módulos de objetos permitidos:</Text>
+			<Text Lang="zh">允许的对象模板：</Text>
+			<Text Lang="ko">허용 된 객체 템플릿:</Text>
+			<Text Lang="pl">Dozwolone typy obiektów:</Text>
+			<Text Lang="es">Tipos de plantilla permitidos:</Text>
+			<Text Lang="it">Template di oggetti permessi</Text>
+			<Text Lang="ru">Разрешенные шаблоны объектов</Text>
+			<Text Lang="de">Erlaubte Objekt-Vorlagen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedTemplates.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Allows changing the list of allowed templates.</Text>
+			<Text Lang="uk">Дозволяє вам змінити список дозволених шаблонів.</Text>
+			<Text Lang="fr">Autorise la modification de la liste des patrons autorisés.</Text>
+			<Text Lang="pt-BR">Permite mudar a lista de módulos permitidos.</Text>
+			<Text Lang="zh">允许以可用模板更改列表内容。</Text>
+			<Text Lang="ko">허용 된 템플릿의 목록을 변경할 수 있습니다.</Text>
+			<Text Lang="pl">Pozwala zmienić listę dozwolonych szablonów.</Text>
+			<Text Lang="es">Te permite cambiar los tipos de plantilla permitidos.</Text>
+			<Text Lang="it">Ti permette di cambiare la lista dei template permessi.</Text>
+			<Text Lang="ru">Позволяет вам изменить список разрешенных шаблонов.</Text>
+			<Text Lang="de">Ermöglicht das Ändern der Liste von erlaubten Vorlagen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedAssetFileTypes.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Restricted to file types:</Text>
+			<Text Lang="uk">Обмеження по типу файлу</Text>
+			<Text Lang="fr">Limité aux types de fichier :</Text>
+			<Text Lang="pt-BR">Restrito á tipos de arquivo:</Text>
+			<Text Lang="zh">仅限于文件类型：</Text>
+			<Text Lang="ko">파일 형식 제한</Text>
+			<Text Lang="pl">Ograniczenie do typu pliku:</Text>
+			<Text Lang="es">Restringir tipo de archivo</Text>
+			<Text Lang="it">Limitato al tipo di file</Text>
+			<Text Lang="ru">Ограничение по типу файла</Text>
+			<Text Lang="de">Auf folgende Dateitypen beschränkt:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AllowedAssetFileTypes.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Allows changing the list of allowed file types for assets.</Text>
+			<Text Lang="uk">Дозволяє вам змінити список дозволених типів ресурсів.</Text>
+			<Text Lang="fr">Autorise la modification de la liste des types de fichier autorisés pour les atouts.</Text>
+			<Text Lang="pt-BR">Permite mudar a lista de tipos de arquivos permitidos para recursos.</Text>
+			<Text Lang="zh">允许以可用资源文件类型更改列表内容。</Text>
+			<Text Lang="ko">에셋에 허용 된 파일 유형의 목록을 변경할 수 있습니다.</Text>
+			<Text Lang="pl">Umożliwia zmianę listy dozwolonych typów plików assetów.</Text>
+			<Text Lang="es">Te permite modificar la lista de tipos de archivo permitidos para recursos.</Text>
+			<Text Lang="it">Ti permette di modificare la lista dei tipi di file permessi in questo asset.</Text>
+			<Text Lang="ru">Позволяет вам изменить список разрешенных типов ресурсов.</Text>
+			<Text Lang="de">Ermöglicht das Ändern der Liste von erlaubten Dateitypen für Assets.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxReferenceCount.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Maximum amount of objects</Text>
+			<Text Lang="uk">Максимальна кількість посилань</Text>
+			<Text Lang="fr">Nombre maximal d’objets</Text>
+			<Text Lang="pt-BR">Quantidade máxima de objetos</Text>
+			<Text Lang="zh">最大对象数量</Text>
+			<Text Lang="ko">객체의 최대 개수</Text>
+			<Text Lang="pl">Maksymalna ilość obiektów</Text>
+			<Text Lang="es">Cantidad máxima de objetos</Text>
+			<Text Lang="it">Quantità massima di oggetti</Text>
+			<Text Lang="ru">Максимальное количество ссылок</Text>
+			<Text Lang="de">Maximale Anzahl an Objekten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxReferenceCount.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">The maximum amount of objects allowed in this strip.</Text>
+			<Text Lang="uk">Максимальне значення посилань дозволених у цьому рядку.</Text>
+			<Text Lang="fr">Le nombre maximal d’objet autorisés dans ce bordereau.</Text>
+			<Text Lang="pt-BR">A quantidade máxima de objetos permitidos nesta tira.</Text>
+			<Text Lang="zh">此strip中允许的最大对象数。</Text>
+			<Text Lang="ko">이 스트립에 허용 된 최대 객체 개수입니다.</Text>
+			<Text Lang="pl">Maksymalna ilość wyników obiektów tego paska.</Text>
+			<Text Lang="es">El número máximo de objetos permitidos en una tira.</Text>
+			<Text Lang="it">Quantità massima di oggetti permessi da questa zona.</Text>
+			<Text Lang="ru">Максимальное значение ссылок разрешенных строкой.</Text>
+			<Text Lang="de">Die maximale Anzahl an Objekten in diesem Strip.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxReferenceCount.PlaceHolder">
+			<Context>Placeholder in property editor</Context>
+			<Text Lang="en">(no limit)</Text>
+			<Text Lang="uk">(без обмежень)</Text>
+			<Text Lang="fr">(aucune limite)</Text>
+			<Text Lang="pt-BR">(sem limite)</Text>
+			<Text Lang="zh">（无限制）</Text>
+			<Text Lang="ko">(제한 없음)</Text>
+			<Text Lang="pl">(bez limitu)</Text>
+			<Text Lang="es">(sin límite)</Text>
+			<Text Lang="it">(nessun limite)</Text>
+			<Text Lang="ru">(без ограничений)</Text>
+			<Text Lang="de">(unbeschränkt)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxResultCount.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Maximum amount of results</Text>
+			<Text Lang="uk">Максимальна кількість результатів</Text>
+			<Text Lang="fr">Nombre maximal de résultats</Text>
+			<Text Lang="pt-BR">Quantidade máxima de resultados.</Text>
+			<Text Lang="zh">最大结果数量</Text>
+			<Text Lang="ko">결과의 최대 개수</Text>
+			<Text Lang="pl">Maksymalna ilość wyników</Text>
+			<Text Lang="es">Cantidad máxima de resultados</Text>
+			<Text Lang="it">Quantità massima di risultati</Text>
+			<Text Lang="ru">Максимальное количество результатов</Text>
+			<Text Lang="de">Maximale Anzahl an Ergebnissen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxResultCount.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">The maximum amount of collected references allowed in this strip.</Text>
+			<Text Lang="uk">Максимальна кількість результатів дозволених у цьому рядку.</Text>
+			<Text Lang="fr">Le nombre maximal de références collectées autorisées dans ce bordereau.</Text>
+			<Text Lang="pt-BR">A quantidade máxima de referências coletadas permitidas nesta tira.</Text>
+			<Text Lang="zh">此strip中允许的最大结果数量。</Text>
+			<Text Lang="ko">이 스트립에 허용 된 수집된 참조의 최대 개수입니다.</Text>
+			<Text Lang="pl">Maksymalna wartość wyników tego paska.</Text>
+			<Text Lang="es">El número máximo de objetos permitidos en una tira.</Text>
+			<Text Lang="it">Il valore massimo che questa zona permette come risultato.</Text>
+			<Text Lang="ru">Максимальное значение результатов разрешенных этой строкой.</Text>
+			<Text Lang="de">Die maximale Anzahl an eingesammelten Referenzen in diesem Strip.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MaxResultCount.PlaceHolder">
+			<Context>Placeholder in property editor</Context>
+			<Text Lang="en">(no limit)</Text>
+			<Text Lang="uk">(без обмежень)</Text>
+			<Text Lang="fr">(aucune limite)</Text>
+			<Text Lang="pt-BR">(sem limite)</Text>
+			<Text Lang="zh">（无限制）</Text>
+			<Text Lang="ko">(제한 없음)</Text>
+			<Text Lang="pl">(bez limitu)</Text>
+			<Text Lang="es">(sin límite)</Text>
+			<Text Lang="it">(nessun limite)</Text>
+			<Text Lang="ru">(без ограничений)</Text>
+			<Text Lang="de">(unbeschränkt)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditQuery.Caption">
+			<Context>Button in property editor</Context>
+			<Text Lang="en">Edit query</Text>
+			<Text Lang="uk">Редагувати запит</Text>
+			<Text Lang="fr">Éditer la requête</Text>
+			<Text Lang="pt-BR">Editar questão</Text>
+			<Text Lang="zh">编辑问题</Text>
+			<Text Lang="ko">쿼리 편집</Text>
+			<Text Lang="pl">Edytuj zapytanie</Text>
+			<Text Lang="es">Editar consulta</Text>
+			<Text Lang="it">Modifica richiesta</Text>
+			<Text Lang="ru">Редактировать запрос</Text>
+			<Text Lang="de">Abfrage bearbeiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditQuery.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">Edit the query of this strip.</Text>
+			<Text Lang="uk">Редагувати запит цього рядка посилання.</Text>
+			<Text Lang="fr">Éditer la requête de ce bordereau.</Text>
+			<Text Lang="pt-BR">Edita a questão desta tira</Text>
+			<Text Lang="zh">编辑此strip的问题。</Text>
+			<Text Lang="ko">이 스트립의 쿼리를 편집합니다.</Text>
+			<Text Lang="pl">Edytuj zapytanie tego paska.</Text>
+			<Text Lang="es">Edita la consulta de esta tira.</Text>
+			<Text Lang="it">Modifica la richiesta di questa zona.</Text>
+			<Text Lang="ru">Редактировать запрос этой строки ссылки.</Text>
+			<Text Lang="de">Abfrage dieses Strips bearbeiten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ScriptType.Caption">
+			<Context>Label in property editor</Context>
+			<Text Lang="en">Script type</Text>
+			<Text Lang="uk">Тип скрипту</Text>
+			<Text Lang="fr">Type de script</Text>
+			<Text Lang="pt-BR">Tipo de Script</Text>
+			<Text Lang="zh">脚本类型</Text>
+			<Text Lang="ko">스크립트 유형</Text>
+			<Text Lang="pl">Typ skryptu</Text>
+			<Text Lang="es">Tipo de script</Text>
+			<Text Lang="it">Tipo di script</Text>
+			<Text Lang="de">Skript-Typ</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ScriptType.Description">
+			<Context>Tooltip in property editor</Context>
+			<Text Lang="en">The type of this script.</Text>
+			<Text Lang="uk">Тип цього скрипту</Text>
+			<Text Lang="fr">Le type de ce script.</Text>
+			<Text Lang="pt-BR">O tipo deste Script</Text>
+			<Text Lang="zh">该脚本的类型。</Text>
+			<Text Lang="ko">이 스크립트의 유형</Text>
+			<Text Lang="pl">Typ tego skryptu.</Text>
+			<Text Lang="es">El tipo de este script.</Text>
+			<Text Lang="it">Il tipo di questo script.</Text>
+			<Text Lang="de">Die Art dieses Skriptes.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Notes">
+
+		<TextDefinition Key="ConversionProgress.Title">
+			<Context>Dialog title</Context>
+			<Text Lang="en">Converting to flow</Text>
+			<Text Lang="uk">Комнвертування у потік</Text>
+			<Text Lang="fr">Conversion en flux</Text>
+			<Text Lang="pt-BR">Convertendo para fluxo</Text>
+			<Text Lang="zh">转换为流</Text>
+			<Text Lang="ko">흐름으로 변환</Text>
+			<Text Lang="pl">Konwertowanie do flow</Text>
+			<Text Lang="es">Convertir a flujo</Text>
+			<Text Lang="it">Convertire a diagramma di flusso</Text>
+			<Text Lang="ru">Преобразование в поток</Text>
+			<Text Lang="de">Wandle nach Flow um</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ConversionProgress.Info">
+			<Context>Dialog info</Context>
+			<Text Lang="en">Text is being converted to flow objects.</Text>
+			<Text Lang="uk">Текст конвертується в об'єкти потоку.</Text>
+			<Text Lang="fr">Le texte est en cours de conversion en objets de flux.</Text>
+			<Text Lang="pt-BR">Texto está sendo convertido para objetos do fluxo.</Text>
+			<Text Lang="zh">正在将文本转换为流对象。</Text>
+			<Text Lang="ko">텍스트가 흐름 객체로 변한됩니다.</Text>
+			<Text Lang="pl">Tekst zostanie przekonwertowany do obiektów flow.</Text>
+			<Text Lang="es">Texto convertirá en fragmentos de flujo.</Text>
+			<Text Lang="it">Il testo viene convertito in un oggetto del diagramma.</Text>
+			<Text Lang="ru">Текст преобразуется в объекты потока.</Text>
+			<Text Lang="de">Text wird in Flow-Objekte umgewandelt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DefaultSpeakerName.Caption">
+			<Context>Default conversion speaker name</Context>
+			<Text Lang="en">Speaker</Text>
+			<Text Lang="uk">Мовець</Text>
+			<Text Lang="fr">Locuteur</Text>
+			<Text Lang="pt-BR">Falante</Text>
+			<Text Lang="zh">发言者</Text>
+			<Text Lang="ko">연설자</Text>
+			<Text Lang="pl">Mówca</Text>
+			<Text Lang="es">Hablante</Text>
+			<Text Lang="it">Attore</Text>
+			<Text Lang="ru">Говорящий</Text>
+			<Text Lang="de">Sprecher</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Orders">
+
+		<TextDefinition Key="TargetPinIndex.Caption">
+			<Context>Order name</Context>
+			<Text Lang="en">Change target pin index</Text>
+			<Text Lang="uk">Зміна цільового індексу контакту</Text>
+			<Text Lang="fr">Modifier l’index de l’épingle cible</Text>
+			<Text Lang="pt-BR">Mudar o índice do pino alvo</Text>
+			<Text Lang="zh">更改目标Pin索引</Text>
+			<Text Lang="ko">대상 핀 인덱스 변경</Text>
+			<Text Lang="pl">Zmień cel punktu</Text>
+			<Text Lang="es">Cambiar índice de conectores de salida</Text>
+			<Text Lang="it">Cambia l'indice del connettore di destinazione</Text>
+			<Text Lang="ru">Изменить Целевой Индекс Контакта</Text>
+			<Text Lang="de">Ändere Index des Ziel-Pins</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  States of the new asset subsystem, these texts are used for displaying on tiles, so keep them short!
+	-->
+	<Category Name="System" Namespace="Articy.AssetManager">
+
+		<TextDefinition Key="AssetStateEx.Unknown">
+			<Context/>
+			<Text Lang="en">Checking</Text>
+			<Text Lang="uk">Перевіряється</Text>
+			<Text Lang="fr">Vérification</Text>
+			<Text Lang="pt-BR">Checando</Text>
+			<Text Lang="zh">检查中</Text>
+			<Text Lang="ko">확인</Text>
+			<Text Lang="pl">Sprawdzanie</Text>
+			<Text Lang="it">Controllo</Text>
+			<Text Lang="ru">сверять</Text>
+			<Text Lang="de">Wird überprüft</Text>
+			<Text Lang="es">De cheques</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetStateEx.Pending">
+			<Context/>
+			<Text Lang="en">Pending</Text>
+			<Text Lang="uk">В очікуванні</Text>
+			<Text Lang="fr">En attente</Text>
+			<Text Lang="pt-BR">Pendente</Text>
+			<Text Lang="zh">待定中</Text>
+			<Text Lang="ko">Pending</Text>
+			<Text Lang="pl">Oczekiwanie</Text>
+			<Text Lang="it">In attesa</Text>
+			<Text Lang="de">Wartet</Text>
+			<Text Lang="es">Durante</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetStateEx.Working">
+			<Context/>
+			<Text Lang="en">Working</Text>
+			<Text Lang="uk">Опрацьовується</Text>
+			<Text Lang="fr">Travail en cours</Text>
+			<Text Lang="pt-BR">Trabalhando</Text>
+			<Text Lang="zh">工作中</Text>
+			<Text Lang="ko">작업</Text>
+			<Text Lang="pl">Przetwarzanie</Text>
+			<Text Lang="it">Elaborazione</Text>
+			<Text Lang="de">Wird bearbeitet</Text>
+			<Text Lang="es">Procesamiento</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetStateEx.Error">
+			<Context/>
+			<Text Lang="en">Has Error</Text>
+			<Text Lang="uk">Має помилку</Text>
+			<Text Lang="fr">Erreur</Text>
+			<Text Lang="pt-BR">Possui erro</Text>
+			<Text Lang="zh">有错误</Text>
+			<Text Lang="ko">오류 있음</Text>
+			<Text Lang="pl">Napotkano błąd</Text>
+			<Text Lang="it">Errori</Text>
+			<Text Lang="de">Fehlerhaft</Text>
+			<Text Lang="es">Defectuoso</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AssetStateEx.Ok">
+			<Context/>
+			<Text Lang="en">Ready</Text>
+			<Text Lang="uk">Готово</Text>
+			<Text Lang="fr">Prêt</Text>
+			<Text Lang="pt-BR">Pronto</Text>
+			<Text Lang="zh">已完成</Text>
+			<Text Lang="ko">준비</Text>
+			<Text Lang="pl">Gotowe</Text>
+			<Text Lang="it">Pronto</Text>
+			<Text Lang="ru">Готово</Text>
+			<Text Lang="de">Bereit</Text>
+			<Text Lang="es">A punto</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Errors when trying to create a location image
+	-->
+	<Category Name="Errors" Namespace=".Errors.LocationImage">
+
+		<TextDefinition Key="Processing.Text">
+			<Context>Image is currently in the import/thumbnailing queue of the asset worker</Context>
+			<Text Lang="en"><![CDATA[Can't insert the selected image because the image is currently processed by a background task.
+Please try again later.]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо вставити вибране зображення, оскільки зображення в даний час обробляється фоновим завданням.
+Будь-ласка спробуйте пізніше.]]></Text>
+			<Text Lang="fr"><![CDATA[L’image sélectionnée ne peut pas être insérée car l’image est traitée par une tâche en arrière-plan.
+Veuillez réessayer plus tard.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pôde inserir a imagem selecionada porquê a imagem está no momento sendo processada por uma tarefa de plano de fundo.
+Tente de novo mais tarde.]]></Text>
+			<Text Lang="zh"><![CDATA[无法插入所选图像，该图像当前正由后台任务占用。
+请稍后再试。]]></Text>
+			<Text Lang="ko"><![CDATA[선택한 이미지가 현재 백그라운드 작업에 의해 처리되고 있기 때문에 삽입할 수 없습니다.
+나중에 다시 시도하십시오.]]></Text>
+			<Text Lang="de"><![CDATA[Das ausgewählte Bild kann derzeit nicht eingefügt werden, da es von einem Hintergrundprozess verarbeitet wird.
+Bitte versuchen Sie es später noch einmal.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoWIC.Text">
+			<Context>Image is not supported from the windows image decoder</Context>
+			<Text Lang="en"><![CDATA[Can't insert the selected image because the image format is not supported by the decoders provided by Windows.
+Please convert the image to a supported format or install 3rd party tools that allow image decoding.]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо вставити вибране зображення, оскільки формат зображення не підтримується декодерами наданими Windows.
+Перетворіть зображення у підтримуваний формат або встановіть сторонні інструменти, які дозволяють декодувати зображення.]]></Text>
+			<Text Lang="fr"><![CDATA[L’image sélectionnée ne peut pas être insérée car le format n’est pas pris en charge par les décodeurs fournis par Windows.
+Veuillez convertir l’image dans un format pris en charge ou installer des outils tiers qui permettent le décodage d’images.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pode inserir a Imagem selecionada porquê o formato de imagem não é suportado pelos decodificadores providenciados pelo Windows.
+Por favor converta a imagem para o formato suportado ou instale o party tools 3d que permite a decodificação da imagem.]]></Text>
+			<Text Lang="zh"><![CDATA[无法插入所选图像，Windows提供的解码器不支持该图像格式。
+请将图像转换为支持的格式，或安装允许图像解码的第三方工具。]]></Text>
+			<Text Lang="ko"><![CDATA[Windows에서 제공하는 디코더에서 이미지 형식을 지원하지 않으므로 선택한 이미지를 삽입할 수 없습니다.
+이미지를 지원되는 형식으로 변환하거나 이미지 디코딩이 가능한 타사 도구를 설치하십시오.]]></Text>
+			<Text Lang="de"><![CDATA[Das ausgewählte Bild kann nicht eingefügt werden, da es ein Format hat zu dem Windows keinen Dekoder bereitstellt.
+Bitte konvertieren sie das Bild in ein unterstützes Format oder installieren Sie weitere Bilddekoder von Fremdherstellern.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="WrongState.Text">
+			<Context>Image is in error state</Context>
+			<Text Lang="en"><![CDATA[Can't insert the selected image because the image was not properly processed.
+Please check the image asset for errors.]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо вставити вибране зображення, оскільки зображення було неправильно оброблено.
+Перевірте ресурс зображення на наявність помилок.]]></Text>
+			<Text Lang="fr"><![CDATA[L’image sélectionnée ne peut pas être insérée car elle n’a pas été traitée correctement.
+Veuillez vérifier s’il n’y a pas d’erreur dans le fichier de l’image.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pode inserir a imagem porquê a imagem não foi adequadamente processada.
+Por favor check o recurso de imagens por erros.]]></Text>
+			<Text Lang="zh"><![CDATA[无法插入所选图像，图像未能正确读取。
+请检查图像资源是否有错误。]]></Text>
+			<Text Lang="ko"><![CDATA[선택한 이미지가 제대로 처리되지 않아 삽입할 수 없습니다.
+이미지 에셋에서 오류가 있는지 확인하십시오.]]></Text>
+			<Text Lang="de"><![CDATA[Das ausgewählte Bild kann nicht eingefügt werden, da es sich in einem Fehlerstatus befindet.
+Bitte überprüfen Sie das Bild-Asset auf Fehler, beseitigen Sie diese und versuchen Sie es danach erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FileNotFound.Text">
+			<Context>Image file is not found</Context>
+			<Text Lang="en"><![CDATA[Can't insert the selected image because the image file was not found on disk.
+Please check the image asset for errors.]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо вставити вибране зображення, оскільки файл зображення не знайдено на диску.
+Перевірте ресурс зображення на наявність помилок.]]></Text>
+			<Text Lang="fr"><![CDATA[L’image sélectionnée ne peut pas être insérée car le fichier de l’image n’a pas été trouvé sur le disque.
+Veuillez vérifier s’il n’y a pas d’erreur dans le fichier de l’image.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pôde inserir a imagem selecionada porquê o arquivo de imagem não foi encontrado no disco.
+Por favor cheque o recurso de imagens por erros.]]></Text>
+			<Text Lang="zh"><![CDATA[无法插入所选图像，在该磁盘上找不到指定的图像文件。
+请检查图像资源是否有错误。]]></Text>
+			<Text Lang="ko"><![CDATA[디스크에서 이미지 파일을 찾을 수 없어 선택한 이미지를 삽입할 수 없습니다.
+이미지 에셋에서 오류가 있는지 확인하십시오.]]></Text>
+			<Text Lang="de"><![CDATA[Das ausgewählte Bild kann nicht eingefügt werden, da die benötige Datei nicht gefunden werden konnte.
+Bitte überprüfen Sie das Bild-Asset auf Fehler, beseitigen Sie diese und versuchen Sie es danach erneut.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Corrupt.Text">
+			<Context>Image file is not found</Context>
+			<Text Lang="en"><![CDATA[Can't insert the selected image because decoding failed. The image seems to be corrupt.
+Please check the image asset for errors.]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо вставити вибране зображення, оскільки не вдалося його декодувати. Зображення виглядає пошкодженим.
+Перевірте ресурс зображення на наявність помилок. ]]></Text>
+			<Text Lang="fr"><![CDATA[L’image sélectionnée ne peut pas être insérée car le décodage a échoué. L’image semble être corrompue.
+Veuillez vérifier s’il n’y a pas d’erreur dans le fichier de l’image.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pôde inserir a imagen selecionada porquê a decodificação falhou. A imagem aparece estar corrompida.
+Por favor cheque o recurso de imagens por erros.]]></Text>
+			<Text Lang="zh"><![CDATA[无法插入所选图像，解码失败。该图像似乎已损坏。
+请检查图像资源是否有错误。]]></Text>
+			<Text Lang="ko"><![CDATA[디코딩에 실패해서 선택한 이미지를 삽입할 수 없습니다. 이미지가 손상된 것 같습니다.
+이미지 에셋에서 오류가 있는지 확인하십시오.]]></Text>
+			<Text Lang="de"><![CDATA[Das ausgewählte Bild kann nicht eingefügt werden, da es nicht dekodiert werden konnte. Die Bilddaten sind warscheinlich korrupt.
+Bitte überprüfen Sie das Bild-Asset auf Fehler, beseitigen Sie diese und versuchen Sie es danach erneut.]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

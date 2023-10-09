@@ -15,6 +15,7 @@ import { ProjectTags } from './ProjectManager/ProjectTags'
 import ShareManager from './ShareManager'
 import MeshPreprocessor from './MeshPreprocessor'
 import { AvatarManager } from './AvatarManager'
+import { Logger } from './Logger'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
@@ -34,6 +35,7 @@ const startup = async () => {
     new MeshPreprocessor()
     new AvatarManager()
     await SceneUtils.register()
+    Logger.get()
 }
 
 const tryOpenProject = async () => {

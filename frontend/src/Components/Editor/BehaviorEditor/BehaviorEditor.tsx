@@ -1,6 +1,6 @@
 import { MetaDataEditor } from './MetaDataEditor'
-import { GameStateEditor } from './GameStateEditor'
-import { QuestLineEditor } from './QuestLineEditor'
+import { VariableEditor } from './VariableEditor'
+import { EventsEditor } from './EventsEditor'
 
 export const BehaviorEditor = ({ hidden }) => {
     return (
@@ -17,8 +17,8 @@ export const BehaviorEditor = ({ hidden }) => {
         >
             <h1>Behavior Editor</h1>
             <MetaDataEditor isActive={!hidden} />
-            <GameStateEditor />
-            <QuestLineEditor />
-        </div>
+            <VariableEditor />
+            <EventsEditor />
+            </div>
     )
 }

@@ -27,7 +27,7 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
     yarn -v
     ```
 
-- Make sure Unity 2020 LTS or newer is installed. Recommended: 2021.3.0f1
+- Make sure Unity 2021.3.31f1 is installed
 - Make sure your internet connection is working properly
 - If you want to use articy:draft, make sure it's installed
 

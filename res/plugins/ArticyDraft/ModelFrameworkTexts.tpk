@@ -1,0 +1,413 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.ModelFramework" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<!--
+	  IModelBase
+	-->
+	<Category Name="System" Namespace=".IModelBase">
+
+		<TextDefinition Key="DisplayName.Caption">
+			<Context>Display name of the property DisplayName of the class "Articy.ModelFramework.BaseModel".</Context>
+			<Text Lang="en">Name</Text>
+			<Text Lang="uk">Назва</Text>
+			<Text Lang="fr">Nom</Text>
+			<Text Lang="pt-BR">Nome</Text>
+			<Text Lang="zh">名称</Text>
+			<Text Lang="ko">이름</Text>
+			<Text Lang="pl">Nazwa</Text>
+			<Text Lang="es">Nombre</Text>
+			<Text Lang="it">Nome</Text>
+			<Text Lang="ru">Имя</Text>
+			<Text Lang="de">Name</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayName.Description">
+			<Context>Description of the property DisplayName of the class "Articy.ModelFramework.BaseModel".</Context>
+			<Text Lang="en">The displayed name of this node.</Text>
+			<Text Lang="uk">Відображувана назва цієї вітки.</Text>
+			<Text Lang="fr">Le nom affiché de ce nœud.</Text>
+			<Text Lang="pt-BR">O nome do nó exibido</Text>
+			<Text Lang="zh">此节点的显示名称。</Text>
+			<Text Lang="ko">이 노드의 표시될 이름</Text>
+			<Text Lang="pl">Wyświetlana nazwa dla tego węzła</Text>
+			<Text Lang="es">El nombre de visualización este nodo.</Text>
+			<Text Lang="it">Il nome visualizzato su questo snodo.</Text>
+			<Text Lang="ru">Отображаемое имя этого узла.</Text>
+			<Text Lang="de">Der angezeigte Name für diesen Knoten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Id.Caption">
+			<Context>Display name of the property Id of the class "Articy.ModelFramework.BaseModel".</Context>
+			<Text Lang="en">Id</Text>
+			<Text Lang="uk">ID</Text>
+			<Text Lang="fr">Identité</Text>
+			<Text Lang="pt-BR">id</Text>
+			<Text Lang="zh">ID</Text>
+			<Text Lang="ko">ID</Text>
+			<Text Lang="pl">ID</Text>
+			<Text Lang="es">Id</Text>
+			<Text Lang="it">Id</Text>
+			<Text Lang="ru">ID</Text>
+			<Text Lang="de">Id</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Id.Description">
+			<Context>Description of the property Id of the class "Articy.ModelFramework.BaseModel".</Context>
+			<Text Lang="en">A unique ID used to identify this node.</Text>
+			<Text Lang="uk">Унікальний ID, що використовується для ідентифікації цієї вітки.</Text>
+			<Text Lang="fr">Identité unique utilisée pour identifier ce nœud.</Text>
+			<Text Lang="pt-BR">Um ID único utilizado para identificar esse nó.</Text>
+			<Text Lang="zh">用于标识此节点的唯一ID。</Text>
+			<Text Lang="ko">이 노드를 식별 하는 데 사용 되는 고유 ID입니다.</Text>
+			<Text Lang="pl">Unikalne ID używane do rozpoznania tego węzła</Text>
+			<Text Lang="es">Un identificador único utilizado para identificar este nodo.</Text>
+			<Text Lang="it">Un identificatore (ID) unico per identificare questo snodo.</Text>
+			<Text Lang="ru">Уникальный ID используемый для  идентификации этого узла.</Text>
+			<Text Lang="de">Eine eindeutige ID um diesen Knoten zu identifizieren.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Connection
+	-->
+	<Category Name="System" Namespace=".Connection">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type name connection.</Context>
+			<Text Lang="en">Connection</Text>
+			<Text Lang="uk">З'єднання</Text>
+			<Text Lang="fr">Connexion</Text>
+			<Text Lang="pt-BR">Conexão</Text>
+			<Text Lang="zh">连接</Text>
+			<Text Lang="ko">연결</Text>
+			<Text Lang="pl">Połączenia</Text>
+			<Text Lang="es">Conexión</Text>
+			<Text Lang="it">Connessione</Text>
+			<Text Lang="ru">Соединение</Text>
+			<Text Lang="de">Verbindung</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Pin
+	-->
+	<Category Name="System" Namespace=".Pin">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type name pin.</Context>
+			<Text Lang="en">Pin</Text>
+			<Text Lang="uk">Контакт</Text>
+			<Text Lang="fr">Épingle</Text>
+			<Text Lang="pt-BR">Pino</Text>
+			<Text Lang="zh">Pin</Text>
+			<Text Lang="ko">핀</Text>
+			<Text Lang="pl">Punkt</Text>
+			<Text Lang="es">Conector</Text>
+			<Text Lang="it">Connettore</Text>
+			<Text Lang="ru">Контакт</Text>
+			<Text Lang="de">Pin</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Output.Caption">
+			<Context>Object type name output pin.</Context>
+			<Text Lang="en">Output Pin</Text>
+			<Text Lang="uk">Вихідний контакт</Text>
+			<Text Lang="fr">Épingle de sortie</Text>
+			<Text Lang="pt-BR">Pino de saída</Text>
+			<Text Lang="zh">输出Pin</Text>
+			<Text Lang="ko">출력 핀</Text>
+			<Text Lang="pl">Punkt wyjściowy</Text>
+			<Text Lang="es">Conector de salida</Text>
+			<Text Lang="it">Connettore in uscita</Text>
+			<Text Lang="ru">Исходящий контакт</Text>
+			<Text Lang="de">Ausgangs-Pin</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Input.Caption">
+			<Context>Object type name input pin.</Context>
+			<Text Lang="en">Input Pin</Text>
+			<Text Lang="uk">Вхідний контакт</Text>
+			<Text Lang="fr">Épingle d'entrée</Text>
+			<Text Lang="pt-BR">Pino de entrada</Text>
+			<Text Lang="zh">输入Pin</Text>
+			<Text Lang="ko">인풋 핀</Text>
+			<Text Lang="pl">Punkt wejściowy</Text>
+			<Text Lang="es">Conector de entrada</Text>
+			<Text Lang="it">Connettore in entrata</Text>
+			<Text Lang="ru">Входящий контакт</Text>
+			<Text Lang="de">Eingangs-Pin</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayName.Caption">
+			<Context/>
+			<Text Lang="en">{0} - {1} {2}</Text>
+			<Text Lang="uk">{0} - {1} {2}</Text>
+			<Text Lang="fr">{0} - {1} {2}</Text>
+			<Text Lang="pt-BR">{0} - {1} {2}</Text>
+			<Text Lang="zh">{0} - {1} {2}</Text>
+			<Text Lang="ko">{0} - {1} {2}</Text>
+			<Text Lang="pl">{0} - {1} {2}</Text>
+			<Text Lang="es">{0} - {1} {2}</Text>
+			<Text Lang="it">{0} - {1} {2}</Text>
+			<Text Lang="ru">{0}-{1}{2}</Text>
+			<Text Lang="de">{0} - {1} {2}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DisplayNameShort.Caption">
+			<Context/>
+			<Text Lang="en">{1} {2}</Text>
+			<Text Lang="uk">{1} {2}</Text>
+			<Text Lang="fr">{1} {2}</Text>
+			<Text Lang="pt-BR">{1} {2}</Text>
+			<Text Lang="zh">{1} {2}</Text>
+			<Text Lang="ko">{1} {2}</Text>
+			<Text Lang="pl">{1} {2}</Text>
+			<Text Lang="es">{1} {2}</Text>
+			<Text Lang="it">{1} {2}</Text>
+			<Text Lang="ru">{1}{2}</Text>
+			<Text Lang="de">{1} {2}</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Misc
+	-->
+	<Category Name="System">
+
+		<TextDefinition Key="DiagramItem.BackgroundColor.Caption">
+			<Context>Description of the property Id</Context>
+			<Text Lang="en">Background Color</Text>
+			<Text Lang="uk">Колір фону</Text>
+			<Text Lang="fr">Couleur d’arrière-plan</Text>
+			<Text Lang="pt-BR">Cor do plano de fundo</Text>
+			<Text Lang="zh">背景色</Text>
+			<Text Lang="ko">배경 색상</Text>
+			<Text Lang="pl">Kolor tła</Text>
+			<Text Lang="es">Color de fondo</Text>
+			<Text Lang="it">Colore di sfondo</Text>
+			<Text Lang="ru">Цвет фона</Text>
+			<Text Lang="de">Hintergrundfarbe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SystemFolder._Self_.Caption">
+			<Context>Object type name of system folders. Currently not to be seen anywhere; no loca!</Context>
+			<Text Lang="en">System folder</Text>
+			<Text Lang="uk">Системна папка</Text>
+			<Text Lang="fr">Dossier système</Text>
+			<Text Lang="pt-BR">Pasta do sistema</Text>
+			<Text Lang="zh">系统文件夹</Text>
+			<Text Lang="ko">시스템 폴더</Text>
+			<Text Lang="pl">Folder sytemowy</Text>
+			<Text Lang="es">Carpeta del sistema</Text>
+			<Text Lang="it">Cartella di sistema</Text>
+			<Text Lang="ru">Системная папка</Text>
+			<Text Lang="de">System-Verzeichnis</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Folder._Self_.Caption">
+			<Context>Object type name of a user folder. Currently not to be seen anywhere; no loca!</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Verzeichnis</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReadPartitionStart.InfoLine">
+			<Context>Info line for the open project progress dialog</Context>
+			<Text Lang="en">Starting to read partition data file '{0}'.</Text>
+			<Text Lang="uk">Починається зчитування розділу даних '{0}'.</Text>
+			<Text Lang="fr">Début de lecture du fichier de données de la partition « {0} ».</Text>
+			<Text Lang="pt-BR">Começando a ler dados do arquivo de partição {0}</Text>
+			<Text Lang="zh">开始读取分区数据文件 '{0}'。</Text>
+			<Text Lang="ko">파티션 데이터 파일 '{0}'을 읽기 시작합니다.</Text>
+			<Text Lang="pl">Rozpoczynania odczytywania danych z partycji '{0}'.</Text>
+			<Text Lang="es">Empezar a leer el archivo de datos de la partición '{0}'.</Text>
+			<Text Lang="it">Iniziato a leggere i file di dati della partizione '{0}'.</Text>
+			<Text Lang="ru">Начинается считывание раздела данных '{0}'.</Text>
+			<Text Lang="de">Lese Partitionsdatei '{0}' ein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReadPartitionFinished.InfoLine">
+			<Context>Info line for the open project progress dialog</Context>
+			<Text Lang="en">Reading partition data has been finished successfully.</Text>
+			<Text Lang="uk">Зчитування даних роздіу успішно завершено.</Text>
+			<Text Lang="fr">Lecture des données de partitions effectuée avec succès.</Text>
+			<Text Lang="pt-BR">Leitura dos dados de partição foram finalizados com sucesso.</Text>
+			<Text Lang="zh">读取分区数据完成。</Text>
+			<Text Lang="ko">파티션 데이터 읽기가 성공적으로 완료 되었습니다.</Text>
+			<Text Lang="pl">Odczytywanie zostało zakończone sukcesem.</Text>
+			<Text Lang="es">La lectura de datos de la partición se ha terminado con éxito.</Text>
+			<Text Lang="it">E' stata completata con successo la lettura dei dati della partizione.</Text>
+			<Text Lang="ru">Считывание раздела данных успешно завершено.</Text>
+			<Text Lang="de">Partition wurde erfolgreich eingelesen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PostprocessingProjectData.Infoline">
+			<Context/>
+			<Text Lang="en">Post-processing project data.</Text>
+			<Text Lang="uk">Післяобробка даних проекту.</Text>
+			<Text Lang="fr">Post-traitement des données du projet.</Text>
+			<Text Lang="pt-BR">dados do pós-processamento do projeto.</Text>
+			<Text Lang="zh">后期处理项目数据。</Text>
+			<Text Lang="ko">후-처리 프로젝트 데이터입니다.</Text>
+			<Text Lang="pl">Postpocessing wczytał dane projektu.</Text>
+			<Text Lang="es">Postprocesando los datos del proyecto cargado.</Text>
+			<Text Lang="it">Postprocessing caricati i dati del progetto.</Text>
+			<Text Lang="ru">Постобработка загруженных данных проекта.</Text>
+			<Text Lang="de">Nachbearbeiten der geladenen Projektdaten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FailedToLoadSession.Infoline">
+			<Context/>
+			<Text Lang="en">Session data failed to load. {0}</Text>
+			<Text Lang="uk">Не вдалося завантажити дані сеансу. {0}</Text>
+			<Text Lang="fr">Impossible de charger les données de session. {0}</Text>
+			<Text Lang="pt-BR">Dados da sessão falharam em carregar. {0}</Text>
+			<Text Lang="zh">无法加载会话数据。 {0}</Text>
+			<Text Lang="ko">세션 데이터를 로드 하지 못했습니다. {0}</Text>
+			<Text Lang="pl">Dane sesji nie zostały załadowane. {0}</Text>
+			<Text Lang="es">Los datos de sesión no se han podido cargar. {0}</Text>
+			<Text Lang="it">Impossibile caricare i dati della sessione. {0}</Text>
+			<Text Lang="ru">Не удалось загрузить данные сессии. {0}</Text>
+			<Text Lang="de">Sessiondaten konnten nicht geladen werden. {0}</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custodian objection exceptions
+	-->
+	<Category Name="System" Namespace=".CustodianObjection">
+
+		<TextDefinition Key="NameNotUnique.Description">
+			<Context/>
+			<Text Lang="en">This name is already used!</Text>
+			<Text Lang="uk">Ця назва вже використовується!</Text>
+			<Text Lang="fr">Ce nom est déjà utilisé !</Text>
+			<Text Lang="pt-BR">Este nome já está em uso!</Text>
+			<Text Lang="zh">该名称已被使用！</Text>
+			<Text Lang="ko">이 이름은 이미 사용 중입니다!</Text>
+			<Text Lang="pl">Ta nazwa jest już używana!</Text>
+			<Text Lang="es">¡Ese nombre ya está en uso!</Text>
+			<Text Lang="it">Questo nome è già in uso!</Text>
+			<Text Lang="ru">Это имя уже занято!</Text>
+			<Text Lang="de">Dieser Name ist bereits vergeben!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NameEmpty.Description">
+			<Context/>
+			<Text Lang="en">Name must not be empty!</Text>
+			<Text Lang="uk">Поле «Назва» не повинно бути пустим!</Text>
+			<Text Lang="fr">Le nom ne doit pas être vide !</Text>
+			<Text Lang="pt-BR">Nome não pode estar vazio!</Text>
+			<Text Lang="zh">名称不能为空！</Text>
+			<Text Lang="ko">이름은 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Nazwa nie może być pusta!</Text>
+			<Text Lang="es">¡El campo del nombre no puede estar vacío!</Text>
+			<Text Lang="it">Il nome non può essere vuoto!</Text>
+			<Text Lang="ru">Графа Имя не должна быть пустой!</Text>
+			<Text Lang="de">Der Name darf nicht leer sein!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="TechnicalNameEmpty.Description">
+			<Context/>
+			<Text Lang="en">Technical name must not be empty!</Text>
+			<Text Lang="uk">Поле «Технічне ім'я» не повинно бути пустим!</Text>
+			<Text Lang="fr">Le nom technique ne doit pas être vide !</Text>
+			<Text Lang="pt-BR">Nome técnico não pode estar vazio!</Text>
+			<Text Lang="zh">技术名称不能为空！</Text>
+			<Text Lang="ko">기술 이름은 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Nazwa techniczna nie może być pusta!</Text>
+			<Text Lang="es">¡El campo del nombre técnico no puede estar vacío!</Text>
+			<Text Lang="it">Il nome tecnico non può essere vuoto!</Text>
+			<Text Lang="ru">Графа Техническое имя, не должно быть пустым!</Text>
+			<Text Lang="de">Technische Namen dürfen nicht leer sein!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoValidTechnicalIdentifier.Description">
+			<Context/>
+			<Text Lang="en">Technical names may only contain letters (A-Z, a-z), '_' and numbers (0-9). The first character however is not allowed to be a number.</Text>
+			<Text Lang="uk">Технічні назви можуть містити лише латинські літери (A-Z, a-z), '_' і цифри (0-9). Перший символ не може бути цифрою.</Text>
+			<Text Lang="fr">Les noms techniques doivent contenir uniquement des lettres (A-Z, a-z), « _ » et des chiffres (0-9). Le premier caractère ne doit pas être un chiffre.</Text>
+			<Text Lang="pt-BR">Nomes técnicos podem apenas conter letras (A - Z, a - z), '_' e números (0 - 9).Porém, naõ é permitod o primeiro caractere ser um número.</Text>
+			<Text Lang="zh">技术名称只能包含字母 (A-Z, a-z)、 '_' 和数字 (0-9)，以非数字字符开头。</Text>
+			<Text Lang="ko">기술 이름에는 문자(A-Z, a-z), '_' 및 숫자(0-9) 만 입력할 수 있습니다. 첫번째 글자는 숫자가 들어가서는 안됩니다.</Text>
+			<Text Lang="pl">Nazwy techniczne mogą składać się jedynie z liter (A-Z, a-z), '_' i liczb (0-9). Pierwszy znak nie może być liczbą.</Text>
+			<Text Lang="es">Los nombres técnicos solo pueden contener letras (AZ, az), "_" y números (0-9). Sin embargo, el primer caracter no puede ser un número.</Text>
+			<Text Lang="it">I nomi tecnici possono contenere solamente lettere, (A-Z, a-z), '_' e numeri (0-9). Comunque il primo carattere non può essere un numero.</Text>
+			<Text Lang="ru">Технические названия могут содержать только латинские буквы (A-Z, a-z), '_' и цифры (0-9). Первый символ, однако, не может быть цифрой.</Text>
+			<Text Lang="de">Technische Namen dürfen nur Buchstaben (A-Z, a-z), '_', und Ziffern (0-9) enthalten. Der erste Buchstabe darf allerdings keine Ziffer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReservedTechnicalIdentifier.Description">
+			<Context/>
+			<Text Lang="en">Technical name '{0}' is reserved for articy:draft! Please choose another name.</Text>
+			<Text Lang="uk">Тезнічне назва '(0)' зарезервована для articy:draft! Будь ласка, оберіть іншу назву.</Text>
+			<Text Lang="fr">Le nom technique « {0} » est réservé à articy:draft ! Veuillez choisir un autre nom.</Text>
+			<Text Lang="pt-BR">Nome técnico '{0}' está reservado para articy:draft! Por favor escolha outro nome.</Text>
+			<Text Lang="zh">技术名称 '{0}' 已预留给 articy:draft！请选择其他名称。</Text>
+			<Text Lang="ko">기술 이름 '{0}'은 articy:draft에 예약되어 있습니다!  다른 이름을 사용하시기 바랍니다.</Text>
+			<Text Lang="pl">Nazwy techniczne '{0}' są zarezerwowane dla articity:draft! Proszę wybrać inną nazwę.</Text>
+			<Text Lang="es">¡El nombre técnico '{0}' está reservado por articy:draft! Por favor, elige otro nombre.</Text>
+			<Text Lang="it">Il nome tecnico '{0}' è riservato ad articy:draft! Per favore scegliere un altro nome.</Text>
+			<Text Lang="ru">Техническое имя '{0}' зарезервировано для articy:draft! Пожалуйста, выберите другое имя.</Text>
+			<Text Lang="de">Der technische Name '{0}' ist für articy:draft reserviert! Bitte wählen Sie einen anderen Bezeichner.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoValidScriptingName.Description">
+			<Context/>
+			<Text Lang="en">Scripting names may only contain letters (A-Z, a-z), '_' and numbers (0-9). The first character however is not allowed to be a number.</Text>
+			<Text Lang="uk">Скриптові назви можуть містити лише латинські літери (A-Z, a-z), '_' і цифри (0-9). Перший символ не може бути цифрою.</Text>
+			<Text Lang="fr">Les noms de scripts doivent contenir uniquement des lettres (A-Z, a-z), « _ » et des chiffres (0-9). Cependant, le premier caractère ne doit pas être un chiffre.</Text>
+			<Text Lang="pt-BR">Nomes de script podem apenas conter letras (A - Z, a - z), '_' e números (0 - 9).Porém, naõ é permitod o primeiro caractere ser um número.</Text>
+			<Text Lang="zh">脚本名称只能包含字母 (A-Z, a-z)、'_' 和数字 (0-9)，以非数字字符开头。</Text>
+			<Text Lang="ko">Scripting 이름에는 문자(A-Z, a-z), '_' 및 숫자(0-9) 만 입력할 수 있습니다. 첫번째 글자는 숫자가 들어가서는 안됩니다.</Text>
+			<Text Lang="pl">Nazwy skryptów mogą zawierać jedynie litery (A-Z, a-z), '_' i liczby (0-9). Pierwszy znak nie może być liczbą.</Text>
+			<Text Lang="es">Los nombres de script solo pueden contener letras (AZ, az), "_" y números (0-9). Sin embargo, el primer caracter no puede ser un número.</Text>
+			<Text Lang="it">I nomi degli script possono contenere solamente lettere (A-Z, a-z), '_' e numeri (0-9). Comunque il primo carattere non può essere un numero.</Text>
+			<Text Lang="de">Scripting-Namen dürfen nur Buchstaben (A-Z, a-z), '_', und Ziffern (0-9) enthalten. Der erste Buchstabe darf allerdings keine Ziffer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ReservedKeywordScriptingName.Description">
+			<Context/>
+			<Text Lang="en">Variable sets and variables may not be named like reserved keywords.</Text>
+			<Text Lang="uk">Набори змінних та змінні можуть не називатися зарезервованими ключовими словами.</Text>
+			<Text Lang="fr">Les ensembles de variables et les variables ne doivent pas avoir le même nom que les mots-clés réservés.</Text>
+			<Text Lang="pt-BR">Conjuntos variáveis e variáveis não podem ser nomeados como palavras-chaves reservadas.</Text>
+			<Text Lang="zh">复数变量和变量无法与预留关键字同名。</Text>
+			<Text Lang="ko">변수 집합과 변수는 예약 된 키워드와 같은 이름을 지정할 수 없습니다.</Text>
+			<Text Lang="de">Variablen Sets und Variablen dürfen nicht wie reservierte Schlüsselwörter benannt werden.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Orders">
+
+		<TextDefinition Key="EditText.Caption">
+			<Context/>
+			<Text Lang="en">Change text</Text>
+			<Text Lang="uk">Змінити текст</Text>
+			<Text Lang="fr">Modifier le texte</Text>
+			<Text Lang="pt-BR">Mudar texto</Text>
+			<Text Lang="zh">更改文本</Text>
+			<Text Lang="ko">텍스트 변경</Text>
+			<Text Lang="pl">Zmień tekst</Text>
+			<Text Lang="es">Cambiar texto</Text>
+			<Text Lang="it">Cambia testo</Text>
+			<Text Lang="ru">Изменить текст</Text>
+			<Text Lang="de">Ändere Text</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

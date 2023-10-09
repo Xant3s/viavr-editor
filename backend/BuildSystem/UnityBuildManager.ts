@@ -18,6 +18,7 @@ import Path from 'path'
 import { exec } from 'child_process'
 import assert = require('assert')
 import { BuildSettingsManager } from './BuildSettingsManager'
+import { Logger } from '../Logger'
 
 
 declare global {
@@ -38,6 +39,7 @@ Array.prototype.findOrCreate = function <T>(predicate: (element: T) => boolean, 
 export default class UnityBuildManager {
     private readonly buildSystem: BuildSystem
     private buildPath = ''
+    private startTime = 0
 
 
     constructor(buildSystem: BuildSystem) {
@@ -65,6 +67,8 @@ export default class UnityBuildManager {
             this.buildSystem.buildDialog?.webContents.send('aborted-create-unity-project')
             return
         }
+        this.startTime = Date.now()
+        Logger.get().log(`Creating Unity project at ${outputPath}`)
         await Utils.extractZipToPath(AppUtils.getResPath() + 'DefaultUnityProject.zip', outputPath)
         await this.setupScopedRegistry(outputPath)
         await this.installPackages(outputPath, selectedPackages)
@@ -73,6 +77,9 @@ export default class UnityBuildManager {
         await this.exportPackageConfigurations(outputPath)
         await this.exportBuildSettings(outputPath)
         await this.exportAvatars(outputPath)
+        Logger.get().log('Finished creating Unity project')
+        await Logger.get().logDir(outputPath)
+        await Logger.get().save(outputPath + '/build_log.txt')
         this.buildPath = outputPath
         return outputPath
     }
@@ -224,12 +231,22 @@ export default class UnityBuildManager {
     }
 
     private async buildUnityProject() {
+        Logger.get().log('Start building Unity project')
+        await new UnityBridge().openProject(this.buildPath)
+        await Logger.get().logDir(this.buildPath)
+        await Logger.get().save(this.buildPath + '/build_log.txt')
         await new UnityBridge().build(this.buildPath)
-        const executableExists = this.checkExecutableExists()
-        if(executableExists === 'failure') {
-            console.error('Executable does not exist, retrying once.')
+        await Logger.get().logDir(Path.join(this.buildPath, 'Assets/Scenes'))
+        await Logger.get().logDir(Path.join(this.buildPath, 'Build'))
+        await Logger.get().save(this.buildPath + '/build_log.txt')
+        if(this.checkExecutableExists() === 'failure') {
+            Logger.get().logVerbose('Executable does not exist, retrying build only.')
             await new UnityBridge().buildOnly(this.buildPath)
+            await Logger.get().logDir(Path.join(this.buildPath, 'Build'))
         }
+        Logger.get().log(`Build finished. Executable exists: ${this.checkExecutableExists()}`)
+        Logger.get().log(`Build took ${((Date.now() - this.startTime) / 1000 / 60).toFixed(2)} min`)
+        await Logger.get().save(this.buildPath + '/build_log.txt')
     }
 
     private checkExecutableExists() {

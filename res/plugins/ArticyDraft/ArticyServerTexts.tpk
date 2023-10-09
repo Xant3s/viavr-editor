@@ -1,0 +1,3070 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.Aws" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<!--
+	  This category contains error code descriptions for a:s communication.
+	  TextId is programmatically created using the static fields from RPC status codes
+	-->
+	<Category Name="Errors" Key="Generic Errors">
+
+		<TextDefinition Key="RpcStatusCode.NoError">
+			<Context/>
+			<Text Lang="en">No Error</Text>
+			<Text Lang="uk">Немає помилки</Text>
+			<Text Lang="fr">Aucune Erreur</Text>
+			<Text Lang="pt-BR">Sem erro</Text>
+			<Text Lang="zh">没有错误</Text>
+			<Text Lang="ko">오류 없음</Text>
+			<Text Lang="pl">Brak błędu</Text>
+			<Text Lang="es">Sin error</Text>
+			<Text Lang="it">Nessun errore</Text>
+			<Text Lang="ru">Нет ошибки</Text>
+			<Text Lang="de">Kein Fehler</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ExceptionCatched">
+			<Context/>
+			<Text Lang="en">An unexpected exception was caught processing the request.</Text>
+			<Text Lang="uk">Отримано несподівану виключну помилку.</Text>
+			<Text Lang="fr">Une exception inattendue a été détectée lors du traitement de la demande.</Text>
+			<Text Lang="pt-BR">Uma excessão inesperada foi pega durante o processamento do projeto.</Text>
+			<Text Lang="zh">处理请求时出现意外异常。</Text>
+			<Text Lang="ko">예기치 않은 예외가 발생하여 요청을 처리하지 못 했습니다.</Text>
+			<Text Lang="pl">Niespodziewany wyjatek został znaleziony podczas procesowania zapytania.</Text>
+			<Text Lang="es">Se ha producido una excepción inesperada al procesar la solicitud.</Text>
+			<Text Lang="it">Un'eccezione inattesa è stata catturata durante l'esecuzione della richiesta.</Text>
+			<Text Lang="ru">Было получено непредвиденная исключительная ситуация.</Text>
+			<Text Lang="de">Eine unerwartete Ausnahmebedingung wurde festgestellt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.MandatoryParameterMissing">
+			<Context/>
+			<Text Lang="en">A mandatory parameter was missing from request.</Text>
+			<Text Lang="uk">В запиті бракує обов'язкового параметру.</Text>
+			<Text Lang="fr">Un paramètre obligatoire manquait dans la demande.</Text>
+			<Text Lang="pt-BR">Um parâmetro mandatório está perdido do pedido.</Text>
+			<Text Lang="zh">请求中缺少强制参数。</Text>
+			<Text Lang="ko">필수 매개 변수가 요청에 누락되었습니다.</Text>
+			<Text Lang="pl">Obowiązkowy parametr nie został znaleziony w zapytaniu.</Text>
+			<Text Lang="es">La solicitud carece de un parámetro obligatorio.</Text>
+			<Text Lang="it">Manca un parametro obbligatorio nella richiesta.</Text>
+			<Text Lang="ru">В запросе не достает необходимого параметра.</Text>
+			<Text Lang="de">Bei der Serveranfrage fehlte ein benötigter Parameter.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NotANumber">
+			<Context/>
+			<Text Lang="en">A value that was expected to be a number was not.</Text>
+			<Text Lang="uk">Очікувалось числове значення, але воно таким не є.</Text>
+			<Text Lang="fr">Une valeur qui devait être un nombre ne l'était pas.</Text>
+			<Text Lang="pt-BR">Um valor que era esperado ser um número não era.</Text>
+			<Text Lang="zh">预期为数字的值类型不匹配。</Text>
+			<Text Lang="ko">예상되는 값이 숫자가 아닙니다.</Text>
+			<Text Lang="pl">Wartość która miała być numerem nim nie jest.</Text>
+			<Text Lang="es">Un valor que debe ser un número no lo es.</Text>
+			<Text Lang="it">Atteso un valore numerico non trovato.</Text>
+			<Text Lang="ru">Значение которое должно было быть числом, таковым не является.</Text>
+			<Text Lang="de">Bei der Serveranfrage war ein Parameter, der als Zahl erwartet wurde, keine Zahl.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.AccessDenied">
+			<Context/>
+			<Text Lang="en">The action you just started was denied by the server, because of insufficient rights.</Text>
+			<Text Lang="uk">Дію, яку ви нещодавно ропочали, сервер відхилив, оскільки у вас недостатньо прав.</Text>
+			<Text Lang="fr">L'action que vous venez de démarrer a été refusée par le serveur, en raison de droits insuffisants.</Text>
+			<Text Lang="pt-BR">A ação que você iniciou foi negada pelo servidor, por cause de direitos insuficientes.</Text>
+			<Text Lang="zh">由于权限不足，服务器拒绝了您发起的操作。</Text>
+			<Text Lang="ko">권한이 부족하여 서버에서 방금 시작한 작업을 거부했습니다.</Text>
+			<Text Lang="pl">Rozpoczęta akcja została odrzucona przez serwer.</Text>
+			<Text Lang="es">La acción que has iniciado ha sido denegada por el servidor.</Text>
+			<Text Lang="it">L'azione appena iniziata è stata rifiutata dal server.</Text>
+			<Text Lang="ru">Действие которое вы начали было отменено сервером.</Text>
+			<Text Lang="de">Der Server hat die Bearbeitung der Anfrage aufgrund mangelnder Rechte abgewiesen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.InvalidState">
+			<Context/>
+			<Text Lang="en">The state of the connection does not allow this action.</Text>
+			<Text Lang="uk">Стан з'єднання не дозволяє цю дію.</Text>
+			<Text Lang="fr">L'état de la connexion ne permet pas cette action.</Text>
+			<Text Lang="pt-BR">O estado da conexão não permite esta ação</Text>
+			<Text Lang="zh">连接状态不允许此操作。</Text>
+			<Text Lang="ko">연결 상태로 인해 이 작업이 허용되지 않습니다.</Text>
+			<Text Lang="pl">Stan połączenia nie pozwala na tą akcję.</Text>
+			<Text Lang="es">El estado de la conexión no permite este tipo de acción.</Text>
+			<Text Lang="it">Lo stato della connessione non permette questa azione.</Text>
+			<Text Lang="ru">Состояние соединения не позволяет совершить это действие.</Text>
+			<Text Lang="de">Der aktuelle Verbindungsstatus erlaubt diese Aktion nicht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.DataInconsistent">
+			<Context/>
+			<Text Lang="en">The given or found data is inconsistent.</Text>
+			<Text Lang="uk">Задані або отримані дані несумісні.</Text>
+			<Text Lang="fr">Les données fournies ou trouvées sont incohérentes.</Text>
+			<Text Lang="pt-BR">Os dados recebidos ou achados são inconsistentes.</Text>
+			<Text Lang="zh">给定或找到的数据不一致。</Text>
+			<Text Lang="ko">지정한 데이터 또는 발견한 데이터가 일관성이 없습니다</Text>
+			<Text Lang="pl">Podana lub znaleziona dana jest niezgodna.</Text>
+			<Text Lang="es">Los datos facilitados o encontrados son inconsistentes.</Text>
+			<Text Lang="it">Il dato fornito o trovato non è consistente.</Text>
+			<Text Lang="ru">Заданные или полученные данные противоречивы.</Text>
+			<Text Lang="de">Die angegebenen oder in der Serverdatenbank gefundenen Daten sind inkonsistent.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.DatabaseException">
+			<Context/>
+			<Text Lang="en">A database exception was caught while processing the request.</Text>
+			<Text Lang="uk">Під час обробки запиту в базі даних сталася виняткова ситуація.</Text>
+			<Text Lang="fr">Une exception de base de données a été détectée lors du traitement de la demande.</Text>
+			<Text Lang="pt-BR">Um excessão de base da dados foi pega enquanto processando o pedido.</Text>
+			<Text Lang="zh">处理请求时出现数据库异常。</Text>
+			<Text Lang="ko">요청을 처리하는 동안 데이터베이스 예외가 발생했습니다.</Text>
+			<Text Lang="pl">Wyjątek bazy danych został znaleziony podczas procesowania zapytania.</Text>
+			<Text Lang="es">Se ha producido una excepción inesperada de la base de datos al procesar la solicitud.</Text>
+			<Text Lang="it">Un eccezione del database è stata catturata durante l'esecuzione della richiesta.</Text>
+			<Text Lang="ru">Во время обработки запроса в базе данных произошла исключительная ситуация.</Text>
+			<Text Lang="de">Beim Zugriff auf die Serverdatenbank ist ein Fehler aufgetreten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NoSession">
+			<Context/>
+			<Text Lang="en">An active server session is required to fulfill the request, but was not found.</Text>
+			<Text Lang="uk">Для виконання запиту необхідний активний сеанс сервера, але такого не знайдено.</Text>
+			<Text Lang="fr">Une session de serveur active est requise pour répondre à la demande, mais est introuvable.</Text>
+			<Text Lang="pt-BR">Uma sessão de servidor ativa é necessária para completar o pedido, mas não foi encontrado.</Text>
+			<Text Lang="zh">完成请求需要一个激活的服务器会话，但程序未能找到该会话。</Text>
+			<Text Lang="ko">활성 서버 세션을 사용하여 요청을 수행해야 하지만 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Aktywna sesja serwera jest wymagana by zakończyć to żądanie, jednak nie została ona znaleziona.</Text>
+			<Text Lang="es">Se necesita una sesión del servidor activa para llevar a cabo la solicitud, pero no se ha encontrado.</Text>
+			<Text Lang="it">Una sessione attiva del server è richiesta per completare la richiesta, ma non è stata trovata.</Text>
+			<Text Lang="ru">Для выполнения запроса необходим активный сервер, но таковой не был найден.</Text>
+			<Text Lang="de">Zur Bearbeitung der Anfrage auf dem Server ist eine aktive Sitzung erforderlich. Diese wurde nicht gefunden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.Timeout">
+			<Context/>
+			<Text Lang="en">A timeout has occured while processing the request. A retry may solve this issue.</Text>
+			<Text Lang="uk">Під час обробки запиту минув час очікування. Перезапуск може вирішити цю проблему.</Text>
+			<Text Lang="fr">Le délai d'attente a expiré lors du traitement de la demande. Une nouvelle tentative peut résoudre ce problème.</Text>
+			<Text Lang="pt-BR">O tempo limite foi alcançado enquanto processando o pedido. Tentar de novo pode resolver este problema.</Text>
+			<Text Lang="zh">处理请求时发生超时。重试可以解决此问题。</Text>
+			<Text Lang="ko">요청을 처리하는 동안 시간 초과가 발생했습니다. 재시도하면 이 문제가 해결될 수 있습니다.</Text>
+			<Text Lang="pl">Nastąpił timeout podczas procesowania żądania. Ponowna próba może rozwiązać ten problem.</Text>
+			<Text Lang="es">Ha pasado demasiado tiempo al procesar la solicitud. Puedes volver a intentarlo para solventar el error.</Text>
+			<Text Lang="it">Un timeout è avvenuto durante l'esecuzione di una richiesta. Un nuovo tentativo può risolvere questo problema.</Text>
+			<Text Lang="ru">Во время обработки запроса истекло время ожидания. Перезапуск может решить эту проблему.</Text>
+			<Text Lang="de">Eine Zeitüberschreitung wurde bei der Bearbeitung der Anfrage festgestellt. Bitte versuchen Sie es erneut.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.RemoteTimeout">
+			<Context/>
+			<Text Lang="en">A timeout has occured while the server has tried to communicate with another client. The client may be in an invalid state. Check and retry.</Text>
+			<Text Lang="uk">Поки сервер був зайнятий з іншим клієнтом, минув час очікування. Клієнт можливо недоступний. Перевірте і повторіть.</Text>
+			<Text Lang="fr">Le délai d'attente a expiré alors que le serveur tentait de communiquer avec un autre client. Le client peut être dans un état non valide. Vérifiez et réessayez.</Text>
+			<Text Lang="pt-BR">O Tempo limite foi alcançado enquanto o servidor tento comunicar com outro cliente. O cliente pode estar em um estado inválido. Cheque e tente novamente.</Text>
+			<Text Lang="zh">服务器尝试与其它客户端通信时发生超时。客户端可能处于无效状态。检查并重试。</Text>
+			<Text Lang="ko">서버가 다른 클라이언트와 통신하는 동안 시간 초과가 발생했습니다. 클라이언트가 잘못된 상태에 있을 수 있습니다. 확인하고 다시 시도하십시오.</Text>
+			<Text Lang="pl">Nastąpił timeout gdy serwer próbował połączyć się z innym klientem. Klient może znajdować się  w nienajlepszym stanie. Proszę sprawdzić klienta i spróbować ponownie.</Text>
+			<Text Lang="es">El servidor ha pasado demasiado tiempo intentando comunicar con otro cliente. Puede que el estado del cliente sea no válido. Comprobar y reintentar.</Text>
+			<Text Lang="it">Un timeout è avvenuto mentre il server cercava di comunicare con un altro client. Il client può essere in uno stato non valido. Si prega di controllare e riprovare.</Text>
+			<Text Lang="ru">Пока сервер был занят с другим клиентом, истекло время ожидания. Клиент может быть недоступен. Проверьте и повторите.</Text>
+			<Text Lang="de">Eine Zeitüberschreitung wurde bei der Bearbeitung einer Anfrage an einen anderen Client festgestellt. Bitte versuchen Sie es erneut.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.RemoteException">
+			<Context/>
+			<Text Lang="en">Your request could not be fulfilled due to an unhandled exception while requesting data from another client.</Text>
+			<Text Lang="uk">Ваш запит не вдалося виконати через необроблений виняток під час запиту даних від іншого клієнта.</Text>
+			<Text Lang="fr">Votre demande n'a pas pu être satisfaite en raison d'une exception non gérée lors de la demande de données d'un autre client.</Text>
+			<Text Lang="pt-BR">Seu pedido não pôde ser completo por conta de uma excessão não tratada enquanto requisitando dados de outro cliente.</Text>
+			<Text Lang="zh">由于从另一个客户端请求数据时出现未处理的异常，无法完成您的请求。</Text>
+			<Text Lang="ko">다른 클라이언트에 데이터를 요청하는 동안 처리되지 않은 예외로 인해 요청을 이행할 수 없습니다.</Text>
+			<Text Lang="pl">Twoje żądanie nie mogło zostać wykonane ze wzgędu na nieobsługiwany wyjątek podczas żadania danych od innego klienta.</Text>
+			<Text Lang="es">Tu solicitud no ha podido ser llevada a cabo debido a una excepción no gestionada al solicitar datos a otro cliente.</Text>
+			<Text Lang="it">La sua richiesta non è stata portata a termine a causa di un'eccezione non gestita durante la richiesta di dati da un altro client.</Text>
+			<Text Lang="ru">Ваш запрос не смог быть осуществлён из-за необработанного исключительной ситуации, во время запрашивания данных от другого клиента.</Text>
+			<Text Lang="de">Ihre Anfrage konnte nicht bearbeitet werden, da ein unerwarteter Fehler bei der Anfrage eines anderen Clients aufgetreten ist.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ConnectionRefused">
+			<Context/>
+			<Text Lang="en">The articy:server has refused the connection. Please check host address settings.</Text>
+			<Text Lang="uk">Articy:server відмовив у з'єднанні. Перевірте налаштування адреси хоста.</Text>
+			<Text Lang="fr">L'articy:server a refusé la connexion. Veuillez vérifier les paramètres d'adresse de l'hôte.</Text>
+			<Text Lang="pt-BR">O articy:server recusou o conexão. Por favor cheque as configurações de endereço de anfitrião.</Text>
+			<Text Lang="zh">articy:server拒绝了连接。请检查主机地址设置。</Text>
+			<Text Lang="ko">articy:server가 연결을 거부했습니다. 호스트 주소 설정을 확인하십시오.</Text>
+			<Text Lang="de">Der articy:server hat die Verbindung zurückgewiesen. Bitte überprüfen sie ihre Host Adresse.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ClientToOld">
+			<Context>Show after connect when the client is too old. {0} minimum version the server expects.</Context>
+			<Text Lang="en">This version of articy:draft is too old to work with the connected articy:server. Please install articy:draft version {0} or higher.</Text>
+			<Text Lang="uk">Ця версія articy:draft занадто стара для роботи з підключеним сервером articy:server. Будь ласка, встановіть articy:draft версії {0} або вище.</Text>
+			<Text Lang="fr">Cette version d'articy:draft est trop ancienne pour fonctionner avec le serveur articy:server connecté. Installez au minimum la version {0} d'articy:draft.</Text>
+			<Text Lang="pt-BR">Esta versão de articy:draft é muito velha para trabalhar com o articy:server conectado. Por favor instaler a varsão {0} ou maior do articy:draft.</Text>
+			<Text Lang="zh">此版本的articy:draft过旧，无法与连接的articy:server一同使用。请安装articy:draft {0}版本或更高版本。</Text>
+			<Text Lang="ko">이 버전의 articy:draft는 연결된 articy:server와 함께 작동하기에 너무 오래 되었습니다. articy:draft버 전 {0}이상을 설치하십시오.</Text>
+			<Text Lang="pl">Ta wersja articy:draft jest zbyt stara by pracować z tą wersją articy:server. Proszę zainstalować wersję {0} lub wyższą.</Text>
+			<Text Lang="es">Esta versión de articy:draft es demasiado antigua para trabajar con el articy:server al que te has conectado. Por favor, instala la versión {0} de articy:draft o posterior.</Text>
+			<Text Lang="it">Questa versione di articy:draft è troppo vecchia per lavorare con articy:server a cui si è connessi. Per favore installa la versione {0} di articy:draft o superiore.</Text>
+			<Text Lang="ru">Эта версия articy:draft слишком стара для работы с подключенным сервером articy:server. Пожалуйста, установите articy:draft версии {0} или выше.</Text>
+			<Text Lang="de">Ihre articy:draft Version ist zu alt, um sich mit dem angegebene articy:server zu verbinden. Bitte installieren Sie articy:draft Version {0} oder höher.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NotConnected">
+			<Context/>
+			<Text Lang="en">Your request could not be fulfilled because there was no active connection.</Text>
+			<Text Lang="uk">Ваш запит не вдалось виконати через відсутність активного з'єднання.</Text>
+			<Text Lang="fr">Votre requête n'a pas abouti car il n'y avait pas de connexion active.</Text>
+			<Text Lang="pt-BR">Seu pedido não pôde ser completo porquê não houve uma conexão ativa.</Text>
+			<Text Lang="zh">由于没有激活状态连接，无法满足您的请求。</Text>
+			<Text Lang="ko">연결이 활성 상태가 아니기 때문에 귀하의 요청을 이행할 수 없습니다.</Text>
+			<Text Lang="pl">Twoje żądanie nie mogło zostać zakończonę ponieważ nie ma aktywngo połączenia.</Text>
+			<Text Lang="es">Tu solicitud no ha podido ser llevada a cabo porque no había ninguna conexión activa.</Text>
+			<Text Lang="it">La sua richiesta non è stata portata a termine poiché non erano presenti connessioni attive.</Text>
+			<Text Lang="ru">Ваш запрос не смог быть осуществлен по причине отсутствия активного соединения.</Text>
+			<Text Lang="de">Ihre Anfrage konnte nicht bearbeitet werden, da zum Zeitpunkt der Anfrage keine Serververbindung mehr bestand.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ServerDbUnavailable">
+			<Context>error is thrown when the server DB is not open in "GetServerInfo" The only case is that the startup/migration of the DB has failed</Context>
+			<Text Lang="en">Connection was denied because the server database is in an inconsistent state.</Text>
+			<Text Lang="uk">З'єднання відхилено, тому що база даних сервера знаходиться у несумісному стані.</Text>
+			<Text Lang="fr">La connexion a été refusée car la base de données du serveur est dans un état incohérent.</Text>
+			<Text Lang="pt-BR">Conexão foi negada porquê a base de dados do servidor está em um estado inconsistente.</Text>
+			<Text Lang="zh">由于服务器数据库处于不一致状态，连接被拒绝。</Text>
+			<Text Lang="ko">서버 데이터베이스가 일관되지 않은 상태이기 때문에 연결이 거부되었습니다.</Text>
+			<Text Lang="pl">Połączenie zostało odrzucone ponieważ baza danych znajduje się w nieodpowiednim stanie.</Text>
+			<Text Lang="es">La conexión se ha denegado porque la base de datos del servidor está en un estado inconsistente.</Text>
+			<Text Lang="it">La connessione è stata rifiutata poiché il database del server è in uno stato inconsistente.</Text>
+			<Text Lang="ru">Соединение было отклонено, потому что база данных сервера находится в несовместимом состоянии.</Text>
+			<Text Lang="de">Verbindung wurde verweigert, da sich die Server Datenbank in einem inkonsistenten Zustand befindet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ServerFail">
+			<Context>error is thrown when the server DB is open in "GetServerInfo", but the dbschema version conflicts with the comm version. It is not expected to see this error, since other checks should fail before.</Context>
+			<Text Lang="en">Connection was denied, because the server is in an unrecoverable condition. Please contact Articy.</Text>
+			<Text Lang="uk">З'єднання відхилено, тому що сервер знаходиться у невідновному стані. Будь ласка, зв'яжіться з Articy.</Text>
+			<Text Lang="fr">La connexion a été refusée, car le serveur est dans un état irrécupérable. Veuillez contacter Articy.</Text>
+			<Text Lang="pt-BR">Conexão foi negada, porquê o servidor está em uma condição incorrigível. Por favor contate Articy.</Text>
+			<Text Lang="zh">由于服务器处于不可恢复的状态，连接被拒绝。请与 Articy取得联系。</Text>
+			<Text Lang="ko">서버가 복구할 수 없는 상태이기 때문에 연결이 거부되었습니다. Nevigo로 연락 주세요.</Text>
+			<Text Lang="pl">Połączenie zostało odrzucone ponieważ serwer znajduję się nieodzyskiwalnym stanie. Proszę skontaktowac się z Articy.</Text>
+			<Text Lang="es">La conexión se ha denegado porque la base de datos del servidor está en condición irrecuperable. Por favor, ponte en contacto con Articy..</Text>
+			<Text Lang="it">La connessione è stata rifiutata poiché il server è un una condizione irrecuperabile. Si prega di contattare Articy.</Text>
+			<Text Lang="ru">Соединение было отклонено, потому что сервер находится в непоправимом состоянии. Пожалуйста, свяжитесь с Articy.</Text>
+			<Text Lang="de">Verbindung wurde verweigert, da sich der Server in einem unerwarteten Zustand befindet. Bitte kontaktieren Sie Articy.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.UserNotFound">
+			<Context/>
+			<Text Lang="en">The given user was not found on the server.</Text>
+			<Text Lang="uk">Даний користувач не був знайдений на сервері.</Text>
+			<Text Lang="fr">L'utilisateur n'a pas été trouvé sur le serveur.</Text>
+			<Text Lang="pt-BR">O usuário dado não foi encontrado no servidor.</Text>
+			<Text Lang="zh">在服务器上找不到给定的用户。</Text>
+			<Text Lang="ko">서버에서 지정한 사용자를 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Podany użytkownik nie został znaleziony na serwerze.</Text>
+			<Text Lang="es">El usuario especificado no se ha encontrado en el servidor.</Text>
+			<Text Lang="it">L'utente fornito non è stato trovato nel server.</Text>
+			<Text Lang="ru">Данный пользователь не был найден на сервере.</Text>
+			<Text Lang="de">Der angegebene Benutzer ist auf dem Server unbekannt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.InvalidPassword">
+			<Context/>
+			<Text Lang="en">The given credentials were not correct.</Text>
+			<Text Lang="uk">Надані облікові дані доступу невірні.</Text>
+			<Text Lang="fr">Les informations d'identification fournies n'étaient pas correctes.</Text>
+			<Text Lang="pt-BR">As credências dadas não estavam corretas.</Text>
+			<Text Lang="zh">给定的凭据不正确。</Text>
+			<Text Lang="ko">지정한 자격 증명이 올바르지 않습니다.</Text>
+			<Text Lang="pl">Podane dane uwierzytleniające nie były poprawne.</Text>
+			<Text Lang="es">Las credenciales proporcionadas no son correctas.</Text>
+			<Text Lang="it">Le credenziali fornite erano errate.</Text>
+			<Text Lang="ru">Предоставленные параметры доступа были неверными.</Text>
+			<Text Lang="de">Die angegebenen Anmelde-Informationen waren nicht korrekt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.LoginNotAllowed">
+			<Context/>
+			<Text Lang="en">Login is not allowed, because you already have an active connection from machine '{0}'.</Text>
+			<Text Lang="uk">Авторизація заборонена, тому що у вас вже є активне з'єднання з комп'ютером '{0}'.</Text>
+			<Text Lang="fr">La connexion n'est pas autorisée car vous êtes déjà connecté sur l'appareil '{0}'.</Text>
+			<Text Lang="pt-BR">Login não é permitido, porquê você já tem uma conexão ativa da máquina '{0}'.</Text>
+			<Text Lang="zh">不允许登陆，您已从计算机'{0}'建立了激活的连接。</Text>
+			<Text Lang="ko">이미 시스템 '{0}'의 활성 연결을 사용하고 있으므로 로그인할 수 없습니다.</Text>
+			<Text Lang="pl">Logowanie jest niedozwolone ponieważ masz już aktywne połączenie z maszyna '{0}'.</Text>
+			<Text Lang="es">No se permite el inicio de sesión porque ya tienes una conexión activa en el dispositivo '{0}'.</Text>
+			<Text Lang="it">Impossibile effettuare il login poiché hai già una connessione attiva dalla macchina '{0}'.</Text>
+			<Text Lang="ru">Авторизация запрещена, потому что у вас уже имеется активное подключение с компьютера '{0}'.</Text>
+			<Text Lang="de">Anmeldung nicht möglich, da Sie bereits an der Maschine '{0}' angemeldet sind.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.CantCreateUser">
+			<Context/>
+			<Text Lang="en"><![CDATA[Can't create user due to the following reason:
+{0}]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо створити користувача з наступних причин:
+{0} ]]></Text>
+			<Text Lang="fr"><![CDATA[Création de l'utilisateur impossible pour la raison suivante :
+{0}]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pode criar usuário por conta da seguinte razão:
+{0}]]></Text>
+			<Text Lang="zh"><![CDATA[由于以下原因，无法创建用户：
+{0}]]></Text>
+			<Text Lang="ko"><![CDATA[다음과 같은 이유로 사용자를 생성할 수 없음:
+{0}"]]></Text>
+			<Text Lang="pl">Nie można stworzyć użytkownika ponieważ: {0}</Text>
+			<Text Lang="es"><![CDATA[No se puede crear un usuario debido a la siguiente razón:
+{0}]]></Text>
+			<Text Lang="it"><![CDATA[Impossibile creare l'utente per il seguente motivo:
+{0}]]></Text>
+			<Text Lang="ru"><![CDATA[Не удается создать пользователя по следующей причине:
+{0}]]></Text>
+			<Text Lang="de"><![CDATA[Kann Benutzer aus dem folgenden Grund nicht anlegen:
+{0}]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.CantUpdateUser">
+			<Context/>
+			<Text Lang="en"><![CDATA[Can't update the user record due to the following reason:
+{0}]]></Text>
+			<Text Lang="uk"><![CDATA[Неможливо оновити призначену для користувача інформацію з наступних причин:
+{0} ]]></Text>
+			<Text Lang="fr"><![CDATA[Impossible de mettre à jour l'enregistrement de l'utilisateur pour la raison suivante :
+{0}]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Não pode atualizar o registro de usuário por conta da seguinte razão:
+{0}]]></Text>
+			<Text Lang="zh"><![CDATA[由于以下原因，无法更新用户记录：
+{0}]]></Text>
+			<Text Lang="ko"><![CDATA[다음과 같은 이유로 사용자 레코드를 업데이트할 수 없음:
+{0}]]></Text>
+			<Text Lang="pl">Nie można zaktualizować rejestru użytkownika ponieważ: {0}</Text>
+			<Text Lang="es"><![CDATA[No se pueden actualizar los datos de usuario debido a la siguiente razón:
+{0}]]></Text>
+			<Text Lang="it"><![CDATA[Impossibile aggiornare i registri utente per il seguente motivo:
+{0}]]></Text>
+			<Text Lang="ru"><![CDATA[Не удается обновить пользовательскую информацию по следующей причине:
+{0}]]></Text>
+			<Text Lang="de"><![CDATA[Kann Benutzerdaten aus dem angegebenen Grund nicht ändern:
+{0}]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ProjectNotFound">
+			<Context/>
+			<Text Lang="en">The given project was not found on the server.</Text>
+			<Text Lang="uk">Даний проект не знайдений на сервері.</Text>
+			<Text Lang="fr">Le projet donné est introuvable sur le serveur.</Text>
+			<Text Lang="pt-BR">O projeto dado não foi encontrado no servidor.</Text>
+			<Text Lang="zh">在服务器上找不到给定的项目。</Text>
+			<Text Lang="ko">서버에서 지정한 프로젝트를 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Podany projekt nie został odnaleziony na serwerze.</Text>
+			<Text Lang="es">El proyecto especificado no se ha encontrado en el servidor.</Text>
+			<Text Lang="it">Il progetto richiesto non è stato trovato sul server.</Text>
+			<Text Lang="ru">Данный проект не найден на сервере.</Text>
+			<Text Lang="de">Das angegebene Projekt ist dem Server unbekannt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.CantOpenExclusive">
+			<Context/>
+			<Text Lang="en">The given project can't be opened exclusively, because there are still claimed partitions or currently working users.</Text>
+			<Text Lang="uk">Даний проект неможливо відкрити у винятковому режимі, тому що в ньому ще є присвоєні розділи або працюють користувачі.</Text>
+			<Text Lang="fr">Le projet donné ne peut pas être ouvert exclusivement, car il reste des partitions revendiquées ou des utilisateurs actuellement actifs.</Text>
+			<Text Lang="pt-BR">O projeto aberto não pode ser aberto exclusivamente, porquê ainda há partições reivindicadas ou usuários atualmente trabalhando.</Text>
+			<Text Lang="zh">无法以独占模式打开给定的项目，因为仍有认领的分区或当前正在工作的用户。</Text>
+			<Text Lang="ko">할당된 파티션이나 현재 작업 사용자가 있기 때문에 지정된 프로젝트만 열 수 없습니다.</Text>
+			<Text Lang="pl">Podany projekt nie może zostać otwarty w trybie zastrzeżonym ponieważ nadal używane są partycje zażądane przez innych użytkowników.</Text>
+			<Text Lang="es">El proyecto especificado no puede abrirse en exclusiva, porque hay particiones reclamadas por usuarios en activo.</Text>
+			<Text Lang="it">Il progetto richiesto non può essere aperto in modalità esclusiva poiché ci sono ancora partizioni reclamate o utenti che stanno lavorando.</Text>
+			<Text Lang="ru">Данный проект не может быть открыт в исключительном режиме, потому что в нем еще имеются присвоенные разделы или работающие пользователи.</Text>
+			<Text Lang="de">Das angegebene Projekt kann nicht exklusiv geöffnet werden, weil es noch beanspruchte Partitionen gibt oder Benutzer im Moment darin arbeiten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ProjectAlreadyOpen">
+			<Context/>
+			<Text Lang="en">The given project is already open.</Text>
+			<Text Lang="uk">Даний проект вже відкритий.</Text>
+			<Text Lang="fr">Le projet donné est déjà ouvert.</Text>
+			<Text Lang="pt-BR">O projeto dado já está aberto.</Text>
+			<Text Lang="zh">给定的项目已打开。</Text>
+			<Text Lang="ko">지정한 프로젝트가 이미 열려 있습니다.</Text>
+			<Text Lang="pl">Dany projekt jest już otwarty.</Text>
+			<Text Lang="es">El proyecto especificado ya está abierto.</Text>
+			<Text Lang="it">Il progetto richiesto è già aperto.</Text>
+			<Text Lang="ru">Данный проект уже открыт.</Text>
+			<Text Lang="de">Das angegebene Projekt ist bereits geöffnet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.LocksPresent">
+			<Context/>
+			<Text Lang="en">The given project has currently claimed partitions, so the requested operation can't be performed.</Text>
+			<Text Lang="uk">Даний проект має присвоєні розділи, з цієї причини запитувану операцію неможливо виконати.</Text>
+			<Text Lang="fr">Le projet donné a actuellement des partitions revendiquées, donc l'opération demandée ne peut pas être effectuée.</Text>
+			<Text Lang="pt-BR">O projeto dado tem partições atualmente reivindicadas, então a operação não pode ser perfomada.</Text>
+			<Text Lang="zh">给定的项目当前已认领分区，故无法执行请求的操作。</Text>
+			<Text Lang="ko">지정한 프로젝트에서 현재 파티션을 할당했으므로 요청한 작업을 수행할 수 없습니다.</Text>
+			<Text Lang="pl">Dany projekt posiada zażądane partycje, dlatego zażądana operacja nie może zostać wykonana.</Text>
+			<Text Lang="es">El proyecto especificado tiene particiones reclamadas por otros, con lo cual la operación solicitada no puede realizarse.</Text>
+			<Text Lang="it">Il progetto richiesto ha al momento delle partizioni reclamate, quindi l'operazione non può essere eseguita.</Text>
+			<Text Lang="ru">Данный проект имеет присвоенные разделы, по этой причине запрашиваемая операция не может быть выполнена.</Text>
+			<Text Lang="de">Es existieren beanspruchte Partitionen auf dem angegebenen Projekt, daher kann die angeforderte Operation nicht ausgeführt werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ProjectAlreadyOpenedExclusive">
+			<Context/>
+			<Text Lang="en">The given project is already opened exclusively.</Text>
+			<Text Lang="uk">Даний проект вже відкритий у винятковому режимі.</Text>
+			<Text Lang="fr">Le projet donné est déjà ouvert exclusivement.</Text>
+			<Text Lang="pt-BR">O projeto dado já está aberto exclusivamente.</Text>
+			<Text Lang="zh">给定的项目已以独占模式打开。</Text>
+			<Text Lang="ko">이미 진행 중인 프로젝트가 있습니다.</Text>
+			<Text Lang="pl">Dany projekt jest już otwarty w trybie zastrzeżonym.</Text>
+			<Text Lang="es">El proyecto especificado ya está abierto en exclusiva.</Text>
+			<Text Lang="it">Il progetto richiesto è già aperto in modalità esclusiva</Text>
+			<Text Lang="ru">Данный проект уже открыт в исключительном режиме.</Text>
+			<Text Lang="de">Das angegebene Projekt ist bereits exklusiv geöffnet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ProjectDeactivated">
+			<Context/>
+			<Text Lang="en">The given project was recently deactivated by your server administrator.</Text>
+			<Text Lang="uk">Даний проект відключений вашим адміністратором сервера.</Text>
+			<Text Lang="fr">Le projet donné a récemment été désactivé par l'administrateur de votre serveur.</Text>
+			<Text Lang="pt-BR">O projeto dado foi recentemente desativado pelo seu administrador de servidor.</Text>
+			<Text Lang="zh">您的服务器管理员最近停用了给定的醒目。</Text>
+			<Text Lang="ko">서버 관리자가 지정한 프로젝트를 최근에 비활성화했습니다.</Text>
+			<Text Lang="pl">Dany projekt został niedawno zdezaktywowany przez administratora.</Text>
+			<Text Lang="es">El proyecto especificado ha sido desactivado recientemente por el administrador de tu servidor.</Text>
+			<Text Lang="it">Il progetto richiesto è stato recentemente disattivato dal tuo amministratore di server.</Text>
+			<Text Lang="ru">Данный проект был отключен вашим администратором сервера.</Text>
+			<Text Lang="de">Das angegebene Projekt wurde durch Ihren Server-Administrator deaktiviert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.ProjectUnavailable">
+			<Context/>
+			<Text Lang="en">The given project is currently unavailable.</Text>
+			<Text Lang="uk">Даний проект зараз не доступний.</Text>
+			<Text Lang="fr">Le projet est actuellement indisponible.</Text>
+			<Text Lang="pt-BR">O projeto dado está atualmente disponível.</Text>
+			<Text Lang="zh">给定的项目当前不可用。</Text>
+			<Text Lang="ko"><![CDATA[지정한 프로젝트를 현재 사용할 수 없습니다.
+]]></Text>
+			<Text Lang="pl">Dany projekt jest teraz niedostępny.</Text>
+			<Text Lang="es">El proyecto especificado no está disponible en este momento.</Text>
+			<Text Lang="it">Il progetto richiesto non è al momento disponibile.</Text>
+			<Text Lang="ru">Данный проект сейчас не доступен.</Text>
+			<Text Lang="de">Das angegebene Projekt ist derzeit nicht verfügbar.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.UsersWorking">
+			<Context/>
+			<Text Lang="en">Enforced unclaiming of partitions is not possible because there are users that have the project open. Check the 'force terminate' checkbox to retry and disconnect those users.</Text>
+			<Text Lang="uk">Примусове скасування присвоєння розділів зараз не можливе, оскільки цей проект відкритий у кількох користувачів. Відзначте прапорець 'примусово завершити' щоб перезапустити і примусово відключити цих користувачів.</Text>
+			<Text Lang="fr">L'abandon forcé des revendications des partitions n'est pas possible car il y a des utilisateurs qui ont le projet ouvert. Cochez la case 'forcer l'arrêt' pour réessayer et déconnecter ces utilisateurs.</Text>
+			<Text Lang="pt-BR">Forçada remoção de reivindicação de partições não é possível porquê há usuários que tem o projeto aberto. Cheque a caixa "Terminar forçado" para tentar e desconectar esses usuários.</Text>
+			<Text Lang="zh">无法强制取消分区的认领，因为部分用户打开了项目。选中“强制终止”复选框以断开这些用户的链接，并重试。</Text>
+			<Text Lang="ko">이 프로젝트를 열어 놓은 사용자가 있기 때문에 파티션을 강제로 할당 해제할 수 없습니다. 재시도하고 이러한 사용자의 연결을 끊으려면'강제 종료'확인 란을 선택하십시오.</Text>
+			<Text Lang="pl">Wycofanie partycji nie jest możliwe ponieważ użytkownicy nadal mają otwarty projekt. Zaznacz opcję 'natychmiastowego zakończenia' i powtórz wycofywanie partycji.</Text>
+			<Text Lang="es">No es posible forzar el desbloqueo de particiones porque el proyecto está abierto por otros usuarios. Marca la casilla de verificación 'Forzar desbloqueo' para desconectar por la fuerza a esos usuarios.</Text>
+			<Text Lang="it">Impossibile eseguire la rimozione forzata dei diritti su tutte le partizioni poiché sono presenti utenti con il progetto aperto. Attiva la spunta su 'terminazione forzata' per riprovare disconnettendo forzatamente tutti gli utenti.</Text>
+			<Text Lang="ru">Принудительное отчуждение разделов сейчас не возможно, потому что этот проект  открыт у нескольких пользователей. Отметьте флажок 'принудительно завершить'  чтобы перезапустить и принудительно отключить этих пользователей.</Text>
+			<Text Lang="de">Die Freigabe von Partitionen kann nicht erzwungen werden, da es Benutzer gibt, die das Projekt derzeit geöffnet haben. Versuchen Sie es erneut und haken Sie die Option 'Benutzer abmelden erzwingen' an, um diese Benutzer  abzumelden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NeedExclusiveModeToCleanup">
+			<Context/>
+			<Text Lang="en">The project needs a status cleanup. Please open the project exclusively and close it afterwards.</Text>
+			<Text Lang="uk">Проект потребує очищення статусу. Будь ласка, відкрийте проект виключно і після цього закрийте його.</Text>
+			<Text Lang="fr">Le projet a besoin d'un nettoyage de statut. Veuillez ouvrir le projet exclusivement et le fermer ensuite.</Text>
+			<Text Lang="pt-BR">O projeto precisa de uma limpeza de status. Por favor abra o projeto exclusivamente e feche logo depois.</Text>
+			<Text Lang="zh">项目需要进行状态清理。请以独占模式打开项目，然后关闭它。</Text>
+			<Text Lang="ko">이 프로젝트는 상태를 정리할 필요가 있습니다. 그 프로젝트를 독점적으로 열고 나서 끝내세요.</Text>
+			<Text Lang="pl">Projekt wymaga oczyszczenia statusu. Proszę otworzyć projekt w trybie zastrzeżonym a potem go zamknąć.</Text>
+			<Text Lang="es">El proyecto necesita una limpieza de estado. Abre el proyecto en exclusiva y ciérralo.</Text>
+			<Text Lang="it">Il progetto ha bisogno di una pulizia dello stato. Si prega di aprire il progetto in modalità esclusiva e di chiuderlo.</Text>
+			<Text Lang="de">Das Projekt benötigt ein Status-Update. Öffnen Sie es bitte im Exclusive-Mode und schließen sie es danach wieder.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.RepartitioningActive">
+			<Context>Error text when trying to open a project or claiming a partition when another user currently finishes his project repartitioning.</Context>
+			<Text Lang="en">The requested operation can't be executed because a repartitioning operation is currently publishing its data. Please wait some time and try again.</Text>
+			<Text Lang="uk">Запитувану операцію неможливо виконати, оскільки операція перерозподілу наразі публікує свої дані. Зачекайте трішки та спробуйте ще раз.</Text>
+			<Text Lang="fr">L'opération demandée ne peut pas être exécutée car une opération de repartitionnement publie actuellement ses données. Veuillez patienter un peu et réessayer.</Text>
+			<Text Lang="pt-BR">A operação requisitada não pode ser executada porquê uma operação de reparticionamento está atualmente publicando seus dados. Por favor espere um pouco e tente novamente.</Text>
+			<Text Lang="zh">无法执行请求的操作，因为重新分区操作当前正在上传其数据。请稍等片刻，再试一次。</Text>
+			<Text Lang="ko">현재 파티션 재분할 작업이 데이터를 게시하고 있기 때문에 요청한 작업을 실행할 수 없습니다. 잠시 기다렸다가 다시 시도하십시오.</Text>
+			<Text Lang="pl">Żądana operacja nie może zostać wykonana ponieważ operacja repartycjonowania właśnie publikuje dane. Proszę poczekać i spróbować ponownie.</Text>
+			<Text Lang="es">La operación solicitada no puede ejecutarse porque se están publicando los datos de una repartición. Espera un poco y vuelve a intentarlo.</Text>
+			<Text Lang="it">L'operazione richiesta non può essere eseguita poiché un ripartizionamento è in corso. Si prega di attende e riprovare in seguito.</Text>
+			<Text Lang="de">Die gewünschte Operation ist gerade nicht möglich, da eine Repartitionierungsoperation gerade Ihre Daten veröffentlicht. Bitte warten Sie ein wenig und versuchen Sie es erneut.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NoLockPresent">
+			<Context/>
+			<Text Lang="en">The requested partition claim could not be removed, because the server does not know that a claim exists on the given partition. Try to re-open the project to resync or manually check the locks in your source control system.</Text>
+			<Text Lang="uk">Запитуване присвоєння розділу не вдалось скасувати, оскільки сервер не знає, що цей розділ присвоєно. Спробуйте заново відкрити проект, щоб його синхронізувати, або зніміть блокування в системі керування вихідними даними вручну.</Text>
+			<Text Lang="fr">La revendication de partition demandée n'a pas pu être supprimée, car le serveur ne sait pas qu'une revendication existe sur la partition donnée. Essayez de rouvrir le projet pour resynchroniser ou vérifiez manuellement les verrous dans votre gestionnaire de code source.</Text>
+			<Text Lang="pt-BR">A reivindicação da partição requisitada não pôde ser removida, porquê o servidor não sabe que uma reivindicação existe na partição dada. Tente abrir novamente o projeto para resincronizar ou manualmente checar as trancas no seu sistema de fonte de controle.</Text>
+			<Text Lang="zh">无法删除请求的分区认领，因为服务器未识别到给定分区存在认领。尝试重新打开项目以重新同步，或手动检查源代码管理系统中的锁定。</Text>
+			<Text Lang="ko">서버가 지정된 파티션에 할당이 있는지 모르기 때문에 요청된 파티션 할당을 제거할 수 없습니다. 프로젝트를 다시 동기화하려면 다시 열고, 소스 제어 시스템의 잠금을 수동으로 확인하십시오.</Text>
+			<Text Lang="pl">Żądane żądanie partycji nie mogło zostać usunięte ponieważ serwer nie wie że żądanie istnieje na danej partycji. Proszę spróbować ponownie otworzyć projekt albo sprawdzić blokady systemu kontroli źródła.</Text>
+			<Text Lang="es">No se puede desbloquear la partición solicitada porque el servidor ignora que tal partición esté reclamada. Intenta abrir de nuevo el proyecto para sincronizar o comprueba manualmente los bloqueos en el control de versiones.</Text>
+			<Text Lang="it">Il reclamo sulla partizione richiesta non può essere rimosso poiché il server non sa che esiste un reclamo su quella partizione. Si prega di provare a riaprire il progetto per risincronizzarlo o di controllare manualmente i blocchi nel sistema di controllo dei sorgenti.</Text>
+			<Text Lang="ru">Запрашиваемое присвоение не могло быть убрано, потому что сервер не знает, что этот раздел присвоен. Попробуйте заново открыть проект, чтобы его синхронизировать, или снимите блокировки в системе управления исходными данными вручную.</Text>
+			<Text Lang="de">Die Beanspruchung kann auf der angefragten Partition nicht entzogen werden, da Sie laut Server von niemandem beansprucht wurde. Bitte schließen und öffnen Sie das Projekt erneut, um die Sperrungs-Stati zu synchronisieren. Überprüfen Sie bitte die Sperrvermerke in dem von Ihnen verwendeten Source-Control-System.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NeedsFullUpdate">
+			<Context/>
+			<Text Lang="en">A repartitioning was made on the project and a single partition could currently not be claimed. Please use the 'Update Project' function to update to a consistent version.</Text>
+			<Text Lang="uk">У проекті зроблено перерозподіл, і наразі не можливо присвоїти жодного розділу. Будь ласка, використайте функцію "Оновити проект" для оновлення до останьої версії.</Text>
+			<Text Lang="fr">Un repartitionnement a été effectué sur le projet et une seule partition ne peut actuellement pas être revendiquée. Veuillez utiliser la fonction 'Mettre à jour le projet' pour effectuer une mise à jour vers une version cohérente.</Text>
+			<Text Lang="pt-BR">Um reparticionamente foi feito no projeto e um única partição pôde atualmente ser não reivindicada. Por favor use a função 'Atualizar Projeto' para atualizar para uma versão consistente.</Text>
+			<Text Lang="zh">对项目进行了重新分区，当前无法认领单个分区。请使用“更新项目”功能更新到一致的版本。</Text>
+			<Text Lang="ko">이 프로젝트에 대한 파티션을 다시 분할했으며 현재 단일 파티션을 할당할 수 없습니다. '프로젝트 업데이트'기능을 사용하여 일관된 버전으로 업데이트하십시오.</Text>
+			<Text Lang="pl">Wykonano repartycjonowanie projetku, lecz jedna partycja nie mogła zostać zażądana. Proszę użyć funkcji "Zaktualizuj projekt" aby zaktualizować  do poprawnej wersji.</Text>
+			<Text Lang="es">Se ha reparticionado el proyecto y no se ha podido reclamar una sola partición. Utiliza la función 'Actualizar proyecto' para actualizar a una versión consistente.</Text>
+			<Text Lang="it">Una ripartizione è stata eseguita sul progetto e una singola partizione non può essere reclamata al momento. Si prega di utilizzate la funzione 'Update Progetto' per passare a una versione consistente.</Text>
+			<Text Lang="de">Das Projekt wurde repartitioniert deshalb kann keine einzelne Partition beansprucht werden. Bitte verwenden sie 'Projekt aktualisieren', um auf den aktuellen konsistenten Stand zu aktualisieren.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NoLicense">
+			<Context/>
+			<Text Lang="en"><![CDATA[You have tried to connect to an articy:server that has no valid license.
+Please log in as server administrator and use the license information overview to register your server license.]]></Text>
+			<Text Lang="uk"><![CDATA[Ви намагалися під'єднатися до articy: server у якого немає діючої ліцензії.
+Будь ласка, зайдіть під обліковим записом адміністратора сервера і зареєструйте ліцензію вашого сервера. ]]></Text>
+			<Text Lang="fr"><![CDATA[Vous avez essayé de vous connecter à un articy:server qui n'a pas de licence valide.
+Veuillez vous connecter en tant qu'administrateur de serveur et utiliser l'aperçu des informations de licence pour enregistrer votre licence de serveur.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Você tentou conectar com um articy:server que não tem uma licença válida.
+Por favor logue como administrador de servidor e use a informação geral da licença para registrar sua licença de servidor.]]></Text>
+			<Text Lang="zh"><![CDATA[您试图连接至没有有效许可证的articy:server。
+请以服务器管理员身份登录，并使用“许可证信息概述”注册您的服务器许可证。]]></Text>
+			<Text Lang="ko"><![CDATA[유효한 라이선스가 없는 articy:server에 연결을 시도 했습니다.
+서버 관리자로 로그인하고 라이선스 정보 개요를 사용하여 서버 라이선스를 등록 하십시오. ]]></Text>
+			<Text Lang="pl">Próbowałeś się połączyć do articy:server który nie posiada ważnej licencji. Proszę zalogować się jako administrator serwera i użyć podglądu licencji aby zarejestrować licencję serwera.</Text>
+			<Text Lang="es"><![CDATA[Has intentado conectarte a un articy:server que no tiene licencia válida.
+Inicia sesión como administrador del servidor y usa la información de licencia para registrar tu licencia de servidor.]]></Text>
+			<Text Lang="it"><![CDATA[Hai provato a connetterti a un articy:server che non ha una licenza valida.
+Si prega di eseguire l'accesso come amministratore server e utilizzare la zona di informazioni sulle licenze per registrare la licenza del server.]]></Text>
+			<Text Lang="ru"><![CDATA[Вы пытались подсоединиться к articy:server у которого нет действующей лицензии.
+Пожалуйста, зайдите в качестве администратора сервера и зарегистрируйте лицензию вашего сервера.]]></Text>
+			<Text Lang="de"><![CDATA[Sie haben versucht sich zu einem Server zu verbinden, der keine gültige Lizenz hat.
+Bitte melden Sie sich als Server-Administrator an und verwenden die Lizenzübersicht, um Ihre Server-Lizenz zu registrieren.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.LicenseExpired">
+			<Context/>
+			<Text Lang="en">The license of the articy:server you have connected to has expired. Please contact sales@articy.com to extend the license period.</Text>
+			<Text Lang="uk">Ліцензія articy:server, до якого ви підключені, минула. Будь ласка, зв'яжіться з sales@articy.com для продовження періоду ліцензії.</Text>
+			<Text Lang="fr">La licence du articy:server auquel vous vous êtes connecté a expiré. Contactez sales@articy.com pour prolonger la durée de la licence.</Text>
+			<Text Lang="pt-BR"><![CDATA[A licença de articy:server que você conectou expirou. 
+Por favor contate sales@articy.com para extender o período de licença.]]></Text>
+			<Text Lang="zh">您连接到 articy:server 的许可证已过期。请联系 sales@articy.com 延长许可期限。</Text>
+			<Text Lang="ko">연결한 articy:server의 라이선스가 만료 되었습니다.  라이선스 기간을 연장하려면 sales@articy.com에 문의하십시오.</Text>
+			<Text Lang="pl">Licencja articy:server do którego się łączyłeś wygasła. Proszę skontaktować się z sales@articy.com aby ją przedłużyć.</Text>
+			<Text Lang="es">La licencia del articy:server al que te has conectado ha expirado. Por favor, ponte en contacto con sales@articy.com para prolongar tu licencia.</Text>
+			<Text Lang="it">La licenza del articy:server a cui ti sei connesso è scaduta. Si prega di contattare sales@articy.com per estendere la durata della licenza.</Text>
+			<Text Lang="ru">Лицензия articy:server, к которому вы подключены, истекла. Пожалуйста, свяжитесь с sales@articy.com для продления периода лицензии.</Text>
+			<Text Lang="de">Die Lizenz des articy:servers, an welchem Sie sich angemeldet haben, ist abgelaufen. Bitte nehmen Sie Kontakt mit sales@articy.com auf, um den Lizenzzeitraum zu verlängern.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.LicenseAlreadyActivated">
+			<Context/>
+			<Text Lang="de">Die Lizenz wurde bereits aktiviert.</Text>
+			<Text Lang="uk">Ліцензія вже активована.</Text>
+			<Text Lang="fr">La licence a déjà été activée.</Text>
+			<Text Lang="pt-BR">Licença já foi ativada.</Text>
+			<Text Lang="zh">许可证已激活。</Text>
+			<Text Lang="ko">라이선스가 이미 활성화되었습니다.</Text>
+			<Text Lang="pl">Licencja została już zaktywowana.</Text>
+			<Text Lang="es">La licencia ya ha sido activada.</Text>
+			<Text Lang="it">La licenza è già stata attivata.</Text>
+			<Text Lang="ru">Лицензия уже была активирована.</Text>
+			<Text Lang="en">License was already activated.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.LicenseKeyMismatch">
+			<Context/>
+			<Text Lang="de">Die Lizenzschlüssel stimmen nicht überein.</Text>
+			<Text Lang="uk">Ліцензійні ключі не збігаються!</Text>
+			<Text Lang="fr">Les clés de licence ne correspondent pas.</Text>
+			<Text Lang="pt-BR">As chaves de licença são imcompátiveis.</Text>
+			<Text Lang="zh">许可证密钥不匹配。</Text>
+			<Text Lang="ko">라이선스 키가 일치하지 않습니다.</Text>
+			<Text Lang="pl">Klucze licencyjne nie pasują.</Text>
+			<Text Lang="es">¡Las claves de licencia no coinciden!</Text>
+			<Text Lang="it">Le chiavi di licenza non coincidono!</Text>
+			<Text Lang="ru">Лицензионные ключи не совпадают!</Text>
+			<Text Lang="en">The license keys mismatch.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NoApiLicense">
+			<Context/>
+			<Text Lang="en">You have tried to connect from an articy:API program to an articy:server which is not licensed for API usage.</Text>
+			<Text Lang="uk">Ви спробували підключитися з програми articy:API до сервера articy:server, який не має ліцензії для використання API.</Text>
+			<Text Lang="fr">Vous avez essayé de vous connecter d'un programme articy:API à un articy:server qui n'est pas autorisé à utiliser l'API.</Text>
+			<Text Lang="pt-BR">Você tentou conectar com um programa articy:API para um articy:server que não é licenciado para uso API.</Text>
+			<Text Lang="zh">您已尝试从一个 articy:API 程序连接到未获得API使用许可的 articy:server 。</Text>
+			<Text Lang="ko">articy:API 프로그램에서 API사용 할 수 있는 라이선스가 없는 articy:server에 연결하려고 했습니다.</Text>
+			<Text Lang="pl">Próbowałeś połączyć się z articy:API do articy:server który nie jest lecencjonowany do używania z API.</Text>
+			<Text Lang="es">Has intentado conectarte desde un programa de articy:API a un articy:server que no cuenta con licencia de uso de API.</Text>
+			<Text Lang="it">Hai provato a connetterti da un programma articy:API ad un articy:server che non ha la licenza per l'utilizzo di API.</Text>
+			<Text Lang="ru">Вы попытались подключиться с программы articy:API  к серверу articy:server, который не имеют лицензию для использования API.</Text>
+			<Text Lang="de">Sie haben versucht sich mit der articy:API zu einem Server zu verbinden, der nicht für die API Nutzung lizensiert ist.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NoCAL">
+			<Context/>
+			<Text Lang="de">Dem Benutzer wurde keine Lizenz zugewiesen.</Text>
+			<Text Lang="uk">За цим користувачем не закріплено жодної ліцензії.</Text>
+			<Text Lang="fr">Aucune licence n'est attribuée à cet utilisateur.</Text>
+			<Text Lang="pt-BR">Não teve nenhuma licença atribuida ao usuário.</Text>
+			<Text Lang="zh">没有为该用户分配许可证。</Text>
+			<Text Lang="ko">해당 사용자에게 할당된 라이선스가 없습니다.</Text>
+			<Text Lang="pl">Do tego użytkownika nie została przypisana żadna licencja.</Text>
+			<Text Lang="es">No hay ninguna licencia asignada a ese usuario.</Text>
+			<Text Lang="it">Non era assegnata una licenza a quell'utente.</Text>
+			<Text Lang="ru">За этим пользователем не закреплено ни одной лицензии.</Text>
+			<Text Lang="en">There was no license assigned to that user.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.DowngradeRequired">
+			<Context/>
+			<Text Lang="de">Die Rechte des Benutzers müssen angepasst werden.</Text>
+			<Text Lang="uk">Права користувача необхідно налаштувати!</Text>
+			<Text Lang="fr">Les droits de l'utilisateur doivent être réajustés.</Text>
+			<Text Lang="pt-BR">Direitos de usuário tem que ser ajustados.</Text>
+			<Text Lang="zh">必须调整用户权限。</Text>
+			<Text Lang="ko">사용자 권한을 조정해야 합니다.</Text>
+			<Text Lang="pl">Prawa użytkownika muszą zostać zmienione.</Text>
+			<Text Lang="es">Es necesario reajustar los permisos de usuario.</Text>
+			<Text Lang="it">I diritti dell'utente devono essere modificati!</Text>
+			<Text Lang="ru">Права пользователя необходимо настроить!</Text>
+			<Text Lang="en">User rights have to be adjusted.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.InsufficientCAL">
+			<Context/>
+			<Text Lang="de">Die Lizenz des Benutzers ist für diese Rechte-Ebene nicht ausreichend.</Text>
+			<Text Lang="uk">Ліцензії цього користувача не достатньо для обраного рівня доступу.</Text>
+			<Text Lang="fr">La licence de l'utilisateur est insuffisante pour le niveau de droits sélectionné.</Text>
+			<Text Lang="pt-BR">A licença de usuário é insuficiente para o nível direito selecionado.</Text>
+			<Text Lang="zh">用户的许可证不足以满足所选的权限级别。</Text>
+			<Text Lang="ko">선택한 수준에 대한 사용자 라이선스가 부족합니다.</Text>
+			<Text Lang="pl">Licencja użytkonika jest niewystarczająca dla tego poziomu.</Text>
+			<Text Lang="es">La licencia del usuario no es suficiente para el nivel de permisos seleccionado.</Text>
+			<Text Lang="it">Impossibile utilizzare la licenza dell'utente per il livello di diritti selezionato.</Text>
+			<Text Lang="ru">Лицензии этого пользователя не достаточно для выбранного уровня доступа.</Text>
+			<Text Lang="en">The license of the user is insufficient for the selected right level.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.NoCALAvailable">
+			<Context/>
+			<Text Lang="de">Es ist keine Benutzer-Lizenz verfügbar.</Text>
+			<Text Lang="uk">Немає ліцензії для доступу до клієнта.</Text>
+			<Text Lang="fr">Aucune licence d'accès client disponible.</Text>
+			<Text Lang="pt-BR">Nenhuma licença de acesso de cliente disponível.</Text>
+			<Text Lang="zh">没有可用的客户端访问许可证。</Text>
+			<Text Lang="ko">사용 가능한 클라이언트 액세스 라이선스가 없습니다.</Text>
+			<Text Lang="pl">Brak licencji dostępu dla użytkownika!</Text>
+			<Text Lang="es">No hay ninguna licencia de acceso al cliente disponible.</Text>
+			<Text Lang="it">Non ci sono licenze libere per accedere con il client.</Text>
+			<Text Lang="ru">Нет лицензии для доступа к клиенту.</Text>
+			<Text Lang="en">No client access license available.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.Underlicensed">
+			<Context/>
+			<Text Lang="de"><![CDATA[Sie können nicht angemeldet werden, da festgestellt wurde, dass die Anzahl von benötigten/konfigurierten Lizenzen größer ist als die Anzahl gekaufter Lizenzen.
+Bitten Sie Ihren Server-Administrator, neue Lizenzen zu erwerben oder bereits benutzte Lizenzen frei zu geben.]]></Text>
+			<Text Lang="uk">Ваша авторизація не вдалася, оскільки виявлено ​​помилка ліцензування. (Налагоджено більше ліцензій ніж придбано.) Будь ласка, зв'яжіться з вашим адміністратором сервера і попросіть його купити ліцензії або звільнити використовувані.</Text>
+			<Text Lang="fr"><![CDATA[Impossible de vous connecter, car il y a un problème de licence. (Il y a plus de licences configurées qu'acquises.)
+Veuillez contacter votre administrateur de serveur et lui demander d'acheter de nouvelles licences ou d'en libérer des d'occasion.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Incapaz de logar, porquê há um problema de licenciamento. (Há mais licenças configuradas do que adquiridas.)
+Por favor contate seu administrador de servidor e peça para ele comprar novas licenças ou libertar as já usadas.]]></Text>
+			<Text Lang="zh"><![CDATA[无法登录，因为存在许可证问题。（配置的许可证多于获取的许可证。）
+请与服务器管理员联系，要求其购买新许可证或免费使用许可证。]]></Text>
+			<Text Lang="ko"><![CDATA[라이선스에 문제가 있기 때문에 로그인할 수 없습니다. (취득한 라이선스보다 설정한 라이선스가 더 많습니다.)
+서버 관리자에게 문의하여 새 라이선스를 구매하거나 사용한 라이선스를 무료로 제공하도록 요청하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Nie można zalogować się do serwera ze względu na błąd licencyjny. (W użyciu jest więcej licencji niż zostało zakupione).
+Prosze skontaktować się z administratorem serwera i zapytać go o kupno dodatkowych licencji lub zwolnienie już istniejących.]]></Text>
+			<Text Lang="es"><![CDATA[No has podido iniciar sesión debido a un problema de licencias. (Hay más licencias configuradas que adquiridas).
+Contacta con el administrador de tu servidor y pídele que adquiera nuevas licencias o que libere las ya usadas.]]></Text>
+			<Text Lang="it"><![CDATA[Impossibile collegarti a causa di un problema con le licenze. (Ci sono più licenze configurate di quelle comprate.)
+Si prega di contattare il proprio amministratore di sistema e richiedere l'acquisto di una nuova licenza o di liberare quelle utilizzate.]]></Text>
+			<Text Lang="ru">Ваша авторизация не удалась, потому что обнаружена ошибка лицензирования. (Настроено больше лицензий чем приобретено.) Пожалуйста, свяжитесь с вашим администратором сервера и попросите его купить лицензии или освободить используемые.</Text>
+			<Text Lang="en"><![CDATA[Unable to log you in, because there is a licensing issue. (There are more licenses configured than aquired.)
+Please contact your server administrator and ask him to buy new licenses or to free used ones.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RpcStatusCode.CantEnterPartitioningMode">
+			<Context>This error is returned when a user tries to enter the repartitioning mode, but another user already uses it. {0}=username, {1}=machine-name</Context>
+			<Text Lang="en">Can't enter the repartitioning dialog because user '{0}' is already using it on machine '{1}'.</Text>
+			<Text Lang="uk">Неможливо ввести діалогове вікно перерозподілу, оскільки користувач '{0}' вже використовує його на пристрої '{1}'.</Text>
+			<Text Lang="fr">Impossible d'accéder à la boîte de dialogue de repartitionnement car l'utilisateur '{0}' l'utilise déjà sur la machine '{1}'.</Text>
+			<Text Lang="pt-BR">Não pode entrar diálogo de reparticionamente porquê usuário '{0}' já está usando a máquina '{1}'.</Text>
+			<Text Lang="zh">无法进入重新分区对话框，因为用户'{0}'已在计算机'{1}'上使用它。</Text>
+			<Text Lang="ko">사용자 '{0}'이(가) 이미 시스템 '{1}'에서 사용하고 있으므로 재분할 다이얼로그를 열 수 없습니다.</Text>
+			<Text Lang="pl">Nie można było wpisać dialogu repartycjonującego ponieważ użytkownik '{0}' używa go już na maszynie '{1}'.</Text>
+			<Text Lang="es">El diálogo de reparticionamiento no se puede abrir porque está abierto por el usuario '{0}' del dispositivo '{1}'.</Text>
+			<Text Lang="it">Impossibile entrare nel sistema di ripartizionamento poiché l'utente '{0}' lo sta già utilizzando sulla macchina '{1}'.</Text>
+			<Text Lang="de">Der Repartitionierungs-Dialog kann nicht geöffnet werden, da bereits Benutzer '{0}' auf Computer '{1}' diesen verwendet.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Errors" Key="Additional error texts">
+
+		<TextDefinition Key="Error.AlreadyUsed">
+			<Context/>
+			<Text Lang="en">The selected user name is already in use. Please choose another user name.</Text>
+			<Text Lang="uk">Обране ім'я користувача вже використовується. Будь ласка, виберіть інше ім'я.</Text>
+			<Text Lang="fr">Le nom d'utilisateur choisi est déjà pris. Choisissez un autre nom d'utilisateur.</Text>
+			<Text Lang="pt-BR">O nome de usuário selecionado já está em uso. Por favor escolha outro nome.</Text>
+			<Text Lang="zh">所选用户名已在使用中。请选择其他用户名。</Text>
+			<Text Lang="ko">선택한 사용자 이름이 이미 사용 중입니다. 다른 사용자 이름을 선택하십시오.</Text>
+			<Text Lang="pl">Wybrana nazwa użytkownika jest już używana. Proszę wybrać inną.</Text>
+			<Text Lang="es">El nombre de usuario seleccionado ya está siendo usado. Por favor, elige otro nombre de usuario.</Text>
+			<Text Lang="it">Il nome utente selezionato è già in uso. Si prega di scegliere un altro nome utente.</Text>
+			<Text Lang="ru">Выбранное имя пользователя уже используется. Пожалуйста, выберите другое имя.</Text>
+			<Text Lang="de">Der gewählte Anmeldename existiert bereits. Bitte wählen Sie einen anderen Benutzernamen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.NeedMultiUserLicense">
+			<Context/>
+			<Text Lang="en">You will need additional licenses to add more users to the system. Please contact Articy sales (support@articy.com).</Text>
+			<Text Lang="uk">Вам необхідні додаткові ліцензії для додавання користувачів в систему. Будь ласка, зв'яжіться з торговим відділом Articy (support@articy.com).</Text>
+			<Text Lang="fr">Vous aurez besoin de plus de licences pour ajouter plus d'utilisateurs au système. Contactez les vendeurs d'Articy (support@articy.com).</Text>
+			<Text Lang="pt-BR">Você vai precisar de licenças adicionais para adicionar mais usuários para o sistema. Por favor contate vendas Articy (support@articy.com).</Text>
+			<Text Lang="zh">你需要额外的许可证才能向系统添加更多的用户。请与 Articy sales 取得联系(sales@articy.com)。</Text>
+			<Text Lang="ko">시스템에 사용자를 추가하려면 추가 라이선스가 필요합니다. Articy sales 팀에 문의하십시오. (support@articy.com).</Text>
+			<Text Lang="pl">Będziesz potrzebował więcej licencji aby dodać więcej użytkoników do systemu. Proszę skontaktować się z Articy (support@articy.com)</Text>
+			<Text Lang="es">Para añadir más usuarios al sistema necesitarás licencias adicionales. Por favor, contacta con el departamento de ventas de Articy (support@articy.com).</Text>
+			<Text Lang="it">Hai bisogno di più licenze per aggiungere altri utenti al sistema. Si prega di contattare il reparto vendite di Articy (support@articy.com).</Text>
+			<Text Lang="ru">Вам необходимы дополнительные лицензии для добавления пользователей в систему. Пожалуйста, свяжитесь с торговым отделом Articy (support@articy.com).</Text>
+			<Text Lang="de">Sie benötigen weitere Lizenzen, um diesen Benutzer dem System hinzufügen zu können. Bitte setzen Sie sich mit Articy (support@articy.com) in Verbindung.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.Unspecified">
+			<Context/>
+			<Text Lang="en">An unknown reason-code was reported ({0}). Please contact Articy (support@articy.com).</Text>
+			<Text Lang="uk">Повідомлялося про невідомий reason-code ({0}). Будь ласка, зв'яжіться з Articy (support@articy.com).</Text>
+			<Text Lang="fr">Un code anomalie inconnu a été signalé ({0}). Veuillez contacter Articy (support@articy.com).</Text>
+			<Text Lang="pt-BR">Um código-razão desconhecido foi reportado ({0}). Por favor contate Articy (support@articy.com).</Text>
+			<Text Lang="zh">报告了未知原因代码 ({0})。请与 Articy 取得联系(support@articy.com)。</Text>
+			<Text Lang="ko">알 수 없는 이유-코드 ({0})가 보고되었습니다. Articy(support@articy.com).으로 문의하십시오.</Text>
+			<Text Lang="pl">Nieznany błąd został zaraportowany ({0}). Proszę skontaktować się z Articy (support@articy.com)</Text>
+			<Text Lang="es">Se ha informado de un código de razón ({0}). Por favor, contacta con Articy (support@articy.com).</Text>
+			<Text Lang="it">Un reason-code sconosciuto ({0}) è stato riportato. Si prega di contattare Articy (support@articy.com)</Text>
+			<Text Lang="ru">Был сообщен неизвестный reason-code  ({0}). Пожалуйста, свяжитесь с Articy (support@articy.com).</Text>
+			<Text Lang="de">Ein unbekannter Fehlergrund ({0}) wurde vom Server gemeldet. Bitte setzen Sie sich mit Articy in Verbindung (support@articy.com).</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.LocksOrUsers">
+			<Context>Error text when opening exclusive fails due to present locks or users</Context>
+			<Text Lang="en">Can't open project exclusively. {0} users were found working and {1} active claims were detected.</Text>
+			<Text Lang="uk">Неможливо відкрити проект у винятковому режимі. Знайдено {0} користувачів, що працюють в ньому і {1} активних присвоєнь.</Text>
+			<Text Lang="fr">Impossible d'ouvrir le projet exclusivement. {0} utilisateurs ont été trouvés en train de travailler et {1} revendications actives ont été détectées.</Text>
+			<Text Lang="pt-BR">Não pode abrir exclusivamente. {0} usuários foram encontrados trabalhando e {1} reivindicações ativas foram detectadas.</Text>
+			<Text Lang="zh">无法以独占模式打开项目。发现{0}个用户正在工作，检测到{1}个激活的认领。</Text>
+			<Text Lang="ko">단독 모드로 프로젝트를 열 수 없습니다. {0}명의 사용자가 작동하고 있으며 {1}개의 활성된 할당이 감지되었습니다.</Text>
+			<Text Lang="pl">Nie można otworzyć projektu w trybie zastrzeżonym. {0} użytkowników pracuje nad projektem i {1} żądań zostało wykrytych.</Text>
+			<Text Lang="es">No se puede abrir el proyecto en exclusiva. Se ha(n) encontrado {0} usuario(s) trabajando y se ha(n) detectado {1} partición(es) reclamadas activas.</Text>
+			<Text Lang="it">Impossibile aprire il progetto in modalità esclusiva. {0} utenti stanno lavorando e {1} reclami attivi sono stati identificati.</Text>
+			<Text Lang="ru">Не удается открыть проект в исключительном режиме. Найдено {0} работающих в нем пользователей и {1} активных присвоений.</Text>
+			<Text Lang="de">Projekt kann nicht exklusiv geöffnet werden, da {0} Benutzer darauf arbeiten und {1} Partitionen beansprucht haben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.NoProjectUpdateLocksOrUsers">
+			<Context>Error text when updating of project data fails due to present locks or users</Context>
+			<Text Lang="en">Can't change project settings. {0} users were found working and {1} active claims were detected.</Text>
+			<Text Lang="uk">Не вдається змінити налаштування проекту. Знайдено {0} користувачів, що працюють в ньому і {1} активних присвоєнь.</Text>
+			<Text Lang="fr">Impossible de modifier les paramètres du projet. {0} utilisateurs ont été trouvés en train de travailler et {1} revendications actives ont été détectées.</Text>
+			<Text Lang="pt-BR">Não pode mudar mudar configurações de projeto. {0} usuários foram encontrados trabalhando e {1} reivindicações ativas foram detectadas.</Text>
+			<Text Lang="zh">无法更改项目设置。发现{0}个用户正在工作，检测到{1}个激活的认领。</Text>
+			<Text Lang="ko">프로젝트 설정을 변경할 수 없습니다. {0}명의 사용자가 작동하고 있으며 {1}개의 활성 할당이 감지되었습니다.</Text>
+			<Text Lang="pl">Nie można zmienić ustawień projektu. {0} użytkoników pracuje nad projektem i {1} żądań zostało wykrytych.</Text>
+			<Text Lang="es">No se puede cambiar la configuración del proyecto. Se ha(n) encontrado {0} usuario(s) trabajando y se ha(n) detectado {1} partición(es) reclamadas activas.</Text>
+			<Text Lang="it">Impossibile cambiare le impostazioni del progetto. {0} utenti stanno lavorando e {1} reclami attivi sono stati identificati.</Text>
+			<Text Lang="ru">Не удается изменить настройки проекта. Найдено {0} работающих в нем пользователей и {1} активных присвоений.</Text>
+			<Text Lang="de">Die Projekteigenschaften können nicht geändert werden, da {0} Benutzer darauf arbeiten und {1} Partitionen beansprucht haben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.AlreadyOpenExclusive">
+			<Context>Error text when opening exclusive fails because another user has already started exclusive mode</Context>
+			<Text Lang="en">Can't open project exclusively. User '{0}' already has entered exclusive mode on machine '{1}'.</Text>
+			<Text Lang="uk">Неможливо відкрити проект у винятковому режимі. Користувач '{0}' вже використовує винятковий режим на комп'ютері '{1} '.</Text>
+			<Text Lang="fr">Impossible d'ouvrir le projet exclusivement. L'utilisateur '{0}' est déjà entré en mode exclusif sur la machine '{1}'.</Text>
+			<Text Lang="pt-BR">Não pode abrir o projeto exclusivamente. Usuário '{0}' já entrou no modo exclusivo na máquina '{1}'.</Text>
+			<Text Lang="zh">无法以独占模式打开项目。用户'{0}'已经在机器'{1}'上进入独占模式。</Text>
+			<Text Lang="ko">단독 모드로 프로젝트를 열 수 없습니다. 사용자 '{0}'이(가) 이미 컴퓨터 '{1}'에서 단독 모드로 전환하였습니다.</Text>
+			<Text Lang="pl">Nie można otworzyć projektu w trybie zastrzeżonym. Użytkownik '{0}' już pracuje w trybie zastrzeżonym na maszynie '{1}'.</Text>
+			<Text Lang="es">No se puede abrir el proyecto en exclusiva. El usuario '{0}' ha entrado en modo exclusivo en el dispositivo '{1}'.</Text>
+			<Text Lang="it">Impossibile aprire il progetto in modalità esclusiva. L'utente '{0}' è già entrato in modalità esclusiva sulla macchina '{1}'.</Text>
+			<Text Lang="ru">Не удается открыть проект в исключительном режиме. Пользователь '{0}' уже использует  исключительный режим на компьютере '{1}' .</Text>
+			<Text Lang="de">Projekt kann nicht exklusiv geöffnet werden, da es bereits von Benutzer '{0}' auf dem Rechner '{1}' exklusiv geöffnet wurde.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.ExclusiveModeActive">
+			<Context>Error text when opening fails because another user has already started exclusive mode</Context>
+			<Text Lang="en">Can't open the project because user '{0}' has entered exclusive mode on machine '{1}'.</Text>
+			<Text Lang="uk">Неможливо зайти в проект. Користувач '{0}' використовує винятковий режим на комп'ютері '{1} '.</Text>
+			<Text Lang="fr">Impossible d'ouvrir le projet car l'utilisateur '{0}' est entré en mode exclusif sur la machine '{1}'.</Text>
+			<Text Lang="pt-BR">Não pode entrar no projeto porquê usuário '{0}' já entrou no modo exclusivo na máquina '{1}'.</Text>
+			<Text Lang="zh">无法打开项目，用户 '{0}' 已在计算机 '{1}'上进入独占模式。</Text>
+			<Text Lang="ko">사용자 '{0}'이(가) 컴퓨터 '{1}'에서 단독 모드로 전환하여 프로젝트를 열 수 없습니다.</Text>
+			<Text Lang="pl">Nie można otworzyć projektu ponieważ użytkownik '{0}' jest w trybie zastrzeżonym na maszynie '{1}'.</Text>
+			<Text Lang="es">No se puede abrir el proyecto porque el usuario '{0}' ha entrado en el modo exclusivo en el dispositivo '{1}'.</Text>
+			<Text Lang="it">Impossibile aprire il progetto poiché l'utente '{0}' è entrato in modalità esclusiva sulla macchina '{1}'.</Text>
+			<Text Lang="ru">Не удается зайти в проект. Пользователь '{0}'  использует исключительный режим на компьютере'{1}' .</Text>
+			<Text Lang="de">Projekt kann nicht geöffnet werden, da es von Benutzer '{0}' auf dem Rechner '{1}' exklusiv geöffnet wurde.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.TerminatePending">
+			<Context/>
+			<Text Lang="en">The given project is currently unavailable, because a project administrator currently executes a "Enforced unclaim of all partitions" command.</Text>
+			<Text Lang="uk">Даний проект зараз недоступний, тому що адміністратор проекту виконує команду "Провести примусове відмову присвоєння всіх розділів".</Text>
+			<Text Lang="fr">Le projet donné est actuellement indisponible, car un administrateur de projet exécute actuellement une commande "Abandon forcé des revendications  de toutes les partitions".</Text>
+			<Text Lang="pt-BR">O projeto dado está atualmente indisponível, porquê um administrador de projeto atualmente executa um comando "Remoção forçada de reivindicação de todas as partições".</Text>
+			<Text Lang="zh">给定的项目当前不可用，因为项目管理员当前正在执行“强制取消所有分区认领”命令。</Text>
+			<Text Lang="ko">프로젝트 관리자가 현재 "모든 파티션 강제 할당 해제" 명령을 실행하고 있기 때문에 현재 이 프로젝트를 사용할 수 없습니다.</Text>
+			<Text Lang="pl">Dany projekt nie niedostępny, ponieważ administrator wydał komendę "Wycofaj wszystkie partycje".</Text>
+			<Text Lang="es">El proyecto especificado no está disponible temporalmente, ya que u administrador del proyecto está ejecutando el comando "Forzar desbloqueo todas las particiones".</Text>
+			<Text Lang="it">Il progetto richiesto è al momento non disponibile, poiché un amministratore del progetto sta eseguendo un comando di "Rimozione forzata dei diritti su tutte le partizioni".</Text>
+			<Text Lang="ru">Данный проект сейчас недоступен, потому что администратор проекта выполняет команду "Произвести принудительное отчуждение всех разделов".</Text>
+			<Text Lang="de">Das angegebene Projekt ist derzeit nicht verfügbar, da ein Projekt-Administrator gerade das Kommando "Freigabe aller Partitionen erzwingen" ausführt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Error.FloatingLicensesExhausted">
+			<Context/>
+			<Text Lang="en">You can't be logged in because all floating licenses are currently in use. If you require more licenses please contact Articy sales (sales@articy.com).</Text>
+			<Text Lang="uk">Ви не можете ввійти в систему, оскільки зараз використовуються всі плаваючі ліцензії. Якщо вам потрібно більше ліцензій, будь ласка, зв'яжіться з компанією Articy sales (sales@articy.com).</Text>
+			<Text Lang="fr">Vous ne pouvez pas être connecté car toutes les licences flottantes sont actuellement utilisées. Si vous avez besoin de plus de licences, veuillez contacter les vendeurs d'Articy (sales@articy.com).</Text>
+			<Text Lang="pt-BR">Você não pode estar logado porquê todas as licenças flutuantes estão atualmente em uso. Se você precisa de mais licenças por favor contate vendas Articy (sales@articy.com).</Text>
+			<Text Lang="zh">无法登录，当前所有浮动许可证名额都在使用中。如果您需要更多的许可证名额，请与 Articy sales 取得联系(sales@articy.com)。</Text>
+			<Text Lang="ko">현재 모든 floating 라이선스가 사용되고 있으므로 로그인할 수 없습니다. 추가 라이선스가 필요한 경우 Articy sales로 문의하십시오. (sales@articy.com).</Text>
+			<Text Lang="de">Sie können nicht angemeldet werden, da derzeit alle "floating" Lizenzen in Verwendung sind. Um weitere Lizenzen zu erwerben, setzen Sie sich bitte mit Articy (sales@articy.com) in Verbindung.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Errors" Key="MessageBoxTexts">
+
+		<TextDefinition Key="ServerToOld.Description">
+			<Context>Shown after connect when the server is too old {0} = expected server as seen from client, {1} current version of server</Context>
+			<Text Lang="en"><![CDATA[The software version of the connected articy:server is too old ({1}) to work with this version of articy:draft. 
+Please ask your server administrator to update the articy:server software to at least version {0}.]]></Text>
+			<Text Lang="uk"><![CDATA[Версія програмного забезпечення підключеного сервера articy:server занадто стара ({1}) для роботи з цією версією articy:draft.
+Будь ласка, попросіть адміністратора оновити програму сервера до останньої версії. ]]></Text>
+			<Text Lang="fr"><![CDATA[La version logicielle de l'articy:server connecté est trop ancienne ({1}) pour fonctionner avec cette version d'articy:draft.
+Veuillez demander à votre administrateur de serveur de mettre à jour le logiciel articy:server vers au moins la version {0}.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A versão do programa do articy:server conectado é muito velho ({1}) para trabalhar com esta versão de articy:draft.
+Por favor peça a seu administrador de servidor para atualizar o programa do articy:server para, pelo menos, a versão {0}.]]></Text>
+			<Text Lang="zh"><![CDATA[连接的articy:server软件版本过旧 ({1})，无法与此版本的articy:draft一起使用。 
+请联系您的服务器管理员将articy:server软件更新至{0}以上版本。]]></Text>
+			<Text Lang="ko"><![CDATA[연결된 articy:server의 소프트웨어 버전이 너무 오래 되어 이 버전의 articy:draft와 함께 작동하지 않습니다. 
+서버 관리자에게 articy:server소프트웨어를 {0} 버전 이상으로 업데이트하도록 요청하십시오.]]></Text>
+			<Text Lang="pl">Wersja programu articy:server jest zbyt stara ({1}) by pracowac z tą wersją articy:draft. Proszę spytać się administratora serwera o aktualizację articy:server do wersje {0}.</Text>
+			<Text Lang="es"><![CDATA[La versión del software del articy:server al que te has conectado es demasiado antigua para trabajar con esta versión de articy:draft. 
+Por favor, pide al administrador del servidor que actualice el software de articy:server a la versión {0} o posterior.]]></Text>
+			<Text Lang="it"><![CDATA[La versione del software articy:server a cui si è connessi è troppo vecchia ({1}) per lavorare con questa versione di articy:draft.
+Per favore chiedi al tuo amministratore server di eseguire l'update del software articy:server all'ultima versione {0}.]]></Text>
+			<Text Lang="ru"><![CDATA[Версия программного обеспечения подключенного сервера articy:server слишком стара ({1}) для работы с этой версией articy:draft.
+Пожалуйста, попросите администратора обновить п/о сервера до последней версии.]]></Text>
+			<Text Lang="de"><![CDATA[Die Softwareversion des kontaktierten articy:server ist zu alt ({1}), um mit dieser Version von articy:draft zusammenarbeiten zu können.
+Bitten Sie Ihren Server-Administrator, articy:server auf eine aktuelle Version (mindestens {0}) zu aktualisieren.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ClientToOld.Description">
+			<Context>Show after connect when the client is too old. {0} minimum version the server expects.</Context>
+			<Text Lang="en">This version of articy:draft is too old to work with the connected articy:server. Please install articy:draft version {0} or higher.</Text>
+			<Text Lang="uk">Ця версія articy:draft занадто стара для роботи з підключеним сервером articy:server. Будь ласка, встановіть articy draft версії {0} або вище.</Text>
+			<Text Lang="fr">Cette version d'articy:draft est trop ancienne pour fonctionner avec l'articy:server connecté. Veuillez installer l'articy:version {0} ou supérieure.</Text>
+			<Text Lang="pt-BR">Esta versão de articy:draft é muito velha para trabalhar com o articy:server conectado. Por favor instaler a varsão {0} ou maior do articy:draft.</Text>
+			<Text Lang="zh">此版本的articy:draft过旧，无法与连接的articy:server一起使用。请安装articy:draft {0}版本或更高版本。</Text>
+			<Text Lang="ko">이 버전의 articy:draft는 연결된 articy:server와 함께 작동하기에 너무 오래 되었습니다. articy:draft 버전 {0} 이상을 설치하십시오.</Text>
+			<Text Lang="pl">Ta wersja articy:draft jest zbyt stara by pracować z tą wersją articy:server. Proszę zainstalować wersję {0} lub wyższą.</Text>
+			<Text Lang="es">Esta versión de articy:draft es demasiado antigua para trabajar con el articy:server al que te has conectado. Por favor, instala la versión {0} de articy:draft o posterior.</Text>
+			<Text Lang="it">Questa versione di articy:draft è troppo vecchia per lavorare con articy:server a cui si è connessi. Per favore installa la versione {0} di articy:draft o superiore.</Text>
+			<Text Lang="ru">Эта версия articy:draft слишком стара для работы с подключенным сервером articy:server. Пожалуйста, установите articy:draft версии {0} или выше.</Text>
+			<Text Lang="de">Ihre articy:draft Version ist zu alt, um sich mit dem angegebene articy:server zu verbinden. Bitte installieren Sie articy:draft Version {0} oder höher.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoServerInfoAvailable.Description">
+			<Context/>
+			<Text Lang="en">The connected articy:server does not provide describing information and thus is considered incompatible with this version of articy:draft. Please install the most recent version of articy:draft.</Text>
+			<Text Lang="uk">Приєднаний articy:server не надає інформацію про себе і тому визнається несумісним з цією версією articy:draft. Будь ласка, встановіть останню версію articy:draft.</Text>
+			<Text Lang="fr">L'articy:server connecté ne fournit pas d'informations descriptives et est donc considéré comme incompatible avec cette version d'articy:draft. Veuillez installer la version la plus récente d'articy:draft.</Text>
+			<Text Lang="pt-BR">O articy:server conectado não provém informação descritiva a logo é considerado incompatível com esta versão de articy:draft. Por favor instale a versão mais recente de articy:draft.</Text>
+			<Text Lang="zh">所连接的articy:server未提供描述信息，因此被认定与此版本的articy:draft不兼容。请安装最新版的articy:draft。</Text>
+			<Text Lang="ko">연결된 articy:server는 설명 정보를 제공하지 않으므로 이 버전의 articy:draft와 호환되지 않는 것으로 간주됩니다. 최신 버전의 articy:draft를 설치하십시오.</Text>
+			<Text Lang="pl">Połączony serwer articy:server nie podaje opisowych informacji, tym samym jest on niekompatybilny z tą wersją articy:draft. Proszę zainstalować najnowszą wersję articy:draft.</Text>
+			<Text Lang="es">El articy:server conectado no proporciona información descriptiva y se le considera incompatible con esta versión de articy:draft. Por favor, instala la versión más reciente de articy:draft.</Text>
+			<Text Lang="it">Il articy:server a cui si è connessi non fornisce informazioni di descrizione e quindi è considerato incompatibile con questa versione di articy:draft. Per favore installa la versione più recente di articy:draft.</Text>
+			<Text Lang="ru">Подсоединенный articy:server не предоставляет информацию о себе и поэтому признается несовместимым с этой версией articy:draft. Пожалуйста, установите последнюю версию articy:draft.</Text>
+			<Text Lang="de">Der angegebene articy:server stellt keine Versionsinformation zur Verfügung und wird daher als inkompatibel mit dieser Version von articy:draft angesehen. Bitte installieren Sie die aktuellste Version von articy:draft.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ServerInfoTimeout.Description">
+			<Context/>
+			<Text Lang="en"><![CDATA[The specified articy:server was connected successfully, but did not respond with a capability information in time.
+The reason for this may be a simple timeout due to extensive traffic, or that the server version is too old to understand the request.
+Retry, and if this error persists please contact your server administrator.]]></Text>
+			<Text Lang="uk"><![CDATA[Визначений articy:server успішно підключений, але вчасно не дав відгуку з інформацією про його можливості.
+Можлива причина цього звичайне перевищення часу очікування через великий трафік, або те що версія сервера дуже стара і не розуміє запит.
+Спробуйте ще раз, і якщо проблема не усувається, зверніться до адміністратора сервера. ]]></Text>
+			<Text Lang="fr"><![CDATA[L'articy:server spécifié a été connecté avec succès, mais n'a pas répondu avec une information de capacité à temps.
+La raison peut être un simple délai d'attente dû à un trafic important ou la version du serveur trop ancienne pour comprendre la demande.
+Réessayez et si cette erreur persiste, contactez votre administrateur de serveur.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O articy:server especificado foi conectado com sucesso, mas não respondeu como uma informação de capacidade em tempo.
+A razão para isto pode ser um simples tempo esgotado por tráfico extenso, or que a versão do servidr é muito velha para entender o pedido. 
+Tente novamente, e se este erro persistir por favor contate seus administradores de servirdor.]]></Text>
+			<Text Lang="zh"><![CDATA[给定的articy:server连接成功，但没有及时响应功能信息。
+原因可能是由于大量通信导致的超时，或服务器版本过旧，无法理解请求。
+请重试，如果错误仍然存在，请与服务器管理员取得联系。]]></Text>
+			<Text Lang="ko"><![CDATA[지정한 articy:server가 성공적으로 연결되었지만 제 시간에 기능 정보로 응답하지 않았습니다.
+그 이유는 광범위한 트래픽으로 인한 단순한 시간 초과 또는 서버 버전이 너무 오래 되어 요청을 이해하지 못하기 때문일 수 있습니다.
+다시 시도하고 이 오류가 지속되면 서버 관리자에게 문의하십시오.]]></Text>
+			<Text Lang="pl"><![CDATA[Wybrany articy:server został pomyślnie połączony jednak nie odpowiedział z informacjami dot. możliwości na czas.
+Powodem tego problemu może być zbyt obciążona sieć lub wersja serwera jest zbyt stara i tym samym nie jest w stanie zrozumieć żądania. Proszę spróbować ponownie, a jeśli błąd nadal występuje proszę skontaktować się z administratorem serwera.]]></Text>
+			<Text Lang="es"><![CDATA[El articy:server especificado se ha conectado satisfactoriamente pero no ha respondido con información de capacidad a tiempo.
+La razón puede ser simplemente un exceso de tiempo debido a la cantidad de tráfico o que la versión del servidor es demasiado antigua como para comprender la solicitud.
+Inténtalo de nuevo y, si el problema persiste, contacta con el administrador del servidor.]]></Text>
+			<Text Lang="it"><![CDATA[La connessione con articy:server specificato è avvenuta con successo, ma non ha risposto con le informazioni sulle funzionalità in tempo.
+Ciò può essere causato da un semplice timeout dovuto a un grande traffico sulla rete o da una versione del server troppo vecchia per comprendere la richiesta.
+Si prega di riprovare e se l'errore persiste, per favore contatta il tuo amministratore di server.]]></Text>
+			<Text Lang="ru"><![CDATA[Заявленный articy:server был успешно подключен, но вовремя не дал отклика с информацией о его возможностях.
+Причиной этого может являться обычное превышение времени ожидания из-за обширного трафика, или то что версия сервера слишком стара и не понимает запрос.
+Попробуйте еще раз, и если ошибка сохранится обратитесь к администратору сервера.]]></Text>
+			<Text Lang="de"><![CDATA[Der angegebene articy:server wurde erfolgreich kontaktiert, hat aber auf die Anfrage nach seinen Fähigkeiten keine rechtzeitige Antwort geliefert.
+Dies kann zwei Gründe haben: Entweder ereignete sich ein Timeout Fehler aufgrund von zu hohem Transportaufkommen, oder die Server Version ist zu alt, um auf die Anfrage zu antworten.
+Bitte versuchen Sie es erneut. Sollte dieser Fehler erneut auftreten, wenden Sie sich bitte an Ihren Server-Administrator.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UnableToConnect.Description">
+			<Context>Text of the error box for a failed connection</Context>
+			<Text Lang="en">Unable to connect to the given articy:server. Please check server name and port number.</Text>
+			<Text Lang="uk">Неможливо під'єднатися до даного сервера artycy:server. Будь ласка, перевірте ім'я сервера і порт.</Text>
+			<Text Lang="fr">Impossible de se connecter au articy:server donné. Veuillez vérifier le nom du serveur et le numéro de port.</Text>
+			<Text Lang="pt-BR">Incapaz de logar no articy:server dado. Por favor cheque o nome e número de porte do servidor.</Text>
+			<Text Lang="zh">无法连接到给定的articy:server。请检查服务器名称和端口号。</Text>
+			<Text Lang="ko">주어진 articy:server에 연결할 수 없습니다. 서버 이름과 포트 번호를 확인하십시오.</Text>
+			<Text Lang="pl">Nie można było połączyć się z articy:server. Proszę sprawdzić nazwę serwera i port.</Text>
+			<Text Lang="es">No se ha podido conectar al articy:server especificado. Por favor, comprueba el nombre de servidor y número de puerto.</Text>
+			<Text Lang="it">Impossibile connettersi al articy:server specificato. Per favore controlla il nome del server e il numero di porta.</Text>
+			<Text Lang="ru">Не удалось подсоединиться к данному серверу artycy:server. Пожалуйста, проверьте имя сервера и порт.</Text>
+			<Text Lang="de">Der angegebene articy:server hat sich nicht gemeldet. Bitte überprüfen Sie Adresse und Portnummer.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoMessage.Text">
+			<Context>Text that is shown when a server error should be logged, but the message is null</Context>
+			<Text Lang="en">An articy:server communication error occured. Unfortunately no extended error information was provided.</Text>
+			<Text Lang="uk">Сталася помилка зв'язку з articy:server. На жаль ніякої додаткової інформації про помилку не надано.</Text>
+			<Text Lang="fr">Une erreur de communication articy:server s'est produite. Malheureusement, aucune information d'erreur étendue n'a été fournie.</Text>
+			<Text Lang="pt-BR">Uma comunicação de articy:server ocorreu. Infelizmente nenhuma informação de erro extendida foi provida.</Text>
+			<Text Lang="zh">发生了articy:server通信错误。没有提供更多的错误信息。</Text>
+			<Text Lang="ko">articy:server 통신 오류가 발생 했습니다. 불행히도 확장 오류 정보는 제공 되지 않았습니다.</Text>
+			<Text Lang="pl">Wystapił błąd komunikacji articy:server. Niestety, żadne dodatkowe informacje o błędzie nie zostały dostarczone.</Text>
+			<Text Lang="es">Ha ocurrido un error de comunicación de articy:server. Por desgracia no se ha suministrado más información sobre el error.</Text>
+			<Text Lang="it">È avvenuto un errore di comunicazione con articy:server. Sfortunatamente nessuna informazione aggiuntiva sull'errore è stata fornita.</Text>
+			<Text Lang="ru">Произошла ошибка связи с articy:server. К сожалению никакой дополнительной информации о ошибке предоставлено не было.</Text>
+			<Text Lang="de">Bei der Kommunikation mit articy:server ist ein Fehler aufgetreten. Leider stehen keine weiteren Informationen zur Verfügung.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.InformationPage" Key="AdminMode.Information">
+
+		<TextDefinition Key="Title.DisplayName">
+			<Context/>
+			<Text Lang="en">Server information</Text>
+			<Text Lang="uk">Інформація про сервер.</Text>
+			<Text Lang="fr">Informations Serveur</Text>
+			<Text Lang="pt-BR">Informação de servidor</Text>
+			<Text Lang="zh">服务器信息</Text>
+			<Text Lang="ko">서버 정보</Text>
+			<Text Lang="pl">Informacje o serwerze</Text>
+			<Text Lang="es">Información del servidor</Text>
+			<Text Lang="it">Informazioni server</Text>
+			<Text Lang="ru">Информация о сервере.</Text>
+			<Text Lang="de">Server-Informationen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EnterServerKey.Description">
+			<Context>header text for enter license key dialog</Context>
+			<Text Lang="de"><![CDATA[Bitte geben Sie den Lizenzschlüssel für Ihren articy:server ein.
+Dieser Code muss mit dem Buchstaben 'B' beginnen.]]></Text>
+			<Text Lang="uk"><![CDATA[Будь ласка, введіть ключ ліцензії articy: server.
+Код повинен починатися з літери 'B'.]]></Text>
+			<Text Lang="fr"><![CDATA[Entrez votre clé de licence articy:server.
+Le code clé doit commencer par la lettre 'B'.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Por favor entre sua chave de licença de articy:server.
+O código de chave deve começar com a letra 'B'.]]></Text>
+			<Text Lang="zh"><![CDATA[请输入您的articy:server许可证密钥。
+密钥代码必须以字母“B”开头。]]></Text>
+			<Text Lang="ko"><![CDATA[articy:server 라이선스 키를 입력하십시오.
+이 키 코드는 'B'로 시작해야합니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Proszę wpisać swój klucz licencyjny articy:server.
+Klucz musi się zaczynać literą 'B'.]]></Text>
+			<Text Lang="es"><![CDATA[Introduce tu código de licencia de articy:server.
+El código debe empezar por la letra 'B'.]]></Text>
+			<Text Lang="it"><![CDATA[Per favore inserisci la tua chiave di licenza per articy:server.
+Il codice della chiave deve iniziare con la lettera 'B'.]]></Text>
+			<Text Lang="ru"><![CDATA[Пожалуйста, введите ключ лицензии articy:server.
+Код должен начинаться с буквы 'B'.]]></Text>
+			<Text Lang="en"><![CDATA[Please enter your articy:server license key.
+The key code must start with the letter 'B'.]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.ProjectsPage" Key="AdminMode.Projects">
+
+		<TextDefinition Key="Title.DisplayName">
+			<Context>DisplayName for the projects page in AWS:AM</Context>
+			<Text Lang="de">Projekte</Text>
+			<Text Lang="uk">Проекти</Text>
+			<Text Lang="fr">Projets</Text>
+			<Text Lang="pt-BR">Projetos</Text>
+			<Text Lang="zh">项目</Text>
+			<Text Lang="ko">프로젝트</Text>
+			<Text Lang="pl">Projekty</Text>
+			<Text Lang="es">Proyectos</Text>
+			<Text Lang="it">Progetti</Text>
+			<Text Lang="ru">Проекты</Text>
+			<Text Lang="en">Projects</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CreationTime.DisplayName">
+			<Context/>
+			<Text Lang="de">Erstellt am:</Text>
+			<Text Lang="uk">Створено:</Text>
+			<Text Lang="fr">Créé :</Text>
+			<Text Lang="pt-BR">Criado:</Text>
+			<Text Lang="zh">创建者：</Text>
+			<Text Lang="ko">생성된 날자:</Text>
+			<Text Lang="pl">Stworzono:</Text>
+			<Text Lang="es">Creado:</Text>
+			<Text Lang="it">Creato:</Text>
+			<Text Lang="ru">Создан:</Text>
+			<Text Lang="en">Created:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CurrentClaims.DisplayName">
+			<Context/>
+			<Text Lang="de">Anzahl Beanspruchungen:</Text>
+			<Text Lang="uk"># Присвоєнь:</Text>
+			<Text Lang="fr"># de revendications :</Text>
+			<Text Lang="pt-BR"># de reivindicações:</Text>
+			<Text Lang="zh"># of 认领：</Text>
+			<Text Lang="ko">할당 개수:</Text>
+			<Text Lang="pl"># z zastrzeżeń:</Text>
+			<Text Lang="es">Particiones reclamadas:</Text>
+			<Text Lang="it"># di reclami:</Text>
+			<Text Lang="ru"># присвоений:</Text>
+			<Text Lang="en"># of claims:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UserCount.DisplayName">
+			<Context/>
+			<Text Lang="de">Benutzer:</Text>
+			<Text Lang="uk">Користувачі:</Text>
+			<Text Lang="fr">Utilisateurs :</Text>
+			<Text Lang="pt-BR">Usuários:</Text>
+			<Text Lang="zh">用户：</Text>
+			<Text Lang="ko">사용자:</Text>
+			<Text Lang="pl">Użytkowników</Text>
+			<Text Lang="es">Usuarios:</Text>
+			<Text Lang="it">Utenti:</Text>
+			<Text Lang="ru">Пользователи:</Text>
+			<Text Lang="en">Users:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.UsersPage" Key="AdminMode">
+
+		<TextDefinition Key="Title.DisplayName">
+			<Context>DisplayName for the users page in AWS:AM</Context>
+			<Text Lang="de">Benutzer</Text>
+			<Text Lang="uk">Користувач</Text>
+			<Text Lang="fr">Utilisateur</Text>
+			<Text Lang="pt-BR">Usuário</Text>
+			<Text Lang="zh">用户</Text>
+			<Text Lang="ko">사용자</Text>
+			<Text Lang="pl">Użytkowników</Text>
+			<Text Lang="es">Usuario</Text>
+			<Text Lang="it">Utente</Text>
+			<Text Lang="ru">Пользователь</Text>
+			<Text Lang="en">User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Columns.Username.DisplayName">
+			<Context>DisplayName for the Username-Column</Context>
+			<Text Lang="de">Benutzername</Text>
+			<Text Lang="uk">Ім'я користувача</Text>
+			<Text Lang="fr">Nom d'utilisateur</Text>
+			<Text Lang="pt-BR">Nome de usuário</Text>
+			<Text Lang="zh">用户名</Text>
+			<Text Lang="ko">사용자 이름</Text>
+			<Text Lang="pl">Nazwa użytkownika</Text>
+			<Text Lang="es">Nombre de usuario:</Text>
+			<Text Lang="it">Nome utente</Text>
+			<Text Lang="ru">Имя пользователя</Text>
+			<Text Lang="en">Username</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Columns.LastLoginDate.DisplayName">
+			<Context>DisplayName for the LastLoginDate column</Context>
+			<Text Lang="de">Zuletzt angemeldet am</Text>
+			<Text Lang="uk"><![CDATA[Остання авторизація 
+]]></Text>
+			<Text Lang="fr">dernièrement connecté sur</Text>
+			<Text Lang="pt-BR">Última vez logado em</Text>
+			<Text Lang="zh">上次登录时间</Text>
+			<Text Lang="ko">마지막 로그인 날자</Text>
+			<Text Lang="pl">ostatnie logowanie na</Text>
+			<Text Lang="es">Último inicio de sesión</Text>
+			<Text Lang="it">Ultimo login</Text>
+			<Text Lang="ru"><![CDATA[последняя авторизация на
+]]></Text>
+			<Text Lang="en">last login on</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Columns.Online.DisplayName">
+			<Context>DisplayName for the Online column</Context>
+			<Text Lang="de">Anmeldungsstatus</Text>
+			<Text Lang="uk">Онлайн статус</Text>
+			<Text Lang="fr">Etat en ligne</Text>
+			<Text Lang="pt-BR">Estado online</Text>
+			<Text Lang="zh">联机状态</Text>
+			<Text Lang="ko">온라인 상태</Text>
+			<Text Lang="pl">Status online</Text>
+			<Text Lang="es">Estado online</Text>
+			<Text Lang="it">Stato in linea</Text>
+			<Text Lang="ru">Online статус</Text>
+			<Text Lang="en">Online state</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Columns.LicenseType.DisplayName">
+			<Context>Displayname for the license type column</Context>
+			<Text Lang="de">Lizenz</Text>
+			<Text Lang="uk">Ліцензія</Text>
+			<Text Lang="fr">Licence</Text>
+			<Text Lang="pt-BR">Licença</Text>
+			<Text Lang="zh">许可证</Text>
+			<Text Lang="ko">라이선스</Text>
+			<Text Lang="pl">Licencja</Text>
+			<Text Lang="es">Licencia</Text>
+			<Text Lang="it">Licenza</Text>
+			<Text Lang="ru">Лицензия</Text>
+			<Text Lang="en">License</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Columns.AccountType.DisplayName">
+			<Context>Displayname for the acccount type column</Context>
+			<Text Lang="de">Konto-Typ</Text>
+			<Text Lang="uk">Тип акаунта</Text>
+			<Text Lang="fr">Type de compte</Text>
+			<Text Lang="pt-BR">Tipo de conta</Text>
+			<Text Lang="zh">账户类型</Text>
+			<Text Lang="ko">계정 유형</Text>
+			<Text Lang="en">Account type</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Texts.Online">
+			<Context>Text when the known user is currently connected to a:s</Context>
+			<Text Lang="en">Online</Text>
+			<Text Lang="uk">Онлайн</Text>
+			<Text Lang="fr">En ligne</Text>
+			<Text Lang="pt-BR">Online</Text>
+			<Text Lang="zh">在线</Text>
+			<Text Lang="ko">온리인</Text>
+			<Text Lang="pl">Online</Text>
+			<Text Lang="es">Conectado</Text>
+			<Text Lang="it">Online</Text>
+			<Text Lang="ru">Online</Text>
+			<Text Lang="de">Angemeldet</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Texts.Offline">
+			<Context>Text when the known user is currently not connected to a:s</Context>
+			<Text Lang="en">Offline</Text>
+			<Text Lang="uk">Офлайн</Text>
+			<Text Lang="fr">Hors ligne</Text>
+			<Text Lang="pt-BR">Offline</Text>
+			<Text Lang="zh">离线</Text>
+			<Text Lang="ko">오프라인</Text>
+			<Text Lang="pl">Offline</Text>
+			<Text Lang="es">Desconectado</Text>
+			<Text Lang="it">Offline</Text>
+			<Text Lang="ru">Offline</Text>
+			<Text Lang="de">Offline</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Texts.NeverLoggedIn">
+			<Context>shown instead of a date if the user has never logged on</Context>
+			<Text Lang="en">never</Text>
+			<Text Lang="uk">Ніколи</Text>
+			<Text Lang="fr">jamais</Text>
+			<Text Lang="pt-BR">nunca</Text>
+			<Text Lang="zh">从未</Text>
+			<Text Lang="ko">로그인한 적 없음</Text>
+			<Text Lang="pl">nigdy</Text>
+			<Text Lang="es">nunca</Text>
+			<Text Lang="it">Mai</Text>
+			<Text Lang="ru">никогда</Text>
+			<Text Lang="de">nie</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Texts for the license overview in AdminMode
+	-->
+	<Category Name="Ui" Namespace=".AdministrationMode.LicenseTypes" Key="AdminMode">
+
+		<TextDefinition Key="NoLicense.DisplayName">
+			<Context/>
+			<Text Lang="de">Keine Lizenz</Text>
+			<Text Lang="uk">Немає ліцензії</Text>
+			<Text Lang="fr">Pas de licence</Text>
+			<Text Lang="pt-BR">Sem licença</Text>
+			<Text Lang="zh">无许可证</Text>
+			<Text Lang="ko">라이선스 없음</Text>
+			<Text Lang="pl">Brak licencji</Text>
+			<Text Lang="es">Sin licencia</Text>
+			<Text Lang="it">Nessuna licenza</Text>
+			<Text Lang="ru">Нет лицензии</Text>
+			<Text Lang="en">No license</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NoLicense.Description">
+			<Context/>
+			<Text Lang="de">Keine Lizenz</Text>
+			<Text Lang="uk">Немає ліцензії</Text>
+			<Text Lang="fr">Pas de licence</Text>
+			<Text Lang="pt-BR">Sem licença</Text>
+			<Text Lang="zh">无许可证</Text>
+			<Text Lang="ko">라이선스 없음</Text>
+			<Text Lang="pl">Brak licencji</Text>
+			<Text Lang="es">Sin licencia</Text>
+			<Text Lang="it">Nessuna licenza</Text>
+			<Text Lang="ru">Нет лицензии</Text>
+			<Text Lang="en">No license</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Viewer.DisplayName">
+			<Context/>
+			<Text Lang="en">articy:draft viewer</Text>
+			<Text Lang="uk">articy:draft viewer</Text>
+			<Text Lang="fr">Visionneuse articy:draft</Text>
+			<Text Lang="pt-BR">Visualizador de articy:server</Text>
+			<Text Lang="zh">articy:draft查看器</Text>
+			<Text Lang="ko">articy:draft 뷰어</Text>
+			<Text Lang="pl">articy:draft viewer</Text>
+			<Text Lang="es">articy:draft de lectura</Text>
+			<Text Lang="it">articy:draft visualizzatore</Text>
+			<Text Lang="ru">articy:draft viewer</Text>
+			<Text Lang="de">articy:draft Viewer</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Viewer.Description">
+			<Context/>
+			<Text Lang="en">articy:draft viewer</Text>
+			<Text Lang="uk">articy:draft viewer</Text>
+			<Text Lang="fr">Visionneuse articy:draft</Text>
+			<Text Lang="pt-BR">Visualizador de articy:server</Text>
+			<Text Lang="zh">articy:draft查看器</Text>
+			<Text Lang="ko">articy:draft 뷰어</Text>
+			<Text Lang="pl">articy:draft viewer</Text>
+			<Text Lang="es">articy:draft de lectura</Text>
+			<Text Lang="it">articy:draft visualizzatore</Text>
+			<Text Lang="ru">articy:draft viewer</Text>
+			<Text Lang="de">articy:draft Viewer</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MultiUser.DisplayName">
+			<Context/>
+			<Text Lang="en">articy:draft multi-user</Text>
+			<Text Lang="uk">articy:draft multi-user</Text>
+			<Text Lang="fr">articy:draft utilisateurs multiples</Text>
+			<Text Lang="pt-BR">Multi-usuário articy:server</Text>
+			<Text Lang="zh">articy:draft多人用户</Text>
+			<Text Lang="ko">articy:draft 다중-사용자</Text>
+			<Text Lang="pl">articy:draft multi-user</Text>
+			<Text Lang="es">articy:draft multiusuario</Text>
+			<Text Lang="it">articy:draft multi utente</Text>
+			<Text Lang="ru">articy:draft multi-user</Text>
+			<Text Lang="de">articy:draft Multi-User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MultiUser.Description">
+			<Context/>
+			<Text Lang="en">articy:draft multi-user</Text>
+			<Text Lang="uk">articy:draft multi-user</Text>
+			<Text Lang="fr">articy:draft utilisateurs multiples</Text>
+			<Text Lang="pt-BR">Multi-usuário articy:server</Text>
+			<Text Lang="zh">articy:draft多人用户</Text>
+			<Text Lang="ko">articy:draft 다중-사용자</Text>
+			<Text Lang="pl">articy:draft multi-user</Text>
+			<Text Lang="es">articy:draft multiusuario</Text>
+			<Text Lang="it">articy:draft multi utente</Text>
+			<Text Lang="ru">articy:draft  multi-user</Text>
+			<Text Lang="de">articy:draft Multi-User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FloatingMultiUser.DisplayName">
+			<Context/>
+			<Text Lang="en">articy:draft floating multi-user</Text>
+			<Text Lang="uk">articy:draft floating multi-user</Text>
+			<Text Lang="fr">articy:draft utilisateurs multiples flottants</Text>
+			<Text Lang="pt-BR">Multi-usuário flutuante articy:server</Text>
+			<Text Lang="zh">articy:draft浮动多人用户</Text>
+			<Text Lang="ko">articy:draft floating 다중-사용자</Text>
+			<Text Lang="de">articy:draft Floating-Multi-User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FloatingMultiUser.Description">
+			<Context/>
+			<Text Lang="en">articy:draft floating multi-user</Text>
+			<Text Lang="uk">articy:draft floating multi-user</Text>
+			<Text Lang="fr">articy:draft utilisateurs multiples flottants</Text>
+			<Text Lang="pt-BR">Multi-usuário flutuante articy:server</Text>
+			<Text Lang="zh">articy:draft浮动多人用户</Text>
+			<Text Lang="ko">articy:draft floating 다중-사용자</Text>
+			<Text Lang="de">articy:draft Multi-User (floating)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.AccountTypes" Key="AdminMode">
+
+		<TextDefinition Key="Articy.DisplayName">
+			<Context/>
+			<Text Lang="de">articy:server Benutzer</Text>
+			<Text Lang="uk">articy:server користувач</Text>
+			<Text Lang="fr">articy:server utilisateur</Text>
+			<Text Lang="pt-BR">usuário articy:server</Text>
+			<Text Lang="zh">articy:server用户</Text>
+			<Text Lang="ko">articy:server 사용자</Text>
+			<Text Lang="en">articy:server user</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Ldap.DisplayName">
+			<Context/>
+			<Text Lang="de">LDAP Benutzer</Text>
+			<Text Lang="uk">LDAP користувач</Text>
+			<Text Lang="fr">Utilisateur LDAP</Text>
+			<Text Lang="pt-BR">Usuário LDAP</Text>
+			<Text Lang="zh">LDAP 用户</Text>
+			<Text Lang="ko">LDAP 사용자</Text>
+			<Text Lang="en">LDAP user</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Button texts for AdminMode
+	-->
+	<Category Name="Ui" Namespace=".AdministrationMode.Commands" Key="AdminMode">
+
+		<TextDefinition Key="ActivateProject.DisplayName">
+			<Context>DisplayName of the ActivateProject-Command</Context>
+			<Text Lang="de">Aktivieren</Text>
+			<Text Lang="uk">Активувати</Text>
+			<Text Lang="fr">Activer</Text>
+			<Text Lang="pt-BR">Ativar</Text>
+			<Text Lang="zh">激活</Text>
+			<Text Lang="ko">활성화</Text>
+			<Text Lang="pl">Aktywuj</Text>
+			<Text Lang="es">Activar</Text>
+			<Text Lang="it">Attiva</Text>
+			<Text Lang="ru">Активировать</Text>
+			<Text Lang="en">Activate</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeactivateProject.DisplayName">
+			<Context>DisplayName of the DeactivateProject-Command</Context>
+			<Text Lang="de">Deaktivieren</Text>
+			<Text Lang="uk">Деактивувати</Text>
+			<Text Lang="fr">Désactiver</Text>
+			<Text Lang="pt-BR">Desativar</Text>
+			<Text Lang="zh">取消激活</Text>
+			<Text Lang="ko">비활성화</Text>
+			<Text Lang="pl">Dezaktywuj</Text>
+			<Text Lang="es">Desactivar</Text>
+			<Text Lang="it">Disattiva</Text>
+			<Text Lang="ru">Деактивировать</Text>
+			<Text Lang="en">Deactivate</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteProject.DisplayName">
+			<Context>DisplayName of DeleteProject-Command</Context>
+			<Text Lang="de">Löschen</Text>
+			<Text Lang="uk">Видалити</Text>
+			<Text Lang="fr">Supprimer</Text>
+			<Text Lang="pt-BR">Deletar</Text>
+			<Text Lang="zh">删除</Text>
+			<Text Lang="ko">삭제</Text>
+			<Text Lang="pl">Usuń</Text>
+			<Text Lang="es">Eliminar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Удалить</Text>
+			<Text Lang="en">Delete</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="AddUserToProject.DisplayName">
+			<Context/>
+			<Text Lang="de">Benutzer hinzufügen</Text>
+			<Text Lang="uk">Додати користувача</Text>
+			<Text Lang="fr">Ajouter utilisateur</Text>
+			<Text Lang="pt-BR">Adicionar usuário</Text>
+			<Text Lang="zh">添加用户</Text>
+			<Text Lang="ko">사용자 추가</Text>
+			<Text Lang="pl">Dodaj użytkownika</Text>
+			<Text Lang="es">Añadir usuario</Text>
+			<Text Lang="it">Aggiungi utente</Text>
+			<Text Lang="ru">Добавить пользователя</Text>
+			<Text Lang="en">Add user</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RemoveUserFromProject.DisplayName">
+			<Context/>
+			<Text Lang="de">Benutzer entfernen</Text>
+			<Text Lang="uk">Видалити користувача</Text>
+			<Text Lang="fr">Retirer utilisateur</Text>
+			<Text Lang="pt-BR">Remover usuário</Text>
+			<Text Lang="zh">删除用户</Text>
+			<Text Lang="ko">사용자 제거</Text>
+			<Text Lang="pl">Usuń użytkownika</Text>
+			<Text Lang="es">Eliminar usuario</Text>
+			<Text Lang="it">Rimuovi utente</Text>
+			<Text Lang="ru">Удалить пользователя</Text>
+			<Text Lang="en">Remove user</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserInProject.DisplayName">
+			<Context/>
+			<Text Lang="de">Projektmitarbeiter</Text>
+			<Text Lang="uk">Персонал проекту</Text>
+			<Text Lang="fr">Membres Projet</Text>
+			<Text Lang="pt-BR">Equipe de projeto</Text>
+			<Text Lang="zh">项目人员</Text>
+			<Text Lang="ko">프로젝트 멤버</Text>
+			<Text Lang="pl">Zespół projektu</Text>
+			<Text Lang="es">Personal del proyecto</Text>
+			<Text Lang="it">Staff del progetto</Text>
+			<Text Lang="ru">Персонал проекта</Text>
+			<Text Lang="en">Project staff</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CreateUser.DisplayName">
+			<Context/>
+			<Text Lang="de">Erstellen</Text>
+			<Text Lang="uk">Створити</Text>
+			<Text Lang="fr">Créer</Text>
+			<Text Lang="pt-BR">Criar</Text>
+			<Text Lang="zh">创建</Text>
+			<Text Lang="ko">생성</Text>
+			<Text Lang="pl">Stwórz</Text>
+			<Text Lang="es">Crear</Text>
+			<Text Lang="it">Crea</Text>
+			<Text Lang="ru">Создать</Text>
+			<Text Lang="en">Create</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUser.DisplayName">
+			<Context/>
+			<Text Lang="de">Bearbeiten</Text>
+			<Text Lang="uk">Редагувати</Text>
+			<Text Lang="fr">Editer</Text>
+			<Text Lang="pt-BR">Editar</Text>
+			<Text Lang="zh">编辑</Text>
+			<Text Lang="ko">편집</Text>
+			<Text Lang="pl">Edytuj</Text>
+			<Text Lang="es">Editar</Text>
+			<Text Lang="it">Modifica</Text>
+			<Text Lang="ru">Редактировать</Text>
+			<Text Lang="en">Edit</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ActivateUser.DisplayName">
+			<Context/>
+			<Text Lang="de">Aktivieren</Text>
+			<Text Lang="uk">Активувати</Text>
+			<Text Lang="fr">Activer</Text>
+			<Text Lang="pt-BR">Ativar</Text>
+			<Text Lang="zh">激活</Text>
+			<Text Lang="ko">활성화</Text>
+			<Text Lang="pl">Aktywuj</Text>
+			<Text Lang="es">Activar</Text>
+			<Text Lang="it">Attiva</Text>
+			<Text Lang="ru">Активировать</Text>
+			<Text Lang="en">Activate</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeactivateUser.DisplayName">
+			<Context/>
+			<Text Lang="de">Deaktivieren</Text>
+			<Text Lang="uk">Деактивувати</Text>
+			<Text Lang="fr">Désactiver</Text>
+			<Text Lang="pt-BR">Desativar</Text>
+			<Text Lang="zh">取消激活</Text>
+			<Text Lang="ko">비활성화</Text>
+			<Text Lang="pl">Dezaktywuj</Text>
+			<Text Lang="es">Desactivar</Text>
+			<Text Lang="it">Disattiva</Text>
+			<Text Lang="ru">Деактивировать</Text>
+			<Text Lang="en">Deactivate</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="KickUser.DisplayName">
+			<Context/>
+			<Text Lang="de">Benutzer Abmelden</Text>
+			<Text Lang="uk">Викинути користувача</Text>
+			<Text Lang="fr">Expulser Utilisateur</Text>
+			<Text Lang="pt-BR">Chutar usuário</Text>
+			<Text Lang="zh">踢出用户</Text>
+			<Text Lang="ko">사용자 추방</Text>
+			<Text Lang="en">Kick User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChangeLicense.DisplayName">
+			<Context/>
+			<Text Lang="de">Lizenz ändern...</Text>
+			<Text Lang="uk">Змінити ліцензію…</Text>
+			<Text Lang="fr">Changer Licence…</Text>
+			<Text Lang="pt-BR">Trocar licença...</Text>
+			<Text Lang="zh">更改许可证...</Text>
+			<Text Lang="ko">라이선스 변경…</Text>
+			<Text Lang="en">Change License...</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteUser.DisplayName">
+			<Context/>
+			<Text Lang="de">Löschen</Text>
+			<Text Lang="uk">Видалити</Text>
+			<Text Lang="fr">Supprimer</Text>
+			<Text Lang="pt-BR">Deletar</Text>
+			<Text Lang="zh">删除</Text>
+			<Text Lang="ko">삭제</Text>
+			<Text Lang="pl">Usuń</Text>
+			<Text Lang="es">Eliminar</Text>
+			<Text Lang="it">Cancella</Text>
+			<Text Lang="ru">Удалить</Text>
+			<Text Lang="en">Delete</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="RefreshProjectList.DisplayName">
+			<Context/>
+			<Text Lang="de">Projektliste aktualisieren</Text>
+			<Text Lang="uk">Оновити список проектів</Text>
+			<Text Lang="fr">Actualiser la Liste des Projets</Text>
+			<Text Lang="pt-BR">Refrescar lista de projeto</Text>
+			<Text Lang="zh">刷新项目列表</Text>
+			<Text Lang="ko">프로젝트 목록 갱신</Text>
+			<Text Lang="pl">Odśwież listę projektów</Text>
+			<Text Lang="es">Actualizar lista del proyecto</Text>
+			<Text Lang="it">Aggiorna lista progetti</Text>
+			<Text Lang="ru">Обновить список проектов</Text>
+			<Text Lang="en">Refresh project list</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.Dialogs.ProjectsPage" Key="AdminMode">
+
+		<TextDefinition Key="EditUserDialog.Title">
+			<Context/>
+			<Text Lang="de">Projektmitarbeiter</Text>
+			<Text Lang="uk">Персонал проекту</Text>
+			<Text Lang="fr">Membres Projet</Text>
+			<Text Lang="pt-BR">Equipe de projeto</Text>
+			<Text Lang="zh">项目人员</Text>
+			<Text Lang="ko">프로젝트 담당자</Text>
+			<Text Lang="pl">Zespół projektu</Text>
+			<Text Lang="es">Personal del proyecto</Text>
+			<Text Lang="it">Staff del progetto</Text>
+			<Text Lang="ru">Персонал проекта</Text>
+			<Text Lang="en">Project staff</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteProject.MessageBox.Title">
+			<Context>Title for the DeleteProject confirmation messagebox</Context>
+			<Text Lang="de">Löschen bestätigen</Text>
+			<Text Lang="uk">Підтвердити видалення</Text>
+			<Text Lang="fr">Confirmer suppression</Text>
+			<Text Lang="pt-BR">Confirmar eliminação</Text>
+			<Text Lang="zh">确认删除</Text>
+			<Text Lang="ko">삭제 확인</Text>
+			<Text Lang="pl">Potwierdź usunięcie</Text>
+			<Text Lang="es">Confirmar eliminación</Text>
+			<Text Lang="it">Conferma cancellazione</Text>
+			<Text Lang="ru">Подтвердить удаление</Text>
+			<Text Lang="en">Confirm deletion</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteProject.MessageBox.Text">
+			<Context>The text that is displayed inside the messagebox</Context>
+			<Text Lang="de">Möchten Sie das Projekt '{0}' wirklich löschen?</Text>
+			<Text Lang="uk">Ви дійсно хочете видалити проект '{0}'?</Text>
+			<Text Lang="fr">Voulez vous vraiment supprimer le projet '{0}' ?</Text>
+			<Text Lang="pt-BR">Realmente deseja deletar o projeto '{0}'?</Text>
+			<Text Lang="zh">您是否确定要删除项目'{0}'？</Text>
+			<Text Lang="ko">정말로 프로젝트 '{0}'을(를) 삭제하시겠습니까?</Text>
+			<Text Lang="pl">Czy naprawdę chcesz usunąć projekt '{0}'?</Text>
+			<Text Lang="es">¿Seguro que quieres eliminar el proyecto '{0}'?</Text>
+			<Text Lang="it">Vuoi veramente cancellare il progetto '{0}'?</Text>
+			<Text Lang="ru">Вы действительно хотите удалить проект '{0}'?</Text>
+			<Text Lang="en">Do you really want to delete the project '{0}'?</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.Dialogs.UsersPage" Key="AdminMode">
+
+		<TextDefinition Key="EditUserDialog.AddTitle">
+			<Context/>
+			<Text Lang="de">Benutzer hinzufügen</Text>
+			<Text Lang="uk">Додати користувача</Text>
+			<Text Lang="fr">Ajouter utilisateur</Text>
+			<Text Lang="pt-BR">Adicionar usuário</Text>
+			<Text Lang="zh">添加用户</Text>
+			<Text Lang="ko">사용자 추가</Text>
+			<Text Lang="pl">Dodaj użytkownika</Text>
+			<Text Lang="es">Añadir usuario</Text>
+			<Text Lang="it">Aggiungi utente</Text>
+			<Text Lang="ru">Добавить пользователя</Text>
+			<Text Lang="en">Add User</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.EditTitle">
+			<Context/>
+			<Text Lang="de">Benutzerprofil bearbeiten</Text>
+			<Text Lang="uk">Редагувати профіль користувача</Text>
+			<Text Lang="fr">Modifier profil utilisateur</Text>
+			<Text Lang="pt-BR">Editar perfil de usuário</Text>
+			<Text Lang="zh">编辑用户配置文件</Text>
+			<Text Lang="ko">사용자프로필 편집</Text>
+			<Text Lang="pl">Edytuj profil użytkownika</Text>
+			<Text Lang="es">Editar perfil de usuario</Text>
+			<Text Lang="it">Modifica il profilo utente.</Text>
+			<Text Lang="ru">Редактировать профиль пользователя</Text>
+			<Text Lang="en">Edit userprofile</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.UserName.Label">
+			<Context/>
+			<Text Lang="de">Benutzername:</Text>
+			<Text Lang="uk">Ім'я користувача:</Text>
+			<Text Lang="fr">Nom d'utilisateur :</Text>
+			<Text Lang="pt-BR">nome de usuário:</Text>
+			<Text Lang="zh">用户名：</Text>
+			<Text Lang="ko">사용자 이름:</Text>
+			<Text Lang="pl">Nazwa użytkownika:</Text>
+			<Text Lang="es">Nombre de usuario:</Text>
+			<Text Lang="it">Nome utente:</Text>
+			<Text Lang="ru">Имя пользователя:</Text>
+			<Text Lang="en">User name:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.EMail.Label">
+			<Context/>
+			<Text Lang="de">E-Mail:</Text>
+			<Text Lang="uk">E-mail:</Text>
+			<Text Lang="fr">E-mail :</Text>
+			<Text Lang="pt-BR">E-mail:</Text>
+			<Text Lang="zh">电子邮箱：</Text>
+			<Text Lang="ko">이메일:</Text>
+			<Text Lang="pl">E-mail:</Text>
+			<Text Lang="es">E-mail:</Text>
+			<Text Lang="it">E-mail:</Text>
+			<Text Lang="ru">E-mail:</Text>
+			<Text Lang="en">E-mail:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.MustChangePassword.Label">
+			<Context/>
+			<Text Lang="de">Benutzer muss Passwort beim nächsten Anmelden ändern</Text>
+			<Text Lang="uk">Користувач повинен змінити пароль при наступному підключенні</Text>
+			<Text Lang="fr">L'utilisateur doit changer de mot de passe lors de sa prochaine connexion</Text>
+			<Text Lang="pt-BR">Usuário deve mudar a senha no próximo login</Text>
+			<Text Lang="zh">用户下次登录时必须更改密码</Text>
+			<Text Lang="ko">사용자는 다음 로그인 시 비밀번호를 변경해야합니다</Text>
+			<Text Lang="pl">Użytkownik musi zmienić hasło przy następnym logowaniu</Text>
+			<Text Lang="es">El usuario deberá cambiar su contraseña en el próximo inicio de sesión</Text>
+			<Text Lang="it">L'utente deve cambiare password al prossimo login</Text>
+			<Text Lang="ru">Пользователь должен изменить пароль при следующем подключении</Text>
+			<Text Lang="en">User must change password on next login</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Password.Label">
+			<Context/>
+			<Text Lang="de">Neues Passwort:</Text>
+			<Text Lang="uk">Новий пароль:</Text>
+			<Text Lang="fr">Nouveau mot de passe :</Text>
+			<Text Lang="pt-BR">Nova senha:</Text>
+			<Text Lang="zh">新密码：</Text>
+			<Text Lang="ko">새 비밀번호:</Text>
+			<Text Lang="pl">Nowe hasło:</Text>
+			<Text Lang="es">Nueva contraseña:</Text>
+			<Text Lang="it">Nuova password:</Text>
+			<Text Lang="ru">Новый пароль:</Text>
+			<Text Lang="en">New password:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.RetypePassword.Label">
+			<Context/>
+			<Text Lang="de">Neues Passwort wdh.:</Text>
+			<Text Lang="uk">Новий пароль (підтвердження):</Text>
+			<Text Lang="fr">Nouveau mot de passe (confirmer) :</Text>
+			<Text Lang="pt-BR">Nova senha (confirmar):</Text>
+			<Text Lang="zh">新密码（确认）：</Text>
+			<Text Lang="ko">새 비밀번호 (확인):</Text>
+			<Text Lang="pl">Nowe hasło (potwiedź):</Text>
+			<Text Lang="es">Nueva contraseña (confirmar):</Text>
+			<Text Lang="it">Nuova password (conferma):</Text>
+			<Text Lang="ru">Новый пароль (подтверждение):</Text>
+			<Text Lang="en">New password (confirm):</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.CurrentPassword.Label">
+			<Context/>
+			<Text Lang="de">Akt. Passwort:</Text>
+			<Text Lang="uk">Поточний пароль:</Text>
+			<Text Lang="fr">Mot de passse actuel :</Text>
+			<Text Lang="pt-BR">Senha atual:</Text>
+			<Text Lang="zh">当前密码：</Text>
+			<Text Lang="ko">현재 비밀번호:</Text>
+			<Text Lang="pl">Obecne hasło:</Text>
+			<Text Lang="es">Contraseña actual:</Text>
+			<Text Lang="it">Password attuale:</Text>
+			<Text Lang="ru">Текущий пароль:</Text>
+			<Text Lang="en">Current password:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.LicenseManagement.Label">
+			<Context/>
+			<Text Lang="de">Benutzer-Lizenz:</Text>
+			<Text Lang="uk">Ліцензія:</Text>
+			<Text Lang="fr">Licence utilisateur :</Text>
+			<Text Lang="pt-BR">Licença de usuário</Text>
+			<Text Lang="zh">用户学科组：</Text>
+			<Text Lang="ko">사용자-라이선스:</Text>
+			<Text Lang="pl">Licencja użytkownika:</Text>
+			<Text Lang="es">Licencia de usuario:</Text>
+			<Text Lang="it">Licenza utente:</Text>
+			<Text Lang="ru">Пользовательская лицензия:</Text>
+			<Text Lang="en">User-license:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.UserNameEmpty">
+			<Context/>
+			<Text Lang="de">Der Benutzername darf nicht leer sein.</Text>
+			<Text Lang="uk">Ім'я користувача не повинно бути порожнім.</Text>
+			<Text Lang="fr">Le nom d'utilisateur ne doit pas être vide.</Text>
+			<Text Lang="pt-BR">O nome de usuário não deve estar vazio.</Text>
+			<Text Lang="zh">用户名不能为空。</Text>
+			<Text Lang="ko">사용자 이름은 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Nazwa użytkownika nie może być pusta.</Text>
+			<Text Lang="es">El nombre de usuario no puede estar vacío.</Text>
+			<Text Lang="it">Il nome utente non deve essere vuoto.</Text>
+			<Text Lang="ru">Имя пользователя не должно быть пустым.</Text>
+			<Text Lang="en">The user name must not be empty.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.NameToShort">
+			<Context/>
+			<Text Lang="de">Der Benutzername muss mindestens zwei Zeichen lang sein.</Text>
+			<Text Lang="uk">Ім'я повинно складатися як мінімум з двох символів.</Text>
+			<Text Lang="fr">Le nom d'utillisateur doit faire au moins 2 caractères.</Text>
+			<Text Lang="pt-BR">O nome de usuário deve ter pelo menos 2 caracteres.</Text>
+			<Text Lang="zh">用户名的长度必须至少为两个字符。</Text>
+			<Text Lang="ko">사용자 이름은 두 글자 이상이어야 합니다.</Text>
+			<Text Lang="pl">Nazwa użytkownika musi mieć co najmniej dwa znaki.</Text>
+			<Text Lang="es">El nombre de usuario deber tener al menos dos caracteres.</Text>
+			<Text Lang="it">Il nome utente deve essere lungo almeno due caratteri.</Text>
+			<Text Lang="ru">Имя должно состоять как минимум из двух символов.</Text>
+			<Text Lang="en">The user name must be at least two characters long.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.EMailFormatError">
+			<Context/>
+			<Text Lang="de">Die E-Mail Addresse hat ein ungültiges Format.</Text>
+			<Text Lang="uk">У цієї e-mail адреси неприпустимий формат.</Text>
+			<Text Lang="fr">Le format de l'adresse e-mail est invalide.</Text>
+			<Text Lang="pt-BR">O endereço de e-mail tem um formato inválido.</Text>
+			<Text Lang="zh">电子邮箱地址的格式无效。</Text>
+			<Text Lang="ko">이메일 주소 형식이 잘못되었습니다.</Text>
+			<Text Lang="pl">Adres e-mail ma nieprawidłowy format.</Text>
+			<Text Lang="es">El formato de la dirección de e-mail no es válido.</Text>
+			<Text Lang="it">L'indirizzo e-mail ha un formato non valido.</Text>
+			<Text Lang="ru">У этого e-mail адреса недопустимый формат.</Text>
+			<Text Lang="en">The e-mail adress has an invalid format.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.DowngradeWarning">
+			<Context/>
+			<Text Lang="de">Die Lizenz des Benutzers wird heruntergestuft. Dies kann Auswirkungen auf die Zugriffsrechte für Projekte haben.</Text>
+			<Text Lang="uk">Ліцензія користувача знизиться в категорії, це може зачіпити його права доступу до проектів.</Text>
+			<Text Lang="fr">La licence de l'utilisateur va être déclassée, affectant possiblement les droits d'accès aux projets.</Text>
+			<Text Lang="pt-BR">A licença de usuário será rebaixada, possivelmente afetando direitos de acesso para projetos.</Text>
+			<Text Lang="zh">用户的许可证将被降级，可能影响对项目的访问权限。</Text>
+			<Text Lang="ko">사용자의 라이선스가 다운그레이드 되어, 프로젝트의 접근 권한에 영향을 줄 수 있습니다.</Text>
+			<Text Lang="pl">Licencja użytkownika zostanie zdegradowana, co może mieć wpływ na prawa dostępu do projektów.</Text>
+			<Text Lang="es">La licencia de usuario ha sido degradada, lo que probablemente afectará a sus permisos de acceso a los proyectos.</Text>
+			<Text Lang="it">La licenza dell'utente sarà declassata. Questo può portare un cambiamento nei suoi diritti di accesso ai progetti.</Text>
+			<Text Lang="ru">Лицензия пользователя будет понижена, это может затронуть его права доступа к проектам.</Text>
+			<Text Lang="en">The user's license will be downgraded, possibly affecting the access rights to projects.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.DisallowDowngrade">
+			<Context/>
+			<Text Lang="de">Nicht automatisch herunterstufen!</Text>
+			<Text Lang="uk">Не знижувати автоматично!</Text>
+			<Text Lang="fr">Ne déclasse pas automatiquement !</Text>
+			<Text Lang="pt-BR">Não rebaixar automaticamente!</Text>
+			<Text Lang="zh">不使用自动降级！</Text>
+			<Text Lang="ko">자동으로 다운그레이드 하지 않습니다!</Text>
+			<Text Lang="pl">Nie dokonuj automatycznej degradacji!</Text>
+			<Text Lang="es">¡No se actualiza automáticamente!</Text>
+			<Text Lang="it">Non eseguire automaticamente il declassamento.</Text>
+			<Text Lang="ru">Не понижать автоматически!</Text>
+			<Text Lang="en">Do not automatically downgrade!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Downgraded">
+			<Context/>
+			<Text Lang="de">Benutzer '{0}' wurde im Projekt '{1}' zurückgestuft.</Text>
+			<Text Lang="uk">Користувач '{0}' був знижений в проекті "{1} '.</Text>
+			<Text Lang="fr">L'utilisateur '{0}' a été rétrogradé dans le projet '{1}'.</Text>
+			<Text Lang="pt-BR">Usuário '{0}' foi rebaixado no projeto '{1}'.</Text>
+			<Text Lang="zh">用户'{0}'在项目'{1}'中被降级。</Text>
+			<Text Lang="ko">사용자 '{0}'이(가) 프로젝트 '{1}'에서 다운그레이드되었습니다.</Text>
+			<Text Lang="pl">Użytkownik '{0}' został zdegradowany w projekcie '{1}'.</Text>
+			<Text Lang="es">El usuario '{0}' ha sido degradado en el proyecto '{1}'.</Text>
+			<Text Lang="it">L'utente '{0}' è stato declassato nel progetto '{1}'.</Text>
+			<Text Lang="ru">Пользователь '{0}' был понижен в проекте '{1}'.</Text>
+			<Text Lang="en">User '{0}' was downgraded in project '{1}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Removed">
+			<Context/>
+			<Text Lang="de">Benutzer '{0}' wurde aus dem Projekt '{1}' entfernt.</Text>
+			<Text Lang="uk">Користувач '{0}' був видалений з проекту "{1} '.</Text>
+			<Text Lang="fr">L'utilisateur '{0}' a été retiré du projet '{1}'.</Text>
+			<Text Lang="pt-BR">Usuário '{0}' foi removido do projeto '{1}'.</Text>
+			<Text Lang="zh">用户'{0}'已从项目'{1}'中删除。</Text>
+			<Text Lang="ko">사용자 '{0}'이(가) 프로젝트 '{1}'에서 제거되었습니다.</Text>
+			<Text Lang="pl">Użytkownik '{0}' został usunięty z projektu '{1}'.</Text>
+			<Text Lang="es">El usuario '{0}' ha sido eliminado del proyecto '{1}'.</Text>
+			<Text Lang="it">L'utente '{0}' è stato rimosso dal progetto '{1}'.</Text>
+			<Text Lang="ru">Пользователь '{0}' был убран из проекта '{1}'.</Text>
+			<Text Lang="en">User '{0}' was removed from project '{1}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.DowngradeNeeded">
+			<Context/>
+			<Text Lang="de">Benutzer '{0}' muss im Projekt '{1}' zurückgestuft werden.</Text>
+			<Text Lang="uk">Необхідно знизити користувача '{0}' в проекті "{1} '.</Text>
+			<Text Lang="fr">L'utilisateur '{0}' doit être rétrogradé dans le projet '{1}'.</Text>
+			<Text Lang="pt-BR">Usuário '{0}' precisa ser rebaixado no projeto '{1}'.</Text>
+			<Text Lang="zh">用户'{0}'需要在项目'{1}'中降级。</Text>
+			<Text Lang="ko">프로젝트 '{1}'에 있는 사용자 '{0}'(은)는 다운그레이드를 해야합니다.</Text>
+			<Text Lang="pl">Użytkownik '{0}' musi być zdegradowany z projektu '{1}'.</Text>
+			<Text Lang="es">El usuario '{0}' debe ser degradado en el proyecto '{1}'.</Text>
+			<Text Lang="it">L'utente '{0}' deve essere declassato nel progetto '{1}'.</Text>
+			<Text Lang="ru">Пользователь '{0}' должен быть понижен в проекте '{1}'.</Text>
+			<Text Lang="en">User '{0}' needs to be downgraded in project '{1}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Error.PasswordTooShort.Caption">
+			<Context/>
+			<Text Lang="en">The password is not long enough.</Text>
+			<Text Lang="uk">Пароль недостатньо довгий.</Text>
+			<Text Lang="fr">Le mot de passe n'est pas assez long.</Text>
+			<Text Lang="pt-BR">A senha não é longa o bastante.</Text>
+			<Text Lang="zh">密码长度不足。</Text>
+			<Text Lang="ko">비밀번호 길이가 충분하지 않습니다.</Text>
+			<Text Lang="pl">Hasło nie ma wystarczającej długości.</Text>
+			<Text Lang="es">La contraseña es demasiado corta.</Text>
+			<Text Lang="it">La password non è abbastanza lunga.</Text>
+			<Text Lang="ru">Пароль недостаточно длинный.</Text>
+			<Text Lang="de">Das Passwort ist nicht lang genug.</Text>
+			<Text Lang="ja">パスワードが短すぎます。</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Error.PasswordConfirmationNotIdentical.Caption">
+			<Context/>
+			<Text Lang="en">The new password and the confirmation must be identical.</Text>
+			<Text Lang="uk">Новий пароль і його підтвердження повинні бути ідентичними.</Text>
+			<Text Lang="fr">Le nouveau mot de passe et la confirmation doivent être identiques.</Text>
+			<Text Lang="pt-BR">A nova senha e a confirmação devem ser idênticas.</Text>
+			<Text Lang="zh">新密码与再次输入密码必须相同。</Text>
+			<Text Lang="ko">새 암호와 확인은 동일해야 합니다.</Text>
+			<Text Lang="pl">Nowe hasło i potwierdzenie muszą być takie same.</Text>
+			<Text Lang="es">La nueva contraseña y la confirmación deben ser idénticas.</Text>
+			<Text Lang="it">La nuova password e la conferma devono essere identici.</Text>
+			<Text Lang="ru">Новый пароль и его подтверждение должны быть идентичны.</Text>
+			<Text Lang="de">Das neue und das wiederholte Passwort müssen identisch sein.</Text>
+			<Text Lang="ja">パスワードが一致しません。</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Error.PasswordInvalidCharacters.Caption">
+			<Context/>
+			<Text Lang="en">The password contains invalid characters.</Text>
+			<Text Lang="uk">У паролі містяться неприпустимі символи.</Text>
+			<Text Lang="fr">Le mot de passe contient des caractères invalides.</Text>
+			<Text Lang="pt-BR">A senha contem caracteres inválidos.</Text>
+			<Text Lang="zh">密码包含无效字符。</Text>
+			<Text Lang="ko">비밀번호에 유효하지 않은 문자가 들어 있습니다.</Text>
+			<Text Lang="pl">Hasło zawiera niedozwolone znaki.</Text>
+			<Text Lang="es">La contraseña contiene caracteres no válidos.</Text>
+			<Text Lang="it">La password contiene carattere non validi.</Text>
+			<Text Lang="ru">В пароле содержатся недопустимые символы.</Text>
+			<Text Lang="de">Das Passwort enthält ungültige Zeichen.</Text>
+			<Text Lang="ja">パスワードは無効な字があります。</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Error.NewPasswordInvalid.Caption">
+			<Context/>
+			<Text Lang="en">The new password is invalid.</Text>
+			<Text Lang="uk">Новий пароль недійсний.</Text>
+			<Text Lang="fr">Le nouveau mot de passe est invalide.</Text>
+			<Text Lang="pt-BR">A nova senha é inválida.</Text>
+			<Text Lang="zh">新密码无效。</Text>
+			<Text Lang="ko">새 비밀번호가 잘못되었습니다.</Text>
+			<Text Lang="pl">Nowe hasło jest niepoprawne.</Text>
+			<Text Lang="es">La nueva contraseña no es válida.</Text>
+			<Text Lang="it">La nuova password non è valida.</Text>
+			<Text Lang="ru">Новый пароль недействителен.</Text>
+			<Text Lang="de">Das neue Passwort ist ungültig.</Text>
+			<Text Lang="ja">新しいパスワードが無効です。</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Error.CurrentPasswordInvalid.Caption">
+			<Context/>
+			<Text Lang="en">The current password is invalid.</Text>
+			<Text Lang="uk">Поточний пароль недійсний.</Text>
+			<Text Lang="fr">Le mot de passe actuel est invalide.</Text>
+			<Text Lang="pt-BR">A senha atual é inválida.</Text>
+			<Text Lang="zh">当前密码无效。</Text>
+			<Text Lang="ko">현재 비밀번호가 잘못되었습니다.</Text>
+			<Text Lang="pl">Obecne hasło jest niepoprawne.</Text>
+			<Text Lang="es">La contraseña actual no es válida.</Text>
+			<Text Lang="it">La password corrente non è valida.</Text>
+			<Text Lang="ru">Текущий пароль  недействителен.</Text>
+			<Text Lang="de">Das aktuelle Passwort ist ungültig.</Text>
+			<Text Lang="ja">以前パスワードが無効です。</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="EditUserDialog.Error.FailedToSetPassword.Caption">
+			<Context/>
+			<Text Lang="en">The new password could not be set.</Text>
+			<Text Lang="uk">Не вдалося задати новий пароль.</Text>
+			<Text Lang="fr">Le nouveau mot de passe n'a pas pu être défini.</Text>
+			<Text Lang="pt-BR">A nova senha não pôde ser definida.</Text>
+			<Text Lang="zh">无法设置新密码。</Text>
+			<Text Lang="ko">새 비밀번호를 설정할 수 없습니다.</Text>
+			<Text Lang="pl">Nowe hasło nie może zostać zmienione.</Text>
+			<Text Lang="es">No se ha podido establecer la nueva contraseña.</Text>
+			<Text Lang="it">La nuova password non può essere impostata.</Text>
+			<Text Lang="ru">Не удалось задать новый пароль.</Text>
+			<Text Lang="de">Das neue Passwort konnte nicht gesetzt werden.</Text>
+			<Text Lang="ja">新しいパスワードの変更に失敗しました。</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SelectLicense.Title">
+			<Context/>
+			<Text Lang="en">Change license type</Text>
+			<Text Lang="uk">Змінити тип ліцензії</Text>
+			<Text Lang="fr">Changer le type de licence</Text>
+			<Text Lang="pt-BR">Mudar tipo de licença</Text>
+			<Text Lang="zh">更改许可证类型</Text>
+			<Text Lang="ko">라이선스 유형 변경</Text>
+			<Text Lang="de">Lizenztyp ändern</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="SelectLicense.Introduction">
+			<Context/>
+			<Text Lang="en"><![CDATA[You have selected {0} users to change the license type.
+
+Some entries may be grayed out due to an shortage of the particilar license type.]]></Text>
+			<Text Lang="uk"><![CDATA[Ви вибрали {0} користувачів для зміни типу ліцензії.
+Деякі записи недоступні через дефіцит певного типу ліцензії. ]]></Text>
+			<Text Lang="fr"><![CDATA[Vous avez sélectionné {0} utilisateurs pour modifier le type de licence.
+
+Certaines entrées peuvent être grisées en raison d'une pénurie du type de licence particulier.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Você selecionou {0} usuários para mudar tipo de licença.
+
+Algumas entradas podem estar acizentadas por uma falta de tipos de licença particulares.]]></Text>
+			<Text Lang="zh"><![CDATA[您选择了{0}个用户更改许可证类型。 
+
+由于缺少部分许可证类型，某些条目可能以灰色显示。]]></Text>
+			<Text Lang="ko"><![CDATA[선택한 {0} 사용자들의 라이선스 유형을 변경하였습니다.
+
+particilar 라이선스 유형의 부족으로 인해 일부 항목이 회색으로 표시 될 수 있습니다.]]></Text>
+			<Text Lang="de"><![CDATA[Sie haben {0} Benutzer ausgewählt, um ihnen einen neuen Lizenztyp zuzuweisen.
+
+Einige Einträge sind möglicherweise nicht anwählbar, da nicht ausreichend freie Lizenzen verfügbar sind.]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.Dialogs.InformationPage" Key="AdminMode">
+
+		<TextDefinition Key="ManageLicenseDialog.ActivateLicense.Title">
+			<Context/>
+			<Text Lang="de">Lizenz aktivieren</Text>
+			<Text Lang="uk">Активація ліцензії</Text>
+			<Text Lang="fr">Activer licence</Text>
+			<Text Lang="pt-BR">Ativar licença</Text>
+			<Text Lang="zh">激活许可证</Text>
+			<Text Lang="ko">라이선스 활성화</Text>
+			<Text Lang="pl">Aktywuj licencję</Text>
+			<Text Lang="es">Activar licencia</Text>
+			<Text Lang="it">Attiva licenza</Text>
+			<Text Lang="ru">Активация лицензии</Text>
+			<Text Lang="en">Activate license</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ManageLicenseDialog.ActivateLicense.Description">
+			<Context/>
+			<Text Lang="de">Geben Sie Ihren Lizenzschlüssel in das Feld ein und klicken Sie auf 'OK' um Ihre Lizenz online zu aktivieren!</Text>
+			<Text Lang="uk">Будь ласка введіть ліцензійний ключ в поле та нажміть «ОК» щоб активізувати вашу ліцензію через інтернет.</Text>
+			<Text Lang="fr">Entrez votre clé de licence dans le champ ci-dessous et cliquez sur 'OK' pour activer votre licence en ligne !</Text>
+			<Text Lang="pt-BR">Por favor entre sua chave de licença no campo a baixo e clique 'Ok' para ativar sua licença online!</Text>
+			<Text Lang="zh">请在下面的字段中输入您的许可证密钥，然后单击“确定”在线激活您的许可证！</Text>
+			<Text Lang="ko">particilar 라이선스 유형의 부족으로 인해 일부 항목이 회색으로 표시 될 수 있습니다.</Text>
+			<Text Lang="pl">Proszę wpisać swój klucz licencyjny w poniższe pole i kliknąć 'OK', żeby aktywować twoją licencję online!</Text>
+			<Text Lang="es">¡Introduce tu clave de licencia en el cuadro inferior y pulsa 'Aceptar' para activar tu licencia!</Text>
+			<Text Lang="it">Per favore inserisci la tua chiave di licenza nel campo sottostante e clicca 'OK' per attivare la tua licenza online!</Text>
+			<Text Lang="ru">Пожалуйста, введите ваш лицензионный ключ в поле и нажмите 'OK' чтобы активировать лицензию через интернет!</Text>
+			<Text Lang="en">Please enter your license key in the field below and click 'OK' to activate your license online!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ManageLicenseDialog.RefreshLicense.Title">
+			<Context/>
+			<Text Lang="de">Lizenz aktualisieren</Text>
+			<Text Lang="uk">Оновлення ліцензії</Text>
+			<Text Lang="fr">Rafraîchir Licence</Text>
+			<Text Lang="pt-BR">Refrescar licença</Text>
+			<Text Lang="zh">刷新许可证</Text>
+			<Text Lang="ko">라이선스 갱신</Text>
+			<Text Lang="pl">Odśwież licencję</Text>
+			<Text Lang="es">Actualizar licencia</Text>
+			<Text Lang="it">Aggiorna licenza</Text>
+			<Text Lang="ru">Обновление лицензии</Text>
+			<Text Lang="en">Refresh license</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ManageLicenseDialog.RefreshLicense.Description">
+			<Context/>
+			<Text Lang="de">Bitte überprüfen Sie den Lizenzschlüssel, bevor Sie auf 'OK' klicken, um die Lizenz zu aktualisieren.</Text>
+			<Text Lang="uk">Будь ласка, перевірте ліцензійний ключ, перед тим як нажимати «ОК» щоб оновати ваші ліцензійні дані.</Text>
+			<Text Lang="fr">Veuillez vérifier la clé de licence avant de cliquer sur 'OK' pour actualiser vos données de licence.</Text>
+			<Text Lang="pt-BR">Por favor cheque sua chave de licença antes de clicar 'Ok' para refrescar seus dados de licença.</Text>
+			<Text Lang="zh">请检查许可证密钥，然后单击“确定”刷新许可证数据。</Text>
+			<Text Lang="ko">라이선스 데이터를 갱신하려면 '확인'을 클릭 하기 전에 라이선스 키를 확인 하시기 바랍니다.</Text>
+			<Text Lang="pl">Proszę sprawdzić swój klucz licencyjny przed kliknięciem 'OK'. To odświeży twoje dane licencyjne.</Text>
+			<Text Lang="es">Por favor, comprueba tu clave de licencia antes de pulsar 'Aceptar' para actualizar los datos de tu licencia</Text>
+			<Text Lang="it">Per favore controlla la tua chiave di licenza prima di premere 'OK' per aggiornare i dati della tua licenza.</Text>
+			<Text Lang="ru">Пожалуйста, проверьте лицензионный ключ, перед тем как нажать 'OK' чтобы обновить ваши лицензионные данные.</Text>
+			<Text Lang="en">Please check the license key before you click 'OK' to refresh your license data.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ManageLicenseDialog.DeactivateLicense.Title">
+			<Context/>
+			<Text Lang="de">Lizenz deaktivieren</Text>
+			<Text Lang="uk">Відключення ліцензії</Text>
+			<Text Lang="fr">Désactiver Licence</Text>
+			<Text Lang="pt-BR">Desativar licença</Text>
+			<Text Lang="zh">取消激活许可证</Text>
+			<Text Lang="ko">라이선스 비활성화</Text>
+			<Text Lang="pl">Dezaktywuj licencję</Text>
+			<Text Lang="es">Desactivar licencia</Text>
+			<Text Lang="it">Disattiva licenza</Text>
+			<Text Lang="ru">Отключение лицензии</Text>
+			<Text Lang="en">Deactivate license</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ManageLicenseDialog.DeactivateLicense.Description">
+			<Context/>
+			<Text Lang="de">Lizenz deaktivieren (Description)</Text>
+			<Text Lang="uk">Відключення ліцензії (опис)</Text>
+			<Text Lang="fr">Désactiver Licence (Description)</Text>
+			<Text Lang="pt-BR">Desativar licença (Descrição)</Text>
+			<Text Lang="zh">取消激活许可证（描述）</Text>
+			<Text Lang="ko">라이선스 비활성화 (설명)</Text>
+			<Text Lang="pl">Dezaktywuj licencję (Opis)</Text>
+			<Text Lang="es">Desactivar licencia (descripción)</Text>
+			<Text Lang="it">Disattiva licenza (Descrizione)</Text>
+			<Text Lang="ru">Отключение лицензии (Описание)</Text>
+			<Text Lang="en">Deactivate license (Description)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ManageLicenseDialog.LicenseKey.Label">
+			<Context/>
+			<Text Lang="de">Lizenzschlüssel</Text>
+			<Text Lang="uk">Ліцензійний ключ</Text>
+			<Text Lang="fr">Clé de licence</Text>
+			<Text Lang="pt-BR">Chave de licença</Text>
+			<Text Lang="zh">许可证密钥</Text>
+			<Text Lang="ko">라이선스 키</Text>
+			<Text Lang="pl">Klucz licencyjny</Text>
+			<Text Lang="es">Clave de licencia</Text>
+			<Text Lang="it">Chiave di licenza</Text>
+			<Text Lang="ru">Лицензионный ключ</Text>
+			<Text Lang="en">License key</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.Progress" Key="AdminMode">
+
+		<TextDefinition Key="Message.ActivateProject">
+			<Context>Shown in the progress dialog during project activation!</Context>
+			<Text Lang="de">Aktiviere Projekt '{0}'.</Text>
+			<Text Lang="uk">Активація проекту '{0}'.</Text>
+			<Text Lang="fr">Activation du projet '{0}'.</Text>
+			<Text Lang="pt-BR">Ativando projeto '{0}'.</Text>
+			<Text Lang="zh">激活项目'{0}'。</Text>
+			<Text Lang="ko">프로젝트 '{0}'을(를) 활성화 하는 중입니다.</Text>
+			<Text Lang="pl">Aktywacja projektu '{0}'.</Text>
+			<Text Lang="es">Activando proyecto '{0}'.</Text>
+			<Text Lang="it">Attivando il progetto '{0}'.</Text>
+			<Text Lang="ru">Активация проекта '{0}'.</Text>
+			<Text Lang="en">Activating project '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.DeactivateProject">
+			<Context/>
+			<Text Lang="de">Deaktiviere Projekt '{0}'.</Text>
+			<Text Lang="uk">Деактивація проекту '{0}'.</Text>
+			<Text Lang="fr">Désactivation du projet '{0}'.</Text>
+			<Text Lang="pt-BR">Desativando projeto '{0}'.</Text>
+			<Text Lang="zh">正在取消激活项目'{0}'。</Text>
+			<Text Lang="ko">프로젝트 '{0}'을(를) 비활성화 하는 중입니다.</Text>
+			<Text Lang="pl">Dezaktywacja projektu '{0}'.</Text>
+			<Text Lang="es">Desactivando proyecto '{0}'.</Text>
+			<Text Lang="it">Disattivando il progetto '{0}'.</Text>
+			<Text Lang="ru">Деактивация проекта '{0}'.</Text>
+			<Text Lang="en">Deactivating project '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.DeleteProject">
+			<Context/>
+			<Text Lang="de">Lösche Projekt '{0}'.</Text>
+			<Text Lang="uk">Видалення проекту '{0}'.</Text>
+			<Text Lang="fr">Supression du projet '{0}'.</Text>
+			<Text Lang="pt-BR">Deletando projeto '{0}'.</Text>
+			<Text Lang="zh">正在删除项目'{0}'。</Text>
+			<Text Lang="ko">프로젝트 '{0}'을(를) 삭제하는 중입니다.</Text>
+			<Text Lang="pl">Usuwanie projektu '{0}.</Text>
+			<Text Lang="es">Eliminando proyecto '{0}'.</Text>
+			<Text Lang="it">Cancellando il progetto '{0}'.</Text>
+			<Text Lang="ru">Удаление проекта '{0}'.</Text>
+			<Text Lang="en">Deleting project '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.TerminateAllClaims">
+			<Context/>
+			<Text Lang="de">Hebe alle Beanspruchungen der Partitionen des Projekts '{0}' auf.</Text>
+			<Text Lang="uk">Примусове скасування всіх присвоєнь в проекті '{0}'.</Text>
+			<Text Lang="fr">Abandon forcé des revendications de toutes les partitions du projet '{0}'.</Text>
+			<Text Lang="pt-BR">Forçada remoção de reivindicação de todas as partições no projeto '{0}'.</Text>
+			<Text Lang="zh">强制取消项目 '{0}'中所有分区的认领。</Text>
+			<Text Lang="ko">프로젝트 '{0}'에 있는 모든 파티션의 unclaiming을 적용합니다.</Text>
+			<Text Lang="pl">Wymuś usunięcie wszystkich roszczeń partycji w projekcie '{0}'.</Text>
+			<Text Lang="es">Desbloquear por la fuerza todas las particiones del proyecto '{0}'.</Text>
+			<Text Lang="it">Rimozione forzata dei diritti su tutte le partizioni nel progetto '{0}'.</Text>
+			<Text Lang="ru">Произвести принудительное отчуждение всех присвоений в проекте '{0}'.</Text>
+			<Text Lang="en">Enforced unclaiming of all partitions in project '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.FinishedSuccess">
+			<Context>Shown in the progress window when a command executed without errors</Context>
+			<Text Lang="de">Fertig.</Text>
+			<Text Lang="uk">Завершено.</Text>
+			<Text Lang="fr">Terminé.</Text>
+			<Text Lang="pt-BR">Finalizado.</Text>
+			<Text Lang="zh">已完成。</Text>
+			<Text Lang="ko">완료되었습니다.</Text>
+			<Text Lang="pl">Skończono.</Text>
+			<Text Lang="es">Finalizado.</Text>
+			<Text Lang="it">Finito.</Text>
+			<Text Lang="ru">Завершено.</Text>
+			<Text Lang="en">Finished.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.RemoveUserFromProject">
+			<Context/>
+			<Text Lang="de">Benutzer '{0}' wurde aus dem Projekt entfernt.</Text>
+			<Text Lang="uk">Користувача '{0}' вилучено з проекту.</Text>
+			<Text Lang="fr">L'utilisateur '{0}' a été retiré du projet.</Text>
+			<Text Lang="pt-BR">Usuário '{0}' foi removido do projeto.</Text>
+			<Text Lang="zh">用户'{0}'已从项目中删除。</Text>
+			<Text Lang="ko">사용자 '{0}'이(가) 프로젝트에서 제거되었습니다.</Text>
+			<Text Lang="pl">Użytkownik '{0}' został usunięty z projektu.</Text>
+			<Text Lang="es">El usuario '{0}' ha sido eliminado del proyecto.</Text>
+			<Text Lang="it">L'utente '{0}' è stato rimosso dal progetto.</Text>
+			<Text Lang="ru">Пользователь '{0}' был убран из проекта.</Text>
+			<Text Lang="en">User '{0}' was removed from the project.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.ErrorOccured">
+			<Context/>
+			<Text Lang="de">Während der Rechteverwaltung für Benutzer '{0}' ist ein Fehler aufgetreten:</Text>
+			<Text Lang="uk">Сталася помилка під час обробки прав користувача '{0}':</Text>
+			<Text Lang="fr">Une erreur s'est produite lors du traitement des droits d'utilisateur pour l'utilisateur '{0}':</Text>
+			<Text Lang="pt-BR">Erro ocorreu enquanto processando direitos para usuário '{0}':</Text>
+			<Text Lang="zh">处理用户'{0}'的用户权限时出错：</Text>
+			<Text Lang="ko">사용자 '{0}'에 대한 사용자 권한을 처리 하는 동안 오류가 발생 했습니다.</Text>
+			<Text Lang="pl">Wystąpił błąd podczas przetwarzania praw użytkownika '{0}':</Text>
+			<Text Lang="es">Ha ocurrido un error al procesar los permisos de usuario del usuario '{0}'.</Text>
+			<Text Lang="it">È stato riscontrato un errore durante l'elaborazione delle autorizzazioni per l'utente '{0}'</Text>
+			<Text Lang="ru">Произошла ошибка во время обработки прав пользователя '{0}':</Text>
+			<Text Lang="en">Error occured while processing user rights for user '{0}':</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.UpdateUserInProject">
+			<Context/>
+			<Text Lang="de">Benutzer '{0}' wurde dem Projekt hinzugefügt.</Text>
+			<Text Lang="uk">Користувача '{0}' додано в проект.</Text>
+			<Text Lang="fr">L'utilisateur '{0}' a été ajouté au projet.</Text>
+			<Text Lang="pt-BR">Usuário '{0}' foi adicionado para o projeto.</Text>
+			<Text Lang="zh">用户'{0}'已添加至项目中。</Text>
+			<Text Lang="ko">사용자 '{0}'이(가) 프로젝트에 추가되었습니다.</Text>
+			<Text Lang="pl">Użytkownik '{0}' został dodany do projektu.</Text>
+			<Text Lang="es">El usuario '{0}' ha sido añadido al proyecto.</Text>
+			<Text Lang="it">L'utente '{0}' è stato aggiunto al progetto.</Text>
+			<Text Lang="ru">Пользователь '{0}' был добавлен в проект.</Text>
+			<Text Lang="en">User '{0}' was added to the project.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.DeleteUser">
+			<Context/>
+			<Text Lang="de">Lösche Benutzer '{0}'.</Text>
+			<Text Lang="uk">Видалення користувача '{0}'.</Text>
+			<Text Lang="fr">Supression de l'utilisateur '{0}'.</Text>
+			<Text Lang="pt-BR">Deletando usuário '{0}'.</Text>
+			<Text Lang="zh">正在删除用户 '{0}'。</Text>
+			<Text Lang="ko">사용자 '{0}'을(를) 삭제하는 중입니다.</Text>
+			<Text Lang="pl">Usuwanie użytkownika '{0}'.</Text>
+			<Text Lang="es">Eliminando usuario '{0}'.</Text>
+			<Text Lang="it">Cancellando l'utente '{0}'.</Text>
+			<Text Lang="ru">Удаление пользователя '{0}'.</Text>
+			<Text Lang="en">Deleting user '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.ActivateUser">
+			<Context/>
+			<Text Lang="de">Aktiviere Benutzer '{0}'.</Text>
+			<Text Lang="uk">Активація користувача '{0}'.</Text>
+			<Text Lang="fr">Activation de l'utilisateur '{0}'.</Text>
+			<Text Lang="pt-BR">Ativando usuário '{0}'.</Text>
+			<Text Lang="zh">正在激活用户 '{0}'。</Text>
+			<Text Lang="ko">사용자 '{0}'을(를) 활성화 하는 중입니다.</Text>
+			<Text Lang="pl">Aktywacja użytkownika '{0}'.</Text>
+			<Text Lang="es">Activando usuario '{0}'.</Text>
+			<Text Lang="it">Attivando l'utente '{0}'.</Text>
+			<Text Lang="ru">Активация пользователя '{0}'.</Text>
+			<Text Lang="en">Activating user '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.DeactivateUser">
+			<Context/>
+			<Text Lang="de">Deaktiviere Benutzer '{0}'.</Text>
+			<Text Lang="uk">Деактивація користувача '{0}'.</Text>
+			<Text Lang="fr">Désactivation de l'utilisateur '{0}'.</Text>
+			<Text Lang="pt-BR">Desativando usuário '{0}'.</Text>
+			<Text Lang="zh">正在取消激活用户 '{0}'。</Text>
+			<Text Lang="ko">사용자 '{0}'을(를) 비활성화 하는 중입니다.</Text>
+			<Text Lang="pl">Dezaktywacja użytkownika '{0}'.</Text>
+			<Text Lang="es">Desactivando usuario '{0}'.</Text>
+			<Text Lang="it">Disattivando l'utente '{0}'.</Text>
+			<Text Lang="ru">Деактивация пользователя '{0}'.</Text>
+			<Text Lang="en">Deactivating user '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.KickUser">
+			<Context/>
+			<Text Lang="de">Benutzer '{0}' abmelden.</Text>
+			<Text Lang="uk">Викинути користувача '{0}'</Text>
+			<Text Lang="fr">Expulser l'utilisateur '{0}'.</Text>
+			<Text Lang="pt-BR">Chutar usuário '{0}'.</Text>
+			<Text Lang="zh">踢出用户 '{0}'。</Text>
+			<Text Lang="ko">사용자 '{0}'을(를) 추방합니다.</Text>
+			<Text Lang="en">Kick user '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.ChangeUserLicense">
+			<Context/>
+			<Text Lang="de">Ändere Lizenztyp von Benutzer '{0}'.</Text>
+			<Text Lang="uk">Змінити ліцензію користувача '{0}'.</Text>
+			<Text Lang="fr">Changer la licence de l'utilisateur '{0}'.</Text>
+			<Text Lang="pt-BR">Mudar licença de usuário '{0}'.</Text>
+			<Text Lang="zh">更改用户'{0}'的许可证。</Text>
+			<Text Lang="ko">사용자 '{0}'의 라이선스가 변경되었습니다.</Text>
+			<Text Lang="en">Change license of user '{0}'.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.EditUserInProject">
+			<Context/>
+			<Text Lang="de">Benutzer im Projekt bearbeiten.</Text>
+			<Text Lang="uk">Редагувати користувача в проекті.</Text>
+			<Text Lang="fr">Modifier l'utilisateur dans le projet.</Text>
+			<Text Lang="pt-BR">Editar usuário no projeto.</Text>
+			<Text Lang="zh">在项目中编辑用户。</Text>
+			<Text Lang="ko">프로젝트의 사용자를 편집합니다.</Text>
+			<Text Lang="pl">Edytuj użytkownika w projekcie.</Text>
+			<Text Lang="es">Editar usuario del proyecto</Text>
+			<Text Lang="it">Modifica l'utente nel progetto.</Text>
+			<Text Lang="ru">Редактировать пользователя в проекте.</Text>
+			<Text Lang="en">Edit user in project.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.ActivateProject">
+			<Context/>
+			<Text Lang="de">Aktiviere Projekt.</Text>
+			<Text Lang="uk">Активація проекту</Text>
+			<Text Lang="fr">Activation du projet.</Text>
+			<Text Lang="pt-BR">Ativando projeto.</Text>
+			<Text Lang="zh">正在激活项目。</Text>
+			<Text Lang="ko">프로젝트를 활성화 하는 중입니다.</Text>
+			<Text Lang="pl">Aktywacja projektu.</Text>
+			<Text Lang="es">Activando proyecto</Text>
+			<Text Lang="it">Attivando il progetto.</Text>
+			<Text Lang="ru">Активация проекта.</Text>
+			<Text Lang="en">Activating project.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.DeactivateProject">
+			<Context/>
+			<Text Lang="de">Deaktiviere Projekt.</Text>
+			<Text Lang="uk">Деактивація проекту</Text>
+			<Text Lang="fr">Désactivation du projet.</Text>
+			<Text Lang="pt-BR">Desativando projeto.</Text>
+			<Text Lang="zh">正在取消激活项目。</Text>
+			<Text Lang="ko">프로젝트를 비활성화 하는 중입니다.</Text>
+			<Text Lang="pl">Dezaktywacja projektu.</Text>
+			<Text Lang="es">Desactivando proyecto</Text>
+			<Text Lang="it">Disattivando il progetto.</Text>
+			<Text Lang="ru">Деактивация проекта.</Text>
+			<Text Lang="en">Deactivating project.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.DeleteProject">
+			<Context/>
+			<Text Lang="de">Lösche Projekt.</Text>
+			<Text Lang="uk">Видалення проекту</Text>
+			<Text Lang="fr">Suppression du projet.</Text>
+			<Text Lang="pt-BR">Deletando projeto.</Text>
+			<Text Lang="zh">正在删除项目。</Text>
+			<Text Lang="ko">프로젝트를 삭제하는 중입니다.</Text>
+			<Text Lang="pl">Usuwanie projektu.</Text>
+			<Text Lang="es">Eliminando proyecto</Text>
+			<Text Lang="it">Cancellando il progetto.</Text>
+			<Text Lang="ru">Удаление проекта.</Text>
+			<Text Lang="en">Deleting project.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.TerminateAllClaims">
+			<Context/>
+			<Text Lang="de">Erzwinge Freigabe aller Partitionen.</Text>
+			<Text Lang="uk">Виконани примусове скасування присвоєння всіх розділів.</Text>
+			<Text Lang="fr">Abandon forcé des revendications de toutes les partitions.</Text>
+			<Text Lang="pt-BR">Forçada remoção de reivindicação de todas as partições.</Text>
+			<Text Lang="zh">强制取消所有分区的认领。</Text>
+			<Text Lang="ko">모든 파티션을 강제 할당 해제 중입니다.</Text>
+			<Text Lang="pl">Wymuś wycofanie wszystkich partycji.</Text>
+			<Text Lang="es">Forzar el desbloqueo de todas las particiones</Text>
+			<Text Lang="it">Rimozione forzata dei diritti su tutte le partizioni.</Text>
+			<Text Lang="ru">Произвести принудительное отчуждение всех разделов.</Text>
+			<Text Lang="en">Enforced unclaiming of all partitions.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.DeleteUser">
+			<Context/>
+			<Text Lang="de">Benutzer löschen.</Text>
+			<Text Lang="uk">Видалення користувача.</Text>
+			<Text Lang="fr">Suppression de l'utilisateur.</Text>
+			<Text Lang="pt-BR">Deletando usuário.</Text>
+			<Text Lang="zh">正在删除用户。</Text>
+			<Text Lang="ko">사용자 삭제하는 중</Text>
+			<Text Lang="pl">Usuwanie użytkownika.</Text>
+			<Text Lang="es">Eliminar usuario</Text>
+			<Text Lang="it">Cancellando l'utente.</Text>
+			<Text Lang="ru">Удаление пользователя.</Text>
+			<Text Lang="en">Deleting user.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.EditUser">
+			<Context/>
+			<Text Lang="de">Benutzerprofil bearbeiten</Text>
+			<Text Lang="uk">Редагувати профіль користувача</Text>
+			<Text Lang="fr">Modifier le profil utilisateur</Text>
+			<Text Lang="pt-BR">Editar perfil de usuário</Text>
+			<Text Lang="zh">编辑用户配置文件</Text>
+			<Text Lang="ko">사용자 프로필 편집</Text>
+			<Text Lang="pl">Edytuj profil użytkownika.</Text>
+			<Text Lang="es">Editar perfil de usuario</Text>
+			<Text Lang="it">Modifica il profilo utente.</Text>
+			<Text Lang="ru">Редактировать профиль пользователя</Text>
+			<Text Lang="en">Edit user profile</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.CreateUser">
+			<Context/>
+			<Text Lang="de">Benutzer erstellen.</Text>
+			<Text Lang="uk">Створити користувача.</Text>
+			<Text Lang="fr">Créer utilisateur.</Text>
+			<Text Lang="pt-BR">Criar usuário.</Text>
+			<Text Lang="zh">创建用户。</Text>
+			<Text Lang="ko">사용자 생성</Text>
+			<Text Lang="pl">Stwórz użytkownika.</Text>
+			<Text Lang="es">Crear usuario</Text>
+			<Text Lang="it">Crea utente.</Text>
+			<Text Lang="ru">Создать пользователя.</Text>
+			<Text Lang="en">Create user.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.ActivateUser">
+			<Context/>
+			<Text Lang="de">Aktiviere Benutzer.</Text>
+			<Text Lang="uk">Активація користувача.</Text>
+			<Text Lang="fr">Activation de l'utilisateur.</Text>
+			<Text Lang="pt-BR">Ativando usuário.</Text>
+			<Text Lang="zh">正在激活用户。</Text>
+			<Text Lang="ko">사용자를 활성화 중입니다.</Text>
+			<Text Lang="pl">Aktywacja użytkownika.</Text>
+			<Text Lang="es">Activando usuario</Text>
+			<Text Lang="it">Attivando l'utente.</Text>
+			<Text Lang="ru">Активация пользователя.</Text>
+			<Text Lang="en">Activating user.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.DeactivateUser">
+			<Context/>
+			<Text Lang="de">Deaktiviere Benutzer.</Text>
+			<Text Lang="uk">Деактивація користувача.</Text>
+			<Text Lang="fr">Désactivation de l'utilisateur.</Text>
+			<Text Lang="pt-BR">Desativando usuário.</Text>
+			<Text Lang="zh">正在取消激活用户。</Text>
+			<Text Lang="ko">비활성화 된 사용자</Text>
+			<Text Lang="pl">Dezaktywacja użytkownika.</Text>
+			<Text Lang="es">Desactivando usuario</Text>
+			<Text Lang="it">Disattivando l'utente.</Text>
+			<Text Lang="ru">Деактивация пользователя.</Text>
+			<Text Lang="en">Deactivating user.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.KickUser">
+			<Context/>
+			<Text Lang="de">Benutzer beim Server abmelden.</Text>
+			<Text Lang="uk">Викинути користувача з серверу.</Text>
+			<Text Lang="fr">Expulser l'utilisateur du serveur.</Text>
+			<Text Lang="pt-BR">Chutar usuário de servidor.</Text>
+			<Text Lang="zh">从服务器踢出用户。</Text>
+			<Text Lang="ko">서버에서 추방된 사용자</Text>
+			<Text Lang="en">Kick user from server.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.ChangeLicense">
+			<Context/>
+			<Text Lang="de">Lizenztyp des Benutzers ändern</Text>
+			<Text Lang="uk">Змінити тип ліцензії користувача</Text>
+			<Text Lang="fr">Changer le type de licence des utilisateurs.</Text>
+			<Text Lang="pt-BR">Mudar tipo de licença de usuários.</Text>
+			<Text Lang="zh">变更用户许可证类型</Text>
+			<Text Lang="ko">사용자 라이선스 유형 변경</Text>
+			<Text Lang="en">Change users license type</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.RefreshingData">
+			<Context/>
+			<Text Lang="de">Aktualisiere Daten.</Text>
+			<Text Lang="uk">Оновлення даних.</Text>
+			<Text Lang="fr">Actualisation des données.</Text>
+			<Text Lang="pt-BR">Refrescando dados.</Text>
+			<Text Lang="zh">正在刷新数据。</Text>
+			<Text Lang="ko">데이터가 갱신 중입니다.</Text>
+			<Text Lang="pl">Odświeżanie danych.</Text>
+			<Text Lang="es">Actualizando datos</Text>
+			<Text Lang="it">Ricaricando i dati.</Text>
+			<Text Lang="ru">Обновление данных.</Text>
+			<Text Lang="en">Refreshing data.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.RefreshProjectData">
+			<Context/>
+			<Text Lang="de">Aktualisiere Projektdaten.</Text>
+			<Text Lang="uk">Оновлення даних проекту.</Text>
+			<Text Lang="fr">Actualisation des données du projet.</Text>
+			<Text Lang="pt-BR">Refrescando dados do projeto.</Text>
+			<Text Lang="zh">正在刷新项目数据。</Text>
+			<Text Lang="ko">프로젝트 데이터가 갱신 중입니다.</Text>
+			<Text Lang="pl">Odświeżanie danych o projekcie.</Text>
+			<Text Lang="es">Actualizando datos del proyecto</Text>
+			<Text Lang="it">Ricaricando i dati del progetto.</Text>
+			<Text Lang="ru">Обновление данных проекта.</Text>
+			<Text Lang="en">Refreshing project data.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Message.RefreshUserData">
+			<Context/>
+			<Text Lang="de">Aktualisiere Benutzerdaten.</Text>
+			<Text Lang="uk">Оновлення даних користувача.</Text>
+			<Text Lang="fr">Actualisation des données de l'utilisateur.</Text>
+			<Text Lang="pt-BR">Refrescando dados do usuário.</Text>
+			<Text Lang="zh">正在刷新用户数据。</Text>
+			<Text Lang="ko">사용자 데이터가 갱신 중입니다.</Text>
+			<Text Lang="pl">Odświeżanie danych o użytkowniku.</Text>
+			<Text Lang="es">Actualizando datos del usuario</Text>
+			<Text Lang="it">Ricaricando i dati utente.</Text>
+			<Text Lang="ru">Обновление данных пользователя.</Text>
+			<Text Lang="en">Refreshing user data.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Key="Notifications">
+
+		<TextDefinition Key="Notifications.UserDeactivated">
+			<Context>Server admin has deactivated the user</Context>
+			<Text Lang="en">Your server administrator has just deactivated your user account.</Text>
+			<Text Lang="uk">Адміністратор серверу, щойно деактивував ваш акаунт користувача.</Text>
+			<Text Lang="fr">L'administrateur de votre serveur vient de désactiver votre compte utilisateur.</Text>
+			<Text Lang="pt-BR">Seu administrador de usuário desativou sua conta de usuário.</Text>
+			<Text Lang="zh">您的服务器管理员刚刚停用了您的用户账户。</Text>
+			<Text Lang="ko">서버 관리자가 당신의 사용자 계정을 비활성화 하였습니다.</Text>
+			<Text Lang="pl">Administracja serwera dezaktywowała twoje konto użytkownika.</Text>
+			<Text Lang="es">El administrador de tu servidor acaba de desactivar tu cuenta de usuario.</Text>
+			<Text Lang="it">Il tuo amministratore di server ha appena disattivato il tuo utente.</Text>
+			<Text Lang="ru">Администратор сервера только что деактивировал ваш пользовательский аккаунт.</Text>
+			<Text Lang="de">Ihr Server-Administrator hat gerade Ihr Konto deaktiviert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.UserKicked">
+			<Context>Server admin has kicked the user</Context>
+			<Text Lang="en">Your server administrator has just kicked you out of the server.</Text>
+			<Text Lang="uk">Адміністратор серверу, щойно викинув вас з серверу.</Text>
+			<Text Lang="fr">L'administrateur de votre serveur vient de vous expulser du serveur.</Text>
+			<Text Lang="pt-BR">Seu administrador de usuário chutou você do servidor.</Text>
+			<Text Lang="zh">您的服务器管理员刚刚将您踢出了服务器。</Text>
+			<Text Lang="ko">서버 관리자가 당신을 서버에서 추방하였습니다.</Text>
+			<Text Lang="de">Ihr Server-Administrator hat Sie gerade vom Server abgemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.ProjectDeactivated">
+			<Context>Server admin has deactivated the project</Context>
+			<Text Lang="en">Your server administrator has just deactivated the project you are working on.</Text>
+			<Text Lang="uk">Адміністратор серверу вимкнув проект над яким ви працювали.</Text>
+			<Text Lang="fr">L'administrateur de votre serveur vient de désactiver le projet sur lequel vous travaillez.</Text>
+			<Text Lang="pt-BR">Seu administrador de servidor desativou o projeto em que você está trabalhando.</Text>
+			<Text Lang="zh">您的服务器管理员刚刚停用了您正在处理的项目。</Text>
+			<Text Lang="ko">서버 관리자가 당신이 작업하는 중인 프로젝트를 비활성화 하였습니다.</Text>
+			<Text Lang="pl">Administracja serwera dezaktywowała projekt, nad którym pracowałeś.</Text>
+			<Text Lang="es">El administrador de tu servidor acaba de desactivar el proyecto en el que estás trabajando.</Text>
+			<Text Lang="it">Il tuo amministratore di server ha appena disattivato il progetto a cui stavi lavorando.</Text>
+			<Text Lang="ru">Администратор сервера выключил проект над которым вы работали.</Text>
+			<Text Lang="de">Ihr Server-Administrator hat gerade das Projekt, an dem Sie arbeiten, deaktiviert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.ForceOffline">
+			<Context>An event has occured that forces the user to go offline</Context>
+			<Text Lang="en">Due to maintenance work on your project you have been forced to go offline.</Text>
+			<Text Lang="uk">Через проведення робіт з обслуговування вашого проекту, ви змушені перейти в офлайн режим.</Text>
+			<Text Lang="fr">A cause d'une maintenance sur votre projet vous avez été forcé d'être déconnecté.</Text>
+			<Text Lang="pt-BR">Por conta do trabalho de manutenção no seu projeto você foi forçado offline.</Text>
+			<Text Lang="zh">由于项目维护，您被切换为离线模式。</Text>
+			<Text Lang="ko">유지 보수 작업으로 인해 프로젝트가 오프라인 상태가되었습니다.</Text>
+			<Text Lang="pl">Z powodu prac konserwacyjnych w projekcie zostałeś przeniesiony do trybu offline.</Text>
+			<Text Lang="es">Has sido forzado a seguir trabajando sin conexión a causa de trabajos de mantenimiento en el proyecto.</Text>
+			<Text Lang="it">A causa di un lavoro di manutenzione sul tuo progetto sei stato forzato a passare off-line.</Text>
+			<Text Lang="ru">Из-за проведения работ по обслуживанию вашего проекта, вы были вынуждены выйти из сети.</Text>
+			<Text Lang="de">Aufgrund von Wartungsarbeiten am Projekt sind Sie vom Server getrennt worden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.RemovedFromProject">
+			<Context>Server/Project admin has removed user from the project</Context>
+			<Text Lang="en">Your server- or project-administrator has just revoked the right for you to work on this project.</Text>
+			<Text Lang="uk">Адміністратор серверу або проекту скасував ваші права по роботі над цим проектом.</Text>
+			<Text Lang="fr">L'administrateur de votre serveur (ou projet) vient de révoquer votre droit à travailler sur ce projet.</Text>
+			<Text Lang="pt-BR">Seu administrador de servidor- ou projeto- revocou seus direitos de trabalhar nest projeto.</Text>
+			<Text Lang="zh">您的服务器或项目管理员刚刚取消了您处理此项目的权限。</Text>
+			<Text Lang="ko">서버 관리자 또는 프로젝트 관리자가 프로젝트에서 작업 권한을 취소하였습니다.</Text>
+			<Text Lang="pl">Administracja projektu lub serwera odwołało twoje prawa do pracy nad tym projektem.</Text>
+			<Text Lang="es">El administrador del servidor o proyecto ha revocado tus permisos para trabajar en este proyecto.</Text>
+			<Text Lang="it">Il tuo amministratore di server o di progetto ha appena revocato la tua autorizzazione a lavorare in questo progetto.</Text>
+			<Text Lang="ru">Администратор сервера или проекта отменил ваши права по работе над этим проектом.</Text>
+			<Text Lang="de">Ihr Server- oder Projekt-Administrator hat Ihnen gerade das Recht entzogen, an diesem Projekt zu arbeiten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.RightsChanged">
+			<Context>Server/Project admin has changed users on a project</Context>
+			<Text Lang="en">Your server or project administrator has just changed your right level for this project.</Text>
+			<Text Lang="uk">Адміністратор серверу або проекту змінив ваш рівень прав для цього проекту.</Text>
+			<Text Lang="fr">L'administrateur de votre serveur ou de votre projet vient de changer votre niveau de droits pour ce projet.</Text>
+			<Text Lang="pt-BR">Seu administrador de servidor ou projeto mudou seu nível direito para este projeto.</Text>
+			<Text Lang="zh">您的服务器或项目管理员刚刚更改了您在此项目的权限等级。</Text>
+			<Text Lang="ko">서버 관리자 또는 프로젝트 관리자가 이 프로젝트의 당신의 레벨을  변경하였습니다.</Text>
+			<Text Lang="pl">Administracja projektu lub serwera zmieniła poziom twoich praw dla tego projektu.</Text>
+			<Text Lang="es">El administrador del servidor o proyecto acaba de cambiar tu nivel de permisos para este proyecto.</Text>
+			<Text Lang="it">Il tuo amministratore di server o di progetto ha appena cambiato il tuo livello di autorizzazione per questo progetto.</Text>
+			<Text Lang="ru">Администратор сервера или проекта изменил ваш уровень прав для этого проекта.</Text>
+			<Text Lang="de">Ihr Server- oder Projekt-Administrator hat gerade Ihre Rechtestufe für dieses Projekt verändert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.Disconnected">
+			<Context>Connection to server was lost</Context>
+			<Text Lang="en"><![CDATA[You just lost the connection to your articy:server. You still can work, but you can't claim or publish partitions in this session anymore.
+To reconnect, click the re-connect button in your master toolbar to start a reconnection attempt.]]></Text>
+			<Text Lang="uk"><![CDATA[Втрачено з'єднання з articy:server. Ви можете продовжити роботу, але такі функції як присвоєння і публікація розділів недоступні для вас у цій робочій сесії.
+Щоб заново підключитися до articy:server закрийте проект і спробуйте перепідключитися. ]]></Text>
+			<Text Lang="fr"><![CDATA[Vous venez de perdre la connexion à votre articy:server. Vous pouvez toujours travailler, mais vous ne pouvez plus revendiquer ou publier des partitions dans cette session.
+Pour vous reconnecter, cliquez sur le bouton de reconnexion dans votre barre d'outils principale pour démarrer une tentative de reconnexion.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Você acabou de perder a conexão para seu articy:server. Você ainda pode trabalhar, mas não pode mais reivindicar ou publicar partições nesta sessão.
+Para reconectar, clique o botão reconectar na sua barra de ferramentas mestre para começar uma tentativa de reconexão.]]></Text>
+			<Text Lang="zh"><![CDATA[您刚刚失去了与 articy:server的连接。您仍然可以工作，但是您不能在当前情况下认领或发布分区内容。
+要重新连接，请单击主工具栏中的“重新连接”按钮开始重新连接尝试。]]></Text>
+			<Text Lang="ko"><![CDATA[articy:server와 연결이 끊어졌습니다. 계속 작업할 수 있으나, 현 세션에서는 더이상 파티션에 할당하거나 게시할 수 없습니다. 
+재연결하려면 master toolbar에 있는 재-연결 버튼을 클릭하여  재연결 시도하여야 합니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Zerwano połączenie z articy:server. Wciąż możesz pracować, ale nie będziesz mógł opublokować partycji w tej sesji.
+Żeby połączyć ponownie, kliknij przycisk znajdujący się w głównym pasku, żeby rozpocząć próbę ponownego połączenia.]]></Text>
+			<Text Lang="es"><![CDATA[Has perdido la conexión al articy:server. Puedes seguir trabajando, pero ya no puedes reclamar o publicar particiones durante esta sesión.
+Para volver a conectar, pulsa el botón de reconectar en tu barra de herramientas maestra.]]></Text>
+			<Text Lang="it"><![CDATA[Hai appena perso la connessione al tuo articy:server. Puoi ancora lavorare, ma non puoi più richiedere o pubblicare sezioni in questa sessione.
+Per riconnetterti, clicca il pulsante di riconnessione nella tua  toolbar principale per far iniziare un tentativo di riconnessione.]]></Text>
+			<Text Lang="ru"><![CDATA[Было потерянно соединение с articy:server. Вы можете продолжить работу, но такие функции как присвоение и публикация разделов будут недоступны для вас в этой рабочей сессии.
+Чтобы заново подключиться к articy:server закройте проект и попытайтесь переподключиться.]]></Text>
+			<Text Lang="de"><![CDATA[Sie haben gerade die Verbindung zum articy:server verloren. Sie können weiterarbeiten, jedoch stehen alle Operationen, die den Server benötigen, nicht mehr zur Verfügung.
+Um sich erneut am Server anzumelden, können sie ein Wiederverbindungsversuch starten, indem Sie auf das Verbinden Icon in der Master-Toolbar klicken.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Notifications.DisconnectedFromSam">
+			<Context>Connection to server was lost</Context>
+			<Text Lang="en">You just lost the connection to your articy:server. The administration mode will now be exited automatically.</Text>
+			<Text Lang="uk">Втрачено з'єднання з articy:server. Режим адміністрування автоматично вимкнений.</Text>
+			<Text Lang="fr">Connexion à votre articy:server perdue. Vous allez quitter le mode administrateur automatiquement.</Text>
+			<Text Lang="pt-BR">Você acabou de perder a conexão para seu articy:server. O modo de administração sairá automaticamente.</Text>
+			<Text Lang="zh">您刚刚断开了与articy:server的连接。管理模式现在将自动退出。</Text>
+			<Text Lang="ko">articy:server와 연결이 끊어졌습니다. 관리 모드가 자동으로 종료됩니다.</Text>
+			<Text Lang="pl">Zerwano połączenie z articy:sever. Tryb administracji zostanie zakończony automatycznie.</Text>
+			<Text Lang="es">Has perdido la conexión al articy:server. A continuación saldrás automáticamente del modo de administrador.</Text>
+			<Text Lang="it">Hai appena perso la connessione al tuo articy:server. Sarà ora disabilitata in automatico la modalità da amministratore.</Text>
+			<Text Lang="ru">Было потерянно соединение с articy:server. Режим администрирования будет автоматически выключен.</Text>
+			<Text Lang="de">Sie haben gerade die Verbindung zum articy:server verloren. Der Administrations-Modus wird nun automatisch verlassen.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  localizeable RightLevel enum (only used for dropdown)
+	-->
+	<Category Name="Ui" Namespace=".Enums.RightLevel" Key="EnumValues">
+
+		<TextDefinition Key="Admin.Caption">
+			<Context/>
+			<Text Lang="de">Administrator</Text>
+			<Text Lang="uk">Адміністратор</Text>
+			<Text Lang="fr">Admin</Text>
+			<Text Lang="pt-BR">Administrador</Text>
+			<Text Lang="zh">管理员</Text>
+			<Text Lang="ko">관리자</Text>
+			<Text Lang="pl">Administrator</Text>
+			<Text Lang="es">Admin</Text>
+			<Text Lang="it">Amministratore</Text>
+			<Text Lang="ru">Администратор</Text>
+			<Text Lang="en">Admin</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Worker.Caption">
+			<Context/>
+			<Text Lang="de">Team-Mitglied</Text>
+			<Text Lang="uk">Працівник команди</Text>
+			<Text Lang="fr">Membre de l'équipe</Text>
+			<Text Lang="pt-BR">Membro do time</Text>
+			<Text Lang="zh">团队成员</Text>
+			<Text Lang="ko">팀원</Text>
+			<Text Lang="pl">Współpracownik</Text>
+			<Text Lang="es">Miembro del equipo</Text>
+			<Text Lang="it">Membro del Team</Text>
+			<Text Lang="ru">Работник команды</Text>
+			<Text Lang="en">Team member</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Guest.Caption">
+			<Context/>
+			<Text Lang="de">Gast</Text>
+			<Text Lang="uk">Гість</Text>
+			<Text Lang="fr">Invité</Text>
+			<Text Lang="pt-BR">Convidado</Text>
+			<Text Lang="zh">访客</Text>
+			<Text Lang="ko">게스트</Text>
+			<Text Lang="pl">Gość</Text>
+			<Text Lang="es">Invitado</Text>
+			<Text Lang="it">Ospite</Text>
+			<Text Lang="ru">Гость</Text>
+			<Text Lang="en">Guest</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".ServerInformation">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>Title for the expander</Context>
+			<Text Lang="en">Server information</Text>
+			<Text Lang="uk">Інформація про сервер</Text>
+			<Text Lang="fr">Informations serveur</Text>
+			<Text Lang="pt-BR">Informação do servidor</Text>
+			<Text Lang="zh">服务器信息</Text>
+			<Text Lang="ko">서버 정보</Text>
+			<Text Lang="pl">Informacje serwera</Text>
+			<Text Lang="es">Información del servidor</Text>
+			<Text Lang="it">Informazioni sul server</Text>
+			<Text Lang="ru">Информация о сервере</Text>
+			<Text Lang="de">Server-Informationen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Title.Label">
+			<Context>Title for the label of the first box</Context>
+			<Text Lang="en">Server information</Text>
+			<Text Lang="uk">Інформація про сервер</Text>
+			<Text Lang="fr">Informations serveur</Text>
+			<Text Lang="pt-BR">Informação do servidor</Text>
+			<Text Lang="zh">服务器信息</Text>
+			<Text Lang="ko">서버 정보</Text>
+			<Text Lang="pl">Informacje serwera</Text>
+			<Text Lang="es">Información del servidor</Text>
+			<Text Lang="it">Informazioni sul server</Text>
+			<Text Lang="ru">Информация о сервере</Text>
+			<Text Lang="de">Server-Informationen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ProductName.Label">
+			<Context>Label for the product name</Context>
+			<Text Lang="en">Product:</Text>
+			<Text Lang="uk">Продукт:</Text>
+			<Text Lang="fr">Produit :</Text>
+			<Text Lang="pt-BR">Produto:</Text>
+			<Text Lang="zh">产品：</Text>
+			<Text Lang="ko">제품:</Text>
+			<Text Lang="pl">Produkt:</Text>
+			<Text Lang="es">Producto:</Text>
+			<Text Lang="it">Prodotto:</Text>
+			<Text Lang="ru">Продукт:</Text>
+			<Text Lang="de">Produkt:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ProductName.Pattern">
+			<Context>Display pattern for the product name; {0} = basename (articy:server), {1} server edition, {2} 64/32 Bits</Context>
+			<Text Lang="en">{0} {1} ({2} Bit)</Text>
+			<Text Lang="uk">{0} {1} ({2} біт)</Text>
+			<Text Lang="fr">{0} {1} ({2} Bit)</Text>
+			<Text Lang="pt-BR">{0} {1} ({2} Bit)</Text>
+			<Text Lang="zh">{0} {1} ({2} 位)</Text>
+			<Text Lang="ko">{0} {1} ({2} Bit)</Text>
+			<Text Lang="pl">{0} {1} ({2} Bit)</Text>
+			<Text Lang="es">{0} {1} ({2} Bit)</Text>
+			<Text Lang="it">{0} {1} ({2} Bit)</Text>
+			<Text Lang="ru">{0} {1} ({2} бит)</Text>
+			<Text Lang="de">{0} {1} ({2}-Bit)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Version.Label">
+			<Context>Label for the version</Context>
+			<Text Lang="en">Version:</Text>
+			<Text Lang="uk">Версія:</Text>
+			<Text Lang="fr">Version :</Text>
+			<Text Lang="pt-BR">Versão:</Text>
+			<Text Lang="zh">版本：</Text>
+			<Text Lang="ko">버전:</Text>
+			<Text Lang="pl">Wersja:</Text>
+			<Text Lang="es">Versión:</Text>
+			<Text Lang="it">Versione:</Text>
+			<Text Lang="ru">Версия:</Text>
+			<Text Lang="de">Version:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DatabasePath.Label">
+			<Context>Label for the Database path</Context>
+			<Text Lang="en">Database path:</Text>
+			<Text Lang="uk">Шлях бази даних:</Text>
+			<Text Lang="fr">Chemin d'accès à la base de données :</Text>
+			<Text Lang="pt-BR">Caminho de base de dados:</Text>
+			<Text Lang="zh">数据库路径：</Text>
+			<Text Lang="ko">데이터베이스 경로:</Text>
+			<Text Lang="pl">Ścieżka bazy danych:</Text>
+			<Text Lang="es">Directorio de la base de datos:</Text>
+			<Text Lang="it">Percorso del database:</Text>
+			<Text Lang="ru">Путь базы данных:</Text>
+			<Text Lang="de">Pfad zur Datenbank:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DatabaseSize.Label">
+			<Context>label for the size of database</Context>
+			<Text Lang="en">Database size:</Text>
+			<Text Lang="uk">Розмір бази даних:</Text>
+			<Text Lang="fr">Taille de la base de données :</Text>
+			<Text Lang="pt-BR">Tamanho de base de dados:</Text>
+			<Text Lang="zh">数据库大小：</Text>
+			<Text Lang="ko">데이터베이스 크기:</Text>
+			<Text Lang="pl">Rozmiar bazy danych:</Text>
+			<Text Lang="es">Tamaño de la base de datos:</Text>
+			<Text Lang="it">Grandezza del database:</Text>
+			<Text Lang="ru">Размер базы данных:</Text>
+			<Text Lang="de">Größe der Datenbank:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DatabaseSize.Pattern">
+			<Context>label for the size of database</Context>
+			<Text Lang="en">{0:n2} MB</Text>
+			<Text Lang="uk">{0:n2} Мб</Text>
+			<Text Lang="fr">{0:n2} MB</Text>
+			<Text Lang="pt-BR">{0:n2} MB</Text>
+			<Text Lang="zh">{0:n2} MB</Text>
+			<Text Lang="ko">{0:n2} MB</Text>
+			<Text Lang="pl">{0:n2} MB</Text>
+			<Text Lang="es">{0:n2} MB</Text>
+			<Text Lang="it">{0:n2} MB</Text>
+			<Text Lang="ru">{0:n2} Мб</Text>
+			<Text Lang="de">{0:n2} MB</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UserCount.Label">
+			<Context>label for the number of users</Context>
+			<Text Lang="en">Number of users:</Text>
+			<Text Lang="uk">Кількість користувачів:</Text>
+			<Text Lang="fr">Nombre d'utilisateurs :</Text>
+			<Text Lang="pt-BR">Número de usuários:</Text>
+			<Text Lang="zh">用户人数：</Text>
+			<Text Lang="ko">사용자 수:</Text>
+			<Text Lang="pl">Liczba użytkowników:</Text>
+			<Text Lang="es">Número de usuarios:</Text>
+			<Text Lang="it">Numero di utenti:</Text>
+			<Text Lang="ru">Количество пользователей:</Text>
+			<Text Lang="de">Anzahl Benutzer:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ProjectCount.Label">
+			<Context>label for the number of projects</Context>
+			<Text Lang="en">Number of projects:</Text>
+			<Text Lang="uk">Кількість проектів:</Text>
+			<Text Lang="fr">Nombre de projets :</Text>
+			<Text Lang="pt-BR">Número de projetos:</Text>
+			<Text Lang="zh">项目数量：</Text>
+			<Text Lang="ko">프로젝트 수:</Text>
+			<Text Lang="pl">Liczba projektów:</Text>
+			<Text Lang="es">Número de proyectos:</Text>
+			<Text Lang="it">Numero di progetti:</Text>
+			<Text Lang="ru">Количество проектов:</Text>
+			<Text Lang="de">Anzahl Projekte:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ItemCount.Pattern">
+			<Context>pattern for the number of users/projects</Context>
+			<Text Lang="en">{0:n0} active of {1:n0}</Text>
+			<Text Lang="uk">{0:n0} активних з {1:n0}</Text>
+			<Text Lang="fr">{0:n0} actif de {1:n0}</Text>
+			<Text Lang="pt-BR">{0:n0} ativo(s) de {1:n0}</Text>
+			<Text Lang="zh">{0:n0} 活跃自 {1:n0}</Text>
+			<Text Lang="ko">{1:n0}개 중 {0:n0}개 활성화</Text>
+			<Text Lang="pl">{0:n0} aktywny z {1:n0}</Text>
+			<Text Lang="es">{0:n0} activo(s) de {1:n0}</Text>
+			<Text Lang="it">{0:n0} attivi di {1:n0}</Text>
+			<Text Lang="ru">{0:n0} активных из {1:n0}</Text>
+			<Text Lang="de">{0:n0} aktiv von {1:n0}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ServerGuid.Label">
+			<Context>label for the guid of the server</Context>
+			<Text Lang="en">GUID of server:</Text>
+			<Text Lang="uk">GUID серверу:</Text>
+			<Text Lang="fr">GUIDE du serveur :</Text>
+			<Text Lang="pt-BR">GUID do servidor:</Text>
+			<Text Lang="zh">服务器的GUID：</Text>
+			<Text Lang="ko">서버의 GUID:</Text>
+			<Text Lang="de">GUID des Servers:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".VersionInfo">
+
+		<TextDefinition Key="Title.Label">
+			<Context>label for the new version block</Context>
+			<Text Lang="en">Newer available versions:</Text>
+			<Text Lang="uk">Доступні нові версії:</Text>
+			<Text Lang="fr">Versions disponibles plus récentes :</Text>
+			<Text Lang="pt-BR">Versões mais novas disponíveis:</Text>
+			<Text Lang="zh">更新的可用版本：</Text>
+			<Text Lang="ko">새 사용 가능 버전:</Text>
+			<Text Lang="pl">Dostępne nowe wersje:</Text>
+			<Text Lang="es">Nuevas versiones disponibles:</Text>
+			<Text Lang="it">Versioni più recenti disponibili:</Text>
+			<Text Lang="ru">Доступные новые версии:</Text>
+			<Text Lang="de">Folgende neuere Versionen stehen zur Verfügung:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="GoToInfoPage.Text">
+			<Context>Text of the button to open the InfoUrl</Context>
+			<Text Lang="en">To learn more about this update please click here to open a web browser with the latest information.</Text>
+			<Text Lang="uk">Якщо ви хочете дізнатися більше про це оновлення, будь ласка, натисніть цю кнопку. Це відкриє браузер з останньою інформацією.</Text>
+			<Text Lang="fr">Pour en savoir plus sur cette mise à jour cliquez ici pour ouvrir la page web avec les dernières informations.</Text>
+			<Text Lang="pt-BR">Para aprender mais sobre esta atualização por favor clique aqui para abrir um navegador de rede com as mais novas informações.</Text>
+			<Text Lang="zh">若要了解有关此更新的详细信息，请单击此处打开包含最新信息的Web浏览器。</Text>
+			<Text Lang="ko">이 업데이트에 대한 자세한 내용을 보려면 여기를 클릭하여 최신 정보로 웹 브라우저를 여십시오.</Text>
+			<Text Lang="pl">Aby przeczytać więcej o tej aktualizacji, kliknij ten przycisk, żeby otworzyć stronę internetową z najnowszymi informacjami.</Text>
+			<Text Lang="es">Para leer más acerca de esta actualización, pulsa este botón para abrir un navegador web con la última información.</Text>
+			<Text Lang="it">Per leggere altre informazioni su questo aggiornamento premi questo bottone per aprire una pagina web con tutte le ultime informazioni.</Text>
+			<Text Lang="ru">Если вы хотите узнать больше об этом обновлении, пожалуйста, нажмите эту кнопку. Это откроет браузер с последней информацией.</Text>
+			<Text Lang="de">Um mehr über dieses Update zu erfahren, klicken Sie bitte hier, um in Ihrem Web-Browser die aktuellsten Informationen anzuzeigen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ClientUpgradeWarning.Text">
+			<Context>Text of the client upgrade required warning</Context>
+			<Text Lang="en">When installing this version it is required to also update the articy:draft clients.</Text>
+			<Text Lang="uk">Після встановлення цієї версії  необхідно оновити клієнти articy:draft.</Text>
+			<Text Lang="fr">Lors de l'installation de cette version, il est également nécessaire de mettre à jour les clients articy:draft.</Text>
+			<Text Lang="pt-BR">Quando instalando esta versão é necessário também atualizar os clientes articy:draft.</Text>
+			<Text Lang="zh">安装此版本时，还需同时更新 articy:draft 客户端。</Text>
+			<Text Lang="ko">이 버전을 설치할 때 articy:draft 클라이언트를 업데이트해야 합니다.</Text>
+			<Text Lang="pl">Podczas instalowania tej wersji wymaga się również aktualizacji klientów articy:draft.</Text>
+			<Text Lang="es">Al instalar esta versión se necesita también actualizar los clientes de articy:draft.</Text>
+			<Text Lang="it">Quando si installa questa versione è anche richiesto di eseguire l'update dei client articy:draft</Text>
+			<Text Lang="ru">После установки этой версии будет необходимо обновить клиенты articy:draft.</Text>
+			<Text Lang="de">Wenn Sie diese Version installieren, wird es notwending auch die articy:draft clients mit neueren Versionen auszustatten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UpdateType.MajorRelease">
+			<Context>Text for a major release update</Context>
+			<Text Lang="en">Major release</Text>
+			<Text Lang="uk">Основний реліз</Text>
+			<Text Lang="fr">Sortie Majeure</Text>
+			<Text Lang="pt-BR">Versão principal</Text>
+			<Text Lang="zh">主要版本</Text>
+			<Text Lang="ko">주 배포</Text>
+			<Text Lang="pl">Główne wydanie</Text>
+			<Text Lang="es">Lanzamiento principal</Text>
+			<Text Lang="it">Major release</Text>
+			<Text Lang="ru">Основной релиз</Text>
+			<Text Lang="de">Hauptversion</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UpdateType.FeatureUpdate">
+			<Context>Text for a major feature update</Context>
+			<Text Lang="en">Feature update</Text>
+			<Text Lang="uk">Оновлення функцій</Text>
+			<Text Lang="fr">Mise à jour des fonctionnalités</Text>
+			<Text Lang="pt-BR">Atualização de utilidade</Text>
+			<Text Lang="zh">功能更新</Text>
+			<Text Lang="ko">기능 업데이트</Text>
+			<Text Lang="pl">Aktualizacja funkcji</Text>
+			<Text Lang="es">Actualización de funcionalidades</Text>
+			<Text Lang="it">Update della caratteristica</Text>
+			<Text Lang="ru">Обновление функций</Text>
+			<Text Lang="de">Feature Update</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UpdateType.ServicePack">
+			<Context>Text for a major feature update</Context>
+			<Text Lang="en">Service update</Text>
+			<Text Lang="uk">Оновлення служб</Text>
+			<Text Lang="fr">Mise à jour du service</Text>
+			<Text Lang="pt-BR">Atualização de serviço</Text>
+			<Text Lang="zh">服务更新</Text>
+			<Text Lang="ko">서비스 업데이트</Text>
+			<Text Lang="pl">Aktualizacja serwisu</Text>
+			<Text Lang="es">Actualización de servicios</Text>
+			<Text Lang="it">Update del servizio</Text>
+			<Text Lang="ru">Обновление служб</Text>
+			<Text Lang="de">Service Update</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="UpdateType.EarlyAdopterRelease">
+			<Context>Text for a early adopter release</Context>
+			<Text Lang="en">Early-adopter release</Text>
+			<Text Lang="uk">Реліз для послідовників з раннім доступом</Text>
+			<Text Lang="fr">Version pour les premiers utilisateurs</Text>
+			<Text Lang="pt-BR">Lançamento de adodante antecipado</Text>
+			<Text Lang="zh">早期版本</Text>
+			<Text Lang="ko">얼리-어답터 배포</Text>
+			<Text Lang="pl">Wydanie wersji wstępnej</Text>
+			<Text Lang="es">Lanzamiento para primeros usuarios</Text>
+			<Text Lang="it">Release preliminare</Text>
+			<Text Lang="ru">Релиз для последователей с ранним доступом</Text>
+			<Text Lang="de">Vorabversion</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CantOpenBrowser.Text">
+			<Context>Text shown in a message box when the info link can't be opened</Context>
+			<Text Lang="en">Unable to start your web browser to navigate to the update information page.</Text>
+			<Text Lang="uk">Не вдалося запустити браузер, щоб відкрити сторінку, що містить інформацію про оновлення.</Text>
+			<Text Lang="fr">Impossible de démarrer votre navigateur Web pour accéder à la page d'informations de mise à jour.</Text>
+			<Text Lang="pt-BR">Incapaz de iniciar seu navegador de rede para navegar para páginas de informação de atualização.</Text>
+			<Text Lang="zh">无法启动Web浏览器以导航至更新信息页。</Text>
+			<Text Lang="ko">웹 브라우저를 열어 업데이트 정보 페이지로 이동할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można uruchomić twojej przeglądarki, żeby wyświetlić informacje o aktualizacji.</Text>
+			<Text Lang="es">No se ha podido iniciar el navegador web para visitar la página de información de actualización.</Text>
+			<Text Lang="it">Impossibile aprire il tuo broswer per raggiungere la pagina di informazioni riguardo gli aggiornamenti.</Text>
+			<Text Lang="ru">Не удалось запустить браузер для открытия страницы, содержащей информацию об обновлении.</Text>
+			<Text Lang="de">Webbrowser mit zusätzlichen Informationen zum Update konnte nicht gestartet werden.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".AdministrationMode.Messages" Key="AdminMode">
+
+		<TextDefinition Key="NothingToDelete.Text">
+			<Context>Text shown in a message box when there are no users remaining in the delete selection</Context>
+			<Text Lang="en"><![CDATA[There are no users left in the selection that can be deleted.
+Only deactivated users can be deleted.]]></Text>
+			<Text Lang="uk"><![CDATA[У виборі не залишилося користувачів, яких можна видалити.
+Видаляти можна лише деактивованих користувачів. ]]></Text>
+			<Text Lang="fr"><![CDATA[Il ne reste aucun utilisateur dans la sélection pouvant être supprimé.
+Seuls les utilisateurs désactivés peuvent être supprimés.]]></Text>
+			<Text Lang="pt-BR">Não há usuários sobrando na sessão que possam ser deletados. Apenas usuários desativados podem ser deletados.</Text>
+			<Text Lang="zh"><![CDATA[所选内容中没有可删除的用户。
+只能删除已停用的用户。]]></Text>
+			<Text Lang="ko"><![CDATA[선택된 사용자들 중 삭제할 수 있는 사용자가 더이상 없습니다.
+비활성화 된 사용자만 삭제 할 수 있습니다.]]></Text>
+			<Text Lang="de"><![CDATA[Es verbleiben keine Benutzer mehr in der Selektion, die gelöscht werden könnten.
+Nur vorher deaktivierte Benutzer können gelöscht werden.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DeleteUsersConfirm.Text">
+			<Context>Text shown in a message box when there are users to be deleted</Context>
+			<Text Lang="en"><![CDATA[You are about to delete {0} users. This operation cannot be undone.
+Do you really want to delete these users?]]></Text>
+			<Text Lang="uk"><![CDATA[Ви збираєтесь видалити {0} користувачів. Наслідки цієї операції не можливо скасувати .
+Ви дійсно хочете видалити цих користувачів? ]]></Text>
+			<Text Lang="fr">Vous êtes sur le point de supprimer {0} utilisateurs. Cette action est irréversible . Voulez vous vraiment supprimer ces utilisateurs ?</Text>
+			<Text Lang="pt-BR">Você está prestes a deletar {0} usuários. Esta operação não pode ser desfeita. Realmente deseja deletar estes usuários?</Text>
+			<Text Lang="zh"><![CDATA[您将要删除{0}用户。此操作无法取消。
+您是否确定要删除这些用户？]]></Text>
+			<Text Lang="ko">{0} 사용자들을 삭제하려합니다. 이 작업은 되돌릴 수 없습니다. 정말로 이 사용자들을 삭제하시겠습니까?</Text>
+			<Text Lang="de"><![CDATA[Sie beabsichtigen {0} Benutzer zu löschen. Bitte beachten Sie, dass diese Operation nicht rückgängig gemacht werden kann.
+Wollen Sie diese Bebutzer wirklich löschen?]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Missing.Text">
+			<Context>Text shown in a message box when there are users to be deleted</Context>
+			<Text Lang="en">{0} more licenses required</Text>
+			<Text Lang="uk">необхідно ще {0} ліцензій</Text>
+			<Text Lang="fr">{0} licences de plus are requises</Text>
+			<Text Lang="pt-BR">{0} mais licenças necessárias</Text>
+			<Text Lang="zh">请求{0}个许可证。</Text>
+			<Text Lang="ko">{0} 라이선스가 더 필요합니다</Text>
+			<Text Lang="de">benötige {0} lizenzen mehr</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

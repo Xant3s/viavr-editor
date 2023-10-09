@@ -1,0 +1,4572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaModels xmlns="http://nevigo.com/metamodel.xsd">
+
+	<!-- Root Model -->
+	<MetaModel TargetType="Articy.ModelFramework.RootModel">
+		<ProjectHandling Version="1.0"
+						 ApplicationPartitionBaseName="SessionData_">
+			<PartitionTypeBaseName Version="1.0"
+								   PartitionType="Articy.ModelFramework.ProjectPartitioning.ProjPartitionGeneralModel"
+								   BaseName="Partition"/>
+			<PartitionTypeBaseName Version="1.0"
+								   PartitionType="Articy.ModelFramework.ProjectPartitioning.ProjPartitionRootModel"
+								   BaseName="RootPartition"/>
+			<PartitionTypeBaseName Version="1.0"
+								   PartitionType="Articy.ModelFramework.ProjectPartitioning.ProjPartitionTypeRestrictedModel"
+								   BaseName="TypedPartition"/>
+		</ProjectHandling>
+	</MetaModel>
+
+	<!-- ArticyApp -->
+	<MetaModel TargetType="Articy.Models.ArticyApp">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="application"/>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="welcomeAspect"/>
+			<Aspect Key="jumpstartAspect" />
+<!--			<Aspect Key="onlineHelpAspect" /> -->
+			<Aspect Key="serverManagementAspect" />
+		</AllowedAspects>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.General.Project"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="false"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   AllowRename="false"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- ConnectableModel -->
+	<MetaModel TargetType="Articy.ModelFramework.ConnectableModel">
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.Pin"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+	</MetaModel>
+
+	<!-- Pin -->
+	<MetaModel TargetType="Articy.ModelFramework.Pin">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="pin"/>
+	</MetaModel>
+
+	<!-- Folder -->
+	<MetaModel TargetType="Articy.ModelFramework.Folder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="folder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0"/>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.Connection"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="false"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"
+					   CommandPriority="10"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName=""/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Story Folder (new name: "Flow") -->
+	<MetaModel TargetType="Articy.Models.Story.StoryFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="flowfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="graphPerspectiveProvider"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Story.Dialog" Default="true"/>
+			<Child Type="Articy.Models.General.Comment"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.Connection"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Project -->
+	<MetaModel TargetType="Articy.Models.General.Project">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="project"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="jumpstartAspect"/>
+			<Aspect Key="explorerAspect"/>
+<!--			<Aspect Key="onlineHelpAspect" /> -->
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+			</ProviderInfo>
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+
+			<!-- No Children, only systemfolder -->
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Comment -->
+	<MetaModel TargetType="Articy.Models.General.Comment">
+
+		<Icon Version="1.0" Filename="comment"/>
+		
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   AllowRename="false"
+					   IsWalkable="false"
+					   IsUserInstanceable="true"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="5"
+					   />
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  DefaultWidth="225"
+				  DefaultHeight="100"/>
+		</Edit>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+	</MetaModel>
+
+	<!-- DialogFragment -->
+	<MetaModel TargetType="Articy.Models.Story.DialogFragment">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="dialogfragment"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+          <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+        </ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   AllowRename="false"
+					   DefaultCommand="OpenInFlowEditor"
+					   CommandPriority="21"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="false"
+                  DefaultWidth="225"
+                  DefaultHeight="200"/>
+				  
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Output>
+		</Connection>
+
+	</MetaModel>
+
+	<!-- Hub -->
+	<MetaModel TargetType="Articy.Models.Story.Hub">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="hub"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+          <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenInFlowEditor"
+					   CommandPriority="19"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"
+                  DefaultWidth="175"
+                  DefaultHeight="50"/>
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Output>
+		</Connection>
+
+	</MetaModel>
+
+	<!-- Jump -->
+	<MetaModel TargetType="Articy.Models.Story.Jump">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="Jump"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+          <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowRename="false"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenInFlowEditor"
+					   CommandPriority="18"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="false"
+                  DefaultWidth="175"
+                  DefaultHeight="150"/>
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="0" MaximumPins="0" AllowParallelExecution="false">
+			</Output>
+		</Connection>
+
+	</MetaModel>
+	
+	<!-- Condition -->
+	<MetaModel TargetType="Articy.Models.Story.Condition">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="condition"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+				AllowCopy="true"
+				AllowDelete="true"
+				AllowCut="true"
+				IsWalkable="false"
+				AllowRename="true"
+				DefaultCommand="OpenInFlowEditor"
+				CommandPriority="7"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"
+                  DefaultWidth="225"
+                  DefaultHeight="100"/>
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="2" MaximumPins="2" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+        <Pin DisplayName=""/>
+			</Output>
+		</Connection>
+
+	</MetaModel>
+
+	<!-- Outcome -->
+	<MetaModel TargetType="Articy.Models.Story.Outcome">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="outcome"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+				AllowCopy="true"
+				AllowDelete="true"
+				AllowCut="true"
+				IsWalkable="false"
+				AllowRename="true"
+				DefaultCommand="OpenInFlowEditor"
+				CommandPriority="6"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"
+                  DefaultWidth="225"
+                  DefaultHeight="100"/>
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="1" MaximumPins="1" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Output>
+		</Connection>
+
+	</MetaModel>
+
+	<!-- Dialog -->
+	<MetaModel TargetType="Articy.Models.Story.Dialog">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="dialog"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="graphPerspectiveProvider"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Story.DialogFragment" Default="true"/>
+			<Child Type="Articy.Models.Story.Dialog"/>
+			<Child Type="Articy.Models.Story.FlowFragment"/>
+			<Child Type="Articy.Models.Story.Hub"/>
+			<Child Type="Articy.Models.Story.Jump"/>
+			<Child Type="Articy.Models.Story.Condition"/>
+			<Child Type="Articy.Models.Story.Outcome"/>
+			<Child Type="Articy.Models.General.Comment"/>
+			<Child Type="Articy.Models.Notes.TextObject"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+		  <ModelType Type="Articy.ModelFramework.Connection"/>
+		  <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+
+			<ModelType Type="Articy.Models.Notes.SectionSettings"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+					   DefaultCommand="OpenInFlowEditor"
+					   CommandPriority="19"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  DefaultWidth="291"
+				  DefaultHeight="200"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="0" MaximumPins="30" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="0" MaximumPins="30" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Output>
+		</Connection>
+
+	</MetaModel>
+
+	<!-- FlowFragment -->
+	<MetaModel TargetType="Articy.Models.Story.FlowFragment">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="flowfragment"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="graphPerspectiveProvider"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Story.FlowFragment" Default="true"/>
+			<Child Type="Articy.Models.Story.DialogFragment" Default="true"/>
+			<Child Type="Articy.Models.Story.Dialog"/>
+            <Child Type="Articy.Models.Story.Jump"/>
+            <Child Type="Articy.Models.Story.Hub"/>
+			<Child Type="Articy.Models.Story.Condition"/>
+			<Child Type="Articy.Models.Story.Outcome"/>
+			<Child Type="Articy.Models.General.Comment"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.Connection"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+					   DefaultCommand="OpenInFlowEditor"
+					   CommandPriority="20"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  DefaultWidth="275"
+				  DefaultHeight="200"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+		<Connection Version="1.0">
+			<Input MinimumPins="0" MaximumPins="30" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Input>
+			<Output MinimumPins="0" MaximumPins="30" AllowParallelExecution="false">
+				<Pin DisplayName=""/>
+			</Output>
+		</Connection>
+
+	</MetaModel>
+
+	<!-- Actors Folder -->
+	<MetaModel TargetType="Articy.Models.Entities.ActorsFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="actorsfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Entities.Entity" Default="true"/>
+			<Child Type="Articy.Models.Entities.ActorsUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Actors User Folder -->
+	<MetaModel TargetType="Articy.Models.Entities.ActorsUserFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="userfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+
+        <!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Entities.Entity" Default="true"/>
+			<Child Type="Articy.Models.Entities.ActorsUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+					   CommandPriority="10"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Entity -->
+	<MetaModel TargetType="Articy.Models.Entities.Entity">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="entity"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.Entities.EntityTraitGroup"/>
+			<ModelType Type="Articy.Models.Entities.EntityTraitString"/>
+			<ModelType Type="Articy.Models.Entities.EntityTraitLocalizedString"/>
+			<ModelType Type="Articy.Models.Entities.BasicTraitsGroup"/>
+			<ModelType Type="Articy.Models.Entities.MainCharacterTraitsGroup"/>
+			<ModelType Type="Articy.Models.Entities.SupportingCharacterTraitsGroup"/>
+
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   CommandPriority="11"
+					   DefaultCommand="OpenModelSheet"
+					   />
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Worlds Folder -->
+	<MetaModel TargetType="Articy.Models.Worlds.WorldsFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="worldsfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+
+        <!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Worlds.Location" Default="true"/>
+			<Child Type="Articy.Models.Worlds.WorldsUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+		  <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Worlds User Folder -->
+	<MetaModel TargetType="Articy.Models.Worlds.WorldsUserFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="userfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+
+        <!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Worlds.Location" Default="true"/>
+			<Child Type="Articy.Models.Worlds.WorldsUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+					   CommandPriority="10"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Assets Folder -->
+	<MetaModel TargetType="Articy.Models.Assets.AssetsFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="assetfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+
+        <!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Assets.Asset"/>
+			<Child Type="Articy.Models.Assets.AssetsUserFolder" Default="true"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+		  <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Assets User Folder -->
+	<MetaModel TargetType="Articy.Models.Assets.AssetsUserFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="userfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+
+        <!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Assets.Asset"/>
+			<Child Type="Articy.Models.Assets.AssetsUserFolder" Default="true"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+                       CommandPriority="10"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Asset -->
+	<MetaModel TargetType="Articy.Models.Assets.Asset">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="asset"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0"/>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenAssets"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="false"/>
+
+		</Edit>
+		
+	</MetaModel>
+
+	<!-- Location -->
+	<MetaModel TargetType="Articy.Models.Worlds.Location">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="location"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="locationPerspectiveProvider"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+          </ProviderInfo>
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+		
+        <!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Worlds.Zone" Default="true"/>
+			<Child Type="Articy.Models.Worlds.Spot"/>
+			<Child Type="Articy.Models.Worlds.Path"/>
+			<Child Type="Articy.Models.Worlds.LocationText"/>
+			<Child Type="Articy.Models.Worlds.LocationImage"/>
+			<Child Type="Articy.Models.General.Link"/>
+            <Child Type="Articy.Models.Worlds.LocationLayerUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+		  <ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+		  <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+          <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+          <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+        </ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+					   DefaultCommand="OpenInLocationEditor"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Location Layer -->
+	<MetaModel TargetType="Articy.Models.Worlds.LocationLayerUserFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="locationlayeruserfolder"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <PartitionSettings CreatePartition="false"
+                       MayBeUserPartitionRoot="false"
+                       Version="1.0"/>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.Worlds.Zone" Default="true"/>
+      <Child Type="Articy.Models.Worlds.Spot"/>
+      <Child Type="Articy.Models.Worlds.Path"/>
+      <Child Type="Articy.Models.General.Link"/>
+      <Child Type="Articy.Models.Worlds.LocationText"/>
+	  <Child Type="Articy.Models.Worlds.LocationImage"/>
+	  <Child Type="Articy.Models.Worlds.LocationLayerUserFolder"/>
+    </AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+      <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="true"
+                 AllowDelete="true"
+                 AllowCut="true"
+                 IsWalkable="true"
+                 CommandPriority="11"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="true"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+
+    </Edit>
+
+  </MetaModel>
+
+	<!-- Zone -->
+	<MetaModel TargetType="Articy.Models.Worlds.Zone">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="zone"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenInLocationEditor"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Path -->
+	<MetaModel TargetType="Articy.Models.Worlds.Path">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="path"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+          
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenInLocationEditor"
+   					   IsUserInstanceable="false"/>
+
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Spot -->
+	<MetaModel TargetType="Articy.Models.Worlds.Spot">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="spot"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+        <!-- AllowedPerspectiveProviders -->
+        <AllowedPerspectiveProviders Version="1">
+          <ProviderInfo Version="1">
+            <Provider Key="modelSheetProvider"/>
+          </ProviderInfo>
+        </AllowedPerspectiveProviders>
+      
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenInLocationEditor"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+	</MetaModel>
+
+	<!-- LocationText -->
+	<MetaModel TargetType="Articy.Models.Worlds.LocationText">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="locationtext"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<PartitionSettings CreatePartition="false"
+						   MayBeUserPartitionRoot="false"
+						   Version="1.0"/>
+		
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   AllowRename="false"
+					   DefaultCommand="OpenInLocationEditor"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+			<ModelType Type="Articy.Models.Worlds.LocationItemAnchor"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+			<ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Worlds.LocationItemAnchor" Default="true"/>
+		</AllowedChildren>
+		
+	</MetaModel>
+
+	<!-- LocationImage -->
+	<MetaModel TargetType="Articy.Models.Worlds.LocationImage">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="locationimage"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<PartitionSettings CreatePartition="false"
+						   MayBeUserPartitionRoot="false"
+						   Version="1.0"/>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"
+					   DefaultCommand="OpenInLocationEditor"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Worlds.WorldPoint"/>
+			<ModelType Type="Articy.Models.Worlds.LocationItemAnchor"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+
+			<ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Worlds.LocationItemAnchor" Default="true"/>
+		</AllowedChildren>
+
+
+	</MetaModel>
+
+	<!-- LocationItemAnchor -->
+	<MetaModel TargetType="Articy.Models.Worlds.LocationItemAnchor">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="locationanchor"/>
+		
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   AllowRename="false"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+	</MetaModel>
+
+
+	<!-- Model Customization Root Folder -->
+  	<MetaModel TargetType="Articy.Models.General.ModelCustomization.RootFolder">
+  
+  		<!-- Associated icon -->
+  		<Icon Version="1.0" Filename="systemfolder"/>
+  
+  		<!-- AllowedAspects -->
+  		<AllowedAspects Version="1.0">
+  			<Aspect Key="explorerAspect"/>
+  			<Aspect Key="consoleAspect"/>
+  			<Aspect Key="loggerAspect"/>
+  		</AllowedAspects>
+  
+          <!-- AllowedPerspectiveProviders -->
+          <AllowedPerspectiveProviders Version="1">
+            <ProviderInfo Version="1">
+              <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+            </ProviderInfo>
+            <ProviderInfo Version="1">
+              <Provider Key="modelSheetProvider"/>
+            </ProviderInfo>
+          </AllowedPerspectiveProviders>
+        
+  		<!-- Allowed Children -->
+  		<AllowedChildren Version="1.0">
+            <Child Type="Articy.Models.General.ModelCustomization.TraitTemplatesFolder"/>
+  			<Child Type="Articy.Models.General.ModelCustomization.FeaturesFolder"/>
+            <Child Type="Articy.Models.General.ModelCustomization.ModelTemplatesFolder"/>
+  		</AllowedChildren>
+  
+  		<!-- Contained Model Types -->
+  		<ContainedModelTypes Version="1.0">
+  			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+  		</ContainedModelTypes>
+
+        <PartitionSettings CreatePartition="true"
+                           MinimumEditingRightLevel="2"
+                           Version="1.0"/>
+      
+  		<!-- Edit Flags -->
+  		<Edit Version="1.0">
+  
+  			<Interface AllowSelection="true"
+  					   AllowCopy="false"
+  					   AllowDelete="false"
+  					   AllowCut="false"
+  					   IsWalkable="true"
+					   AllowRename="false"
+  					   IsUserInstanceable="false"/>
+  
+  			<View AllowInList="true"
+  				  AllowChangeZOrder="false"
+  				  NewObjectDisplayName=""
+  				  ObjectTypeDisplayName="_Self_"/>
+  
+  		</Edit>
+  
+  	</MetaModel>
+
+    <!-- Model Customization Features Folder -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.FeaturesFolder">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="systemfolder"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+        <Child Type="Articy.Models.General.ModelCustomization.FeaturesUserFolder" Default="true"/>
+        <Child Type="Articy.Models.General.ModelCustomization.FeatureBlueprint"/>
+      </AllowedChildren>
+
+      <!-- Contained Model Types -->
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+      </ContainedModelTypes>
+
+      <PartitionSettings CreatePartition="false"
+                         Version="1.0"/>
+      
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+                   AllowCopy="false"
+                   AllowDelete="false"
+                   AllowCut="false"
+				   AllowRename="false"
+                   IsWalkable="true"
+				   IsUserInstanceable="false"/>
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="true"/>
+      </Edit>
+
+    </MetaModel>
+  
+    <!-- Model Customization User Features Folder -->
+  	<MetaModel TargetType="Articy.Models.General.ModelCustomization.FeaturesUserFolder">
+  
+  		<!-- Associated icon -->
+  		<Icon Version="1.0" Filename="userfolder"/>
+  
+  		<!-- AllowedAspects -->
+  		<AllowedAspects Version="1.0">
+  			<Aspect Key="explorerAspect"/>
+  			<Aspect Key="consoleAspect"/>
+  			<Aspect Key="loggerAspect"/>
+  		</AllowedAspects>
+  
+          <!-- AllowedPerspectiveProviders -->
+          <AllowedPerspectiveProviders Version="1">
+            <ProviderInfo Version="1">
+              <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+            </ProviderInfo>
+            <ProviderInfo Version="1">
+              <Provider Key="modelSheetProvider"/>
+            </ProviderInfo>
+          </AllowedPerspectiveProviders>
+  
+          <!-- Allowed Children -->
+  		<AllowedChildren Version="1.0">
+  			<Child Type="Articy.Models.General.ModelCustomization.FeaturesUserFolder" Default="true"/>
+  			<Child Type="Articy.Models.General.ModelCustomization.FeatureBlueprint"/>
+  		</AllowedChildren>
+  
+  		<!-- Contained Model Types -->
+  		<ContainedModelTypes Version="1.0">
+  			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+  		</ContainedModelTypes>
+
+  		<!-- Edit Flags -->
+  		<Edit Version="1.0">
+  
+  			<Interface AllowSelection="true"
+  					   AllowCopy="true"
+  					   AllowDelete="true"
+  					   AllowCut="false"
+  					   IsWalkable="true"
+  					   CommandPriority="10"/>
+  
+  			<View AllowInList="true"
+  				  AllowChangeZOrder="true"
+  				  NewObjectDisplayName="_Self_"
+  				  ObjectTypeDisplayName="_Self_"
+  				  NumberedNewObjectDisplayName="true"/>
+  		</Edit>
+  
+  	</MetaModel>
+
+    <!-- Model Customization Templates Folder -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.ModelTemplatesFolder">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="systemfolder"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+        <Child Type="Articy.Models.General.ModelCustomization.ModelTemplatesTypedFolder"/>
+      </AllowedChildren>
+
+      <!-- Contained Model Types -->
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+      </ContainedModelTypes>
+
+      <PartitionSettings CreatePartition="false"
+                         Version="1.0"/>
+      
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="true"/>
+      </Edit>
+
+    </MetaModel>
+
+    <!-- Model Customization Templates Typed Folder -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.ModelTemplatesTypedFolder">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="systemfolder"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+        <Child Type="Articy.Models.General.ModelCustomization.ModelTemplatesTypedUserFolder" Default="true"/>
+        <Child Type="Articy.Models.General.ModelCustomization.ModelTemplate"/>
+      </AllowedChildren>
+
+      <!-- Contained Model Types -->
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+      </ContainedModelTypes>
+
+      <PartitionSettings CreatePartition="false"
+                         Version="1.0"/>
+      
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+                        AllowCopy="false"
+                        AllowDelete="false"
+                        AllowCut="false"
+						AllowRename="false"
+                        IsWalkable="true"
+                        IsUserInstanceable="false"/>
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="true"/>
+      </Edit>
+
+    </MetaModel>
+
+    <!-- Model Customization Templates User Folder -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.ModelTemplatesTypedUserFolder">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="userfolder"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+        </ProviderInfo>
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+        <Child Type="Articy.Models.General.ModelCustomization.ModelTemplatesTypedUserFolder" Default="true"/>
+        <Child Type="Articy.Models.General.ModelCustomization.ModelTemplate"/>
+      </AllowedChildren>
+
+      <!-- Contained Model Types -->
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+      </ContainedModelTypes>
+
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+                   AllowCopy="true"
+                   AllowDelete="true"
+                   AllowCut="false"
+                   IsWalkable="true"
+                   CommandPriority="10"/>
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="true"/>
+      </Edit>
+
+    </MetaModel>
+
+  <!-- Model Customization Trait Templates Folder -->
+  <MetaModel TargetType="Articy.Models.General.ModelCustomization.TraitTemplatesFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="systemfolder"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.General.ModelCustomization.TraitTemplatesTypedFolder"/>
+    </AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+		<ModelType Type="Articy.Models.General.ModelCustomization.ScriptTraitExpression"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <PartitionSettings CreatePartition="false"
+                       Version="1.0"/>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                     AllowCopy="false"
+                     AllowDelete="false"
+                     AllowCut="false"
+				     AllowRename="false"
+                     IsWalkable="true"
+                     IsUserInstanceable="false"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="true"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+    </Edit>
+
+  </MetaModel>
+  
+  <!-- Model Customization Trait Templates Typed Folder -->
+  <MetaModel TargetType="Articy.Models.General.ModelCustomization.TraitTemplatesTypedFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="systemfolder"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.General.ModelCustomization.TraitTemplatesTypedUserFolder" Default="true"/>
+      <Child Type="Articy.Models.General.ModelCustomization.TraitTemplate"/>
+    </AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+		<ModelType Type="Articy.Models.General.ModelCustomization.ScriptTraitExpression"/>
+		<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <PartitionSettings CreatePartition="false"
+                       Version="1.0"/>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                      AllowCopy="false"
+                      AllowDelete="false"
+				 AllowRename="false"
+                      AllowCut="false"
+                      IsWalkable="true"
+                      IsUserInstanceable="false"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="true"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+    </Edit>
+
+  </MetaModel>
+
+  <!-- Model Customization Trait Templates User Folder -->
+  <MetaModel TargetType="Articy.Models.General.ModelCustomization.TraitTemplatesTypedUserFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="userfolder"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.General.ModelCustomization.TraitTemplatesTypedUserFolder" Default="true"/>
+      <Child Type="Articy.Models.General.ModelCustomization.TraitTemplate"/>
+    </AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+		<ModelType Type="Articy.Models.General.ModelCustomization.ScriptTraitExpression"/>
+		<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="false"
+                 AllowDelete="true"
+                 AllowCut="false"
+                 IsWalkable="true"
+                 CommandPriority="10"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="true"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+    </Edit>
+
+  </MetaModel>
+
+  <!-- Feature Blueprint -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.FeatureBlueprint">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="feature"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+		  <!--<ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+		</ProviderInfo>-->
+		<ProviderInfo Version="1">
+			<Provider Key="templateEditorPerspectiveProvider" DefaultPerspectiveKey="templateEditorPerspectiveFeatureEditor"/>
+			<ExcludedPerspective Key="templateEditorPerspectiveTemplateEditor"/>
+		</ProviderInfo>
+      </AllowedPerspectiveProviders>
+
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+      </ContainedModelTypes>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+      </AllowedChildren>
+
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+                   AllowCopy="true"
+                   AllowDelete="true"
+                   AllowCut="false"
+                   IsWalkable="false"
+                   IsCommandTarget="true"
+				   DefaultCommand="OpenModelSheet"
+                   CommandPriority="11"/>
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="true"
+              UniqueNewObjectDisplayName="true"/>
+      </Edit>
+
+    </MetaModel>
+
+    <!-- Model Template -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.ModelTemplate">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="modeltemplate"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+		  <ProviderInfo Version="1">
+			  <Provider Key="templateEditorPerspectiveProvider" DefaultPerspectiveKey="templateEditorPerspectiveTemplateEditor"/>
+			  <ExcludedPerspective Key="templateEditorPerspectiveFeatureEditor"/>
+		  </ProviderInfo>
+	  </AllowedPerspectiveProviders>
+
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        
+        <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.FeatureBlueprint"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+      </ContainedModelTypes>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+      </AllowedChildren>
+
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+                   AllowCopy="true"
+                   AllowDelete="true"
+                   AllowCut="false"
+                   IsWalkable="false"
+				   DefaultCommand="OpenModelSheet"
+                   CommandPriority="11"/>
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="true"
+              UniqueNewObjectDisplayName="true"/>
+      </Edit>
+
+    </MetaModel>
+  
+	<!-- Categories -->
+	<MetaModel TargetType="Categories">
+		<AvailableCategories Version="1.0">
+			<Category Name="" DisplayNameTextId="Articy.WpfFramework.Categories.Default.Name" DescriptionTextId="Articy.WpfFramework.Categories.Default.ToolTip" Icon="/WpfFramework;component/Resources/Images/ExplorerAspect/Project.png" Color="#7F7F7F" SortOrder="100000" />
+			<Category Name="Data" DisplayNameTextId="Articy.WpfFramework.Categories.Data.Name" DescriptionTextId="Articy.WpfFramework.Categories.Data.ToolTip" Icon="/WpfFramework;component/Resources/Images/ExplorerAspect/Project.png" Color="#2F2F2F" SortOrder="0" />
+			<Category Name="Visual" DisplayNameTextId="Articy.WpfFramework.Categories.Visual.Name" DescriptionTextId="Articy.WpfFramework.Categories.Visual.ToolTip" Icon="/WpfFramework;component/Resources/Images/ExplorerAspect/Project.png" Color="#AFAFAF" SortOrder="0" />
+			<Category Name="Input" DisplayNameTextId="Articy.WpfFramework.Categories.Input.Name" DescriptionTextId="Articy.WpfFramework.Categories.Input.ToolTip" Icon="/WpfFramework;component/Resources/Images/ExplorerAspect/Project.png" Color="#FFFFFF" SortOrder="0" />
+			<Category Name="Output" DisplayNameTextId="Articy.WpfFramework.Categories.Output.Name" DescriptionTextId="Articy.WpfFramework.Categories.Output.ToolTip" Icon="/WpfFramework;component/Resources/Images/ExplorerAspect/Project.png" Color="#0F0F0F" SortOrder="0" />
+			<Category Name="Position" DisplayNameTextId="Articy.WpfFramework.Categories.Position.Name" DescriptionTextId="Articy.WpfFramework.Categories.Position.ToolTip" Icon="/WpfFramework;component/Resources/Images/ExplorerAspect/Project.png" Color="#7FFF7F" SortOrder="0" />
+		</AvailableCategories>
+	</MetaModel>
+
+    <!-- Trait Override -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.TraitOverride">
+
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+		  <ModelType Type="Articy.Models.General.ModelCustomization.ScriptTraitExpression"/>
+		  <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+      </ContainedModelTypes>
+
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+
+        <Interface AllowSelection="true"
+                   AllowCopy="true"
+                   AllowDelete="true"
+                   AllowCut="false"
+                   IsWalkable="false"
+				   DefaultCommand="OpenModelSheet"
+                   CommandPriority="11"/>
+
+        <View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+        
+      </Edit>
+      
+    </MetaModel>
+
+    <!-- Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.TraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="modeltemplate"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+            <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Number Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.NumberTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="number"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Boolean Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.BooleanTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="boolean"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Enum Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.EnumTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="enum"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Small Text Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.ShortTextTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="text-small"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Medium Text Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.MediumTextTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="text-medium"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Large Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.LargeTextTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="text-large"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Reference Strip Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.ReferenceStripTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="referencestrip"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Reference Slot Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.ReferenceSlotTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="referencefield"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+    <!-- Reference Strip Trait Template -->
+    <MetaModel TargetType="Articy.Models.General.ModelCustomization.QueryReferenceStripTraitTemplate">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="queryreferencestrip"/>
+
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="true"
+                 AllowDelete="true"
+                 AllowCut="false"
+                 IsWalkable="false"
+                 DefaultCommand="OpenModelSheet"
+                 CommandPriority="11"/>
+
+      <View AllowInList="true"
+                AllowChangeZOrder="false"
+                NewObjectDisplayName="_Self_"
+                ObjectTypeDisplayName="_Self_"
+                NumberedNewObjectDisplayName="true"
+                UniqueNewObjectDisplayName="true"/>
+    </Edit>
+
+    <!-- Allowed Aspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+  </MetaModel>
+
+
+
+	<!-- Small Script Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.ShortScriptTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="script-small"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Medium Script Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.MediumScriptTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="script-medium"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Large Script Trait Template -->
+	<MetaModel TargetType="Articy.Models.General.ModelCustomization.LargeScriptTraitTemplate">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="script-large"/>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="false"
+					   DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+					  AllowChangeZOrder="false"
+					  NewObjectDisplayName="_Self_"
+					  ObjectTypeDisplayName="_Self_"
+					  NumberedNewObjectDisplayName="true"
+                      UniqueNewObjectDisplayName="true"/>
+		</Edit>
+
+		<!-- Allowed Aspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+	</MetaModel>
+
+	<!-- Notes Folder -->
+  <MetaModel TargetType="Articy.Models.Notes.NotesFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="notefolder"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.Notes.NotesUserFolder"/>
+      <Child Type="Articy.Models.Notes.Document" Default="true"/>
+    </AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="false"
+                 AllowDelete="false"
+                 AllowCut="false"
+				 AllowRename="false"
+                 IsWalkable="true"
+                 IsUserInstanceable="false"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName=""
+            ObjectTypeDisplayName="_Self_"/>
+
+    </Edit>
+
+  </MetaModel>
+
+  <!-- Notes User Folder -->
+  <MetaModel TargetType="Articy.Models.Notes.NotesUserFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="userfolder"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.Notes.NotesUserFolder"/>
+	  <Child Type="Articy.Models.Notes.Document" Default="true"/>
+    </AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="true"
+                 AllowDelete="true"
+                 AllowCut="true"
+                 IsWalkable="true"
+                 CommandPriority="10"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="true"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+    </Edit>
+
+  </MetaModel>
+
+  <!-- Document -->
+  <MetaModel TargetType="Articy.Models.Notes.Document">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="document"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="documentPerspectiveProvider"/>
+      </ProviderInfo>
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.Models.General.ArticyMultiLanguageText"/>
+
+      <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+      <ModelType Type="Articy.Models.General.ArticyMultiLanguageText"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+
+	  <ModelType Type="Articy.Models.Notes.SectionSettings"/>
+    </ContainedModelTypes>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+		<Child Type="Articy.Models.Notes.TextObject"/>
+		<Child Type="Articy.Models.Story.Dialog"/>
+		<Child Type="Articy.Models.Story.DialogFragment"/>
+		<Child Type="Articy.Models.General.Link"/>
+    </AllowedChildren>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="true"
+                 AllowDelete="true"
+                 AllowCut="true"
+                 IsWalkable="true"
+				 DefaultCommand="OpenInDocumentView"
+                 CommandPriority="11"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+    </Edit>
+
+  </MetaModel>
+
+  <!-- TextObject -->
+  <MetaModel TargetType="Articy.Models.Notes.TextObject">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="textObject"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+      <ProviderInfo Version="1">
+        <Provider Key="modelSheetProvider"/>
+      </ProviderInfo>
+    </AllowedPerspectiveProviders>
+
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.Models.General.ArticyMultiLanguageText"/>
+
+      <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+      <ModelType Type="Articy.Models.General.ArticyMultiLanguageText"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+      <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+
+		<ModelType Type="Articy.Models.Notes.SectionSettings"/>
+    </ContainedModelTypes>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+		<Child Type="Articy.Models.Notes.TextObject"/>
+		<Child Type="Articy.Models.Story.Dialog"/>
+		<Child Type="Articy.Models.Story.DialogFragment"/>
+		<Child Type="Articy.Models.General.Link"/>
+    </AllowedChildren>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="true"
+                 AllowDelete="true"
+                 AllowCut="true"
+                 IsWalkable="true"
+				 DefaultCommand="OpenInDocumentView"
+                 CommandPriority="11"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName="_Self_"
+            ObjectTypeDisplayName="_Self_"
+            NumberedNewObjectDisplayName="true"/>
+    </Edit>
+
+  </MetaModel>
+
+  <!-- Journey Folder -->
+	<MetaModel TargetType="Articy.Models.Journeys.JourneysFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="journeysfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+			</ProviderInfo>
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Journeys.Journey" Default="true"/>
+			<Child Type="Articy.Models.Journeys.JourneysUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Journeys User Folder -->
+	<MetaModel TargetType="Articy.Models.Journeys.JourneysUserFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="userfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="contentBrowserPerspectiveProvider" DefaultPerspectiveKey="contentBrowserPerspectiveMedium"/>
+			</ProviderInfo>
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Journeys.Journey" Default="true"/>
+			<Child Type="Articy.Models.Journeys.JourneysUserFolder"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+					   CommandPriority="10"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Journey -->
+	<MetaModel TargetType="Articy.Models.Journeys.Journey">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="journey"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Journeys.JourneyPoint"/>
+            <ModelType Type="Articy.Models.Journeys.JourneySettings"/>
+			<ModelType Type="Articy.Models.Scripting.VariableSnapshot"/>
+			<ModelType Type="Articy.Models.Scripting.NamespaceSnapshot"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="true"
+                       DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="true"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Journey Point -->
+	<MetaModel TargetType="Articy.Models.Journeys.JourneyPoint">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="journeypoint"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="presentationPerspectiveProvider"/>
+			</ProviderInfo>
+			<ProviderInfo Version="1">
+				<Provider Key="modelSheetProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.Models.Journeys.JourneyPointSettings"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="false"
+                       DefaultCommand="OpenModelSheet"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Connection -->
+	<MetaModel TargetType="Articy.ModelFramework.Connection">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="connection"/>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   IsWalkable="false"/>
+
+          <View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+          
+		</Edit>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+            <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+	</MetaModel>
+
+    <!-- Link -->
+    <MetaModel TargetType="Articy.Models.General.Link">
+
+      <!-- Associated icon -->
+      <Icon Version="1.0" Filename="link"/>
+
+      <!-- AllowedAspects -->
+      <AllowedAspects Version="1.0">
+        <Aspect Key="explorerAspect"/>
+        <Aspect Key="consoleAspect"/>
+        <Aspect Key="loggerAspect"/>
+      </AllowedAspects>
+
+      <!-- AllowedPerspectiveProviders -->
+      <AllowedPerspectiveProviders Version="1">
+        <ProviderInfo Version="1">
+          <Provider Key="modelSheetProvider"/>
+        </ProviderInfo>
+      </AllowedPerspectiveProviders>
+
+      <!-- Allowed Children -->
+      <AllowedChildren Version="1.0">
+      </AllowedChildren>
+
+      <!-- Contained Model Types -->
+      <ContainedModelTypes Version="1.0">
+        <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+        
+        <ModelType Type="Articy.Models.General.ModelCustomization.FeatureStorage"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.FeatureOverride"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverride"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.TraitOverrideMetaData"/>
+        <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueDefinition"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.EnumTraitValueEntry"/>
+        <ModelType Type="Articy.Models.General.ModelCustomization.ReferenceStripTraitValueModelDependencyCollection"/>
+      </ContainedModelTypes>
+
+      <!-- Edit Flags -->
+      <Edit Version="1.0">
+        <Interface AllowSelection="true"
+                   AllowCopy="true"
+                   AllowDelete="true"
+                   AllowCut="true"
+				   AllowRename="false"
+                   IsWalkable="false"
+				   DefaultCommand="OpenInLocationEditor"
+                   CommandPriority="9"
+				   IsUserInstanceable="false"
+				   />
+
+        <View AllowInList="true"
+              AllowChangeZOrder="true"
+              NewObjectDisplayName="_Self_"
+              ObjectTypeDisplayName="_Self_"
+              NumberedNewObjectDisplayName="false"/>
+      </Edit>
+
+      <Connection Version="1.0">
+        <Input MinimumPins="0" MaximumPins="0" AllowParallelExecution="false">
+        </Input>
+        <Output MinimumPins="0" MaximumPins="0" AllowParallelExecution="false">
+        </Output>
+      </Connection>
+
+    </MetaModel>
+
+  <!-- Project settings Folder -->
+  <MetaModel TargetType="Articy.Models.General.ProjectSettings.ProjectSettingsFolder">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="settings"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+		<ProviderInfo Version="1">
+			<Provider Key="settingsPerspectiveProvider"/>
+		</ProviderInfo>
+	</AllowedPerspectiveProviders>
+
+    <!-- Allowed Children -->
+    <AllowedChildren Version="1.0">
+      <Child Type="Articy.Models.General.ProjectSettings.ProjectSettingsGeneral" Default="true"/>
+      <Child Type="Articy.Models.Journeys.ProjectSettingsJourneys" Default="true"/>
+      <Child Type="Articy.Models.Story.ProjectSettingsFlow" Default="true"/>
+  	  <Child Type="Articy.Models.Worlds.ProjectSettingsLocation" Default="true"/>
+	</AllowedChildren>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <PartitionSettings CreatePartition="true"
+                       MinimumEditingRightLevel="1"
+                       Version="1.0"/>
+    
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="false"
+                 AllowDelete="false"
+                 AllowCut="false"
+				 AllowRename="false"
+                 IsWalkable="true"
+                 IsUserInstanceable="false"/>
+
+      <View AllowInList="true"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName=""
+            ObjectTypeDisplayName="_Self_"/>
+
+    </Edit>
+
+  </MetaModel>
+
+  <!-- General project settings -->
+  <MetaModel TargetType="Articy.Models.General.ProjectSettings.ProjectSettingsGeneral">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="settings"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+		<ProviderInfo Version="1">
+			<Provider Key="settingsPerspectiveProvider"/>
+		</ProviderInfo>
+	</AllowedPerspectiveProviders>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="false"
+                 AllowDelete="false"
+                 AllowCut="false"
+				 AllowRename="false"
+                 IsWalkable="true"
+                 IsUserInstanceable="false"/>
+
+      <View AllowInList="false"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName=""
+            ObjectTypeDisplayName="_Self_"/>
+
+    </Edit>
+
+  </MetaModel>
+
+  <!-- Journey project settings -->
+  <MetaModel TargetType="Articy.Models.Journeys.ProjectSettingsJourneys">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="settings"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+		<ProviderInfo Version="1">
+			<Provider Key="settingsPerspectiveProvider"/>
+		</ProviderInfo>
+	</AllowedPerspectiveProviders>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="false"
+                 AllowDelete="false"
+                 AllowCut="false"
+                 IsWalkable="true"
+                 IsUserInstanceable="false"/>
+
+      <View AllowInList="false"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName=""
+            ObjectTypeDisplayName="_Self_"/>
+
+    </Edit>
+
+  </MetaModel>
+
+  
+  <!-- Flow project settings -->
+  <MetaModel TargetType="Articy.Models.Story.ProjectSettingsFlow">
+
+    <!-- Associated icon -->
+    <Icon Version="1.0" Filename="settings"/>
+
+    <!-- AllowedAspects -->
+    <AllowedAspects Version="1.0">
+      <Aspect Key="explorerAspect"/>
+      <Aspect Key="consoleAspect"/>
+      <Aspect Key="loggerAspect"/>
+    </AllowedAspects>
+
+    <!-- AllowedPerspectiveProviders -->
+    <AllowedPerspectiveProviders Version="1">
+		<ProviderInfo Version="1">
+			<Provider Key="settingsPerspectiveProvider"/>
+		</ProviderInfo>
+	</AllowedPerspectiveProviders>
+
+    <!-- Contained Model Types -->
+    <ContainedModelTypes Version="1.0">
+      <ModelType Type="Articy.ModelFramework.ModelDependency"/>
+      <ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+    </ContainedModelTypes>
+
+    <!-- Edit Flags -->
+    <Edit Version="1.0">
+
+      <Interface AllowSelection="true"
+                 AllowCopy="false"
+                 AllowDelete="false"
+                 AllowCut="false"
+                 IsWalkable="true"
+                 IsUserInstanceable="false"/>
+
+      <View AllowInList="false"
+            AllowChangeZOrder="false"
+            NewObjectDisplayName=""
+            ObjectTypeDisplayName="_Self_"/>
+
+    </Edit>
+	</MetaModel>
+
+	<!-- Settings for location object -->
+	<MetaModel TargetType="Articy.Models.Worlds.ProjectSettingsLocation">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="settings"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="settingsPerspectiveProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- RuleSet -->
+	<MetaModel TargetType="Articy.Models.CustomExport.RuleSet">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="ruleset"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="ruleSetsPerspectiveProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.CustomExport.Package" Default="true"/>
+		</AllowedChildren>
+
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="true"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Package -->
+	<MetaModel TargetType="Articy.Models.CustomExport.Package">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="settings"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="true"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  UniqueNewObjectDisplayName="true"
+				  NumberedNewObjectDisplayName="true"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- ObjectDataLayout -->
+	<MetaModel TargetType="Articy.Models.CustomExport.ObjectDataLayout">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="settings"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.CustomExport.TypeLayout" Default="true"/>
+		</AllowedChildren>
+
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- TypeLayout -->
+	<MetaModel TargetType="Articy.Models.CustomExport.TypeLayout">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="settings"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.CustomExport.TypePropertyLayout" Default="true"/>
+		</AllowedChildren>
+
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- TypePropertyLayout -->
+	<MetaModel TargetType="Articy.Models.CustomExport.TypePropertyLayout">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="settings"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="false"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- GlobalVariables Folder -->
+	<MetaModel TargetType="Articy.Models.Scripting.GlobalVariablesFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="globalvariablesfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="globalVariablesPerspectiveProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Scripting.Namespace" Default="true"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.Scripting.Variable"/>
+			<ModelType Type="Articy.Models.Scripting.Namespace"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<PartitionSettings CreatePartition="true"
+						   MinimumEditingRightLevel="1"
+						   Version="1.0"/>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Namespace -->
+	<MetaModel TargetType="Articy.Models.Scripting.Namespace">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="Namespace"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="globalVariablesPerspectiveProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.Scripting.Namespace"/>
+			<ModelType Type="Articy.Models.Scripting.Variable"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Scripting.Variable" Default="true"/>
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="false"
+					   AllowRename="true"
+					   IsWalkable="true"
+					   IsCommandTarget="false"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Variable -->
+	<MetaModel TargetType="Articy.Models.Scripting.Variable">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="Variable"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="true"
+					   AllowDelete="true"
+					   AllowCut="true"
+					   AllowRename="true"
+					   IsWalkable="false"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- NamespaceSnapshot -->
+	<MetaModel TargetType="Articy.Models.Scripting.NamespaceSnapshot">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="NamespaceSnapshot"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.Models.Scripting.NamespaceSnapshot"/>
+			<ModelType Type="Articy.Models.Scripting.VariableSnapshot"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.Scripting.VariableSnapshot" Default="true"/>
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="false"
+					   IsCommandTarget="false"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- VariableSnapshot -->
+	<MetaModel TargetType="Articy.Models.Scripting.VariableSnapshot">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="VariableSnapshot"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+			<Aspect Key="consoleAspect"/>
+			<Aspect Key="loggerAspect"/>
+		</AllowedAspects>
+
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+		</AllowedChildren>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="false"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="false"
+					   CommandPriority="11"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName="_Self_"
+				  ObjectTypeDisplayName="_Self_"
+				  NumberedNewObjectDisplayName="true"/>
+		</Edit>
+
+	</MetaModel>
+
+	<!-- RuleSets Folder -->
+	<MetaModel TargetType="Articy.Models.CustomExport.RuleSetsFolder">
+
+		<!-- Associated icon -->
+		<Icon Version="1.0" Filename="rulesetsfolder"/>
+
+		<!-- AllowedAspects -->
+		<AllowedAspects Version="1.0">
+			<Aspect Key="explorerAspect"/>
+		</AllowedAspects>
+
+		<!-- AllowedPerspectiveProviders -->
+		<AllowedPerspectiveProviders Version="1">
+			<ProviderInfo Version="1">
+				<Provider Key="ruleSetsPerspectiveProvider"/>
+			</ProviderInfo>
+		</AllowedPerspectiveProviders>
+
+		<!-- Allowed Children -->
+		<AllowedChildren Version="1.0">
+			<Child Type="Articy.Models.CustomExport.RuleSet" Default="true"/>
+		</AllowedChildren>
+
+		<!-- Contained Model Types -->
+		<ContainedModelTypes Version="1.0">
+			<ModelType Type="Articy.Models.CustomExport.RuleSet"/>
+			<ModelType Type="Articy.Models.CustomExport.ObjectDataLayout"/>
+			<ModelType Type="Articy.Models.CustomExport.Package"/>
+			<ModelType Type="Articy.Models.CustomExport.TypeLayout"/>
+			<ModelType Type="Articy.Models.CustomExport.TypePropertyLayout"/>
+			<ModelType Type="Articy.ModelFramework.ModelDependency"/>
+			<ModelType Type="Articy.ModelFramework.Localization.ArticyMultiLanguageText"/>
+		</ContainedModelTypes>
+
+		<PartitionSettings CreatePartition="true"
+						   MinimumEditingRightLevel="1"
+						   Version="1.0"/>
+
+		<!-- Edit Flags -->
+		<Edit Version="1.0">
+
+			<Interface AllowSelection="true"
+					   AllowCopy="false"
+					   AllowDelete="false"
+					   AllowCut="false"
+					   AllowRename="false"
+					   IsWalkable="true"
+					   IsUserInstanceable="false"/>
+
+			<View AllowInList="true"
+				  AllowChangeZOrder="false"
+				  NewObjectDisplayName=""
+				  ObjectTypeDisplayName="_Self_"/>
+
+		</Edit>
+
+	</MetaModel>
+
+	<!-- Command ToolBar priorities -->
+	<MetaModel TargetType="CommandToolBarPriority">
+		<CommandPriorities>
+			<!-- Model Actions-->
+			<CommandPriority Command="Submerge" Priority="13"/>
+			<CommandPriority Command="OpenInFlowEditor" Priority="7"/>
+			<CommandPriority Command="OpenInLocationEditor" Priority="7"/>
+			<CommandPriority Command="OpenModelSheet" Priority="12"/>
+			<CommandPriority Command="AssignTemplate" Priority="11"/>
+			<CommandPriority Command="ChangeColor" Priority="9"/>
+			<CommandPriority Command="Export" Priority="6" />
+			<CommandPriority Command="StartFromHere" Priority="8"/>
+
+			<CommandPriority Command="OpenParentJourneyModelSheet" Priority="13"/>
+			<CommandPriority Command="StartJourneyFromJourney" Priority="14"/>
+			<CommandPriority Command="OpenVariableModelSheetOfJourneyPoint" Priority="12"/>
+
+			<CommandPriority Command="OpenAssets" Priority="13"/>
+			<CommandPriority Command="EditAssets" Priority="12"/>
+			<CommandPriority Command="UpdateAssets" Priority="11"/>
+			<CommandPriority Command="ImportAssets" Priority="14"/>
+			<CommandPriority Command="OpenContainingFolder" Priority="10"/>
+			<CommandPriority Command="RefreshAssets" Priority="9"/>
+			<CommandPriority Command="ChangeAssetSource" Priority="9"/>
+
+			<CommandPriority Command="BringForward" Priority="1"/>
+			<CommandPriority Command="BringToFront" Priority="1"/>
+			<CommandPriority Command="SendBackward" Priority="1"/>
+			<CommandPriority Command="SendToBack" Priority="1"/>
+
+			<CommandPriority Command="AlignLeft" Priority="5"/>
+			<CommandPriority Command="AlignRight" Priority="5"/>
+			<CommandPriority Command="AlignTop" Priority="5"/>
+			<CommandPriority Command="AlignBottom" Priority="5"/>
+			<CommandPriority Command="AlignCenterX" Priority="6"/>
+			<CommandPriority Command="AlignCenterY" Priority="6"/>
+			<CommandPriority Command="AlignDistributeX" Priority="5"/>
+			<CommandPriority Command="AlignDistributeY" Priority="5"/>
+
+			<CommandPriority Command="ClaimPartition" Priority="15" />
+			<CommandPriority Command="UnClaimPartition" Priority="14" />
+			<CommandPriority Command="TerminateClaim" Priority="4" />
+			<CommandPriority Command="PublishPartition" Priority="13" />
+			<CommandPriority Command="RefreshPartition" Priority="13" />
+			<CommandPriority Command="RetirePartition" Priority="18" />
+			<CommandPriority Command="CreatePartition" Priority="19" />
+			<CommandPriority Command="DiscardPartitionChanges" Priority="4" />
+			<CommandPriority Command="OpenPartitionChangeLog" Priority="13" />
+
+			<CommandPriority Command="ExplorerViewSettings" Priority="7" />
+			<CommandPriority Command="ShowOnlyMyPartitions" Priority="2" />
+			<CommandPriority Command="NavigatorCollapseAll" Priority="5" />
+			<CommandPriority Command="NavigatorExpandAll" Priority="4" />
+
+			<CommandPriority Command="OpenProjectChangeLog" Priority="1" />
+			<CommandPriority Command="PublishMultiPartitions" Priority="8" />
+			<CommandPriority Command="DiscardChanges" Priority="3" />
+			<CommandPriority Command="UpdateProject" Priority="9" />
+			<CommandPriority Command="RepartitionProject" Priority="6" />
+
+			<CommandPriority Command="ZoomToDefault" Priority="2" />
+			<CommandPriority Command="ZoomToBounds" Priority="2" />
+			<CommandPriority Command="ZoomSlider" Priority="2" />
+
+			<CommandPriority Key="ShowOnlyPartitionRoots" Priority="2" />
+			<CommandPriority Key="ShowHierarchicalLockState" Priority="1" />
+			<CommandPriority Key="NavigatorFilterTextBox" Priority="4" />
+			
+			<CommandPriority Key="FlowShowGrid" Priority="3" />
+			<CommandPriority Key="FlowSnapToGrid" Priority="4" />
+			<CommandPriority Key="FlowToggleConnectionZIndex" Priority="3"/>
+			<CommandPriority Key="FlowShowTemplateInfo" Priority="3"/>
+			<CommandPriority Key="FlowShowPreviewImage" Priority="4"/>
+			<CommandPriority Key="FlowEnableLoddingImage" Priority="1"/>
+
+			<CommandPriority Key="AutoSelectForward" Priority="4" />
+			<CommandPriority Key="AutoSelectBackward" Priority="4" />
+
+			<CommandPriority Key="SaveToFile" Priority="4" />
+			<CommandPriority Key="LoadFromFile" Priority="4" />
+			<CommandPriority Key="StoreInProject" Priority="4" />
+
+			<CommandPriority Key="FormatDefaultText" Priority="19"/>
+			<CommandPriority Key="FormatHeadline" Priority="18"/>
+			<CommandPriority Key="FormatSpeakingCharacter" Priority="20"/>
+			<CommandPriority Key="FormatStageDirection" Priority="20"/>
+			<CommandPriority Key="FormatSpokenText" Priority="20"/>
+
+			<CommandPriority Key="ZoomDefault" Priority="3" />
+
+			<CommandPriority Key="SearchInDocument" Priority="10" />
+			<CommandPriority Key="ToggleShowNumbering" Priority="10"/>
+			<CommandPriority Key="ImportFinalDraft" Priority="5"/>
+			<CommandPriority Key="ExportToWord" Priority="6"/>
+			<CommandPriority Key="Indent" Priority="11"/>
+			<CommandPriority Key="Outdent" Priority="11"/>
+
+			<!-- priorities are that high because the toolbar is only shown when an rtb has the focus and should show as much as possible-->
+			<CommandPriority Key="TextFormatBold" Priority="30"/>
+			<CommandPriority Key="TextFormatItalic" Priority="30"/>
+			<CommandPriority Key="TextFormatUnderline" Priority="30"/>
+			<CommandPriority Key="TextFormatSubscript" Priority="18"/>
+			<CommandPriority Key="TextFormatSuperscript" Priority="18"/>
+			<CommandPriority Key="TextFormatColor" Priority="28"/>
+			<CommandPriority Key="TextFormatSize" Priority="27"/>
+			<CommandPriority Key="TextFormatRemoveFormat" Priority="22"/>
+			<CommandPriority Key="TextFormatIncreaseSize" Priority="18"/>
+			<CommandPriority Key="TextFormatDecreaseSize" Priority="18"/>
+			<CommandPriority Key="TextFormatAlignLeft" Priority="23"/>
+			<CommandPriority Key="TextFormatAlignCenter" Priority="23"/>
+			<CommandPriority Key="TextFormatAlignRight" Priority="23"/>
+			<CommandPriority Key="TextFormatAlignJustify" Priority="23"/>
+			<CommandPriority Key="TextFormatUnorderedList" Priority="26"/>
+			<CommandPriority Key="TextFormatOrderedList" Priority="26"/>
+			<CommandPriority Key="TextFormatInsertLink" Priority="24"/>
+			<CommandPriority Key="TextFormatRemoveLink" Priority="24"/>
+			<CommandPriority Key="UseSpellChecking" Priority="22"/>
+
+			<CommandPriority Key="SwitchToSpeaker" Priority="19"/>
+			<CommandPriority Key="SwitchToStageDirection" Priority="20"/>
+			<CommandPriority Key="SwitchToMenuText" Priority="20"/>
+			<CommandPriority Key="SwitchToSpokenText" Priority="19"/>
+
+			<CommandPriority Key="ExportFlowToDocx" Priority="16"/>
+			<CommandPriority Key="ExportFlowToXps" Priority="17"/>
+			<CommandPriority Key="ImportFinalDraftToFlow" Priority="18"/>
+			<CommandPriority Key="ExportLocationToXps" Priority="17"/>
+
+			<CommandPriority Key="LocationShowGrid" Priority="18"/>
+			<CommandPriority Key="LocationShowOrigin" Priority="18"/>
+
+			<!-- Transform and Edit group-->
+			<CommandPriority Key="LocationSelection" Priority="27"/>
+			<CommandPriority Key="LocationCreateRectangle" Priority="26"/>
+			<CommandPriority Key="LocationCreateCircle" Priority="25"/>
+			<CommandPriority Key="LocationCreatePolygon" Priority="24"/>
+			<CommandPriority Key="LocationCreatePath" Priority="23"/>
+			<CommandPriority Key="LocationCreateFreehandPath" Priority="18"/>
+			<CommandPriority Key="LocationCreateSpot" Priority="22"/>
+			<CommandPriority Key="LocationCreateText" Priority="21"/>
+			<CommandPriority Key="LocationCreateLink" Priority="20"/>
+			<CommandPriority Key="LocationCreateImage" Priority="19"/>
+							 
+			<!-- Transform and Edit group-->
+			<CommandPriority Key="LocationTransform" Priority="50"/>
+			<CommandPriority Key="LocationEditShape" Priority="50"/>
+			
+			<!-- In Transform -->
+			<CommandPriority Key="LocationTransformApply" Priority="30"/>
+			<CommandPriority Key="LocationTransformCancel" Priority="30"/>
+			<CommandPriority Key="LocationTransformObjectAligned" Priority="29"/>
+			<CommandPriority Key="LocationTransformBoundingBox" Priority="29"/>
+			
+			<!-- In Transform - Position -->
+			<CommandPriority Key="LocationTransformPosX" Priority="25"/>
+			<CommandPriority Key="LocationTransformPosY" Priority="25"/>
+
+			<!-- In Transform - Size -->
+			<CommandPriority Key="LocationTransformScaleX" Priority="24"/>
+			<CommandPriority Key="LocationTransformKeepAspect" Priority="24"/>
+			<CommandPriority Key="LocationTransformScaleY" Priority="24"/>
+			
+			<!-- In Transform - Rotation -->
+			<CommandPriority Key="LocationTransformRotation" Priority="20"/>
+			<CommandPriority Key="LocationTransformRecenterPivot" Priority="18"/>
+			
+			<!-- In Transform - Flip -->
+			<CommandPriority Key="LocationTransformFlipH" Priority="19"/>
+			<CommandPriority Key="LocationTransformFlipV" Priority="19"/>
+
+			<!-- Link -->
+			<CommandPriority Key="LinkStyleKind" Priority="45"/>
+			<CommandPriority Key="LinkStyleSize" Priority="44"/>
+			
+			<!-- Spot -->
+			<CommandPriority Key="SpotStyleKind" Priority="45"/>
+			<CommandPriority Key="SpotStyleSize" Priority="44"/>
+			
+			<!-- Image -->
+			<CommandPriority Key="LocationImageOpacity" Priority="45"/>
+			<CommandPriority Key="LocationImageChangeImage" Priority="44"/>
+			<CommandPriority Key="LocationImageStartCrop" Priority="43"/>
+			<CommandPriority Key="LocationImageResetClip" Priority="42"/>
+			<CommandPriority Key="ResetAspectHorizontal" Priority="41"/>
+			<CommandPriority Key="ResetAspectVertical" Priority="40"/>
+			<CommandPriority Key="LocationOpenAsset" Priority="39"/>
+			<CommandPriority Key="LocationOpenContainingFolder" Priority="38"/>
+			
+			<!-- Path -->
+			<CommandPriority Key="LocationPathGroup" Priority="45"/>
+			<CommandPriority Key="LocationPathSize" Priority="45"/>
+			<CommandPriority Key="LocationPathStartCap" Priority="43"/>
+			<CommandPriority Key="LocationPathEndCap" Priority="44"/>
+			
+			<!-- Fill Color -->
+			<CommandPriority Key="LocationFillGroup" Priority="35"/>
+			<CommandPriority Key="LocationFillColor" Priority="35"/>
+			<CommandPriority Key="LocationFillOpacity" Priority="34"/>
+			
+			<!-- Outline -->
+			<CommandPriority Key="LocationOutlineGroup" Priority="30"/>
+			<CommandPriority Key="LocationOutlineColor" Priority="30"/>
+			<CommandPriority Key="LocationOutlineOpacity" Priority="26"/>
+			<CommandPriority Key="LocationOutlineSize" Priority="25"/>
+			<CommandPriority Key="LocationOutlineStyle" Priority="20"/>
+			
+			<!-- DisplayName -->
+			<CommandPriority Key="LocationDisplayNameGroup" Priority="28"/>
+			<CommandPriority Key="LocationShowDisplayName" Priority="28"/>
+			<CommandPriority Key="LocationShowDropShadow" Priority="15"/>
+			<CommandPriority Key="LocationDisplayNameColor" Priority="14"/>
+			<CommandPriority Key="LocationDisplayNameSize" Priority="13"/>
+
+			<!-- Anchor -->
+			<CommandPriority Key="LocationAnchorGroup" Priority="45"/>
+			<CommandPriority Key="LocationAnchorSize" Priority="43"/>
+			<CommandPriority Key="LocationAnchorColor" Priority="44"/>
+
+			<CommandPriority Key="UseSpellCheck" Priority="10"/>
+			<CommandPriority Key="ClearJourneyPointMethodReturnValues" Priority="10"/>
+
+			<CommandPriority Key="TextCounting" Priority="9"/>
+
+		</CommandPriorities>
+	</MetaModel>
+
+
+	<!-- Asset categories by file extension -->
+	<MetaModel TargetType="AssetCategories">
+		<AssetCategories TypeChecker="Articy.ArticyAssetRepository.AssetCategory">
+			<AssetCategory Category="Image" Extensions="jpeg jpg jpe jfif exif png tiff gif tif bmp ico dds psd pdd tga tpic vst icb vda exr iff tdi pcx hdr pic ppm pgm pbm pnm rwz jp2 j2k vtf sgi rgb" />
+			<AssetCategory Category="Audio" Extensions="wav wma xwma mp1 mp2 mp3 mpga m4a aac ac3 dts aif aiff mid ogg fla flac" />
+			<AssetCategory Category="Video" Extensions="mp4 mpeg mpg m4v wmv asf mov divx avi vob ogv mkv m2v" />
+			<AssetCategory Category="Document" Extensions="pdf xls xlsx xlsm xsl xml doc docx docm dot dotm odt ppt pptx txt rtf csv htm html log cs cpp h hpp inc py lua php pas sql css js json" />
+			<AssetCategory Category="Misc" Extensions="url articyu3d" />
+		</AssetCategories>
+	</MetaModel>	
+  
+</MetaModels>

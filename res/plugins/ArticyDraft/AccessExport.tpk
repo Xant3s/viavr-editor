@@ -1,0 +1,740 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.Export.Access" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Title.Caption">
+			<Context>tabcontrol label</Context>
+			<Text Lang="en">articy:access</Text>
+			<Text Lang="uk">articy:access</Text>
+			<Text Lang="fr">articy:access</Text>
+			<Text Lang="pt-BR">articy:acess</Text>
+			<Text Lang="zh">articy:access</Text>
+			<Text Lang="ko">articy:access</Text>
+			<Text Lang="pl">articy:access</Text>
+			<Text Lang="es">articy:access</Text>
+			<Text Lang="it">articy:access</Text>
+			<Text Lang="ru">articy:access</Text>
+			<Text Lang="de">articy:access</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Label.SelectBundle">
+			<Context>Bundle file picker label</Context>
+			<Text Lang="en">Load bundle descriptor file:</Text>
+			<Text Lang="uk">Завантажте файл дескриптора групи:</Text>
+			<Text Lang="fr">Charger le fichier descripteur de collection :</Text>
+			<Text Lang="pt-BR">Carregar arquivo descritor de pacote:</Text>
+			<Text Lang="zh">加载捆绑描述符文件：</Text>
+			<Text Lang="ko">번들 설명자 파일을 로드합니다.</Text>
+			<Text Lang="pl">Wczytaj plik deksryptora zestawu:</Text>
+			<Text Lang="es">Cargar archivo de descripción de lote:</Text>
+			<Text Lang="it">Carica il file descrittore del gruppo:</Text>
+			<Text Lang="ru">Загрузить файл описания пакета:</Text>
+			<Text Lang="de">Bundle-Beschreibungsdatei laden:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Label.SelectPackages">
+			<Context>Package list label</Context>
+			<Text Lang="en">Select packages:</Text>
+			<Text Lang="uk">Виберіть пакети:</Text>
+			<Text Lang="fr">Sélectionner les packs :</Text>
+			<Text Lang="pt-BR">Selecionar pacotes:</Text>
+			<Text Lang="zh">选择包体：</Text>
+			<Text Lang="ko">패키지 선택:</Text>
+			<Text Lang="pl">Wybierz paczki:</Text>
+			<Text Lang="es">Seleccionar paquetes:</Text>
+			<Text Lang="it">Seleziona i pacchetti:</Text>
+			<Text Lang="ru">Выбор пакетов:</Text>
+			<Text Lang="de">Pakete wählen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Label.SelectFolder">
+			<Context>Export folder picker label</Context>
+			<Text Lang="en">Select export folder:</Text>
+			<Text Lang="uk">Виберіть папку експорту:</Text>
+			<Text Lang="fr">Sélectionner dossier d'exportation :</Text>
+			<Text Lang="pt-BR">Selecionar pacote de exportação:</Text>
+			<Text Lang="zh">选择导出文件夹：</Text>
+			<Text Lang="ko">내보내기 파일 선택</Text>
+			<Text Lang="pl">Wybierz folder eksportu:</Text>
+			<Text Lang="es">Seleccionar archivo de exportación:</Text>
+			<Text Lang="it">Seleziona la cartella in cui esportare:</Text>
+			<Text Lang="ru">Выберите папку для экспорта:</Text>
+			<Text Lang="de">Ordner für den Export wählen:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="FolderBrowser.Description">
+			<Context>Description text shown in the "browse for folder" dialog to select the output path</Context>
+			<Text Lang="en">Select the folder where the generated export files should be written to.</Text>
+			<Text Lang="uk">Виберіть папку, куди слід записати створені файли експорту.</Text>
+			<Text Lang="fr">Sélectionnez le dossier dans lequel les fichiers d'exportation générés doivent être écrits.</Text>
+			<Text Lang="pt-BR">Selecionar o pacote onde os arquivos de exportação gerados deveriam ser escritos.</Text>
+			<Text Lang="zh">选择生成的导出文件要写入的文件夹。</Text>
+			<Text Lang="ko">생성된 내보내기 파일을 저장할 폴더를 선택합니다.</Text>
+			<Text Lang="de">Bitte wählen Sie das Verzeichnis in dem die vom Export generierten Daten gespeichert werden sollen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ChoosePackageFile.Filter">
+			<Context>File filter for the open file dialog. First part until the '|' is the description, the 2nd the wildcard string for file filtering</Context>
+			<Text Lang="en">articy:access package file (*.xml)|*.xml</Text>
+			<Text Lang="uk">articy:access файл пакету(*.xml)|*.xml</Text>
+			<Text Lang="fr">Fichier de pack articy:access (*.xml)|*.xml</Text>
+			<Text Lang="pt-BR">pacote de arquivo articy:acess (*.xml) | *.xml</Text>
+			<Text Lang="zh">articy:access 包体文件 (*.xml)|*.xml</Text>
+			<Text Lang="ko"><![CDATA[articy:access 패키지 파일 (*.xml)|*.xml
+]]></Text>
+			<Text Lang="de">articy:access Paket-Beschreibung (*.xml)|*.xml</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.WrongVersion">
+			<Context>export</Context>
+			<Text Lang="en">Articy CAPI version mismatch.</Text>
+			<Text Lang="uk">Невідповідність версій Articy CAPI.</Text>
+			<Text Lang="fr">Version CAPI d'Articy incompatible.</Text>
+			<Text Lang="pt-BR">Incompatibilidade de versão Articy CAPI.</Text>
+			<Text Lang="zh">Articy CAPI 版本不匹配。</Text>
+			<Text Lang="ko">Articy CAPI 버전이 일치하지 않습니다.</Text>
+			<Text Lang="pl">Niezgodność wersji Articy CAPI.</Text>
+			<Text Lang="es">Versión no correspondiente de articy CAPI.</Text>
+			<Text Lang="it">Errore nell'abbinamento della versione di Articy CAPI.</Text>
+			<Text Lang="ru">Несовпадение версии Articy CAPI.</Text>
+			<Text Lang="de">Die Articy CAPI hat die falsche Version.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.MissingPackage">
+			<Context/>
+			<Text Lang="en">Package "{0}" could not be found.</Text>
+			<Text Lang="uk">Не вдалося знайти пакет "{0}".</Text>
+			<Text Lang="fr">Le pack "{0}" n'a pas pu être trouvé.</Text>
+			<Text Lang="pt-BR">Pacote "{0}" não pôde ser achado.</Text>
+			<Text Lang="zh">找不到包体 "{0}" 。</Text>
+			<Text Lang="ko">"{0}" 패키지를 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Paczka '{0}' nie została znaleziona.</Text>
+			<Text Lang="es">El paquete '{0}' no se ha podido encontrar.</Text>
+			<Text Lang="it">Il pacchetto "{0}" non può essere trovato.</Text>
+			<Text Lang="ru">Модуль {0} не был найден.</Text>
+			<Text Lang="de">Package "{0}" konnte nicht gefunden werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.SkippedPackage">
+			<Context/>
+			<Text Lang="en">Package "{0}" has been skipped.</Text>
+			<Text Lang="uk">Пакет "{0}" пропущено.</Text>
+			<Text Lang="fr">Le pack "{0}" a été ignoré.</Text>
+			<Text Lang="pt-BR">Pacote "{0}" foi pulado.</Text>
+			<Text Lang="zh">已跳过包体 "{0}" 。</Text>
+			<Text Lang="ko">"{0}" 패키지를 건너뛰었습니다.</Text>
+			<Text Lang="pl">Paczka '{0}' została pominięta.</Text>
+			<Text Lang="de">Package "{0}" wurde ausgelassen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.MissingAttribute">
+			<Context/>
+			<Text Lang="en">Tag "{0}" requires attribute "{1}".</Text>
+			<Text Lang="uk">Тег "{0}" вимагає атрибута "{1}".</Text>
+			<Text Lang="fr">La balise "{0}" nécessite l'attribut "{1}".</Text>
+			<Text Lang="pt-BR">Etiqueta "{0}" precisa de atributo "{1}".</Text>
+			<Text Lang="zh">标记 "{0}" 需要属性 "{1}"。</Text>
+			<Text Lang="ko">태그 "{0}"에는 "{1}" 특성이 필요합니다.</Text>
+			<Text Lang="pl">Tag '{0}' wymaga atrybutu '{1}'.</Text>
+			<Text Lang="es">La etiqueta "{0}" requiere el atributo "{1}".</Text>
+			<Text Lang="it">La tag "{0}" richiede l'attributo "{1}".</Text>
+			<Text Lang="ru">Тегу "{0}" необходим атрибут "{1}".</Text>
+			<Text Lang="de">Tag "{0}" benötigt das Attribut "{1}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TooManyClasses">
+			<Context/>
+			<Text Lang="en">The maximum number of classes have been registered.</Text>
+			<Text Lang="uk">Зареєстровано максимальну кількість класів.</Text>
+			<Text Lang="fr">Le nombre maximum de classes a été enregistré.</Text>
+			<Text Lang="pt-BR">O número máximo de classes foi registrado.</Text>
+			<Text Lang="zh">已注册的最大类数。</Text>
+			<Text Lang="ko">최대 클래스 수가 등록되었습니다.</Text>
+			<Text Lang="pl">Została zarejestrowana maksymalna liczba klas.</Text>
+			<Text Lang="es">Se ha registrado el número máximo de clases.</Text>
+			<Text Lang="it">Il numero massimo di classi è stato registrato.</Text>
+			<Text Lang="ru">Было зарегистрировано максимальное количество классов.</Text>
+			<Text Lang="de">Die maximale Zahl an Klassen wurde registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TooManyTemplates">
+			<Context/>
+			<Text Lang="en">The maximum number of templates have been registered.</Text>
+			<Text Lang="uk">Зареєстровано максимальну кількість шаблонів.</Text>
+			<Text Lang="fr">Le nombre maximum de modèles a été enregistré.</Text>
+			<Text Lang="pt-BR">O numero máximo de módulos foram registrados.</Text>
+			<Text Lang="zh">已注册的最大模板数。</Text>
+			<Text Lang="ko">최대 템플릿 수가 등록되었습니다.</Text>
+			<Text Lang="pl">Została zarejestrowana maksymalna liczba szablonów.</Text>
+			<Text Lang="es">Se ha registrado el número máximo de plantillas.</Text>
+			<Text Lang="it">Il numero massimo di template è stato registrato.</Text>
+			<Text Lang="ru">Было зарегистрировано максимальное количество шаблонов.</Text>
+			<Text Lang="de">Die maximale Zahl an Templates wurde registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.QueriesTooComplex">
+			<Context>Text for a textbox that warn the user that the export can take long due to many queries used</Context>
+			<Text Lang="en"><![CDATA[Because of the large number of calculated strip properties exporting the selected objects will take a long time. 
+
+If you don't need those properties within your export, you should consider to cancel this export and to remove (some) calculated reference strips from the export.
+
+Do you want do continue?]]></Text>
+			<Text Lang="uk"><![CDATA[Через велику кількість обчислених властивостей смуги експорт вибраних об'єктів займе більше часу.
+
+Якщо вам не потрібні ці властивості в межах вашого експорту, ви повинні скасувати цей експорт і видалити (деякі) обчислені контрольні смуги з експорту.
+
+Ви хочете продовжити? ]]></Text>
+			<Text Lang="fr"><![CDATA[En raison du grand nombre de propriétés de bordereaux calculées, l'exportation des objets sélectionnés prendra beaucoup de temps.
+
+Si vous n'avez pas besoin de ces propriétés dans votre exportation, vous devriez envisager d'annuler cette exportation et de supprimer (certains) bordereaux de référence calculés de l'exportation.
+
+Voulez-vous continuer?]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Por causo do número alto de exportação de propriedades de tiras calculadas os objetos selecionados irão tomar bastante tempo.
+
+Se você não precisa destas propriedades dentra da exportação, você deveria considerar cancelar esta exportação e remover (algumas) tiras de referências calculadas da exportação.
+
+Deseja continuar?]]></Text>
+			<Text Lang="zh"><![CDATA[由于计算 strip 属性的数量众多，导出所选对象需要很长时间。
+
+如果您在导出中不需要这些属性，则应考虑取消此导出并从导出选项中删除（部分）计算出的引用 strips。
+
+是否要继续？]]></Text>
+			<Text Lang="ko"><![CDATA[선택한 객체를 내보내는 계산된 스트립 속성이 너무 많기 때문에 시간이 오래 걸립니다. 
+
+내보내기에 이러한 속성이 필요하지 않은 경우에는 이 내보내기를 취소하고 (일부) 계산된 참조 스트립을 내보내기에서 제거하는 것을 고려해야 합니다.
+
+계속하시겠습니까?]]></Text>
+			<Text Lang="pl"><![CDATA[articy:draft wykrył, że eksportowanie wybranych obiektów będzie trwać długo.
+To wynika z liczby obliczonych właściwości pasków, które muszą być wykonane.
+
+Jeśli ich nie potrzebujesz, powinieneś rozważyć przerwanie procesu i usunięcie (niektórych) obliczonych odwołań pasków z eksportu.
+
+Czy chcesz kontynuować?]]></Text>
+			<Text Lang="de"><![CDATA[Aufgrund der hohen Zahl an berechneten Referenz-Strips wird der Export der selektierten Objekte länger dauern. 
+
+Falls Sie diese Eigenschaften nicht in der exportierten Datei benötigen, sollten Sie den Export abbrechen und (einige) berechnete Strips aus dem Export entfernen.
+
+Wollen Sie fortfahren?]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.BaseNotFound">
+			<Context>Deriving from a base class</Context>
+			<Text Lang="en">Base type "{0}" was not found.</Text>
+			<Text Lang="uk">Базовий тип "{0}" не знайдено.</Text>
+			<Text Lang="fr">Le type de base "{0}" n'a pas pu être trouvé.</Text>
+			<Text Lang="pt-BR">Tipo base "{0}" não foi encontrado.</Text>
+			<Text Lang="zh">找不到基础类型 "{0}" 。</Text>
+			<Text Lang="ko">기본 유형 "{0}"을(를) 찾을 수 없습니다.</Text>
+			<Text Lang="pl">Typ podstawy '{0}' nie został znaleziony.</Text>
+			<Text Lang="es">El tipo de datos "{0}" no se ha podido encontrar.</Text>
+			<Text Lang="it">La base do tipo "{0}" non è stata trovata.</Text>
+			<Text Lang="ru">Базовый тип  "{0}" не был найден.</Text>
+			<Text Lang="de">Basistyp "{0}" konnte nicht gefunden werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.ClassIdAlreadyRegistered">
+			<Context/>
+			<Text Lang="en">Class id {0:X} is already registered.</Text>
+			<Text Lang="uk">ID классу {0: X} вже зареєстрований.</Text>
+			<Text Lang="fr">L'identifiant de classe {0: X} est déjà enregistré.</Text>
+			<Text Lang="pt-BR">Id de Classe {0:x} já está registrado.</Text>
+			<Text Lang="zh">类ID {0:X} 已被注册。</Text>
+			<Text Lang="ko">클래스 ID {0:X}이(가) 이미 등록되어 있습니다.</Text>
+			<Text Lang="pl">ID klasy {0:X} jest już zarejestrowane.</Text>
+			<Text Lang="es">El ID de clase {0:X} ya está registrado.</Text>
+			<Text Lang="it">L'id dei classe {0:X} è già registrato.</Text>
+			<Text Lang="ru">ID класса {0:X} уже зарегистрирован.</Text>
+			<Text Lang="de">Eine Klasse mit id {0:X} ist bereits registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TemplateIdAlreadyRegistered">
+			<Context/>
+			<Text Lang="en">Template id {0:X} is already registered.</Text>
+			<Text Lang="uk">ID шаблону {0: X} вже зареєстрований.</Text>
+			<Text Lang="fr">L'identifiant de modèle {0: X} est déjà enregistré.</Text>
+			<Text Lang="pt-BR">Id de módulo {0:x} já está registrado.</Text>
+			<Text Lang="zh">模板ID {0:X} 已被注册。</Text>
+			<Text Lang="ko">템플릿 ID {0:X}이(가) 이미 등록되어 있습니다.</Text>
+			<Text Lang="pl">ID szablonu {0:X} jest już zarejestrowane.</Text>
+			<Text Lang="es">El ID de plantilla {0:X} ya está registrado.</Text>
+			<Text Lang="it">L'id di template {0:X} è già registrato.</Text>
+			<Text Lang="ru">ID шаблона {0:X} уже зарегистрирован.</Text>
+			<Text Lang="de">Ein Template mit id {0:X} ist bereits registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.ClassNameAlreadyRegistered">
+			<Context/>
+			<Text Lang="en">Class with name "{0}" is already registered.</Text>
+			<Text Lang="uk">Класс з назвою "{0}" вже зареєстрований.</Text>
+			<Text Lang="fr">La classe avec le nom "{0}" est déjà enregistrée.</Text>
+			<Text Lang="pt-BR">Classe com nome "{0}" já está registrado.</Text>
+			<Text Lang="zh">命名为 "{0}" 的类已被注册。</Text>
+			<Text Lang="ko">이름이 "{0}"인 클래스가 이미 등록되었습니다.</Text>
+			<Text Lang="pl">Klasa o nazwie '{0}' jest już zarejestrowana.</Text>
+			<Text Lang="es">El nombre de clase {0:X} ya está registrado.</Text>
+			<Text Lang="it">La classe con nome "{0}" è già registrata.</Text>
+			<Text Lang="ru">Класс с именем "{0}" уже зарегистрирован.</Text>
+			<Text Lang="de">Die Klasse "{0}" ist bereits registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TemplateNameAlreadyRegistered">
+			<Context/>
+			<Text Lang="en">Template with name "{0}" is already registered.</Text>
+			<Text Lang="uk">Шаблон з назвою "{0}" вже зареєстрований.</Text>
+			<Text Lang="fr">Le modèle avec le nom "{0}" est déjà enregistré.</Text>
+			<Text Lang="pt-BR">Módulo com nome "{0}" já está registrado.</Text>
+			<Text Lang="zh">命名为 "{0}" 的模板已被注册。</Text>
+			<Text Lang="ko">이름이 "{0}"인 템플릿이 이미 등록되었습니다.</Text>
+			<Text Lang="pl">Szablon o nazwie '{0}' jest już zarejestrowany.</Text>
+			<Text Lang="es">El nombre de plantilla {0:X} ya está registrado.</Text>
+			<Text Lang="it">Il template con nome "{0}" è già registrato.</Text>
+			<Text Lang="ru">Шаблон с именем "{0}" уже зарегистрирован.</Text>
+			<Text Lang="de">Das Template "{0}" ist bereits registriert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.InvalidPadding">
+			<Context/>
+			<Text Lang="en">Invalid padding size.</Text>
+			<Text Lang="uk">Недоступний розмір внутрішніх відступів.</Text>
+			<Text Lang="fr">Taille de remplissage invalide.</Text>
+			<Text Lang="pt-BR">Tamanho de preenchimento inváldo.</Text>
+			<Text Lang="zh">无效的填充大小。</Text>
+			<Text Lang="ko">패딩 크기가 잘못되었습니다.</Text>
+			<Text Lang="pl">Nieprawidłowy rozmiar wypełniania.</Text>
+			<Text Lang="es">Tamaño de relleno no válido.</Text>
+			<Text Lang="it">Dimensione di paggind non valida.</Text>
+			<Text Lang="ru">Недоступный размер внутренних отступов.</Text>
+			<Text Lang="de">Ungültige Größe für padding bytes.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TemplateNotFound">
+			<Context/>
+			<Text Lang="en">Template "{0}" does not exist.</Text>
+			<Text Lang="uk">Шаблон "{0}" не існує.</Text>
+			<Text Lang="fr">Le modèle "{0}" n'existe pas.</Text>
+			<Text Lang="pt-BR">Módulo "{0}" não existe.</Text>
+			<Text Lang="zh">模板 "{0}" 不存在。</Text>
+			<Text Lang="ko">"{0}" 템플릿이 없습니다.</Text>
+			<Text Lang="pl">Szablon '{0}' nie istnieje.</Text>
+			<Text Lang="es">La plantilla "{0}" no existe.</Text>
+			<Text Lang="it">Il template "{0}" non esiste.</Text>
+			<Text Lang="ru">Шаблон  "{0}" не существует.</Text>
+			<Text Lang="de">Das Template "{0}" konnte nicht gefunden werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownInternalType">
+			<Context>Class type (e.g. "FlowFragment") is not valid</Context>
+			<Text Lang="en">Unknown internal type: {0}.</Text>
+			<Text Lang="uk">Невідомий внутрішній тип: {0}.</Text>
+			<Text Lang="fr">Type interne inconnu : {0}.</Text>
+			<Text Lang="pt-BR">Tipo interno desconhecido: {0}.</Text>
+			<Text Lang="zh">未知的内部类型： {0}。</Text>
+			<Text Lang="ko">알 수 없는 내부 유형: {0}</Text>
+			<Text Lang="pl">Nieznany typ wewnętrzny: {0}.</Text>
+			<Text Lang="es">Tipo interno desconocido: {0}.</Text>
+			<Text Lang="it">Tipo interno sconosciuto: {0}</Text>
+			<Text Lang="ru">Неизвестный внутренний тип: {0}.</Text>
+			<Text Lang="de">Unbekannter interner Typ: {0}.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.DoubleClassMapping">
+			<Context>Mapping of a class to a class layout</Context>
+			<Text Lang="en">Type "{0}" is already mapped to a class.</Text>
+			<Text Lang="uk">Тип "{0}" вже відноситься до класу.</Text>
+			<Text Lang="fr">Le type "{0}" est déjà cartographié sur une classe.</Text>
+			<Text Lang="pt-BR">Tipo {0} já está mapeado em uma classe.</Text>
+			<Text Lang="zh">类型 "{0}" 已映射至指定类。</Text>
+			<Text Lang="ko">{0} 유형은 이미 클래스에 매핑 되어 있습니다.</Text>
+			<Text Lang="pl">Typ '{0}' jest już przyporządkowany do klasy.</Text>
+			<Text Lang="es">El tipo "{0}" ya se ha mapeado.</Text>
+			<Text Lang="it">Il tipo "{0}" è già mappato su una classe.</Text>
+			<Text Lang="ru">Тип "{0}" уже относится к классу.</Text>
+			<Text Lang="de">Dem Typ "{0}" wurde bereits eine Klasse zugewiesen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.DoubleTemplateMapping">
+			<Context>Mapping of a template to a template layout</Context>
+			<Text Lang="en">Template "{0}" is already been assigned a layout.</Text>
+			<Text Lang="uk">Шаблону "{0}" вже призначена розмітка.</Text>
+			<Text Lang="fr">Le modèle "{0}" a déjà été assigné une disposition.</Text>
+			<Text Lang="pt-BR">Módulo "{0}" já está atribuído para um layout.</Text>
+			<Text Lang="zh">模板 "{0}" 已分配至指定布局。</Text>
+			<Text Lang="ko">템플릿 "{0}"이(가) 이미 레이아웃에 할당되었습니다.</Text>
+			<Text Lang="pl">Szablon '{0}' jest już przypisany jako układ.</Text>
+			<Text Lang="es">La plantilla "{0}" ya tiene un espacio de trabajo asignado.</Text>
+			<Text Lang="it">Il template "{0}" è già stato assegnato a un layout.</Text>
+			<Text Lang="ru">Шаблону "{0}" уже назначена разметка.</Text>
+			<Text Lang="de">Dem Template "{0}" wurde bereits ein layout zugewiesen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.NoExportConvention">
+			<Context/>
+			<Text Lang="en">Access type "{0}" has no export convention.</Text>
+			<Text Lang="uk">Тип "{0}" не конвертований для експорта.</Text>
+			<Text Lang="fr">Le type d'accès "{0}" n'a pas de convention d'exportation.</Text>
+			<Text Lang="pt-BR">Acesso tipo "{0}" não tem convensão de exportação.</Text>
+			<Text Lang="zh">访问类型 "{0}" 没有导出协议。</Text>
+			<Text Lang="ko">액세스 유형 "{0}"에는 내보내기 규칙이 없습니다.</Text>
+			<Text Lang="pl">Typ dostępu '{0}' nie ma konwencji eksportu.</Text>
+			<Text Lang="es">El tipo de acceso "{0}" no tiene convención de exportación.</Text>
+			<Text Lang="it">Il tipo di accesso "{0}" non ha specifiche sull'esportazione.</Text>
+			<Text Lang="ru">Тип "{0}" не конвертирован для экспорта.</Text>
+			<Text Lang="de">Für Access-Typ "{0}" ist keine Export-Regel vorhanden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnsupportedType">
+			<Context/>
+			<Text Lang="en">Unsupported datatype "{0}" for property "{1}".</Text>
+			<Text Lang="uk">Властивість "{1}" не підтримує тип даних "{0}".</Text>
+			<Text Lang="fr">Type de données non pris en charge "{0}" pour la propriété "{1}".</Text>
+			<Text Lang="pt-BR">Tipo de dados não suportado "{0}" por propriedade "{1}".</Text>
+			<Text Lang="zh">不支持属性"{1}"的数据类型"{0}" 。</Text>
+			<Text Lang="ko">"{1}" 속성에 대해 지원되지 않는 데이터 유형 유형"{0}"입니다.</Text>
+			<Text Lang="pl">Nieobsługiwany typ danych '{0}' właściwości '{1}'.</Text>
+			<Text Lang="es">Tipo de dato "{0}" no soportado para la propiedad "{1}".</Text>
+			<Text Lang="it">Tipo di dato "{0}" non supportato per l'attributo "{1}".</Text>
+			<Text Lang="ru">Свойством "{1}" не поддерживается тип данных "{0}".</Text>
+			<Text Lang="de">Der Datentyp "{0}" wird von property "{1}" nicht unterstützt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownPropertyType">
+			<Context/>
+			<Text Lang="en">Unknown internal type property "{0}".</Text>
+			<Text Lang="uk">Невідома властивість внутрішнього типу "{0}".</Text>
+			<Text Lang="fr">Propriété de type interne inconnue "{0}".</Text>
+			<Text Lang="pt-BR">Tipo de propriedade interna desconhecida "{0}".</Text>
+			<Text Lang="zh">未知的内部类型属性 "{0}"。</Text>
+			<Text Lang="ko">알 수 없는 내부 유형 속성 "{0}"입니다.</Text>
+			<Text Lang="pl">Nieznany wewnętrzny typ właściwości '{0}'.</Text>
+			<Text Lang="es">Tipo de propiedad interna desconocida "{0}".</Text>
+			<Text Lang="it">Tipo di attributo interno "{0}" sconosciuto.</Text>
+			<Text Lang="ru">Неизвестное свойство внутреннего типа "{0}".</Text>
+			<Text Lang="de">Unbekannter interner Datentyp "{0}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TraitNotQualified">
+			<Context/>
+			<Text Lang="en">Trait names must be fully qualified, e.g. "feature.trait". "{0}" is not fully qualified.</Text>
+			<Text Lang="uk">Назви рис необхідно повністю кваліфікувати,наприклад: "особливість.риса". "{0}" не повністю кваліфікована.</Text>
+			<Text Lang="fr">Les noms des traits doivent être pleinement qualifiés, par ex. "feature.trait". "{0}" n'est pas entièrement qualifié.</Text>
+			<Text Lang="pt-BR">Nomes de características devem ser completamente qualificadas, exemplo "feature.trait". "{0}" não é completamente qualificado.</Text>
+			<Text Lang="zh">特征名称必须完全符合限制，例如 "feature.trait"。 "{0}" 不完全符合限制。</Text>
+			<Text Lang="ko">특성 이름은 "feature.trait"과 같이 완전히 검증되어야 합니다. {0}은(는) 완전히 검증되지 않았습니다.</Text>
+			<Text Lang="pl">Nazwy cechy, muszą zostać w pełni klasyfikujące, np 'funkcja.cecha'. '{0}' nie jest w pełni klasyfikujący.</Text>
+			<Text Lang="es">Los nombres de rasgo deben estar completamente calificados ("característica.rasgo"). "{0}" no está completamente calificado.</Text>
+			<Text Lang="it">Il nome della caratteristica deve essere completamente definito, per esempio "caratteristica.tratto". "{0}" non è completamente definito.</Text>
+			<Text Lang="ru">Названия черт должны быть полностью определены, пример :  "особенность.черта".  "{0}" не полностью определено.</Text>
+			<Text Lang="de">Eigenschaften müssen immer vollständig referenziert angegeben werden (z.B. "feature.trait"). "{0}" ist nicht vollständig.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownFeature">
+			<Context/>
+			<Text Lang="en">Feature "{0}" does not exist.</Text>
+			<Text Lang="uk">Особливість "{0}" не існує.</Text>
+			<Text Lang="fr">La fonction "{0}" n'existe pas.</Text>
+			<Text Lang="pt-BR">Utilidade "{0}" não existe.</Text>
+			<Text Lang="zh">特性 "{0}" 不存在。</Text>
+			<Text Lang="ko">"{0}" 기능이 없습니다.</Text>
+			<Text Lang="pl">Funkcja '{0}' nie istnieje.</Text>
+			<Text Lang="es">La característica "{0}" no existe.</Text>
+			<Text Lang="it">La caratteristica "{0}" non esiste.</Text>
+			<Text Lang="ru">Особенность "{0}" не существует.</Text>
+			<Text Lang="de">Feature "{0}" konnte nicht gefunden werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TemplateFeatureMissing">
+			<Context/>
+			<Text Lang="en">Template "{0}" does not contain feature "{1}".</Text>
+			<Text Lang="uk">Шаблон "{0}" не містить особливості "{1}".</Text>
+			<Text Lang="fr">Le modèle "{0}" ne contient pas la fonction "{1}".</Text>
+			<Text Lang="pt-BR">Módulo "{0}" não contém utilidade "{1}".</Text>
+			<Text Lang="zh">模板 "{0}" 不包含特性 "{1}"。</Text>
+			<Text Lang="ko">템플릿 "{0}"에는 "{1}" 기능이 없습니다.</Text>
+			<Text Lang="pl">Szablon '{0}' nie zawiera funkcji '{1}'.</Text>
+			<Text Lang="es">La plantilla "{0}" no contiene la característica "{1}".</Text>
+			<Text Lang="it">Il template "{0}" non contiene la caratteristica "{1}".</Text>
+			<Text Lang="ru">Шаблон "{0}" не содержит особенность "{1}".</Text>
+			<Text Lang="de">Das Template "{0}" enthält kein Feature "{1}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.TemplateTraitMissing">
+			<Context/>
+			<Text Lang="en">Template "{0}" does not contain trait "{1}".</Text>
+			<Text Lang="uk">Шаблон "{0}" не містить рису "{1}".</Text>
+			<Text Lang="fr">Le modèle "{0}" ne contient pas le trait "{1}".</Text>
+			<Text Lang="pt-BR">Módulo "{0}" não contém utilidade "{1}".</Text>
+			<Text Lang="zh">模板 "{0}" 不包含特征 "{1}"。</Text>
+			<Text Lang="ko">템플릿 "{0}"에 특성 "{1}"이 없습니다.</Text>
+			<Text Lang="pl">Szablon '{0}' nie zawiera cechy '{1}'.</Text>
+			<Text Lang="es">La plantilla "{0}" no contiene el rasgo "{1}".</Text>
+			<Text Lang="it">Il template "{0}" non contiene la caratteristica "{1}".</Text>
+			<Text Lang="ru">Шаблон "{0}" не содержит черту "{1}".</Text>
+			<Text Lang="de">Das Template "{0}" enthält keinen Trait "{1}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownTraitType">
+			<Context/>
+			<Text Lang="en">Unknown type "{0}" for trait "{1}".</Text>
+			<Text Lang="uk">Невідомий тип "{0}" риси "{1}".</Text>
+			<Text Lang="fr">Type inconnu "{0}" pour le trait "{1}".</Text>
+			<Text Lang="pt-BR">Tipo desconhecido "{0}" de característica "{1}".</Text>
+			<Text Lang="zh">特征 "{1}"的类型"{0}"未知。</Text>
+			<Text Lang="ko">특성 "{1}"에 대한 알 수 없는 유형 "{0}"입니다.</Text>
+			<Text Lang="pl">Nieznany typ '{0}' dla cechy '{1}'.</Text>
+			<Text Lang="es">Tipo "{0}" desconocido para el rasgo "{1}".</Text>
+			<Text Lang="it">Tipo "{0}" sconosciuto per la caratteristica "{1}".</Text>
+			<Text Lang="ru">Неизвестный тип "{0}" черты "{1}".</Text>
+			<Text Lang="de">Unbekannter Typ "{0}" für Trait "{1}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.InvalidTypeDeduction">
+			<Context>Don't localize "TypeDeduction" it refers to a so named tag in the XML</Context>
+			<Text Lang="en">The "TypeDeduction" attribute may only be used for number types.</Text>
+			<Text Lang="uk">Атрибут "TypeDeduction" може використовуватися лише для типів чисел.</Text>
+			<Text Lang="fr">L'attribut "Déduction de type" ne peut être utilisé que pour les types de nombres.</Text>
+			<Text Lang="pt-BR">O atributo "TypeDeduction" pode apenas ser usado por tipos de número.</Text>
+			<Text Lang="zh">"TypeDeduction" 属性仅用于数值类型。</Text>
+			<Text Lang="ko">TypeDeduction 속성은 숫자 유형에만 사용할 수 있습니다.</Text>
+			<Text Lang="pl">Atrybut 'TypeDeduction' może być wykorzystany jedynie do typów liczbowych.</Text>
+			<Text Lang="es">El atributo "TypeDeduction" solo puede usarse en tipos numéricos.</Text>
+			<Text Lang="it">L'attributo "TypeDeduction" può essere usato solo per tipi numerici.</Text>
+			<Text Lang="ru">Атрибут "TypeDeduction" может быть использован только для типов чисел.</Text>
+			<Text Lang="de">Das Attribut "TypeDeduction" darf nur mit Zahlentypen verwendet werden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.HashCollision">
+			<Context/>
+			<Text Lang="en">Hash collision detected: {{{0}}} {1}</Text>
+			<Text Lang="uk">Виявлено хеш колізію: {{{{0}}} {1}</Text>
+			<Text Lang="fr">Collision de hachage détectée: {{{0}}} {1}</Text>
+			<Text Lang="pt-BR">Colisão grave detectada: {{{0}}} {1}</Text>
+			<Text Lang="zh">检测到哈希冲突： {{{0}}} {1}</Text>
+			<Text Lang="ko">해시 충돌 감지됨: {{{0}}} {1}</Text>
+			<Text Lang="pl">Wykryto kolizję hashów: {{{0}}} {1}</Text>
+			<Text Lang="es">Se ha detectado una colisión de hash: {{{0}}} {1}</Text>
+			<Text Lang="it">Collisione hash identificata: {{{0}}} {1}</Text>
+			<Text Lang="ru">Обнаружено хэш столкновение: {{{0}}} {1}</Text>
+			<Text Lang="de">Hash-Kollision entdeckt: {{{0}}} {1}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.HashResolve">
+			<Context/>
+			<Text Lang="en">The following objects have not been exported because of hash collisions</Text>
+			<Text Lang="uk">Внаслідок хеш колізії наступні об'єкти не були експортовані</Text>
+			<Text Lang="fr">Les objets suivants n'ont pas été exportés en raison de collisions de hachage</Text>
+			<Text Lang="pt-BR">Os objetos seguintes não foram exportados por conta de colisões graves</Text>
+			<Text Lang="zh">由于哈希冲突，以下对象尚未导出</Text>
+			<Text Lang="ko">해시 충돌로 인해 다음 객체를 내보내지 않았습니다.</Text>
+			<Text Lang="pl">Następujące obiekty nie zostały wyeksportowane z powodu kolizji hashy</Text>
+			<Text Lang="es">Los siguientes objetos no han sido exportados debido a colisiones de hash:</Text>
+			<Text Lang="it">I seguenti oggetti non sono stati esportati a causa di collisioni hash</Text>
+			<Text Lang="ru">Из-за столкновений в хэше эти объекты не могли быть экспортированы</Text>
+			<Text Lang="de">Die folgenden Objekte wurden aufgrund von Hash-Kollisionen nicht exportiert</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.HashCollisionLogged">
+			<Context/>
+			<Text Lang="en">All hash collisions have been logged to {0}.</Text>
+			<Text Lang="uk">Усі хеш колізії збережені в журналі {0}.</Text>
+			<Text Lang="fr">Toutes les collisions de hachage ont été enregistrées dans {0}.</Text>
+			<Text Lang="pt-BR">Todas as colisões graves foram logadas para {0}.</Text>
+			<Text Lang="zh">所有哈希冲突已被记录至 {0}。</Text>
+			<Text Lang="ko">모든 해시 충돌이 {0}에 기록되었습니다.</Text>
+			<Text Lang="pl">Wszystkie kolizje hashy zostały zarejestrowane do {0}.</Text>
+			<Text Lang="es">Todas las colisiones de hash se han registrado en {0}.</Text>
+			<Text Lang="it">Tutte le collisioni hash sono state raccolte in {0}.</Text>
+			<Text Lang="ru">Все хэш столкновения были сохранены журнале в {0}.</Text>
+			<Text Lang="de">Alle Hash-Kollision wurden in die Datei {0} geschrieben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownExporterType">
+			<Context/>
+			<Text Lang="en">No plugin supporting export format {0} has been loaded.</Text>
+			<Text Lang="uk">Не завантажено плагін, що підтримує формат експорту {0}.</Text>
+			<Text Lang="fr">Aucun plug-in prenant en charge le format d'exportation {0} n'a été chargé.</Text>
+			<Text Lang="pt-BR">Nenhum formato de exportação com suporta a plugin {0} foi carregado.</Text>
+			<Text Lang="zh">未加载支持导出格式 {0} 的插件。</Text>
+			<Text Lang="ko">내보내기 형식 {0}을(를) 지원하는 플러그인이 로드되지 않았습니다.</Text>
+			<Text Lang="pl">Wtyczka z obsługą formatu eksportu {0} nie została załadowana.</Text>
+			<Text Lang="es">No se ha cargado ningún plugin que soporte el formato de exportación {0}.</Text>
+			<Text Lang="it">Nessun plugin per il supporto all'esportazione del formato {0} è stato caricato.</Text>
+			<Text Lang="de">Es wurde kein plugin geladen, welches Exporter-Format {0} unterstützt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.MissingNameAttribute">
+			<Context>Error when a the "Name" attribute is missing in the XML. REMARK: don't localize "Name"!</Context>
+			<Text Lang="en">All code generator option tags must contain an attribute called "Name".</Text>
+			<Text Lang="uk">Усі теги параметрів генератора коду повинні містити атрибут під назвою "Name".</Text>
+			<Text Lang="fr">Toutes les balises d'option du générateur de code doivent contenir un attribut appelé "Nom".</Text>
+			<Text Lang="pt-BR">Todas as etiquetas de opção de gerador de códigos devem conter um atributo chamada "Name".</Text>
+			<Text Lang="zh">所有代码生成器选项标签都必须包含名为"Name"的属性。</Text>
+			<Text Lang="ko">모든 코드 생성기 옵션 태그에는 "이름"이라는 속성이 있어야 합니다.</Text>
+			<Text Lang="pl">Wszystkie tagi opcji generatora kodu muszą zawierać atrybut o nazwie 'Name'.</Text>
+			<Text Lang="es">Todas las etiquetas de opciones de generadores de código deben incluir un atributo con el nombre "Name".</Text>
+			<Text Lang="it">Tutte le tag delle opzioni dei generatori di codice devono contenere un attributo chiamato "Name".</Text>
+			<Text Lang="de">Alle option Tags eines Code-Generators müssen ein Attribute "Name" besitzen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.MissingValueAttribute">
+			<Context>Error when a the "Value" attribute is missing in the XML. REMARK: don't localize "Value"!</Context>
+			<Text Lang="en">All code generator option tags must contain an attribute called "Value".</Text>
+			<Text Lang="uk">Усі теги параметрів генератора коду повинні містити атрибут під назвою "Value".</Text>
+			<Text Lang="fr">Toutes les balises d'option du générateur de code doivent contenir un attribut appelé "Valeur".</Text>
+			<Text Lang="pt-BR">Todas as etiquetas de opção de gerador de códigos devem conter um atributo chamado "Value".</Text>
+			<Text Lang="zh">所有代码生成器选项标签都必须包含名为"Value"的属性。</Text>
+			<Text Lang="ko">모든 코드 생성기 옵션 태그에는 "값"이라는 속성이 있어야 합니다.</Text>
+			<Text Lang="pl">Wszystkie tagi opcji generatora kodu muszą zawierać atrybut o nazwie 'Value'.</Text>
+			<Text Lang="es">Todas las etiquetas de opciones de generadores de código deben incluir un atributo con el nombre "Value".</Text>
+			<Text Lang="it">Tutte le tag delle opzioni dei generatori di codice devono contenere un attributo chiamato "Value".</Text>
+			<Text Lang="de">Alle option Tags eines Code-Generators müssen ein Attribute "Value" besitzen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownCodeGenerator">
+			<Context/>
+			<Text Lang="en">Unknown code generator "{0}".</Text>
+			<Text Lang="uk">Невідомий генератор коду "{0}".</Text>
+			<Text Lang="fr">Code générateur "{0}" inconnu.</Text>
+			<Text Lang="pt-BR">Gerador de código desconhecido "{0}".</Text>
+			<Text Lang="zh">未知代码生成器 "{0}"。</Text>
+			<Text Lang="ko">알 수 없는 코드 생성기 "{0}"입니다.</Text>
+			<Text Lang="pl">Nieznany generator kodu '{0}'.</Text>
+			<Text Lang="es">Generador de código desconocido "{0}".</Text>
+			<Text Lang="it">Generatore di codice "{0}" sconosciuto.</Text>
+			<Text Lang="de">Unbekannter Code-Generator "{0}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.WrongValue">
+			<Context>Error when a wrong code generator value is encountered. {0}: the wrong value, {1}: the property for the value. REMARK: don't localize "None", "Classes", "Templates" or "Both"!</Context>
+			<Text Lang="en">A value of "{0}" is invalid. It must either be "None", "Classes", "Templates" or "Both".</Text>
+			<Text Lang="uk">Значення "{0}" не дійсне. Воно повинно бути "None", "Classes", "Templates" або "Both".</Text>
+			<Text Lang="fr">Une valeur de "{0}" n'est pas valide. Il doit s'agir de "Aucun", "Classes", "Modèles" ou "Les deux".</Text>
+			<Text Lang="pt-BR">Um valor de "{0}" é inválido. Deve ser "None", "Classes", "Templates" ou "Both".</Text>
+			<Text Lang="zh">"{0}" 的值无效。它必须是 "None"、 "Classes"、 "Templates" 或 "Both"其中之一。</Text>
+			<Text Lang="ko">{0} 값이 잘못되었습니다. "없음", "클래스", "템플릿" 또는 "둘 다" 이어야 합니다.</Text>
+			<Text Lang="pl">Wartość '{0}' jest nieprawidłowa. Musi być ona równa 'None', 'Classes', 'Templates' lub 'Both'.</Text>
+			<Text Lang="es">El valor de "{0}" no es válido. Debe ser "None", "Classes", "Templates" o "Both".</Text>
+			<Text Lang="it">Un valore di "{0}" non è valido. Deve essere "None", "Classes", "Templates" o "Both".</Text>
+			<Text Lang="de">Der Wert "{0}" ist ungültig. Er muss entweder "None", "Classes", "Templates" oder "Both" sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.WrongBool">
+			<Context>Error when a wrong boolean value is encountered. {0}: the wrong value, {1}: the property for the value. REMARK: don't localize "True" and "False"!</Context>
+			<Text Lang="en">A value of "{0}" is invalid. It must either be "True" or "False".</Text>
+			<Text Lang="uk">Значення "{0}" не дійсне. Воно повинно бути "True" або "False".</Text>
+			<Text Lang="fr">Une valeur de "{0}" n'est pas valide. Il doit être soit "Vrai" soit "Faux".</Text>
+			<Text Lang="pt-BR">Um valor de "{0}" é inválido. Deve ser "True" ou "False".</Text>
+			<Text Lang="zh">"{0}" 的值无效。它必须是 "True" 或 "False"。</Text>
+			<Text Lang="ko">{0} 값이 잘못되었습니다. 이는 "참" 또는 "거짓"이어야 합니다.</Text>
+			<Text Lang="pl">Wartość '{0}' jest nieprawidłowa. Musi być ona równa 'True' lub 'False'.</Text>
+			<Text Lang="es">El valor de "{0}" no es válido. Debe ser "True" o "False".</Text>
+			<Text Lang="it">Un valore di "{0}" non è valido. Deve essere o "True" o "False"</Text>
+			<Text Lang="de">Der Wert "{0}" ist ungültig. Er muss entweder "True" or "False" sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.UnknownVariableType">
+			<Context/>
+			<Text Lang="en">Unknown variable type "{0}" for global variable "{1}".</Text>
+			<Text Lang="uk">Невідомий тип змінної "{0}" для глобальної змінної "{1}".</Text>
+			<Text Lang="fr">Type de variable inconnu "{0}" pour la variable globale "{1}".</Text>
+			<Text Lang="pt-BR">Tipo de variável desconhecida tipo "{0}" para variável global "{1}".</Text>
+			<Text Lang="zh">全局变量 "{1}" 未知的变量类型 "{0}" 。</Text>
+			<Text Lang="ko">전역 변수 "{1}"에 대한 알 수 없는 변수 유형 "{0}"입니다.</Text>
+			<Text Lang="pl">Nieznana zmienna typu '{0}' dla zmiennej globalnej '{1}'.</Text>
+			<Text Lang="es">Tipo de variable "{0}" desconocido para la variable global "{1}".</Text>
+			<Text Lang="it">Tipo di variabile "{0}" sconosciuto per la variabile globale "{1}".</Text>
+			<Text Lang="de">Unbekannter Variablen-Typ "{0}" für globale Variable "{1}".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.WriteModelFailed">
+			<Context>error if the export of an object property has failed. {0}: name of property, {1}: display name of the object, {2}: type of object (e.g Entity), {3} the numeric Id of that object</Context>
+			<Text Lang="de">Der Export der Eigenschaft '{0}' des des Objektes '{1}' (Typ: {2}, Id: {3}) ist fehlgeschlagen.</Text>
+			<Text Lang="uk">Не вдалося експортувати властивість '{0}' об’єкта '{1}' (тип: {2}, Id: {3}).</Text>
+			<Text Lang="fr">Impossible d'exporter la propriété '{0}' de l'objet '{1}' (Type : {2}, Identifiant : {3}).</Text>
+			<Text Lang="pt-BR">A exportação da propriedade '{0}' do objeto '{1}' (tipo: {2}, Id: {3}) falhou.</Text>
+			<Text Lang="zh">导出对象 '{1}' (类型：{2}，ID：{3}) 的属性 '{0}' 失败。</Text>
+			<Text Lang="ko">객체 '{0}'의 속성 '{1}' 의 내보내기가 (형식: {2}, Id: {3}) 실패 했습니다.</Text>
+			<Text Lang="en">Failed to export property '{0}' of object '{1}' (Type: {2}, Id: {3}).</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Exception.LineInXML">
+			<Context/>
+			<Text Lang="en">Line {0}:</Text>
+			<Text Lang="uk">Рядок {0}:</Text>
+			<Text Lang="fr">Ligne {0} :</Text>
+			<Text Lang="pt-BR">Linha {0}:</Text>
+			<Text Lang="zh">行 {0}：</Text>
+			<Text Lang="ko">{0} 줄:</Text>
+			<Text Lang="pl">Linia {0}:</Text>
+			<Text Lang="es">Línea {0}:</Text>
+			<Text Lang="it">Linea {0}:</Text>
+			<Text Lang="de">Zeile {0}:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="Ui" Namespace=".Enum.ExportFormat">
+
+		<TextDefinition Key="BinaryLE.Caption">
+			<Context/>
+			<Text Lang="en">Binary export (little endian)</Text>
+			<Text Lang="uk">Бінарний експорт (від молодшого до старшого)</Text>
+			<Text Lang="fr">Exportation binaire (petit-boutisme)</Text>
+			<Text Lang="pt-BR">Exportação binária (Pequeno endian)</Text>
+			<Text Lang="zh">二进制导出（小字节存储次序）</Text>
+			<Text Lang="ko">바이너리 내보내기(little endian)</Text>
+			<Text Lang="pl">Eksport binarny (little endian)</Text>
+			<Text Lang="es">Exportación binaria (little-endian)</Text>
+			<Text Lang="it">Esporta in binario (little endian)</Text>
+			<Text Lang="ru">Бинарный экспорт (от младшего к старшему)</Text>
+			<Text Lang="de">Binär Export (little endian)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="BinaryBE.Caption">
+			<Context/>
+			<Text Lang="en">Binary export (big endian)</Text>
+			<Text Lang="uk">Бінарний експорт (від старшого до молодшого)</Text>
+			<Text Lang="fr">Exportation binaire (gros-boutisme)</Text>
+			<Text Lang="pt-BR">Exportação binária (Grande endian)</Text>
+			<Text Lang="zh">二进制导出（大字节存储次序）</Text>
+			<Text Lang="ko">바이너리 내보내기(big endian)</Text>
+			<Text Lang="pl">Eksport binarny (big endian)</Text>
+			<Text Lang="es">Exportación binaria (big-endian)</Text>
+			<Text Lang="it">Esporta in binario (big endian)</Text>
+			<Text Lang="ru">Бинарный экспорт (от старшего к младшему)</Text>
+			<Text Lang="de">Binär Export (big endian)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Binary.Caption">
+			<Context/>
+			<Text Lang="en">Binary export</Text>
+			<Text Lang="uk">бінарне експортування</Text>
+			<Text Lang="fr">Exportation binaire</Text>
+			<Text Lang="pt-BR">Exportação binária</Text>
+			<Text Lang="zh">二进制导出</Text>
+			<Text Lang="ko">바이너리 내보내기</Text>
+			<Text Lang="pl">Eksport binarny</Text>
+			<Text Lang="es">Exportación binaria</Text>
+			<Text Lang="it">Esporta in binario</Text>
+			<Text Lang="ru">Бинарное экспортирование</Text>
+			<Text Lang="de">Binär Export</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="XML.Caption">
+			<Context/>
+			<Text Lang="en">XML export</Text>
+			<Text Lang="uk">Експорт в XML</Text>
+			<Text Lang="fr">Exportation XML</Text>
+			<Text Lang="pt-BR">Exportação XMl</Text>
+			<Text Lang="zh">XML 导出</Text>
+			<Text Lang="ko">XML 내보내기</Text>
+			<Text Lang="pl">Eksport XML</Text>
+			<Text Lang="es">Exportación XML</Text>
+			<Text Lang="it">Esporta in XML</Text>
+			<Text Lang="ru">Экспорт в XML</Text>
+			<Text Lang="de">XML export</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

@@ -1,0 +1,4361 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.Models" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<!--
+	  Structural nodes
+	-->
+	<Category Name="Ui">
+
+		<TextDefinition Key="ArticyApp._Self_.Caption" Unused="1">
+			<Context>Object type name of the root model. Currently not to be seen anywhere; no loca!</Context>
+			<Text Lang="en">Articy</Text>
+			<Text Lang="fr">Articy</Text>
+			<Text Lang="pt-BR">Articy</Text>
+			<Text Lang="zh">Articy</Text>
+			<Text Lang="ko">Articy</Text>
+			<Text Lang="pl">Articy</Text>
+			<Text Lang="de">Articy</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## General Nodes ########
+	-->
+	<!--
+	  General / Project
+	-->
+	<Category Name="System" Namespace=".General.Project">
+
+		<TextDefinition Key="_Self_.Caption" Unused="1">
+			<Context>Object type name of a project. Currently not to be seen anywhere;</Context>
+			<Text Lang="en">Project</Text>
+			<Text Lang="fr">Projet</Text>
+			<Text Lang="pt-BR">Projeto</Text>
+			<Text Lang="zh">Project</Text>
+			<Text Lang="ko">프로젝트</Text>
+			<Text Lang="pl">Projekt</Text>
+			<Text Lang="de">Projekt</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  General / Comment
+	-->
+	<Category Name="System" Namespace=".General.Comment">
+
+		<TextDefinition Key="_Self_.Default" Unused="1">
+			<Context>Default name for newly  created annotations; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled annotation</Text>
+			<Text Lang="uk">Об'єднана анотація</Text>
+			<Text Lang="fr">Annotation sans titre</Text>
+			<Text Lang="pt-BR">Anotação não-nomeada</Text>
+			<Text Lang="zh">未命名注释</Text>
+			<Text Lang="ko">제목없는 주석</Text>
+			<Text Lang="pl">Nienazwana adnotacja</Text>
+			<Text Lang="de">Neue Anmerkung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type name annotations.</Context>
+			<Text Lang="en">Annotation</Text>
+			<Text Lang="uk">Анотація</Text>
+			<Text Lang="fr">Annotation</Text>
+			<Text Lang="pt-BR">Anotação</Text>
+			<Text Lang="zh">注释</Text>
+			<Text Lang="ko">주석</Text>
+			<Text Lang="pl">Adnotacja</Text>
+			<Text Lang="es">Anotación</Text>
+			<Text Lang="it">Annotazioni</Text>
+			<Text Lang="ru">Аннотация</Text>
+			<Text Lang="ja">コメント</Text>
+			<Text Lang="de">Anmerkung</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Flow Nodes (previously known as "Story") ########
+	-->
+	<!--
+	  Flow / System Folder
+	-->
+	<Category Name="System" Namespace=".Story.StoryFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Flow" (previously named "Story").</Context>
+			<Text Lang="en">Flow</Text>
+			<Text Lang="uk">Потік</Text>
+			<Text Lang="fr">Flux</Text>
+			<Text Lang="pt-BR">Fluxo</Text>
+			<Text Lang="zh">流</Text>
+			<Text Lang="ko">흐름</Text>
+			<Text Lang="pl">Flow</Text>
+			<Text Lang="es">Flujo</Text>
+			<Text Lang="it">Diagramma di flusso</Text>
+			<Text Lang="ru">Поток</Text>
+			<Text Lang="de">Flow</Text>
+			<Text Lang="ja">フロー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Flow Fragment
+	-->
+	<Category Name="System" Namespace=".Story.FlowFragment">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "FlowFragment" node.</Context>
+			<Text Lang="en">Flow Fragment</Text>
+			<Text Lang="uk">Фрагмент Потоку</Text>
+			<Text Lang="fr">Fragment de flux</Text>
+			<Text Lang="pt-BR">Fragmento de Fluxo</Text>
+			<Text Lang="zh">流片段</Text>
+			<Text Lang="ko">흐름 프래그먼트</Text>
+			<Text Lang="pl">Fragment flowu</Text>
+			<Text Lang="es">Fragmento de flujo</Text>
+			<Text Lang="it">Frammento di flusso</Text>
+			<Text Lang="ru">Фрагмент Потока</Text>
+			<Text Lang="de">Flow-Fragment</Text>
+			<Text Lang="ja">フロー部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "FlowFragment" as plural .</Context>
+			<Text Lang="en">Flow Fragments</Text>
+			<Text Lang="uk">Фрагменти Потоку</Text>
+			<Text Lang="fr">Fragments de flux</Text>
+			<Text Lang="pt-BR">Fragmentos de Fluxo</Text>
+			<Text Lang="zh">复数流片段</Text>
+			<Text Lang="ko">흐름 프래그먼트</Text>
+			<Text Lang="pl">Fragmenty flowu</Text>
+			<Text Lang="es">Fragmentos de flujo</Text>
+			<Text Lang="it">Frammenti di flusso</Text>
+			<Text Lang="ru">Фрагменты Потока</Text>
+			<Text Lang="ja">フロー部分</Text>
+			<Text Lang="de">Flow-Fragmente</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created flow fragment; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled flow fragment</Text>
+			<Text Lang="uk">Фрагменти потоку без назви</Text>
+			<Text Lang="fr">Fragment de flux sans titre</Text>
+			<Text Lang="pt-BR">Fragmentos de Fluxo não-nomeado</Text>
+			<Text Lang="zh">未命名流片段</Text>
+			<Text Lang="ko">제목없는 흐름 프래그먼트</Text>
+			<Text Lang="pl">Nienazwany fragment flowu</Text>
+			<Text Lang="es">Fragmento de flujo sin título</Text>
+			<Text Lang="it">Frammento di flusso senza nome</Text>
+			<Text Lang="ru">Фрагмент потока без названия</Text>
+			<Text Lang="de">Neues Flow-Fragment</Text>
+			<Text Lang="ja">新しいフロー部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PrePopulate.Template">
+			<Context>Display name for flow fragments that were pre-populated by the create new project assistant.</Context>
+			<Text Lang="en">Chapter {0:D2}</Text>
+			<Text Lang="uk">Розділ {0:D2}</Text>
+			<Text Lang="fr">Chapitre {0:D2}</Text>
+			<Text Lang="pt-BR">Cápitulo {0:D2}</Text>
+			<Text Lang="zh">章节 {0:D2}</Text>
+			<Text Lang="ko">챕터 {0:D2}</Text>
+			<Text Lang="pl">Rozdział {0:D2}</Text>
+			<Text Lang="es">Capítulo {0:D2}</Text>
+			<Text Lang="it">Capitolo {0:D2}</Text>
+			<Text Lang="ru">Глава {0:D2}</Text>
+			<Text Lang="de">Kapitel {0:D2}</Text>
+			<Text Lang="ja">第{0:D2}章</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Dialog
+	-->
+	<Category Name="System" Namespace=".Story.Dialog">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Dialog" node.</Context>
+			<Text Lang="en">Dialogue</Text>
+			<Text Lang="uk">Діалог</Text>
+			<Text Lang="fr">Dialogue</Text>
+			<Text Lang="pt-BR">Diálogo</Text>
+			<Text Lang="zh">对话</Text>
+			<Text Lang="ko">다이얼로그</Text>
+			<Text Lang="pl">Dialog</Text>
+			<Text Lang="es">Diálogo</Text>
+			<Text Lang="it">Dialogo</Text>
+			<Text Lang="ru">Диалог</Text>
+			<Text Lang="de">Dialog</Text>
+			<Text Lang="ja">会話</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Dialog" as plural.</Context>
+			<Text Lang="en">Dialogues</Text>
+			<Text Lang="uk">Діалоги</Text>
+			<Text Lang="fr">Dialogues</Text>
+			<Text Lang="pt-BR">Diálogos</Text>
+			<Text Lang="zh">复数对话</Text>
+			<Text Lang="ko">다이얼로그</Text>
+			<Text Lang="pl">Dialogi</Text>
+			<Text Lang="es">Diálogos</Text>
+			<Text Lang="it">Dialoghi</Text>
+			<Text Lang="ru">Диалоги</Text>
+			<Text Lang="ja">会話</Text>
+			<Text Lang="de">Dialoge</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created dialog; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled dialogue</Text>
+			<Text Lang="uk">Діалог без назви</Text>
+			<Text Lang="fr">Dialogue sans titre</Text>
+			<Text Lang="pt-BR">Diálogo não-nomeado</Text>
+			<Text Lang="zh">未命名对话</Text>
+			<Text Lang="ko">제목없는 다이얼로그</Text>
+			<Text Lang="pl">Nienazwany dialog</Text>
+			<Text Lang="es">Diálogo sin título</Text>
+			<Text Lang="it">Dialogo senza titolo</Text>
+			<Text Lang="ru">Диалог без названия</Text>
+			<Text Lang="de">Neuer Dialog</Text>
+			<Text Lang="ja">新しい会話</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Dialog Fragment
+	-->
+	<Category Name="System" Namespace=".Story.DialogFragment">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of a dialog fragment.</Context>
+			<Text Lang="en">Dialogue Fragment</Text>
+			<Text Lang="uk">Фрагмент діалогу</Text>
+			<Text Lang="fr">Fragment de dialogue</Text>
+			<Text Lang="pt-BR">Fragmentos de diálogo</Text>
+			<Text Lang="zh">对话片段</Text>
+			<Text Lang="ko">다이얼로그 프래그먼트</Text>
+			<Text Lang="pl">Fragment dialogu</Text>
+			<Text Lang="es">Fragmento de diálogo</Text>
+			<Text Lang="it">Frammento di dialogo</Text>
+			<Text Lang="ru">Фрагмент Диалога</Text>
+			<Text Lang="de">Dialog-Fragment</Text>
+			<Text Lang="ja">会話部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Dialog Fragment" as plural.</Context>
+			<Text Lang="en">Dialogue Fragments</Text>
+			<Text Lang="uk">Фрагмент діалогів</Text>
+			<Text Lang="fr">Fragments de dialogue</Text>
+			<Text Lang="pt-BR">Fragmentos de diálogo</Text>
+			<Text Lang="zh">复数对话片段</Text>
+			<Text Lang="ko">다이얼로그 프래그먼트</Text>
+			<Text Lang="pl">Fragmenty dialogów</Text>
+			<Text Lang="es">Fragmentos de diálogo</Text>
+			<Text Lang="it">Frammenti di dialogo</Text>
+			<Text Lang="ru">Фрагмент Диалогов</Text>
+			<Text Lang="ja">会話部分</Text>
+			<Text Lang="de">Dialog-Fragmente</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly created dialog fragment; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled dialogue fragment</Text>
+			<Text Lang="uk">Фрагмент діалогу без назви</Text>
+			<Text Lang="fr">Fragment de dialogue sans titre</Text>
+			<Text Lang="pt-BR">Fragmentos de diálogo não-nomeado</Text>
+			<Text Lang="zh">未命名对话片段</Text>
+			<Text Lang="ko">제목없는 다이얼로그 프래그먼트</Text>
+			<Text Lang="pl">Nienazwany fragment dialogu.</Text>
+			<Text Lang="es">Fragmento de diálogo sin título</Text>
+			<Text Lang="it">Frammento di dialogo senza nome</Text>
+			<Text Lang="ru">Фрагменты диалога без названия</Text>
+			<Text Lang="de">Neues Dialog-Fragment</Text>
+			<Text Lang="ja">新しい会話部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="New.Caption">
+			<Context>Default name for empty dialog fragments</Context>
+			<Text Lang="en">New dialogue fragment</Text>
+			<Text Lang="uk">Новий фрагмент діалогу</Text>
+			<Text Lang="fr">Nouveau fragment de dialogue</Text>
+			<Text Lang="pt-BR">Novo fragmento de diálogo</Text>
+			<Text Lang="zh">新建对话片段</Text>
+			<Text Lang="ko">새 다이얼로그 프래그먼트</Text>
+			<Text Lang="pl">Nowy fragment dialogu</Text>
+			<Text Lang="es">Nuevo fragmento de diálogo</Text>
+			<Text Lang="it">Nuovo frammento di dialogo</Text>
+			<Text Lang="ru">Новый фрагмент диалога</Text>
+			<Text Lang="de">Neues Dialog-Fragment</Text>
+			<Text Lang="ja">新しい会話部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="CompleteText.Caption" Unused="1">
+			<Context>dialog fragment column "property name".</Context>
+			<Text Lang="en">Text</Text>
+			<Text Lang="uk">Текст</Text>
+			<Text Lang="fr">Texte</Text>
+			<Text Lang="pt-BR">Texto</Text>
+			<Text Lang="zh">文本</Text>
+			<Text Lang="ko">텍스트</Text>
+			<Text Lang="pl">Tekst</Text>
+			<Text Lang="es">Texto</Text>
+			<Text Lang="it">Testo</Text>
+			<Text Lang="ru">Текст</Text>
+			<Text Lang="ja">テキスト</Text>
+			<Text Lang="de">Inhalt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PreviewText.Caption">
+			<Context>dialog fragment column "property name".</Context>
+			<Text Lang="en">Preview text</Text>
+			<Text Lang="uk">Попередній перегляд тексту</Text>
+			<Text Lang="fr">Aperçu du texte</Text>
+			<Text Lang="pt-BR">Pré-visualizar texto</Text>
+			<Text Lang="zh">预览文本</Text>
+			<Text Lang="ko">텍스트 미리보기</Text>
+			<Text Lang="pl">Podgląd tekstu</Text>
+			<Text Lang="es">Texto de vista previa</Text>
+			<Text Lang="it">Anteprima testo</Text>
+			<Text Lang="ru">Предварительный просмотр текста</Text>
+			<Text Lang="ja">プレビューテキスト</Text>
+			<Text Lang="de">Vorschautext</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="StageDirections.Caption">
+			<Context>dialog fragment column "property name".</Context>
+			<Text Lang="en">Stage directions</Text>
+			<Text Lang="uk">Ремарка</Text>
+			<Text Lang="fr">Indications de mise en scène</Text>
+			<Text Lang="pt-BR">Direções do estágio</Text>
+			<Text Lang="zh">阶段动向</Text>
+			<Text Lang="ko">지문</Text>
+			<Text Lang="pl">Kierunki sceny</Text>
+			<Text Lang="es">Acotaciones</Text>
+			<Text Lang="it">Indicazioni di scena</Text>
+			<Text Lang="ru">Ремарки</Text>
+			<Text Lang="ja">ト書き</Text>
+			<Text Lang="de">Regieanweisungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="VoiceOver.Caption" Unused="1">
+			<Context>dialog fragment column "property name".</Context>
+			<Text Lang="en">Voice over</Text>
+			<Text Lang="uk">Закадровий голос</Text>
+			<Text Lang="fr">Voix off</Text>
+			<Text Lang="pt-BR">Voice over</Text>
+			<Text Lang="zh">画外音</Text>
+			<Text Lang="ko">해설</Text>
+			<Text Lang="pl">Nagrywanie głosu</Text>
+			<Text Lang="de">Sprachaufnahme</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Entity.Caption" Unused="1">
+			<Context>dialog fragment column "property name".</Context>
+			<Text Lang="en">Entity</Text>
+			<Text Lang="uk">Суб'єкт</Text>
+			<Text Lang="fr">Entité</Text>
+			<Text Lang="pt-BR">Entidade</Text>
+			<Text Lang="zh">实体</Text>
+			<Text Lang="ko">개체</Text>
+			<Text Lang="pl">Podmiot</Text>
+			<Text Lang="de">Entität</Text>
+			<Text Lang="ja">エンティティー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="BackgroundColor.Caption" Unused="1">
+			<Context>dialog fragment column "property name".</Context>
+			<Text Lang="en">Background Color</Text>
+			<Text Lang="uk">Колір фону</Text>
+			<Text Lang="fr">Couleur d’arrière-plan</Text>
+			<Text Lang="pt-BR">Cor do plano de fundo</Text>
+			<Text Lang="zh">背景色</Text>
+			<Text Lang="ko">배경 색상</Text>
+			<Text Lang="pl">Kolor tła</Text>
+			<Text Lang="ja">背景色</Text>
+			<Text Lang="de">Hintergrundfarbe</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Hub
+	-->
+	<Category Name="System" Namespace=".Story.Hub">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a hub node.</Context>
+			<Text Lang="en">Hub</Text>
+			<Text Lang="uk">Центр</Text>
+			<Text Lang="fr">Hub</Text>
+			<Text Lang="pt-BR">Cubo</Text>
+			<Text Lang="zh">核心</Text>
+			<Text Lang="ko">허브</Text>
+			<Text Lang="pl">Ośrodek</Text>
+			<Text Lang="es">Nudo</Text>
+			<Text Lang="it">Hub</Text>
+			<Text Lang="ru">Центр</Text>
+			<Text Lang="ja">ハブ</Text>
+			<Text Lang="de">Hub</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context/>
+			<Text Lang="en">Hubs</Text>
+			<Text Lang="uk">Центри</Text>
+			<Text Lang="fr">Hubs</Text>
+			<Text Lang="pt-BR">Cubos</Text>
+			<Text Lang="zh">复数核心</Text>
+			<Text Lang="ko">허브</Text>
+			<Text Lang="pl">Ośrodki</Text>
+			<Text Lang="es">Nudos</Text>
+			<Text Lang="it">Hub</Text>
+			<Text Lang="ru">Центры</Text>
+			<Text Lang="ja">ハブ</Text>
+			<Text Lang="de">Hubs</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created hub node; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled hub</Text>
+			<Text Lang="uk">Центр без назви</Text>
+			<Text Lang="fr">Hub sans titre</Text>
+			<Text Lang="pt-BR">Cubos não-nomeados</Text>
+			<Text Lang="zh">未命名核心</Text>
+			<Text Lang="ko">제목없는 허브</Text>
+			<Text Lang="pl">Nienazwany ośrodek</Text>
+			<Text Lang="es">Nudo sin título</Text>
+			<Text Lang="it">Hub senza nome</Text>
+			<Text Lang="ru">Центр без названия</Text>
+			<Text Lang="ja">新しいハブ</Text>
+			<Text Lang="de">Neuer Hub</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Mode.Caption" Unused="1">
+			<Context>Display name of the hub property "mode".</Context>
+			<Text Lang="en">Mode</Text>
+			<Text Lang="uk">Режим</Text>
+			<Text Lang="fr">Mode</Text>
+			<Text Lang="pt-BR">Modo</Text>
+			<Text Lang="zh">模式</Text>
+			<Text Lang="ko">모드</Text>
+			<Text Lang="pl">Tryb</Text>
+			<Text Lang="de">Modus</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Jump
+	-->
+	<Category Name="System" Namespace=".Story.Jump">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Jump" node.</Context>
+			<Text Lang="en">Jump</Text>
+			<Text Lang="uk">Перехід</Text>
+			<Text Lang="fr">Saut</Text>
+			<Text Lang="pt-BR">Pulo</Text>
+			<Text Lang="zh">跳转</Text>
+			<Text Lang="ko">점프</Text>
+			<Text Lang="pl">Przeskok</Text>
+			<Text Lang="es">Salto</Text>
+			<Text Lang="it">Salto</Text>
+			<Text Lang="ru">Переход</Text>
+			<Text Lang="ja">ジャンプ</Text>
+			<Text Lang="de">Sprung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Jump" node.</Context>
+			<Text Lang="en">Jumps</Text>
+			<Text Lang="uk">Переходи</Text>
+			<Text Lang="fr">Sauts</Text>
+			<Text Lang="pt-BR">Pulos</Text>
+			<Text Lang="zh">复数跳转</Text>
+			<Text Lang="ko">점프</Text>
+			<Text Lang="pl">Przeskoki</Text>
+			<Text Lang="es">Saltos</Text>
+			<Text Lang="it">Salti</Text>
+			<Text Lang="ru">Переходы</Text>
+			<Text Lang="ja">ジャンプ</Text>
+			<Text Lang="de">Sprünge</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created return-to-hub node; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled jump</Text>
+			<Text Lang="uk">Перехід без назви</Text>
+			<Text Lang="fr">Saut sans titre</Text>
+			<Text Lang="pt-BR">Pulos não-nomeado</Text>
+			<Text Lang="zh">未命名跳转</Text>
+			<Text Lang="ko">제목없는 점프</Text>
+			<Text Lang="pl">Nienazwany przeskok</Text>
+			<Text Lang="es">Salto sin título</Text>
+			<Text Lang="it">Salto senza nome</Text>
+			<Text Lang="ru">Переход без названия</Text>
+			<Text Lang="ja">新しいジャンプ</Text>
+			<Text Lang="de">Neuer Sprung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="New.Caption">
+			<Context>Default name for newly  created return-to-hub node; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">New jump</Text>
+			<Text Lang="uk">Новий перехід</Text>
+			<Text Lang="fr">Nouveau saut</Text>
+			<Text Lang="pt-BR">Novo pulo</Text>
+			<Text Lang="zh">新建跳转</Text>
+			<Text Lang="ko">새 점프</Text>
+			<Text Lang="pl">Nowy przeskok</Text>
+			<Text Lang="es">Nuevo salto</Text>
+			<Text Lang="it">Nuovo salto</Text>
+			<Text Lang="ru">Новый переход</Text>
+			<Text Lang="ja">新しいジャンプ</Text>
+			<Text Lang="de">Neuer Sprung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Auto.Caption">
+			<Context>Automatic caption. parameter is selected hub displayname</Context>
+			<Text Lang="en">Jump to: [{0}]</Text>
+			<Text Lang="uk">Перейти до [{0}]</Text>
+			<Text Lang="fr">Sauter à : [{0}]</Text>
+			<Text Lang="pt-BR">Pular para: [{0}]</Text>
+			<Text Lang="zh">跳转至： [{0}]</Text>
+			<Text Lang="ko">[{0}] 로 점프</Text>
+			<Text Lang="pl">Przeskocz do: {0}</Text>
+			<Text Lang="es">Salto a: [{0}]</Text>
+			<Text Lang="it">Salta a : [{0}]</Text>
+			<Text Lang="ru">Перейти к: [{0}]</Text>
+			<Text Lang="de">Springe zu: [{0}]</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Target.Caption" Unused="1">
+			<Context>property name</Context>
+			<Text Lang="en">Target</Text>
+			<Text Lang="uk">Ціль</Text>
+			<Text Lang="fr">Cible</Text>
+			<Text Lang="pt-BR">Alvo</Text>
+			<Text Lang="zh">目标</Text>
+			<Text Lang="ko">목표</Text>
+			<Text Lang="pl">Cel</Text>
+			<Text Lang="ru">Цель</Text>
+			<Text Lang="de">Ziel</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Condition
+	-->
+	<Category Name="System" Namespace=".Story.Condition">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a condition node.</Context>
+			<Text Lang="en">Condition</Text>
+			<Text Lang="uk">Умова</Text>
+			<Text Lang="fr">Condition</Text>
+			<Text Lang="pt-BR">Condição</Text>
+			<Text Lang="zh">条件</Text>
+			<Text Lang="ko">조건</Text>
+			<Text Lang="pl">Warunek</Text>
+			<Text Lang="es">Condición</Text>
+			<Text Lang="it">Condizione</Text>
+			<Text Lang="de">Bedingung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context/>
+			<Text Lang="en">Conditions</Text>
+			<Text Lang="uk">Умови</Text>
+			<Text Lang="fr">Conditions</Text>
+			<Text Lang="pt-BR">Condições</Text>
+			<Text Lang="zh">复数条件</Text>
+			<Text Lang="ko">조건</Text>
+			<Text Lang="pl">Warunki</Text>
+			<Text Lang="es">Condiciones</Text>
+			<Text Lang="it">Condizioni</Text>
+			<Text Lang="de">Bedingungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created condition node; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled condition</Text>
+			<Text Lang="uk">Умова без назви</Text>
+			<Text Lang="fr">Condition sans titre</Text>
+			<Text Lang="pt-BR">Condição não-nomeada</Text>
+			<Text Lang="zh">未命名条件</Text>
+			<Text Lang="ko">제목없는 조건</Text>
+			<Text Lang="pl">Nienazwany warunek</Text>
+			<Text Lang="es">Condición sin título</Text>
+			<Text Lang="it">Condizione senza nome</Text>
+			<Text Lang="de">Neue Bedingung</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Flow / Instruction
+	-->
+	<Category Name="System" Namespace=".Story.Outcome">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of an instruction node.</Context>
+			<Text Lang="en">Instruction</Text>
+			<Text Lang="uk">Інструкція</Text>
+			<Text Lang="fr">Instruction</Text>
+			<Text Lang="pt-BR">Instrução</Text>
+			<Text Lang="zh">说明</Text>
+			<Text Lang="ko">지시</Text>
+			<Text Lang="pl">Instrukcja</Text>
+			<Text Lang="es">Instrucción</Text>
+			<Text Lang="it">Istruzione</Text>
+			<Text Lang="de">Anweisung</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context/>
+			<Text Lang="en">Instructions</Text>
+			<Text Lang="uk">Інструкції</Text>
+			<Text Lang="fr">Instructions</Text>
+			<Text Lang="pt-BR">Instruções</Text>
+			<Text Lang="zh">复数说明</Text>
+			<Text Lang="ko">지시</Text>
+			<Text Lang="pl">Instrukcje</Text>
+			<Text Lang="es">Instrucciones</Text>
+			<Text Lang="it">Istruzioni</Text>
+			<Text Lang="de">Anweisungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly created instruction node; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled instruction</Text>
+			<Text Lang="uk">Інструкції без назви</Text>
+			<Text Lang="fr">Instruction sans titre</Text>
+			<Text Lang="pt-BR">Instrução não-nomeada</Text>
+			<Text Lang="zh">未命名说明</Text>
+			<Text Lang="ko">제목없는 지시</Text>
+			<Text Lang="pl">Nienazwana instrukcja</Text>
+			<Text Lang="es">Instrucción sin título</Text>
+			<Text Lang="it">Istruzione senza nome</Text>
+			<Text Lang="de">Neue Anweisung</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Story / Hub Mode
+	-->
+	<Category Name="System" Namespace=".Story">
+
+		<TextDefinition Key="HubMode.All" Unused="1">
+			<Context/>
+			<Text Lang="en">All</Text>
+			<Text Lang="uk">Все</Text>
+			<Text Lang="fr">Tout</Text>
+			<Text Lang="pt-BR">Tudo</Text>
+			<Text Lang="zh">全部</Text>
+			<Text Lang="ko">모두</Text>
+			<Text Lang="pl">Wszystko</Text>
+			<Text Lang="de">Alle</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="HubMode.Either" Unused="1">
+			<Context/>
+			<Text Lang="en">Either</Text>
+			<Text Lang="uk">Кожний</Text>
+			<Text Lang="fr">Soit</Text>
+			<Text Lang="pt-BR">Qualquer</Text>
+			<Text Lang="zh">任何一个</Text>
+			<Text Lang="ko">둘 중 하나</Text>
+			<Text Lang="de">Eines</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Entity Nodes (previously known as "Actors") ########
+	-->
+	<!--
+	  Entities / System Folder
+	-->
+	<Category Name="System" Namespace=".Entities.ActorsFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Entities". Previously known as "Actors".</Context>
+			<Text Lang="en">Entities</Text>
+			<Text Lang="uk">Суб'єкти</Text>
+			<Text Lang="fr">Entités</Text>
+			<Text Lang="pt-BR">Entidades</Text>
+			<Text Lang="zh">实体</Text>
+			<Text Lang="ko">개체</Text>
+			<Text Lang="pl">Podmioty</Text>
+			<Text Lang="es">Entidades</Text>
+			<Text Lang="it">Entità</Text>
+			<Text Lang="ru">Действующие лица</Text>
+			<Text Lang="de">Entitäten</Text>
+			<Text Lang="ja">エンティティー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Entities / User Folder
+	-->
+	<Category Name="System" Namespace=".Entities.ActorsUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a user folder in the "entities" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created entities user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Папка без названия</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Entities / User Floder (pre-populate)
+	-->
+	<Category Name="Ui" Namespace=".Entities.PrePopulate">
+
+		<TextDefinition Key="Game.PlayableCharacters">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Playable characters</Text>
+			<Text Lang="uk">Ігровий персонаж</Text>
+			<Text Lang="fr">Personnages jouables</Text>
+			<Text Lang="pt-BR">Personagens jogáveis</Text>
+			<Text Lang="zh">可操作角色</Text>
+			<Text Lang="ko">사용가능한 캐릭터</Text>
+			<Text Lang="pl">Gracze</Text>
+			<Text Lang="es">Personajes jugables</Text>
+			<Text Lang="it">Personaggi giocabili</Text>
+			<Text Lang="ru">Играбельные персонажи</Text>
+			<Text Lang="ja">プレイヤーキャラクター</Text>
+			<Text Lang="de">Spielercharaktere</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Game.MajorNPCs">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Major NPCs</Text>
+			<Text Lang="uk">Основні NPC</Text>
+			<Text Lang="fr">PNJ principaux</Text>
+			<Text Lang="pt-BR">NPCs Maiores</Text>
+			<Text Lang="zh">主要NPC</Text>
+			<Text Lang="ko">주 NPC</Text>
+			<Text Lang="pl">Pierwszorzędni NPC</Text>
+			<Text Lang="es">PNJs principales</Text>
+			<Text Lang="it">PNG principali</Text>
+			<Text Lang="ru">Основные NPC</Text>
+			<Text Lang="de">Haupt-NSCs</Text>
+			<Text Lang="ja">メジャーノンプレイヤーキャラクター</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Game.MinorNPCs">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Minor NPCs</Text>
+			<Text Lang="uk">Другорядні NPC</Text>
+			<Text Lang="fr">PNJ secondaires</Text>
+			<Text Lang="pt-BR">NPCs Menores</Text>
+			<Text Lang="zh">次要NPC</Text>
+			<Text Lang="ko">부 NPC</Text>
+			<Text Lang="pl">Drugorzędni NPC</Text>
+			<Text Lang="es">PNJs secundarios</Text>
+			<Text Lang="it">PNG secondari</Text>
+			<Text Lang="ru">Второстепенные NPC</Text>
+			<Text Lang="ja">マイナーノンプレイヤーキャラクター</Text>
+			<Text Lang="de">Neben-NSCs</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Game.Mobs">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Mobs</Text>
+			<Text Lang="uk">Монстри</Text>
+			<Text Lang="fr">Ennemis</Text>
+			<Text Lang="pt-BR">Mobs</Text>
+			<Text Lang="zh">敌方单位</Text>
+			<Text Lang="ko">군중</Text>
+			<Text Lang="pl">Moby</Text>
+			<Text Lang="es">Mobs</Text>
+			<Text Lang="it">Mob</Text>
+			<Text Lang="ru">Монстры</Text>
+			<Text Lang="ja">雑魚キャラクター</Text>
+			<Text Lang="de">Mobs</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Game.ItemsPickUps">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Items / Pick-Ups</Text>
+			<Text Lang="uk">Предмети / Трофеї</Text>
+			<Text Lang="fr">Articles / Ramassables</Text>
+			<Text Lang="pt-BR">Items / Pegáveis</Text>
+			<Text Lang="zh">道具 / 拾取物</Text>
+			<Text Lang="ko">아이템 / 픽업</Text>
+			<Text Lang="pl">Przedmioty/znajdźki</Text>
+			<Text Lang="es">Ítems</Text>
+			<Text Lang="it">Collezionabili</Text>
+			<Text Lang="ru">Предметы / Добыча</Text>
+			<Text Lang="ja">アイテム</Text>
+			<Text Lang="de">Gegenstände</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Game.Objects">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Objects</Text>
+			<Text Lang="uk">Об'єкти</Text>
+			<Text Lang="fr">Objets</Text>
+			<Text Lang="pt-BR">Objetos</Text>
+			<Text Lang="zh">物体</Text>
+			<Text Lang="ko">객체</Text>
+			<Text Lang="pl">Obiekty</Text>
+			<Text Lang="es">Objetos</Text>
+			<Text Lang="it">Oggetti</Text>
+			<Text Lang="ru">Объекты</Text>
+			<Text Lang="ja">オブジェクト</Text>
+			<Text Lang="de">Objekte</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Game.Miscellaneous">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MovieTV.MainCharacters">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Main characters</Text>
+			<Text Lang="uk">Головні герої</Text>
+			<Text Lang="fr">Personnages principaux</Text>
+			<Text Lang="pt-BR">Personagens principais</Text>
+			<Text Lang="zh">主角</Text>
+			<Text Lang="ko">주연</Text>
+			<Text Lang="pl">Główni bohaterowie</Text>
+			<Text Lang="es">Personajes principales</Text>
+			<Text Lang="it">Protagonisti</Text>
+			<Text Lang="ru">Главные герои</Text>
+			<Text Lang="ja">メインキャラクター</Text>
+			<Text Lang="de">Hauptrollen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MovieTV.SupportingCharacters">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Supporting characters</Text>
+			<Text Lang="uk">Другорядні персонажі</Text>
+			<Text Lang="fr">Personnages secondaires</Text>
+			<Text Lang="pt-BR">Personagens de apoio</Text>
+			<Text Lang="zh">配角</Text>
+			<Text Lang="ko">조연</Text>
+			<Text Lang="pl">Bohaterowie drugorzędni</Text>
+			<Text Lang="es">Personajes secundarios</Text>
+			<Text Lang="it">Personaggi di supporto</Text>
+			<Text Lang="ru">Второстепенные персонажи</Text>
+			<Text Lang="ja">サブキャラクター</Text>
+			<Text Lang="de">Nebenrollen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MovieTV.BitParts">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Bit Parts</Text>
+			<Text Lang="uk">Епізодичні ролі</Text>
+			<Text Lang="fr">Rôles mineurs</Text>
+			<Text Lang="pt-BR">Partes Bit</Text>
+			<Text Lang="zh">龙套</Text>
+			<Text Lang="ko">단역</Text>
+			<Text Lang="pl">Bit Parts</Text>
+			<Text Lang="es">Pequeñas partes</Text>
+			<Text Lang="it">Ruoli Minori</Text>
+			<Text Lang="ru">Эпизодические роли</Text>
+			<Text Lang="ja">端役</Text>
+			<Text Lang="de">Bit Parts</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MovieTV.Extras">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Extras</Text>
+			<Text Lang="uk">Додатково</Text>
+			<Text Lang="fr">Figurants</Text>
+			<Text Lang="pt-BR">Extras</Text>
+			<Text Lang="zh">额外</Text>
+			<Text Lang="ko">엑스트라</Text>
+			<Text Lang="pl">Dodatki</Text>
+			<Text Lang="es">Extras</Text>
+			<Text Lang="it">Extra</Text>
+			<Text Lang="ru">Дополнительно</Text>
+			<Text Lang="ja">エキストラ</Text>
+			<Text Lang="de">Extras</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MovieTV.Props">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Props</Text>
+			<Text Lang="uk">Реквізит</Text>
+			<Text Lang="fr">Accessoires</Text>
+			<Text Lang="pt-BR">Acessórios</Text>
+			<Text Lang="zh">道具</Text>
+			<Text Lang="ko">소품</Text>
+			<Text Lang="pl">Rekwizyty</Text>
+			<Text Lang="es">Accesorios</Text>
+			<Text Lang="it">Oggetti di scena</Text>
+			<Text Lang="ru">Реквизит</Text>
+			<Text Lang="ja">小道具</Text>
+			<Text Lang="de">Requisiten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MovieTV.Miscellaneous">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Book.MainCharacters">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Main characters</Text>
+			<Text Lang="uk">Головні герої</Text>
+			<Text Lang="fr">Personnages principaux</Text>
+			<Text Lang="pt-BR">Personagens principais</Text>
+			<Text Lang="zh">主角</Text>
+			<Text Lang="ko">주연</Text>
+			<Text Lang="pl">Główni bohaterowie</Text>
+			<Text Lang="es">Personajes principales</Text>
+			<Text Lang="it">Protagonisti</Text>
+			<Text Lang="ru">Главные герои</Text>
+			<Text Lang="ja">メインキャラクター</Text>
+			<Text Lang="de">Hauptcharaktere</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Book.SupportingCharacters">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Supporting characters</Text>
+			<Text Lang="uk">Другорядні персонажі</Text>
+			<Text Lang="fr">Personnages secondaires</Text>
+			<Text Lang="pt-BR">Personagens de apoio</Text>
+			<Text Lang="zh">配角</Text>
+			<Text Lang="ko">조연</Text>
+			<Text Lang="pl">Bohaterowie drugorzędni</Text>
+			<Text Lang="es">Personajes secundarios</Text>
+			<Text Lang="it">Personaggi di supporto</Text>
+			<Text Lang="ru">Второстепенные персонажи</Text>
+			<Text Lang="ja">サブキャラクター</Text>
+			<Text Lang="de">Nebenfiguren</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Book.MinorCharacters">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Minor Characters</Text>
+			<Text Lang="uk">Незначні персонажі</Text>
+			<Text Lang="fr">Personnages mineurs</Text>
+			<Text Lang="pt-BR">Personagens menores</Text>
+			<Text Lang="zh">次要角色</Text>
+			<Text Lang="ko">부주연</Text>
+			<Text Lang="pl">Postacie drugorzędne</Text>
+			<Text Lang="es">Personajes menores</Text>
+			<Text Lang="it">Personaggi secondari</Text>
+			<Text Lang="ru">Незначительные персонажи</Text>
+			<Text Lang="ja">マイナーキャラクター</Text>
+			<Text Lang="de">Andere Charaktere</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Book.Creatures">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Creatures</Text>
+			<Text Lang="uk">Створіння</Text>
+			<Text Lang="fr">Créatures</Text>
+			<Text Lang="pt-BR">Criaturas</Text>
+			<Text Lang="zh">生物</Text>
+			<Text Lang="ko">생물</Text>
+			<Text Lang="pl">Stworzenia</Text>
+			<Text Lang="es">Criaturas</Text>
+			<Text Lang="it">Creature</Text>
+			<Text Lang="ru">Существа</Text>
+			<Text Lang="ja">クリーチャー</Text>
+			<Text Lang="de">Kreaturen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Book.ItemsObjects">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Items / Objects</Text>
+			<Text Lang="uk">Предменти / Об'єкти</Text>
+			<Text Lang="fr">Articles / Objets</Text>
+			<Text Lang="pt-BR">Itens / Objetos</Text>
+			<Text Lang="zh">道具 / 物体</Text>
+			<Text Lang="ko">아이템 / 객체</Text>
+			<Text Lang="pl">Przedmioty/obiekty</Text>
+			<Text Lang="es">Ítems / Objetos</Text>
+			<Text Lang="it">Oggetti</Text>
+			<Text Lang="ru">Предметы/ Объекты</Text>
+			<Text Lang="ja">アイテム</Text>
+			<Text Lang="de">Gegenstände / Objekte</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Book.Miscellaneous">
+			<Context>Display name of an entities user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Entities / Entity
+	-->
+	<Category Name="System" Namespace=".Entities.Entity">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Entity" node.</Context>
+			<Text Lang="en">Entity</Text>
+			<Text Lang="uk">Суб'єкт</Text>
+			<Text Lang="fr">Entité</Text>
+			<Text Lang="pt-BR">Entidade</Text>
+			<Text Lang="zh">实体</Text>
+			<Text Lang="ko">개체</Text>
+			<Text Lang="pl">Podmiot</Text>
+			<Text Lang="es">Entidad</Text>
+			<Text Lang="it">Entità</Text>
+			<Text Lang="ru">Действующее лицо</Text>
+			<Text Lang="de">Entität</Text>
+			<Text Lang="ja">エンティティー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Entity" node as plural.</Context>
+			<Text Lang="en">Entities</Text>
+			<Text Lang="uk">Суб'єкти</Text>
+			<Text Lang="fr">Entités</Text>
+			<Text Lang="pt-BR">Entidades</Text>
+			<Text Lang="zh">复数实体</Text>
+			<Text Lang="ko">개체</Text>
+			<Text Lang="pl">Podmioty</Text>
+			<Text Lang="es">Entidades</Text>
+			<Text Lang="it">Entità</Text>
+			<Text Lang="ru">Действующие лица</Text>
+			<Text Lang="ja">エンティティー</Text>
+			<Text Lang="de">Entitäten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created entity. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled entity</Text>
+			<Text Lang="uk">Суб'єкт без назви</Text>
+			<Text Lang="fr">Entité sans nom</Text>
+			<Text Lang="pt-BR">Entidade não-nomeada</Text>
+			<Text Lang="zh">未命名实体</Text>
+			<Text Lang="ko">제목없는 개체</Text>
+			<Text Lang="pl">Nienazwany podmiot</Text>
+			<Text Lang="es">Entidad sin título</Text>
+			<Text Lang="it">Entità senza nome</Text>
+			<Text Lang="ru">Действующие лицо без названия</Text>
+			<Text Lang="de">Neue Entität</Text>
+			<Text Lang="ja">新しいエンティティー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Template.Caption" Unused="1">
+			<Context>Property name of "entity" node.</Context>
+			<Text Lang="en">Type:</Text>
+			<Text Lang="uk">Тип:</Text>
+			<Text Lang="fr">Type :</Text>
+			<Text Lang="pt-BR">Tipo:</Text>
+			<Text Lang="zh">类型：</Text>
+			<Text Lang="ko">유형:</Text>
+			<Text Lang="pl">Typ:</Text>
+			<Text Lang="ja">タイプ</Text>
+			<Text Lang="de">Typ:</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Locations Nodes (previously known as "Worlds") ########
+	-->
+	<!--
+	  Locations / System Folder
+	-->
+	<Category Name="System" Namespace=".Worlds.WorldsFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>display name of the system folder "worlds"</Context>
+			<Text Lang="en">Locations</Text>
+			<Text Lang="uk">Локації</Text>
+			<Text Lang="fr">Lieux</Text>
+			<Text Lang="pt-BR">Localizações</Text>
+			<Text Lang="zh">地点</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Lokacje</Text>
+			<Text Lang="es">Escenarios</Text>
+			<Text Lang="it">Location</Text>
+			<Text Lang="ru">Локации</Text>
+			<Text Lang="de">Schauplätze</Text>
+			<Text Lang="ja">ロケーション</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / User Folder
+	-->
+	<Category Name="System" Namespace=".Worlds.WorldsUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a user folder in the "locations" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created entities user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Layer User Folder
+	-->
+	<Category Name="System" Namespace=".Worlds.LocationLayerUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a layer user folder in the "locations" area.</Context>
+			<Text Lang="en">Layer folder</Text>
+			<Text Lang="uk">Папка шару</Text>
+			<Text Lang="fr">Dossier de calques</Text>
+			<Text Lang="pt-BR">Pasta de camadas</Text>
+			<Text Lang="zh">层文件夹</Text>
+			<Text Lang="ko">레이어 폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ebenenordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created layer user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled layer folder</Text>
+			<Text Lang="uk">Папка шару без назви</Text>
+			<Text Lang="fr">Dossier de calques sans nom</Text>
+			<Text Lang="pt-BR">Pasta de camadas não-nomeada</Text>
+			<Text Lang="zh">未命名层文件夹</Text>
+			<Text Lang="ko">제목없는 레이어 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ebenenordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Location
+	-->
+	<Category Name="System" Namespace=".Worlds.Location">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "location" node.</Context>
+			<Text Lang="en">Location</Text>
+			<Text Lang="uk">Локація</Text>
+			<Text Lang="fr">Lieu</Text>
+			<Text Lang="pt-BR">Localização</Text>
+			<Text Lang="zh">地点</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Lokacje</Text>
+			<Text Lang="es">Escenario</Text>
+			<Text Lang="it">Location</Text>
+			<Text Lang="ru">Локация</Text>
+			<Text Lang="ja">ロケーション</Text>
+			<Text Lang="de">Schauplatz</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "location" node plural.</Context>
+			<Text Lang="en">Locations</Text>
+			<Text Lang="uk">Локації</Text>
+			<Text Lang="fr">Lieux</Text>
+			<Text Lang="pt-BR">Localizações</Text>
+			<Text Lang="zh">复数地点</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Lokacje</Text>
+			<Text Lang="es">Escenarios</Text>
+			<Text Lang="it">Location</Text>
+			<Text Lang="ru">Локации</Text>
+			<Text Lang="ja">ロケーション</Text>
+			<Text Lang="de">Schauplätze</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "location" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled location</Text>
+			<Text Lang="uk">Локація без назви</Text>
+			<Text Lang="fr">Lieu sans nom</Text>
+			<Text Lang="pt-BR">Localização não-nomeada</Text>
+			<Text Lang="zh">未命名地点</Text>
+			<Text Lang="ko">제목없는 위치</Text>
+			<Text Lang="pl">Nienazwane lokacje</Text>
+			<Text Lang="es">Escenario sin título</Text>
+			<Text Lang="it">Location senza nome</Text>
+			<Text Lang="ru">Локация без названия</Text>
+			<Text Lang="ja">新しいロケーション</Text>
+			<Text Lang="de">Neuer Schauplatz</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="BackgroundWidth.Caption" Unused="1">
+			<Context>caption of the worlds editor, for the column "property name".</Context>
+			<Text Lang="en">Width</Text>
+			<Text Lang="uk">Ширина</Text>
+			<Text Lang="fr">Largeur</Text>
+			<Text Lang="pt-BR">Largura</Text>
+			<Text Lang="zh">宽度</Text>
+			<Text Lang="ko">너비</Text>
+			<Text Lang="pl">Szerokość</Text>
+			<Text Lang="ja">幅</Text>
+			<Text Lang="de">Breite</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="BackgroundHeight.Caption" Unused="1">
+			<Context>caption of the worlds editor, for the column "property name".</Context>
+			<Text Lang="en">Height</Text>
+			<Text Lang="uk">Висота</Text>
+			<Text Lang="fr">Hauteur</Text>
+			<Text Lang="pt-BR">Altura</Text>
+			<Text Lang="zh">高度</Text>
+			<Text Lang="ko">높이</Text>
+			<Text Lang="pl">Wysokość</Text>
+			<Text Lang="ja">高さ</Text>
+			<Text Lang="de">Höhe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="BackgroundOpacity.Caption" Unused="1">
+			<Context>caption of the worlds editor, for the column "property name".</Context>
+			<Text Lang="en">Background opacity</Text>
+			<Text Lang="uk">Фонова непрозорість</Text>
+			<Text Lang="fr">Opacité de l’arrière-plan</Text>
+			<Text Lang="pt-BR">Opacidade do plano de fundo</Text>
+			<Text Lang="zh">背景不透明度</Text>
+			<Text Lang="ko">배경 투명도</Text>
+			<Text Lang="pl">Przejrzystość tła</Text>
+			<Text Lang="de">Durchsichtigkeit</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="BackgroundViewport.Caption" Unused="1">
+			<Context>caption of the worlds editor, for the column "property name".</Context>
+			<Text Lang="en">Background viewing box</Text>
+			<Text Lang="uk">Вікно перегляду фону</Text>
+			<Text Lang="fr">Visionneuse d’arrière-plan</Text>
+			<Text Lang="pt-BR">Caixa de visualização do plano de fundo</Text>
+			<Text Lang="zh">背景查看框</Text>
+			<Text Lang="ko">배경 미리보기</Text>
+			<Text Lang="pl">Pole widzenia tła</Text>
+			<Text Lang="de">Ausschnitt</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="PrePopulate.Template">
+			<Context>Display name for locations that were pre-populated by the create new project assistant.</Context>
+			<Text Lang="en">Location {0:D2}</Text>
+			<Text Lang="uk"><![CDATA[Локаця {0:D2}
+]]></Text>
+			<Text Lang="fr">Lieu {0:D2}</Text>
+			<Text Lang="pt-BR">Local {0:D2}</Text>
+			<Text Lang="zh">地点 {0:D2}</Text>
+			<Text Lang="ko">위치 {0:D2}</Text>
+			<Text Lang="pl">Lokacja {0:D2}</Text>
+			<Text Lang="es">Escenario {0:D2}</Text>
+			<Text Lang="it">Location  {0:D2}</Text>
+			<Text Lang="ru">Локация {0:D2}</Text>
+			<Text Lang="de">Schauplatz {0:D2}</Text>
+			<Text Lang="ja">第{0:D2}ロケーション</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Zone
+	-->
+	<Category Name="System" Namespace=".Worlds.Zone">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "zone" node.</Context>
+			<Text Lang="en">Zone</Text>
+			<Text Lang="uk">Зона</Text>
+			<Text Lang="fr">Zone</Text>
+			<Text Lang="pt-BR">Zona</Text>
+			<Text Lang="zh">地区</Text>
+			<Text Lang="ko">구역</Text>
+			<Text Lang="pl">Obszar</Text>
+			<Text Lang="es">Zona</Text>
+			<Text Lang="it">Zona</Text>
+			<Text Lang="ru">Зона</Text>
+			<Text Lang="ja">ゾーン</Text>
+			<Text Lang="de">Zone</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "zone" node.</Context>
+			<Text Lang="en">Zones</Text>
+			<Text Lang="uk">Зони</Text>
+			<Text Lang="fr">Zones</Text>
+			<Text Lang="pt-BR">Zonas</Text>
+			<Text Lang="zh">复数地区</Text>
+			<Text Lang="ko">구역</Text>
+			<Text Lang="pl">Obszary</Text>
+			<Text Lang="es">Zonas</Text>
+			<Text Lang="it">Zone</Text>
+			<Text Lang="ru">Зоны</Text>
+			<Text Lang="ja">ゾーン</Text>
+			<Text Lang="de">Zonen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "zone" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled zone</Text>
+			<Text Lang="uk">Зона без назви</Text>
+			<Text Lang="fr">Zone sans nom</Text>
+			<Text Lang="pt-BR">Zona não-nomeada</Text>
+			<Text Lang="zh">未命名地区</Text>
+			<Text Lang="ko">제목없는 구역</Text>
+			<Text Lang="pl">Nienazwany obszar</Text>
+			<Text Lang="es">Zona sin título</Text>
+			<Text Lang="it">Zona senza nome</Text>
+			<Text Lang="ru">Не названная зона</Text>
+			<Text Lang="ja">新しいゾーン</Text>
+			<Text Lang="de">Neue Zone</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Pfad
+	-->
+	<Category Name="System" Namespace=".Worlds.Path">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "path" node.</Context>
+			<Text Lang="en">Path</Text>
+			<Text Lang="uk">Шлях</Text>
+			<Text Lang="fr">Chemin</Text>
+			<Text Lang="pt-BR">Caminho</Text>
+			<Text Lang="zh">路径</Text>
+			<Text Lang="ko">경로</Text>
+			<Text Lang="pl">Ścieżka</Text>
+			<Text Lang="es">Camino</Text>
+			<Text Lang="it">Percorso</Text>
+			<Text Lang="ru">Путь</Text>
+			<Text Lang="ja">経路</Text>
+			<Text Lang="de">Pfad</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "path" node.</Context>
+			<Text Lang="en">Paths</Text>
+			<Text Lang="uk">Шляхи</Text>
+			<Text Lang="fr">Chemins</Text>
+			<Text Lang="pt-BR">Caminhos</Text>
+			<Text Lang="zh">复数路径</Text>
+			<Text Lang="ko">경로</Text>
+			<Text Lang="pl">Ścieżki</Text>
+			<Text Lang="es">Caminos</Text>
+			<Text Lang="it">Percorsi</Text>
+			<Text Lang="ru">Пути</Text>
+			<Text Lang="ja">経路</Text>
+			<Text Lang="de">Pfade</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "path" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled path</Text>
+			<Text Lang="uk">Шлях без назви</Text>
+			<Text Lang="fr">Chemin sans nom</Text>
+			<Text Lang="pt-BR">Caminho não-nomeado</Text>
+			<Text Lang="zh">未命名路径</Text>
+			<Text Lang="ko">제목없는 경로</Text>
+			<Text Lang="pl">Nienazwana ścieżka</Text>
+			<Text Lang="es">Camino sin título</Text>
+			<Text Lang="it">Percorso senza nome</Text>
+			<Text Lang="ru">Не названный путь</Text>
+			<Text Lang="ja">新しい経路</Text>
+			<Text Lang="de">Neuer Pfad</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Spot
+	-->
+	<Category Name="System" Namespace=".Worlds.Spot">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "zone" node.</Context>
+			<Text Lang="en">Spot</Text>
+			<Text Lang="uk">Місце</Text>
+			<Text Lang="fr">Endroit</Text>
+			<Text Lang="pt-BR">Local</Text>
+			<Text Lang="zh">斑点</Text>
+			<Text Lang="ko">장소</Text>
+			<Text Lang="pl">Miejsce</Text>
+			<Text Lang="es">Punto</Text>
+			<Text Lang="it">Segnalino</Text>
+			<Text Lang="ru">Место</Text>
+			<Text Lang="ja">スポット</Text>
+			<Text Lang="de">Spot</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "zone" node.</Context>
+			<Text Lang="en">Spots</Text>
+			<Text Lang="uk">Місця</Text>
+			<Text Lang="fr">Endroits</Text>
+			<Text Lang="pt-BR">Locais</Text>
+			<Text Lang="zh">复数斑点</Text>
+			<Text Lang="ko">장소</Text>
+			<Text Lang="pl">Miejsca</Text>
+			<Text Lang="es">Puntos</Text>
+			<Text Lang="it">Segnalini</Text>
+			<Text Lang="ru">Места</Text>
+			<Text Lang="ja">スポット</Text>
+			<Text Lang="de">Spots</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "spot" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled spot</Text>
+			<Text Lang="uk">Місце без назви</Text>
+			<Text Lang="fr">Endroit sans nom</Text>
+			<Text Lang="pt-BR">Local não-nomeado</Text>
+			<Text Lang="zh">未命名斑点</Text>
+			<Text Lang="ko">제목없는 장소</Text>
+			<Text Lang="pl">Nienazwane miejsce</Text>
+			<Text Lang="es">Punto sin título</Text>
+			<Text Lang="it">Segnalino senza nome</Text>
+			<Text Lang="ru">Не названное место</Text>
+			<Text Lang="ja">新しいスポット</Text>
+			<Text Lang="de">Neuer Spot</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Images
+	-->
+	<Category Name="System" Namespace=".Worlds.Image">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Image" node.</Context>
+			<Text Lang="en">Image (in locations)</Text>
+			<Text Lang="uk">Зображення (у локаціях)</Text>
+			<Text Lang="fr">Image (dans les lieux)</Text>
+			<Text Lang="pt-BR">Imagem (em lugares)</Text>
+			<Text Lang="zh">图像（地点）</Text>
+			<Text Lang="ko">이미지(위치 안)</Text>
+			<Text Lang="pl">Obraz</Text>
+			<Text Lang="de">Bild (in Schauplätzen)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "image" node.</Context>
+			<Text Lang="en">Images (in locations)</Text>
+			<Text Lang="uk">Зображення (у локаціях)</Text>
+			<Text Lang="fr">Images (dans les lieux)</Text>
+			<Text Lang="pt-BR">Imagens (em lugares)</Text>
+			<Text Lang="zh">复数图像（地点）</Text>
+			<Text Lang="ko">이미지(위치 안)</Text>
+			<Text Lang="pl">Obrazy</Text>
+			<Text Lang="de">Bilder (in Schauplätzen)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "image" object. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled image</Text>
+			<Text Lang="uk">Зображення без назви</Text>
+			<Text Lang="fr">Image sans nom</Text>
+			<Text Lang="pt-BR">Imagem não-nomeada</Text>
+			<Text Lang="zh">未命名图像</Text>
+			<Text Lang="ko">제목없는 이미지</Text>
+			<Text Lang="pl">Nienazwany obraz</Text>
+			<Text Lang="de">Neues Bild</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Texts
+	-->
+	<Category Name="System" Namespace=".Worlds.LocationText">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Text" node.</Context>
+			<Text Lang="en">Text (in locations)</Text>
+			<Text Lang="uk">Текст (у локаціях)</Text>
+			<Text Lang="fr">Texte (dans les lieux)</Text>
+			<Text Lang="pt-BR">Texto (em lugares)</Text>
+			<Text Lang="zh">文本（地点）</Text>
+			<Text Lang="ko">텍스트(위치 안)</Text>
+			<Text Lang="pl">Tekst</Text>
+			<Text Lang="de">Text (in Schauplätzen)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Text" node.</Context>
+			<Text Lang="en">Texts (in locations)</Text>
+			<Text Lang="uk">Тексти (у локаціях)</Text>
+			<Text Lang="fr">Textes (dans les lieux)</Text>
+			<Text Lang="pt-BR">Textos (em lugares)</Text>
+			<Text Lang="zh">复数文本（地点）</Text>
+			<Text Lang="ko">텍스트(위치 안)</Text>
+			<Text Lang="pl">Teksty</Text>
+			<Text Lang="de">Texte (in Schauplätzen)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "Text" object. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled text</Text>
+			<Text Lang="uk">Текст без назви</Text>
+			<Text Lang="fr">Texte sans nom</Text>
+			<Text Lang="pt-BR">Texto não-nomeado</Text>
+			<Text Lang="zh">未命名文本</Text>
+			<Text Lang="ko">제목없는 텍스트</Text>
+			<Text Lang="pl">Nienazawany tekst</Text>
+			<Text Lang="de">Neuer Text</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Texts
+	-->
+	<Category Name="System" Namespace=".Worlds.LocationImage">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Text" node.</Context>
+			<Text Lang="en">Image</Text>
+			<Text Lang="uk">Зображення</Text>
+			<Text Lang="fr">Image</Text>
+			<Text Lang="pt-BR">Imagem</Text>
+			<Text Lang="zh">图像</Text>
+			<Text Lang="ko">이미지</Text>
+			<Text Lang="pl">Obraz</Text>
+			<Text Lang="de">Bild</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Text" node.</Context>
+			<Text Lang="en">Images</Text>
+			<Text Lang="uk">Зображення</Text>
+			<Text Lang="fr">Images</Text>
+			<Text Lang="pt-BR">Imagens</Text>
+			<Text Lang="zh">复数图像</Text>
+			<Text Lang="ko">이미지</Text>
+			<Text Lang="pl">Obrazy</Text>
+			<Text Lang="de">Bilder</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "Text" object. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled Image</Text>
+			<Text Lang="uk">Зображення без назви</Text>
+			<Text Lang="fr">Image sans nom</Text>
+			<Text Lang="pt-BR">Imagem não-nomeada</Text>
+			<Text Lang="zh">未命名图像</Text>
+			<Text Lang="ko">제목없는 이미지</Text>
+			<Text Lang="pl">Nienazwany obraz</Text>
+			<Text Lang="de">Neues Bild</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ConvertedBackground.DisplayName">
+			<Context>Display name for location background that where converted to images in 2.4</Context>
+			<Text Lang="en">Background layer</Text>
+			<Text Lang="uk">Фоновий шар</Text>
+			<Text Lang="fr">Calque d’arrière-plan</Text>
+			<Text Lang="pt-BR">Camada do plano de fundo</Text>
+			<Text Lang="zh">背景层</Text>
+			<Text Lang="ko">배경 레이어</Text>
+			<Text Lang="de">Hintergrundebene</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Locations / Anchor
+	-->
+	<Category Name="System" Namespace=".Worlds.LocationItemAnchor">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Anchor" node.</Context>
+			<Text Lang="en">Anchor</Text>
+			<Text Lang="uk">Якір</Text>
+			<Text Lang="fr">Ancre</Text>
+			<Text Lang="pt-BR">Âncora</Text>
+			<Text Lang="zh">锚点</Text>
+			<Text Lang="ko">앵커</Text>
+			<Text Lang="de">Anker</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Text" node.</Context>
+			<Text Lang="en">Anchors</Text>
+			<Text Lang="uk">Якорі</Text>
+			<Text Lang="fr">Ancres</Text>
+			<Text Lang="pt-BR">Âncoras</Text>
+			<Text Lang="zh">复数锚点</Text>
+			<Text Lang="ko">앵커</Text>
+			<Text Lang="de">Anker</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of an anchor, the index of the anchor is stored in the first argument.</Context>
+			<Text Lang="en">Anchor {0}</Text>
+			<Text Lang="uk">Якір {0}</Text>
+			<Text Lang="fr">Ancre {0}</Text>
+			<Text Lang="pt-BR">Âncora {0}</Text>
+			<Text Lang="zh">锚点 {0}</Text>
+			<Text Lang="ko">앵커 {0}</Text>
+			<Text Lang="de">Anker {0}</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Note Nodes ########
+	-->
+	<!--
+	  Notes / System Folder
+	-->
+	<Category Name="System" Namespace=".Notes.NotesFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Documents".</Context>
+			<Text Lang="en">Documents</Text>
+			<Text Lang="uk">Документи</Text>
+			<Text Lang="fr">Documents</Text>
+			<Text Lang="pt-BR">Documentos</Text>
+			<Text Lang="zh">文档</Text>
+			<Text Lang="ko">문서</Text>
+			<Text Lang="pl">Dokumenty</Text>
+			<Text Lang="es">Documentos</Text>
+			<Text Lang="it">Documenti</Text>
+			<Text Lang="ru">Документы</Text>
+			<Text Lang="de">Dokumente</Text>
+			<Text Lang="ja">ドキュメント</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Notes / User Folder
+	-->
+	<Category Name="System" Namespace=".Notes.NotesUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a user folder in the "notes" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created notes user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Notes / Document
+	-->
+	<Category Name="System" Namespace=".Notes.Document">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Document" node.</Context>
+			<Text Lang="en">Document</Text>
+			<Text Lang="uk">Документ</Text>
+			<Text Lang="fr">Document</Text>
+			<Text Lang="pt-BR">Documento</Text>
+			<Text Lang="zh">文档</Text>
+			<Text Lang="ko">문서</Text>
+			<Text Lang="pl">Dokument</Text>
+			<Text Lang="es">Documento</Text>
+			<Text Lang="it">Documento</Text>
+			<Text Lang="ru">Документ</Text>
+			<Text Lang="de">Dokument</Text>
+			<Text Lang="ja">ドキュメント</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Document" node plural.</Context>
+			<Text Lang="en">Documents</Text>
+			<Text Lang="uk">Документи</Text>
+			<Text Lang="fr">Documents</Text>
+			<Text Lang="pt-BR">Documentos</Text>
+			<Text Lang="zh">复数文档</Text>
+			<Text Lang="ko">문서</Text>
+			<Text Lang="pl">Dokumenty</Text>
+			<Text Lang="es">Documentos</Text>
+			<Text Lang="it">Documenti</Text>
+			<Text Lang="ru">Документы</Text>
+			<Text Lang="de">Dokumente</Text>
+			<Text Lang="ja">ドキュメント</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created document; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled Document</Text>
+			<Text Lang="uk">Документ без назви</Text>
+			<Text Lang="fr">Document sans nom</Text>
+			<Text Lang="pt-BR">Documento não-nomeado</Text>
+			<Text Lang="zh">未命名文档</Text>
+			<Text Lang="ko">제목없는 문서</Text>
+			<Text Lang="pl">Nienazwany dokument</Text>
+			<Text Lang="es">Documento sin título</Text>
+			<Text Lang="it">Documento senza nome</Text>
+			<Text Lang="ru">Не названный документ</Text>
+			<Text Lang="de">Neues Dokument</Text>
+			<Text Lang="ja">新しいドキュメント</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Notes / TextObject
+	-->
+	<Category Name="System" Namespace=".Notes.TextObject">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "TextObject" node.</Context>
+			<Text Lang="en">Text</Text>
+			<Text Lang="uk">Текст</Text>
+			<Text Lang="fr">Texte</Text>
+			<Text Lang="pt-BR">Texto</Text>
+			<Text Lang="zh">文本</Text>
+			<Text Lang="ko">텍스트</Text>
+			<Text Lang="pl">Tekst</Text>
+			<Text Lang="es">Texto</Text>
+			<Text Lang="it">Testo</Text>
+			<Text Lang="ru">Текст</Text>
+			<Text Lang="de">Text</Text>
+			<Text Lang="ja">テクスト</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "TextObject" node plural.</Context>
+			<Text Lang="en">Texts</Text>
+			<Text Lang="uk">Тексти</Text>
+			<Text Lang="fr">Textes</Text>
+			<Text Lang="pt-BR">Textos</Text>
+			<Text Lang="zh">复数文本</Text>
+			<Text Lang="ko">텍스트</Text>
+			<Text Lang="pl">Teksty</Text>
+			<Text Lang="es">Textos</Text>
+			<Text Lang="it">Testi</Text>
+			<Text Lang="ru">Тексты</Text>
+			<Text Lang="de">Texte</Text>
+			<Text Lang="ja">テクスト</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created TextObject; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled Text</Text>
+			<Text Lang="uk">Текст без назви</Text>
+			<Text Lang="fr">Texte sans nom</Text>
+			<Text Lang="pt-BR">Texto não-nomeado</Text>
+			<Text Lang="zh">未命名文本</Text>
+			<Text Lang="ko">제목없는 텍스트</Text>
+			<Text Lang="pl">Nienazwany tekst</Text>
+			<Text Lang="es">Texto sin título</Text>
+			<Text Lang="it">Testo senza nome</Text>
+			<Text Lang="ru">Не названный текст</Text>
+			<Text Lang="de">Neuer Text</Text>
+			<Text Lang="ja">新しいテクスト</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Asset Nodes ########
+	-->
+	<!--
+	  Assets / System Folder
+	-->
+	<Category Name="System" Namespace=".Assets.AssetsFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Assets".</Context>
+			<Text Lang="en">Assets</Text>
+			<Text Lang="uk">Ресурси</Text>
+			<Text Lang="fr">Atouts</Text>
+			<Text Lang="pt-BR">Recursos</Text>
+			<Text Lang="zh">资源</Text>
+			<Text Lang="ko">에셋</Text>
+			<Text Lang="pl">Asset</Text>
+			<Text Lang="es">Recursos</Text>
+			<Text Lang="it">Asset</Text>
+			<Text Lang="ru">Ресурсы</Text>
+			<Text Lang="de">Assets</Text>
+			<Text Lang="ja">資料</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Assets / User Folder
+	-->
+	<Category Name="System" Namespace=".Assets.AssetsUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a user folder in the "assets" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created assets user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Assets / User Folder (pre-populate)
+	-->
+	<Category Name="Ui" Namespace=".Assets.PrePopulate">
+
+		<TextDefinition Key="ByChapter.Miscellaneous">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByWorld.Miscellaneous">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByFileType.Images">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Images</Text>
+			<Text Lang="uk">Зображення</Text>
+			<Text Lang="fr">Images</Text>
+			<Text Lang="pt-BR">Imagens</Text>
+			<Text Lang="zh">图像</Text>
+			<Text Lang="ko">이미지</Text>
+			<Text Lang="pl">Obrazy</Text>
+			<Text Lang="es">Imágenes</Text>
+			<Text Lang="it">Immagini</Text>
+			<Text Lang="ru">Изображения</Text>
+			<Text Lang="ja">イメージ画像</Text>
+			<Text Lang="de">Bilder</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByFileType.Videos">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Videos</Text>
+			<Text Lang="uk">Відео</Text>
+			<Text Lang="fr">Vidéos</Text>
+			<Text Lang="pt-BR">Vídeos</Text>
+			<Text Lang="zh">视频</Text>
+			<Text Lang="ko">비디오</Text>
+			<Text Lang="pl">Filmy</Text>
+			<Text Lang="es">Vídeos</Text>
+			<Text Lang="it">Video</Text>
+			<Text Lang="ru">Видео</Text>
+			<Text Lang="ja">ビデオ</Text>
+			<Text Lang="de">Videos</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByFileType.Audio">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Audio</Text>
+			<Text Lang="uk">Аудіо</Text>
+			<Text Lang="fr">Audio</Text>
+			<Text Lang="pt-BR">Áudio</Text>
+			<Text Lang="zh">音频</Text>
+			<Text Lang="ko">오디오</Text>
+			<Text Lang="pl">Dźwięk</Text>
+			<Text Lang="es">Sonido</Text>
+			<Text Lang="it">Audio</Text>
+			<Text Lang="ru">Аудио</Text>
+			<Text Lang="ja">オーディオ</Text>
+			<Text Lang="de">Audio</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByFileType.Documents">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Documents</Text>
+			<Text Lang="uk">Документи</Text>
+			<Text Lang="fr">Documents</Text>
+			<Text Lang="pt-BR">Documentos</Text>
+			<Text Lang="zh">文档</Text>
+			<Text Lang="ko">문서</Text>
+			<Text Lang="pl">Dokumenty</Text>
+			<Text Lang="es">Documentos</Text>
+			<Text Lang="it">Documenti</Text>
+			<Text Lang="ru">Документы</Text>
+			<Text Lang="ja">文書ファイル</Text>
+			<Text Lang="de">Dokumente</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByFileType.Miscellaneous">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByContent.Characters">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Characters</Text>
+			<Text Lang="uk">Персонажі</Text>
+			<Text Lang="fr">Personnages</Text>
+			<Text Lang="pt-BR">Personagens</Text>
+			<Text Lang="zh">字符</Text>
+			<Text Lang="ko">캐릭터</Text>
+			<Text Lang="pl">Bohaterowie</Text>
+			<Text Lang="es">Personajes</Text>
+			<Text Lang="it">Personaggi</Text>
+			<Text Lang="ru">Персонажи</Text>
+			<Text Lang="ja">キャラクター</Text>
+			<Text Lang="de">Charaktere</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByContent.Environments">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Environments</Text>
+			<Text Lang="uk">Оточення</Text>
+			<Text Lang="fr">Environnements</Text>
+			<Text Lang="pt-BR">Ambientes</Text>
+			<Text Lang="zh">场景</Text>
+			<Text Lang="ko">환경</Text>
+			<Text Lang="pl">Środowiska</Text>
+			<Text Lang="es">Entornos</Text>
+			<Text Lang="it">Ambienti</Text>
+			<Text Lang="ru">Окружение</Text>
+			<Text Lang="ja">環境</Text>
+			<Text Lang="de">Szenerien</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByContent.ItemsObjects">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Items / Objects</Text>
+			<Text Lang="uk">Предмети / Об'єкти</Text>
+			<Text Lang="fr">Articles / Objets</Text>
+			<Text Lang="pt-BR">Itens / Objetos</Text>
+			<Text Lang="zh">道具 / 物体</Text>
+			<Text Lang="ko">아이템 / 객체</Text>
+			<Text Lang="pl">Przedmioty/obiekty</Text>
+			<Text Lang="es">Ítems / Objetos</Text>
+			<Text Lang="it">Oggetti</Text>
+			<Text Lang="ru">Предметы / Объекты</Text>
+			<Text Lang="ja">アイテム</Text>
+			<Text Lang="de">Gegenstände / Objekte</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="ByContent.Miscellaneous">
+			<Context>Display name of an assets user folder which was created by the create new project assistant.</Context>
+			<Text Lang="en">Miscellaneous</Text>
+			<Text Lang="uk">Різне</Text>
+			<Text Lang="fr">Divers</Text>
+			<Text Lang="pt-BR">Diversos</Text>
+			<Text Lang="zh">其他</Text>
+			<Text Lang="ko">기타</Text>
+			<Text Lang="pl">Różne</Text>
+			<Text Lang="es">Miscelánea</Text>
+			<Text Lang="it">Varie</Text>
+			<Text Lang="ru">Разное</Text>
+			<Text Lang="ja">その他</Text>
+			<Text Lang="de">Verschiedenes</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Assets / Asset
+	-->
+	<Category Name="System" Namespace=".Assets.Asset">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of an "asset" node.</Context>
+			<Text Lang="en">Asset</Text>
+			<Text Lang="uk">Ресурс</Text>
+			<Text Lang="fr">Atout</Text>
+			<Text Lang="pt-BR">Recurso</Text>
+			<Text Lang="zh">资源</Text>
+			<Text Lang="ko">에셋</Text>
+			<Text Lang="pl">Asset</Text>
+			<Text Lang="es">Recurso</Text>
+			<Text Lang="it">Asset</Text>
+			<Text Lang="ru">Ресурс</Text>
+			<Text Lang="de">Asset</Text>
+			<Text Lang="ja">資料</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Asset" as plural.</Context>
+			<Text Lang="en">Assets</Text>
+			<Text Lang="uk">Ресурси</Text>
+			<Text Lang="fr">Atouts</Text>
+			<Text Lang="pt-BR">Recursos</Text>
+			<Text Lang="zh">复数资源</Text>
+			<Text Lang="ko">에셋</Text>
+			<Text Lang="pl">Assety</Text>
+			<Text Lang="es">Recursos</Text>
+			<Text Lang="it">Asset</Text>
+			<Text Lang="ru">Ресурсы</Text>
+			<Text Lang="ja">資料</Text>
+			<Text Lang="de">Assets</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly created asset; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Untitled asset</Text>
+			<Text Lang="uk">Ресурс без назви</Text>
+			<Text Lang="fr">Atout sans nom</Text>
+			<Text Lang="pt-BR">Recurso não-nomeado</Text>
+			<Text Lang="zh">未命名资源</Text>
+			<Text Lang="ko">제목없는 에셋</Text>
+			<Text Lang="pl">Nienazwany asset</Text>
+			<Text Lang="es">Recurso sin título</Text>
+			<Text Lang="it">Asset senza nome</Text>
+			<Text Lang="ru">Не названный ресурс</Text>
+			<Text Lang="ja">新しい資料</Text>
+			<Text Lang="de">Neues Asset</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Model Customization ########
+	-->
+	<!--
+	  Model Customization / Root System Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.RootFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>display name of the root system folder "model customization"</Context>
+			<Text Lang="en">Template Design</Text>
+			<Text Lang="uk">Шаблон дизайну</Text>
+			<Text Lang="fr">Conception de modèle</Text>
+			<Text Lang="pt-BR">Design de módulo</Text>
+			<Text Lang="zh">模板设计</Text>
+			<Text Lang="ko">템플릿 디자인</Text>
+			<Text Lang="pl">Desing szablonu</Text>
+			<Text Lang="es">Diseño de plantilla</Text>
+			<Text Lang="it">Template Design</Text>
+			<Text Lang="ru">Шаблон дизайна</Text>
+			<Text Lang="de">Vorlagendesign</Text>
+			<Text Lang="ja">テンプレートデザイン</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Features System Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.FeaturesFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Features".</Context>
+			<Text Lang="en">Features</Text>
+			<Text Lang="uk">Особливості</Text>
+			<Text Lang="fr">Fonctionnalités</Text>
+			<Text Lang="pt-BR">Elementos</Text>
+			<Text Lang="zh">特性</Text>
+			<Text Lang="ko">기능</Text>
+			<Text Lang="pl">Właściwości</Text>
+			<Text Lang="es">Características</Text>
+			<Text Lang="it">Caratteristiche</Text>
+			<Text Lang="ru">Особенности</Text>
+			<Text Lang="de">Features</Text>
+			<Text Lang="ja">フィーチャー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Features User Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.FeaturesUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a features user folder in the "model customization" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created features user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Model Templates System Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ModelTemplatesFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Model Templates".</Context>
+			<Text Lang="en">Templates</Text>
+			<Text Lang="uk">Шаблони</Text>
+			<Text Lang="fr">Modèles</Text>
+			<Text Lang="pt-BR">Módulos</Text>
+			<Text Lang="zh">模板</Text>
+			<Text Lang="ko">템플릿</Text>
+			<Text Lang="pl">Szablony</Text>
+			<Text Lang="es">Plantillas</Text>
+			<Text Lang="it">Template</Text>
+			<Text Lang="ru">Шаблоны</Text>
+			<Text Lang="de">Vorlagen</Text>
+			<Text Lang="ja">テンプレート</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Model Templates Typed System Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ModelTemplatesTypedFolder">
+
+		<TextDefinition Key="_Self_Entity_.Caption">
+			<Context>Display name of the system folder "Entity Templates".</Context>
+			<Text Lang="en">Entities</Text>
+			<Text Lang="uk">Суб'єкти</Text>
+			<Text Lang="fr">Entités</Text>
+			<Text Lang="pt-BR">Entidades</Text>
+			<Text Lang="zh">实体</Text>
+			<Text Lang="ko">개체</Text>
+			<Text Lang="pl">Podmioty</Text>
+			<Text Lang="es">Entidades</Text>
+			<Text Lang="it">Entità</Text>
+			<Text Lang="ru">Действующие лица</Text>
+			<Text Lang="de">Entitäten</Text>
+			<Text Lang="ja">エンティティー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_FlowFragment_.Caption">
+			<Context>Display name of the system folder "Flow Fragment Templates".</Context>
+			<Text Lang="en">Flow Fragments</Text>
+			<Text Lang="uk">Фрагменти потоку</Text>
+			<Text Lang="fr">Fragments de flux</Text>
+			<Text Lang="pt-BR">Fragmentos de Fluxo</Text>
+			<Text Lang="zh">复数流片段</Text>
+			<Text Lang="ko">흐름 프래그먼트</Text>
+			<Text Lang="pl">Fragmenty flowu</Text>
+			<Text Lang="es">Fragmentos de flujo</Text>
+			<Text Lang="it">Frammenti del diagramma di flusso</Text>
+			<Text Lang="ru">Фрагменты Потока</Text>
+			<Text Lang="de">Flow-Fragmente</Text>
+			<Text Lang="ja">フロー部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_DialogFragment_.Caption">
+			<Context>Display name of the system folder "Dialog Fragment Templates".</Context>
+			<Text Lang="en">Dialogue Fragments</Text>
+			<Text Lang="uk">Фрагменти діалогу</Text>
+			<Text Lang="fr">Fragments de dialogue</Text>
+			<Text Lang="pt-BR">Fragmentos de diálogo</Text>
+			<Text Lang="zh">复数对话片段</Text>
+			<Text Lang="ko">다이얼로그 프래그먼트</Text>
+			<Text Lang="pl">Fragmenty dialogów</Text>
+			<Text Lang="es">Fragmentos de diálogo</Text>
+			<Text Lang="it">Frammenti di dialogo</Text>
+			<Text Lang="ru">Фрагменты Диалога</Text>
+			<Text Lang="de">Dialog-Fragmente</Text>
+			<Text Lang="ja">会話部分</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Dialog_.Caption">
+			<Context>Display name of the system folder "Dialog Templates".</Context>
+			<Text Lang="en">Dialogues</Text>
+			<Text Lang="uk">Діалоги</Text>
+			<Text Lang="fr">Dialogues</Text>
+			<Text Lang="pt-BR">Diálogos</Text>
+			<Text Lang="zh">复数对话</Text>
+			<Text Lang="ko">다이얼로그</Text>
+			<Text Lang="pl">Dialogi</Text>
+			<Text Lang="es">Diálogos</Text>
+			<Text Lang="it">Dialoghi</Text>
+			<Text Lang="ru">Диалоги</Text>
+			<Text Lang="de">Dialoge</Text>
+			<Text Lang="ja">会話</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Location.Caption">
+			<Context>Display name of the system folder "Location Templates".</Context>
+			<Text Lang="en">Locations</Text>
+			<Text Lang="uk">Локації</Text>
+			<Text Lang="fr">Lieux</Text>
+			<Text Lang="pt-BR">Localizações</Text>
+			<Text Lang="zh">复数地点</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Lokacje</Text>
+			<Text Lang="es">Escenarios</Text>
+			<Text Lang="it">Location</Text>
+			<Text Lang="ru">Локации</Text>
+			<Text Lang="de">Schauplätze</Text>
+			<Text Lang="ja">ロケーション</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Asset_.Caption">
+			<Context>Display name of the system folder "Asset Templates".</Context>
+			<Text Lang="en">Assets</Text>
+			<Text Lang="uk">Ресурси</Text>
+			<Text Lang="fr">Atouts</Text>
+			<Text Lang="pt-BR">Recursos</Text>
+			<Text Lang="zh">复数资源</Text>
+			<Text Lang="ko">에셋</Text>
+			<Text Lang="pl">Assety</Text>
+			<Text Lang="es">Recursos</Text>
+			<Text Lang="it">Asset</Text>
+			<Text Lang="ru">Ресурсы</Text>
+			<Text Lang="ja">資料</Text>
+			<Text Lang="de">Assets</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Zone_.Caption">
+			<Context>Display name of the system folder "Zone Templates".</Context>
+			<Text Lang="en">Zones</Text>
+			<Text Lang="uk">Зони</Text>
+			<Text Lang="fr">Zones</Text>
+			<Text Lang="pt-BR">Zonas</Text>
+			<Text Lang="zh">复数地区</Text>
+			<Text Lang="ko">구역</Text>
+			<Text Lang="pl">Obszary</Text>
+			<Text Lang="es">Zonas</Text>
+			<Text Lang="it">Zone</Text>
+			<Text Lang="ru">Зоны</Text>
+			<Text Lang="ja">ゾーン</Text>
+			<Text Lang="de">Zonen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Spot_.Caption">
+			<Context>Display name of the system folder "Spot Templates".</Context>
+			<Text Lang="en">Spots</Text>
+			<Text Lang="uk">Місця</Text>
+			<Text Lang="fr">Endroits</Text>
+			<Text Lang="pt-BR">Locais</Text>
+			<Text Lang="zh">复数斑点</Text>
+			<Text Lang="ko">장소</Text>
+			<Text Lang="pl">Miejsca</Text>
+			<Text Lang="es">Puntos</Text>
+			<Text Lang="it">Segnalini</Text>
+			<Text Lang="ru">Места</Text>
+			<Text Lang="ja">スポット</Text>
+			<Text Lang="de">Spots</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Path_.Caption">
+			<Context>Display name of the system folder "Path Templates".</Context>
+			<Text Lang="en">Paths</Text>
+			<Text Lang="uk">Шляхи</Text>
+			<Text Lang="fr">Chemins</Text>
+			<Text Lang="pt-BR">Caminhos</Text>
+			<Text Lang="zh">复数路径</Text>
+			<Text Lang="ko">경로</Text>
+			<Text Lang="pl">Ścieżki</Text>
+			<Text Lang="es">Caminos</Text>
+			<Text Lang="it">Percorsi</Text>
+			<Text Lang="ru">Пути</Text>
+			<Text Lang="ja">経路</Text>
+			<Text Lang="de">Pfade</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Link_.Caption">
+			<Context>Display name of the system folder "Link Templates".</Context>
+			<Text Lang="en">Links</Text>
+			<Text Lang="uk">Посилання</Text>
+			<Text Lang="fr">Liens</Text>
+			<Text Lang="pt-BR">Links</Text>
+			<Text Lang="zh">复数链接</Text>
+			<Text Lang="ko">링크</Text>
+			<Text Lang="pl">Linki</Text>
+			<Text Lang="es">Enlaces</Text>
+			<Text Lang="it">Collegamenti</Text>
+			<Text Lang="ru">Ссылки</Text>
+			<Text Lang="ja">リンク</Text>
+			<Text Lang="de">Verknüpfungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_LocationImage_.Caption">
+			<Context>Display name of the system folder "(location)Image Templates".</Context>
+			<Text Lang="en">Images (in locations)</Text>
+			<Text Lang="uk">Зображення (у локаціях)</Text>
+			<Text Lang="fr">Images (dans les lieux)</Text>
+			<Text Lang="pt-BR">Imagens (em lugares)</Text>
+			<Text Lang="zh">复数图像（地点）</Text>
+			<Text Lang="ko">이미지(위치 안)</Text>
+			<Text Lang="pl">Obrazy (w lokacjach)</Text>
+			<Text Lang="de">Bilder (in Schauplätzen)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_LocationText_.Caption">
+			<Context>Display name of the system folder "(location)Text Templates".</Context>
+			<Text Lang="en">Texts (in locations)</Text>
+			<Text Lang="uk">Тексти (у локаціях)</Text>
+			<Text Lang="fr">Textes (dans les lieux)</Text>
+			<Text Lang="pt-BR">Texto (em lugares)</Text>
+			<Text Lang="zh">复数文本（地点）</Text>
+			<Text Lang="ko">텍스트(위치 안)</Text>
+			<Text Lang="pl">Teksty (w lokacjach)</Text>
+			<Text Lang="de">Texte (in Schauplätzen)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Hub_.Caption">
+			<Context>Display name of the system folder "Hub Templates".</Context>
+			<Text Lang="en">Hubs</Text>
+			<Text Lang="uk">Центри</Text>
+			<Text Lang="fr">Hubs</Text>
+			<Text Lang="pt-BR">Cubos</Text>
+			<Text Lang="zh">复数核心</Text>
+			<Text Lang="ko">허브</Text>
+			<Text Lang="pl">Ośrodki</Text>
+			<Text Lang="es">Nudos</Text>
+			<Text Lang="it">Hub</Text>
+			<Text Lang="ru">Центры</Text>
+			<Text Lang="ja">ハブ</Text>
+			<Text Lang="de">Hubs</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Jump_.Caption">
+			<Context>Display name of the system folder "Jump Templates".</Context>
+			<Text Lang="en">Jumps</Text>
+			<Text Lang="uk">Переходи</Text>
+			<Text Lang="fr">Sauts</Text>
+			<Text Lang="pt-BR">Pulos</Text>
+			<Text Lang="zh">复数跳转</Text>
+			<Text Lang="ko">점프</Text>
+			<Text Lang="pl">Skoki</Text>
+			<Text Lang="es">Saltos</Text>
+			<Text Lang="it">Salti</Text>
+			<Text Lang="ru">Переходы</Text>
+			<Text Lang="ja">ジャンプ</Text>
+			<Text Lang="de">Sprungknoten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Condition_.Caption">
+			<Context>Display name of the system folder "Condition Templates".</Context>
+			<Text Lang="en">Conditions</Text>
+			<Text Lang="uk">Умови</Text>
+			<Text Lang="fr">Conditions</Text>
+			<Text Lang="pt-BR">Condições</Text>
+			<Text Lang="zh">复数条件</Text>
+			<Text Lang="ko">조건</Text>
+			<Text Lang="pl">Warunki</Text>
+			<Text Lang="es">Condiciones</Text>
+			<Text Lang="it">Condizioni</Text>
+			<Text Lang="de">Bedingungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Outcome_.Caption">
+			<Context>Display name of the system folder "Outcome Templates".</Context>
+			<Text Lang="en">Instructions</Text>
+			<Text Lang="uk">Інструкції</Text>
+			<Text Lang="fr">Instructions</Text>
+			<Text Lang="pt-BR">Instruções</Text>
+			<Text Lang="zh">复数说明</Text>
+			<Text Lang="ko">지시</Text>
+			<Text Lang="pl">Instrukcje</Text>
+			<Text Lang="es">Instrucciones</Text>
+			<Text Lang="it">Istruzioni</Text>
+			<Text Lang="de">Anweisungen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Note_.Caption">
+			<Context>Display name of the system folder "Document Templates".</Context>
+			<Text Lang="en">Documents</Text>
+			<Text Lang="uk">Документи</Text>
+			<Text Lang="fr">Documents</Text>
+			<Text Lang="pt-BR">Documentos</Text>
+			<Text Lang="zh">复数文档</Text>
+			<Text Lang="ko">문서</Text>
+			<Text Lang="pl">Documenty</Text>
+			<Text Lang="es">Documentos</Text>
+			<Text Lang="it">Documenti</Text>
+			<Text Lang="ru">Документы</Text>
+			<Text Lang="de">Dokumente</Text>
+			<Text Lang="ja">ドキュメント</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_TextObject_.Caption">
+			<Context>Display name of the system folder "Text Templates".</Context>
+			<Text Lang="en">Texts</Text>
+			<Text Lang="uk">Тексти</Text>
+			<Text Lang="fr">Textes</Text>
+			<Text Lang="pt-BR">Textos</Text>
+			<Text Lang="zh">复数文本</Text>
+			<Text Lang="ko">텍스트</Text>
+			<Text Lang="pl">Teksty</Text>
+			<Text Lang="es">Textos</Text>
+			<Text Lang="it">Testi</Text>
+			<Text Lang="ru">Тексты</Text>
+			<Text Lang="de">Texte</Text>
+			<Text Lang="ja">テクスト</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Model Templates Typed User Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ModelTemplatesTypedUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a model templates user folder in the "model customization" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created model templates user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Trait Templates System Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.TraitTemplatesFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Property Definitions".</Context>
+			<Text Lang="en">Property Definitions</Text>
+			<Text Lang="uk">Визначення Властивостей</Text>
+			<Text Lang="fr">Définitions de propriété</Text>
+			<Text Lang="pt-BR">Definições de propriedade</Text>
+			<Text Lang="zh">属性定义</Text>
+			<Text Lang="ko">속성 정의</Text>
+			<Text Lang="pl">Definicje właśności</Text>
+			<Text Lang="es">Definiciones de propiedades</Text>
+			<Text Lang="it">Definizione attributi</Text>
+			<Text Lang="ru">Определение свойств</Text>
+			<Text Lang="de">Eigenschaftsdefinitionen</Text>
+			<Text Lang="ja">プロパヂフィニション</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Model Templates Typed System Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.TraitTemplatesTypedFolder">
+
+		<TextDefinition Key="_Self_Number_.Caption">
+			<Context>Display name of the system folder "Number".</Context>
+			<Text Lang="en">Numbers</Text>
+			<Text Lang="uk">Числа</Text>
+			<Text Lang="fr">Nombres</Text>
+			<Text Lang="pt-BR">Números</Text>
+			<Text Lang="zh">复数数值</Text>
+			<Text Lang="ko">숫자</Text>
+			<Text Lang="pl">Numery</Text>
+			<Text Lang="es">Números</Text>
+			<Text Lang="it">Numeri</Text>
+			<Text Lang="ru">Числа</Text>
+			<Text Lang="ja">ナンバー</Text>
+			<Text Lang="de">Zahlen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Boolean_.Caption">
+			<Context>Display name of the system folder "Boolean".</Context>
+			<Text Lang="en">Booleans</Text>
+			<Text Lang="uk">Booleans</Text>
+			<Text Lang="fr">Booléens</Text>
+			<Text Lang="pt-BR">Booleanos</Text>
+			<Text Lang="zh">复数布尔值</Text>
+			<Text Lang="ko">Booleans</Text>
+			<Text Lang="pl">Boolean</Text>
+			<Text Lang="es">Booleanos</Text>
+			<Text Lang="it">Booleani</Text>
+			<Text Lang="ru">Булевы</Text>
+			<Text Lang="ja">ブーリアン</Text>
+			<Text Lang="de">Booleans</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Text_.Caption">
+			<Context>Display name of the system folder "Text".</Context>
+			<Text Lang="en">Texts</Text>
+			<Text Lang="uk">Тексти</Text>
+			<Text Lang="fr">Textes</Text>
+			<Text Lang="pt-BR">Texto</Text>
+			<Text Lang="zh">复数文本</Text>
+			<Text Lang="ko">텍스트</Text>
+			<Text Lang="pl">Teksty</Text>
+			<Text Lang="es">Textos</Text>
+			<Text Lang="it">Testo</Text>
+			<Text Lang="ru">Тексты</Text>
+			<Text Lang="de">Texte</Text>
+			<Text Lang="ja">テクスト</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Enum_.Caption">
+			<Context>Display name of the system folder "Enumeration".</Context>
+			<Text Lang="en">Drop-down lists</Text>
+			<Text Lang="uk">Випадаючі списки</Text>
+			<Text Lang="fr">Listes déroulantes</Text>
+			<Text Lang="pt-BR">Lista suspensa</Text>
+			<Text Lang="zh">复数下拉列表</Text>
+			<Text Lang="ko">드롭-다운 목록</Text>
+			<Text Lang="pl">Rozwijana lista</Text>
+			<Text Lang="es">Listas desplegables</Text>
+			<Text Lang="it">Lista a discesa</Text>
+			<Text Lang="ru">Раскрывающиеся списки</Text>
+			<Text Lang="ja">ドロップダウンリスト</Text>
+			<Text Lang="de">Dropdown-Listen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Reference_.Caption">
+			<Context>Display name of the system folder "Reference".</Context>
+			<Text Lang="en">Slots &amp; Strips</Text>
+			<Text Lang="uk">Посилання</Text>
+			<Text Lang="fr">Registres &amp; Bordereaux</Text>
+			<Text Lang="pt-BR">Espaços &amp; Tiras</Text>
+			<Text Lang="zh">插槽 &amp; Strips</Text>
+			<Text Lang="ko">슬롯 &amp; Strips</Text>
+			<Text Lang="pl">Gniazda i Listwy</Text>
+			<Text Lang="es">Ranuras y tiras</Text>
+			<Text Lang="it">Zone riferimenti</Text>
+			<Text Lang="ru">Ссылки</Text>
+			<Text Lang="ja">スロットとストリップ</Text>
+			<Text Lang="de">Slots &amp; Strips</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_Script_.Caption">
+			<Context>Display name of the system folder "Script".</Context>
+			<Text Lang="en">Scripts</Text>
+			<Text Lang="uk">Скрипти</Text>
+			<Text Lang="fr">Scripts</Text>
+			<Text Lang="pt-BR">Scripts</Text>
+			<Text Lang="zh">复数脚本</Text>
+			<Text Lang="ko">스크립트</Text>
+			<Text Lang="pl">Skrypty</Text>
+			<Text Lang="es">Scripts</Text>
+			<Text Lang="it">Script</Text>
+			<Text Lang="de">Skripte</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Model Customization / Trait Templates Typed User Folder
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.TraitTemplatesTypedUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a trait templates user folder in the "model customization" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created trait templates user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Number trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.NumberTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Number property definition</Text>
+			<Text Lang="uk">Визначення властивості числа</Text>
+			<Text Lang="fr">Définition de propriété de nombre</Text>
+			<Text Lang="pt-BR">Definição de propriedade de número</Text>
+			<Text Lang="zh">数值属性定义</Text>
+			<Text Lang="ko">숫자 속성 정의</Text>
+			<Text Lang="pl">Właśności definicji liczbowych</Text>
+			<Text Lang="es">Definición de propiedad de número</Text>
+			<Text Lang="it">Definizione attributo numero</Text>
+			<Text Lang="ru">Определение свойства числа</Text>
+			<Text Lang="ja">ナンバープロパティータイプ</Text>
+			<Text Lang="de">Zahlen-Eigenschaftsdefinition</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New number</Text>
+			<Text Lang="uk">Нове число</Text>
+			<Text Lang="fr">Nouveau nombre</Text>
+			<Text Lang="pt-BR">Novo número</Text>
+			<Text Lang="zh">新建数值</Text>
+			<Text Lang="ko">새 숫자</Text>
+			<Text Lang="pl">Nowy numer</Text>
+			<Text Lang="es">Nuevo número</Text>
+			<Text Lang="it">Nuovo numero</Text>
+			<Text Lang="ru">Новое число</Text>
+			<Text Lang="ja">新しいナンバープロパティータイプ</Text>
+			<Text Lang="de">Neue Zahl</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Boolean trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.BooleanTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Boolean property definition</Text>
+			<Text Lang="uk">Визначення властивостей boolean</Text>
+			<Text Lang="fr">Définition de propriété booléenne</Text>
+			<Text Lang="pt-BR">Definição de propriedade Booleana</Text>
+			<Text Lang="zh">布尔值属性定义</Text>
+			<Text Lang="ko">Boolean 속성 정의</Text>
+			<Text Lang="pl">Własności definicji boolean</Text>
+			<Text Lang="es">Definición de propiedad de booleano</Text>
+			<Text Lang="it">Definizione attributo booleano</Text>
+			<Text Lang="ru">Определение булевых свойств</Text>
+			<Text Lang="ja">ブーリアンプロパティータイプ</Text>
+			<Text Lang="de">Boolean-Eigenschaftsdefinition</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New Boolean</Text>
+			<Text Lang="uk">Нова змінна boolean</Text>
+			<Text Lang="fr">Nouveau booléen</Text>
+			<Text Lang="pt-BR">Nova Booleana</Text>
+			<Text Lang="zh">新建布尔值</Text>
+			<Text Lang="ko">새 Boolean</Text>
+			<Text Lang="pl">Nowy boolean</Text>
+			<Text Lang="es">Nuevo booleano</Text>
+			<Text Lang="it">Nuovo booleano</Text>
+			<Text Lang="ru">Новая булева переменная</Text>
+			<Text Lang="ja">新しいブーリアン</Text>
+			<Text Lang="de">Neuer Boolean</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Short text trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ShortTextTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Text property definition (small)</Text>
+			<Text Lang="uk">Визначення властивостей тексту (маленький)</Text>
+			<Text Lang="fr">Définition de propriété de texte (petit)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de texto (pequeno)</Text>
+			<Text Lang="zh">文本属性定义（小）</Text>
+			<Text Lang="ko">텍스트 속성 정의 (작은)</Text>
+			<Text Lang="pl">Własności definicji tekstu (krótkiego)</Text>
+			<Text Lang="es">Definición de propiedad de texto (corto)</Text>
+			<Text Lang="it">Definizione attributo testo (piccolo)</Text>
+			<Text Lang="ru">Определение свойств текста (маленький)</Text>
+			<Text Lang="ja">テキストプロパティータイプ（小）</Text>
+			<Text Lang="de">Text-Eigenschaftsdefinition (kurz)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New text (small)</Text>
+			<Text Lang="uk">Новий текст (маленький)</Text>
+			<Text Lang="fr">Nouveau texte (petit)</Text>
+			<Text Lang="pt-BR">Novo texto (pequeno)</Text>
+			<Text Lang="zh">新建文本（小）</Text>
+			<Text Lang="ko">새 텍스트 (작은)</Text>
+			<Text Lang="pl">Nowy tekst (krótki)</Text>
+			<Text Lang="es">Nuevo texto (corto)</Text>
+			<Text Lang="it">Nuovo testo (piccolo)</Text>
+			<Text Lang="ru">Новый текст (маленький)</Text>
+			<Text Lang="ja">新しいテキスト（小）</Text>
+			<Text Lang="de">Neuer Text (kurz)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Medium text trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.MediumTextTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Text property definition (medium)</Text>
+			<Text Lang="uk">Визначення властивостей тексту (середній)</Text>
+			<Text Lang="fr">Définition de propriété de texte (moyen)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de texto (médio)</Text>
+			<Text Lang="zh">文本属性定义（中）</Text>
+			<Text Lang="ko">텍스트 속성 정의 (중간)</Text>
+			<Text Lang="pl">Własności definicji tekstu (średniego)</Text>
+			<Text Lang="es">Definición de propiedad de texto (mediano)</Text>
+			<Text Lang="it">Definizione attributo testo (medio)</Text>
+			<Text Lang="ru">Определение свойств текста (средний)</Text>
+			<Text Lang="ja">テキストプロパティータイプ（中）</Text>
+			<Text Lang="de">Text-Eigenschaftsdefinition (mittel)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New text (medium)</Text>
+			<Text Lang="uk">Новий текст (середній)</Text>
+			<Text Lang="fr">Nouveau texte (moyen)</Text>
+			<Text Lang="pt-BR">Novo texto (médio)</Text>
+			<Text Lang="zh">新建文本（中）</Text>
+			<Text Lang="ko">새 텍스트 (중간)</Text>
+			<Text Lang="pl">Nowy tekst (średni)</Text>
+			<Text Lang="es">Nuevo texto (mediano)</Text>
+			<Text Lang="it">Nuovo testo (medio)</Text>
+			<Text Lang="ru">Новый текст (средний)</Text>
+			<Text Lang="ja">新しいテキスト（中）</Text>
+			<Text Lang="de">Neuer Text (mittel)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Large text trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.LargeTextTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Text property definition (large)</Text>
+			<Text Lang="uk">Визначення властивостей тексту (великий)</Text>
+			<Text Lang="fr">Définition de propriété de texte (grand)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de texto (grande)</Text>
+			<Text Lang="zh">文本属性定义（大）</Text>
+			<Text Lang="ko">텍스트 속성 정의(큰)</Text>
+			<Text Lang="pl">Własności definicji tekstu (długiego)</Text>
+			<Text Lang="es">Definición de propiedad de texto (largo)</Text>
+			<Text Lang="it">Definizione attributo testo (grande)</Text>
+			<Text Lang="ru">Определение свойств текста (большой)</Text>
+			<Text Lang="ja">テキストプロパティータイプ（大）</Text>
+			<Text Lang="de">Text-Eigenschaftsdefinition (lang)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New text (large)</Text>
+			<Text Lang="uk">Новий текст (великий)</Text>
+			<Text Lang="fr">Nouveau texte (grand)</Text>
+			<Text Lang="pt-BR">Novo texto (grande)</Text>
+			<Text Lang="zh">新建文本（大）</Text>
+			<Text Lang="ko">새 텍스트(큰)</Text>
+			<Text Lang="pl">Nowy tekst (długi)</Text>
+			<Text Lang="es">Nuevo texto (largo)</Text>
+			<Text Lang="it">Nuovo testo (grande)</Text>
+			<Text Lang="ru">Новый текст (большой)</Text>
+			<Text Lang="ja">新しいテキスト（大）</Text>
+			<Text Lang="de">Neuer Text (lang)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Short script trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ShortScriptTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Script property definition (small)</Text>
+			<Text Lang="uk">Визначення властивостей скипту (маленький)</Text>
+			<Text Lang="fr">Définition de propriété de script (petit)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de Script (pequeno)</Text>
+			<Text Lang="zh">脚本属性定义（小）</Text>
+			<Text Lang="ko">스크립트 속성 정의 (작은)</Text>
+			<Text Lang="pl">Własności definicji skryptu (krótkiego)</Text>
+			<Text Lang="es">Definición de propiedad de script (corto)</Text>
+			<Text Lang="it">Definizione attributo script (piccolo)</Text>
+			<Text Lang="de">Skript-Eigenschaftsdefinition (kurz)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New script (small)</Text>
+			<Text Lang="uk">Новий скрипт (маленький)</Text>
+			<Text Lang="fr">Nouveau script (petit)</Text>
+			<Text Lang="pt-BR">Novo script (pequeno)</Text>
+			<Text Lang="zh">新建脚本（小）</Text>
+			<Text Lang="ko">새 스크립트 (작은)</Text>
+			<Text Lang="pl">Nowy skrypt (krótki)</Text>
+			<Text Lang="es">Nuevo script (corto)</Text>
+			<Text Lang="it">Nuovo script (piccolo)</Text>
+			<Text Lang="de">Neues Skript (kurz)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Medium script trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.MediumScriptTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Script property definition (medium)</Text>
+			<Text Lang="uk">Визначення властивостей скрипту (середній)</Text>
+			<Text Lang="fr">Définition de propriété de script (moyen)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de script (médio)</Text>
+			<Text Lang="zh">脚本属性定义（中）</Text>
+			<Text Lang="ko">스크립트 속성 정의 (중간)</Text>
+			<Text Lang="pl">Właności definicji skryptu (średniego)</Text>
+			<Text Lang="es">Definición de propiedad de script (mediano)</Text>
+			<Text Lang="it">Definizione attributo script (medio)</Text>
+			<Text Lang="de">Skript-Eigenschaftsdefinition (mittel)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New script (medium)</Text>
+			<Text Lang="uk">Новий скрипт (середній)</Text>
+			<Text Lang="fr">Nouveau script (moyen)</Text>
+			<Text Lang="pt-BR">Novo script (médio)</Text>
+			<Text Lang="zh">新建脚本（中）</Text>
+			<Text Lang="ko">새 스크립트 (중간)</Text>
+			<Text Lang="pl">Nowy skrypt (średni)</Text>
+			<Text Lang="es">Nuevo script (mediano)</Text>
+			<Text Lang="it">Nuovo script (medio)</Text>
+			<Text Lang="de">Neues Skript (mittel)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Large script trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.LargeScriptTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Script property definition (large)</Text>
+			<Text Lang="uk">Визначення властивостей скрипту (великий)</Text>
+			<Text Lang="fr">Définition de propriété de script (grand)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de script (grande)</Text>
+			<Text Lang="zh">脚本属性定义（大）</Text>
+			<Text Lang="ko">스크립트 속성 정의 (큰)</Text>
+			<Text Lang="pl">Własności definicji skryptu (długiego)</Text>
+			<Text Lang="es">Definición de propiedad de script (largo)</Text>
+			<Text Lang="it">Definizione attributo script (grande)</Text>
+			<Text Lang="de">Skript-Eigenschaftsdefinition (lang)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New script (large)</Text>
+			<Text Lang="uk">Новий скрипт (великий)</Text>
+			<Text Lang="fr">Nouveau script (grand)</Text>
+			<Text Lang="pt-BR">Novo script (grande)</Text>
+			<Text Lang="zh">新建脚本（大）</Text>
+			<Text Lang="ko">새 스크립트 (큰)</Text>
+			<Text Lang="pl">Nowy skrypt (długi)</Text>
+			<Text Lang="es">Nuevo script (largo)</Text>
+			<Text Lang="it">Nuovo script (grande)</Text>
+			<Text Lang="de">Neues Skript (lang)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Enum trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.EnumTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Drop-down property definition</Text>
+			<Text Lang="uk">Визначення властвивостей випадаючих списків</Text>
+			<Text Lang="fr">Définition de propriété déroulante</Text>
+			<Text Lang="pt-BR">Definição de propriedade de suspensão</Text>
+			<Text Lang="zh">下拉列表属性定义</Text>
+			<Text Lang="ko">드롭-다운 속성 정의</Text>
+			<Text Lang="pl">Własności definicji rozwianej listy</Text>
+			<Text Lang="es">Definición de propiedad de lista desplegable</Text>
+			<Text Lang="it">Definizione attributo lista a discesa</Text>
+			<Text Lang="ru">Определение свойств раскрывающихся списков</Text>
+			<Text Lang="ja">ドロップダウンリストプロパティータイプ</Text>
+			<Text Lang="de">Dropdown-Eigenschaftsdefinition</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New drop-down list</Text>
+			<Text Lang="uk">Новий випадаючий список</Text>
+			<Text Lang="fr">Nouvelle liste déroulante</Text>
+			<Text Lang="pt-BR">Nova lista de suspensão</Text>
+			<Text Lang="zh">新建下拉列表</Text>
+			<Text Lang="ko">새 드롭-다운 목록</Text>
+			<Text Lang="pl">Nowa rozwijana lista</Text>
+			<Text Lang="es">Nueva lista desplegable</Text>
+			<Text Lang="it">Nuova lista a discesa</Text>
+			<Text Lang="ru">Новый раскрывающийся список</Text>
+			<Text Lang="ja">新しいドロップダウンリスト</Text>
+			<Text Lang="de">Neue Dropdown-Liste</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="DefaultEntryName.Caption">
+			<Context/>
+			<Text Lang="en">Value</Text>
+			<Text Lang="uk">Значення</Text>
+			<Text Lang="fr">Valeur</Text>
+			<Text Lang="pt-BR">Valor</Text>
+			<Text Lang="zh">值</Text>
+			<Text Lang="ko">값</Text>
+			<Text Lang="pl">Wartość</Text>
+			<Text Lang="es">Valor</Text>
+			<Text Lang="it">Valore</Text>
+			<Text Lang="ru">Значение</Text>
+			<Text Lang="ja">バリュー</Text>
+			<Text Lang="de">Wert</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Reference slot trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ReferenceSlotTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Slot property definition</Text>
+			<Text Lang="uk">Визначення властивостей солоту посилання</Text>
+			<Text Lang="fr">Définition de propriété de registre</Text>
+			<Text Lang="pt-BR">Definição de propriedade de espaço</Text>
+			<Text Lang="zh">插槽属性定义</Text>
+			<Text Lang="ko">슬롯 속성 정의</Text>
+			<Text Lang="pl">Własności definicji gniazda</Text>
+			<Text Lang="es">Definición de propiedad lista desplegable</Text>
+			<Text Lang="it">Definizione attributo spazio</Text>
+			<Text Lang="ru">Определение свойств слота ссылки</Text>
+			<Text Lang="ja">スロットプロパティータイプ</Text>
+			<Text Lang="de">Slot-Eigenschaftsdefinition</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New slot</Text>
+			<Text Lang="uk">Новий слот посилання</Text>
+			<Text Lang="fr">Nouveau registre</Text>
+			<Text Lang="pt-BR">Novo espaço</Text>
+			<Text Lang="zh">新建插槽</Text>
+			<Text Lang="ko">새 슬롯</Text>
+			<Text Lang="pl">Nowe gniazdo</Text>
+			<Text Lang="es">Nueva ranura</Text>
+			<Text Lang="it">Nuovo spazio</Text>
+			<Text Lang="ru">Новый слот ссылки</Text>
+			<Text Lang="ja">新しいスロット</Text>
+			<Text Lang="de">Neuer Slot</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Reference strip trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ReferenceStripTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Strip property definition</Text>
+			<Text Lang="uk">Визначення властивостей рядка посилання</Text>
+			<Text Lang="fr">Définition de propriété de bordereau</Text>
+			<Text Lang="pt-BR">Definição de propriedade de tira</Text>
+			<Text Lang="zh">strip属性</Text>
+			<Text Lang="ko">스트립 속성 정의</Text>
+			<Text Lang="pl">Własności definicji paska</Text>
+			<Text Lang="es">Definición de propiedad de ranura</Text>
+			<Text Lang="it">Definizione attributo zona riferimenti</Text>
+			<Text Lang="ru">Определение свойств строки ссылки</Text>
+			<Text Lang="ja">ストリッププロパティータイプ</Text>
+			<Text Lang="de">Strip-Eigenschaftsdefinition</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New strip</Text>
+			<Text Lang="uk">Новий рядок посилання</Text>
+			<Text Lang="fr">Nouveau bordereau</Text>
+			<Text Lang="pt-BR">Nova tira</Text>
+			<Text Lang="zh">新建strip</Text>
+			<Text Lang="ko">새 스트립</Text>
+			<Text Lang="pl">Nowy pasek</Text>
+			<Text Lang="es">Nueva tira</Text>
+			<Text Lang="it">Nuova zona riferimenti</Text>
+			<Text Lang="ru">Новая полоса ссылки</Text>
+			<Text Lang="ja">新しいストリップ</Text>
+			<Text Lang="de">Neuer Strip</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Query reference strip trait Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.QueryReferenceStripTraitTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "trait template" node.</Context>
+			<Text Lang="en">Strip (calculated) property definition</Text>
+			<Text Lang="uk">Визначення властивостей рядка запиту посилання</Text>
+			<Text Lang="fr">Définition de propriété de bordereau (prérempli)</Text>
+			<Text Lang="pt-BR">Definição de propriedade de tira (calculada)</Text>
+			<Text Lang="zh">Strip（推断）属性定义</Text>
+			<Text Lang="ko">스트립 (계산됨) 속성 정의</Text>
+			<Text Lang="pl">Własności definicji paska (wyliczony)</Text>
+			<Text Lang="es">Definición de propiedad de tira (calculada)</Text>
+			<Text Lang="it">Definizione attributo zona riferimenti (calcolata)</Text>
+			<Text Lang="ru">Определение свойства строки запроса ссылки</Text>
+			<Text Lang="de">Strip (berechnet) Eigenschaftsdefinition</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "trait template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New strip (calculated)</Text>
+			<Text Lang="uk">Новий рядок запиту посилання</Text>
+			<Text Lang="fr">Nouveau bordereau (prérempli)</Text>
+			<Text Lang="pt-BR">Nova tira (calculada)</Text>
+			<Text Lang="zh">新建strip(推断）</Text>
+			<Text Lang="ko">새 스트립 (계산됨)</Text>
+			<Text Lang="pl">Nowy pasek (wyliczony)</Text>
+			<Text Lang="es">Nueva tira (calculada)</Text>
+			<Text Lang="it">Nuova zona riferimenti (calcolata)</Text>
+			<Text Lang="ru">Новый строка запроса ссылки</Text>
+			<Text Lang="de">Neuer Strip (berechnet)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Feature Blueprint
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.FeatureBlueprint">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "feature blueprint" node.</Context>
+			<Text Lang="en">Feature</Text>
+			<Text Lang="uk">Особливість</Text>
+			<Text Lang="fr">Fonctionnalité</Text>
+			<Text Lang="pt-BR">Elemento</Text>
+			<Text Lang="zh">特性</Text>
+			<Text Lang="ko">기능</Text>
+			<Text Lang="pl">Cecha</Text>
+			<Text Lang="es">Función</Text>
+			<Text Lang="it">Caratteristica</Text>
+			<Text Lang="ru">Особенность</Text>
+			<Text Lang="de">Feature</Text>
+			<Text Lang="ja">フィーチャー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "feature blueprint" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">New feature</Text>
+			<Text Lang="uk">Нова особливість</Text>
+			<Text Lang="fr">Nouvelle fonctionnalité</Text>
+			<Text Lang="pt-BR">Novo elemento</Text>
+			<Text Lang="zh">新建特性</Text>
+			<Text Lang="ko">새 기능</Text>
+			<Text Lang="pl">Nowa cecha</Text>
+			<Text Lang="es">Nueva característica</Text>
+			<Text Lang="it">Nuova caratteristica</Text>
+			<Text Lang="ru">Новая особенность</Text>
+			<Text Lang="de">Neues Feature</Text>
+			<Text Lang="ja">新しいフィーチャー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Model Template
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ModelTemplate">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "model template" node.</Context>
+			<Text Lang="en">Template</Text>
+			<Text Lang="uk">Шаблон</Text>
+			<Text Lang="fr">Modèle</Text>
+			<Text Lang="pt-BR">Módulo</Text>
+			<Text Lang="zh">模板</Text>
+			<Text Lang="ko">템플릿</Text>
+			<Text Lang="pl">Szablon</Text>
+			<Text Lang="es">Plantilla</Text>
+			<Text Lang="it">Template</Text>
+			<Text Lang="ru">Шаблон</Text>
+			<Text Lang="de">Vorlage</Text>
+			<Text Lang="ja">テンプレート</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created "model template" node. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled template</Text>
+			<Text Lang="uk">Шаблон без назви</Text>
+			<Text Lang="fr">Modèle sans nom</Text>
+			<Text Lang="pt-BR">Módulo não-nomeado</Text>
+			<Text Lang="zh">未命名模板</Text>
+			<Text Lang="ko">제목없는 템플릿</Text>
+			<Text Lang="pl">Nienazwany szablon</Text>
+			<Text Lang="es">Plantilla sin título</Text>
+			<Text Lang="it">Template senza nome</Text>
+			<Text Lang="ru">Не названный шаблон</Text>
+			<Text Lang="de">Neue Vorlage</Text>
+			<Text Lang="ja">新しいテンプレート</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Boolean Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.BooleanBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "boolean basic trait" node.</Context>
+			<Text Lang="en">Boolean</Text>
+			<Text Lang="uk">Булеан</Text>
+			<Text Lang="fr">Booléen</Text>
+			<Text Lang="pt-BR">Booleano</Text>
+			<Text Lang="zh">布尔值</Text>
+			<Text Lang="ko">Boolean</Text>
+			<Text Lang="pl">Boolean</Text>
+			<Text Lang="es">Booleano</Text>
+			<Text Lang="it">Booleano</Text>
+			<Text Lang="ru">Булева</Text>
+			<Text Lang="de">Boolean</Text>
+			<Text Lang="ja">ブーリアン</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Number Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.NumberBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "number basic trait" node.</Context>
+			<Text Lang="en">Number</Text>
+			<Text Lang="uk">Число</Text>
+			<Text Lang="fr">Nombre</Text>
+			<Text Lang="pt-BR">Número</Text>
+			<Text Lang="zh">数值</Text>
+			<Text Lang="ko">숫자</Text>
+			<Text Lang="pl">Numer</Text>
+			<Text Lang="es">Número</Text>
+			<Text Lang="it">Numero</Text>
+			<Text Lang="ru">Число</Text>
+			<Text Lang="de">Zahl</Text>
+			<Text Lang="ja">ナンバー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Small Text Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.SmallTextBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "small text basic trait" node.</Context>
+			<Text Lang="en">Text (small)</Text>
+			<Text Lang="uk">Маленький текст</Text>
+			<Text Lang="fr">Texte (petit)</Text>
+			<Text Lang="pt-BR">Texto (pequeno)</Text>
+			<Text Lang="zh">文本（小）</Text>
+			<Text Lang="ko">텍스트 (작은)</Text>
+			<Text Lang="pl">Krótki tekst</Text>
+			<Text Lang="es">Texto corto</Text>
+			<Text Lang="it">Testo piccolo</Text>
+			<Text Lang="ru">Маленький текст</Text>
+			<Text Lang="de">Text (kurz)</Text>
+			<Text Lang="ja">小テキスト</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Medium Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.MediumTextBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "medium text basic trait" node.</Context>
+			<Text Lang="en">Text (medium)</Text>
+			<Text Lang="uk">Середній текст</Text>
+			<Text Lang="fr">Texte (moyen)</Text>
+			<Text Lang="pt-BR">Texto (médio)</Text>
+			<Text Lang="zh">文本（中）</Text>
+			<Text Lang="ko">텍스트 (중간)</Text>
+			<Text Lang="pl">Średni tekst</Text>
+			<Text Lang="es">Texto mediano</Text>
+			<Text Lang="it">Testo medio</Text>
+			<Text Lang="ru">Средний текст</Text>
+			<Text Lang="de">Text (mittel)</Text>
+			<Text Lang="ja">中テキスト</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Large Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.LargeTextBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "large text basic trait" node.</Context>
+			<Text Lang="en">Text (large)</Text>
+			<Text Lang="uk">Великий текст</Text>
+			<Text Lang="fr">Texte (grand)</Text>
+			<Text Lang="pt-BR">Texto (grande)</Text>
+			<Text Lang="zh">文本（大）</Text>
+			<Text Lang="ko">텍스트 (큰)</Text>
+			<Text Lang="pl">Długi tekst</Text>
+			<Text Lang="es">Texto largo</Text>
+			<Text Lang="it">Testo grande</Text>
+			<Text Lang="ru">Большой текст</Text>
+			<Text Lang="de">Text (lang)</Text>
+			<Text Lang="ja">大テキスト</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Small Script Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.SmallScriptBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "small script basic trait" node.</Context>
+			<Text Lang="en">Script (small)</Text>
+			<Text Lang="uk">Малий скрипт</Text>
+			<Text Lang="fr">Script (petit)</Text>
+			<Text Lang="pt-BR">Script (pequeno)</Text>
+			<Text Lang="zh">脚本（小）</Text>
+			<Text Lang="ko">스크립트 (작은)</Text>
+			<Text Lang="pl">Krótki skrypt</Text>
+			<Text Lang="es">Script corto</Text>
+			<Text Lang="it">Script piccolo</Text>
+			<Text Lang="de">Skript (kurz)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Medium Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.MediumScriptBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "medium script basic trait" node.</Context>
+			<Text Lang="en">Script (medium)</Text>
+			<Text Lang="uk">Середній скрипт</Text>
+			<Text Lang="fr">Script (moyen)</Text>
+			<Text Lang="pt-BR">Script (médio)</Text>
+			<Text Lang="zh">脚本（中）</Text>
+			<Text Lang="ko">스크립트 (중간)</Text>
+			<Text Lang="pl">Średni skrypt</Text>
+			<Text Lang="es">Script mediano</Text>
+			<Text Lang="it">Script medio</Text>
+			<Text Lang="de">Skript (mittel)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Large Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.LargeScriptBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "large script basic trait" node.</Context>
+			<Text Lang="en">Script (large)</Text>
+			<Text Lang="uk">Великий скрипт</Text>
+			<Text Lang="fr">Script (grand)</Text>
+			<Text Lang="pt-BR">Script (grande)</Text>
+			<Text Lang="zh">脚本（大）</Text>
+			<Text Lang="ko">스크립트 (큰)</Text>
+			<Text Lang="pl">Długi skrypt</Text>
+			<Text Lang="es">Script largo</Text>
+			<Text Lang="it">Script grande</Text>
+			<Text Lang="de">Skript (lang)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Enum Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.EnumBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "enum basic trait" node.</Context>
+			<Text Lang="en">Drop-down list</Text>
+			<Text Lang="uk">Випадаючий список</Text>
+			<Text Lang="fr">Liste déroulante</Text>
+			<Text Lang="pt-BR">Lista de suspensão</Text>
+			<Text Lang="zh">下拉列表</Text>
+			<Text Lang="ko">드롭-다운 목록</Text>
+			<Text Lang="pl">Lista rozwijana</Text>
+			<Text Lang="es">Lista desplegable</Text>
+			<Text Lang="it">Lista a discesa</Text>
+			<Text Lang="ru">Раскрывающийся список</Text>
+			<Text Lang="ja">ドロップダウンリスト</Text>
+			<Text Lang="de">Dropdown-Liste</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Reference Slot Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ReferenceSlotBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "reference trait basic trait" node.</Context>
+			<Text Lang="en">Slot</Text>
+			<Text Lang="uk">Слот посилання</Text>
+			<Text Lang="fr">Registre</Text>
+			<Text Lang="pt-BR">Espaço</Text>
+			<Text Lang="zh">插槽</Text>
+			<Text Lang="ko">슬롯</Text>
+			<Text Lang="pl">Gniazdo</Text>
+			<Text Lang="es">Ranura</Text>
+			<Text Lang="it">Spazio</Text>
+			<Text Lang="ru">Слот ссылки</Text>
+			<Text Lang="ja">スロット</Text>
+			<Text Lang="de">Slot</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Reference Strip Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.ReferenceStripBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "reference strip basic trait" node.</Context>
+			<Text Lang="en">Strip</Text>
+			<Text Lang="uk">Рядок посилання</Text>
+			<Text Lang="fr">Bordereau</Text>
+			<Text Lang="pt-BR">Tira</Text>
+			<Text Lang="zh">Strip</Text>
+			<Text Lang="ko">스트립</Text>
+			<Text Lang="pl">Pasek</Text>
+			<Text Lang="es">Tira</Text>
+			<Text Lang="it">Zona riferimenti</Text>
+			<Text Lang="ru">Полоса ссылки</Text>
+			<Text Lang="ja">ストリップ</Text>
+			<Text Lang="de">Strip</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Custom Model Templates / Query reference Strip Basic Trait
+	-->
+	<Category Name="System" Namespace=".General.ModelCustomization.QueryReferenceStripBasicTrait">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "reference strip basic trait" node.</Context>
+			<Text Lang="en">Strip (calculated)</Text>
+			<Text Lang="uk">Запит рядка посилання</Text>
+			<Text Lang="fr">Bordereau (prérempli)</Text>
+			<Text Lang="pt-BR">Tira (calculada)</Text>
+			<Text Lang="zh">Strip（推断）</Text>
+			<Text Lang="ko">스트립 (계산됨)</Text>
+			<Text Lang="pl">Pasek (wyliczony)</Text>
+			<Text Lang="es">Tira (calculada)</Text>
+			<Text Lang="it">Zona riferimenti (calcolata)</Text>
+			<Text Lang="ru">Запрос полосы ссылки</Text>
+			<Text Lang="de">Strip (berechnet)</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  General / Link
+	-->
+	<Category Name="System" Namespace=".General.Link">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Link" node.</Context>
+			<Text Lang="en">Link</Text>
+			<Text Lang="uk">Посилання</Text>
+			<Text Lang="fr">Lien</Text>
+			<Text Lang="pt-BR">Link</Text>
+			<Text Lang="zh">链接</Text>
+			<Text Lang="ko">링크</Text>
+			<Text Lang="pl">Link</Text>
+			<Text Lang="es">Enlace</Text>
+			<Text Lang="it">Collegamento</Text>
+			<Text Lang="ru">Ссылка</Text>
+			<Text Lang="de">Verknüpfung</Text>
+			<Text Lang="ja">リンク</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Link" node.</Context>
+			<Text Lang="en">Links</Text>
+			<Text Lang="uk">Посилання</Text>
+			<Text Lang="fr">Liens</Text>
+			<Text Lang="pt-BR">Links</Text>
+			<Text Lang="zh">复数链接</Text>
+			<Text Lang="ko">링크</Text>
+			<Text Lang="pl">Linki</Text>
+			<Text Lang="es">Enlaces</Text>
+			<Text Lang="it">Collegamenti</Text>
+			<Text Lang="ru">Ссылки</Text>
+			<Text Lang="de">Verknüpfungen</Text>
+			<Text Lang="ja">リンク</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Default name for newly  created link node</Context>
+			<Text Lang="en">Empty link</Text>
+			<Text Lang="uk">Пусте посилання</Text>
+			<Text Lang="fr">Lien vide</Text>
+			<Text Lang="pt-BR">Link vazio</Text>
+			<Text Lang="zh">空链接</Text>
+			<Text Lang="ko">빈 링크</Text>
+			<Text Lang="pl">Pusty link</Text>
+			<Text Lang="es">Enlace vacío</Text>
+			<Text Lang="it">Collegamento vuoto</Text>
+			<Text Lang="ru">Пуская ссылка</Text>
+			<Text Lang="de">Leere Verknüpfung</Text>
+			<Text Lang="ja">新しいリンク</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="New.Caption">
+			<Context>Default name for newly  created return-to-hub node; will most probably changed by the user at a later time</Context>
+			<Text Lang="en">Empty link</Text>
+			<Text Lang="uk">Пусте посилання</Text>
+			<Text Lang="fr">Lien vide</Text>
+			<Text Lang="pt-BR">Link vazio</Text>
+			<Text Lang="zh">空链接</Text>
+			<Text Lang="ko">빈 링크</Text>
+			<Text Lang="pl">Pusty link</Text>
+			<Text Lang="es">Enlace vacío</Text>
+			<Text Lang="it">Collegamento vuoto</Text>
+			<Text Lang="ru">Пустая ссылка</Text>
+			<Text Lang="de">Leere Verknüpfung</Text>
+			<Text Lang="ja">新しいリンク</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Invalid.Caption">
+			<Context>Broken target</Context>
+			<Text Lang="en">Invalid link</Text>
+			<Text Lang="uk">Недійсне посилання</Text>
+			<Text Lang="fr">Lien invalide</Text>
+			<Text Lang="pt-BR">Link inválido</Text>
+			<Text Lang="zh">无效链接</Text>
+			<Text Lang="ko">잘못된 링크</Text>
+			<Text Lang="pl">Nieprawidłowy link</Text>
+			<Text Lang="es">Enlace no válido</Text>
+			<Text Lang="it">Collegamento non valido</Text>
+			<Text Lang="ru">Неверная ссылка</Text>
+			<Text Lang="de">Ungültige Verknüpfung</Text>
+			<Text Lang="ja">無効なリンク</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Auto.Caption">
+			<Context>Automatic caption. parameter is selected target displayname</Context>
+			<Text Lang="en">→ {0}</Text>
+			<Text Lang="uk">→ {0}</Text>
+			<Text Lang="fr">→ {0}</Text>
+			<Text Lang="pt-BR">→ {0}</Text>
+			<Text Lang="zh">→ {0}</Text>
+			<Text Lang="ko">→ {0}</Text>
+			<Text Lang="pl">→ {0}</Text>
+			<Text Lang="es">→ {0}</Text>
+			<Text Lang="it">→ {0}</Text>
+			<Text Lang="ru"><![CDATA[→ {0}
+]]></Text>
+			<Text Lang="ja">→ {0}</Text>
+			<Text Lang="de">→ {0}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Target.Caption">
+			<Context>property name</Context>
+			<Text Lang="en">Target</Text>
+			<Text Lang="uk">Ціль</Text>
+			<Text Lang="fr">Cible</Text>
+			<Text Lang="pt-BR">Alvo</Text>
+			<Text Lang="zh">目标</Text>
+			<Text Lang="ko">목표</Text>
+			<Text Lang="pl">Cel</Text>
+			<Text Lang="es">Destino</Text>
+			<Text Lang="it">Obiettivo</Text>
+			<Text Lang="ru">Цель</Text>
+			<Text Lang="ja">ターゲット</Text>
+			<Text Lang="de">Ziel</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Journey Nodes ########
+	-->
+	<!--
+	  Journeys / Journeys Folder
+	-->
+	<Category Name="System" Namespace=".Journeys.JourneysFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Journeys".</Context>
+			<Text Lang="en">Journeys</Text>
+			<Text Lang="uk">Journeys</Text>
+			<Text Lang="fr">Trajets</Text>
+			<Text Lang="pt-BR">Jornadas</Text>
+			<Text Lang="zh">旅程</Text>
+			<Text Lang="ko">여정</Text>
+			<Text Lang="pl">Tury</Text>
+			<Text Lang="es">Viajes</Text>
+			<Text Lang="it">Tragitti</Text>
+			<Text Lang="ru">Путешествия</Text>
+			<Text Lang="de">Journeys</Text>
+			<Text Lang="ja">ジャーニー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Journeys / User Folder
+	-->
+	<Category Name="System" Namespace=".Journeys.JourneysUserFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a user folder in the "journeys" area.</Context>
+			<Text Lang="en">Folder</Text>
+			<Text Lang="uk">Папка</Text>
+			<Text Lang="fr">Dossier</Text>
+			<Text Lang="pt-BR">Pasta</Text>
+			<Text Lang="zh">文件夹</Text>
+			<Text Lang="ko">폴더</Text>
+			<Text Lang="pl">Folder</Text>
+			<Text Lang="es">Carpeta</Text>
+			<Text Lang="it">Cartella</Text>
+			<Text Lang="ru">Папка</Text>
+			<Text Lang="de">Ordner</Text>
+			<Text Lang="ja">フォルダー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created journeys user folder. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled folder</Text>
+			<Text Lang="uk">Папка без назви</Text>
+			<Text Lang="fr">Dossier sans nom</Text>
+			<Text Lang="pt-BR">Pasta não-nomeada</Text>
+			<Text Lang="zh">未命名文件夹</Text>
+			<Text Lang="ko">제목없는 폴더</Text>
+			<Text Lang="pl">Nienazwany folder</Text>
+			<Text Lang="es">Carpeta sin título</Text>
+			<Text Lang="it">Cartella senza nome</Text>
+			<Text Lang="ru">Не названная папка</Text>
+			<Text Lang="de">Neuer Ordner</Text>
+			<Text Lang="ja">新しいフォルダー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Journeys / Journey
+	-->
+	<Category Name="System" Namespace=".Journeys.Journey">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Journey" node.</Context>
+			<Text Lang="en">Journey</Text>
+			<Text Lang="uk">Journey</Text>
+			<Text Lang="fr">Trajet</Text>
+			<Text Lang="pt-BR">Jornada</Text>
+			<Text Lang="zh">旅程</Text>
+			<Text Lang="ko">여정</Text>
+			<Text Lang="pl">Tura</Text>
+			<Text Lang="es">Viaje</Text>
+			<Text Lang="it">Tragitto</Text>
+			<Text Lang="ru">Путешествие</Text>
+			<Text Lang="ja">ジャーニー</Text>
+			<Text Lang="de">Journey</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Journey" as plural.</Context>
+			<Text Lang="en">Journeys</Text>
+			<Text Lang="uk">Journeys</Text>
+			<Text Lang="fr">Trajets</Text>
+			<Text Lang="pt-BR">Jornadas</Text>
+			<Text Lang="zh">复数旅程</Text>
+			<Text Lang="ko">여정</Text>
+			<Text Lang="pl">Tury</Text>
+			<Text Lang="es">Viajes</Text>
+			<Text Lang="it">Tragitti</Text>
+			<Text Lang="ru">Путешествия</Text>
+			<Text Lang="de">Journeys</Text>
+			<Text Lang="ja">ジャーニー</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>Display name of a freshly created journey. Is most likely to be changed by the user shortly after creation.</Context>
+			<Text Lang="en">Untitled journey</Text>
+			<Text Lang="uk">Journey без назви</Text>
+			<Text Lang="fr">Trajet sans titre</Text>
+			<Text Lang="pt-BR">Jornada não-nomeada</Text>
+			<Text Lang="zh">未命名旅程</Text>
+			<Text Lang="ko">제목없는 여정</Text>
+			<Text Lang="pl">Nienazwane tury</Text>
+			<Text Lang="es">Viaje sin título</Text>
+			<Text Lang="it">Tragitto senza nome</Text>
+			<Text Lang="ru">Не названное путешествие</Text>
+			<Text Lang="ja">新しいジャーニー</Text>
+			<Text Lang="de">Neue Journey</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Journeys / Journey Point
+	-->
+	<Category Name="System" Namespace=".Journeys.JourneyPoint">
+
+		<TextDefinition Key="SavePoint.Default">
+			<Context/>
+			<Text Lang="en">Save Point</Text>
+			<Text Lang="uk">Точка збереження</Text>
+			<Text Lang="fr">Point de sauvegarde</Text>
+			<Text Lang="pt-BR">Ponto de salvar</Text>
+			<Text Lang="zh">存档点</Text>
+			<Text Lang="ko">저장 포인트</Text>
+			<Text Lang="pl">Punkt zapisu</Text>
+			<Text Lang="es">Punto de guardado</Text>
+			<Text Lang="it">Salva punto</Text>
+			<Text Lang="ru">Точка сохранения</Text>
+			<Text Lang="ja">セーブポイント</Text>
+			<Text Lang="de">Speicherpunkt</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Project Settings ########
+	-->
+	<!--
+	  Project Settings / System Folder
+	-->
+	<Category Name="System" Namespace=".General.ProjectSettings.ProjectSettingsFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Project Settings".</Context>
+			<Text Lang="en">Settings</Text>
+			<Text Lang="uk">Налаштування</Text>
+			<Text Lang="fr">Paramètres</Text>
+			<Text Lang="pt-BR">Configurações</Text>
+			<Text Lang="zh">设置</Text>
+			<Text Lang="ko">설정</Text>
+			<Text Lang="pl">Ustawienia</Text>
+			<Text Lang="es">Configuración</Text>
+			<Text Lang="it">Impostazioni</Text>
+			<Text Lang="ru">Настройки</Text>
+			<Text Lang="ja">設定</Text>
+			<Text Lang="de">Einstellungen</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Project Settings / General Settings
+	-->
+	<Category Name="System" Namespace=".General.ProjectSettings.ProjectSettingsGeneral">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the general project settings.</Context>
+			<Text Lang="en">General</Text>
+			<Text Lang="uk">Загальні</Text>
+			<Text Lang="fr">Général</Text>
+			<Text Lang="pt-BR">Geral</Text>
+			<Text Lang="zh">全局设置</Text>
+			<Text Lang="ko">일반</Text>
+			<Text Lang="pl">Ogólne</Text>
+			<Text Lang="es">General</Text>
+			<Text Lang="it">Generali</Text>
+			<Text Lang="ru">Общие</Text>
+			<Text Lang="ja">一般</Text>
+			<Text Lang="de">Allgemein</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Project Settings / Journey Settings
+	-->
+	<Category Name="System" Namespace=".Journeys.ProjectSettingsJourneys">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the journey project settings.</Context>
+			<Text Lang="en">Journeys</Text>
+			<Text Lang="uk">Journeys</Text>
+			<Text Lang="fr">Trajets</Text>
+			<Text Lang="pt-BR">Jornadas</Text>
+			<Text Lang="zh">复数旅程</Text>
+			<Text Lang="ko">여정</Text>
+			<Text Lang="pl">Tury</Text>
+			<Text Lang="es">Viajes</Text>
+			<Text Lang="it">Tragitto</Text>
+			<Text Lang="ru">Путешествия</Text>
+			<Text Lang="de">Journeys</Text>
+			<Text Lang="ja">ジャーニー</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Project Settings / Flow Settings
+	-->
+	<Category Name="System" Namespace=".Journeys.ProjectSettingsFlow">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the flow project settings.</Context>
+			<Text Lang="en">Flow</Text>
+			<Text Lang="uk">Потік</Text>
+			<Text Lang="fr">Flux</Text>
+			<Text Lang="pt-BR">Fluxo</Text>
+			<Text Lang="zh">流</Text>
+			<Text Lang="ko">흐름</Text>
+			<Text Lang="pl">Flow</Text>
+			<Text Lang="es">Flujo</Text>
+			<Text Lang="it">Diagramma di flusso</Text>
+			<Text Lang="ru">Поток</Text>
+			<Text Lang="ja">フロー</Text>
+			<Text Lang="de">Flow</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Project Settings / Location Settings
+	-->
+	<Category Name="System" Namespace=".Worlds.ProjectSettingsLocation">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the locations project settings.</Context>
+			<Text Lang="en">Locations</Text>
+			<Text Lang="uk">Локації</Text>
+			<Text Lang="fr">Lieux</Text>
+			<Text Lang="pt-BR">Localizações</Text>
+			<Text Lang="zh">复数地点</Text>
+			<Text Lang="ko">위치</Text>
+			<Text Lang="pl">Lokacje</Text>
+			<Text Lang="de">Schauplätze</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Project Settings / Custom Export Settings
+	-->
+	<Category Name="System" Namespace=".CustomExport.ProjectSettingsCustomExport">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the custom export project settings.</Context>
+			<Text Lang="en">Custom export</Text>
+			<Text Lang="uk">Користувацький експорт</Text>
+			<Text Lang="fr">Exportation personnalisée</Text>
+			<Text Lang="pt-BR">Exportação customizada</Text>
+			<Text Lang="zh">自定义导出</Text>
+			<Text Lang="ko">사용자 정의 내보내기</Text>
+			<Text Lang="de">Benutzerdefinierter Export</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  ######## Global Variables ########
+	-->
+	<!--
+	  Global Variables Folder / System Folder
+	-->
+	<Category Name="System" Namespace=".Scripting.GlobalVariablesFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Display name of the system folder "Global Variables".</Context>
+			<Text Lang="en">Global Variables</Text>
+			<Text Lang="uk">Глобальні змінні</Text>
+			<Text Lang="fr">Variables globales</Text>
+			<Text Lang="pt-BR">Variáveis globais</Text>
+			<Text Lang="zh">全局变量</Text>
+			<Text Lang="ko">전역 변수</Text>
+			<Text Lang="pl">Zmienne globalne</Text>
+			<Text Lang="es">Variables globales</Text>
+			<Text Lang="it">Variabili Globali</Text>
+			<Text Lang="de">Globale Variablen</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".Scripting.Refactoring">
+
+		<TextDefinition Key="_Self_.SearchCaption">
+			<Context>Progress bar caption when searching for variable usage.</Context>
+			<Text Lang="en">Searching for usage.</Text>
+			<Text Lang="uk">Пошук для використання.</Text>
+			<Text Lang="fr">Recherche d’utilisation.</Text>
+			<Text Lang="pt-BR">Pesquisando por uso.</Text>
+			<Text Lang="zh">正在搜索用途。</Text>
+			<Text Lang="ko">사용 여부를 검색하는 중입니다.</Text>
+			<Text Lang="pl">Wyszukiwanie możliwego użycia</Text>
+			<Text Lang="es">Buscando uso.</Text>
+			<Text Lang="it">Ricerca per l'utilizzo in corso.</Text>
+			<Text Lang="de">Verwendungen werden gesucht.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.SearchText">
+			<Context>Progress bar text when searching for variable usage.</Context>
+			<Text Lang="en">Searching for variables that need to be replaced.</Text>
+			<Text Lang="uk">Пошук змінних, що необхідно замінити</Text>
+			<Text Lang="fr">Recherche de variables à remplacer.</Text>
+			<Text Lang="pt-BR">Pesquisando por variáveis que precisam ser trocadas.</Text>
+			<Text Lang="zh">正在搜索需要替换的变量。</Text>
+			<Text Lang="ko">교체해야 할 변수를 검색하는 중입니다.</Text>
+			<Text Lang="pl">Szykanie zmiennych wymagających zmiany</Text>
+			<Text Lang="es">Buscando variables que deban ser reemplazadas.</Text>
+			<Text Lang="it">Ricerca delle variabili da sostituire in corso.</Text>
+			<Text Lang="de">Suche nach Variablen die ersetzt werden müssen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.ProgressCaption">
+			<Context>Progress bar caption when replacing variables.</Context>
+			<Text Lang="en">Renaming variables.</Text>
+			<Text Lang="uk">Перейменування змінних.</Text>
+			<Text Lang="fr">Renommage des variables.</Text>
+			<Text Lang="pt-BR">Renomeando variáveis.</Text>
+			<Text Lang="zh">重命名变量。</Text>
+			<Text Lang="ko">변수 이름  바꾸기</Text>
+			<Text Lang="pl">Zmienianie nazw zmiennych</Text>
+			<Text Lang="es">Renombrando variables.</Text>
+			<Text Lang="it">Rinomina delle variabili in corso.</Text>
+			<Text Lang="de">Umbennen von Variablen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.ProgressText">
+			<Context>Progress bar text when replacing variables.</Context>
+			<Text Lang="en">Affected variables are being renamed.</Text>
+			<Text Lang="uk">Задіяні змінні будуть перейменовані.</Text>
+			<Text Lang="fr">Variables affectées en cours de renommage.</Text>
+			<Text Lang="pt-BR">Variáveis afetadas estão sendo renomeadas.</Text>
+			<Text Lang="zh">正在重命名受影响的变量。</Text>
+			<Text Lang="ko">영향을 받는 변수의 이름이 변경됩니다.</Text>
+			<Text Lang="pl">Zmiana nazw wymaganych zmiennych</Text>
+			<Text Lang="es">Las variables afectadas han sido renombradas.</Text>
+			<Text Lang="it">Rinomina delle variabili influenzate in corso.</Text>
+			<Text Lang="de">Betroffene Variablen werden umbenannt.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".Scripting.ContextCreateVariable">
+
+		<TextDefinition Key="GlobalVariablesNotClaimed.Description">
+			<Context>.</Context>
+			<Text Lang="en">You need to claim the global variables partition first. Do you want to claim it now and proceed?</Text>
+			<Text Lang="uk">Вам необхідно спочатку присвоїти розділ глобальних змінних. Бажаєте присвоїти його та продовжити?</Text>
+			<Text Lang="fr">Vous devez d’abord revendiquer la partition des variables globales. Voulez-vous la revendiquer maintenant et continuer ?</Text>
+			<Text Lang="pt-BR">Você precisa reivindicar a partição das variáveis globais primeiro. Você quer reivindicar e prosseguir?</Text>
+			<Text Lang="zh">您需要首先认领全局变量分区。您想现在提出认领并继续吗？</Text>
+			<Text Lang="ko">먼저 전역 변수 파티션을 할당해야 합니다. 지금 할당하여 진행하시겠습니까?</Text>
+			<Text Lang="de">Sie müssen zuerst die "Globale Variablen"-Partition beanspruchen. Soll die Partition jetzt beansprucht werden, um fortzufahren?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="GlobalVariablesNotClaimed.Caption">
+			<Context>.</Context>
+			<Text Lang="en">Create variable set</Text>
+			<Text Lang="uk">Створити набір змінних</Text>
+			<Text Lang="fr">Créer un ensemble de variables</Text>
+			<Text Lang="pt-BR">Criar conjunto de variáveis.</Text>
+			<Text Lang="zh">创建变量集</Text>
+			<Text Lang="ko">변수 집합 생성</Text>
+			<Text Lang="de">Erstelle Variablenset</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NamespaceNotClaimed.Description">
+			<Context>{0} = variable set name</Context>
+			<Text Lang="en">You need to claim the variable set partition "{0}" to continue. Do you want to claim it now and proceed?</Text>
+			<Text Lang="uk">Вам необхідно присвоїти розділ набору змін "{0}" щоб продовжити. Бажаєте присвоїти зараз і продовжити?</Text>
+			<Text Lang="fr">Vous devez revendiquer la partition de l’ensemble de variables « {0} » pour continuer. Voulez-vous la revendiquer maintenant et continuer ?</Text>
+			<Text Lang="pt-BR">Você precisa reivindicar a partição do conjunto de variáveis "{0}" para continuar. Você deseja reivindicar e prosseguir?</Text>
+			<Text Lang="zh">您需要先认领变量集分区 "{0}" 才能继续。您想现在提出认领并继续吗？</Text>
+			<Text Lang="ko">계속하려면 변수 설정 파티션 "{0}"을(를) 할당해야 합니다. 지금 할당하여 진행하시겠습니까?</Text>
+			<Text Lang="de">Sie müssen zuerst die Variablenset-Partition "{0}" beanspruchen. Soll die Partition jetzt beansprucht werden, um fortzufahren?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="NamespaceNotClaimed.Caption">
+			<Context>.</Context>
+			<Text Lang="en">Create variable</Text>
+			<Text Lang="uk">Створити змінну</Text>
+			<Text Lang="fr">Créer une variable</Text>
+			<Text Lang="pt-BR">Criar variável</Text>
+			<Text Lang="zh">创建变量</Text>
+			<Text Lang="ko">변수 생성</Text>
+			<Text Lang="de">Erstelle Variable</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MenuItem.Description">
+			<Context>{0} = variable set name {1} = variable name</Context>
+			<Text Lang="en">Create {0}.{1}</Text>
+			<Text Lang="uk">Створити {0}.{1}</Text>
+			<Text Lang="fr">Créer {0}.{1}</Text>
+			<Text Lang="pt-BR">Criar {0}.{1}</Text>
+			<Text Lang="zh">创建 {0}.{1}</Text>
+			<Text Lang="ko">{0}.{1} 생성</Text>
+			<Text Lang="de">Erstelle {0}.{1}</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MenuItem.AsBoolean.Description">
+			<Context>.</Context>
+			<Text Lang="en">as boolean</Text>
+			<Text Lang="uk">як boolean</Text>
+			<Text Lang="fr">comme booléen</Text>
+			<Text Lang="pt-BR">Como boolean</Text>
+			<Text Lang="zh">作为布尔值</Text>
+			<Text Lang="ko">as boolean</Text>
+			<Text Lang="de">als Boolean</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MenuItem.AsInteger.Description">
+			<Context>.</Context>
+			<Text Lang="en">as integer</Text>
+			<Text Lang="uk">як integer</Text>
+			<Text Lang="fr">comme entier</Text>
+			<Text Lang="pt-BR">Como integer</Text>
+			<Text Lang="zh">作为整数</Text>
+			<Text Lang="ko">as integer</Text>
+			<Text Lang="de">als Ganzzahl</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="MenuItem.AsString.Description">
+			<Context>.</Context>
+			<Text Lang="en">as string</Text>
+			<Text Lang="uk">як string</Text>
+			<Text Lang="fr">comme série</Text>
+			<Text Lang="pt-BR">Como string</Text>
+			<Text Lang="zh">作为字符串</Text>
+			<Text Lang="ko">as string</Text>
+			<Text Lang="de">als Text</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".Scripting.Namespace">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Namespace" entry in the global variables.</Context>
+			<Text Lang="en">Variable set</Text>
+			<Text Lang="uk">Набір змінних</Text>
+			<Text Lang="fr">Ensemble de variables</Text>
+			<Text Lang="pt-BR">Cojunto de variáveis</Text>
+			<Text Lang="zh">变量集</Text>
+			<Text Lang="ko">변수 집합</Text>
+			<Text Lang="pl">Zmienna ustawiona</Text>
+			<Text Lang="es">Conjunto variable</Text>
+			<Text Lang="it">Set di variabili</Text>
+			<Text Lang="de">Variablengruppe</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Variable" node.</Context>
+			<Text Lang="en">Variable sets</Text>
+			<Text Lang="uk">Набори змінних</Text>
+			<Text Lang="fr">Ensembles de variables</Text>
+			<Text Lang="pt-BR">Conjuntos de variáveis</Text>
+			<Text Lang="zh">复数变量集</Text>
+			<Text Lang="ko">변수 집합</Text>
+			<Text Lang="pl">Zmienne ustawione</Text>
+			<Text Lang="es">Conjuntos variables</Text>
+			<Text Lang="it">Set di variabili</Text>
+			<Text Lang="de">Variablengruppen</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".Scripting.Variable">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>Object type display name of a "Variable" entry in the global variables.</Context>
+			<Text Lang="en">Variable</Text>
+			<Text Lang="uk">Змінна</Text>
+			<Text Lang="fr">Variable</Text>
+			<Text Lang="pt-BR">Variável</Text>
+			<Text Lang="zh">变量</Text>
+			<Text Lang="ko">변수</Text>
+			<Text Lang="pl">Zmienna</Text>
+			<Text Lang="es">Variable</Text>
+			<Text Lang="it">Variabile</Text>
+			<Text Lang="de">Variable</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>Object type display name of a "Variable" node.</Context>
+			<Text Lang="en">Variables</Text>
+			<Text Lang="uk">Змінні</Text>
+			<Text Lang="fr">Variables</Text>
+			<Text Lang="pt-BR">Variáveis</Text>
+			<Text Lang="zh">复数变量</Text>
+			<Text Lang="ko">변수</Text>
+			<Text Lang="pl">Zmienne</Text>
+			<Text Lang="es">Variables</Text>
+			<Text Lang="it">Variabili</Text>
+			<Text Lang="de">Variablen</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Type.Boolean.Caption">
+			<Context>name for a boolean variable type</Context>
+			<Text Lang="en">Boolean</Text>
+			<Text Lang="uk">Boolean</Text>
+			<Text Lang="fr">Booléen</Text>
+			<Text Lang="pt-BR">Boolean</Text>
+			<Text Lang="zh">布尔值</Text>
+			<Text Lang="ko">Boolean</Text>
+			<Text Lang="pl">Boolean</Text>
+			<Text Lang="es">Booleano</Text>
+			<Text Lang="it">Booleano</Text>
+			<Text Lang="de">Boolean</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Type.Integer.Caption">
+			<Context>name for a integer variable type</Context>
+			<Text Lang="en">Integer</Text>
+			<Text Lang="uk">Integer</Text>
+			<Text Lang="fr">Entier</Text>
+			<Text Lang="pt-BR">Integer</Text>
+			<Text Lang="zh">整数</Text>
+			<Text Lang="ko">Integer</Text>
+			<Text Lang="pl">Liczba całkowita</Text>
+			<Text Lang="es">Entero</Text>
+			<Text Lang="it">Intero</Text>
+			<Text Lang="de">Ganzzahl</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Type.String.Caption">
+			<Context>name for a string variable type</Context>
+			<Text Lang="en">String</Text>
+			<Text Lang="uk">String</Text>
+			<Text Lang="fr">Série</Text>
+			<Text Lang="pt-BR">String</Text>
+			<Text Lang="zh">字符串</Text>
+			<Text Lang="ko">String</Text>
+			<Text Lang="de">Text</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Type.ObjectProperty.Caption">
+			<Context>name for a string variable type</Context>
+			<Text Lang="en">Object property</Text>
+			<Text Lang="uk">Властивості об'єкту</Text>
+			<Text Lang="fr">Propriété d’objet</Text>
+			<Text Lang="pt-BR">Propriedade do objeto</Text>
+			<Text Lang="zh">对象属性</Text>
+			<Text Lang="ko">객체 속성</Text>
+			<Text Lang="de">Objekt-Eigenschaft</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".CustomExport.RuleSetsFolder">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>singlugar form of object type display name of the "RuleSets" system folder.</Context>
+			<Text Lang="en">Export Rulesets</Text>
+			<Text Lang="uk">Експортний набір правил</Text>
+			<Text Lang="fr">Exportation de Jeux de règles</Text>
+			<Text Lang="pt-BR">Exportar Conjuntos de Regras</Text>
+			<Text Lang="zh">导出复数规则集</Text>
+			<Text Lang="ko">룰셋 내보내기</Text>
+			<Text Lang="de">Export Regelwerke</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".CustomExport.RuleSet">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>singlugar form of object type display name of the "RuleSet" definition.</Context>
+			<Text Lang="en">Export ruleset</Text>
+			<Text Lang="uk">Експортний набір правил</Text>
+			<Text Lang="fr">Exportation de jeu de règles</Text>
+			<Text Lang="pt-BR">Exportar conjunto de regras</Text>
+			<Text Lang="zh">导出规则集</Text>
+			<Text Lang="ko">룰셋 내보내기</Text>
+			<Text Lang="de">Export Regelwerk</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>plural form of object type display name of the "RuleSet" definition.</Context>
+			<Text Lang="en">Export rulesets</Text>
+			<Text Lang="uk">Експортні набори правил</Text>
+			<Text Lang="fr">Exportation de jeux de règles</Text>
+			<Text Lang="pt-BR">Exportar conjuntos de regras</Text>
+			<Text Lang="zh">导出复数规则集</Text>
+			<Text Lang="ko">룰셋 내보내기</Text>
+			<Text Lang="de">Export Regelwerke</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>default name for a new ruleset.</Context>
+			<Text Lang="en">Export ruleset</Text>
+			<Text Lang="uk">Експортний набір правил</Text>
+			<Text Lang="fr">Exportation de jeu de règles</Text>
+			<Text Lang="pt-BR">Exportar conjunto de regras</Text>
+			<Text Lang="zh">导出规则集</Text>
+			<Text Lang="ko">룰셋 내보내기</Text>
+			<Text Lang="de">Export Regelwerk</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<Category Name="System" Namespace=".CustomExport.Package">
+
+		<TextDefinition Key="_Self_.Caption">
+			<Context>singlugar form of object type display name of the "RuleSet" definition.</Context>
+			<Text Lang="en">Export ruleset</Text>
+			<Text Lang="uk">Експортний набір правил</Text>
+			<Text Lang="fr">Exportation de jeu de règles</Text>
+			<Text Lang="pt-BR">Exportar conjunto de regras</Text>
+			<Text Lang="zh">导出规则集</Text>
+			<Text Lang="ko">룰셋 내보내기</Text>
+			<Text Lang="de">Export Regelwerk</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.CaptionMulti">
+			<Context>plural form of object type display name of the "RuleSet" definition.</Context>
+			<Text Lang="en">Export rulesets</Text>
+			<Text Lang="uk">Експортні набори правил</Text>
+			<Text Lang="fr">Exportation de jeux de règles</Text>
+			<Text Lang="pt-BR">Exportar conjuntos de regras</Text>
+			<Text Lang="zh">导出复数规则集</Text>
+			<Text Lang="ko">룰셋 내보내기</Text>
+			<Text Lang="de">Export Regelwerke</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="_Self_.Default">
+			<Context>default name for a new export package.</Context>
+			<Text Lang="en">Export package</Text>
+			<Text Lang="uk">Експортний пакет</Text>
+			<Text Lang="fr">Exportation de pack</Text>
+			<Text Lang="pt-BR">Exportar pacote</Text>
+			<Text Lang="zh">导出包体</Text>
+			<Text Lang="ko">패키지 내보내기</Text>
+			<Text Lang="de">Export Paket</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

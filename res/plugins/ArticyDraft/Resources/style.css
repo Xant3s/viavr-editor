@@ -1,0 +1,172 @@
+﻿body
+{
+  z-index: 0;
+  
+  margin: 3px;
+  padding: 3px;
+  
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  color: #ffffff;
+  
+  background-color: #1C282A;
+  
+    scrollbar-base-color: #1C282A;
+    scrollbar-track-color: #1C282A;
+    scrollbar-face-color: #1C282A;
+    scrollbar-highlight-color: #71a0a9;
+    scrollbar-shadow-color: #71a0a9;
+    scrollbar-3dlight-color: #1C282A;
+    scrollbar-darkshadow-color: #1C282A;
+    scrollbar-arrow-color: #71a0a9;
+
+  overflow: auto;
+}
+
+td
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  color: #ffffff;
+  
+  background-color: #1C282A;
+}
+
+p
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  text-align: justify;
+  color: #ffffff;
+}
+
+p.align-justify
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  text-align: justify;
+}
+
+h1
+{
+  color: #ffa61a;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+h2
+{
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+span
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  
+  color: #FFFFFF;
+}
+
+span.msgitem
+{
+	margin: 6px;
+}
+
+ul
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  margin-top: 5px;
+  color: #FFFFFF;
+}
+
+li
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  
+  color: #FFFFFF;
+}
+
+a:link
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  color: darkorange;
+}
+
+a:visited
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+a:hover
+{
+  text-decoration: underline;
+  color: #ffa61a;
+}
+
+a:active
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+a.mail
+{
+  color: darkorange;
+  font-size: 13px;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+a.mail:link
+{
+  color: darkorange;
+  font-size: 13px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+a.mail:visited
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+a.mail:hover
+{
+  text-decoration: underline;
+  color: #ffa61a;
+}
+
+a.mail:active
+{
+  text-decoration: none;
+  color: darkorange;
+}

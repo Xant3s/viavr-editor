@@ -1,0 +1,262 @@
+﻿body
+{
+  /* set no margin/padding for the body, so the alignment with the title can be style by XAML */
+  margin: 0px 10px 0px 0px;
+  padding: 0px 10px 0px 0px;
+  
+  /* since the main controls background can't be made transparent we use the same color as it is used for the surrounding elements -> so don't change */
+  background-color: #1c282A;
+  
+  /* required to remove the horizontal scroller when it is not needed! */
+  overflow: auto;
+
+  z-index: 0;
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  color: #ffffff;
+  
+  
+	scrollbar-base-color: #1C282A;
+	scrollbar-track-color: #1C282A;
+	scrollbar-face-color: #1C282A;
+	scrollbar-highlight-color: #71a0a9;
+	scrollbar-shadow-color: #71a0a9;
+	scrollbar-3dlight-color: #1C282A;
+	scrollbar-darkshadow-color: #1C282A;
+	scrollbar-arrow-color: #71a0a9;
+
+}
+
+p
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  color: #ffffff;
+}
+
+p.align-justify
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+}
+
+td
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1
+{
+  color: #ffa61a;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h2
+{
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+span
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  
+  color: #FFFFFF;
+}
+
+span.msgitem
+{
+	margin: 6px;
+}
+
+ul
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  
+  color: #FFFFFF;
+}
+
+li
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  
+  color: #FFFFFF;
+}
+
+a:link
+{
+  font-family: Segoe UI, Verdana, Tahoma, Arial, Helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  color: darkorange;
+}
+
+a:visited
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+a:hover
+{
+  text-decoration: underline;
+  color: #ffa61a;
+}
+
+a:active
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+a.mail
+{
+  color: darkorange;
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+a.mail:link
+{
+  color: darkorange;
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+a.mail:visited
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+a.mail:hover
+{
+  text-decoration: underline;
+  color: #ffa61a;
+}
+
+a.mail:active
+{
+  text-decoration: none;
+  color: darkorange;
+}
+
+img
+{
+	border: 0px;
+}
+
+span.marker
+{
+	background-color:#ffe5bb; 
+	color:#a06200;
+	font-weight: bold;
+}
+
+span.singleuser
+{
+	color: #00697c; 
+	background-color:#bbf5ff; 
+	font-size:11px;
+	font-weight:bold;
+}
+
+span.multiuser
+{
+	color: #00697c; 
+	background-color:#ddb3ed; 
+	font-size:11px;
+	font-weight:bold;
+}
+
+span.newfeature
+{
+	color: #00697c; 
+	background-color:#ddb3ed; 
+	font-size:11px;
+	font-weight:bold;
+}
+
+span.red
+{
+	color:#dd0000;
+	font-weight: bold;
+}
+
+td.codebar
+{
+	border-right: #20494e 2px solid
+}
+
+td.codetext
+{
+	width: 475px; 
+	color:#20494e; 
+	background-color:#bfe5e9; 
+	border: #6bb2ba 1px solid; 
+	font-size:12px; 
+	font-family:'Courier New'
+}
+
+td.hintbar
+{
+	width: 25px;
+	height: 20px;
+	vertical-align: top;
+	background-image: url(images/Hint.jpg);
+	background-repeat: no-repeat;
+	border-right: #ffa61a 2px solid;
+}
+
+span.hinttext
+{
+	color:#a06200 !important;
+	font-size:12px !important;
+	text-align: justify;
+	padding-left: 5px;
+}
+
+td.forumbar
+{
+	width: 40px;
+	vertical-align: top;
+	background-image: url(images/Forum.jpg);
+	background-repeat: no-repeat;
+	border-right: #ffa61a 2px solid;
+}
+
+span.forumtext
+{
+	color:#000000 !important; 
+	font-size:12px !important;
+}
+
+span.colon
+{
+	color:#F79646;
+	font-weight: bolder;
+}

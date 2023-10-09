@@ -1,0 +1,1608 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- ===========================================================
+	                       change list
+						   
+	Changes for version 3.x 
+	- CHANGED: VariableDataType now has the missing "String" data type
+	
+	Changes for version 2.4:
+	- ADDED: new top-level Tag "Settings" that expose the settings used when exporting
+	- ADDED: new Content-Level Tag with "ProjectSettings" from the articy:draft project
+	- ADDED: "PathCapNamesType" enum for caps of path objects
+	- ADDED: "StrokeStyleType" enum for style of outline strokes
+	- ADDED: LocationSettingsType and related enum types to location objects	
+	- ADDED: "Url" element that contains the Url to the specified object
+	- CHANGED: Links/Spots/Zones were changed to 
+	  * export local & world coordinates
+	  * add transformation information (rotation, axis, pivot and complete matrix, bounds [after transform])
+	  * added style properties like fill, outline & other display options
+	  * coordinates were removed from opening tag and moved in separate Position & Size tags
+	- REMOVED: "BackgroundImage", "BackgroundWidth", "BackgroundHeight" properties from "LocationType" since background images are now converted to LocationImages using their own type
+	- ADDED: Flow elements now also export their position and sizes 
+	- ADDED: LocationImageType for image objects of locations
+	- ADDED: LocationTextType for text objects in locations
+	- CHANGED: The ZIndex attribute was removed from the main object tags and moved into an own Tag "ZIndex" within
+	- CHANGED: changed attribute "Id" of the Nodes in the Hierarchy section to "IdRef" for consistency reasons
+	- ADDED: "ShowLabel" for Connections
+	- ADDED: InitialVariableValues for Journeys
+	- ADDED: ChangedVariableValues for JourneyPoints
+	- REMOVED: Location Object don't have a Color property any more -> "Fill"
+	- ADDED: "Fill" Property for location objects that contain a color with alpha value to represent color and opacity
+	- ADDED: "DisplayNamePosition" containg the position of the display name positioning reference point (in world coordinates)
+	- RENAMED: "LayerGroup" was renamed to "LayerFolder"
+	
+	============================================================ -->
+
+<xs:schema
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified"
+	
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:ad="http://www.nevigo.com/schemas/articydraft/3.1/XmlContentExport_FullProject.xsd" 
+	targetNamespace="http://www.nevigo.com/schemas/articydraft/3.1/XmlContentExport_FullProject.xsd">
+	
+	<!-- ===========================================================
+	                       common enum types 
+	============================================================ -->
+
+	<xs:simpleType name="EmptyString">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- compact numeric boolean -->
+	<xs:simpleType name="BoolType">
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NullableIntType">
+		<xs:union memberTypes="xs:int ad:EmptyString" />
+	</xs:simpleType>
+
+	<xs:simpleType name="NullableDecimalType">
+		<xs:union memberTypes="xs:decimal ad:EmptyString" />
+	</xs:simpleType>
+
+	<xs:simpleType name="NullableBoolType">
+		<xs:union memberTypes="ad:BoolType ad:EmptyString" />
+	</xs:simpleType>
+
+	<xs:simpleType name="ErrorSeverityType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Soft"/>
+			<xs:enumeration value="Hard"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- names of asset categories -->
+	<xs:simpleType name="AssetCategoryType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Image"/>
+			<xs:enumeration value="Audio"/>
+			<xs:enumeration value="Video"/>
+			<xs:enumeration value="Document"/>
+			<xs:enumeration value="Misc"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- possible modes for an asset preview view box origin -->
+	<xs:simpleType name="ViewBoxModeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="FromAsset"/>  <!-- Viewbox is used from the referenced asset -->
+			<xs:enumeration value="Custom"/>     <!-- Viewbox is set by the user in the object containing the reference -->
+			<xs:enumeration value="Auto"/>       <!-- Viewbox was calculated automatically to get the biggest centered part of the image -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- specifies the semantic of a pin -->
+	<xs:simpleType name="SemanticType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Input"/>
+			<xs:enumeration value="Output"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Possible types of shapes in locations -->
+	<xs:simpleType name="CShapeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Polygon"/>
+			<xs:enumeration value="Circle"/>
+			<xs:enumeration value="Rectangle"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Possible values how a journey point can be reached -->
+	<xs:simpleType name="ReachedByType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Invalid"/>
+			<xs:enumeration value="JourneyStart"/>
+			<xs:enumeration value="Skip"/>
+			<xs:enumeration value="Next"/>
+			<xs:enumeration value="Submerge"/>
+			<xs:enumeration value="Emerge"/>
+			<xs:enumeration value="Branch"/>
+			<xs:enumeration value="EndPoint"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- Possible values what type of object a journey point references -->
+	<xs:simpleType name="TypeOfJourneyPointType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="FlowFragment"/>
+			<xs:enumeration value="Dialogue"/>
+			<xs:enumeration value="DialogueFragment"/>
+			<xs:enumeration value="Connection"/>
+			<xs:enumeration value="Pin"/>
+			<xs:enumeration value="Hub"/>
+			<xs:enumeration value="Jump"/>
+			<xs:enumeration value="FlowConnectionSelection"/>
+			<xs:enumeration value="DialogueConnectionSelection"/>
+			<xs:enumeration value="InputPinSelection"/>
+			<xs:enumeration value="OutputPinSelection"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Possible values for the background color settings of a journey/journeypoint -->
+	<xs:simpleType name="BackgroundColorModeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="FromNode"/>
+			<xs:enumeration value="Custom"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+    <!-- Possible values for the background color gradient settings of a journey/journeypoint -->
+    <xs:simpleType name="BackgroundColorGradientModeType">
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="Off"/>
+        <xs:enumeration value="On"/>
+      </xs:restriction>
+    </xs:simpleType>
+  
+    <!-- Possible values for the background color gradient settings of a journey/journeypoint -->
+    <xs:simpleType name="BackgroundImagePositioningModeType">
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="Fitting"/>
+        <xs:enumeration value="Filling"/>
+        <xs:enumeration value="Stretched"/>
+        <xs:enumeration value="Repeating"/>
+        <xs:enumeration value="Centered"/>
+      </xs:restriction>
+    </xs:simpleType>
+  
+  <!-- Possible values for the slide transition of a journey/journeypoint -->
+    <xs:simpleType name="TransitionModeType">
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="None"/>
+        <xs:enumeration value="Animated"/>
+      </xs:restriction>
+    </xs:simpleType>
+  
+	<!-- Possible values for the background image settings of a journey/journeypoint -->
+	<xs:simpleType name="BackgroundImageModeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="FromNode"/>
+			<xs:enumeration value="Custom"/>
+		</xs:restriction>
+	</xs:simpleType>
+  
+    <!-- Possible values for the visibility of location items -->
+    <xs:simpleType name="VisibilityType">
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="Invisible"/>
+        <xs:enumeration value="Visible"/>
+      </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Possible values for the selectability of location items -->
+    <xs:simpleType name="SelectabilityType">
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="Unselectable"/>
+        <xs:enumeration value="Selectable"/>
+      </xs:restriction>
+    </xs:simpleType>
+
+	<!-- Possible values for the data type of a variable -->
+	<xs:simpleType name="VariableDataTypeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Boolean"/>
+			<xs:enumeration value="Integer"/>
+			<xs:enumeration value="String"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Possible values for the script type of a script-feature property -->
+	<xs:simpleType name="ScriptTypeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Condition"/>
+			<xs:enumeration value="Outcome"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Possible values for the style used for displaying links -->
+	<xs:simpleType name="LinkStyleKindType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Inherited" />
+			<xs:enumeration value="PreviewImage" />
+			<xs:enumeration value="IconOnly" />
+			<xs:enumeration value="Minimal" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Possible values for the style used for displaying spots -->
+	<xs:simpleType name="SpotStyleKindType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Inherited" />
+			<xs:enumeration value="Flag" />
+			<xs:enumeration value="Cross" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Sizes of displaying styles for spots & links -->
+	<xs:simpleType name="SizeNamesType" >
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Inherited" />
+			<xs:enumeration value="Large" />
+			<xs:enumeration value="Medium" />
+			<xs:enumeration value="Small" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Sizes of displaying styles for anchors -->
+	<xs:simpleType name="AnchorSizeNamesType" >
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Small" />
+			<xs:enumeration value="Medium" />
+			<xs:enumeration value="Large" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Start/End cap names for paths -->
+	<xs:simpleType name="PathCapNamesType">
+		<xs:restriction base="xs:NMTOKEN">			
+			<xs:enumeration value="ColoredDot" />			<!-- 0: legacy variant similar to disc, but with red, green fill color -->
+			<xs:enumeration value="None" />					<!-- 1: no cap at all -->
+			<xs:enumeration value="LineArrowHead" />		<!-- 2: a line arrowhead -->
+			<xs:enumeration value="FilledArrowHead" />		<!-- 3: a filled arrowhead -->
+			<xs:enumeration value="Diamond" />				<!-- 4: a diamond -->
+			<xs:enumeration value="Square" />				<!-- 5: a square-->
+			<xs:enumeration value="Disc" />					<!-- 6: a disc/circle -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- style names for outline stroke -->
+	<xs:simpleType name="StrokeStyleType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Solid" />
+			<xs:enumeration value="Dot" />
+			<xs:enumeration value="Dash" />
+			<xs:enumeration value="DashDot" />
+			<xs:enumeration value="DashDotDot" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- ===========================================================
+	             common types for content validation
+	============================================================ -->
+
+	<!-- type to validate a color -->
+	<xs:simpleType name="ColorType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="#[a-fA-F0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ColorWithAplhaType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="#[a-fA-F0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- type to validate a GUID -->
+	<xs:simpleType name="GuidType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-f]){8}\-([0-9a-f]){4}\-([0-9a-f]){4}\-([0-9a-f]){4}\-([0-9a-f]){12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+  <!-- type to validate a ulong id given in hex notation with '0x' prefix -->
+  <xs:simpleType name="LongIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="0x([0-9a-fA-F]){16}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+	<!-- pattern to check for a valid technical name (same as common programming languages identifier names) -->
+	<xs:simpleType name="TechnicalNameType">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Za-z_][A-Za-z0-9_]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- type to validate a rectangle of floats -->
+	<xs:complexType name="RectangleType">
+		<xs:attribute name="MinX" type="xs:float" use="required" />
+		<xs:attribute name="MinY" type="xs:float" use="required" />
+		<xs:attribute name="MaxX" type="xs:float" use="required" />
+		<xs:attribute name="MaxY" type="xs:float" use="required" />
+	</xs:complexType>
+
+	<!-- the X/Y position of an element in "world/Canvas coordinates" -->
+	<xs:complexType name="PointType">
+		<xs:attribute name="X" type="xs:float" use="required" />
+		<xs:attribute name="Y" type="xs:float" use="required" />
+	</xs:complexType>
+
+	<!-- the size of an element in "world/Canvas coordinates" -->
+	<xs:complexType name="SizeType">
+		<xs:attribute name="Width" type="xs:float" use="required" />
+		<xs:attribute name="Height" type="xs:float" use="required" />
+	</xs:complexType>
+
+	<!-- a list of floats -->
+	<xs:simpleType name='ListOfFloatsType'>
+		<xs:list itemType="xs:float"/>
+	</xs:simpleType>
+
+	<!-- expected language names, either empty or the two letter language code optionally followed by a hyphen and a two letter region/country code -->
+	<xs:simpleType name="LanguageType" >
+		<xs:restriction base="xs:token">
+			<xs:pattern value="(|[a-zA-Z]{2}|[a-zA-Z]{2}-[a-zA-Z]{2})" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- type that is used for any element that is able to have multiple languages -->
+	<xs:complexType name="LocalizableTextType">
+		<xs:sequence>
+			<xs:element name="LocalizedString" type="ad:LocalizedStringType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+		<xs:attribute name="HasMarkup" type="xs:boolean" use="optional" default="0"/>
+	</xs:complexType>
+
+	<!-- a text for a single language -->
+	<xs:complexType name="LocalizedStringType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="Lang" type="ad:LanguageType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- type to validate an element that contains a reference to another object -->
+	<xs:complexType name="ReferenceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- a list of references to other objects -->
+	<xs:complexType name="ReferencesType">
+		<xs:sequence>
+			<xs:element name="Reference" type="ad:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<!-- type used to specify the viewbox of an asset reference -->
+	<xs:complexType name="PreviewImageType">
+		<xs:sequence>
+			<xs:element name="ViewBox" type="ad:RectangleType" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="IdRef" type="ad:LongIdType" use="required" />
+		<xs:attribute name="Mode" type="ad:ViewBoxModeType" use="required" />
+	</xs:complexType>
+
+	<!-- ===========================================================
+	             reuseable groups
+	============================================================ -->
+
+	<xs:group name="DefaultObjectType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Text" type="ad:LocalizableTextType" minOccurs="0"/>
+			<xs:element name="Color" type="ad:ColorType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="DefinitionObjectType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" />
+			<xs:element name="Color" type="ad:ColorType" minOccurs="0"/>
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+			<xs:element name="Url" type="xs:string" />
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="NamedObjectType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" />
+			<xs:element name="Text" type="ad:LocalizableTextType" minOccurs="0"/>
+			<xs:element name="Color" type="ad:ColorType" minOccurs="0"/>
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+            <xs:element name="ExternalId" type="xs:string" />
+            <xs:element name="ShortId" type="xs:string" />
+			<xs:element name="Url" type="xs:string" />
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="TemplatableObjectType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" />
+			<xs:element name="Text" type="ad:LocalizableTextType" minOccurs="0" />
+			<xs:element name="Color" type="ad:ColorType" minOccurs="0" />
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType"  />
+            <xs:element name="ExternalId" type="xs:string" />
+            <xs:element name="ShortId" type="xs:string" />
+			<xs:element name="Url" type="xs:string" />
+			<xs:element name="Features" type="ad:FeaturesType"  />
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="TemplatableObjectSimpleDisplayNameType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="xs:string" />
+			<xs:element name="Text" type="ad:LocalizableTextType" minOccurs="0"/>
+			<xs:element name="Color" type="ad:ColorType" minOccurs="0"/>
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+			<xs:element name="ExternalId" type="xs:string" />
+			<xs:element name="ShortId" type="xs:string" />
+			<xs:element name="Url" type="xs:string" />
+			<xs:element name="Features" type="ad:FeaturesType" />
+		</xs:sequence>
+	</xs:group>
+
+
+	<!-- attributes used on nearly any object -->	
+	<xs:attributeGroup name="SimpleObjectAttributeGroup" >
+		<xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+	</xs:attributeGroup>
+
+	<xs:attributeGroup name="TemplatableObjectAttributeGroup">
+		<!-- <xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" /> -->
+		
+		<!-- 
+			unroling "SimpleObjectAttributeGroup" here to help Microsoft's "xsd.exe" to genrate the Id attribute.
+			xsd.exe does not properly support nested/derived attribute groups
+		-->	
+		<xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+		
+		<xs:attribute name="ObjectTemplateReference" type="ad:LongIdType" use="optional"/>
+		<xs:attribute name="ObjectTemplateReferenceName" type="xs:string" use="optional"/>
+	</xs:attributeGroup>
+
+	<!-- attributes of property definitions of template objects -->
+	<xs:attributeGroup name="PropertyDefinitionElementAttributeGroup">
+		<xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+		<xs:attribute name="BasedOn" type="ad:LongIdType" use="optional"/>
+	</xs:attributeGroup>
+
+	<!-- ===========================================================
+	    types used for definitions of custom property values
+	    in features & templates
+	============================================================ -->
+
+	<xs:group name="CommonProperties">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Color" type="ad:ColorType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="TooltipText" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="IsMandatory" type="ad:BoolType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="IsLocalized" type="ad:BoolType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="PlaceholderValue" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:group>
+
+
+	<!-- definition for a boolean property -->
+	<xs:complexType name="BooleanPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" />
+			<xs:element name="DefaultValue" type="ad:BoolType" minOccurs="0"  maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<!-- definition of a custom reference strip -->
+	<xs:complexType name="ReferenceStripPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" />
+			<xs:element name="MaxReferenceCount" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ObjectTypes" type="ad:ObjectTypes" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<!-- definition of a calculated reference strip -->
+	<xs:complexType name="QueryReferenceStripPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" />
+			<xs:element name="DefaultValue" type="xs:string" minOccurs="0"  maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<!-- definition of a custom reference slot (single object) -->
+	<xs:complexType name="ReferenceSlotPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" />
+			<xs:element name="DefaultValue" type="ad:ReferenceType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ObjectTypes" type="ad:ObjectTypes" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="TextPropertyDefinitionValueType" mixed="true">
+		<xs:sequence>
+			<xs:element name="LocalizedString" type="ad:LocalizedStringType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="TextPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" maxOccurs="1" />
+			<xs:element name="DefaultValue" type="ad:TextPropertyDefinitionValueType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="DisallowedChars" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="MaxLength" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="AllowsLinebreaks" type="ad:BoolType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="NumberPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" />
+			<xs:element name="DefaultValue" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="MinValue" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="MaxValue" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Precision" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Unit" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="DisplayThousandsSeparator" type="ad:BoolType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="ScriptPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" />
+			<xs:element name="DefaultValue" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ScriptType" type="ad:ScriptTypeType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+
+	<!-- single value of an enum value for a enumeration of a feature -->
+	<xs:complexType name="EnumValueType">
+		<xs:sequence>
+			<xs:element name="Value" type="xs:int" />
+			<xs:element name="TechnicalName" type="xs:string" />
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EnumerationPropertyDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:CommonProperties" minOccurs="0" maxOccurs="1" />
+			<xs:element name="DefaultValue" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Values" type="ad:EnumerationValuesDefinitionType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:PropertyDefinitionElementAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="EnumerationValuesDefinitionType">
+		<xs:sequence>
+			<xs:element name="EnumValue" type="ad:EnumValueType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="AllowedCategory">
+		<xs:attribute name="Name" type="ad:AssetCategoryType" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="AllowedTemplate">
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ObjectType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="AllowedCategory" type="ad:AllowedCategory" />
+			<xs:element name="AllowedTemplate" type="ad:AllowedTemplate" />
+		</xs:choice>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+		<xs:attribute name="Type" type="xs:string" use="required"/>
+		<xs:attribute name="AllowUnsetTemplate" type="ad:BoolType" use="required" />
+		<xs:attribute name="AllowAllTemplates" type="ad:BoolType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="ObjectTypes">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="ObjectType" type="ad:ObjectType" />
+		</xs:choice>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="PropertyDefinitionRefType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="PropertyDefinitionsType">
+		<xs:sequence>
+			<xs:element name="PropertyDefinitionRef" type="ad:PropertyDefinitionRefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="FeatureDefinitionRefType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="FeatureDefinitionsType">
+		<xs:sequence>
+			<xs:element name="FeatureDefinitionRef" type="ad:FeatureDefinitionRefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="FeatureDefinitionType">
+		<xs:sequence>
+			<xs:group ref="ad:DefinitionObjectType"/>
+			<xs:element name="PropertyDefinitions" type="ad:PropertyDefinitionsType"/>
+		</xs:sequence>
+		<xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+		<xs:attribute name="BasedOn" type="ad:LongIdType" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="ObjectTemplateDefinitionType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="ad:LocalizableTextType" />
+			<xs:element name="Color" type="ad:ColorType" />
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+			<xs:element name="ExternalId" type="xs:string" />
+			<xs:element name="ShortId" type="xs:string" />
+			<xs:element name="Url" type="xs:string" />
+			<xs:element name="FeatureDefinitions" type="ad:FeatureDefinitionsType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ===========================================================
+	    types used to export custom property values of objects
+			as used in features
+	============================================================ -->
+
+	<!-- type for values that are texts that are flagged as localization aware -->
+	<xs:complexType name="LocalizableTextPropertyType">
+		<xs:sequence>
+			<xs:element name="LocalizedString" type="ad:LocalizedStringType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="required" />
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="NumberPropertyType">
+		<xs:simpleContent>
+			<xs:extension base="ad:NullableDecimalType">
+				<xs:attribute name="Name" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="StringPropertyType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="Name" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="BooleanPropertyType">
+		<xs:simpleContent>
+			<xs:extension base="ad:NullableBoolType">
+				<xs:attribute name="Name" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- type for a reference to another object with a given (property) name used to model slots -->
+	<xs:complexType name="NamedReferenceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="Name" type="xs:string" use="required" />
+				<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="ReferenceStripPropertyType">
+		<xs:complexContent>
+			<xs:extension base="ad:ReferencesType">
+				<xs:attribute name="Name" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ReferenceSlotPropertyType">
+		<xs:complexContent>
+			<xs:extension base="ad:NamedReferenceType" />
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- the value of an enumerated property (this export uses the numeric value, not a display name) -->
+	<xs:complexType name="EnumPropertyType">
+		<xs:simpleContent>
+			<xs:extension base="ad:NullableIntType" >
+				<xs:attribute name="Name" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- the list of allowed value tags for feature properties -->
+	<xs:complexType name="PropertiesType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="LocalizableText" type="ad:LocalizableTextPropertyType"/>
+			<xs:element name="Number" type="ad:NumberPropertyType"/>
+			<xs:element name="String" type="ad:StringPropertyType"/>
+			<xs:element name="Boolean" type="ad:BooleanPropertyType"/>
+			<xs:element name="NamedReference" type="ad:ReferenceSlotPropertyType" />
+			<xs:element name="References" type="ad:ReferenceStripPropertyType" />
+			<xs:element name="Enum" type="ad:EnumPropertyType"/>
+		</xs:choice>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<!-- the container for the properties of a single feature that describes their values -->
+	<xs:complexType name="FeatureType">
+		<xs:sequence>
+			<xs:element name="Properties" type="ad:PropertiesType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="required"/>       <!-- techname of the feature -->
+		<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>  <!-- reference to the features definition object -->
+	</xs:complexType>
+
+	<!-- the container for the features that holds a list of feature elements -->
+	<xs:complexType name="FeaturesType">
+		<xs:sequence>
+			<xs:element name="Feature" type="ad:FeatureType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+
+	<!-- ===========================================================
+	             data object descriptions
+	============================================================ -->
+
+	<!-- main project -->
+	<xs:complexType name="ProjectType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="xs:string" />
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Url" type="xs:string" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ========  folders ======= -->
+
+	<!-- the representation of a system folder (defined by articy:draft) can't be edited -->
+	<xs:complexType name="SystemFolderType">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="xs:string"/>
+			<xs:element name="Color" type="ad:ColorType"/>
+		</xs:sequence>
+		<xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+	</xs:complexType>
+
+	<!-- the representation of a folder beneath a system folder that can be created and managed by the user -->
+	<xs:complexType name="UserFolderType">
+		<xs:group ref="ad:NamedObjectType" />
+        <xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+    </xs:complexType>
+
+    <!-- the representation of a folder inside a location that groups different objects -->
+    <xs:complexType name="LayerFolderType">
+      <xs:sequence>
+        <xs:group ref="ad:NamedObjectType" />
+        <xs:element name="Visibility" type="ad:VisibilityType"/>
+        <xs:element name="Selectability" type="ad:SelectabilityType"/>
+		<xs:element name="ZIndex" type="xs:float" />
+      </xs:sequence>
+      <xs:attribute name="Id" type="ad:LongIdType" use="required"/>
+    </xs:complexType>
+  
+	<!-- ============ flow related ========  -->
+
+	<!-- amn annotation/comment node -->
+	<xs:complexType name="CommentType">
+		<xs:sequence>
+			<xs:element name="Text" type="ad:LocalizableTextType" minOccurs="0" />
+			<xs:element name="Color" type="ad:ColorType" />
+			<xs:element name="Url" type="xs:string" />
+			<xs:element name="CreatedOn" type="xs:dateTime"/>
+			<xs:element name="CreatedBy" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="PinsType">
+		<xs:sequence>
+			<xs:element name="Pin" type="ad:PinType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="PinType">
+		<xs:sequence>
+			<xs:element name="Expression" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+		<xs:attribute name="Index" type="xs:int" use="required"/>
+		<xs:attribute name="Semantic" type="ad:SemanticType" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ConnectionRefType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>  <!-- the guid of the referenced object -->
+				<xs:attribute name="PinRef" type="ad:LongIdType" use="required"/>   <!-- the guid of the referenced pin within the object -->
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="ConnectionType">
+		<xs:sequence>
+			<xs:element name="Color" type="ad:ColorType" />
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+			<xs:element name="Url" type="xs:string" />
+			<xs:element name="Label" type="ad:LocalizableTextType" />
+			<xs:element name="Source" type="ad:ConnectionRefType"/>
+			<xs:element name="Target" type="ad:ConnectionRefType"/>
+			<xs:element name="ShowLabel" type="xs:boolean" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="FlowFragmentType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+			<xs:element name="References" type="ad:ReferencesType" minOccurs="0" />
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Pins" type="ad:PinsType" minOccurs="0" />
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+	
+	<xs:complexType name="DialogueType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType"/>
+			<xs:element name="References" type="ad:ReferencesType" minOccurs="0"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Pins" type="ad:PinsType"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="DialogueFragmentType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectSimpleDisplayNameType"/>
+			<xs:element name="Pins" type="ad:PinsType"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="Speaker" type="ad:ReferenceType" minOccurs="0"/>
+			<xs:element name="StageDirections" type="ad:LocalizableTextType" minOccurs="0"/>
+			<xs:element name="MenuText" type="ad:LocalizableTextType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="HubType" mixed="true">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+			<xs:element name="Pins" type="ad:PinsType" minOccurs="0"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="JumpType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectSimpleDisplayNameType" />
+			<xs:element name="Pins" type="ad:PinsType"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="Target" type="ad:ConnectionRefType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="ConditionType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectSimpleDisplayNameType"/>
+			<xs:element name="Expression" type="xs:string" />
+			<xs:element name="Pins" type="ad:PinsType"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="InstructionType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectSimpleDisplayNameType"/>
+			<xs:element name="Expression" type="xs:string" />
+			<xs:element name="Pins" type="ad:PinsType"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="Size" type="ad:SizeType" />
+			<xs:element name="ZIndex" type="xs:float" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+
+	<!-- ========= location related ========= -->
+
+	<xs:complexType name="FillType">
+		<xs:attribute name="Color" type="ad:ColorWithAplhaType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="OutlineType">
+		<xs:attribute name="Color" type="ad:ColorWithAplhaType" use="required" />
+		<xs:attribute name="Size" type="xs:int" default="1"/>
+		<xs:attribute name="Style" type="ad:StrokeStyleType" default="Solid"/>
+	</xs:complexType>
+
+	<xs:simpleType name="CoordinateReferenceType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Local"/>
+			<xs:enumeration value="World"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType  name="TransformMatrixType">
+		<xs:restriction base="ad:ListOfFloatsType" >
+			<xs:maxLength value="9"/>
+			<xs:minLength value="9" />
+		</xs:restriction>		
+	</xs:simpleType >	
+	
+	<xs:complexType name="TransformationType" >
+		<xs:sequence>
+			<xs:element name="Rotation" type="xs:float" />
+			<xs:element name="Pivot" type="ad:PointType" />
+			<xs:element name="XAxis" type="ad:PointType" />
+			<xs:element name="YAxis" type="ad:PointType" />
+			<xs:element name="Translation" type="ad:PointType" />
+			<xs:element name="TransformMatrix" type="ad:TransformMatrixType" />
+			<xs:element name="Bounds" type="ad:RectangleType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="VerticesType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="Reference" type="ad:CoordinateReferenceType" use="required" />
+				<xs:attribute name="Count" type="xs:int" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="CoordinatesType" >
+		<xs:sequence>
+			<xs:element name="Vertices" type="ad:VerticesType" minOccurs="2" maxOccurs="2" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SpotStyleType">
+		<xs:attribute name="Kind" type="ad:SpotStyleKindType" use="required" />
+		<xs:attribute name="Size" type="ad:SizeNamesType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="SpotType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+            <xs:element name="Visibility" type="ad:VisibilityType"/>
+            <xs:element name="Selectability" type="ad:SelectabilityType"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="ShowDisplayName" type="xs:boolean" />
+			<xs:element name="DisplayNameColor" type="ad:ColorType" />
+			<xs:element name="DropShadow" type="xs:boolean" />
+			<xs:element name="Style" type="ad:SpotStyleType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="CircleType">
+		<xs:attribute name="CenterX" type="xs:float" use="required"/>
+		<xs:attribute name="CenterY" type="xs:float" use="required"/>
+		<xs:attribute name="Radius" type="xs:float" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="PolygonType">
+		<xs:sequence>
+			<xs:element name="Coordinates" type="ad:CoordinatesType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PathType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+            <xs:element name="Visibility" type="ad:VisibilityType"/>
+            <xs:element name="Selectability" type="ad:SelectabilityType"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="Fill" type="ad:FillType" />
+			<xs:element name="Outline" type="ad:OutlineType" />
+			<xs:element name="ShowDisplayName" type="xs:boolean" />
+			<xs:element name="DisplayNameColor" type="ad:ColorType" />
+			<xs:element name="DisplayNameSize" type="xs:int" />
+			<xs:element name="DropShadow" type="xs:boolean" />
+			<xs:element name="DisplayNamePosition" type="ad:PointType" />
+			<xs:element name="Transformation" type="ad:TransformationType" />
+			<xs:element name="Coordinates" type="ad:CoordinatesType"/>
+			<xs:element name="StartCap" type="ad:PathCapNamesType" />
+			<xs:element name="EndCap" type="ad:PathCapNamesType" />
+			<xs:element name="LineWidth" type="xs:int" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="ZoneType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+            <xs:element name="Visibility" type="ad:VisibilityType"/>
+            <xs:element name="Selectability" type="ad:SelectabilityType"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="Fill" type="ad:FillType" />
+			<xs:element name="Outline" type="ad:OutlineType" />
+			<xs:element name="ShowDisplayName" type="xs:boolean" />
+			<xs:element name="DisplayNameColor" type="ad:ColorType" />
+			<xs:element name="DisplayNameSize" type="xs:int" />
+			<xs:element name="DropShadow" type="xs:boolean" />
+			<xs:element name="DisplayNamePosition" type="ad:PointType" />
+			<xs:element name="Transformation" type="ad:TransformationType" />
+			<xs:choice>
+				<xs:element name="Coordinates" type="ad:CoordinatesType"/>
+				<xs:element name="Circle" type="ad:CircleType"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+		<xs:attribute name="CShape" type="ad:CShapeType" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="LocationAnchorType">
+		<xs:attribute name="X" type="xs:float" />
+		<xs:attribute name="Y" type="xs:float" />
+		<xs:attribute name="Color" type="ad:ColorType" />
+		<xs:attribute name="Size" type="ad:AnchorSizeNamesType" />
+	</xs:complexType>
+
+	<xs:complexType name="LocationAnchorsType">
+		<xs:sequence>
+			<xs:element name="Anchor" type="ad:LocationAnchorType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" />
+	</xs:complexType>
+
+	<xs:complexType name="LocationImageType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+			<xs:element name="Visibility" type="ad:VisibilityType"/>
+			<xs:element name="Selectability" type="ad:SelectabilityType"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="Fill" type="ad:FillType" />
+			<xs:element name="Outline" type="ad:OutlineType" />
+			<xs:element name="ShowDisplayName" type="xs:boolean" />
+			<xs:element name="DisplayNameColor" type="ad:ColorType" />
+			<xs:element name="DisplayNameSize" type="xs:int" />
+			<xs:element name="DropShadow" type="xs:boolean" />
+			<xs:element name="DisplayNamePosition" type="ad:PointType" />
+			<xs:element name="Transformation" type="ad:TransformationType" />
+			<xs:element name="Coordinates" type="ad:CoordinatesType"/>
+			<xs:element name="Opacity" type="xs:float" />
+			<xs:element name="Image" type="ad:ReferenceType" />
+			<xs:element name="ClipRect" type="ad:RectangleType" />
+			<xs:element name="Anchors" type="ad:LocationAnchorsType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+		<xs:attribute name="CShape" type="ad:CShapeType" use="required" fixed="Rectangle" />
+	</xs:complexType>
+
+	<xs:complexType name="LocationTextType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+			<xs:element name="Visibility" type="ad:VisibilityType"/>
+			<xs:element name="Selectability" type="ad:SelectabilityType"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="Fill" type="ad:FillType" />
+			<xs:element name="Outline" type="ad:OutlineType" />
+			<xs:element name="DropShadow" type="xs:boolean" />
+			<xs:element name="DisplayNamePosition" type="ad:PointType" />
+			<xs:element name="Transformation" type="ad:TransformationType" />
+			<xs:element name="Coordinates" type="ad:CoordinatesType"/>
+			<xs:element name="Anchors" type="ad:LocationAnchorsType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+		<xs:attribute name="CShape" type="ad:CShapeType" use="required" fixed="Rectangle" />
+	</xs:complexType>
+
+
+	<xs:complexType name="LinkStyleType">
+		<xs:attribute name="Kind" type="ad:LinkStyleKindType" use="required" />
+		<xs:attribute name="Size" type="ad:SizeNamesType" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="LinkType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectSimpleDisplayNameType" />
+            <xs:element name="Visibility" type="ad:VisibilityType"/>
+            <xs:element name="Selectability" type="ad:SelectabilityType"/>
+			<xs:element name="Position" type="ad:PointType" />
+			<xs:element name="ZIndex" type="xs:float" />
+			<xs:element name="ShowDisplayName" type="xs:boolean" />
+			<xs:element name="DisplayNameColor" type="ad:ColorType" />
+			<xs:element name="DropShadow" type="xs:boolean" />
+			<xs:element name="Target" type="ad:ReferenceType" minOccurs="0"/>
+			<xs:element name="Style" type="ad:LinkStyleType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="LocationSettingsType">
+		<xs:sequence>
+			<xs:element name="ShowDisplayNameForZone" type="ad:BoolType" />
+			<xs:element name="DropShadowForZone" type="ad:BoolType" />
+			<xs:element name="DisplayNameSizeForZone" type="xs:float" />
+			<xs:element name="DisplayNameColorForZone" type="ad:ColorType" />
+
+			<xs:element name="ShowDisplayNameForPath" type="ad:BoolType" />
+			<xs:element name="DropShadowForPath" type="ad:BoolType" />
+			<xs:element name="DisplayNameSizeForPath" type="xs:float" />
+			<xs:element name="DisplayNameColorForPath" type="ad:ColorType" />
+
+			<xs:element name="ShowDisplayNameForImage" type="ad:BoolType" />
+			<xs:element name="DropShadowForImage" type="ad:BoolType" />
+			<xs:element name="DisplayNameSizeForImage" type="xs:float" />
+			<xs:element name="DisplayNameColorForImage" type="ad:ColorType" />
+
+			<xs:element name="ShowDisplayNameForSpot" type="ad:BoolType" />
+			<xs:element name="DropShadowForSpot" type="ad:BoolType" />
+			<xs:element name="DisplayNameColorForSpot" type="ad:ColorType" />
+			<xs:element name="SpotStyleKind" type="ad:SpotStyleKindType" />
+			<xs:element name="SpotStyleSize" type="ad:SizeNamesType" />
+
+			<xs:element name="ShowDisplayNameForLink" type="ad:BoolType" />
+			<xs:element name="DropShadowForLink" type="ad:BoolType" />
+			<xs:element name="DisplayNameColorForLink" type="ad:ColorType" />
+			<xs:element name="LinkStyleKind" type="ad:LinkStyleKindType" />
+			<xs:element name="LinkStyleSize" type="ad:SizeNamesType" />
+
+			<xs:element name="DropShadowForText" type="ad:BoolType" />
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="LocationType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+			<xs:element name="References" type="ad:ReferencesType" minOccurs="0"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0"/>
+<!-- removed in 2.4
+			<xs:element name="BackgroundImage" type="ad:ReferenceType" minOccurs="0"/>
+			<xs:element name="BackgroundWidth" type="xs:short" minOccurs="0"/>
+			<xs:element name="BackgroundHeight" type="xs:short" minOccurs="0"/>
+-->
+			<xs:element name="Settings" type="ad:LocationSettingsType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ========= entities ========= -->
+	
+	<xs:complexType name="EntityType" mixed="true">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType" />
+			<xs:element name="References" type="ad:ReferencesType" minOccurs="0"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ========= assets ========= -->
+
+	<xs:complexType name="AssetType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0"/>
+			<xs:element name="AssetFilename" type="xs:string"/>
+			<xs:element name="AssetPath" type="xs:string"/>
+			<xs:element name="OriginalSource" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ========= journeys ========= -->
+
+	<xs:complexType name="JourneyRefType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+				<!-- the Id of the referenced object -->
+				<xs:attribute name="PinRef" type="ad:LongIdType" use="optional"/>
+				<!-- the Id of the referenced pin within the object, when a journey point references a pin -->
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+    <xs:group name="JourneyPointSettingsTypeGroup">
+      <xs:sequence>
+        <xs:element name="BackgroundImageMode" type="ad:BackgroundImageModeType" />
+        <xs:element name="BackgroundImage" type="ad:ReferenceType" minOccurs="0"/>
+        <xs:element name="BackgroundImagePositioningMode" type="ad:BackgroundImagePositioningModeType"/>
+        <xs:element name="BackgroundColorMode" type="ad:BackgroundColorModeType" />
+        <xs:element name="BackgroundColor" type="ad:ColorType" minOccurs="0" />
+        <xs:element name="BackgroundColorGradientMode" type="ad:BackgroundColorGradientModeType" />
+        <xs:element name="Duration" type="xs:int"/>
+      </xs:sequence>
+    </xs:group>
+
+    <xs:complexType name="JourneyPointSettingsType">
+      <xs:sequence>
+        <xs:group ref="ad:JourneyPointSettingsTypeGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  
+	<xs:complexType name="JourneySettingsType">
+		<xs:sequence>
+            <xs:group ref="ad:JourneyPointSettingsTypeGroup"/>
+            <xs:element name="TransitionMode" type="ad:TransitionModeType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- attributes of a variable -->
+	<xs:complexType name="JourneyVariable">
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="DataType" type="ad:VariableDataTypeType" use="required"/>
+		<xs:attribute name="Value" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<!-- the list of initial or changed values for variables -->
+	<xs:complexType name="VariableValuesListType">
+		<xs:sequence>
+			<xs:element name="Variable" type="ad:JourneyVariable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<!-- an method return value entry -->
+	<xs:complexType name="JourneyMethodReturnValueType">
+		<xs:attribute name="Name" type="xs:string" use="required"/>		<!-- the name of the method -->
+		<xs:attribute name="DataType" type="ad:VariableDataTypeType" use="required"/>
+		<xs:attribute name="Value" type="xs:string" use="required"/>	<!-- either boolean (True, False) or an integer number -->
+	</xs:complexType>
+
+	<!-- the list of return values for methods in scripts -->
+	<xs:complexType name="JourneyMethodReturnValuesType">
+		<xs:sequence>
+			<xs:element name="ScriptText" type="xs:string" minOccurs="0" maxOccurs="1"/>	<!-- the text of the script as reference -->
+			<xs:element name="MethodValue" type="ad:JourneyMethodReturnValueType" minOccurs="0" maxOccurs="unbounded"/>	<!-- 0-n values one for each method call -->
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<!-- definition of a journey point -->
+	<xs:complexType name="JourneyPointType">
+		<xs:sequence>
+			<xs:element name="Target" type="ad:JourneyRefType" />
+            <xs:element name="Text" type="ad:LocalizableTextType" minOccurs="0"/>
+            <xs:element name="ExternalId" type="xs:string" />
+            <xs:element name="ShortId" type="xs:string" />
+			<xs:element name="Settings" type="ad:JourneyPointSettingsType" />
+			<xs:element name="ChangedVariableValues" type="ad:VariableValuesListType" />
+			<xs:element name="MethodReturnValues" type="ad:JourneyMethodReturnValuesType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Type" type="ad:TypeOfJourneyPointType" use="required"/>
+		<xs:attribute name="ReachedBy" type="ad:ReachedByType" use="required"/>
+	</xs:complexType>
+	
+	<!-- a list of journey points -->
+	<xs:complexType name="JourneyPointsType">
+		<xs:sequence>
+			<xs:element name="JourneyPoint" type="ad:JourneyPointType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="JourneyType">
+		<xs:sequence>
+			<xs:group ref="ad:NamedObjectType"/>
+			<xs:element name="References" type="ad:ReferencesType" />
+			<xs:element name="Settings" type="ad:JourneySettingsType" />
+			<xs:element name="InitialVariableValues" type="ad:VariableValuesListType" />
+			<xs:element name="JourneyPoints" type="ad:JourneyPointsType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ========= documents ========= -->
+
+	<xs:complexType name="DocumentType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="TextObjectType">
+		<xs:sequence>
+			<xs:group ref="ad:TemplatableObjectType"/>
+			<xs:element name="References" type="ad:ReferencesType" minOccurs="0"/>
+			<xs:element name="PreviewImage" type="ad:PreviewImageType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:TemplatableObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ========= global variables ======== -->
+
+	<xs:complexType name="VariableSetType">
+		<xs:sequence>
+			<xs:element name="Url" type="xs:string" />
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+			<xs:element name="Description" type="ad:LocalizableTextType" />
+			<xs:element name="Variables" type="ad:VariablesType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<xs:complexType name="VariablesType">
+		<xs:sequence>
+			<xs:element name="Variable" type="ad:VariableType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Count" type="xs:int" use="required"/>			
+	</xs:complexType>
+
+	<xs:complexType name="VariableType">
+		<xs:sequence>
+			<xs:element name="TechnicalName" type="ad:TechnicalNameType" />
+			<xs:element name="Description" type="ad:LocalizableTextType" />
+			<xs:element name="DataType" type="ad:VariableDataTypeType" />
+			<xs:element name="DefaultValue" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ========= project settings ======== -->
+
+	<!-- settings for the flow -->
+	<xs:complexType name="FlowSettingsType">
+		<xs:sequence>
+			<xs:element name="BuiltInScriptSupport" type="ad:BoolType" />
+			<xs:element name="GridSize" type="xs:int" />
+			<xs:element name="GridSizeEnforced" type="ad:BoolType" />
+			<xs:element name="SpacingHorizontal" type="xs:int" />
+			<xs:element name="SpacingVertical" type="xs:int" />
+			<xs:element name="SpacingEnforced" type="ad:BoolType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- external application settings -->
+	<xs:complexType name="ApplicationDefinitionType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" />
+			<xs:element name="Command" type="xs:string" />
+			<xs:element name="WorkingDirectory" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ExternalApplicationsType">
+		<xs:choice>
+			<xs:element name="ApplicationDefinition" type="ad:ApplicationDefinitionType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- main element of project settings -->
+	<xs:complexType name="ProjectSettingsType">
+		<xs:sequence>
+			<xs:element name="FlowSettings" type="ad:FlowSettingsType" />
+			<xs:element name="JourneySettings" type="ad:JourneySettingsType" />				<!-- the settings definition is shared with the journey object -->
+			<xs:element name="LocationSettings" type="ad:LocationSettingsType" />			<!-- the settings definition is shared with the location object -->
+			<xs:element name="ExternalApplications" type="ad:ExternalApplicationsType" />
+		</xs:sequence>
+		<xs:attributeGroup ref="ad:SimpleObjectAttributeGroup" />
+	</xs:complexType>
+
+	<!-- ===========================================================
+	             types for main document structure
+	============================================================ -->
+
+	<xs:complexType name="SettingsType">
+		<xs:sequence>
+			<xs:element name="ExportMarkup" type="xs:boolean" />
+			<xs:element name="ExportQueries" type="xs:boolean" />
+			<xs:element name="WriteNamespace" type="xs:boolean" />
+			<xs:element name="WriteAllVariables" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- a entry in the list of export errors -->
+	<xs:complexType name="ErrorEntryType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="Severity" type="ad:ErrorSeverityType" default="Soft" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ExportErrorsType">
+		<xs:choice>
+			<xs:element name="Error" type="ad:ErrorEntryType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- the generic nodes that reflect the object order as seen in the projects navigator tree -->
+	<xs:complexType name="NodeType" mixed="true">
+		<xs:sequence>
+			<xs:element name="Node" type="ad:NodeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="IdRef" type="ad:LongIdType" use="required"/>
+		<xs:attribute name="Type" type="xs:string" use="required"/>    <!-- this attribute is only to make the export more human readable so it has no strict checking -->
+	</xs:complexType>
+
+	<!-- the hierarchy container element -->
+	<xs:complexType name="HierarchyType">
+		<xs:sequence>
+			<xs:element name="Node" type="ad:NodeType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- list of all objects that can be found in the flattened content aread of the export -->
+	<xs:complexType name="ContentType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			
+			<!-- the main project -->
+			<xs:element name="Project" type="ad:ProjectType"/>
+
+			<!-- the main project -->
+			<xs:element name="ProjectSettings" type="ad:ProjectSettingsType"/>
+
+			<!-- system folder objects -->
+			<xs:element name="Flow" type="ad:SystemFolderType"/>
+			<xs:element name="Locations" type="ad:SystemFolderType"/>
+			<xs:element name="Journeys" type="ad:SystemFolderType"/>
+			<xs:element name="ObjectCustomization" type="ad:SystemFolderType"/>
+			<xs:element name="Entities" type="ad:SystemFolderType"/>
+			<xs:element name="Assets" type="ad:SystemFolderType"/>
+			<xs:element name="Features" type="ad:SystemFolderType"/>
+			<xs:element name="Documents" type="ad:SystemFolderType"/>
+			<xs:element name="ObjectTemplates" type="ad:SystemFolderType"/>
+			<xs:element name="TypedObjectTemplates" type="ad:SystemFolderType"/>
+			<xs:element name="PropertyTemplates" type="ad:SystemFolderType" />
+			<xs:element name="TypedPropertyTemplates" type="ad:SystemFolderType" />
+			<xs:element name="GlobalVariables" type="ad:SystemFolderType" />
+
+			<!-- user folder objects (folders a user can create) -->
+			<xs:element name="EntitiesUserFolder" type="ad:UserFolderType"/>
+			<xs:element name="FeaturesUserFolder" type="ad:UserFolderType"/>
+			<xs:element name="ObjectTemplatesUserFolder" type="ad:UserFolderType"/>
+            <xs:element name="TypedPropertyTemplatesUserFolder" type="ad:UserFolderType" />
+			<xs:element name="LocationsUserFolder" type="ad:UserFolderType"/>
+			<xs:element name="AssetsUserFolder" type="ad:UserFolderType"/>
+			<xs:element name="DocumentsUserFolder" type="ad:UserFolderType"/>
+			<xs:element name="JourneysUserFolder" type="ad:UserFolderType"/>
+
+			<!-- definition objects of custom template/feature/properties -->
+			<xs:element name="FeatureDefinition" type="ad:FeatureDefinitionType"/>
+			<xs:element name="TextPropertyDefinition" type="ad:TextPropertyDefinitionType"/>
+			<xs:element name="BooleanPropertyDefinition" type="ad:BooleanPropertyDefinitionType"/>
+			<xs:element name="NumberPropertyDefinition" type="ad:NumberPropertyDefinitionType"/>
+			<xs:element name="ReferenceSlotPropertyDefinition" type="ad:ReferenceSlotPropertyDefinitionType"/>
+			<xs:element name="ReferenceStripPropertyDefinition" type="ad:ReferenceStripPropertyDefinitionType"/>
+			<xs:element name="QueryReferenceStripPropertyDefinition" type="ad:QueryReferenceStripPropertyDefinitionType"/>
+			<xs:element name="EnumerationPropertyDefinition" type="ad:EnumerationPropertyDefinitionType" />
+			<xs:element name="ScriptPropertyDefinition" type="ad:ScriptPropertyDefinitionType"/>
+			<xs:element name="ObjectTemplateDefinition" type="ad:ObjectTemplateDefinitionType"/>
+			
+			<!-- flow related objects -->
+			
+			<!-- common objects -->
+			<xs:element name="Comment" type="ad:CommentType"/>
+			<xs:element name="Connection" type="ad:ConnectionType"/>
+			
+			<xs:element name="FlowFragment" type="ad:FlowFragmentType"/>
+			<xs:element name="Dialogue" type="ad:DialogueType"/>
+
+			<!-- elements only valid inside dialogs -->
+			<xs:element name="DialogueFragment" type="ad:DialogueFragmentType"/>
+			<xs:element name="Jump" type="ad:JumpType"/>
+			<xs:element name="Hub" type="ad:HubType"/>
+
+			<!-- condition / instruction nodes -->
+			<xs:element name="Condition" type="ad:ConditionType"/>
+			<xs:element name="Instruction" type="ad:InstructionType"/>
+
+			<!-- location related objects -->
+			<xs:element name="Location" type="ad:LocationType"/>
+            <xs:element name="LayerFolder" type="ad:LayerFolderType"/>
+			<xs:element name="Spot" type="ad:SpotType"/>
+			<xs:element name="Zone" type="ad:ZoneType"/>
+			<xs:element name="Path" type="ad:PathType"/>
+			<xs:element name="Link" type="ad:LinkType"/>
+			<xs:element name="LocationImage" type="ad:LocationImageType"/>
+			<xs:element name="LocationText" type="ad:LocationTextType"/>
+
+			<!-- Entities -->
+			<xs:element name="Entity" type="ad:EntityType"/>
+
+			<!-- Assets -->
+			<xs:element name="Asset" type="ad:AssetType"/>
+
+			<!-- Journey -->
+			<xs:element name="Journey" type="ad:JourneyType"/>
+
+			<!-- Document -->
+			<xs:element name="Document" type="ad:DocumentType" />
+			<xs:element name="TextObject" type="ad:TextObjectType" />
+
+			<!-- GlobalVariables -->
+			<xs:element name="VariableSet" type="ad:VariableSetType" />
+
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="ExportType">
+		<xs:sequence>
+			<xs:element name="Settings" type="ad:SettingsType" />
+			<xs:element name="Content" type="ad:ContentType"/>
+			<xs:element name="Hierarchy" type="ad:HierarchyType"/>
+			<xs:element name="ExportErrors" type="ad:ExportErrorsType" minOccurs="0"/>
+		</xs:sequence>
+		
+		<!-- Version gives the version of the export format, not the version of articy:draft -->
+		<xs:attribute name="Version" type="xs:string" use="required" fixed="3.0" />
+		<xs:attribute name="CreatorTool" type="xs:string" use="required"/>
+		<xs:attribute name="CreatorVersion" type="xs:string" use="required" />
+		<xs:attribute name="CreatedOn" type="xs:dateTime" use="required" />
+	</xs:complexType>
+
+	<!-- The Root element of the export -->
+	<xs:element name="Export" type="ad:ExportType"/>
+
+</xs:schema>

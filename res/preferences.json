@@ -11,7 +11,7 @@
     ]
   },
   "unityPath": {
-    "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.0f1\\Editor\\Unity.exe",
+    "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.31f1\\Editor\\Unity.exe",
     "label": "Path to Unity executable",
     "uuid": "5565213a-fd3a-412d-ae8f-cf1f446fcfe9",
     "kind": "path"
@@ -33,12 +33,6 @@
     "label": "Template server URL",
     "uuid": "48aa6b4a-d0d3-460f-ae24-2ce2c03f5e9e",
     "kind": "string"
-  },
-  "articyPath": {
-    "value": "C:\\dev\\ArticyDraft\\ArticyDraft.exe",
-    "label": "Path to Articy executable",
-    "uuid": "352f884f-afff-44f0-b84d-9a49188d8f49",
-    "kind": "path"
   },
   "packageRegistries": {
     "value": [

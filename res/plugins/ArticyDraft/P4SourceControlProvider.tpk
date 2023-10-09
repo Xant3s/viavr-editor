@@ -1,0 +1,1092 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<TextPackage BaseNamespace="Articy.SourceControl" GenerateIds="True" xml:space="preserve" xmlns="http://nevigo.com/TextPackage.xsd">
+
+	<Category Name="System">
+
+		<TextDefinition Key="Perforce.StreamsInfo">
+			<Context/>
+			<Text Lang="en"><![CDATA[Perforce 'Steam' depots are not supported. Please use a 'local' depot for articy:draft projects.
+Read more [url=http://www.articy.com/redirect/perforcestreams]here[/url].]]></Text>
+			<Text Lang="de"><![CDATA[Perforce 'Steam' Depots werden nicht unterstützt. Bitte verwenden sie ein 'Local' Depot für articy:draft Projekte. 
+Mehr dazu finden sie [url=http://www.articy.com/redirect/perforcestreams]hier[/url].]]></Text>
+			<Text Lang="uk"><![CDATA[Сховища "Steam" Perforce не підтримуються. Будь ласка, використовуйте "місцеве" депо для articy: проектів проектів.
+Детальніше [url = http: //www.articy.com/redirect/perforcestreams] тут [/ url].]]></Text>
+			<Text Lang="fr"><![CDATA[Les dépôts "Steam" de Perforce ne sont pas pris en charge. Veuillez utiliser un dépôt "local" pour les projets articy:draft.
+En savoir plus [url=http://www.articy.com/redirect/perforcestreams]ici[/url].]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Repositórios Perforce "Steam" não são suportados. Use um repositório "local" para projetos articy: draft.
+Saiba mais [url=http: //www.articy.com/redirect/perforcestreams]aqui[/url].]]></Text>
+			<Text Lang="zh"><![CDATA[不支持 Perforce 'Steam' depot。 请为 articy:draft 项目使用“本地”仓库。
+阅读更多[url=http://www.articy.com/redirect/perforcestreams]这里[/url]。]]></Text>
+			<Text Lang="ko"><![CDATA[Perforce 'Steam'디포는 지원되지 않습니다. articy : draft 프로젝트에는 '로컬'디포를 사용하십시오.
+자세한 내용은 [url = http : //www.articy.com/redirect/perforcestreams] 여기 [/ url]를 참조하세요. </Text>
+			<Text Lang="pl"><![CDATA[Magazyny Perforce „Steam” nie są obsługiwane. W przypadku projektów articy:draft korzystaj z magazynu „lokalnego”.
+Przeczytaj więcej [url=http://www.articy.com/redirect/perforcestreams]tutaj[/url].]]></Text>
+			<Text Lang="es"><![CDATA[Los depósitos de Perforce 'Steam' no son compatibles. Utilice un depósito 'local' para articy: proyectos de borrador.
+Lea más [url=http: //www.articy.com/redirect/perforcestreams]aquí[/url].]]></Text>
+			<Text Lang="it"><![CDATA[I depot "Steam" di Perforce non sono supportati. Si prega di utilizzare un deposito "locale" per progetti articy:draft.
+Leggi di più [url=http://www.articy.com/redirect/perforcestreams]qui[/url].]]></Text>
+			<Text Lang="ru"><![CDATA[Хранилища Perforce 'Steam' не поддерживаются. Пожалуйста, используйте «местное» хранилище для articy: черновых проектов.
+Подробнее [url=http: //www.articy.com/redirect/perforcestreams]здесь[/url].]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.DisplayName">
+			<Context>The display-name of the SCM provider</Context>
+			<Text Lang="de">Perforce-Provider</Text>
+			<Text Lang="uk">Провайдер Perforce</Text>
+			<Text Lang="fr">Fournisseur Perforce</Text>
+			<Text Lang="pt-BR">Fornecedor de performace</Text>
+			<Text Lang="zh">Perforce供应方</Text>
+			<Text Lang="ko">Perforce 제공자</Text>
+			<Text Lang="pl">Dostawca Perforce</Text>
+			<Text Lang="es">Proveedor de Perforce</Text>
+			<Text Lang="it">Fornitore perforce</Text>
+			<Text Lang="ru">Провайдер Perforce</Text>
+			<Text Lang="en">Perforce provider</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.EnterCredentials.Title">
+			<Context>The window caption for the password dialog</Context>
+			<Text Lang="en">Login to perforce</Text>
+			<Text Lang="uk">Авторизуватися в Perforce</Text>
+			<Text Lang="fr">Connectez-vous à Perforce</Text>
+			<Text Lang="pt-BR">Logue para fornecer</Text>
+			<Text Lang="zh">登录至Perforce</Text>
+			<Text Lang="ko">Perforce로 로그인</Text>
+			<Text Lang="pl">Zaloguj do Perforce</Text>
+			<Text Lang="es">Iniciar sesión en Perforce</Text>
+			<Text Lang="it">Accesso a perforce</Text>
+			<Text Lang="ru">Авторизироваться в Perforce</Text>
+			<Text Lang="de">Anmeldung bei Perforce</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.EnterCredentials.Description">
+			<Context>The window header text for the credential dialog, {0}: depotpath, {1}: server and port address</Context>
+			<Text Lang="en">Please provide your credentials to log on to depot-path '{0}' on perforce server '{1}'.</Text>
+			<Text Lang="uk"><![CDATA[Будь ласка, введіть облікові дані, для входу в depot-path '{0}' на сервері perforce '{1}'.
+]]></Text>
+			<Text Lang="fr">Veuillez fournir vos informations d'identification pour vous connecter au dépôt-chemin '{0}' sur le serveur Perforce '{1}'.</Text>
+			<Text Lang="pt-BR">Forneça suas credenciais para fazer login no caminho do depósito '{0}' forçadamente no servidor  '{1}'.</Text>
+			<Text Lang="zh">请提供您的凭据以登录至Perforce服务器上的'{1}'库路径 '{0}' 。</Text>
+			<Text Lang="ko">Perforce 서버 '{1}'의 내보내기 경로 '{0}'에 로그온 할 때 사용할 자격 증명을 입력하십시오.</Text>
+			<Text Lang="pl">Proszę podać swoje dane do zalogowania się do ścieżki '{0}' na serwerze Perforce '{1}'.</Text>
+			<Text Lang="es">Introduce tus credenciales para iniciar sesión en el depot de Perforce '{1}'.</Text>
+			<Text Lang="it">Si prega di fornire le proprie credenziali per eseguire l'accesso al percorso di deposito '{0}' nel server perforce '{1}'.</Text>
+			<Text Lang="ru"><![CDATA[Пожалуйста, предоставьте ваши параметры доступа, чтобы подключиться к хранилищу '{0}' на сервере perforce
+]]></Text>
+			<Text Lang="de">Bitte geben Sie die Anmeldedaten ein, um sich beim Perforce-Server '{1}' für den Depot-Pfad '{0}' anzumelden.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.HostPort.Description">
+			<Context>description for the property "Host" and "Port"</Context>
+			<Text Lang="de">Geben Sie bitte den Hostbezeichner und die Portnummer getrennt durch einen Doppelpunkt an.</Text>
+			<Text Lang="uk">Будь ласка, вставте сюди ім'я хоста і порту, розділені двокрапкою.</Text>
+			<Text Lang="fr">Veuillez insérer l'hôte et le nom de port ici, séparés par deux points.</Text>
+			<Text Lang="pt-BR">Por favor insira o hoste e nome de porte aqui, separado por 2 pontos</Text>
+			<Text Lang="zh">请在此输入主机和端口名称，用冒号隔开。</Text>
+			<Text Lang="ko">여기에 호스트와 포트 이름을 입력하고 콜론으로 구분하십시오.</Text>
+			<Text Lang="pl">Wprowadź identyfikator hosta i numer portu oddzielone dwukropkiem.</Text>
+			<Text Lang="es">Introduce host y número de puerto aquí, separados por el caracter ":" (dos puntos).</Text>
+			<Text Lang="it">Si prega di inserire qui un host e un numero di porta, separati da un due punti.</Text>
+			<Text Lang="ru">Пожалуйста, вставьте сюда имя хоста и порта, разделенные двоеточием.</Text>
+			<Text Lang="en">Please insert host and portname here, separated by colon.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.HostPort.Caption">
+			<Context>Label for the property "HostPort"</Context>
+			<Text Lang="de">Host:PortNummer nach dem Schema: 'MeinServerName:1666'</Text>
+			<Text Lang="uk"><![CDATA[Хост:Номер порту як:
+'Ім'яМогоСерверу:1666']]></Text>
+			<Text Lang="fr">Host:Portnumber comme : 'MyServerName:1666'</Text>
+			<Text Lang="pt-BR"><![CDATA[Host:Portnumber like: 'MyServerName:1666'
+]]></Text>
+			<Text Lang="zh">主机:端口号 如：'MyServerName:1666'</Text>
+			<Text Lang="ko">호스트:포트 번호는 다음과 같음: 'MyServerName:1666'</Text>
+			<Text Lang="pl">Host:Port np. 'NazwaSerwera:1666'</Text>
+			<Text Lang="es">Host:Númerodepuerto, o: 'MiServidor:1666'</Text>
+			<Text Lang="it">Host:Numerodiporta come: 'NomeDelMioServer:1666'</Text>
+			<Text Lang="ru"><![CDATA[Хост:Номер Порта как:
+'ИмяМоегоСервера:1666']]></Text>
+			<Text Lang="en">Host:Portnumber like: 'MyServerName:1666'</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.Description">
+			<Context>description for the property Depot</Context>
+			<Text Lang="de">Geben Sie bitte den Depotnamen an. Sie können diesen Pfad aus Ihrem Perforce-Client herauskopieren.</Text>
+			<Text Lang="uk">Будь ласка, вставте назву сховища. Ви можете копіювати цей шлях з вашого клієнта Perforce.</Text>
+			<Text Lang="fr">Veuillez insérer le nom du dépôt. Vous pouvez copier ce chemin depuis votre client Perforce.</Text>
+			<Text Lang="pt-BR">Por favor insira nome de depósito. Você pode copiar este caminha de seu cliente forçado.</Text>
+			<Text Lang="zh">请输入库名称。您可以从perforce客户机复制此路径。</Text>
+			<Text Lang="ko">Depot 이름을 입력하십시오. 이 경로는 Perforce 클라이언트에서 복사할 수 있습니다.</Text>
+			<Text Lang="pl">Proszę wpisać nazwę depot. Możesz skopiować tę ścieżkę z klienta Perforce.</Text>
+			<Text Lang="es">Introduce tu nombre de depot. Puedes copiar la ruta de tu cliente de Perforce.</Text>
+			<Text Lang="it">Si prega di inserire un nome per il deposito. Puoi copiare questo percorso dal tuo client Perforce.</Text>
+			<Text Lang="ru">Пожалуйста, вставьте название хранилища. Вы можете копировать этот путь из вашего клиента Perforce.</Text>
+			<Text Lang="en">Please insert depot name. You can copy this path from your perforce client.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.Caption">
+			<Context>Label for the property "Depot"</Context>
+			<Text Lang="de">Depot-Pfad nach dem Schema: '//DepotName/Pfad/ProjektName' (z.B. '//MeinDepot/ArticyProjekte/MeinProjekt').</Text>
+			<Text Lang="uk"><![CDATA[Шлях до сховища повинен виглядати так:
+'//DepotName/Path/ProjectName' (e.g. '//depot/articy projects/MyProject').]]></Text>
+			<Text Lang="fr">Depotpath comme : '//DepotName/Path/ProjectName' (e.g. '//MyDepot/ArticyProjects/MyProject').</Text>
+			<Text Lang="pt-BR"><![CDATA[Caminho de depósito como:
+ '//DepotName/Path/ProjectName' (e.g. '//MyDepot/ArticyProjects/MyProject').
+]]></Text>
+			<Text Lang="zh">库路径类似：'//DepotName/Path/ProjectName' (例如： '//MyDepot/ArticyProjects/MyProject').</Text>
+			<Text Lang="ko"><![CDATA[Depot 경로는 다음과 같음: //DepotName/Path/ProjectName' (예: '//MyDepot/ArticyProjects/MyProject').
+]]></Text>
+			<Text Lang="pl">Ścieżka depotu jak '//NazwaDepotu/Ścieżka/NazwaProjektu' (np. '//MójDepot/ProjektyArticy/MójProjekt').</Text>
+			<Text Lang="es">Su estructura debe ser: '//NombredeDepot/Ruta/Nombredeproyecto' (por ejemplo, '//MiDepot/Proyectosdearticy/MiProyecto').</Text>
+			<Text Lang="it">Percorso al deposito del tipo: '//NomeDeposito/Percorso/NomeProgetto' (per esempio '//MioDeposito/ProgettiArticy/MioProgetto').</Text>
+			<Text Lang="ru">Путь к хранилищу должен иметь вид: '//DepotName/Path/ProjectName' (e.g. '//depot/articy projects/MyProject').</Text>
+			<Text Lang="en">Depotpath like: '//DepotName/Path/ProjectName' (e.g. '//MyDepot/ArticyProjects/MyProject').</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.HostPortDepot.Caption">
+			<Context/>
+			<Text Lang="de">Perforce Depot:</Text>
+			<Text Lang="uk">Сховище Perforce:</Text>
+			<Text Lang="fr">Dépôt Perforce :</Text>
+			<Text Lang="pt-BR">Forçar depósito:</Text>
+			<Text Lang="zh">Perforce 库：</Text>
+			<Text Lang="ko">Perforce Depot:</Text>
+			<Text Lang="pl">Depot Perforce:</Text>
+			<Text Lang="es">Perforce depot:</Text>
+			<Text Lang="it">Perforce deposito:</Text>
+			<Text Lang="ru">Хранилище Perforce:</Text>
+			<Text Lang="en">Perforce Depot:</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UseStandardWorkspace.Description">
+			<Context>description for the property UseStandardWorkspace</Context>
+			<Text Lang="de"><![CDATA[Bitte wählen Sie hier, ob articy:draft stets den Standard-Workspace benutzen soll, der in der Variablen 'P4CLIENT' definiert ist.
+In diesem Fall wird das Arbeitsverzeichnis ignoriert, dass Sie in den allgemeinen Projekteinstellungen gewählt haben. 
+Es ergibt sich automatisch aus dem Root-Pfad des Standard-Workspace.]]></Text>
+			<Text Lang="uk"><![CDATA[Будь ласка, вкажіть, чи повинен articy:draft завжди використовувати стандартну робочу область, визначену у змінній 'P4CLIENT'.
+В такому випадку, шлях робочої копії, обраний в головних налаштуваннях проекту, ігноруватиметься.
+Шлях вже визначено корінним шляхом стандартної робочої області. ]]></Text>
+			<Text Lang="fr"><![CDATA[Veuillez choisir si articy: draft doit toujours utiliser l'espace de travail standard défini dans la variable 'P4CLIENT '.
+Dans ce cas, le chemin de copie de travail choisi dans l'onglet Paramètres généraux du projet est ignoré.
+Il est déjà déterminé par le chemin racine de l'espace de travail standard.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Por favor escolha se articy:draft deveria sempre usar o espaço de trabalho definida na variável 'P4CLIENT'. Neste caso, a cópia funcional do caminho escolhido na barra de configurações de projeto gerias é ignorada.
+Já está determinado pelo caminho raiz do trabalho de espaço padrão.]]></Text>
+			<Text Lang="zh"><![CDATA[请选择 articy:draft 是否始终使用变量 'P4CLIENT' 中定义的标准工作区。 
+该情形下，将忽略在“通常项目设置”选项卡中选择的工作副本路径。
+它将由标准工作区的根路径确定。]]></Text>
+			<Text Lang="ko"><![CDATA[articy:draft가 항상 변수 'P4CLIENT'에 정의된 표준 워크 스페이스를 사용할지 여부를 선택합니다. 
+이 경우 일반 프로젝트 설정 탭에서 선택한 작업 복사 경로는 무시됩니다. 
+이미 표준 작업 공간의 루트 경로에 따라 결정됩니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Proszę wybrać, jeśli articy:draft powinien użyć standardowego obszaru roboczego określonego w zmiennej 'P4CLIENT '.
+W tym przypadku ścieżka kopii roboczej wybrana w zakładce Ustawienia ogólnego projektu jest ignorowana.
+Jest to zależne od toru głównego standardowej pracy.]]></Text>
+			<Text Lang="es"><![CDATA[Elige si articy:draft debe siempre usar el espacio de trabajo estándar definido por la variable 'P4CLIENT'. 
+En este caso, se ignorará el directorio para la copia de trabajo escogida en la pestaña de opciones generales de proyecto. 
+Ya se ha determinado por el directorio raíz del espacio de trabajo estándar.]]></Text>
+			<Text Lang="it"><![CDATA[Si prega di scegliere se articy:draft deve sempre utilizzare lo spazio di lavoro standard definito nella variabile 'P4CLIENT'.
+In questo caso, il percorso della copia di lavoro scelta nella sezione di impostazioni generali del progetto sarà ignorata.
+È già determinata dal percorso della root nello spazio di lavoro standard.]]></Text>
+			<Text Lang="ru"><![CDATA[Пожалуйста, укажите, должен ли articy:draft всегда использовать стандартное рабочую область, определенную переменной  'P4CLIENT'.
+В таком случае, путь рабочей копии, выбранный в главных настройках проекта, будет игнорироваться. 
+Путь будет определен корневым путем стандартной рабочей области.]]></Text>
+			<Text Lang="en"><![CDATA[Please choose if articy:draft should always use the standard workspace defined in the variable 'P4CLIENT'. 
+In this case, the working copy path chosen in the general project settings tab is ignored. 
+It is already determined by the root path of the standard workspace.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UseStandardWorkspace.Caption">
+			<Context>Label for the property UseStandardWorkspace</Context>
+			<Text Lang="de">Standard-Workspace aus 'P4CLIENT' benutzen?</Text>
+			<Text Lang="uk">Використати стандартну робочу область від 'P4CLIENT'?</Text>
+			<Text Lang="fr">Utiliser l'espace de travail standard de 'P4CLIENT' ?</Text>
+			<Text Lang="pt-BR">Usar espaço de trabalho padrão 'P4CLIENT'?</Text>
+			<Text Lang="zh">使用'P4CLIENT'中的标准工作区？</Text>
+			<Text Lang="ko">P4CLIENT'의 표준 작업 공간을 사용하시겠습니까?</Text>
+			<Text Lang="pl">Użyć standardowego środowiska roboczego z 'P4CLIENT'?</Text>
+			<Text Lang="es">¿Usar espacio de trabajo de 'P4CLIENT'?</Text>
+			<Text Lang="it">Usare lo spazio di lavoro standard da 'P4CLIENT'?</Text>
+			<Text Lang="ru">Использовать стандартную область 'P4CLIENT'?</Text>
+			<Text Lang="en">Use standard workspace from 'P4CLIENT'?</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UseSsl.Caption">
+			<Context>Label for the checkbox property UseSSL</Context>
+			<Text Lang="de">SSL zum Herstellen der Verbindung verwenden.</Text>
+			<Text Lang="en">Use SSL to connect Perforce server.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UseSsl.Description">
+			<Context>Description for the checkbox property UseSSL</Context>
+			<Text Lang="de">Wenn ihr Perforce Server SSL zum Verbindungsaufbau benötigt, wählen Sie bitte die folgende Check-Box an. Stellen sie sicher, dass dem Zertifikat des Servers vertraut wird. ('p4 trust' wurde ausgeführt.)</Text>
+			<Text Lang="en">If your perforce server is configured to force SSL for connections please check the box below and ensure that you have already have established the certificate trust using the 'p4 trust' command.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  validation text of configuration view model
+	-->
+	<Category Name="Errors" Key="Configuration">
+
+		<TextDefinition Key="Perforce.HostPort.Empty">
+			<Context>Error shown when HostPort is empty</Context>
+			<Text Lang="en">Host/port must not be empty.</Text>
+			<Text Lang="uk">Хост/порт не може бути порожнім.</Text>
+			<Text Lang="fr">L'hôte / port ne doit pas être vide.</Text>
+			<Text Lang="pt-BR">Anfitrião/porte não deve estar vazio.</Text>
+			<Text Lang="zh">主机/端口不能为空。</Text>
+			<Text Lang="ko">호스트/포트는 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Host/port nie mogą być puste.</Text>
+			<Text Lang="es">El host/puerto no puede estar vacío.</Text>
+			<Text Lang="it">La coppia host/porta non deve essere vuota.</Text>
+			<Text Lang="ru">Хост/порт не должен быть пустым.</Text>
+			<Text Lang="de">Host und Port Angabe dürfen nicht leer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.HostPort.InvalidHostPort">
+			<Context>Error shown when the host/port entry could not be parsed</Context>
+			<Text Lang="en">Host/port entry is invalid.</Text>
+			<Text Lang="uk">Введений хост/порт недоступний.</Text>
+			<Text Lang="fr">L'entrée hôte / port n'est pas valide.</Text>
+			<Text Lang="pt-BR">Entrada de anfitrião/porte é inválida.</Text>
+			<Text Lang="zh">主机/端口条目无效。</Text>
+			<Text Lang="ko">호스트/포트 항목이 잘못되었습니다.</Text>
+			<Text Lang="pl">Host/port są niepoprawne.</Text>
+			<Text Lang="es">La entrada de host/puerto no es válida.</Text>
+			<Text Lang="it">La coppia host/porta fornita non è valida.</Text>
+			<Text Lang="ru">Введенный хост/порт недоступен.</Text>
+			<Text Lang="de">Host und Port Angabe sind ungültig.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.HostPort.InvalidPortnumber">
+			<Context>Error shown when the port number is invalid</Context>
+			<Text Lang="en">Invalid port number. Port numbers need to be in the range 1-65535.</Text>
+			<Text Lang="uk">Недоступний номер порту. Номер порту повинен бути в діапазоні 1-65535.</Text>
+			<Text Lang="fr">Numéro de port non valide. Les numéros de port doivent être compris entre 1 et 65 535.</Text>
+			<Text Lang="pt-BR">Número de porte inválido. Números de porte precisam estar no alcance de 1-65535.</Text>
+			<Text Lang="zh">端口号无效。端口号必须在1-65535范围内。</Text>
+			<Text Lang="ko">포트 번호가 잘못되었습니다. 포트 번호는 1-65535 범위여야 합니다.</Text>
+			<Text Lang="pl">Niepoprawny numer portu. Numer portu musi znaleźć się w zakresie 1-65535.</Text>
+			<Text Lang="es">Número de puerto no válido. El número de puerto debe estar entre 1 y 65535.</Text>
+			<Text Lang="it">Numero di porta non valido. Il numero di porta deve essere tra 1 e 65535.</Text>
+			<Text Lang="ru">Недоступный номер порта. Номер порта должен быть в диапазоне 1-65535.</Text>
+			<Text Lang="de">Ungültige Portnummer. Die Portnummern müssen im Bereich 1-65535 liegen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.HostPort.MustContainColon">
+			<Context>Error shown HistPort doesn´t contain a colon</Context>
+			<Text Lang="en">Host/port must contain a colon delimiter to separate host and port.</Text>
+			<Text Lang="uk">Хост/порт повен містити двокрапку, що їх розділяє.</Text>
+			<Text Lang="fr">L'hôte / port doit contenir un délimiteur deux-points pour séparer l'hôte et le port.</Text>
+			<Text Lang="pt-BR">Anfitrião/porte deve conter um delimitador de dois pontos para separar anfitrião porte.</Text>
+			<Text Lang="zh">主机/端口必须包含冒号分隔符以分隔主机和端口。</Text>
+			<Text Lang="ko">호스트와 포트를 구분하려면 호스트/포트에 콜론 구분 기호가 포함되어 있어야 합니다.</Text>
+			<Text Lang="pl">Host/port muszą zawierać dwukropek do oddzielenia hostu i portu.</Text>
+			<Text Lang="es">El host/puerto debe contener el caracter ":" (dos puntos) para separar host y puerto.</Text>
+			<Text Lang="it">La coppia host/porta deve contenere un \delimitatore di colonna per separare l'host dalla porta.</Text>
+			<Text Lang="ru">Хост/порт должны содержать двоеточие разделяющее их.</Text>
+			<Text Lang="de">Host und Port müssen durch einen Doppelpunkt getrennt sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.Empty">
+			<Context>Error shown when depot descriptor is empty</Context>
+			<Text Lang="en">The depot descriptor must not be empty.</Text>
+			<Text Lang="uk">Опис сховища не повинен бути порожнім</Text>
+			<Text Lang="fr">Le descripteur de dépôt ne doit pas être vide.</Text>
+			<Text Lang="pt-BR">O descritor de depósito não deve estar vazio.</Text>
+			<Text Lang="zh">库描述不能为空。</Text>
+			<Text Lang="ko">Depot 설명자는 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Deskryptor depotu nie może być pusty.</Text>
+			<Text Lang="es">El descriptor del depot no puede estar vacío.</Text>
+			<Text Lang="it">Il descrittore del deposito non deve essere vuoto.</Text>
+			<Text Lang="ru">Описание хранилища не должно быть пустым.</Text>
+			<Text Lang="de">Der Depot Bezeichner darf nicht leer sein.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.MustHaveDoubleSlash">
+			<Context>Error shown Depot must have a doubleslash at the beginning</Context>
+			<Text Lang="en">Depotpath must have a doubleslash at the beginning.</Text>
+			<Text Lang="uk">Шлях до сховища повинен починатися з подвійни скісних рисок (//).</Text>
+			<Text Lang="fr">Depotpath doit avoir une double barre oblique au début.</Text>
+			<Text Lang="pt-BR">Caminho de depósito deve ter uma linha de comentário único no começo.</Text>
+			<Text Lang="zh">库路径必须以双斜杠开头。</Text>
+			<Text Lang="ko">Depot 경로는 처음에 이중 슬래시를 가져야 한다.</Text>
+			<Text Lang="pl">Ścieżka depotu musi zawierać podwójny ukośnik na początku.</Text>
+			<Text Lang="es">La ruta del depot debe tener dos barras invertidas al principio.</Text>
+			<Text Lang="it">Il percorso al deposito deve avere un doppio slash all'inizio.</Text>
+			<Text Lang="ru">Путь к хранилищу должен  начинаться с двойного слэша (//).</Text>
+			<Text Lang="de">Depot-Pfad muss als erste vorkommende Zeichensequenz einen Doppelschrägstrich haben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.ForbiddenChars">
+			<Context>Error shown when invalid chars are found in the depot name</Context>
+			<Text Lang="en">Depotpath contains forbidden characters. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="uk">Шлях до сховища містить неприпустимі знаки ( " \ * ? | &lt; >)</Text>
+			<Text Lang="fr">Depotpath contient des caractères interdits. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="pt-BR">Caminho de depósito contém caracteres proibídos ( " \ * ? | &lt;>)</Text>
+			<Text Lang="zh">库路径包含非法字符。 ( " \ * ? | &lt; >)</Text>
+			<Text Lang="ko">Depot 경로에 금지된 문자가 들어 있습니다. ( " \ * ? | &lt; > )</Text>
+			<Text Lang="pl">Ścieżka depotu zawiera zabronione znaki. ( " \ * ? | &lt; > )</Text>
+			<Text Lang="es">La ruta del depot contiene caracteres prohibidos. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="it">Il percorso al deposito contiene caratteri proibiti. (" \ * ? | &lt; > )</Text>
+			<Text Lang="ru">Путь к складу содержит недопустимые символы. ( " \ * ? | &lt; >)</Text>
+			<Text Lang="de">Depot-Pfad enthölt ungültige Zeichen. ( " \ * ? | &lt; >)</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.ForcedPrefixFail">
+			<Context>Error shown when the depot path is malformed</Context>
+			<Text Lang="en">Depotpath does not start with the required path prefix.</Text>
+			<Text Lang="uk">Шлях до сховища не починається з необхідного префіксу.</Text>
+			<Text Lang="fr">Depotpath ne démarre pas avec le préfixe de chemin requis.</Text>
+			<Text Lang="pt-BR">Caminho de depósito não começa com o prefixo de caminho necessário.</Text>
+			<Text Lang="zh">库路径未以所需的路径前缀开头。</Text>
+			<Text Lang="ko">Depot 경로가 필요한 경로 접두사로 시작하지 않습니다.</Text>
+			<Text Lang="pl">Ścieżka depotu nie rozpoczyna się z wymaganym prefiksem ścieżki.</Text>
+			<Text Lang="es">La ruta del repositorio no empieza con el prefijo de ruta necesario.</Text>
+			<Text Lang="it">Il percorso al deposito non inizia con il prefisso richiesto.</Text>
+			<Text Lang="ru">Путь к хранилищу не начинается с необходимого префикса.</Text>
+			<Text Lang="de">Depot-Pfad beginnt nicht mit dem Pfad-Prefix.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Depot.FolderRequired">
+			<Context>Error shown when depot path dows not contain a folder</Context>
+			<Text Lang="en">The depotpath must contain a folder.</Text>
+			<Text Lang="uk">Шлях до сховища повинен містити папку.</Text>
+			<Text Lang="fr">Le chemin de dépôt doit contenir un dossier.</Text>
+			<Text Lang="pt-BR">O caminho de depósito deve conter uma pasta.</Text>
+			<Text Lang="zh">库路径必须包含文件夹。</Text>
+			<Text Lang="ko">Depot 경로에는 폴더가 있어야 합니다.</Text>
+			<Text Lang="pl">Ścieżka depotu musi zawierać folder.</Text>
+			<Text Lang="it">Il percorso al deposito deve contenere una cartella.</Text>
+			<Text Lang="de">Der Depot-Pfad muss ein Verzeichnis enthalten.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Client.Empty">
+			<Context>Error shown when client descriptor is empty</Context>
+			<Text Lang="en">The client descriptor must not be empty.</Text>
+			<Text Lang="uk">Дескриптор клієнту не повинен бути порожнім.</Text>
+			<Text Lang="fr">Le descripteur client ne doit pas être vide.</Text>
+			<Text Lang="pt-BR">O descritor de cliente não deve estar vazio.</Text>
+			<Text Lang="zh">客户端描述不能为空。</Text>
+			<Text Lang="ko">클라이언트 설명자는 비워 둘 수 없습니다!</Text>
+			<Text Lang="pl">Deskryptor klienta nie może być pusty.</Text>
+			<Text Lang="es">El descriptor del cliente no puede estar vacío.</Text>
+			<Text Lang="it">Il descrittore del client non deve essere vuoto.</Text>
+			<Text Lang="ru">Описание клиента не должно быть пустым.</Text>
+			<Text Lang="de">Der Client Bezeichner darf nicht leer sein.</Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Error texts of PerforceClient / P4Provider
+	-->
+	<Category Name="Errors">
+
+		<TextDefinition Key="Perforce.ExceptionTitle">
+			<Context>Title of formatted P4 exception</Context>
+			<Text Lang="en">Perforce exception occurred</Text>
+			<Text Lang="uk">В Preforce сталась помилка</Text>
+			<Text Lang="fr">Une exception Perforce s'est produite</Text>
+			<Text Lang="pt-BR">Forçar excessão ocorrida</Text>
+			<Text Lang="zh">Perforce 发生异常</Text>
+			<Text Lang="ko">Perforce 예외가 발생했습니다.</Text>
+			<Text Lang="pl">Wystąpił wyjątek Preforce.</Text>
+			<Text Lang="es">Se ha producido una excepción en Perforce</Text>
+			<Text Lang="it">Rilevata eccezione Perforce</Text>
+			<Text Lang="ru">В Perforce возникла исключительная ситуация</Text>
+			<Text Lang="de">Eine Perforce-Ausnahme ist aufgetreten</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.AccessFailure">
+			<Context>error catched when trying to connect</Context>
+			<Text Lang="de"><![CDATA[Perforce hat den Zugriff mit folgender Meldung abgewiesen:
+'{0}'
+Dies kann an falsch geschriebenen Anmeldedaten oder Verbindungsproblemen liegen. 
+Wenn Sie den Passwort-Dialog abbrechen wird auch die gesamte Operation abgebrochen.
+Wenn nicht wird mit den neuen Anmeldedaten ein neuer Versuch gestartet.]]></Text>
+			<Text Lang="uk"><![CDATA[Даний Perforce сервер відхилив з'єднання з наступним повідомленням:
+'{0}'
+Найпоширенішими причинами є помилки в параметрах доступу або проблеми зі зв'язком.
+Якщо ви скасуєте вікно "пароль " вся операція скасується.
+Якщо ні, розпочнеться нова спроба підключення. ]]></Text>
+			<Text Lang="fr"><![CDATA[Le serveur Perforce donné a refusé la connexion avec le message suivant:
+'{0}'
+La raison la plus courante est les fautes de frappe dans les informations d'identification ou les problèmes de connexion.
+Si vous annulez la boîte de dialogue de mot de passe, toute l'opération sera annulée.
+Sinon, une nouvelle tentative de connexion sera lancée.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[O servidor necessário dado negou a conexão com a seguinte mensagem:
+'{0}'
+A razão mais comuns são erros de digitação nas credenciais or problemas de conexão.
+Se você cancelar o diálogo-senha, a inteira operação será cancelada.
+Se não, uma nova conexão tentará ser iniciada.]]></Text>
+			<Text Lang="zh"><![CDATA[给定的Perforce服务器已拒绝连接并返回如下消息： 
+'{0}'
+最常见的原因是凭据或连接问题造成的错误。
+如果取消密码对话框，整个操作将被取消。
+否则，将重新尝试连接。]]></Text>
+			<Text Lang="ko"><![CDATA[서버에 Perforce가 다음 메시지와 연결되어 있지 않습니다.
+'{0}'
+가장 일반적인 이유는 자격 증명 또는 연결 문제의 오자입니다.
+암호 다이얼로그를 취소하면 전체 작업이 취소됩니다.
+그렇지 않으면 새 연결 시도가 시작됩니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Podany serwer Perforce odmówił połączenia z następującym komunikatem:
+'{0}'
+Najczęstszą przyczyną są literówki w poświadczeniach lub problemy z połączeniem.
+Jeśli anulujuesz okno z polem hasła, cała operacja zostanie anulowana.
+Jeśli nie, zostanie rozpocznięta nowa próba połączenia.]]></Text>
+			<Text Lang="es"><![CDATA[El servidor de Perforce facilitado ha denegado la conexión con el siguiente mensaje:
+'{0}'
+Las razones más comunes suelen incluir errores tipográficos en las credenciales, o problemas de conexión.
+Si cancelas el diálogo de contraseña, se cancelará toda la operación.
+Si no, se volverá a intentar conectar.]]></Text>
+			<Text Lang="it"><![CDATA[Il server Perforce richiesto ha rifiutato la connessione con il seguente messaggio:
+'{0}'
+I motivi principali possono essere errori di battitura nelle credenziali o problemi di connessione.
+Se si cancella il campo password, l'intera operazione sarà annullata.
+In caso contrario inizierà un nuovo tentativo di connessione.]]></Text>
+			<Text Lang="ru"><![CDATA[Данный Perforce сервер отклонил соединение со следующим сообщением:
+'{0}'
+Самыми распространенными причинами являются опечатки в параметрах доступа или проблемы со связью.
+Если вы отмените окно "пароль" вся операция будет отменена.
+Если нет, будет начата новая попытка подключения.]]></Text>
+			<Text Lang="en"><![CDATA[The given Perforce server has denied the connection with the following message:
+'{0}'
+The most common reason are typos in the credentials or connection issues.
+If you cancel the password-dialog, the whole operation will be canceled.
+If not, a new connection attempt will be started.]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UserCantLogin">
+			<Context>message text inserted in the 'AccessFailure' message, {0} is name of user</Context>
+			<Text Lang="en">Can't login with user name '{0}'.</Text>
+			<Text Lang="uk">Не вдається залогінитись з ім'ям користувача '{0}'.</Text>
+			<Text Lang="fr">Impossible de se connecter avec le nom d'utilisateur '{0}'.</Text>
+			<Text Lang="pt-BR">Não pode logar com nome de usuário '{0}'.</Text>
+			<Text Lang="zh">无法使用用户名 '{0}'登录。</Text>
+			<Text Lang="ko">사용자 이름 '{0}'(으)로 로그인할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można zalogować się z podaną nazwą użytkownika '{0}'.</Text>
+			<Text Lang="es">No se ha podido iniciar sesión con el usuario '{0}'.</Text>
+			<Text Lang="it">Impossibile eseguire l'accesso con nome utente '{0}'.</Text>
+			<Text Lang="ru">Невозможно подключиться с именем пользователя '{0}'.</Text>
+			<Text Lang="de">Anmeldung mit Benutzernamen '{0}' nicht möglich.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.P4PortMissing">
+			<Context>error message showed on login when no P4CLIENT is set although needed</Context>
+			<Text Lang="en">This project has set "$P4PORT" as tag to use use P4PORT to take the connection information from. But this variable is not set on your system.</Text>
+			<Text Lang="uk">Цей проект встановив "$P4PORT" як тег, щоб використовувати P4PORT для отримання інформації про з'єднання. Але ця змінна не встановлена у вашій системі.</Text>
+			<Text Lang="fr">Ce projet a défini "$P4PORT" comme balise à utiliser, utilisez P4PORT pour extraire les informations de connexion. Mais cette variable n'est pas définie sur votre système.</Text>
+			<Text Lang="pt-BR">Este projeto tem definido "$P4PORT" como etiqueta para usar P4PORT para tomar a informação de conexão. Mas esta variáveil não está definida no seus sistema.</Text>
+			<Text Lang="zh">该项目已将 "$P4PORT" 设置为标记，以使用 P4PORT 获取连接信息。但是该变量未在您的系统中完成配置。</Text>
+			<Text Lang="ko">이 프로젝트에서 P4PORT를 사용하여 연결 정보를 가져오는 데 사용할 태그로 "$P4PORT"를 설정했습니다. 그러나 이 변수는 시스템에 설정되어 있지 않습니다.</Text>
+			<Text Lang="de">Das Projekt hat "$P4PORT" als Platzhalter für die Verwendung von P4PORT zum Verbindungsaufbau konfiguriert. Diese Variable ist auf Ihrem System nicht gesetzt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.MissingP4Client">
+			<Context>error message showed on login when no P4CLIENT is set although needed</Context>
+			<Text Lang="en">This articy:draft project is configured to use a Perforce standard workspace, whose name has to be defined in the variable P4CLIENT. This variable is not set on your system.</Text>
+			<Text Lang="uk">Цей проект articy:draft налаштований для використання робочої області стандарту Perforce, назва якої повинна визначатися в змінній P4CLIENT. Ця змінна не встановлена на вашій системі.</Text>
+			<Text Lang="fr">Ce projet articy:draft est configuré pour utiliser un espace de travail standard Perforce, dont le nom doit être défini dans la variable P4CLIENT. Cette variable n'est pas définie sur votre système.</Text>
+			<Text Lang="pt-BR">O projeto articy:draft está configurado para usar um espaço de trabalho padrão necessário, cujo nome foi definido pela variável P4CLIENT. Esta variável não está definida no seus sistema.</Text>
+			<Text Lang="zh">该 articy:draft 项目被配置为使用一个Perforce标准工作区，其名称必须在变量P4CLIENT中进行定义。系统目前未配置此变量。</Text>
+			<Text Lang="ko">이 articy:draft프로젝트는 P4CLIENT 변수에 이름을 정의해야 하는 Perforce 표준 작업 공간을 사용하도록 구성되어 있습니다. 이 변수는 시스템에 설정되어 있지 않습니다.</Text>
+			<Text Lang="pl">Ten projekt articy:draft jest skonfigurowany do korzystania z standardowej przestrzenii roboczej Perforce, której nazwa musi być zdefiniowana w zmiennej P4CLIENT. Ta zmienna nie jest ustawiona w systemie.</Text>
+			<Text Lang="es">Este proyecto de articy:draft está configurado para usar el espacio de trabajo estándar de Perforce, cuyo nombre debe ser definido en la variable P4CLIENT. Esta variable no ha sido configurada en tu sistema.</Text>
+			<Text Lang="it">Questo progetto articy:draft è configurato per utilizzare uno spazio di lavoro Perforce standard, il cui nome è stato definito nella variabile P4CLIENT. Questa variabile non è impostata nel tuo sistema.</Text>
+			<Text Lang="ru">Этот проект articy:draft настроен для использования рабочей области стандарта Perforce, название которой должно быть назначено в переменной P4CLIENT. На вашей системе эта переменная не назначена.</Text>
+			<Text Lang="de">Dieses articy:draft-Projekt is für die Nutzung eines Perforce Standard-Workspace konfiguriert worden, dessen Name in der Variablen P4CLIENT festgelegt werden muss. Diese Variable ist auf Ihrem System nicht gesetzt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.WrongUserName">
+			<Context/>
+			<Text Lang="en">This articy:draft project is configured to use a Perforce standard workspace. The Perforce user name for this project differs from the settings in the P4USER variable.</Text>
+			<Text Lang="uk">Цей проект articy:draft налаштований для використання робочої області стандарту Perforce. Ім'я користувача Perforce цього проекту відрізняється від зазначеного в налаштуваннях змінної P4USER.</Text>
+			<Text Lang="fr">Ce projet articy:draft est configuré pour utiliser un espace de travail standard Perforce. Le nom d'utilisateur Perforce pour ce projet diffère des paramètres de la variable P4USER.</Text>
+			<Text Lang="pt-BR">O projeto articy:draft está configurado para usar um espaço de trabalho padrão necessário. O nome de usuário necessário deste projeto difere das configurações na variável P4USER.</Text>
+			<Text Lang="zh">articy:draft项目被配置为使用Perforce标准工作区。此项目的Perforce用户名与 P4USER 变量中的设置不同。</Text>
+			<Text Lang="ko">이 articy:draft 프로젝트는 Perforce 표준 작업 공간을 사용하도록 구성되어 있습니다. 이 프로젝트의 Perforce 사용자 이름은 P4USER 변수의 설정과 다릅니다.</Text>
+			<Text Lang="pl">Ten projekt articy:draft jest skonfigurowany do korzystania z standardowej przestrzenii roboczej Perforce. Nazwa użytkownika Perforce dla tego projektu różni się od ustawień w zmiennej P4USER.</Text>
+			<Text Lang="es">Este proyecto de articy:draft está configurado para usar el espacio de trabajo estándar de Perforce. El usuario de Perforce de este proyecto difiere del definido en la variable P4USER.</Text>
+			<Text Lang="it">Questo progetto articy:draft è configurato per utilizzare uno spazio di lavoro Perforce standard. Il nome utente di Perforce per questo progetto del progetto differisce da quello impostato nella variabile P4USER.</Text>
+			<Text Lang="ru">Этот проект articy:draft настроен для использования рабочей области стандарта Perforce. Имя пользователя Perforce этого проекта отличается от указанного в настройках P4USER.</Text>
+			<Text Lang="de">Dieses articy:draft-Projekt is für die Nutzung eines Perforce Standard-Workspace konfiguriert worden. Der Perforce-Username für dieses Projekt unterscheidet sich vom dem in der Variable P4USER.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.WrongHostName">
+			<Context/>
+			<Text Lang="en">This articy:draft project is configured to use a Perforce standard workspace. The Perforce server name in the project settings differs from the settings in the P4PORT variable.</Text>
+			<Text Lang="uk">Цей проект articy:draft налаштований для використання робочої області стандарту Perforce. Порт сервера Perforce, вказаний в налаштуваннях цього проекту, відрізняється від зазначеного в змінній P4PORT.</Text>
+			<Text Lang="fr">Ce projet articy:draft est configuré pour utiliser un espace de travail standard Perforce. Le nom du serveur Perforce dans les paramètres du projet diffère des paramètres de la variable P4PORT.</Text>
+			<Text Lang="pt-BR">O projeto articy:draft está configurado para usar um espaço de trabalho padrão necessário. O nome de servidor necessário nas configurações de projeto difere das configurações na variável P4PORT.</Text>
+			<Text Lang="zh">articy:draft项目被配置为使用Perforce标准工作区。此项目的 Perforce 服务器名与 P4PORT 变量中的设置不同。</Text>
+			<Text Lang="ko">이 articy:draft 프로젝트는 Perforce 표준 작업 공간을 사용하도록 구성되어 있습니다. 프로젝트 설정의 Perforce 서버 이름은 P4PORT 변수의 설정과 다릅니다.</Text>
+			<Text Lang="pl">Ten projekt articy:draft jest skonfigurowany do korzystania z standardowej przestrzenii roboczej Perforce. Nazwa serwera Perforce dla tego projektu różni się od ustawień w zmiennej P4PORT.</Text>
+			<Text Lang="es">Este proyecto de articy:draft está configurado para usar el espacio de trabajo estándar de Perforce. El nombre de servidor de Perforce de este proyecto difiere del definido en la variable P4PORT.</Text>
+			<Text Lang="it">Questo progetto articy:draft è configurato per utilizzare uno spazio di lavoro Perforce standard. Il nome del server Perforce nelle impostazioni del progetto differisce da quello impostato nella variabile P4PORT.</Text>
+			<Text Lang="ru">Этот проект articy:draft настроен для использования рабочей области стандарта Perforce. Порт сервера Perforce указанный в настройках этого проекта, отличается от указанного в переменной P4PORT.</Text>
+			<Text Lang="de">Dieses articy:draft-Projekt is für die Nutzung eines Perforce Standard-Workspace konfiguriert worden. Der Perforce-Server in den Projekteinstellungen unterscheidet sich vom dem in der Variable P4PORT.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.WrongHostPort">
+			<Context/>
+			<Text Lang="en">This articy:draft project is configured to use a Perforce standard workspace. The Perforce server port in the project settings differs from the settings in the P4PORT variable.</Text>
+			<Text Lang="uk">Цей проект articy:draft налаштований для використання робочої області стандарту Perforce. Порт сервера Perforce, вказаний в налаштуваннях цього проекту, відрізняється від зазначеного в змінній P4PORT.</Text>
+			<Text Lang="fr">Ce projet articy:draft est configuré pour utiliser un espace de travail standard Perforce. Le port du serveur Perforce dans les paramètres du projet diffère des paramètres de la variable P4PORT.</Text>
+			<Text Lang="pt-BR">O projeto articy:draft está configurado para usar um espaço de trabalho padrão necessário. O porte de servidor necessário nas configurações de projeto difere das configurações no variáveil P4PORT.</Text>
+			<Text Lang="zh">articy:draft项目被配置为使用Perforce标准工作区。此项目的 Perforce 服务器名与 P4PORT 变量中的设置不同。</Text>
+			<Text Lang="ko">이 articy:draft 프로젝트는 Perforce 표준 작업 공간을 사용하도록 구성되어 있습니다. 프로젝트 설정의 Perforce 서버 포트는 P4POR 변수의 설정과 다릅니다.</Text>
+			<Text Lang="pl">Ten projekt articy:draft jest skonfigurowany do korzystania z standardowej przestrzenii roboczej Perforce. Port serwera Perforce dla tego projektu różni się od ustawień w zmiennej P4PORT.</Text>
+			<Text Lang="es">Este proyecto de articy:draft está configurado para usar el espacio de trabajo estándar de Perforce. El puerto de servidor de Perforce de este proyecto difiere del definido en la variable P4PORT.</Text>
+			<Text Lang="it">Questo progetto articy:draft è configurato per utilizzare uno spazio di lavoro Perforce standard. La porta del server Perforce nelle impostazioni del progetto differisce da quella impostata nella variabile P4PORT.</Text>
+			<Text Lang="ru">Этот проект articy:draft настроен для использования рабочей области стандарта Perforce. Порт сервера Perforce указанный в настройках этого проекта, отличается от указанного в переменной P4PORT.</Text>
+			<Text Lang="de">Dieses articy:draft-Projekt is für die Nutzung eines Perforce Standard-Workspace konfiguriert worden. Der Perforce-Serverport in den Projekteinstellungen unterscheidet sich vom dem in der Variable P4PORT.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.PartnerDenied">
+			<Context/>
+			<Text Lang="en">The Perforce server denied the connection. Please check if SSL is required and properly configured.</Text>
+			<Text Lang="de">Der Perforce-Server hat die Verbindung verweigert. Bitte überprüfen Sie, ob SSL erforderlich und ordnungsgemäß konfiguriert ist.</Text>
+			<Text Lang="ko">Perforce 서버가 연결을 거부했습니다. SSL이 필요하고 올바르게 구성되었는지 확인하십시오.</Text>
+			<Text Lang="fr">Le serveur Perforce a refusé la connexion. Veuillez vérifier si SSL est requis et correctement configuré.</Text>
+			<Text Lang="ru">Сервер Perforce отказал в соединении. Пожалуйста, проверьте, требуется ли SSL и правильно ли он настроен.</Text>
+			<Text Lang="uk">Сервер Perforce відхилив з'єднання. Перевірте, чи потрібна та правильно налаштована SSL.</Text>
+			<Text Lang="it">Il server Perforce ha negato la connessione. Verifica se SSL è richiesto e configurato correttamente.</Text>
+			<Text Lang="zh">Perforce服务器拒绝连接。 请检查是否需要SSL并正确配置SSL。</Text>
+			<Text Lang="pl">Serwer Perforce odrzucił połączenie. Sprawdź, czy SSL jest wymagany i poprawnie skonfigurowany.</Text>
+			<Text Lang="es">El servidor de Perforce negó la conexión. Compruebe si se requiere SSL y si está configurado correctamente.</Text>
+			<Text Lang="pt-br">O servidor Perforce negou a conexão. Verifique se SSL é necessário e está configurado corretamente.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.CommandException">
+			<Context>Text for a fetched command exception</Context>
+			<Text Lang="en"><![CDATA[Perforce reported an exception while executing command '{0}'. The message caught was:
+				
+{1}]]></Text>
+			<Text Lang="uk"><![CDATA[Perforce повідомив про помилку під час виконання команди '{0}'. У повідомленні помилки містилося:
+
+{1}]]></Text>
+			<Text Lang="fr"><![CDATA[Perforce a signalé une exception lors de l'exécution de la commande '{0}'. Le message intercepté était :
+
+{1}]]></Text>
+			<Text Lang="pt-BR"><![CDATA[Perforce reportou uma excessão enquanto executando comando '{0}'. A mensagem pega foi :
+
+{1}]]></Text>
+			<Text Lang="zh"><![CDATA[执行命令'{0}'时，Perforce报告了一个异常。捕获的异常消息为： 
+				
+{1}]]></Text>
+			<Text Lang="ko"><![CDATA[Perforce에서 '{0}' 명령을 실행하는 동안 예외를 보고했습니다. 발견된 메시지는 다음과 같습니다.
+
+{1}]]></Text>
+			<Text Lang="pl"><![CDATA[Perforce odnotował wyjątek podczas wykonywania komendy '{0}'. Przechwycony komunikat to:
+
+{1}]]></Text>
+			<Text Lang="es"><![CDATA[Perforce ha informado de una excepción al ejecutar el comando '{0}'. El mensaje recibido es:
+				
+{1}]]></Text>
+			<Text Lang="it"><![CDATA[Perforce ha riportato un'eccezione durante l'esecuzione del comando '{0}'. Il messaggio catturato è:
+
+{1}]]></Text>
+			<Text Lang="ru"><![CDATA[Perforce доложил о ошибке во время выполнения команды '{0}'. В сообщении ошибки содержалось:
+
+{1}]]></Text>
+			<Text Lang="de"><![CDATA[Bei der Ausführung des Perforce Kommandos '{0}' is ein Fehler aufgetreten. Die gemeldete Nachricht ist:
+	
+{1}]]></Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.ServerInvalid">
+			<Context>error text when a connect has succeeded, but the server did not respond to the 'info' command. {0} is name of server, {1} server port</Context>
+			<Text Lang="en">The server at '{0}:{1}' was connected, but did not respond properly to a information command.</Text>
+			<Text Lang="uk">Сервер за адресою '{0}: {1}' був підключений, але не відповів коректно на команду «інформація».</Text>
+			<Text Lang="fr">Le serveur de '{0}:{1}' était connecté, mais n'a pas répondu correctement à une commande d'information.</Text>
+			<Text Lang="pt-BR">O servidor para '{0}:{1}' foi conectado, mas não respondeu adequadamente para um comando de informação.</Text>
+			<Text Lang="zh">位于'{0}:{1}' 的服务器已成功连接，但未正确相应信息指令。</Text>
+			<Text Lang="ko">{0}:{1}'의 서버가 연결되었지만 정보 명령에 제대로 응답하지 않았습니다.</Text>
+			<Text Lang="pl">Serwer w '{0}: {1} ' był podłączony, ale nie mógł właściwie reagować na komendy informacyjne.</Text>
+			<Text Lang="es">El servidor '{0}:{1}' está conectado, pero no ha respondido correctamente a un comando de información.</Text>
+			<Text Lang="it">La connessione al server '{0}:{1}' è stata eseguita, ma non ha risposto in modo adeguato al comando di informazione.</Text>
+			<Text Lang="ru">Сервер по адресу '{0}:{1}' был подключен, но не ответил на команду "инфо".</Text>
+			<Text Lang="de">Der Perforce server '{0}:{1}' konnte zwar kontaktiert werden, antwortet aber nicht wie erwartet auf eine Informationsanfrage.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToConnectToServer">
+			<Context>error text when a connect has succeeded, but the server did not respond to the 'info' command. {0} is name of server, {1} server port, {2} exception message</Context>
+			<Text Lang="en">The server at '{0}:{1}' can't be connected. Trying so leads to the exception message: '{2}'.</Text>
+			<Text Lang="uk">Сервер за адресою '{0}: {1}' не може бути підключений. Спроба викликає повідомлення про помилку: '{2}'.</Text>
+			<Text Lang="fr">Le serveur à '{0}:{1}' ne peut pas être connecté. Essayer ainsi conduit au message d'exception : '{2}'.</Text>
+			<Text Lang="pt-BR">O servidor em '{0}:{1}' não pôde ser conectado. Tentando tais caminhos para a messagem de excessão: '{2}'.</Text>
+			<Text Lang="zh">位于'{0}:{1}'的服务器无法连接。尝试这样做会导致异常消息：'{2}'。</Text>
+			<Text Lang="ko">{0}:{1}'의 서버를 연결할 수 없습니다. 이렇게 하면 '{2}' 예외 메시지가 표시됩니다.</Text>
+			<Text Lang="pl">Serwer w '{0}: {1} ' nie może się podłączyć. Próba zakończyła się wiadomością: '{2}'.</Text>
+			<Text Lang="es">No se puede conectar al servidor '{0}:{1}'. Al intentarlo se recibe el siguiente mensaje: '{2}'.</Text>
+			<Text Lang="it">Impossibile connettersi al server '{0}:{1}'. Il tentativo ha portato la creazione del messaggio di eccezione: '{2}'.</Text>
+			<Text Lang="ru">Сервер по адресу '{0}:{1}' не может быть подключен. Попытка вызывает сообщение об ошибке: '{2}'.</Text>
+			<Text Lang="de">Der Perforce server '{0}:{1}' konnte nicht kontaktiert werden. Als Grund wurde '{2}' gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToImpersonate">
+			<Context>error text when impersonating a user was not possible, {0} is name of user</Context>
+			<Text Lang="en">Can't impersonate user name '{0}'. Please check your right level. You need 'super' access to the depotpath.</Text>
+			<Text Lang="uk">Неможливо замінити користувача '{0}'. Будь ласка, перевірте ваш рівень допуску. Вам потрібен доступ до сховища рівня 'super'.</Text>
+			<Text Lang="fr">Impossible d'emprunter l'identité du nom d'utilisateur '{0}'. Veuillez vérifier votre niveau de droits. Vous avez besoin d'un "super" accès au dépôt.</Text>
+			<Text Lang="pt-BR">Não foi possível impersonar nome de usuário {0}. Por favor cheque seu nível de direitos. Você precisa acesso 'super' para acessar o caminho de depósito.</Text>
+			<Text Lang="zh">无法模拟用户名'{0}'。请检查您的权限等级。您需要“超级”权限以接入库路径。</Text>
+			<Text Lang="ko">사용자 이름 '{0}'을(를) 가장할 수 없습니다. 자신의 수준을 확인하십시오. 'Super'에서 Depot 경로를 사용할 수 있어야 합니다.</Text>
+			<Text Lang="pl">Nie można użyć wykorzystanej już nazwy użytkownika '{0}'. Prosimy o sprawdzenie właściwego poziomu. Potrzebny jest dostęp 'super' do ścieżki repozytorium.</Text>
+			<Text Lang="es">No se puede impersonar al usuario '{0}'. Comprueba tu nivel de permisos. Necesitas acceso 'super' para acceder al directorio del depot.</Text>
+			<Text Lang="it">Impossibile impersonare il nome utente '{0}'. Si prega di controllare il proprio livello di autorizzazione. Hai bisogno di 'diritti super' per accedere al percorso del deposito.</Text>
+			<Text Lang="ru">Не удается заменить пользователя '{0}'. Пожалуйста, проверьте ваш уровень допуска. Вам нужен доступ к хранилищу уровня 'super'.</Text>
+			<Text Lang="de">Annahme der Identität von Benutzer '{0}' nicht möglich. Bitte überprüfen Sie Ihre Rechtestufe. Sie müssen 'super' Rechte auf dem Depotpfad haben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToImpersonateException">
+			<Context>error text when impersonating a user was not possible due to an exception, {0} is name of user, {1} the exception message</Context>
+			<Text Lang="en">Can't impersonate user name '{0}'. The exception message '{1}' was catched. Please check your right level. You need 'super' access to the depotpath.</Text>
+			<Text Lang="uk">Неможливо замінити користувача '{0}'. Отримано повідомлення про помилку '{1}'.Будь ласка, перевірте ваш рівень допуску. Вам потрібен доступ до сховища рівня 'super'.</Text>
+			<Text Lang="fr">Impossible d'emprunter l'identité du nom d'utilisateur '{0}'. Le message d'exception '{1}' a été intercepté. Veuillez vérifier votre niveau de droits. Vous avez besoin d'un "super" accès au dépôt.</Text>
+			<Text Lang="pt-BR">Não foi possível impersonar nome de usuário {0}.A mensagem de excessão '{1}' foi pega. Por favor cheque seu nível de direitos. Você precisa de acesso 'super' para acesso ao caminho de depósito.</Text>
+			<Text Lang="zh">无法模拟用户名 '{0}'。截获异常消息 '{1}' 。请检查您的权限等级。您需要“超级”权限以接入库路径。</Text>
+			<Text Lang="ko">사용자 이름 '{0}'을(를) 가장할 수 없습니다. 예외 메시지 '{1}'이(가) 추적되었습니다. 자신의 수준을 확인하십시오. 'Super'에서 Depot 경로를 사용할 수 있어야 합니다.</Text>
+			<Text Lang="pl">Nie można użyć wykorzystanej już nazwy użytkownika '{0}'. Odnotowano wyjątek '{1}'. Prosimy o sprawdzenie właściwego poziomu. Potrzebny jest dostęp 'super' do ścieżki repozytorium.</Text>
+			<Text Lang="es">No se puede impersonar al usuario '{0}'. Se ha recibido el mensaje de excepción '{1}' Comprueba tu nivel de permisos. Necesitas acceso 'super' para acceder al directorio del depot.</Text>
+			<Text Lang="it">Impossibile impersonare il nome utente '{0}'. Il messaggio di eccezione '{1}' è stato catturato. Si prega di controllare il proprio livello di autorizzazione. Hai bisogno di 'diritti super' per accedere al percorso del deposito.</Text>
+			<Text Lang="ru">Не удается заменить пользователя '{0}'. Было получено сообщение об ошибке '{1}'. Пожалуйста, проверьте ваш уровень допуска. Вам нужен доступ к хранилищу уровня 'super'.</Text>
+			<Text Lang="de">Annahme der Identität von Benutzer '{0}' nicht möglich. Als Fehlernachricht wurde der Text '{1}' angegeben. Bitte überprüfen Sie Ihre Rechtestufe. Sie müssen 'super'-Rechte auf dem Depotpfad haben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.UnableToCreateFolder">
+			<Context>error text when creating a new workspace. unable to create the folder on disc</Context>
+			<Text Lang="en">Unable to create workspace folder on disc. ('{0}')</Text>
+			<Text Lang="uk">На диску не вдалося створити папку робочої області. ('{0}')</Text>
+			<Text Lang="fr">Impossible de créer un dossier d'espace de travail sur le disque. ('{0}')</Text>
+			<Text Lang="pt-BR">Incapaz de criar pasta de espaço de trabalho no disco. ('{0}')</Text>
+			<Text Lang="zh">无法在磁盘上创建工作区文件夹。 ('{0}')</Text>
+			<Text Lang="ko">디스크에 작업 영역 폴더를 만들 수 없습니다. ('{0}')</Text>
+			<Text Lang="pl">Nie można stworzyć folderu przestrzenii roboczej na dysku. ('{0}')</Text>
+			<Text Lang="es">No se ha podido crear la carpeta de espacio de trabajo en el disco ('{0}').</Text>
+			<Text Lang="it">Impossibile creare la cartella per lo spazio di lavoro sul disco. ('{0}')</Text>
+			<Text Lang="ru">На диске не удалось создать папку рабочей области. ('{0}')</Text>
+			<Text Lang="de">Fehler bei der Anlage des 'workspace' Ordner auf der Festplatte. ('{0}').</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.ClientSpecInconsistent">
+			<Context>error text when creating a new workspace. perforce did not accept client spec form</Context>
+			<Text Lang="en">Unable to create workspace, due to an error while saving client spec. The number of messages was unexpected!</Text>
+			<Text Lang="uk">Неможливо створити робочу область через помилку при збереженні специфікації клієнта. Кількість повідомлень була несподіваною!</Text>
+			<Text Lang="fr">Impossible de créer l'espace de travail, en raison d'une erreur lors de l'enregistrement des spécifications du client. Le nombre de messages était inattendu !</Text>
+			<Text Lang="pt-BR"><![CDATA[Incapaz de criar espaço de trabalho, por conta de um erro enquanto salvando especificação do cliente.
+O númer de mensagens foi inesperado!]]></Text>
+			<Text Lang="zh">由于保存客户端规范时出错，无法创建工作区。意外的消息数量！</Text>
+			<Text Lang="ko">클라이언트 규격을 저장하는 동안 오류가 발생하여 작업 공간을 만들 수 없습니다. 메시지 수가 예기치 않게 발생했습니다!</Text>
+			<Text Lang="pl">Nie można utworzyć obszaru roboczy z powodu błędu podczas zapisywania specyfikacji klienta. Liczba wiadomości była nieoczekiwana!</Text>
+			<Text Lang="es">No se ha podido crear el espacio de trabajo debido a un error al salvar las especificaciones del cliente. ¡No se esperaba ese número de mensajes!</Text>
+			<Text Lang="it">Impossibile creare uno spazio di lavoro a causa di un errore durante il salvataggio delle specifiche del client. Il numero dei messaggi è inaspettato!</Text>
+			<Text Lang="ru">Из-за ошибки во время сохранения спецификации клиента, не удалось создать рабочую область. Непредвиденное количество сообщений!</Text>
+			<Text Lang="de">Fehler beim Anlegen des Workspace aufgrund einers Fehler bei der Erstellung der 'client' Spezifikation. Die Anzahl der erhaltenen Nachrichten ist unerwartet!</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.RootPathNotSet">
+			<Context>error text when creating a new workspace. a given workspace has no root path set.</Context>
+			<Text Lang="en">Unable to create workspace. The standard workspace has no root path defined.</Text>
+			<Text Lang="uk">Неможливо створити робочу область. У стандартній робочій області не визначений кореневий шлях.</Text>
+			<Text Lang="fr">Impossible de créer un espace de travail. L'espace de travail standard n'a pas de chemin racine défini.</Text>
+			<Text Lang="pt-BR">Incapaz de criar espaço de trabalho. O espaço de trabalho padrão não tem caminho raiz definido.</Text>
+			<Text Lang="zh">无法创建工作区。标准工作区未定义根路径。</Text>
+			<Text Lang="ko">작업 공간을 생성할 수 없습니다. 표준 작업 공간에 루트 경로가 정의되어 있지 않습니다.</Text>
+			<Text Lang="pl">Nie można utworzyć obszaru roboczego. Standardowa przestrzeń robocza nie ma określonej ścieżki głównej.</Text>
+			<Text Lang="es">No se ha podido crear el espacio de trabajo. El espacio de trabajo no tiene definido un directorio raíz.</Text>
+			<Text Lang="it">Impossibile creare lo spazio di lavoro. Lo spazio di lavoro standard non ha un percorso alla root definito.</Text>
+			<Text Lang="ru">Не удалось создать рабочую область. У стандартной рабочей области не задан корневой путь.</Text>
+			<Text Lang="de">Fehler beim Anlegen des Workspace. Der Standard-Workspace besitzt keinen Root-Pfad.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.WrongWorkspaceHostName">
+			<Context/>
+			<Text Lang="en">This articy:draft project is configured to use a Perforce standard workspace. The workspace host name differs from your current machine name.</Text>
+			<Text Lang="uk">Цей проект articy: draft налаштований для використання робочої області стандарту Perforce. Назва хоста робочої області відрізняється від назви цього комп'ютера.</Text>
+			<Text Lang="fr">Ce projet articy:draft est configuré pour utiliser un espace de travail standard Perforce. Le nom d'hôte de l'espace de travail diffère du nom de votre machine actuelle.</Text>
+			<Text Lang="pt-BR">O projeto articy:draft é configurado para usar um espaço de trabalho padrão necessário. O nome do anfitrião do espaço de trabalho difere da seu nome atua na máquina.</Text>
+			<Text Lang="zh">该 articy:draft 项目被配置为使用Perforce标准工作区。工作区主机名与当前计算机名不同。</Text>
+			<Text Lang="ko">이 articy:draft 프로젝트는 Perforce 표준 작업 공간을 사용하도록 구성되어 있습니다. 작업 공간 호스트 이름이 현재 시스템 이름과 다릅니다.</Text>
+			<Text Lang="pl">Ten projekt articy:draftjest skonfigurowany do korzystania z standardowej przestrzenii roboczej Perforce. Nazwa hosta roboczego różni się od aktualnej nazwy komputera.</Text>
+			<Text Lang="es">Este proyecto de articy:draft está configurado para usar el espacio de trabajo estándar de Perforce. El nombre de host del espacio de trabajo difiere del nombre de tu dispositivo actual.</Text>
+			<Text Lang="it">Questo progetto articy:draft è configurato per utilizzare un spazio di lavoro Perforce standard. Il nome dell'host dello spazio di lavoro differisce dal nome attuale della tua macchina.</Text>
+			<Text Lang="ru">Этот проект articy:draft настроен для использования рабочей области стандарта Perforce. Название хоста рабочей области отличается от названия этого компьютера.</Text>
+			<Text Lang="de">Dieses articy:draft-Projekt ist für die Nutzung eines Perforce Standard-Workspace konfiguriert worden. Der Workspace-Hostname unterscheidet sich von dem Ihres Computers.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.RootPathNotAccepted">
+			<Context>error text when creating a new workspace. perforce did not accept the root (project folder) path</Context>
+			<Text Lang="en">Unable to create workspace. Perforce did not accept the supplied 'root' path of your workspace. ('{0}')</Text>
+			<Text Lang="uk">Не вдалося створити робочу область. Perforce не прийняв "кореневої каталог" вашої робочої області. ( '{0}')</Text>
+			<Text Lang="fr">Impossible de créer un espace de travail. Perforce n'a pas accepté le chemin 'racine' fourni de votre espace de travail. ('{0}')</Text>
+			<Text Lang="pt-BR">Incapaz de criar espaço de trabalho. Perforce não aceitou o caminho 'raiz' suprido pelo seus espaço de trabalho. ('{0}')</Text>
+			<Text Lang="zh">无法创建工作区。Perforce不接受提供的工作区“根”目录。 ('{0}')</Text>
+			<Text Lang="ko">작업 공간을 생성할 수 없습니다. Perforce 작업 공간의 제공된 '루트' 경로를 수락하지 않았습니다. ('{0}')</Text>
+			<Text Lang="pl">Nie można utworzyć obszaru roboczego. Perforce podanej ścieżki roboczej 'root'. ('{0}')</Text>
+			<Text Lang="es">No se ha podido crear el espacio de trabajo. Perforce no ha aceptado el directorio raíz facilitado para tu espacio de trabajo. '{(0}')</Text>
+			<Text Lang="it">Impossibile creare lo spazio di lavoro. Perforce non ha accetto il percorso alla 'root' del tuo spazio di lavoro. ('{0}')</Text>
+			<Text Lang="ru">Не удалось создать рабочую область. Perforce не принял "корневой каталог" вашей рабочей области. ('{0}')</Text>
+			<Text Lang="de">Fehler beim Anlegen des Workspace. Ihr angegebener 'root'-Pfad ('{0}') wurde nicht akzeptiert.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.FetchFormException">
+			<Context>error text when creating a new workspace. perforce did not accept the root (project folder) path</Context>
+			<Text Lang="en">Unable to create workspace. Perforce was not able to fetch the client form. This might be caused by your Perforce server license limiting the maximum number of clients.</Text>
+			<Text Lang="uk">Не вдалось створити робочу область. Perforce не зміг отримати форму клієнта. Це можливо викликано ліцензією сервера Perforce, яка обмежує максимальну кількість клієнтів.</Text>
+			<Text Lang="fr">Impossible de créer un espace de travail. Perforce n'a pas pu récupérer le formulaire client. Cela peut être dû au fait que votre licence de serveur Perforce limite le nombre maximal de clients.</Text>
+			<Text Lang="pt-BR"><![CDATA[Incapaz de criar espaço de trabalho.
+Perforce não foi capaz de buscar o formulário do cliente. Isso pode ser causado por suas licença de servidor Perforce estar limitar o número máximo de clientes.]]></Text>
+			<Text Lang="zh">无法创建工作区。 Perforce无法获取客户端窗体。这可能是由于Perforce服务器限制了最大客户端连接数造成的。</Text>
+			<Text Lang="ko">작업 공간을 생성할 수 없습니다. Perforce가 클라이언트 양식을 가져올 수 없습니다. 이는 클라이언트의 최대 개수를 제한하는 Perforce 서버 라이선스로 인해 발생할 수 있습니다.</Text>
+			<Text Lang="pl">Nie można utworzyć obszaru roboczego. Perforce nie był w stanie pobrać formularz klienta. Może być to spowodowane przez Twoją licensję serwera Perforce ograniczającą maksymalną liczbę klientów.</Text>
+			<Text Lang="es">No se ha podido crear el espacio de trabajo. Perforce no ha podido obtener el formulario del cliente. Esto puede ser debido a que tu licencia de servidor de Perforce limita el número máximo de clientes.</Text>
+			<Text Lang="it">Impossibile creare lo spazio di lavoro. Perforce non ha potuto prendere il modulo del client. Questo può essere causato dalla licenza del tuo server Perforce che limita il numero massimo di client.</Text>
+			<Text Lang="ru">Не удалось создать рабочую область. Perforce не смог получить бланк клиента. Это может быть вызвано ограничением по максимальному количеству клиентов вашей лицензии сервера Perforce.</Text>
+			<Text Lang="de">Fehler beim Anlegen des Workspace. Eine mögliche Ursache ist, dass Ihre Perforce Server-Lizenz nur eine begrenzte Anzahl an Clients erlaubt.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnableToCreateWorkspace.UnsupportedSubmitOptions">
+			<Context>error text when creating a new workspace. perforce did not accept existing submit options</Context>
+			<Text Lang="en">The current Perforce workspace cannot be used with articy:draft, because its submit options are not supported. Only 'revertunchanged' and 'submitunchanged' are allowed values. Please contact your Perforce administrator. With the command line argument '-p4projectworkspace' any usage of standard workspaces is overriden such that each articy:draft project gets its own Perforce workspace. This might solve this problem.</Text>
+			<Text Lang="uk">Поточний робочий простір Perforce не можна використовувати з articy: draft, оскільки параметри подання не підтримуються. Допустимі значення мають лише «повернути незміненим» та «подати зміненим». Зверніться до адміністратора Perforce. З аргументом командного рядка 'p4projectworkspace' будь-яке використання стандартних робочих просторів перекривається таким чином, що кожен проект articy:draft отримує власну робочу область Perforce. Це може вирішити цю проблему.</Text>
+			<Text Lang="fr">L'espace de travail Perforce actuel ne peut pas être utilisé avec articy: draft, car ses options d'envoi ne sont pas prises en charge. Seuls 'revertunchanged' et 'submitunchanged' sont des valeurs autorisées. Veuillez contacter votre administrateur Perforce. Avec l'argument de ligne de commande '-p4projectworkspace', toute utilisation des espaces de travail standard est remplacée de telle sorte que chaque projet articy: draft obtient son propre espace de travail Perforce. Cela pourrait résoudre ce problème.</Text>
+			<Text Lang="pt-BR"><![CDATA[O espaço de trabalho Perforce não pode ser usado com articy:draft, porquê suas opções de envio não são suportadas. Apenas 'revertunchanged' e 'submitunchanged' são valores permitidos. Por favor contate seus administrador Perforce. Com o argumento de linha de comando '- p4projectworkspace' qualquer uso de trabalhos de espaços padrão é sobrecarregada para que cada projeto articy:draft receba seus próprio espaço de trabahlo Perforce. 
+Isso pode resolver este problema.]]></Text>
+			<Text Lang="zh">当前的Perforce工作区不能被用于articy:draft项目，其提交选项不被支持。仅'revertunchanged'和'submitunchanged'值被允许使用。请联系您的Perforce管理员。使用命令参数'-p4projectworkspace'，标准工作区的任何操作都将被覆盖，这样每个 articy:draft项目都将获得自己的Perforce工作区。这将解决该问题。</Text>
+			<Text Lang="ko">현재 Perforce 작업 공간은 제출 옵션이 지원되지 않기 때문에 articy:draft와 함께 사용할 수 없습니다. 'revertunchanged' 및 'submitunchanged'만 허용되는 값입니다. Perforce 관리자에게 문의하십시오. 명령줄 인수가 '-p4projectworkspace'인 경우 표준 작업 영역의 모든 사용이 재정의되므로 각 articy:draft 프로젝트는 Perforce 작업 공간을 자체적으로 확보합니다. 이것이 이 문제를 해결할 수 있을지도 모른다.</Text>
+			<Text Lang="pl"><![CDATA[Obecny projekt Perforce nie może być używany z articy:draft, ponieważ jego funkcje przesyłania nie są obsługiwane. Tylko wartości 'revertunchanged' i 'submitunchanged' są dozwolone. 
+Proszę skontaktować się z administratorem Perforce. W wierszu poleceń z argumentem '-p4workspace' każde użycie domyślnych obszarów roboczych jest nadpisane tak, że wszystkie projekty articy:draft otrzymają swoje własne przestrzenie Perforce. To może rozwiązać ten problem.]]></Text>
+			<Text Lang="es">El espacio de trabajo actual de Perforce no puede usarse en articy:draft porque sus opciones de subida. Solo son válidos los valores 'revertunchanged' and 'submitunchanged'. Ponte en contacto con tu administrador de Perforce. Con el argumento de la línea de comandos '-p4projectworkspace', se ignora todo uso de espacio de trabajo estándar para que cada proyecto de Perforce tenga su propio espacio de trabajo. Esto podría solucionar el problema.</Text>
+			<Text Lang="it">L'attuale spazio di lavoro Perforce non può essere utilizzato con articy:draft poiché le sue opzioni di invio non sono supportate. Solo 'revertunchanged' e 'submitunchanged' sono valori autorizzati. Si prega di contattare l'amministrazione di Perforce. Con la linea di comando '-p4projectworkspace' qualsiasi uso di uno spazio di lavoro standard è sovrascritto, così che tutti i progetti articy:draft abbiano il proprio spazio di lavoro Perforce. Questo può risolvere il problema.</Text>
+			<Text Lang="ru"><![CDATA[Текущая рабочая область Perforce не может быть использована с articy:draft, потому что ее параметры отправки информации не  поддерживаются. Разрешенными значениями являются только 'вернуть не измененным' и 'представить не измененным'. Пожалуйста, обратитесь к вашему Perforce администратору. При использовании аргумента командной строки '-
+p4 проект рабочей области' можно обойти стандартное использование рабочих областей, и дать, таким образом, каждому проекту articy:draft свою область Perforce. Это может решить проблему.]]></Text>
+			<Text Lang="de">Der verwendete Perforce-Workspace kann nicht zusammen mit articy:draft verwendet werden, da seine Submit-Optionen nicht unterstüzt werden. Es sind nur die Werte 'revertunchanged' und 'submitunchanged' erlaubt. Bitte kontaktieren Sie ihren Perforce-Administrator. Mit dem Kommandozeilen-Argument '-p4projectworkspace' kann jegliche Verwendung eines Standard-Workspace deaktiviert werden, so dass jedes articy:draft-Projekt einen eigenen Perforce-Workspace erhält. Dies könnte das Problem lösen.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.SyncFailedWithException">
+			<Context>error text when syncing the workspace failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to sync your workspace ('sync' command). The message caught was: '{0}'</Text>
+			<Text Lang="uk">Не вдалося створити робочу область. Perforce не зміг отримати бланк клієнта. Це можливо викликано обмеженням по максимальній кількості клієнтів вашої ліцензії сервера Perforce.</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative de synchronisation de votre espace de travail (commande 'sync'). Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando sincronizar seu espaço de trabalho (Comando 'Sincronizar'). A mensagem foi pega em: '{0}'</Text>
+			<Text Lang="zh">尝试同步工作区时发生了Perforce异常 ('同步' 指令)。捕获的消息是： '{0}'</Text>
+			<Text Lang="ko">작업 공간을 동기화하는 동안 Perforce예외가 발생했습니다 ('동기화' 명령). 포착된 메시지는 다음과 같음: '{0}'</Text>
+			<Text Lang="pl">Synchronizacja Twojego obszaru roboczego spowodowała wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al sincronizar tu espacio de trabajo se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">La sincronizzazione del tuo spazio di lavoro ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Синхронизация вашей рабочей области вызвало исключительную ситуацию. Полученное сообщение: '{0}'</Text>
+			<Text Lang="de">Beim Synchronisieren Ihres Workspaces ('sync'-Kommando) ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.EditFailedWithException">
+			<Context>error text when the edit command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'edit' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk"><![CDATA[Поточна робоча область Perforce не може бути використана з articy: draft, тому що її параметри відправки інформації не підтримуються. Дозволеними значеннями є тільки 'повернути не зміна' і 'уявити не зміненим'. Будь ласка, зверніться до вашого Perforce адміністратору. При використанні аргументу командного рядка '-
+p4 проект робочої області 'можна обійти стандартне використання робочих областей, і дати, таким чином, кожному проекту articy: draft свою область Perforce. Це може вирішити проблему. ]]></Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'modifier'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'editar'. A mensagem pega foi : '{0}'</Text>
+			<Text Lang="zh">尝试执行“编辑”指令时引发了Perforce异常。捕获的消息是： '{0}'</Text>
+			<Text Lang="ko">편집' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Próba otrzymania niektórych plików dla 'edycji' spowodowała wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al intentar obtener archivos para 'editar' se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">Il tentativo di prendere alcuni file per 'modifica' ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Попытка получения некоторых файлов для команды 'edit' вызвала исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'edit'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.DeleteFailedWithException">
+			<Context>error text when the delete command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'delete' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Спроба виконати команду 'delete' викликало виняткову ситуацію Perforce. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'supprimer'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'deletar'. A mensagem pega foi: '{0}'</Text>
+			<Text Lang="zh">尝试执行 'delete' 指令时触发了 Perforce 异常。拦截到的信息是： '{0}'</Text>
+			<Text Lang="ko">삭제' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Usuinęcie niektórych plików spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al eliminar varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">La cancellazione di alcuni file ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Удаление некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'delete'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.AddFilesFailedWithException">
+			<Context>error text when the add command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'add' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Спроба виконати команду 'add' викликало виняткову ситуацію Perforce. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'ajouter'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'adicionar'. A mensagem pega foi: '{0}'</Text>
+			<Text Lang="zh">尝试执行“添加”指令时引发了一个Perforce异常。捕获的消息是：'{0}'</Text>
+			<Text Lang="ko">추가' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Dodanie niektórych plików spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al añadir varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">L'aggiunta di alcuni file ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Добавление некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'add'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.MoveFilesFailedWithException">
+			<Context>error text when the move command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'move' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Спроба виконати команду 'move' викликало виняткову ситуацію Perforce. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'déplacer'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'mover'. A mensagem pega foi: '{0}'</Text>
+			<Text Lang="zh">尝试执行“移动”指令时引发了一个Perforce异常。捕获的消息是：'{0}'</Text>
+			<Text Lang="ko">이동' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Przeniesienie niektórych plików spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al mover varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">Lo spostamento di alcuni file ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Перемещение некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'move'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.RevertFailedWithException">
+			<Context>error text when the revert command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'revert' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Спроба виконати команду 'revert' викликало виняткову ситуацію Perforce. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'revenir'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'reverter'. A mensagem pega foi: '{0}'</Text>
+			<Text Lang="zh">尝试执行“还原”指令时引发了一个Perforce异常。捕获的消息是：'{0}'</Text>
+			<Text Lang="ko">되돌리기' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Przywrócenie niektórych plików spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al revertir varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">L'annullamento delle modifiche di alcuni file ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Возвращение к прежнему состоянию некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'revert'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.LockFailedWithException">
+			<Context>error text when the revert command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'lock' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Спроба виконати команду 'lock' викликало виняткову ситуацію Perforce. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'vérouiller'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'trancar'. A mensagem pega foi: '{0}'</Text>
+			<Text Lang="zh">尝试执行 'lock' 指令时触发了 Perforce 异常。拦截到的信息是： '{0}'</Text>
+			<Text Lang="ko">잠금' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Zablokowanie niektórych plików spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al bloquear varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">Il blocco di alcuni file ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Блокирование некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'lock'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.UnlockFailedWithException">
+			<Context>error text when the revert command failed with an exception.</Context>
+			<Text Lang="en">A Perforce exception was thrown while trying to execute the 'unlock' command. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Спроба виконати команду 'unlock' викликало виняткову ситуацію Perforce. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">Une exception Perforce a été lancée lors de la tentative d'exécution de la commande 'déverouiller'. Le message intercepté était : '{0}'</Text>
+			<Text Lang="pt-BR">Uma excessão Perforce foi jogada enquanto tentando executar o comando 'destrancar'. A mensagem pega foi: '{0}'</Text>
+			<Text Lang="zh">尝试执行“解锁”指令时引发了一个Perforce异常。捕获的消息是：'{0}'</Text>
+			<Text Lang="ko">잠금 해제' 명령을 실행 하는 동안 perforce 예외가 발생 했습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Odblokowanie niektórych plików spowodowała wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al desbloquear varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">Lo sblocco di alcuni file ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Разблокирование некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'unlock'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.SubmitFailedWithException">
+			<Context>error text when the submit command failed with an exception.</Context>
+			<Text Lang="en">Submitting your changed files has thrown an exception. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Надсилання змінених файлів спричинили генерування винятку. Отримане повідомлення: '{0}'</Text>
+			<Text Lang="fr">La soumission de vos fichiers modifiés a levé une exception. Le message intercepté était: '{0}'</Text>
+			<Text Lang="pt-BR">Enviar seus arquivos modificados jogou um excessão foi. A mensagem pega foi : '{0}'</Text>
+			<Text Lang="zh">提交更改的文件时引发了异常。捕获的消息是：'{0}'</Text>
+			<Text Lang="ko">변경된 파일을 제출하는 도 중 예외가 발생하였습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Przesłanie Twoich zmodyfikowanych plików spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al subir varios archivos se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">L'invio dei tuoi file modificati ha sollevato un'eccezione. Il messaggio catturato è: '{0}'.</Text>
+			<Text Lang="ru">Отправка некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Beim Ausführen des 'submit'-Kommandos ist eine Ausnahme aufgetreten. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.ChangelistModificationFailedWithException">
+			<Context>error text when modifying a changelist failed with an exception.</Context>
+			<Text Lang="en">Modifying the changelist has thrown an exception. The message caught was: '{0}'</Text>
+			<Text Lang="uk">Змінення списку змін призвело до генерування виключення. Отрмане повідомлення: '{0}'</Text>
+			<Text Lang="fr">La modification de la liste des modifications a levé une exception. Le message intercepté était: '{0}'</Text>
+			<Text Lang="pt-BR">Modificar a lista de mudanças jogou uma excessão. A mensagem pega fo: '{0}'</Text>
+			<Text Lang="zh">修改变更列表时引发了异常。捕获的消息是：'{0}'</Text>
+			<Text Lang="ko">변경 목록을 수정하는 도중 예외가 발생하였습니다. 받은 메세지 : '{0}'</Text>
+			<Text Lang="pl">Zmodyfikowanie listy zmian spowodowało wyjątek. Przechwycona wiadomość to: '{0}'</Text>
+			<Text Lang="es">Al modificar la lista de cambios se ha producido una excepción. El mensaje recibido es: '{0}'</Text>
+			<Text Lang="it">Le modifiche alla lista di cambi hanno sollevato un'eccezione. Il messaggio catturato è: '{0}'</Text>
+			<Text Lang="ru">Изменение некоторых файлов вызвало исключительную ситуацию. Полученное сообщение:  '{0}'</Text>
+			<Text Lang="de">Ein Fehler ist aufgetreten beim Versuch die Changelist zu ändern. Der Fehler '{0}' wurde gemeldet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.ChangeListInvalid">
+			<Context>error text when a changelist is currently not submittable, but is required to be.</Context>
+			<Text Lang="en">Your current changelist is not in the proper state to be used for the command requested.</Text>
+			<Text Lang="uk">Ваш поточний список змін не в належному стані, щоб використовувати його для запитуваної команди.</Text>
+			<Text Lang="fr">Votre liste de modifications actuelle n'est pas dans l'état approprié pour être utilisée pour la commande demandée.</Text>
+			<Text Lang="pt-BR">Sua lista de mudanças atual não está em um estado apropriado para ser usada para o comando pedido.</Text>
+			<Text Lang="zh">您当前的更改列表状态不适用于请求的指令。</Text>
+			<Text Lang="ko">당신의 현재 변경 목록이 명령 요청할 수 있는 적절 한 상태에 있지 않습니다.</Text>
+			<Text Lang="pl">Twoja obecna lista zmian nie jest w odpowiednim stanie, aby mogła być użyta w komendzie.</Text>
+			<Text Lang="es">Tu lista de cambios actual no se encuentra en el estado correcto para ser usada por el comando solicitado.</Text>
+			<Text Lang="it">La tua lista di cambi non è in uno stato adeguato per essere utilizzata per il comando richiesto.</Text>
+			<Text Lang="ru">Ваш текущий список изменений находится в неподходящем состоянии для использования в командном запросе.</Text>
+			<Text Lang="de">Ihre derzeitige 'changelist' erlaubt es nicht, dass diese für das gewählte Kommando verwendet wird.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.ConnectionStateInvalid">
+			<Context>error text when the provider reports an invalid connection prior to executing a command.</Context>
+			<Text Lang="en"><![CDATA[The connection to perforce is invalid. The reason may be:
+- you have a network problem and the connection to the server was lost
+- your ticket has expired
+- you used the same user on a different machine unvalidating your ticket on this machine.
+Please close the project and re-open it to force a new, clean login.]]></Text>
+			<Text Lang="uk"><![CDATA[Підключення до perforce недоступне. Ймовірна причина:
+-у вашій проблема з мережею і зв'язок з сервером було втрачено.
+-ваш пропуск закінчився
+-здійснено вхід цим користувачем на іншому комп'ютері, що зробив ваш пропуск на цьому комп'ютері недійсним.
+Будь ласка, закрийте проект і заново відкрийте його, щоб здійснити нове, чисте підключення. ]]></Text>
+			<Text Lang="fr"><![CDATA[La connexion à Perforce n'est pas valide. La raison peut être :
+- vous avez un problème de réseau et la connexion au serveur a été perdue
+- votre ticket a expiré
+- vous avez utilisé le même utilisateur sur une machine différente pour annuler votre ticket sur cette machine.
+Veuillez fermer le projet et le rouvrir pour forcer une nouvelle connexion propre.]]></Text>
+			<Text Lang="pt-BR"><![CDATA[A conexão para Perforce é inválida. A rasão pode ser:
+- você tem problemas de rede e a conexão com o servidor foi perdida.
+- seu bilhete expirou
+- você usou o mesmo usuário em uma máquina diferente invalidado seu bilhete nesta máquina.
+Por favor feche este projeto e abra novamente e force um novo. limpo login.]]></Text>
+			<Text Lang="zh"><![CDATA[与Perforce的连接无效。原因可能是：
+- 您的网络存在问题，与服务器的连接丢失
+- 您的许可过期了
+- 您在另一台计算机上使用了同一个账户，无法在此计算机上验证您的登录信息。
+请关闭该项目，然后重新打开它以进行登录。]]></Text>
+			<Text Lang="ko"><![CDATA[perforce에 연결이 잘못 되었습니다. 그 이유는 있을 수 있습니다:
+-당신은 네트워크 문제가 있고 서버에 대 한 연결이 끊어진 경우
+- 귀하의 티켓이 만료 된 경우
+- 이 컴퓨터에서 티켓의 유효성을 검사 하지 않는 다른 컴퓨터에서 동일한 사용자를 사용 했습니다.
+프로젝트를 닫고 다시 열어 새로운, 깨끗 한 로그인을 강제로 하시기 바랍니다.]]></Text>
+			<Text Lang="pl"><![CDATA[Połączenie z Perforce jest niepoprawne. Powodem może być:
+- masz problem z siecią, a połączenie z serwerem zostało utracone
+- czas przepustki upłynął
+- użyłeś tej samej nazwy na innej maszynie unieważniając Twoją przepustkę na tej maszynie.
+Proszę zamknąć projekt i ponownie otworzyć go z czystym logowaniem.]]></Text>
+			<Text Lang="es"><![CDATA[La conexión a Perforce no es válida. La razón puede ser:
+- Tienes un problema de red y se ha perdido la conexión con el servidor
+- Tu ticket ha caducado
+- Te has conectado con el mismo usuario en otro dispositivo, invalidando tu ticket para este
+Cierra el proyecto y vuelve a abrirlo para forzar un nuevo inicio de sesión.]]></Text>
+			<Text Lang="it"><![CDATA[La connessione da forzare non è valida. Le motivazioni possono essere:
+-si è presentato un problema di rete e la connessione al server è stata persa
+-il suo ticket è scaduto
+-si sta utilizzando lo stesso utente in una macchina differente, invalidando il ticket di questa macchina.
+Si prega di chiudere il progetto e di riaprirlo per forzare una nuova connessione pulita.]]></Text>
+			<Text Lang="ru"><![CDATA[Подключение к perforce недоступно. Причиной может являться:
+-в вашей сети проблема, и связь с сервером была потеряна.
+-ваш пропуск истек
+-был совершен вход этим пользователем на другом компьютере, делая ваш пропуск на этом компьютере недействительным.
+Пожалуйста, закройте проект и заново откройте его, чтобы вызвать новое, чистое подключение.]]></Text>
+			<Text Lang="de"><![CDATA[Die Verbinding zum Perforce-Server ist ungültig. Als Gründe dafür kommen folgende in Frage:
+- Sie haben ein Netzwerkproblem und Verbindung zum Server wurde unterbrochen.
+- Das Ticket, das Sie bei Ihrer Anmeldung von Perforce-Server bekommen haben ist abgelaufen.
+- Sie haben sich mit dem gleichen Benutzernamen auf einem anderen Rechner angemeldet und das Ticket auf diesem Rechner invalidiert.
+Bitte schließen Sie das Projekt und öffnen Sie es erneut um sich neu beim Perforce-Server anzumelden.]]></Text>
+		</TextDefinition>
+
+	</Category>
+
+	<!--
+	  Info messages used for logging to progress window
+	-->
+	<Category Name="System" Key="Messages">
+
+		<TextDefinition Key="Perforce.Messages.BreakLockForUser">
+			<Context>Message for RemoteBreakLocks stating how many locks ({0}) for which Perforce User ({1}) need to be broken.</Context>
+			<Text Lang="en">Breaking {0} locks of user '{1}'</Text>
+			<Text Lang="uk">Зняття {0} блокувань з користувача '{1}'</Text>
+			<Text Lang="fr">Briser {0} verrous de l'utilisateur '{1}'</Text>
+			<Text Lang="pt-BR">Quebrando {0} trancas de usuário '{1}'</Text>
+			<Text Lang="zh">解除用户 '{1}' 的{0}锁定</Text>
+			<Text Lang="ko">사용자 '{1}'의 잠금을 {0}개 해제하는 중</Text>
+			<Text Lang="pl">Łamanie zabezpieczeń {0} użytkownika '{1}'</Text>
+			<Text Lang="es">Rompiendo {0} bloqueo(s) del usuario '{1}'</Text>
+			<Text Lang="it">Rompendo {0} blocchi dell'utente '{1}'</Text>
+			<Text Lang="ru">Снятие {0} блокировок с пользователя '{1}'</Text>
+			<Text Lang="de">{0} Sperren von Benutzer '{1}' werden aufgehoben.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Messages.CreateWorkspace">
+			<Context>Message when a new workspace is created {0}: workspacename, {1}: project folder, {2}: depotpath, {3}: host</Context>
+			<Text Lang="en">Creating or re-using workspace '{0}' that maps project folder at '{1}' to depot path '{2}' on host '{3}'.</Text>
+			<Text Lang="uk">Створення або повторне використання робочої області '{0}' яка прив'язує папку проекту '{1}' до шляху до сховища '{2}' з хосту '{3}'.</Text>
+			<Text Lang="fr">Création ou réutilisation de l'espace de travail '{0}' qui cartographie le dossier de projet à '{1}' au chemin de dépôt '{2}' sur l'hôte '{3}'.</Text>
+			<Text Lang="pt-BR">Criando ou re-usando espaço de trabalho '{0}' que mapea a pasta de projeto em '{1}' para caminho de depósito '{2}' no anfitrião '{3}'.</Text>
+			<Text Lang="zh">创建或重新利用工作区 '{0}' ，该工作区将位于 '{1}'的项目文件夹映射至主机'{3}'上的库路径 '{2}' 。</Text>
+			<Text Lang="ko">{1}'의 프로젝트 폴더를 호스트'{3}'의 Depot 경로 '{2}'에 매핑 하는 작업 공간 '{0}'을(를) 생성하거나 재사용하고 있습니다.</Text>
+			<Text Lang="pl">Tworzenie lub ponowne użycie obszaru roboczego '{0}' znajdującwgo się w projekcie folderu '{1}' do ścieżki repozytorium '{2}' na hoście '{3}'.</Text>
+			<Text Lang="es">Creando o reutilizando el espacio de trabajo '{0}' que mapea la carpeta del proyecto en '{1}' a la ruta del depot '{2}' en el host {3}.</Text>
+			<Text Lang="it">Creazione o riutilizzo dello spazio di lavoro '{0}' che mappa la cartella di progetto '{1}' al deposito con percorso '{2}' sull'host '{3}'.</Text>
+			<Text Lang="ru">Создание или повторное использование рабочей области '{0}' которая привязывает папку проекта в '{1}' путь к хранилищу '{2}' на хосте '{3}'</Text>
+			<Text Lang="de">Erzeuge oder verwende Workspace '{0}', der den Projektordner in '{1}' mit dem Depot-Pfad '{2}' auf Server '{3}' verbindet.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Messages.CantUseStandardWorkspace">
+			<Context>Thrown if a "Standard" workspace has a Steam specified and is used for Streams. {0} is workspace name</Context>
+			<Text Lang="en">Can't use the standard client/workspace '{0}' because it is configured to work with 'Streams'.</Text>
+			<Text Lang="de">Der Standard Client/Workspace '{0}' kann nicht verwendet werden, da er für die Verwendung mit Streams konfiguriert ist.</Text>
+			<Text Lang="uk">Не вдається використовувати стандартний клієнт / робочу область "{0}", оскільки він налаштований на роботу з "Steams".</Text>
+			<Text Lang="fr">Impossible d'utiliser le client/espace de travail standard '{0}' car il est configuré pour fonctionner avec 'Streams'.</Text>
+			<Text Lang="pt-BR">Não é possível usar o cliente / espaço de trabalho padrão '{0}' porque ele está configurado para funcionar com 'Streams'.</Text>
+			<Text Lang="zh">无法使用标准客户端/工作区“{0}”，因为它被配置为使用“Streams”。</Text>
+			<Text Lang="ko">표준 클라이언트 / 작업 공간 '{0}'은 (는) 'Streams'와 함께 작동하도록 구성되어 있으므로 사용할 수 없습니다.</Text>
+			<Text Lang="pl">Nie można użyć standardowego klienta/obszaru roboczego „{0}”, ponieważ jest on skonfigurowany do pracy ze „Streams”.</Text>
+			<Text Lang="es">No se puede utilizar el cliente / espacio de trabajo estándar '{0}' porque está configurado para funcionar con 'Streams'.</Text>
+			<Text Lang="it">Impossibile utilizzare il client/area di lavoro standard '{0}' perché è configurato per funzionare con 'Streams'.</Text>
+			<Text Lang="ru">Невозможно использовать стандартный клиент / рабочее пространство "{0}", поскольку он настроен для работы с "Streams".</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Messages.WorkspaceHasUnexpectedStreamSpec">
+			<Context>Thrown if a new workspace has a Steam specified which is not expected. {0} is workspace name</Context>
+			<Text Lang="en">Inconsistent client/workspace '{0}' found. Should not specify "Streams" usage, but did.</Text>
+			<Text Lang="de">Inkonsistente Client/Workspace '{0}' Definition gefunden, die nicht verwendet werden, da sie für die Verwendung mit "Streams" konfiguriert ist.</Text>
+			<Text Lang="uk">Знайдено невідповідний клієнт / робоча область "{0}". Не повинен вказувати використання "Streams", але вказав.</Text>
+			<Text Lang="fr">Client/espace de travail '{0}' incohérent trouvé. Ne devrait pas spécifier l'utilisation de "Streams", mais l'a fait.</Text>
+			<Text Lang="pt-BR">Cliente / espaço de trabalho inconsistente '{0}' encontrado. Não deve especificar o uso de "Streams", mas o fez.</Text>
+			<Text Lang="zh">发现不一致的客户端/工作区“{0}”。 不应指定“Streams”用法，但确实如此。</Text>
+			<Text Lang="ko">일치하지 않는 클라이언트 / 작업 공간 '{0}'이 (가) 발견되었습니다. "Streams"사용을 지정해서는 안되지만 지정했습니다.</Text>
+			<Text Lang="pl">Znaleziono niespójny klient/obszar roboczy „{0}”. Nie należy określać użycia „Streams”, ale tak.</Text>
+			<Text Lang="es">Se encontró un cliente / espacio de trabajo incoherente '{0}'. No debería especificar el uso de "Streams", pero lo hizo.</Text>
+			<Text Lang="it">Trovata client/area di lavoro '{0}' incoerente. Non dovrebbe specificare l'utilizzo di "Stream", ma lo ha fatto.</Text>
+			<Text Lang="ru">Обнаружен несовместимый клиент / рабочая область "{0}". Не следует указывать использование "Streams", но указывал.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Messages.UnsupportedDepotType">
+			<Context>Thrown if a given depotpath uses an unsupported (non 'Local') depot type. {0} is depot name, {1} full depot path from config, {3} found depot type (API Enum)</Context>
+			<Text Lang="en">The depot '{0}' used in depot path '{1}' has type '{2}' which is not supported. Only 'local' depots are supported.</Text>
+			<Text Lang="de">Das Depot '{0}' des Pfades '{1}' ist vom Typ '{2}' der nicht unterstützt wird. Nur 'Local' Depots werden unterstützt.</Text>
+			<Text Lang="uk">Депо "{0}", що використовується у шляху депо "{1}", має тип "{2}", який не підтримується. Підтримуються лише „місцеві” склади.</Text>
+			<Text Lang="fr">Le dépôt '{0}' utilisé dans le chemin de dépôt '{1}' a le type '{2}' qui n'est pas pris en charge. Seuls les dépôts 'Local' sont pris en charge.</Text>
+			<Text Lang="pt-BR">O depósito '{0}' usado no caminho do depósito '{1}' tem o tipo '{2}' que não é suportado. Apenas depósitos 'locais' são suportados.</Text>
+			<Text Lang="zh">软件仓库路径“{1}”中使用的软件仓库“{0}”具有不受支持的类型“{2}”。 仅支持“本地”仓库。</Text>
+			<Text Lang="ko">저장소 경로 '{1}'에 사용 된 저장소 '{0}'에 지원되지 않는 '{2}'유형이 있습니다. '로컬'저장소 만 지원됩니다.</Text>
+			<Text Lang="pl">Zajezdnia '{0}' użyta w ścieżce zajezdni '{1}' ma typ '{2}', który nie jest obsługiwany. Obsługiwane są tylko magazyny „lokalne”.</Text>
+			<Text Lang="es">El depósito '{0}' utilizado en la ruta del depósito '{1}' tiene el tipo '{2}' que no es compatible. Solo se admiten depósitos 'locales'.</Text>
+			<Text Lang="it">Il depot '{0}' utilizzato nel percorso del depot '{1}' ha il tipo '{2}' che non è supportato. Sono supportati solo i depositi "locali".</Text>
+			<Text Lang="ru">Депо '{0}', используемое в пути депо '{1}', имеет тип '{2}', который не поддерживается. Поддерживаются только "Local" депо.</Text>
+		</TextDefinition>
+
+		<TextDefinition Key="Perforce.Messages.DepotNotFound">
+			<Context>Thrown if a given depotpath uses an unknown depot. {0} is depot name, {1} full depot path from config</Context>
+			<Text Lang="en">The depot '{0}' used in depot path '{1}' was not found. Please check your setup.</Text>
+			<Text Lang="de">Das Depot '{0}' des Pfades '{1}' existiert nicht. Bitte überprüfen Sie Ihre Konfiguration.</Text>
+			<Text Lang="uk">Депо "{0}", що використовується у шляху депо "{1}", не знайдено. Перевірте налаштування.</Text>
+			<Text Lang="fr">Le dépôt '{0}' utilisé dans le chemin de dépôt '{1}' est introuvable. Veuillez vérifier votre configuration.</Text>
+			<Text Lang="pt-BR">O depósito '{0}' usado no caminho do depósito '{1}' não foi encontrado. Por favor, verifique sua configuração.</Text>
+			<Text Lang="zh">未找到软件仓库路径“{1}”中使用的软件仓库“{0}”。 请检查您的设置。</Text>
+			<Text Lang="ko">저장소 경로 '{1}'에 사용 된 저장소 '{0}'을 (를) 찾을 수 없습니다. 설정을 확인하십시오.</Text>
+			<Text Lang="pl">Zajezdnia '{0}' użyta w ścieżce zajezdni '{1}' nie została znaleziona. Sprawdź swoją konfigurację.</Text>
+			<Text Lang="es">No se encontró el depósito '{0}' utilizado en la ruta del depósito '{1}'. Comprueba tu configuración.</Text>
+			<Text Lang="it">Il depot '{0}' utilizzato nel percorso del depot '{1}' non è stato trovato. Si prega di controllare la configurazione.</Text>
+			<Text Lang="ru">Депо "{0}", используемое в пути депо "{1}", не найдено. Пожалуйста, проверьте свои настройки.</Text>
+		</TextDefinition>
+
+	</Category>
+
+</TextPackage>

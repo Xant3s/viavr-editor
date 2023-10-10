@@ -45,7 +45,8 @@ export const Editor = () => {
     const loadScene = async () => {
         const sceneFileContents = await api.invoke(api.channels.toMain.getSceneFileContents)
         if(sceneFileContents === '') {
-            console.error('Scene file contents are empty')
+            console.log('No scene to load. Creating a new one')
+            SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.createScene)
             return
         }
         SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.loadScene, sceneFileContents)

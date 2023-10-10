@@ -250,9 +250,10 @@ export default class UnityBuildManager {
     }
 
     private checkExecutableExists() {
+        const outFolderName = this.buildPath.split(Path.sep).pop()
         const windowsExecutablePath = Path.join(this.buildPath, 'Build/Windows')
         const windowsExecutableExists = fs.existsSync(windowsExecutablePath) && fs.readdirSync(windowsExecutablePath).length > 0
-        const androidExecutablePath = Path.join(this.buildPath, 'Build/out.apk')
+        const androidExecutablePath = Path.join(this.buildPath, `Build/${outFolderName}.apk`)
         const androidExecutableExists = fs.existsSync(androidExecutablePath)
         return windowsExecutableExists || androidExecutableExists ? 'success' : 'failure'
     }

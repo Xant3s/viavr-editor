@@ -111,8 +111,8 @@ export const CapturePreferencesContainer = ({setPage, setPreferences}) => {
                     <br />
                     <Button marginRight={16} appearance="primary" type="submit">Save</Button>
                 </form>
-                {' '}
                 <br />
+                <Button marginRight={16} appearance='primary' onClick={() => api.invoke(api.channels.toMain.createNewProject)}>Skip and create an new project</Button>
                 <Button marginRight={16} appearance='primary' onClick={() => setPage('welcome')}>Back</Button>
             </div>
         </CapturePreferecesContainerStyle>

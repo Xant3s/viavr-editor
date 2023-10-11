@@ -46,6 +46,7 @@ export class SpokeAPI {
         toSpoke: {
             loadScene: 'viavr:load-scene',
             saveScene: 'viavr:export-scene',
+            createScene: 'viavr:create-scene',
         },
         fromSpoke: {
             projectPageSelected: 'viavr:projects-page',

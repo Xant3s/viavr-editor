@@ -62,7 +62,6 @@ export class Logger {
         const availableMemoryInGB = Math.round(os.freemem() / 1024 / 1024 / 1024)
         const unityPathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
         const unityPath = unityPathSetting.value
-        const articyPath = ArticyManager.articyPath
         const picoSdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
         const picoSdkPath = picoSdkPathPref.value
         const picoSdkManifest = await JSON.parse(fs.readFileSync(picoSdkPath, 'utf8'))
@@ -81,7 +80,6 @@ export class Logger {
         await this.runCommandAndPrintOutput('yarn -v', 'Yarn version')
         await this.runCommandAndPrintOutput('python -V', 'Python version')
         this.log(`Unity path: ${unityPath}`)
-        this.log(`Articy path: ${articyPath}`)
         this.log(`Avatar server URL: ${avatarServerUrl}`)
         this.log(`Pico SDK path: ${picoSdkPath}`)
         this.log(`Pico SDK version: ${picoSdkVersion}`)
@@ -139,8 +137,6 @@ export class Logger {
     private async logDependenciesExist() {
         const unityPathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
         const unityPath = unityPathSetting.value
-        const articyPathSetting = await PreferencesManager.getInstance().get<Setting_t>('articyPath')
-        const articyPath = articyPathSetting.value as string
         const picoSdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
         const picoSdkPath = picoSdkPathPref.value
 
@@ -149,13 +145,6 @@ export class Logger {
             this.log('Unity exists: yes')
         } catch (err) {
             this.log('Unity exists: no')
-        }
-        try {
-            await fs.promises.access(articyPath)
-            this.log('Articy exists: yes')
-        }
-        catch (err) {
-            this.log('Articy exists: no')
         }
         try {
             await fs.promises.access(picoSdkPath)

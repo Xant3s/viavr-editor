@@ -104,14 +104,17 @@ export const BuildDialog = ({hidden}) => {
     }
 
     const build = async () => {
+        setIsBuilding(true)
         const outputPath = await api.invoke(
             api.channels.toMain.createUnityProject,
             getSelectedSceneNames(),
             getSelectedPackages()
         )
-        if (outputPath === undefined) return
+        if (outputPath === undefined) {
+            setIsBuilding(false)
+            return
+        }
         toaster.notify('Started generating the experience, please wait.', { duration: 5 })
-        setIsBuilding(true)
         await api.invoke(api.channels.toMain.buildUnityProject)
         const result: 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)

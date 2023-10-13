@@ -81,9 +81,15 @@ export const BuildDialog = ({hidden}) => {
         await build()
     }
 
-    const loadPackages = async () => {
+    const loadPackages = async (attempt = 0) => {
+        const maxNumberOfAttempts = 20 // Prevent possible stackoverflow by limiting recursion depth
         setIsFetchingPackages(true)
-        const packages = await api.invoke(api.channels.toMain.queryPackages)
+        const packages: any[] = await api.invoke(api.channels.toMain.queryPackages)
+        if(packages.length === 0 && attempt < maxNumberOfAttempts) {
+            setIsFetchingPackages(false)
+            setTimeout(() => loadPackages(attempt + 1), 5000)
+            return
+        }
         const selectedPackages = await api.invoke(api.channels.toMain.getBuildSetting, 'selectedPackages')
         const newPackages = packages.map(p => {
             const settingExists = selectedPackages !== undefined

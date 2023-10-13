@@ -1,6 +1,6 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Checkbox, CrossIcon, IconButton, Pane, Select, SelectMenu, Table, TextInput, TrashIcon } from 'evergreen-ui'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import EventComponent from './EventComponent'
 import { Action, Event, Parameter, eventTypes } from '../../../@types/Behaviors'
 
@@ -14,7 +14,7 @@ import { Action, Event, Parameter, eventTypes } from '../../../@types/Behaviors'
 export let actions: Action[] = []
 export let availableEvents: Event[] = []
 
-export const EventsEditor = () => {
+export const EventsEditor = ({hidden}) => {
     const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.name, value: event.name })))
 
     const [events, setEvents] = useState<Event[]>([]);
@@ -22,12 +22,8 @@ export const EventsEditor = () => {
     const [eventButtonText, setEventButtonText] = useState<string>('')
 
 
-    useEffect(() => {
-        loadActions()
-        loadEvents()
-    })
 
-    async function loadActions() {
+    const loadActions = useCallback(async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
 
         // Example result of query for development/testing
@@ -40,13 +36,13 @@ export const EventsEditor = () => {
         });
 
         setActions(actionList)
-    }
+    }, [])
 
     function setActions(actionList) {
         actions = actionList
     }
 
-    async function loadEvents() {
+    const loadEvents = useCallback(async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
 
         const packagesWithEvents = packages.filter(item => 'events' in item)
@@ -56,9 +52,12 @@ export const EventsEditor = () => {
         })
 
         setAvailableEvents(eventList)
-    }
+    }, [])
 
-
+    useEffect(() => {
+        loadActions()
+        loadEvents()
+    }, [hidden, loadActions, loadEvents])
 
 function setAvailableEvents(eventList) {
     availableEvents = eventList

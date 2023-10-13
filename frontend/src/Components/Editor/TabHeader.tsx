@@ -10,7 +10,7 @@ interface props {
 }
 
 export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScreen}) => {
-    const [lastClicked, setLastClicked] = useState<number>(-1)
+    const [lastClicked, setLastClicked] = useState<number>(1)
     const [isDisabled, setDisabled] = useState(false)
     
     

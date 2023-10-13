@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Package } from './Package'
 import { Center, SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Button } from '../StyledComponents/Button'
@@ -81,7 +81,7 @@ export const BuildDialog = ({hidden}) => {
         await build()
     }
 
-    const loadPackages = async (attempt = 0) => {
+    const loadPackages = useCallback(async (attempt = 0) => {
         const maxNumberOfAttempts = 20 // Prevent possible stackoverflow by limiting recursion depth
         setIsFetchingPackages(true)
         const packages: any[] = await api.invoke(api.channels.toMain.queryPackages)
@@ -103,7 +103,7 @@ export const BuildDialog = ({hidden}) => {
             newPackages.filter(p => p.isSelected).map(packageItem => packageItem.name)
         )
         setIsFetchingPackages(false)
-    }
+    }, [])
 
     const getPackagesToDraw = () => {
         return getSelectedPackages().filter(p => 'configDescription' in p)
@@ -136,7 +136,7 @@ export const BuildDialog = ({hidden}) => {
         if(hidden) return
         loadScenes()
         loadPackages()
-    }, [hidden])
+    }, [hidden, loadPackages])
 
     return (
         <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>

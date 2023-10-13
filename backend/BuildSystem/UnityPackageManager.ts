@@ -44,7 +44,7 @@ export default class UnityPackageManager {
             // @ts-ignore
             const packages = packageList['objects'].map(obj => obj['package'])
             let packageDetails = await Promise.all(packages.map(p => this.queryPackageDetails(registryUrl, p['name'])))
-            packageDetails = packageDetails.filter(p => p !== {})
+            packageDetails = packageDetails.filter(p => Object.keys(p).length !== 0) // p is not {}
             if(packageDetails.length === 0) return []
             let packagesLatestInfo = await Promise.all(packageDetails.map(packageInfo => UnityPackageManager.getLatestPackageVersion(packageInfo)))
             if(filterViavr) {

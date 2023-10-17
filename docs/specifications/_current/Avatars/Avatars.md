@@ -17,7 +17,6 @@ Example build settings:
   "avatars": [
     {
       "name": "Test Avatar",
-      "id": "5541a2d3-bf80-4145-b278-97bf912a8189",
       "token": "7972979e-4710-11ee-82ac-d6007ec8b6a7",
       "articyId": "5695c566-7196-4fae-a3bf-8b5648495cd2",
       "sceneObject": "dddd78ea-24b1-45d2-b732-b1a831f4ec06"

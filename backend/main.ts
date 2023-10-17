@@ -5,7 +5,6 @@ import SpokeManager from './SpokeManager'
 import PreferencesManager from './Preferences/PreferencesManager'
 import ProjectManager from './ProjectManager/ProjectManager'
 import SceneExporter from './ProjectManager/SceneExporter'
-import ThemeManager from './ThemeManager'
 import DialogUtils from './Utils/DialogUtils'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
 import { Prototypes } from './Prototypes'
@@ -22,7 +21,6 @@ const startup = async () => {
     SpokeManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
-    new ThemeManager()
     const sceneExport = new SceneExporter(mainWindow)
     ProjectManager.getInstance().init(mainWindow, sceneExport)
     ProjectSettingsManager.getInstance()

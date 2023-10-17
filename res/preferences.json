@@ -1,15 +1,4 @@
 {
-  "darkMode": {
-    "value": "System",
-    "label": "Theme",
-    "kind": "dropdown",
-    "uuid": "3431c59d-882e-419b-8832-747cfbd01b11",
-    "options": [
-      "System",
-      "Dark",
-      "Light"
-    ]
-  },
   "unityPath": {
     "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.31f1\\Editor\\Unity.exe",
     "label": "Path to Unity executable",

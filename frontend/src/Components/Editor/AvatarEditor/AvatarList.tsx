@@ -10,11 +10,11 @@ type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| '
 
 interface props {
     avatars: AvatarInfo[]
-    updateQrCode: (avatarId: string, avatarName: string) => void
-    deleteAvatar: (avatarId: string) => void
-    deleteAvatarFromServer: (avatarId: string) => Promise<number>
+    updateQrCode: (avatarToken: string, avatarName: string) => void
+    deleteAvatar: (avatarToken: string) => void
+    deleteAvatarFromServer: (avatarToken: string) => Promise<number>
     sceneObjects: any[]
-    updateAvatar: (avatarId: string, update: (avatar: AvatarInfo) => AvatarInfo) => void
+    updateAvatar: (avatarToken: string, update: (avatar: AvatarInfo) => AvatarInfo) => void
 }
 
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }: props) => {
@@ -24,28 +24,28 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     const statusUpdateInterval = 1000
 
     
-    const changeAvatarName = (avatarId: string, newName: string) => {
-        return updateAvatar(avatarId, (avatar: AvatarInfo) => {
+    const changeAvatarName = (avatarToken: string, newName: string) => {
+        return updateAvatar(avatarToken, (avatar: AvatarInfo) => {
             avatar.name = newName
             return avatar
         })
     }
 
-    const assignSceneObject = (avatarId: string, sceneObjectId: string) => {
-        updateAvatar(avatarId, (avatar: AvatarInfo) => {
+    const assignSceneObject = (avatarToken: string, sceneObjectId: string) => {
+        updateAvatar(avatarToken, (avatar: AvatarInfo) => {
             avatar.sceneObject = sceneObjectId
             return avatar
         })
     }
     
-    const handleDeleteDialog = async (avatarId: string, dialogResponse: DeleteDialogResponse) => {
+    const handleDeleteDialog = async (avatarToken: string, dialogResponse: DeleteDialogResponse) => {
         if(dialogResponse === 'abort') return
         let errorCode = 0
         if(dialogResponse === 'deleteFromServer') {
-            errorCode = await deleteAvatarFromServer(avatarId)
+            errorCode = await deleteAvatarFromServer(avatarToken)
         }
         if(errorCode === 0) {
-            deleteAvatar(avatarId)
+            deleteAvatar(avatarToken)
         }
     }
     
@@ -123,13 +123,13 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         </Table.Head>
         <Table.Body height={240} minWidth={'600px'}>
             {avatars.map(avatar => (
-                <Table.Row key={avatar.id}>
+                <Table.Row key={avatar.token}>
                     <Table.TextCell>
                         <TextInput name='avatar-name-input'
                                    placeholder='Avatar name...'
                                    value={avatar.name}
                                    style={{ backgroundColor: avatar.name !== '' ? 'initial' : 'red' }}
-                                   onChange={(e) => changeAvatarName(avatar.id, e.target.value)} required />
+                                   onChange={(e) => changeAvatarName(avatar.token, e.target.value)} required />
                     </Table.TextCell>
                     <Table.TextCell>
                         <Select id="sceneObject" value={avatar.sceneObject} style={{
@@ -137,7 +137,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                             height: '30px',
                             backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'
                         }}
-                                onChange={e => assignSceneObject(avatar.id, e.target.value)} required>
+                                onChange={e => assignSceneObject(avatar.token, e.target.value)} required>
                             {sceneObjects.map((object, index) => (
                                 <MenuItem key={index} value={object.uuid}>
                                     {object.name}
@@ -151,7 +151,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                     </Table.TextCell>
                     <Table.TextCell>
                         <DeleteAlertDialog open={showDeletePrompt} setOpen={setShowDeletePrompt}
-                                           handleDialog={(res) => handleDeleteDialog(avatar.id, res)}
+                                           handleDialog={(res) => handleDeleteDialog(avatar.token, res)}
                                            avatarIsOnServer={avatarStatusList.get(avatar.token) !== 'waitingforupload' && avatarStatusList.get(avatar.token) !== 'expired'}
                         />
                         <Button iconBefore={TrashIcon}
@@ -168,11 +168,11 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     </Table>
 }
 
-const ShowQrCodeButton = ({avatar, updateQrCode}: {avatar: AvatarInfo, updateQrCode: (avatarId: string, avatarName: string) => void}) => {
+const ShowQrCodeButton = ({avatar, updateQrCode}: {avatar: AvatarInfo, updateQrCode: (avatarToken: string, avatarName: string) => void}) => {
     return <Button appearance='primary'
             style={{ width: '100%' }}
             onClick={() => {
-                updateQrCode(avatar.id, avatar.name)
+                updateQrCode(avatar.token, avatar.name)
             }}
     >
         Show QR Code
@@ -188,7 +188,7 @@ const DownloadButton = ({avatar, setDownloaded}: { avatar: AvatarInfo, setDownlo
                       style={{ width: '100%' }}
                       onClick={async () => {
                           setDownloading(true)
-                          const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.id)
+                          const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.token)
                           if(result === 0) {
                               toaster.success('Avatar downloaded successfully')
                               setDownloaded()

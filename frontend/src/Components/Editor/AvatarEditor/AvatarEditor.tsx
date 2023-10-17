@@ -20,8 +20,8 @@ export const AvatarEditor = ({ hidden }) => {
     const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
     
 
-    const updateQrCode = (avatarId: string,  avatarName: string) => {
-        const token = avatars.find(avatar => avatar.id === avatarId)?.token || ''
+    const updateQrCode = (avatarToken: string,  avatarName: string) => {
+        const token = avatars.find(avatar => avatar.token === avatarToken)?.token || ''
         QrToString(token, { type: 'svg' }, (err, svg) => {
             setQrCode(svg)
             setQrCodeAvatarName(avatarName)
@@ -49,19 +49,19 @@ export const AvatarEditor = ({ hidden }) => {
         saveAll(newAvatars)
     }
 
-    const deleteAvatar = async  (avatarId: string) => {
-        const newAvatars = avatars.filter(avatar => avatar.id !== avatarId)
+    const deleteAvatar = async  (avatarToken: string) => {
+        const newAvatars = avatars.filter(avatar => avatar.token !== avatarToken)
         setAvatars(newAvatars)
-        await api.invoke(api.channels.toMain.deleteAvatarFromFileSystem, avatarId)
+        await api.invoke(api.channels.toMain.deleteAvatarFromFileSystem, avatarToken)
         saveAll(newAvatars)
     }
     
-    const deleteAvatarFromServer = async (avatarId: string) => {
+    const deleteAvatarFromServer = async (avatarToken: string) => {
         try {
             const response = await fetch(`${avatarServerUrl}/scans/delete`, {
                 method: 'POST',
                 headers: {
-                    'x-scan-id': avatarId
+                    'x-scan-id': avatarToken
                 }
             })
             if(!response.ok) {
@@ -76,9 +76,9 @@ export const AvatarEditor = ({ hidden }) => {
         return 0
     }
     
-    const updateAvatar = (avatarId: string, modifier: (a: AvatarInfo) => AvatarInfo) => {
+    const updateAvatar = (avatarToken: string, modifier: (a: AvatarInfo) => AvatarInfo) => {
         const newAvatars = avatars.map(avatar => {
-            if(avatar.id === avatarId) {
+            if(avatar.token === avatarToken) {
                 avatar = modifier(avatar)
             }
             return avatar

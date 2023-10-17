@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Settings } from '../Settings/Settings'
 
 export const Preferences: FC = () => {
-    return (
+    return (<>
         <Settings title={'Preferences'}
                   loadSettingsChannel={api.channels.toMain.requestPreferences}
                   changeSettingChannel={api.channels.toMain.changePreference}
@@ -10,6 +10,8 @@ export const Preferences: FC = () => {
                       api.on(api.channels.fromMain.preferenceChangedFromBackendUnityPath, (data) => {
                           setPref('unityPath', data)
                       })
-                  }} />
+                  }}
+                  />
+        </>
     )
 }

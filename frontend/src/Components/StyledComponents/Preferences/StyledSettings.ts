@@ -12,7 +12,11 @@ export const Center = styled.div`
 export const StyledSettings = styled.div`
   background-color: #15171b;
   color: white;
-  padding: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  margin-bottom: 0px;
   height: 100%;
   min-height: 100vh;
 `
@@ -33,15 +37,15 @@ export const SettingListEntry = styled.div`
   margin: 10px;
   display: inline-flex;
   flex-direction: row;
-  width: 540px;
+  min-width: 80%;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
 `
 
 export const SettingEntryLabel = styled.label`
   display: inline-block;
   width: 180px;
-  text-align: right;
+  text-align: left;
   margin-right: 10px;
 `
 

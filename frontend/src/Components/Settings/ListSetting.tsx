@@ -73,7 +73,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
     return (
         <>
             <h5>{label}</h5>
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {
                     value.map((item, index) => (
                         <SettingListEntry key={index} style={{ marginBottom: '0', marginTop: '0' }}>
@@ -84,7 +84,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
                         </SettingListEntry>
                     ))
                 }
-                <Button id={`btn-add-${id}`} onClick={addListItem} style={{ marginLeft: 20 }}>Add</Button>
+                <Button id={`btn-add-${id}`} onClick={addListItem} style={{ marginLeft: 20, width: '20%' }}>Add</Button>
             </div>
         </>
     )

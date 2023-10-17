@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Setting } from './Setting'
 import { value_t } from '../../@types/Settings'
+import { Button } from '../StyledComponents/Button'
 
 export declare interface SettingsProps {
     title: string,
@@ -11,11 +12,11 @@ export declare interface SettingsProps {
 }
 
 export const Settings = ({
-                             title,
-                             loadSettingsChannel,
-                             changeSettingChannel,
-                             registerUpdateCallbacksFromBackend,
-                         }: SettingsProps) => {
+    title,
+    loadSettingsChannel,
+    changeSettingChannel,
+    registerUpdateCallbacksFromBackend,
+}: SettingsProps) => {
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
     const setPref = (key: string, value: any) => {
@@ -41,6 +42,10 @@ export const Settings = ({
         loadInitialValues()
     })
 
+    const closeWindow = () => {
+        window.close();
+    };
+
     return (
         <StyledSettings>
             <h1>{title}</h1>
@@ -51,9 +56,12 @@ export const Settings = ({
                     Array.from(prefs.entries())
                         // @ts-ignore
                         .map(([prefKey, pref]) => (<Setting key={prefKey} settingKey={prefKey} setting={pref}
-                                                            updateCallback={sendSettingUpdateToBackend} />))
+                            updateCallback={sendSettingUpdateToBackend} />))
                 }
             </SettingsContainer>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#15171B' }}>
+                <Button style={{ fontSize: '18px', }} onClick={closeWindow}> Exit </Button>
+            </div>
         </StyledSettings>
     )
 }

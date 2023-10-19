@@ -32,14 +32,13 @@ export const Editor = () => {
     }
 
     const onSpokeReady = async () => {
-        if(!SpokeAPI.Instance.IsReady) return
-        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.projectPageSelected, async () => {
-            sceneExport = sceneExport || new SceneExport()  // ensures there is only one instance of SceneExport
-            if(loadSceneWhenSpokeIsReady) {
-                setLoadSceneWhenSpokeIsReady(false)
-                await loadScene()
-            }
-        })
+        console.log('editor onSpokeReady')    
+        sceneExport = sceneExport || new SceneExport()  // ensures there is only one instance of SceneExport
+        if(loadSceneWhenSpokeIsReady) {
+            console.log('loading scene')
+            setLoadSceneWhenSpokeIsReady(false)
+            await loadScene()
+        }
     }
 
     const loadScene = async () => {

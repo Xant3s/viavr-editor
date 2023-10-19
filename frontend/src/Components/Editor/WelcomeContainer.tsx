@@ -37,7 +37,6 @@ export const WelcomeContainer = ({ setPage, startTutorial }) => {
                     Create New Project
                 </Button>
                 <Button onClick={async () => {
-                    console.log('ask backend to open project')
                     await api.invoke(api.channels.toMain.openProject, 'res/Templates');
                 }}>
                     Open Project

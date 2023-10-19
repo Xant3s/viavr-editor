@@ -4,6 +4,7 @@ import CustomMenu from './CustomMenu'
 import { loadPage } from './Utils/ElectronUtils'
 import electron_reload from 'electron-reload'
 import { API, channels } from './API'
+import ProjectManager from './ProjectManager/ProjectManager'
 
 export default class MainWindow {
     private static window: Electron.BrowserWindow
@@ -56,10 +57,10 @@ export default class MainWindow {
                 preload: path.join(__dirname, 'preload.js'),
             },
         })
-        MainWindow.window.on("close", () =>
-        {
-            console.log("Trying to quit")
-            MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)}
+        MainWindow.window.on("close", () => {
+            if(ProjectManager.getInstance().projectIsLoaded()) {
+                MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)}
+            }
         )
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         new CustomMenu().loadCustomMenu()

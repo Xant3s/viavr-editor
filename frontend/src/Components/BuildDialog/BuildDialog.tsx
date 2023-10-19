@@ -125,7 +125,7 @@ export const BuildDialog = ({hidden}) => {
         const result: 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)
         if (result === 'failure') {
-            toaster.danger('Something went wrong generating your VIA experience.', { duration: 30 })
+            toaster.danger('Something went wrong generating your VIA experience.', { duration: 36000 })
             return
         }
         await api.invoke(api.channels.toMain.openBuildDirectory)

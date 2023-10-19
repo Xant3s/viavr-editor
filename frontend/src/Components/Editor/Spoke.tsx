@@ -16,19 +16,17 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady }) => {
         onSpokeReady()
     }, [setSpokeReady, onSpokeReady]) 
     
-    const registerSpokeListener = () => {
-        SpokeAPI.Instance.SpokeWindow = spokeIframe.current?.contentWindow as Window
-        SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.projectPageSelected, onSpokeProjectPageSelected)
-    }
-    
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         <SpokeIframe id={'iframe-spoke'} ref={el => {
             console.log('callback ref')
             spokeIframe.current = el
             if(el) {
-                registerSpokeListener()
+                SpokeAPI.Instance.SpokeWindow = spokeIframe.current?.contentWindow as Window
+                SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.projectPageSelected, onSpokeProjectPageSelected)
+
             } else {
                 SpokeAPI.Instance.clearAllEventListeners()
+                SpokeAPI.Instance.SpokeWindow = undefined
             }
         }} title={'Spoke Editor'} src={iframeSrc}
             style={{ display: spokeReady ? 'block' : 'none' }} 

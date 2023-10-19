@@ -65,6 +65,7 @@ export default class MainWindow {
         new CustomMenu().loadCustomMenu()
         loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()
+        MainWindow.window.webContents.openDevTools()
         if (!app.isPackaged) {
             electron_reload(__dirname, {
                 electron: path.join(__dirname, '../../node_modules/.bin/electron'),

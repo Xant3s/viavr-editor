@@ -58,9 +58,12 @@ export const Editor = () => {
     useEffect(() => {
         const onProjectSelected = async () => {
             setViewID(1)
+            console.log('editor effect onProjectSelected')
             if(SpokeAPI.Instance.IsReady) {
+                console.log('load scene right away')
                 await loadScene()
             } else {
+                console.log('load scene when spoke is ready')
                 setLoadSceneWhenSpokeIsReady(true)
             }
         }

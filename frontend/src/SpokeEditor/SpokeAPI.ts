@@ -4,6 +4,7 @@ export class SpokeAPI {
     private static instance: SpokeAPI
     private spokeWindow: Window | undefined
     private events = new Map<string, Callback[]>()
+    private spokeDoneLoading = false
 
 
     private constructor() {}
@@ -12,14 +13,14 @@ export class SpokeAPI {
         return this.instance || (this.instance = new this())
     }
 
-    public set SpokeWindow(spokeWindow: Window) {
-        console.log('spoke window set')
+    public set SpokeWindow(spokeWindow: Window | undefined) {
+        console.log('spoke window set', spokeWindow === undefined)
         SpokeAPI.Instance.spokeWindow = spokeWindow
-        SpokeAPI.Instance.spokeWindow.addEventListener('message', this.onMessageFromSpoke)
+        SpokeAPI.Instance.spokeWindow?.addEventListener('message', this.onMessageFromSpoke)
     }
 
     public get IsReady() {
-        return SpokeAPI.Instance.spokeWindow !== undefined
+        return SpokeAPI.Instance.spokeWindow !== undefined && SpokeAPI.Instance.spokeDoneLoading
     }
 
     public postMessage(message: string, content?: string) {
@@ -33,9 +34,13 @@ export class SpokeAPI {
         console.log('onMessageFromSpoke')
         const channel: string = event.data['channel']
         const content: string | undefined = event.data['content']
-        console.log(channel, SpokeAPI.Instance.events.size, SpokeAPI.Instance.events.get(channel)?.length || -1)
-        if(SpokeAPI.Instance.events.get(channel) !== undefined && (SpokeAPI.Instance.events.get(channel)?.length || 0) > 0) {
-            SpokeAPI.Instance.events.get(channel)?.forEach((func: Callback) => func(content))
+        const validChannels = Object.values(SpokeAPI.Messages.fromSpoke)
+        if(validChannels.includes(channel)) {
+            SpokeAPI.Instance.spokeDoneLoading = true
+            console.log(channel, SpokeAPI.Instance.events.size, SpokeAPI.Instance.events.get(channel)?.length || -1)
+            if(SpokeAPI.Instance.events.get(channel) !== undefined && (SpokeAPI.Instance.events.get(channel)?.length || 0) > 0) {
+                SpokeAPI.Instance.events.get(channel)?.forEach((func: Callback) => func(content))
+            }
         }
     }
     

@@ -8,6 +8,7 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 
 - Make sure to clone recursively, i.e. including all submodules
 - Make sure [node.js](https://nodejs.org/en/download/) 16.x is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+- Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
@@ -39,9 +40,12 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 ## How to Start (Currently Only Tested on Windows)
 
 - We recommend doing the following steps in cmd.exe
-- Run the following commands:
-  - Run `npm install`
-  - Run `npm start` to start the application
+- Run the following command to install the recommender system
+  - `npm run install:rs-server`
+- Run the following commands to install the application:
+  - `npm install`
+- Run the following command to start the application
+  - `npm start`
 
 ## How to Start Only the Frontend
 

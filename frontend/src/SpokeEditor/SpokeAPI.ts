@@ -14,7 +14,6 @@ export class SpokeAPI {
     }
 
     public set SpokeWindow(spokeWindow: Window | undefined) {
-        console.log('spoke window set', spokeWindow === undefined)
         SpokeAPI.Instance.spokeWindow = spokeWindow
         SpokeAPI.Instance.spokeWindow?.addEventListener('message', this.onMessageFromSpoke)
     }
@@ -31,13 +30,11 @@ export class SpokeAPI {
     }
 
     private onMessageFromSpoke(event: MessageEvent) {
-        console.log('onMessageFromSpoke')
         const channel: string = event.data['channel']
         const content: string | undefined = event.data['content']
         const validChannels = Object.values(SpokeAPI.Messages.fromSpoke)
         if(validChannels.includes(channel)) {
             SpokeAPI.Instance.spokeDoneLoading = true
-            console.log(channel, SpokeAPI.Instance.events.size, SpokeAPI.Instance.events.get(channel)?.length || -1)
             if(SpokeAPI.Instance.events.get(channel) !== undefined && (SpokeAPI.Instance.events.get(channel)?.length || 0) > 0) {
                 SpokeAPI.Instance.events.get(channel)?.forEach((func: Callback) => func(content))
             }
@@ -46,20 +43,16 @@ export class SpokeAPI {
     
     public addEventListener(channel: string, func: Callback) {
         if(SpokeAPI.Instance.spokeWindow !== undefined) {
-            console.log('addEventListener')
             const callbacks: Callback[] = SpokeAPI.Instance.events.get(channel) || []
             callbacks.push(func)
             SpokeAPI.Instance.events.set(channel, callbacks)
-            console.log(channel, SpokeAPI.Instance.events.size, SpokeAPI.Instance.events.get(channel)?.length || -1)
         } else {
             console.error('Spoke is not ready')
         }
     }
     
     public clearAllEventListeners() {
-        console.log('clear')
         SpokeAPI.Instance.events = new Map<string, Callback[]>()
-        console.log(SpokeAPI.Instance.events.size)
     }
 
     public static readonly Messages = {

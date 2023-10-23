@@ -10,7 +10,7 @@ export const DrawioEditor = ({onFloorMapAvailable}) => {
 
 
     const openDrawio = (evt) => {
-        const url = 'https://embed.diagrams.net/?embed=1&ui=dark&spin=1&modified=unsavedChanges&proto=json'
+        const url = 'https://embed.diagrams.net/?embed=1&ui=dark&spin=1&modified=unsavedChanges&proto=json&lang=en'
         const source = evt.srcElement || evt.target
 
         if(source.nodeName === 'IMG' && source.className === 'drawio') {

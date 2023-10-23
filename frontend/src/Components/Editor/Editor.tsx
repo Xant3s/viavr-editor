@@ -73,6 +73,23 @@ export const Editor = () => {
         }
     }, [])
 
+    useEffect(() => {
+        // Workaround. Sometimes the event listener that loads the scene when Spoke is ready is not registered in time.
+        const checkIfSpokeIsReady = async () => {
+            if(SpokeAPI.Instance.IsReady && loadSceneWhenSpokeIsReady) {
+                console.warn('Spoke was ready and scene was not loaded. Loading now.')
+                await loadScene()
+            }
+        }
+        
+        const timer = setInterval(checkIfSpokeIsReady, 1000)
+        
+        return () => {
+            clearInterval(timer)
+        }
+        
+    }, [loadSceneWhenSpokeIsReady])
+
     const handleSaveAndContinue = async () => {
         await api.invoke(api.channels.toMain.saveScene)
         await SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene)

@@ -1,14 +1,14 @@
 # VIA-VR Editor
 
-## Documentation
+## Developer Documentation
 
 See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 
 ## Prerequisites
 
-- Make sure to clone recursively, i.e. including all submodules
-- Make sure [node.js](https://nodejs.org/en/download/) 16.x is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+- Make sure to clone recursively, i.e. including all submodules. Do not just download the zip file
 - Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
+- Make sure [node.js](https://nodejs.org/en/download/) 16.x (>=16.10) is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
@@ -29,8 +29,8 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
     ```
 
 - Make sure Unity 2021.3.31f1 is installed
+  - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
 - Make sure your internet connection is working properly
-- If you want to use articy:draft, make sure it's installed
 
 ## Required Ports
 
@@ -82,22 +82,14 @@ Currently, only the backend has unit tests. `electron-is-dev` is incompatible wi
   - Do not close any terminal windows that appear
 - Select 'Open Project'
   - Open the example project we provide at "RepoRoot/res/ExampleProject.via"
-  - You may see a white screen for a few seconds while Spoke is still starting
+  - You may see a loading screen for a few seconds while Spoke is still starting
 - Check your preferences
   - Go to File > Preferences
   - Check the path to the Unity executable
-  - Check the path to the articy:draft executable
   - Check the package registry URL (our default registry is available at https://packages.informatik.uni-wuerzburg.de)
   - Check the package registry scopes (our default registry currently needs the scopes 'de.jmu' and 'unity-com')
-- Open example scene
-  - Select 'Dev Tools > Open Present Working Directory'
-  - Copy this path, you'll need it for the next step
-  - Click on "crater"
-  - Open "Present Working Directory/Scenes/crater.spoke". This corresponds to "%localAppData%/Temp/viavr/project/Scenes/crater.spoke" on Windows
-    - We'll automate this step in future work
-- To save the current scene, select File > Save Current Scene
 - To save the project, select File > Save Project (this can take a while depending on the project size)
-- To build the project, select "Generate VIA Experience"
+- To build the project, navigate to the finish tab, check all settings, then select "Generate VIA Experience"
   - Select "Generate Experience"
   - Choose an output folder, e.g. on your desktop
   - The build process can take a while, depending on the project size
@@ -106,8 +98,6 @@ Currently, only the backend has unit tests. `electron-is-dev` is incompatible wi
 
 ## Known Bugs
 
-- After loading a scene in Spoke, the editor can no longer be closed
-  - Temporary workaround: use the task manager to kill the application
 
 ## Template Server
 

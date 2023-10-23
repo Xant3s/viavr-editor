@@ -3,4 +3,5 @@ export class AvatarInfo {
     articyId = ''
     token = ''
     sceneObject = ''
+    dialogueId = ''
 }

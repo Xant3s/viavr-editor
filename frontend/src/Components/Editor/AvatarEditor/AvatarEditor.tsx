@@ -43,7 +43,7 @@ export const AvatarEditor = ({ hidden }) => {
             notifyUserAboutError(e as string)
             return
         }
-        const newAvatar = { name: name, id: uuid, token: token, articyId: '', sceneObject: '' }
+        const newAvatar = { name: name, id: uuid, token: token, articyId: '', sceneObject: '', dialogueId: '' }
         const newAvatars = [...avatars, newAvatar]
         setAvatars(newAvatars)
         saveAll(newAvatars)

@@ -13,6 +13,7 @@ export default class CustomMenu {
                 submenu: [
                     {
                         label: 'Save Project',
+                        accelerator: 'CmdOrCtrl+S',
                         click: () => ipc.emit('project-manager:save-project'),
                         id: 'SaveProject',
                         enabled: this.projectLoaded && this.articyNotOpen,

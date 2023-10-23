@@ -18,6 +18,8 @@ export const Editor = () => {
     const [showModal, setShowModal] = useState(false)
     const [isTutorial, setTutorial] = useState(false)
     const [loadSceneWhenSpokeIsReady, setLoadSceneWhenSpokeIsReady] = useState(false)
+    const [sceneShouldHaveBeenLoaded, setSceneShouldHaveBeenLoaded] = useState(false)
+    const [sceneLoadingWorkaroundApplied, setSceneLoadingWorkaroundApplied] = useState(false)
     let sceneExport : SceneExport | null = null
     
     
@@ -60,6 +62,7 @@ export const Editor = () => {
             } else {
                 setLoadSceneWhenSpokeIsReady(true)
             }
+            setSceneShouldHaveBeenLoaded(true)
         }
         
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
@@ -74,21 +77,22 @@ export const Editor = () => {
     }, [])
 
     useEffect(() => {
-        // Workaround. Sometimes the event listener that loads the scene when Spoke is ready is not registered in time.
-        const checkIfSpokeIsReady = async () => {
-            if(SpokeAPI.Instance.IsReady && loadSceneWhenSpokeIsReady) {
+        // Workaround. Sometimes the event listener that loads the scene when Spoke is ready is not registered when the event is fired.
+        const checkIfSceneWasLoaded = async () => {
+            if(SpokeAPI.Instance.IsReady && !sceneLoadingWorkaroundApplied && sceneShouldHaveBeenLoaded) {
                 console.warn('Spoke was ready and scene was not loaded. Loading now.')
                 await loadScene()
+                setSceneLoadingWorkaroundApplied(true)
             }
         }
         
-        const timer = setInterval(checkIfSpokeIsReady, 1000)
+        const timer = setInterval(checkIfSceneWasLoaded, 1000)
         
         return () => {
             clearInterval(timer)
         }
         
-    }, [loadSceneWhenSpokeIsReady])
+    }, [sceneLoadingWorkaroundApplied, sceneShouldHaveBeenLoaded])
 
     const handleSaveAndContinue = async () => {
         await api.invoke(api.channels.toMain.saveScene)

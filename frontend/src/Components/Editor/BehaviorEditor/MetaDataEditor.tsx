@@ -40,6 +40,15 @@ export const MetaDataEditor = ({isActive}) => {
     const loadSceneObjects = async () => {
         const objects = await api.invoke(api.channels.toMain.getSceneObjects)
         setSceneObjects(objects)
+
+        const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
+        // Filter out tags that don't have a corresponding uuid property in any object anymore, since the object was deleted
+        Object.keys(tags).forEach((key, index) => {
+          if (!objects.some(object => object.uuid === key)) {
+            delete tags[key]
+          }
+        });
+        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
     }
 
     useEffect(() => {

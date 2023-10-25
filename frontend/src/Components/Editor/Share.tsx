@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button } from '../StyledComponents/Button'
-import { TextInput, toaster } from 'evergreen-ui'
-import { SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
+import { Alert, TextInput, toaster } from 'evergreen-ui'
+import { Center, SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
 
 export const Share = ({ hidden }) => {
     const [projectName, setProjectName] = useState('')
@@ -38,6 +38,10 @@ export const Share = ({ hidden }) => {
             }}
         >
             <h1>Share Your Project</h1>
+            <Center>
+                <Alert intent="warning">Experimental feature.</Alert>
+                <Alert intent="info">Requires a template server to run. The server URL has to be specified in File {'>'} Preferences {'>'} Template Server URL.</Alert>
+            </Center>
             <form onSubmit={handleSubmit}>
                 <SettingEntryLabel htmlFor="projectName">Project Name</SettingEntryLabel>
                 <TextInput placeholder="Project Name" onChange={handleNameChange} required />

@@ -4,6 +4,7 @@ import { channels } from '../API'
 import PreferencesManager from '../Preferences/PreferencesManager'
 import { PackageRegistries } from './DataStructures/PackageRegistries'
 import { Logger } from '../Logger'
+import { compareVersions } from 'compare-versions'
 
 
 export default class UnityPackageManager {
@@ -69,7 +70,7 @@ export default class UnityPackageManager {
 
     public static async getLatestPackageVersion(packageInfo) {
         const latestVersion : string = Object.keys(packageInfo['versions'])
-                                             .sort()
+                                             .sort(compareVersions)
                                              .pop() as string
         return packageInfo['versions'][latestVersion]
     }

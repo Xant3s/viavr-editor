@@ -11,7 +11,18 @@ import { useState } from "react"
 
 export const ListSetting = ({ id, uuid, label, value, listType, onChange, createPrefComponent }) => {
 
-    const [show, setShow] = useState(false)
+    const checkListState = () => {
+        const newValue = [...value]
+        if(newValue.length > 1){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    const [show, setShow] = useState(checkListState)
+
 
     const updateSetting = (listIndex: number, newValue: value_t, uuidOverride: string | undefined = undefined) => {
         // Composites use the uuid from the nested setting, other lists use the uuid from the list setting itself
@@ -25,7 +36,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
         }
     }
 
-    const createListEntry = (listIndex: number, value) => {
+    const createListEntry = (listIndex: number, value) => {        
         switch(listType) {
             case 'string':
                 return <StringSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value}
@@ -44,6 +55,8 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
                                          createPrefComponent={createPrefComponent} />
         }
     }
+
+    
 
     const addListItem = () => {
         let newValue = [...value]

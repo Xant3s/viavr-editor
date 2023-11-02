@@ -6,24 +6,9 @@ import { StringSetting } from './StringSetting'
 import { FloatSetting, IntSetting } from './NumberPreference'
 import { CompositeSetting } from './CompositeSetting'
 import { value_t } from '../../@types/Settings'
-import { useState } from "react"
 
 
 export const ListSetting = ({ id, uuid, label, value, listType, onChange, createPrefComponent }) => {
-
-    const checkListState = () => {
-        const newValue = [...value]
-        if(newValue.length > 1){
-            return true
-        }
-        else{
-            return false
-        }
-    }
-
-    const [show, setShow] = useState(checkListState)
-
-
     const updateSetting = (listIndex: number, newValue: value_t, uuidOverride: string | undefined = undefined) => {
         // Composites use the uuid from the nested setting, other lists use the uuid from the list setting itself
         const id = uuidOverride !== undefined ? uuidOverride : uuid
@@ -56,8 +41,6 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
         }
     }
 
-    
-
     const addListItem = () => {
         let newValue = [...value]
         if(listType === 'composite') {
@@ -70,21 +53,13 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
         } else {
             newValue = [...value, '']
         }
-
-        setShow(true)
         onChange(uuid, newValue)
     }
 
     const removeListItem = (index: number) => {
         const newValue = [...value]
-
         newValue.splice(index, 1)
-
         onChange(uuid, newValue)
-
-        if(newValue.length <= 1){
-            setShow(false)
-        }
     }
 
     function cloneLastListEntry(newValue: any[]) {
@@ -103,9 +78,11 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
                     value.map((item, index) => (
                         <SettingListEntry key={index} style={{ marginBottom: '0', marginTop: '0' }}>
                             <div>{createListEntry(index, item)}</div>
-                            { show ? (<div style={{ display: 'inline-flex', alignItems: 'center' }}>
-                                <RemoveButton onClick={() => removeListItem(index)} />
-                            </div>) : null}
+                            { value.length > 1 && 
+                                <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                                    <RemoveButton onClick={() => removeListItem(index)} />
+                                </div>
+                            }
                         </SettingListEntry>
                     ))
                 }

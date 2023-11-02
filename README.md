@@ -30,6 +30,7 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 
 - Make sure Unity 2021.3.31f1 is installed
   - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
+  - Make sure the IL2CPP scripting backend is installed
 - Make sure your internet connection is working properly
 
 ## Required Ports

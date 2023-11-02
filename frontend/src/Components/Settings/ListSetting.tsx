@@ -21,7 +21,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
         }
     }
 
-    const createListEntry = (listIndex: number, value) => {
+    const createListEntry = (listIndex: number, value) => {        
         switch(listType) {
             case 'string':
                 return <StringSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value}
@@ -78,9 +78,11 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
                     value.map((item, index) => (
                         <SettingListEntry key={index} style={{ marginBottom: '0', marginTop: '0' }}>
                             <div>{createListEntry(index, item)}</div>
-                            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-                                <RemoveButton onClick={() => removeListItem(index)} />
-                            </div>
+                            { value.length > 1 && 
+                                <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                                    <RemoveButton onClick={() => removeListItem(index)} />
+                                </div>
+                            }
                         </SettingListEntry>
                     ))
                 }

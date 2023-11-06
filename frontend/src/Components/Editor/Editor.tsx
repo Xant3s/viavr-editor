@@ -18,8 +18,6 @@ export const Editor = () => {
     const [showModal, setShowModal] = useState(false)
     const [isTutorial, setTutorial] = useState(false)
     const [loadSceneWhenSpokeIsReady, setLoadSceneWhenSpokeIsReady] = useState(false)
-    const [sceneShouldHaveBeenLoaded, setSceneShouldHaveBeenLoaded] = useState(false)
-    const [sceneLoadingWorkaroundApplied, setSceneLoadingWorkaroundApplied] = useState(false)
     let sceneExport : SceneExport | null = null
     
     
@@ -62,7 +60,6 @@ export const Editor = () => {
             } else {
                 setLoadSceneWhenSpokeIsReady(true)
             }
-            setSceneShouldHaveBeenLoaded(true)
         }
         
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)

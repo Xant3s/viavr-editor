@@ -19,6 +19,7 @@ import { exec } from 'child_process'
 import assert = require('assert')
 import { BuildSettingsManager } from './BuildSettingsManager'
 import { Logger } from '../Logger'
+import { ArticyManager } from '../ArticyManager'
 
 
 declare global {
@@ -77,6 +78,7 @@ export default class UnityBuildManager {
         await this.exportPackageConfigurations(outputPath)
         await this.exportBuildSettings(outputPath)
         await this.exportAvatars(outputPath)
+        await ArticyManager.getInstance().exportToUnity(outputPath)
         Logger.get().log('Finished creating Unity project')
         await Logger.get().logDir(outputPath)
         await Logger.get().save(outputPath + '/build_log.txt')

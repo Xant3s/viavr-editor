@@ -4,19 +4,48 @@ import { channels } from './API'
 import ProjectManager from './ProjectManager/ProjectManager'
 import * as child_process from 'child_process'
 import AppUtils from './Utils/AppUtils'
+import path from 'path'
+import { Logger } from './Logger'
 
 export class ArticyManager {
-    private mainWindow : MainWindow
+    private mainWindow! : MainWindow
     private static path = `${AppUtils.getResPath()}plugins/ArticyDraft/ArticyDraft.exe`
-
+    private static instance: ArticyManager
     
-    public constructor(window : MainWindow) {
+    private constructor() {}
+    
+    public static getInstance() {
+        return ArticyManager.instance || (ArticyManager.instance = new ArticyManager())
+    }
+    
+    public init(window: MainWindow) {
         ipcMain.handle(channels.toMain.openArticyEditor, this.openEditorAndDisableWindow.bind(this))
         this.mainWindow = window
     }
     
     public static get articyPath() {
         return ArticyManager.path
+    }
+    
+    public async exportToUnity(outputPath: string) {
+        return new Promise<void>((resolve) => {
+            try{
+                const pwd = ProjectManager.getInstance().presentWorkingDirectory
+                const assetPath = path.join(outputPath, 'Assets')
+                const command = `${ArticyManager.path} -export -path ${pwd} -output ${assetPath}`
+                const proc = child_process.spawn(command, [], {
+                    shell: true,
+                    detached: true,
+                })
+                proc.on('exit', () => {
+                    resolve()
+                })
+            } catch(e) {
+                Logger.get().logVerbose(`Error exporting Articy project: ${e}`)
+                resolve()
+            }
+
+        })
     }
 
     private async openEditorAndDisableWindow(){

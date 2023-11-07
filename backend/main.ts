@@ -27,7 +27,7 @@ const startup = async () => {
     new BuildSystem(mainWindow.window)
     new DialogUtils()
     new Prototypes()
-    new ArticyManager(mainWindow)
+    ArticyManager.getInstance().init(mainWindow)
     new ProjectTags()
     new ShareManager()
     new MeshPreprocessor()

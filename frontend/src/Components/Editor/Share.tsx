@@ -39,7 +39,7 @@ export const Share = ({ hidden }) => {
         >
             <h1>Share Your Project</h1>
             <Center>
-                <Alert intent="warning">Experimental feature. This is not yet finished and might not be in the final version.</Alert>
+                <Alert intent="warning">Experimental feature. This function is not yet finished and will probably still be heavily modified.</Alert>
                 <Alert intent="info">Requires a template server to run. The server URL has to be specified in File {'>'} Preferences {'>'} Template Server URL.</Alert>
             </Center>
             <form onSubmit={handleSubmit}>

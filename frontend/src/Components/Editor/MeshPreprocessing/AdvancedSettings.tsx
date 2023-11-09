@@ -47,7 +47,7 @@ export const AdvancedSettings = ({setSettings}) => {
             <SwitchSetting id='useVertexNormalsSwitch' checked={useVertexNormals} setter={setUseVertexNormals} text='Use vertex normals'
                             tooltip={'This setting results in a faster calculation, but can lead to more artefacts.'}/>
             <SliderSetting id='creaseAngleSlider' value={creaseAngle} setter={setCreaseAngle} text='Crease angle' min={1} max={150}
-                            tooltip={'The "crease_angle" is used to specify when edges are defined as creases. <br />If sharp edges are contained in the model, too large an angle can lead to <br />artifacts. To eliminate these, a smaller angle should be selected here.'}/>
+                            tooltip={'The "crease_angle" is used to specify when edges are defined as creases. <br />A large angle can lead to <br />artifacts, when there are sharp edges in the model. To elminiate these <br />artifacts, a smaller angle should be selected here.'}/>
             <SliderSetting id='normalDeviationSlider' value={normalDeviation} setter={setNormalDeviation} text='Normal deviation' min={1} max={100}
                             tooltip={'This setting specifies how much the result may deviate from the input mesh.<br />A higher value leads to greater errors, too small a value prevents simplification. <br />Normally, this value should be between 5 and 15 degrees.'}/>
         </div>

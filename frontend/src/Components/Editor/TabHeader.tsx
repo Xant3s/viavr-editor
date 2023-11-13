@@ -67,9 +67,9 @@ export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScre
                             <Tooltip id="Share" place="bottom" style={{fontSize: '14px'}} />
                             </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(7)} style={lastClicked === 7 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Finish
-                            <HelpOutlineIcon data-tooltip-id="Finish" data-tooltip-content="Create the experience, select and configure additional features." style={tooltipIconStyle}/>
-                            <Tooltip id="Finish" place="bottom" style={{fontSize: '14px'}} />
+                            Export
+                            <HelpOutlineIcon data-tooltip-id="Export" data-tooltip-content="Create the experience, select and configure additional features." style={tooltipIconStyle}/>
+                            <Tooltip id="Export" place="bottom" style={{fontSize: '14px'}} />
                             </TabButton>
 
                     </>

@@ -17,7 +17,7 @@ export let availableEvents: Event[] = []
 export const EventsEditor = ({hidden}) => {
     const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.name, value: event.name })))
 
-    const [events, setEvents] = useState<Event[]>([]);
+    const [events, setEvents] = useState<Event[]>([])
     const [event, setEvent] = useState<string>('')
     const [eventButtonText, setEventButtonText] = useState<string>('')
 
@@ -71,10 +71,12 @@ function setEventAndText(eventName) {
 
 const addEvent = async (type) => {
     const e = availableEvents.find(item => item.name === type)
+
     if (e !== undefined) {
-        e.actionSequence = []
-        e.id = Date.now()
-        setEvents([...events, e]);
+        const name = type
+        const param = e.parameters.map(x => Object.assign({}, x)) 
+        
+        setEvents([...events, { name, id: Date.now(), parameters: param, actionSequence: []}]);   
         await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)
     }
 };

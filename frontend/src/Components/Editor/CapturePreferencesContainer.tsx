@@ -104,7 +104,7 @@ export const CapturePreferencesContainer = ({setPage, setPreferences}) => {
                     <br />
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <PreferenceLabel htmlFor="keyword">Keyword</PreferenceLabel>
-                        <TextInput placeholder="Keyword" onChange={e => setKeyword(e.target.value)} required />
+                        <TextInput placeholder="Keyword" onChange={e => setKeyword(e.target.value)}/>
                     </div>
                     {' '}
                     <br />

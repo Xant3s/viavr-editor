@@ -11,6 +11,11 @@ export class Event {
     actionSequence: [] = []
 }
 
+export class Meta {
+    name = ''
+    tags: [] = []
+}
+
 export class Parameter {
     name = ''
     type = ''

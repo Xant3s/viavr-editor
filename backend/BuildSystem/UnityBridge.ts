@@ -11,6 +11,8 @@ export default class UnityBridge {
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.Init', projectPath)
             Logger.get().log('UnityBridge.SetupScene')
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.SetupScene', projectPath)
+            Logger.get().log('Articy import')
+            await this.importArticy(projectPath)
             Logger.get().log('UnityBridge.OnConfigureScene')
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnConfigureScene', projectPath)
             Logger.get().log('UnityBridge.OnPostConfiguration')
@@ -34,6 +36,11 @@ export default class UnityBridge {
         } catch (err) {
             Logger.get().logVerbose(err as string)
         }
+    }
+
+    public async importArticy(projectPath: string) {
+        const args = ['-articyQuit', '-batchmode', '-projectPath', projectPath, '-articyImport']
+        await this.runUnity(args)
     }
 
     public async openProject(projectPath: string) {

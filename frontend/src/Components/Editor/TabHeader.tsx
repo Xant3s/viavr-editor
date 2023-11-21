@@ -32,7 +32,14 @@ export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScre
     }, [])
 
     return (
-        <div hidden={hidden} style={{ textAlign: 'left', backgroundColor: '#1A1A1A' }}>
+        <div hidden={hidden} style={{
+            textAlign: 'left', 
+            backgroundColor: '#1A1A1A',
+            position:'fixed',
+            width:'100%',
+            top: '0px',
+            zIndex: 2,
+             }}>
             <div style={{ paddingTop: '5px', paddingRight: '0px', paddingLeft: '0px', display: 'inline-block' }}>
                 {isInTutorialMode ? <TabButton disabled={false} onClick={returnToWelcomeScreen}>Exit Tutorial</TabButton>
                     : <>

@@ -20,7 +20,7 @@ const MetaDataComponent = (props) => {
                     Tags: {meta.tags.map((tag, index) => (
                         <div key={index}>
                             <p>
-                                {tag["name"]}
+                                {tag}
                             </p>
                 </div>
                 ))}

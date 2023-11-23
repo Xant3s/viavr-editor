@@ -15,6 +15,7 @@ export const MetaDataEditor = ({isActive}) => {
     // maybe not needed:
     const [meta, setMeta] = useState<string>('')
 
+    let objectName
 
     const onUpdateSelectedObject = async value => {
         const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
@@ -57,15 +58,26 @@ export const MetaDataEditor = ({isActive}) => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
     }
 
-    const addMeta = async (object, tags) => {
+    const addMeta = async (tags) => {
         // Add Meta Data a la Add Event Behvaior
         // --> Object Name at top
         // --> list of tags below
 
-        const name = object.name
-        setMetas([...metas, {name, tags: tags}])
-        console.log(metas)
-        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
+        let objectName
+        for(let i = 0; i < sceneObjects.length; i++){
+            if(selectedObject === sceneObjects[i].uuid){
+                objectName = sceneObjects[i].name
+            }
+        }
+        
+        for(let i = 0; i < metas.length; i++){
+            if(objectName === metas[i].name){
+                return
+            }
+        }
+
+        setMetas([...metas, {name: objectName, tags: tags}]) 
+        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', selectedTags)
 
         // --> check if Object already added
         // --> check if tag already added
@@ -75,7 +87,6 @@ export const MetaDataEditor = ({isActive}) => {
         // --> remove either whole object or just tag
         // --> depending on which cross was clicked 
         setMetas(metas.filter(meta => meta["name"] !== name));
-        console.log("Execute Order 66")
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', metas)
     }
 
@@ -107,10 +118,11 @@ export const MetaDataEditor = ({isActive}) => {
                 <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeMeta(meta["name"])} />
             </Pane>
             ))}
-            <Select style={{ backgroundColor: "white" }} value={selectedObject.name} onChange={e => onUpdateSelectedObject(e.target.value)} required>
+            <Select style={{ backgroundColor: "white" }} value={selectedObject} onChange={e => onUpdateSelectedObject(e.target.value)} required>
                 {sceneObjects.map((object, index) => (
                     <option key={index} value={object.uuid}>
                         {object.name}
+                        
                     </option>
                 ))}
             </Select>
@@ -122,7 +134,6 @@ export const MetaDataEditor = ({isActive}) => {
                 selected={selectedTags}
                 onSelect={async item => {
                     await onUpdateSelectedTags([...selectedTags, item.value])
-                    console.log(selectedTags)
                 }}
                 onDeselect={async item => {
                     const deselectedItemIndex = selectedTags.indexOf(item.value)
@@ -132,7 +143,7 @@ export const MetaDataEditor = ({isActive}) => {
             >
                 <Button>{selectButtonText || 'Select tags...'}</Button>
             </SelectMenu>
-            <Button onClick={() => addMeta(selectedObject, selectedTags)}> Add Meta </Button>
+            <Button onClick={() => addMeta(selectedTags)}> Add Meta </Button>
         </div>
     )} />
 }

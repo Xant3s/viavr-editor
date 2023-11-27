@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { TextInput } from 'evergreen-ui';
+import { TextInput, IconButton, CrossIcon } from 'evergreen-ui';
 import { Meta } from '../../../@types/Behaviors'
 
 const MetaDataComponent = (props) => {
@@ -11,6 +11,7 @@ const MetaDataComponent = (props) => {
         meta.tags = tags
         props.callback(meta)
     }
+
 
     return (
         <SettingAccordion

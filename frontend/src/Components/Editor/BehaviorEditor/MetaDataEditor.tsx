@@ -23,7 +23,7 @@ export const MetaDataEditor = ({isActive}) => {
         setSelectedObject(value)
         setSelectedTags(objectTags)
         setSelectButtonText(calculateSelectButtonText(objectTags))
-        setAvailableTags(options)
+        calculateAvailableTags(value)
     }
 
     const onUpdateSelectedTags = async (selectedItems) => {
@@ -43,6 +43,29 @@ export const MetaDataEditor = ({isActive}) => {
             selectedNames = `${selectedItemsLength.toString()} selected...`
         }
         return selectedNames
+    }
+
+    const calculateAvailableTags = (object) => {
+        //let objName
+
+        const objName = sceneObjects.find(sceneObj => object === sceneObj.uuid).name
+        console.log(objName)
+
+        const obj = metas.find(meta => objName === meta.name)
+        console.log(obj)
+
+        if(obj !== undefined){
+            const unavailableTags : any = obj.tags
+            console.log(unavailableTags)
+            const calculatedAvailableTags = options.filter(tag => !unavailableTags.includes(tag.value))
+            console.log(calculatedAvailableTags)
+            setAvailableTags(calculatedAvailableTags)
+                
+        }
+        else{
+            setAvailableTags(options)
+        }
+        
     }
 
     const loadSceneObjects = async () => {
@@ -85,7 +108,6 @@ export const MetaDataEditor = ({isActive}) => {
         
         
         const updatedTags = availableTags.filter(tag => !tags.includes(tag.value))
-        console.log(updatedTags)
         setAvailableTags(updatedTags)
 
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
@@ -96,6 +118,7 @@ export const MetaDataEditor = ({isActive}) => {
     const removeMeta = async (name) => {
         // --> remove just tag
         setMetas(metas.filter(meta => meta["name"] !== name));
+        setAvailableTags(options)
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', metas)
     }
 

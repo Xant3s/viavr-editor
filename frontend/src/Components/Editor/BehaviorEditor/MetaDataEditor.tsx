@@ -13,9 +13,6 @@ export const MetaDataEditor = ({isActive}) => {
     const [selectedTags, setSelectedTags] = useState<any[]>([])
 
     const [metas, setMetas] = useState<Meta[]>([])
-    // maybe not needed:
-    const [meta, setMeta] = useState<string>('')
-
 
     const onUpdateSelectedObject = async value => {
         const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
@@ -45,22 +42,18 @@ export const MetaDataEditor = ({isActive}) => {
         return selectedNames
     }
 
-    const calculateAvailableTags = (object) => {
+    const calculateAvailableTags = async (object) => {
         //let objName
 
         const objName = sceneObjects.find(sceneObj => object === sceneObj.uuid).name
-        console.log(objName)
 
         const obj = metas.find(meta => objName === meta.name)
-        console.log(obj)
 
         if(obj !== undefined){
             const unavailableTags : any = obj.tags
-            console.log(unavailableTags)
             const calculatedAvailableTags = options.filter(tag => !unavailableTags.includes(tag.value))
-            console.log(calculatedAvailableTags)
             setAvailableTags(calculatedAvailableTags)
-                
+            await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', unavailableTags)
         }
         else{
             setAvailableTags(options)
@@ -89,21 +82,29 @@ export const MetaDataEditor = ({isActive}) => {
             return
         }
 
+        //default object
         let objectName = sceneObjects[0].name
-
-        for(let i = 0; i < sceneObjects.length; i++){
-            if(selectedObject === sceneObjects[i].uuid){
-                objectName = sceneObjects[i].name
-            }
+        if(!(JSON.stringify(selectedObject) === '{}')){
+            objectName = sceneObjects.find(sceneObj => selectedObject === sceneObj.uuid).name
         }
         
-        for(let i = 0; i < metas.length; i++){
-            if(objectName === metas[i].name){
-                return
-            }
+        console.log(objectName)
+
+        const object = metas.find(metaObj => objectName === metaObj.name)
+
+        if(object !== undefined) {
+            const newTags : any = [...object.tags, ...tags]
+            const newMeta : Meta = {name: objectName, tags: newTags}
+
+            //const newMetas = [...metas.filter(meta => meta["name"] !== objectName)]
+            const foo = [...metas.filter(meta => meta["name"] !== objectName), newMeta]
+            setMetas(foo)
+            console.log(foo)
+        }
+        else{
+            setMetas([...metas, {name: objectName, tags: tags}]) 
         }
 
-        setMetas([...metas, {name: objectName, tags: tags}]) 
         onUpdateSelectedTags([])
         
         
@@ -111,8 +112,6 @@ export const MetaDataEditor = ({isActive}) => {
         setAvailableTags(updatedTags)
 
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
-
-        // --> check if tag already added
     }
 
     const removeMeta = async (name) => {

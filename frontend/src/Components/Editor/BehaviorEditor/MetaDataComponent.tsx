@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { TextInput, IconButton, CrossIcon } from 'evergreen-ui';
 import { Meta } from '../../../@types/Behaviors'
 
 const MetaDataComponent = (props) => {
@@ -12,13 +11,17 @@ const MetaDataComponent = (props) => {
         props.callback(meta)
     }
 
+    useEffect(() => {
+        console.log(props.meta)
+    }, [props])
+
 
     return (
         <SettingAccordion
             summary={props.meta["name"]}    
             details={
                 <div>
-                    Tags: {meta.tags.map((tag, index) => (
+                    Tags: {props.meta.tags.map((tag, index) => (
                         <div key={index}>
                             <p>
                                 {tag}

@@ -1,19 +1,9 @@
 import { useEffect, useState } from 'react';
 import { SettingAccordion } from '../../Settings/SettingAccordion'
+import { IconButton, CrossIcon } from 'evergreen-ui'
 import { Meta } from '../../../@types/Behaviors'
 
 const MetaDataComponent = (props) => {
-
-    const [meta, setMeta] = useState<Meta>(props.meta)
-
-    function updateTags(tags) {
-        meta.tags = tags
-        props.callback(meta)
-    }
-
-    useEffect(() => {
-        console.log(props.meta)
-    }, [props])
 
 
     return (
@@ -25,6 +15,7 @@ const MetaDataComponent = (props) => {
                         <div key={index}>
                             <p>
                                 {tag}
+                                <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => props.removeTagFunction(props.meta, tag)} />
                             </p>
                 </div>
                 ))}

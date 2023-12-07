@@ -87,8 +87,6 @@ export const MetaDataEditor = ({isActive}) => {
         if(!(JSON.stringify(selectedObject) === '{}')){
             objectName = sceneObjects.find(sceneObj => selectedObject === sceneObj.uuid).name
         }
-        
-        console.log(objectName)
 
         const object = metas.find(metaObj => objectName === metaObj.name)
 
@@ -96,10 +94,8 @@ export const MetaDataEditor = ({isActive}) => {
             const newTags : any = [...object.tags, ...tags]
             const newMeta : Meta = {name: objectName, tags: newTags}
 
-            //const newMetas = [...metas.filter(meta => meta["name"] !== objectName)]
-            const foo = [...metas.filter(meta => meta["name"] !== objectName), newMeta]
-            setMetas(foo)
-            console.log(foo)
+            const updatedMetas = [...metas.filter(meta => meta["name"] !== objectName), newMeta]
+            setMetas(updatedMetas)
         }
         else{
             setMetas([...metas, {name: objectName, tags: tags}]) 
@@ -115,10 +111,27 @@ export const MetaDataEditor = ({isActive}) => {
     }
 
     const removeMeta = async (name) => {
-        // --> remove just tag
         setMetas(metas.filter(meta => meta["name"] !== name));
         setAvailableTags(options)
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', metas)
+    }
+
+    const removeTag = async (object : Meta, tag) => {
+        if(object.tags.length <= 1){
+            removeMeta(object.name)
+            return
+        }
+        
+        const updatedTags : any = [...object.tags.filter(tagName => tagName !== tag)]
+        const newMeta : Meta = {name: object.name, tags : updatedTags}
+        const updatedMetas = [...metas.filter(meta => meta["name"] !== object.name), newMeta]
+
+        setMetas(updatedMetas)
+
+        const updatedAvailableTags = [...availableTags, {label: tag, value: tag}]
+        setAvailableTags(updatedAvailableTags)
+
+        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', object.tags)
     }
 
     async function updateMeta(meta){
@@ -145,7 +158,7 @@ export const MetaDataEditor = ({isActive}) => {
                 width="100%"
                 marginBottom={8}
             >
-                <MetaDataComponent meta={meta} callback={updateMeta} />
+                <MetaDataComponent meta={meta} callback={updateMeta} removeTagFunction = {removeTag} />
                 <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeMeta(meta["name"])} />
             </Pane>
             ))}

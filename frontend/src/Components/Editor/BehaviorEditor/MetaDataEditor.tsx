@@ -2,6 +2,7 @@ import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Select, SelectMenu, IconButton, CrossIcon, Pane } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
 import { Meta } from '../../../@types/Behaviors'
+import { FormControl, FormHelperText } from '@mui/material'
 import MetaDataComponent from './MetaDataComponent'
 
 export const MetaDataEditor = ({isActive}) => {
@@ -11,6 +12,7 @@ export const MetaDataEditor = ({isActive}) => {
     const [selectedObject, setSelectedObject] = useState<any>({})
     const [selectButtonText, setSelectButtonText] = useState<string>('')
     const [selectedTags, setSelectedTags] = useState<any[]>([])
+    const [triedAddingMeta, setTriedAddingMeta] = useState<boolean>()
 
     const [metas, setMetas] = useState<Meta[]>([])
 
@@ -43,8 +45,7 @@ export const MetaDataEditor = ({isActive}) => {
     }
 
     const calculateAvailableTags = async (object) => {
-        //let objName
-
+        
         const objName = sceneObjects.find(sceneObj => object === sceneObj.uuid).name
 
         const obj = metas.find(meta => objName === meta.name)
@@ -76,11 +77,6 @@ export const MetaDataEditor = ({isActive}) => {
     }
 
     const addMeta = async (tags) => {
-       
-        if(tags.length === 0){
-            console.log("No Tags selected")
-            return
-        }
 
         //default object
         let objectName = sceneObjects[0].name
@@ -147,7 +143,9 @@ export const MetaDataEditor = ({isActive}) => {
         if(isActive) loadSceneObjects()
     }, [isActive])
 
-    return <SettingAccordion summary={'Meta Data'} details={(
+    return <SettingAccordion 
+    summary={'Meta Data'} 
+    details={(
         <div>
             {metas.map((meta, index) => (
                 <Pane
@@ -158,8 +156,8 @@ export const MetaDataEditor = ({isActive}) => {
                 width="100%"
                 marginBottom={8}
             >
-                <MetaDataComponent meta={meta} callback={updateMeta} removeTagFunction = {removeTag} />
-                <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeMeta(meta["name"])} />
+                <MetaDataComponent meta={meta} callback={updateMeta} OnClose={() => removeMeta(meta["name"])} removeTagFunction = {removeTag} />
+                {/*<IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeMeta(meta["name"])} />*/}
             </Pane>
             ))}
             <Select style={{ backgroundColor: "white" }} value={selectedObject} onChange={e => onUpdateSelectedObject(e.target.value)} required>
@@ -170,7 +168,7 @@ export const MetaDataEditor = ({isActive}) => {
                     </option>
                 ))}
             </Select>
-
+            <FormControl>
             <SelectMenu
                 isMultiSelect
                 title="Select tags"
@@ -187,7 +185,27 @@ export const MetaDataEditor = ({isActive}) => {
             >
                 <Button>{selectButtonText || 'Select tags...'}</Button>
             </SelectMenu>
-            <Button onClick={() => addMeta(selectedTags)}> Add Meta </Button>
+            {triedAddingMeta && (selectedTags.length === 0) && <FormHelperText style={{color: 'red'}}>You have to select a tag to add!</FormHelperText>}
+            </FormControl>
+            <Button 
+                style={{marginLeft: '5px',
+                background: (selectedTags.length > 0) ? '#006EFF' : '#afb2ba',
+                color: (selectedTags.length > 0) ? 'white' : 'gray',
+                cursor: (selectedTags.length > 0) ? 'pointer' : 'auto',
+                border: (selectedTags.length > 0) ? '#006EFF' : 'gray',}}
+                onClick={() => {
+                    if(selectedTags.length > 0){
+                        console.log("tags selected")
+                        addMeta(selectedTags);
+                        setTriedAddingMeta(false);
+                    }
+                    else{
+                        console.log("no tags selected")
+                        setTriedAddingMeta(true);
+                    }
+                }}> 
+                Add Meta 
+            </Button>
         </div>
     )} />
 }

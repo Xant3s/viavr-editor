@@ -14,6 +14,7 @@ export class Event {
 export class Meta {
     name = ''
     tags: [] = []
+    index = 0
 }
 
 export class Parameter {

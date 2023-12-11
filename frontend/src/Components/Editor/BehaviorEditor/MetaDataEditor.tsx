@@ -86,15 +86,18 @@ export const MetaDataEditor = ({isActive}) => {
 
         const object = metas.find(metaObj => objectName === metaObj.name)
 
+        // object in list
         if(object !== undefined) {
             const newTags : any = [...object.tags, ...tags]
-            const newMeta : Meta = {name: objectName, tags: newTags}
+            const newMeta : Meta = {name: objectName, tags: newTags, index: object.index}
 
             const updatedMetas = [...metas.filter(meta => meta["name"] !== objectName), newMeta]
-            setMetas(updatedMetas)
+            const sortedMetas  = [...updatedMetas.sort((m1, m2) => m1.index - m2.index)]
+
+            setMetas(sortedMetas)
         }
         else{
-            setMetas([...metas, {name: objectName, tags: tags}]) 
+            setMetas([...metas, {name: objectName, tags: tags, index: metas.length}]) 
         }
 
         onUpdateSelectedTags([])
@@ -119,10 +122,12 @@ export const MetaDataEditor = ({isActive}) => {
         }
         
         const updatedTags : any = [...object.tags.filter(tagName => tagName !== tag)]
-        const newMeta : Meta = {name: object.name, tags : updatedTags}
-        const updatedMetas = [...metas.filter(meta => meta["name"] !== object.name), newMeta]
+        const newMeta : Meta = {name: object.name, tags : updatedTags, index: object.index}
 
-        setMetas(updatedMetas)
+        const updatedMetas = [...metas.filter(meta => meta["name"] !== object.name), newMeta]
+        const sortedMetas  = [...updatedMetas.sort((m1, m2) => m1.index - m2.index)]
+
+        setMetas(sortedMetas)
 
         const updatedAvailableTags = [...availableTags, {label: tag, value: tag}]
         setAvailableTags(updatedAvailableTags)
@@ -195,12 +200,10 @@ export const MetaDataEditor = ({isActive}) => {
                 border: (selectedTags.length > 0) ? '#006EFF' : 'gray',}}
                 onClick={() => {
                     if(selectedTags.length > 0){
-                        console.log("tags selected")
                         addMeta(selectedTags);
                         setTriedAddingMeta(false);
                     }
                     else{
-                        console.log("no tags selected")
                         setTriedAddingMeta(true);
                     }
                 }}> 

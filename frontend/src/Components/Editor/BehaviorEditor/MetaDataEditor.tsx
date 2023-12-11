@@ -79,32 +79,31 @@ export const MetaDataEditor = ({isActive}) => {
     const addMeta = async (tags) => {
 
         //default object
-        let objectName = sceneObjects[0].name
+        let metaObjName = sceneObjects[0].name
         if(!(JSON.stringify(selectedObject) === '{}')){
-            objectName = sceneObjects.find(sceneObj => selectedObject === sceneObj.uuid).name
+            metaObjName = sceneObjects.find(sceneObj => selectedObject === sceneObj.uuid).name
         }
 
-        const object = metas.find(metaObj => objectName === metaObj.name)
+        const object = metas.find(metaObj => metaObjName === metaObj.name)
 
-        // object in list
         if(object !== undefined) {
-            const newTags : any = [...object.tags, ...tags]
-            const newMeta : Meta = {name: objectName, tags: newTags, index: object.index}
+            const updatedObjTags : any = [...object.tags, ...tags]
+            const newMetaObj : Meta = {name: metaObjName, tags: updatedObjTags, index: object.index}
 
-            const updatedMetas = [...metas.filter(meta => meta["name"] !== objectName), newMeta]
+            const updatedMetas = [...metas.filter(meta => meta["name"] !== metaObjName), newMetaObj]
             const sortedMetas  = [...updatedMetas.sort((m1, m2) => m1.index - m2.index)]
 
             setMetas(sortedMetas)
         }
         else{
-            setMetas([...metas, {name: objectName, tags: tags, index: metas.length}]) 
+            setMetas([...metas, {name: metaObjName, tags: tags, index: metas.length}]) 
         }
 
         onUpdateSelectedTags([])
         
         
-        const updatedTags = availableTags.filter(tag => !tags.includes(tag.value))
-        setAvailableTags(updatedTags)
+        const updatedAvailableTags = availableTags.filter(tag => !tags.includes(tag.value))
+        setAvailableTags(updatedAvailableTags)
 
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
     }
@@ -115,16 +114,16 @@ export const MetaDataEditor = ({isActive}) => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', metas)
     }
 
-    const removeTag = async (object : Meta, tag) => {
-        if(object.tags.length <= 1){
-            removeMeta(object.name)
+    const removeTag = async (metaObj : Meta, tag) => {
+        if(metaObj.tags.length <= 1){
+            removeMeta(metaObj.name)
             return
         }
         
-        const updatedTags : any = [...object.tags.filter(tagName => tagName !== tag)]
-        const newMeta : Meta = {name: object.name, tags : updatedTags, index: object.index}
+        const updatedTags : any = [...metaObj.tags.filter(tagName => tagName !== tag)]
+        const newMetaObj : Meta = {name: metaObj.name, tags : updatedTags, index: metaObj.index}
 
-        const updatedMetas = [...metas.filter(meta => meta["name"] !== object.name), newMeta]
+        const updatedMetas = [...metas.filter(meta => meta["name"] !== metaObj.name), newMetaObj]
         const sortedMetas  = [...updatedMetas.sort((m1, m2) => m1.index - m2.index)]
 
         setMetas(sortedMetas)
@@ -132,12 +131,12 @@ export const MetaDataEditor = ({isActive}) => {
         const updatedAvailableTags = [...availableTags, {label: tag, value: tag}]
         setAvailableTags(updatedAvailableTags)
 
-        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', object.tags)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', metaObj.tags)
     }
 
-    async function updateMeta(meta){
+    async function updateMeta(metaObj){
         const updatedMetas = metas.map((obj) => {
-            return obj.name === meta.name ? meta : obj;
+            return obj.name === metaObj.name ? metaObj : obj;
             })
 
         setMetas(updatedMetas)
@@ -162,7 +161,6 @@ export const MetaDataEditor = ({isActive}) => {
                 marginBottom={8}
             >
                 <MetaDataComponent meta={meta} callback={updateMeta} OnClose={() => removeMeta(meta["name"])} removeTagFunction = {removeTag} />
-                {/*<IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeMeta(meta["name"])} />*/}
             </Pane>
             ))}
             <Select style={{ backgroundColor: "white" }} value={selectedObject} onChange={e => onUpdateSelectedObject(e.target.value)} required>

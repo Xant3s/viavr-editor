@@ -15,6 +15,7 @@ import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 import { InfoSpinnerBox } from './InfoSpinnerBox'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { ModalWindow } from '../Utils/UI'
+import { UISettings } from './UISettings'
 
 
 type Scene = {
@@ -164,6 +165,7 @@ export const BuildDialog = ({hidden}) => {
                         }
                     />
                     <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
+                    <SettingAccordion summary={'Variable UI'} details={<UISettings hidden={hidden} />} />
                     {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
                     <br />
                     <div hidden={isBuilding}>

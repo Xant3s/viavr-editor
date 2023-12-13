@@ -205,7 +205,7 @@ export const MetaDataEditor = ({isActive}) => {
                         setTriedAddingMeta(true);
                     }
                 }}> 
-                Add Meta 
+                Add Tags 
             </Button>
         </div>
     )} />

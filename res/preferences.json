@@ -1,12 +1,12 @@
 {
   "unityPath": {
-    "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.31f1\\Editor\\Unity.exe",
+    "value": "E:\\Unity Installs\\2021.3.31f1\\Editor\\Unity.exe",
     "label": "Path to Unity executable",
     "uuid": "5565213a-fd3a-412d-ae8f-cf1f446fcfe9",
     "kind": "path"
   },
   "picoSdkPath": {
-    "value": "C:\\dev\\SDKs\\picoxr\\package.json",
+    "value": "C:\\Users\\Dave\\Downloads\\picoxr-master\\picoxr-master\\package.json",
     "label": "Path to unzipped Pico SDK",
     "uuid": "5585213a-fd3a-412d-ae8f-cf1f446fcfe9",
     "kind": "path"

@@ -14,8 +14,8 @@ const IfElseConditionComponent = (props) => {
     const [ifElse, setIfElse] = useState<IfElse>(new IfElse())
 
     async function loadVariables() {
-        const result: string[][] = await api.invoke(api.channels.toMain.getBuildSetting, 'variables');
-        const updatedVariables = result.map(obj => { return obj[0] })
+        const result = await api.invoke(api.channels.toMain.getBuildSetting, 'variables');
+        const updatedVariables = result.map(obj => { return obj["name"] })
         setVariables(updatedVariables.map(label => ({ label, value: label })))
     }
     function setVariable(variable) {

@@ -16,7 +16,15 @@ export const VariableEditor = () => {
     }
 
     const updateBuildSettings = async () => {
-        await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variables)
+        const variableObjects = variables.map(([name, type, value], index) => {
+            const obj = {
+                "name": name,
+                "type": type,
+                "value": value
+            }
+            return obj
+        })
+        await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variableObjects)
     }
 
     return (

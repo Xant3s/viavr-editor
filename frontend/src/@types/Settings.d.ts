@@ -7,6 +7,7 @@ export type Setting_t =
     | DropdownSetting
     | CompositeSetting
     | ListSetting
+    | VariableDropdownSetting
 export type value_t = string | string[] | number[] | { [key: string]: Setting_t } | { [key: string]: Setting_t }[]
 export type listType_t = 'string' | 'int' | 'float' | 'composite'
 export const StringSetting_typeName = 'string'
@@ -17,6 +18,7 @@ export const PathSetting_typeName = 'path'
 export const DropdownSetting_typeName = 'dropdown'
 export const CompositeSetting_typeName = 'composite'
 export const ListSetting_typeName = 'list'
+export const VariableDropdownSetting_typeName = 'variable'
 
 interface Setting {
     label: string
@@ -67,4 +69,10 @@ export interface ListSetting extends Setting {
     value: string[] | number[] | { [key: string]: Setting }[]
     kind: 'list'
     listType: 'string' | 'int' | 'float' | 'composite'
+}
+
+export interface VariableDropdownSetting extends Setting {
+    value: string
+    options: string[]
+    kind: 'variable'
 }

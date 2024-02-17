@@ -8,6 +8,7 @@ import { BoolSetting } from './BoolSetting'
 import { FloatSetting, IntSetting } from './NumberPreference'
 import { CompositeSetting } from './CompositeSetting'
 import { Setting_t, value_t } from '../../@types/Settings'
+import { VariableDropDownSetting } from './VariableDropDownSetting'
 
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -57,6 +58,9 @@ export const Setting = ({
                 return <ListSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
                                     listType={setting.listType} onChange={onChange}
                                     createPrefComponent={createSetting} />
+            case 'variable':
+                return <VariableDropDownSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label}
+                                    value={value} onChange={onChange} />
         }
     }
 

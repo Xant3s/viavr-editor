@@ -23,7 +23,18 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     const [avatarStatusList, setAvatarStatusList] = React.useState<Map<string, Status>>(new Map<string, Status>())  // token -> status
     const statusUpdateInterval = 1000
 
-    
+    const tableRowStyle = {
+        backgroundColor: '#3A4048',
+        color: '#4D535B',
+        borderColor:'#6C737A' 
+    };
+    const tableHeaderStyle ={
+        backgroundColor: '#6C737A',
+        color:'white',
+        borderColor:'#6C737A',
+    };
+
+
     const changeAvatarName = (avatarToken: string, newName: string) => {
         return updateAvatar(avatarToken, (avatar: AvatarInfo) => {
             avatar.name = newName
@@ -113,29 +124,37 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         return status
     }
 
-    return <Table>
-        <Table.Head>
+    return <Table style={{borderColor:'#6C737A'}}>
+        <Table.Head style={tableHeaderStyle}>
             <Table.TextHeaderCell>Name</Table.TextHeaderCell>
             <Table.TextHeaderCell>Placeholder Object</Table.TextHeaderCell>
             <Table.TextHeaderCell>Status</Table.TextHeaderCell>
             <Table.TextHeaderCell>Action</Table.TextHeaderCell>
             <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
         </Table.Head>
-        <Table.Body height={240} minWidth={'600px'}>
+        {avatars.length===0 && 
+                        <div>
+                            <p style={{color:'#BCBEC1'}}> 
+                                Add an avatar using the Add Avatar Button.<br></br>
+                            </p>
+                        </div>
+                        }
+        <Table.Body minHeight={240} maxHeight={320} minWidth={'600px'}>
             {avatars.map(avatar => (
-                <Table.Row key={avatar.token}>
+                <Table.Row key={avatar.token} style={tableRowStyle}>
                     <Table.TextCell>
                         <TextInput name='avatar-name-input'
-                                   placeholder='Avatar name...'
+                                   placeholder='Please enter the avatars name'
                                    value={avatar.name}
-                                   style={{ backgroundColor: avatar.name !== '' ? 'initial' : 'red' }}
+                                   style={{ backgroundColor:'white',
+                                            width:'90%' }}
                                    onChange={(e) => changeAvatarName(avatar.token, e.target.value)} required />
                     </Table.TextCell>
                     <Table.TextCell>
                         <Select id="sceneObject" value={avatar.sceneObject} style={{
-                            minWidth: '100px',
+                            width:'80%',
                             height: '30px',
-                            backgroundColor: avatar.sceneObject !== '' ? 'initial' : 'red'
+                            backgroundColor: avatar.sceneObject !== '' ? 'white' : 'red'
                         }}
                                 onChange={e => assignSceneObject(avatar.token, e.target.value)} required>
                             {sceneObjects.map((object, index) => (
@@ -145,7 +164,11 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                             ))}
                         </Select>
                     </Table.TextCell>
-                    <Table.TextCell>{statusToText(avatarStatusList.get(avatar.token) || 'waitingforupload')}</Table.TextCell>
+                    <Table.TextCell>
+                        <p style={{color:'white'}}>
+                            {statusToText(avatarStatusList.get(avatar.token) || 'waitingforupload')}
+                        </p>
+                    </Table.TextCell>
                     <Table.TextCell>
                         {getAction(avatar)}
                     </Table.TextCell>
@@ -158,6 +181,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                                 appearance='minimal'
                                 intent='danger'
                                 onClick={async () => setShowDeletePrompt(true)}
+                                style={{color:'white', backgroundColor:'#3A4048'}}
                         >
                             Delete
                         </Button>

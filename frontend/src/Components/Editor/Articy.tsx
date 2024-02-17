@@ -15,6 +15,17 @@ export const Articy = ({ hidden }) => {
     const [dialogs, setDialogs] = useState<Dialog[]>([])
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
 
+    const tableRowStyle = {
+        backgroundColor: '#3A4048',
+        color: '#4D535B',
+        borderColor:'#6C737A' 
+    };
+    const tableHeaderStyle ={
+        backgroundColor: '#6C737A',
+        color:'white',
+        borderColor:'#6C737A',
+    };
+
     useEffect(() => {
         api.on(api.channels.fromMain.externalWindowOpened, () => setDisabled(true))
         api.on(api.channels.fromMain.externalWindowClosed, () => setDisabled(false))
@@ -80,17 +91,19 @@ export const Articy = ({ hidden }) => {
         color: 'white',
     }}>
         <h1>Articy</h1>
-        <Button disabled={isDisabled} appearance='primary' onClick={() => openArticyEditor()}>Open Articy Editor</Button>
-
-        <Table style={{marginTop: '20px'}}>
-            <Table.Head>
+        <Table style={{marginBottom: '20px', borderColor:'#6C737A'}}>
+            <Table.Head style={tableHeaderStyle}>
                 <Table.TextHeaderCell>Avatar</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Dialog</Table.TextHeaderCell>
             </Table.Head>
-            <Table.Body height={240} minWidth={'600px'}>
+            <Table.Body minHeight={240} maxHeight={320} minWidth={'600px'}>
                 {avatars.map((avatar, index) => (
-                    <Table.Row key={index}>
-                        <Table.TextCell>{avatar.name}</Table.TextCell>
+                    <Table.Row key={index} style={tableRowStyle}>
+                        <Table.TextCell>
+                            <p style={{color:'white'}}>
+                                <b>{avatar.name}</b>
+                            </p>
+                        </Table.TextCell>
                         <Table.TextCell>
                             <Select id="avatar" value={avatar.dialogueId} style={{
                                 minWidth: '100px',
@@ -109,5 +122,8 @@ export const Articy = ({ hidden }) => {
                 ))}
             </Table.Body>
         </Table>
+
+        <Button disabled={isDisabled} appearance='primary' onClick={() => openArticyEditor()}>Open Articy Editor</Button>
+
     </div>
 }

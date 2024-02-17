@@ -1,6 +1,8 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Select, SelectMenu, IconButton, CrossIcon, Pane } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import {Tooltip} from 'react-tooltip'
 import { Meta } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material'
 import MetaDataComponent from './MetaDataComponent'
@@ -148,8 +150,14 @@ export const MetaDataEditor = ({isActive}) => {
     }, [isActive])
 
     return <SettingAccordion 
-    summary={'Meta Data'} 
-    details={(
+        summary={
+            <div style={{display:'flex', alignItems:'center'}}>
+            <p style={{margin:'0px', padding:'0px'}}>Meta Data</p>
+            <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Objects can be tagged so that other parts of VIA-VR can work with them. Packages can look for specific tags to use the corresponding objects."} style={{ marginLeft: 5, fontSize: 14 }}/>
+            <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
+            </div>
+        } 
+        details={(
         <div>
             {metas.map((meta, index) => (
                 <Pane

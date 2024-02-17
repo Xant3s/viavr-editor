@@ -4,9 +4,8 @@ import { useCallback, useEffect, useState } from 'react'
 import EventComponent from './EventComponent'
 import { Action, Event, Parameter, eventTypes } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material';
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import {Tooltip} from 'react-tooltip'
 
 // TODO import useEffect and load actions there. Similar to this:
 // useEffect(() => {
@@ -118,7 +117,13 @@ const handleEventClose = () =>{
 
 return (
     <SettingAccordion
-        summary={'Events'}
+        summary={
+            <div style={{display:'flex', alignItems:'center'}}>
+            <p style={{margin:'0px', padding:'0px'}}>Events</p>
+            <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Events can be used to start actions after a certain condition is met. This functionality can be added by enabling additional packages."} style={{ marginLeft: 5, fontSize: 14 }}/>
+            <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
+        </div>
+        }
         details={
             <div>
                 {events.map((event, index) => (

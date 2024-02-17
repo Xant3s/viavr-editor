@@ -5,6 +5,8 @@ export class Variable {
 }
 
 export class Event {
+    displayName = ''
+    description = ''
     name = ''
     id = 0
     parameters: Parameter[] = []
@@ -24,12 +26,14 @@ export class Parameter {
 }
 
 export class Action {
+    displayName = ''
     name = ''
     parameters: Parameter[] = []
 }
 
 export class IfElse {
     variable = ''
+    variabletype = ''
     operator = ''
     comparison = ''
     then: [] = []

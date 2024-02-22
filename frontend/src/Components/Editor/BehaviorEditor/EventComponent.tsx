@@ -1,13 +1,22 @@
 import { useState } from 'react';
-import { SettingAccordion } from '../../Settings/SettingAccordion'
+import { SettingAccordion, SettingAccordionEvent } from '../../Settings/SettingAccordion'
 import ActionSequence from './ActionSequence';
-import { TextInput } from 'evergreen-ui';
-import { Event, Parameter, eventTypes } from '../../../@types/Behaviors';
+import { TextInput, CrossIcon, IconButton, Select, Button, SelectMenu, Pane } from 'evergreen-ui';
+import { Event, Parameter, eventTypes } from '../../../@types/Behaviors'
+import { remove } from 'fs-extra';
+import { table } from 'console';
+//import { SettingAccordionEvent, SettingAccordion } from '../../StyledComponents/Preferences/StyledSettings';
+
 
 const EventComponent = (props) => {
-    
 
     const [event, setEvent] = useState<Event>(props.event)
+    const [selectedObject, setSelectedObject] = useState<any>({})
+    const [selectedTag, setSelectedTag] = useState<any>({})
+    const [selectButtonText, setSelectButtonText] = useState<string>('')
+    const [options] = useState(["Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label, })))
+
+
 
     function updateParameters(param, value) {
         const parameter = event.parameters.find(parameter => parameter.name === param.name);
@@ -15,6 +24,7 @@ const EventComponent = (props) => {
             parameter.value = value
         }
         props.callback(event)
+        console.log(value)
     }
 
     function updateActionSequence(sequence) {
@@ -22,34 +32,71 @@ const EventComponent = (props) => {
         props.callback(event)
     }
 
+    const [isClose, setIsClose] = useState(false);
+    
+
     return (
-        <SettingAccordion
-            summary={props.event["name"]}
+        <SettingAccordionEvent
+            
+            summary={props.event.displayName}
+            onClose={() => props.OnClose()}
             details={
-                <div>
+                <Pane>
                     {event.parameters.length > 0 ? (
-                        <div>
-                            Parameters: {event.parameters.map((parameter, index) => (
-                                <div key={index}>
-                                    <p>
-                                        {parameter["name"]} ({parameter["type"]})
-                                    </p>
+                        <div style={{marginBottom: '10px', borderBottom:'solid', borderColor:'#4D535B', borderWidth:'1px', paddingBottom:'25px'}}>
+                          {event.description &&
+                          (<div style={{backgroundColor:'#848c91', borderRadius:'6px', fontSize:'14px', margin:'5px', padding:'5px'}}> {event.description}</div>)
+                          }
+                          
+                          <h3>Parameters </h3>  
+                            {event.parameters.map((parameter, index) => (
+                                <div key={index} style={{display:'flex', alignItems:'center'}} >
+                                    <div style={{textAlign:'left' ,float:'left', marginLeft:'15px', width:'180px'}}>
+                                        <p>
+                                            {parameter["name"]}
+                                        </p>
+                                    </div>
+                                    {parameter["name"] === 'gameObject' || parameter["name"]=== 'other' ? (
+                                    // Render a slider with gameObject's from the scene for 'gameObject' parameters
+                                    <div>
+                                        <Select value={selectedObject.name} onChange={e => updateParameters(parameter, e.target.value)} required>
+                                        {props.sceneObjects.map((object, index) => (
+                                            <option key={index} value={object.uuid}>
+                                                {object.name}
+                                            </option>
+                                        ))}
+                                        </Select>
+                                    </div>
+                                    ) : (parameter["name"] === 'tag' ? (
+                                    <div>
+                                        <Select
+                                            value={selectedTag.name} onChange={e => updateParameters(parameter, e.target.value)} required>
+                                            {options.map((object, index) => (
+                                                <option key={index} value={object.value}>
+                                                    {object.label}
+                                                </option>
+                                            ))}
+                                        </Select>
+                                    </div>
+                                    ) : 
+                                    // Render text input for other parameters
                                     <TextInput
-                                        type="text"
-                                        placeholder="Parameter Value"
-                                        value={parameter["value"]}
-                                        onChange={e => updateParameters(parameter, e.target.value)}
+                                            type="text"
+                                            placeholder="Parameter Value"
+                                            value={parameter["value"]}
+                                            onChange={(e) => updateParameters(parameter, e.target.value)}
                                     />
+                                    )}
                                 </div>
                             ))}
                         </div>
                     ) : (
                         <p>
-                            Parameters: None
+                            This event contains no parameters.
                         </p>
                     )}
-                    <ActionSequence callback={updateActionSequence}></ActionSequence>
-                </div>
+                    <ActionSequence depth={1} sceneObjects={props.sceneObjects} callback={updateActionSequence}></ActionSequence>
+                </Pane>
             }
         />
     )

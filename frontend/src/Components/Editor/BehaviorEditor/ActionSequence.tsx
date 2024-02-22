@@ -15,6 +15,7 @@ const ActionSequence = (props) => {
     const removeComponent = (id) => {
         setComponents(components.filter(component => component["id"] !== id));
         props.callback(components)
+        console.log("removed action component: " + id)
     };
 
     function callbackAction(givenComponent, action) {
@@ -40,9 +41,9 @@ const ActionSequence = (props) => {
 
     const renderComponent = (component) => {
         if (component.type === 'action') {
-            return <ActionComponent key={component.id} component={component} callback={callbackAction}/>;
+            return <ActionComponent depth={props.depth+1} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackAction} OnClose={() => removeComponent(component["id"])}/>;
         } else if (component.type === 'ifElse') {
-            return <IfElseConditionComponent key={component.id} component={component} callback={callbackIfElse}/>;
+            return <IfElseConditionComponent depth={props.depth+1} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackIfElse} OnClose={() => removeComponent(component["id"])}/>;
         }
         return null;
     };
@@ -66,50 +67,65 @@ const ActionSequence = (props) => {
     return (
         <Pane
             padding={20}
-            border="default"
-            borderRadius={8}
-            boxShadow="0 1px 2px rgba(67, 90, 111, 0.1), 0 2px 4px rgba(67, 90, 111, 0.1)"
-            marginBottom={20}
+            paddingTop={0}
+            //border="default"
+            //borderRadius={8}
+            //boxShadow="0 1px 2px rgba(67, 90, 111, 0.1), 0 2px 4px rgba(67, 90, 111, 0.1)"
+            //marginBottom={20}
             display="flex"
             flexDirection="column"
             alignItems="center"
         >
-            <DragDropContext onDragEnd={handleDragEnd}>
-                <Droppable droppableId="action-list" direction="vertical">
-                    {(provided) => (
-                        <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                        >
-                            <Pane>
-                                {components.map((component, index) => (
-                                    <Draggable key={component["id"]} draggableId={component["id"].toString()} index={index}>
-                                        {(provided) => (
-                                            <Pane
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                ref={provided.innerRef}
-                                                key={component["id"]}
-                                                display="flex"
-                                                justifyContent="center"
-                                                alignItems="center"
-                                                width="100%"
-                                                marginBottom={8}
-                                            >
-                                                {renderComponent(component)}
-                                                <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeComponent(component["id"])} />
-                                            </Pane>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
-                            </Pane>
-                        </div>
-                    )}
-                </Droppable>
-            </DragDropContext>
-            <Button onClick={() => addComponent('action')}>Add Action</Button>
-            <Button onClick={() => addComponent('ifElse')}>Add If-Else Condition</Button>
+            <h3> Actions</h3>
+            
+            <div style={{width:'100%', paddingTop:'15px', paddingBottom:'10px', marginBottom:'10px',
+                borderColor:'#888e94', borderRadius:'8px', borderStyle:'dashed'}}>
+                {components.length>0 ? (
+                <DragDropContext onDragEnd={handleDragEnd} >
+                    <Droppable droppableId="action-list" direction="vertical">
+                        {(provided) => (
+                            <div
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                            >
+                                <Pane>
+                                    {components.map((component, index) => (
+                                        <Draggable key={component["id"]} draggableId={component["id"].toString()} index={index}>
+                                            {(provided) => (
+                                                <Pane
+                                                    {...provided.draggableProps}
+                                                    {...provided.dragHandleProps}
+                                                    ref={provided.innerRef}
+                                                    key={component["id"]}
+                                                    display="flex"
+                                                    justifyContent="center"
+                                                    alignItems="center"
+                                                    width="100%"
+                                                    marginBottom={8}
+                                                >
+                                                    {renderComponent(component)}
+                                                   {/* <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeComponent(component["id"])} /> */}
+                                                </Pane>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                    {provided.placeholder}
+                                </Pane>
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>): <p style={{fontSize: '12px', color:'#b8bcbf'}}>No Actions added. Add an Action or If-Else Component to declare <br /> what happens in case the event is called.  </p>}
+            </div>
+            <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+            <Button style={{marginRight:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} onClick={() => addComponent('action')}>Add Action</Button>
+            {props.depth < 3 && (
+            <Button 
+            style={{marginLeft:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} 
+            onClick={() => addComponent('ifElse')}>
+                Add If-Else Condition
+            </Button>
+            )}
+            </div>
         </Pane>
     );
 };

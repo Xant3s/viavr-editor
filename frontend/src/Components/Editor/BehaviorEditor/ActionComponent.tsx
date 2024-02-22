@@ -1,13 +1,15 @@
-import { Button, Pane, SelectMenu, TextInput } from 'evergreen-ui';
+import { Button, Pane, SelectMenu, TextInput, DragHandleVerticalIcon, Select } from 'evergreen-ui';
 import React, { useEffect, useState } from 'react';
 import { Action } from '../../../@types/Behaviors';
-import { SettingAccordion } from '../../Settings/SettingAccordion'
+import { SettingAccordion, SettingAccordionAction } from '../../Settings/SettingAccordion'
 import { actions } from './EventsEditor';
 
 const ActionComponent = (props) => {
-    const [options, setOptions] = useState(actions.map(action => ({ label: action.name, value: action.name })))
+    const [options, setOptions] = useState(actions.map(action => ({ label: action.displayName, value: action.name })))
     const [action, setAction] = useState<Action>();
     const [actionButtonText, setActionButtonText] = useState<string>('')
+    const [selectedObject, setSelectedObject] = useState<any>({})
+    const [selectedTag, setSelectedTag] = useState<any>({})
 
     useEffect(() => {
         updateOptions()
@@ -35,14 +37,18 @@ const ActionComponent = (props) => {
     }
 
     return (
-        <SettingAccordion
-            summary={'Action Component'}
+        <SettingAccordionAction
+            summary={<div style={{alignItems:'center', display:'flex'}}>
+                <DragHandleVerticalIcon style={{marginRight:'5px'}}></DragHandleVerticalIcon>
+                Action Component
+                </div>}
+            onClose={() => props.OnClose()}
             details={
                 <Pane
                     padding={20}
-                    border="default"
-                    borderRadius={8}
-                    boxShadow="0 1px 2px rgba(67, 90, 111, 0.1), 0 2px 4px rgba(67, 90, 111, 0.1)"
+                    border="hidden"
+                    //borderRadius={8}
+                    //boxShadow="0 1px 2px rgba(67, 90, 111, 0.1), 0 2px 4px rgba(67, 90, 111, 0.1)"
                     marginBottom={20}
                     display="flex"
                     flexDirection="column"
@@ -51,7 +57,7 @@ const ActionComponent = (props) => {
                     <SelectMenu
                         title='Select action'
                         options={options}
-                        selected={action?.name}
+                        selected={action?.displayName}
                         onSelect={item => {
                             setActionAndText(item.value)
                         }}
@@ -60,18 +66,46 @@ const ActionComponent = (props) => {
                         <Button>{actionButtonText || 'Select action...'}</Button>
                     </SelectMenu>
                     {action?.parameters?.map((parameter, index) => (
-                        <div key={index}>
-                            <p>
-                                {parameter["name"]} ({parameter["type"]})
-                            </p>
-                            <TextInput
-                                type="text"
-                                placeholder="Parameter Value"
-                                // TODO depending on the parameter type this should vary. For bools add a checkmark instead
-                                onChange={(e) => updateParameter(parameter, e.target.value)}
-                            />
-                        </div>
-                    ))}
+                                    <div key={index} style={{display:'flex', alignItems:'center'}} >
+                                    <div style={{textAlign:'left' ,float:'left', marginLeft:'15px', width:'180px'}}>
+                                        <p>
+                                            {parameter["name"]}
+                                        </p>
+                                    </div>
+                                    {parameter["name"] === 'gameObject' || parameter["name"]=== 'other' ? (
+                                    // Render a slider with gameObject's from the scene for 'gameObject' parameters
+                                    <div>
+                                        <Select value={selectedObject.name} onChange={e => updateParameter(parameter, e.target.value)} required>
+                                        {props.sceneObjects.map((object, index) => (
+                                            <option key={index} value={object.uuid}>
+                                                {object.name}
+                                            </option>
+                                        ))}
+                                        </Select>
+                                    </div>
+                                    ) : (parameter["name"] === 'tag' ? (
+                                    <div>
+                                        <Select
+                                            value={selectedTag.name} onChange={e => updateParameter(parameter, e.target.value)} required>
+                                            {options.map((object, index) => (
+                                                <option key={index} value={object.value}>
+                                                    {object.label}
+                                                </option>
+                                            ))}
+                                        </Select>
+                                    </div>
+                                    ) : 
+                                    // Render text input for other parameters
+                                    <TextInput
+                                            width={'60%'}
+                                            type="text"
+                                            placeholder="Parameter Value"
+                                            value={parameter["value"]}
+                                            onChange={(e) => updateParameter(parameter, e.target.value)}
+                                    />
+                                    )}
+                                </div>
+                            ))}
                 </Pane>
             }
         />

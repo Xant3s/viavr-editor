@@ -11,6 +11,7 @@ import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
 import { FileUtils } from '../Utils/FileUtils'
 import SceneExporter from './SceneExporter'
+import AppUtils from '../Utils/AppUtils'
 
 
 export default class ProjectManager {
@@ -78,16 +79,9 @@ export default class ProjectManager {
             ],
         })
         if(!canceled && filePath !== undefined && filePath?.length > 0) {
+            const defaultProjectPath = Path.join(AppUtils.getResPath(), 'defaultProject.via')
+            await this.openProjectFromFileNoPrompt(defaultProjectPath)
             this._projectPath = filePath
-            const tempProjectFolder = Path.join(app.getPath('temp'), 'viavr/project/')
-            const scenesFolder = Path.join(tempProjectFolder, 'Scenes/')
-            FileUtils.ensurePathExists(tempProjectFolder)
-            fs.rmSync(tempProjectFolder, { recursive: true })
-            FileUtils.ensurePathExists(scenesFolder)
-            this._presentWorkingDirectory = tempProjectFolder
-            this.mainWindow.send(channels.fromMain.projectCreated)
-            this.onProjectOpenedEvent.emit('project-loaded')
-            this.mainWindow.enableMenuOptionsOnProjectOpened()
         }
     }
 

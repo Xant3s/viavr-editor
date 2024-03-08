@@ -15,7 +15,9 @@ export const SupervisorMonitorSettings = ({hidden}) => {
 
     const loadSettings = async () => {
         const supervisorEnabledSetting = (await api.invoke(api.channels.toMain.getBuildSetting, 'supervisorEnabled')) || false
+        const floormapEnabledSetting = (await api.invoke(api.channels.toMain.getBuildSetting, 'useFloorMap')) || false
         setUseSupervisorMonitor(supervisorEnabledSetting)
+        setUseFloorMap(floormapEnabledSetting)
     }
 
     useEffect(() => {

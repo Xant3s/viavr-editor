@@ -11,7 +11,6 @@ import { Prototypes } from './Prototypes'
 import { ArticyManager } from './ArticyManager'
 import { SceneUtils } from './Utils/SceneUtils'
 import { ProjectTags } from './ProjectManager/ProjectTags'
-import ShareManager from './ShareManager'
 import MeshPreprocessor from './MeshPreprocessor'
 import { AvatarManager } from './AvatarManager'
 import { Logger } from './Logger'
@@ -29,7 +28,6 @@ const startup = async () => {
     new Prototypes()
     ArticyManager.getInstance().init(mainWindow)
     new ProjectTags()
-    new ShareManager()
     new MeshPreprocessor()
     new AvatarManager()
     await SceneUtils.register()

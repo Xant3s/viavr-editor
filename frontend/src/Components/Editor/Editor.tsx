@@ -5,7 +5,6 @@ import { TabHeader } from './TabHeader'
 import { BehaviorEditor } from './BehaviorEditor/BehaviorEditor'
 import { AvatarEditor } from './AvatarEditor/AvatarEditor'
 import { Articy } from './Articy'
-import { Share } from './Share'
 import { BuildDialog } from '../BuildDialog/BuildDialog'
 import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
@@ -96,7 +95,6 @@ export const Editor = () => {
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />
-            <Share hidden={viewID !== 5} />
             <BuildDialog hidden={viewID !== 7} />
             {showModal && <ModalWindow closeModal={() => setShowModal(false)}
                                        onSaveAndContinue={handleSaveAndContinue}

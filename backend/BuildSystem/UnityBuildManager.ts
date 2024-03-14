@@ -149,10 +149,8 @@ export default class UnityBuildManager {
     }
     
     private async installPicoSdk(outputPath: string) {
-        const sdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
-        const sdkPath = sdkPathPref.value
-        const sdkParentPath = sdkPath.split(Path.sep).slice(0, -1).join(Path.sep)
-        await fse.copy(sdkParentPath, `${outputPath}/picoxr`)
+        const sdkPath = Path.join(AppUtils.getResPath(), 'plugins/picoxr')
+        await fse.copy(sdkPath, `${outputPath}/picoxr`)
     }
 
     private async importScenes(outputPath: string, sceneNames: Array<string>) {

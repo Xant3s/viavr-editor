@@ -62,10 +62,6 @@ export class Logger {
         const availableMemoryInGB = Math.round(os.freemem() / 1024 / 1024 / 1024)
         const unityPathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
         const unityPath = unityPathSetting.value
-        const picoSdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
-        const picoSdkPath = picoSdkPathPref.value
-        const picoSdkManifest = await JSON.parse(fs.readFileSync(picoSdkPath, 'utf8'))
-        const picoSdkVersion = picoSdkManifest.version
         const avatarServerUrlSetting: StringSetting = await PreferencesManager.getInstance().get('avatarServer')
         const avatarServerUrl = avatarServerUrlSetting.value
         await this.logCommitHash()
@@ -81,8 +77,6 @@ export class Logger {
         await this.runCommandAndPrintOutput('python -V', 'Python version')
         this.log(`Unity path: ${unityPath}`)
         this.log(`Avatar server URL: ${avatarServerUrl}`)
-        this.log(`Pico SDK path: ${picoSdkPath}`)
-        this.log(`Pico SDK version: ${picoSdkVersion}`)
         await this.logDependenciesExist()
         await this.logPackageRegistryOnline()
         this.log('-----------------------')
@@ -137,21 +131,12 @@ export class Logger {
     private async logDependenciesExist() {
         const unityPathSetting = await PreferencesManager.getInstance().get<PathSetting>('unityPath')
         const unityPath = unityPathSetting.value
-        const picoSdkPathPref: PathSetting = await PreferencesManager.getInstance().get('picoSdkPath')
-        const picoSdkPath = picoSdkPathPref.value
 
         try {
             await fs.promises.access(unityPath)
             this.log('Unity exists: yes')
         } catch (err) {
             this.log('Unity exists: no')
-        }
-        try {
-            await fs.promises.access(picoSdkPath)
-            this.log('Pico SDK exists: yes')
-        }
-        catch (err) {
-            this.log('Pico SDK exists: no')
         }
     }
     

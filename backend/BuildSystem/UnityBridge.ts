@@ -17,6 +17,8 @@ export default class UnityBridge {
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnConfigureScene', projectPath)
             Logger.get().log('UnityBridge.OnConfigureLogic')
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnConfigureLogic', projectPath)
+            Logger.get().log('UnityBridge.OnConfigureUI')
+            await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnConfigureUI', projectPath)
             Logger.get().log('UnityBridge.OnPostConfiguration')
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnPostConfiguration', projectPath)
             // Logger.get().log('UnityBridge.ExecuteAll')

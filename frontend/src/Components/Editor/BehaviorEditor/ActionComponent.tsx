@@ -8,8 +8,6 @@ const ActionComponent = (props) => {
     const [options, setOptions] = useState(actions.map(action => ({ label: action.displayName, value: action.name })))
     const [action, setAction] = useState<Action>();
     const [actionButtonText, setActionButtonText] = useState<string>('')
-    const [selectedObject, setSelectedObject] = useState<any>({})
-    const [selectedTag, setSelectedTag] = useState<any>({})
 
     useEffect(() => {
         updateOptions()
@@ -36,12 +34,22 @@ const ActionComponent = (props) => {
         props.callback(props.component, action)
     }
 
+    useEffect(() => {
+        const newAction = actions.find(action => (action.name === props.component.name));
+        if (newAction) {
+            newAction.parameters = props.component.parameters
+            setAction(newAction)
+            setActionButtonText(newAction.displayName)
+        }
+
+    }, [])
+
     return (
         <SettingAccordionAction
-            summary={<div style={{alignItems:'center', display:'flex'}}>
-                <DragHandleVerticalIcon style={{marginRight:'5px'}}></DragHandleVerticalIcon>
+            summary={<div style={{ alignItems: 'center', display: 'flex' }}>
+                <DragHandleVerticalIcon style={{ marginRight: '5px' }}></DragHandleVerticalIcon>
                 Action Component
-                </div>}
+            </div>}
             onClose={() => props.OnClose()}
             details={
                 <Pane
@@ -66,46 +74,46 @@ const ActionComponent = (props) => {
                         <Button>{actionButtonText || 'Select action...'}</Button>
                     </SelectMenu>
                     {action?.parameters?.map((parameter, index) => (
-                                    <div key={index} style={{display:'flex', alignItems:'center'}} >
-                                    <div style={{textAlign:'left' ,float:'left', marginLeft:'15px', width:'180px'}}>
-                                        <p>
-                                            {parameter["name"]}
-                                        </p>
-                                    </div>
-                                    {parameter["name"] === 'gameObject' || parameter["name"]=== 'other' ? (
-                                    // Render a slider with gameObject's from the scene for 'gameObject' parameters
-                                    <div>
-                                        <Select value={selectedObject.name} onChange={e => updateParameter(parameter, e.target.value)} required>
+                        <div key={index} style={{ display: 'flex', alignItems: 'center' }} >
+                            <div style={{ textAlign: 'left', float: 'left', marginLeft: '15px', width: '180px' }}>
+                                <p>
+                                    {parameter["name"]}
+                                </p>
+                            </div>
+                            {parameter["name"] === 'gameObject' || parameter["name"] === 'other' ? (
+                                // Render a slider with gameObject's from the scene for 'gameObject' parameters
+                                <div>
+                                    <Select value={parameter.value} onChange={e => updateParameter(parameter, e.target.value)} required>
                                         {props.sceneObjects.map((object, index) => (
                                             <option key={index} value={object.uuid}>
                                                 {object.name}
                                             </option>
                                         ))}
-                                        </Select>
-                                    </div>
-                                    ) : (parameter["name"] === 'tag' ? (
-                                    <div>
-                                        <Select
-                                            value={selectedTag.name} onChange={e => updateParameter(parameter, e.target.value)} required>
-                                            {options.map((object, index) => (
-                                                <option key={index} value={object.value}>
-                                                    {object.label}
-                                                </option>
-                                            ))}
-                                        </Select>
-                                    </div>
-                                    ) : 
-                                    // Render text input for other parameters
-                                    <TextInput
-                                            width={'60%'}
-                                            type="text"
-                                            placeholder="Parameter Value"
-                                            value={parameter["value"]}
-                                            onChange={(e) => updateParameter(parameter, e.target.value)}
-                                    />
-                                    )}
+                                    </Select>
                                 </div>
-                            ))}
+                            ) : (parameter["name"] === 'tag' ? (
+                                <div>
+                                    <Select
+                                        value={parameter.value} onChange={e => updateParameter(parameter, e.target.value)} required>
+                                        {options.map((object, index) => (
+                                            <option key={index} value={object.value}>
+                                                {object.label}
+                                            </option>
+                                        ))}
+                                    </Select>
+                                </div>
+                            ) :
+                                // Render text input for other parameters
+                                <TextInput
+                                    width={'60%'}
+                                    type="text"
+                                    placeholder="Parameter Value"
+                                    value={parameter["value"]}
+                                    onChange={(e) => updateParameter(parameter, e.target.value)}
+                                />
+                            )}
+                        </div>
+                    ))}
                 </Pane>
             }
         />

@@ -17,7 +17,7 @@ export const BehaviorEditor = ({ hidden }) => {
         >
             <h1>Behavior Editor</h1>
             <MetaDataEditor isActive={!hidden} />
-            <VariableEditor />
+            <VariableEditor isActive={!hidden}/>
             <EventsEditor hidden={hidden} />
             </div>
     )

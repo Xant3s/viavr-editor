@@ -1,10 +1,10 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Checkbox, Select, Table, TextInput, TrashIcon } from 'evergreen-ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {Tooltip} from 'react-tooltip'
 
-export const VariableEditor = () => {
+export const VariableEditor = ({ isActive }) => {
     const [variables, setVariables] = useState<string[][]>([])
 
     const variablesTip = "Variables can be used for actions and events. They can store data, like numbers, text, or yes/no-values."
@@ -43,6 +43,20 @@ export const VariableEditor = () => {
         })
         await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variableObjects)
     }
+
+    const loadVariables = async() => {
+        const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? [];
+        const loadedVariables = loadedVariableObjects.map(variable => {
+            return [variable["name"], variable["type"], variable["value"]]
+        })
+        setVariables(loadedVariables)
+    }
+
+    useEffect(() => {
+        if (isActive) {
+            loadVariables()
+        }
+    }, [isActive])
 
     return (
         <SettingAccordion
@@ -158,7 +172,7 @@ export const VariableEditor = () => {
                     </Table>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
                         <Button appearance="primary" onClick={() => {
-                            setVariables([...variables, ['', 'number']])
+                            setVariables([...variables, ['', 'number', '0']])
                             updateBuildSettings()
                         }}>
                             Add Variable

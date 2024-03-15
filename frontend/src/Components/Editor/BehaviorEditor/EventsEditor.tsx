@@ -7,13 +7,6 @@ import { FormControl, FormHelperText } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {Tooltip} from 'react-tooltip'
 
-// TODO import useEffect and load actions there. Similar to this:
-// useEffect(() => {
-//     if(hidden) return
-//     loadScenes()
-//     loadPackages()
-// }, [hidden])
-
 export let actions: Action[] = []
 export let availableEvents: Event[] = []
 
@@ -28,7 +21,13 @@ export const EventsEditor = ({hidden}) => {
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
 
     const loadSceneObjects = async () => {
-        const objects = await api.invoke(api.channels.toMain.getSceneObjects)
+        let objects = await api.invoke(api.channels.toMain.getSceneObjects)
+        const emptyObject = {
+            "name": "",
+            "components": [],
+            "uuid": ""
+        }
+        objects = [emptyObject, ...objects];
         setSceneObjects(objects)
     }
 
@@ -63,10 +62,18 @@ export const EventsEditor = ({hidden}) => {
         setAvailableEvents(eventList)
     }, [])
 
+    const loadSavedEvents = async() => {
+        const loadedEvents = await api.invoke(api.channels.toMain.getBuildSetting, 'events') ?? [];
+        setEvents(loadedEvents)
+    }
+
     useEffect(() => {
         loadActions()
         loadEvents()
-        if(!hidden) loadSceneObjects()
+        if(!hidden) {
+            loadSceneObjects()
+            loadSavedEvents()
+        }
     }, [loadActions, loadEvents, hidden])
 
 function setAvailableEvents(eventList) {

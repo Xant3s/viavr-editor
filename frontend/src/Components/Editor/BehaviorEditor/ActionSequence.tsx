@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ActionComponent from './ActionComponent';
 import IfElseConditionComponent from './IfElseConditionComponent';
 import { Button, CrossIcon, Icon, IconButton, Pane } from 'evergreen-ui';
@@ -63,6 +63,10 @@ const ActionSequence = (props) => {
         setComponents(reorder(result.source.index, result.destination.index))
         props.callback(components)
     };
+
+    useEffect(() => {
+        setComponents(props.loadedSequence)
+    }, [props.loadedSequence])
 
     return (
         <Pane

@@ -41,6 +41,9 @@ export const WelcomeContainer = ({ setPage, startTutorial }) => {
                 }}>
                     Open Project
                 </Button>
+                <Button style={{width: '190px'}} onClick={() => api.invoke(api.channels.toMain.openProjectFolder)}>
+                    Open Project from Folder
+                </Button>
             </Row>
         </WelcomeContainerStyle>
     )

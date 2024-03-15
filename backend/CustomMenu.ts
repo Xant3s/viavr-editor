@@ -45,11 +45,9 @@ export default class CustomMenu {
                         },
                     },
                     {
-                        label: 'Documentation',
+                        label: 'User Manual',
                         click() {
-                            shell.openExternal(
-                                'https://lectures.hci.informatik.uni-wuerzburg.de/viavr-docs/editor/index.html'
-                            )
+                            shell.openPath('UserManual.pdf')
                         },
                     },
                 ],

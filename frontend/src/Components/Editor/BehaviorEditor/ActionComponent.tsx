@@ -42,7 +42,7 @@ const ActionComponent = (props) => {
             setActionButtonText(newAction.displayName)
         }
 
-    }, [])
+    }, [props.component.name, props.component.parameters])
 
     return (
         <SettingAccordionAction

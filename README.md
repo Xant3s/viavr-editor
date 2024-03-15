@@ -1,4 +1,8 @@
 # VIA-VR Editor
+         
+## About
+
+[Project website](https://www.hci.uni-wuerzburg.de/projects/via-vr/)
 
 ## Developer Documentation
 
@@ -97,9 +101,47 @@ Currently, only the backend has unit tests. `electron-is-dev` is incompatible wi
   - To inspect the resulting Unity project, open it in Unity. You'll find your scenes in the Assets/Scenes folder.
 
 
-## Known Bugs
+## Project Status
+
+This repository contains the codebase and resources for a completed research project. The project has reached its intended goals and objectives, and no further active development or maintenance is planned.
+
+## Contributing
+
+As there is no active maintainer for this project, contributions are not being actively reviewed or merged. However, if you wish to extend or build upon this work, you are welcome to fork the repository and continue development on your own.
+
+## Contact
+
+Prof. Dr. Sebastian von Mammen  
+Games Engineering Group  
+Chair of Human-Computer Interaction  
+Julius-Maximilians-Universität Würzburg
+sebastian.von.mammen@uni-wuerzburg.de
 
 
-## Template Server
+## Contributers
 
-To use features related to the template server make sure to run the server (https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/servers/template-server) and specify the server address in the preferences.
+Project Lead: Prof. Dr. Sebastian von Mammen
+
+Lead Developer: Samuel Truman
+
+Developers:  
+- Samuel Truman
+- Johannes Büttner  
+- Sooraj K Babu
+
+
+Further Contributors (in alphabetical order):
+
+- Anne Vetter
+- Carl Beker
+- David Egelhofer
+- Fabian Maier
+- Florian Schmidt
+- Jonas Schindler
+- Lea Kohl
+- Lennard Rüffert
+- Roman Bornschier
+- Sarah Hofmann
+- Sebastian Dietz
+- Sven Gerlach
+- Tobias Brandner

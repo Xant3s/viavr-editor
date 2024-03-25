@@ -2,17 +2,28 @@
          
 ## About
 
+The VIA-VR project presents an innovative authoring platform designed to revolutionize Virtual Reality (VR) applications in the medical domain. At its core, this platform aims to empower medical professionals to create, modify, and implement VR experiences tailored for educational and therapeutic purposes. By significantly lowering the barriers to entry in terms of development effort and technical expertise required, VIA-VR stands at the forefront of making VR technology more accessible and applicable in healthcare settings.
+
+VIA-VR is developed by a consortium consisting of:
+- Games Engineering Group, Julius-Maximilians-Universität Würzburg
+- Human-Computer-Interaction Group, Julius-Maximilians-Universität Würzburg
+- Graphics & Geometry Group, Technische Universität Dortmund
+- Health-Technology-Ethics Group, Evangelische Hochschule Ludwigsburg
+- Articy Software GmbH & Co. KG, Germany
+
+The VIA-VR project is funded by the German Federal Ministry of Education and Research (BMBF) as part of the research initiative for Human-Technology Interaction ”Digital Platforms: Interactive Assistance Systems for Humans“ (project number 16SV8444).
+
+This repository contains the editor part of the VIA-VR project, made by the Games Engineering Group at the Julius-Maximilians-Universität Würzburg.
+
 [Project website](https://www.hci.uni-wuerzburg.de/projects/via-vr/)
 
-## Developer Documentation
-
-See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
 
 ## Prerequisites
 
-- Make sure to clone recursively, i.e. including all submodules. Do not just download the zip file
+Before using the VIA-VR software, an IT administrator must install the following required software to ensure its proper functionality.
+
 - Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
-- Make sure [node.js](https://nodejs.org/en/download/) 16.x (>=16.10) is installed. Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+- Make sure [node.js](https://nodejs.org/en/download/) 16.x (>=16.10) is installed. Mozilla Spoke does not support Node versions newer than 16.x (e.g. 17.x)
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
@@ -36,6 +47,53 @@ See [https://go.uniwue.de/viavr-docs](https://go.uniwue.de/viavr-docs)
   - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
   - Make sure the IL2CPP scripting backend is installed
 - Make sure your internet connection is working properly
+- Download either the portable or installer version from the release page of this repository
+
+
+## How to Use the Application
+
+- Start the application
+  - Do not close any terminal windows that appear
+- Select 'Open Project'
+  - Open the example project we provide at "[software install directory]/res/DefaultProject.via"
+  - You may see a loading screen for a few seconds while Spoke is still starting
+- Check your preferences
+  - Go to File > Preferences
+  - Check the path to the Unity executable
+  - Check the package registry URL (our default registry is available at https://packages.informatik.uni-wuerzburg.de)
+  - Check the package registry scopes (our default registry currently needs the scopes 'de.jmu' and 'unity-com')
+- To save the project, select File > Save Project (this can take a while depending on the project size)
+- To build the project, navigate to the finish tab, check all settings, then select "Generate VIA Experience"
+  - Select "Generate Experience"
+  - Choose an output folder, e.g. on your desktop
+  - The build process can take a while, depending on the project size
+  - To inspect the resulting Unity project, open it in Unity. You'll find your scenes in the Assets/Scenes folder.
+
+
+## Project Status
+
+This repository contains the codebase and resources for a completed research project. The project has reached its intended goals and objectives, and no further active development or maintenance is planned.
+
+
+
+## Contact
+
+Prof. Dr. Sebastian von Mammen  
+Games Engineering Group  
+Chair of Human-Computer Interaction  
+Julius-Maximilians-Universität Würzburg
+sebastian.von.mammen@uni-wuerzburg.de
+
+
+# Developer Documentation
+
+See [Developer_Documentation.pdf](Developer_Documentation.pdf)
+
+
+## Prerequesites for Development
+
+- Make sure to clone recursively, i.e. including all submodules. Do not just download the zip file
+- See prerequesites above
 
 ## Required Ports
 
@@ -73,49 +131,9 @@ The page will reload if you make edits. You will also see any lint errors in the
 - Copy the setup executable from the `dist` folder to the target PC
 - Run the setup executable on the target PC
 
-## How to Run Unit Tests
-
-Currently, only the backend has unit tests. `electron-is-dev` is incompatible with unit tests.
-
-- Run the following commands:
-  - Run `npm install`
-  - Run `npm test`
-
-## How to Use the Application
-
-- Start the application
-  - Do not close any terminal windows that appear
-- Select 'Open Project'
-  - Open the example project we provide at "RepoRoot/res/ExampleProject.via"
-  - You may see a loading screen for a few seconds while Spoke is still starting
-- Check your preferences
-  - Go to File > Preferences
-  - Check the path to the Unity executable
-  - Check the package registry URL (our default registry is available at https://packages.informatik.uni-wuerzburg.de)
-  - Check the package registry scopes (our default registry currently needs the scopes 'de.jmu' and 'unity-com')
-- To save the project, select File > Save Project (this can take a while depending on the project size)
-- To build the project, navigate to the finish tab, check all settings, then select "Generate VIA Experience"
-  - Select "Generate Experience"
-  - Choose an output folder, e.g. on your desktop
-  - The build process can take a while, depending on the project size
-  - To inspect the resulting Unity project, open it in Unity. You'll find your scenes in the Assets/Scenes folder.
-
-
-## Project Status
-
-This repository contains the codebase and resources for a completed research project. The project has reached its intended goals and objectives, and no further active development or maintenance is planned.
-
 ## Contributing
 
 As there is no active maintainer for this project, contributions are not being actively reviewed or merged. However, if you wish to extend or build upon this work, you are welcome to fork the repository and continue development on your own.
-
-## Contact
-
-Prof. Dr. Sebastian von Mammen  
-Games Engineering Group  
-Chair of Human-Computer Interaction  
-Julius-Maximilians-Universität Würzburg
-sebastian.von.mammen@uni-wuerzburg.de
 
 
 ## Contributers

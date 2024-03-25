@@ -67,8 +67,9 @@ Before using the VIA-VR software, an IT administrator must install the following
   - Select "Generate Experience"
   - Choose an output folder, e.g. on your desktop
   - The build process can take a while, depending on the project size
-  - To inspect the resulting Unity project, open it in Unity. You'll find your scenes in the Assets/Scenes folder.
+  - For developers: To inspect the resulting Unity project, open it in Unity. You'll find your scenes in the Assets/Scenes folder.
 
+See [user manual](UserManual.pdf) for further details.
 
 ## Project Status
 

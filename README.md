@@ -85,7 +85,7 @@ Julius-Maximilians-Universität Würzburg
 sebastian.von.mammen@uni-wuerzburg.de
 
 
-# Developer Documentation
+# For Developers
 
 See [Developer_Documentation.pdf](Developer_Documentation.pdf)
 

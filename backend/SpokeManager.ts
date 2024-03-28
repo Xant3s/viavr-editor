@@ -24,7 +24,8 @@ export default class SpokeManager {
     }
 
     private startSpoke() {
-        this.spoke = child_process.spawn(this.startCommand, [], {
+        const psCommand = `powershell -Command "Start-Process -FilePath 'cmd.exe' -ArgumentList '/c ${this.startCommand.replace(/"/g, '`"')}' -WindowStyle Hidden"`
+        this.spoke = child_process.spawn(psCommand, {
             shell: true,
             detached: true,
         })

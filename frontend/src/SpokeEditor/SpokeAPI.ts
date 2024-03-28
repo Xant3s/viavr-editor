@@ -64,7 +64,8 @@ export class SpokeAPI {
         fromSpoke: {
             projectPageSelected: 'viavr:projects-page',
             sceneExport: 'viavr:scene-export',
-            sceneExportFailed: 'viavr:scene-export-failed'
+            sceneExportFailed: 'viavr:scene-export-failed',
+            exitTutorial: 'viavr:exit-tutorial',
         }
     }
 }

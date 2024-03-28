@@ -4,7 +4,7 @@ import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { CenteredSpinner } from '../Utils/CenteredSpinner'
 
 
-export const Spoke = ({ hidden, isTutorial, onSpokeReady }) => {
+export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen }) => {
     const defaultIframeSrc = 'https://localhost:9090'
     const tutorialIframeSrc = 'https://localhost:9090/projects/tutorial'
     const [spokeReady, setSpokeReady] = useState(false)
@@ -22,9 +22,10 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady }) => {
     
     useEffect(() => {
         if(spokeReady && isTutorial) {
+            // SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.exitTutorial, returnToWelcomeScreen)
             setIframeSrc(tutorialIframeSrc)
         }
-    }, [isTutorial, spokeReady])
+    }, [isTutorial, returnToWelcomeScreen, spokeReady])
     
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         <SpokeIframe id={'iframe-spoke'} ref={el => {
@@ -32,7 +33,7 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady }) => {
             if(el) {
                 SpokeAPI.Instance.SpokeWindow = spokeIframe.current?.contentWindow as Window
                 SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.projectPageSelected, onSpokeProjectPageSelected)
-
+                SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.exitTutorial, returnToWelcomeScreen)
             } else {
                 SpokeAPI.Instance.clearAllEventListeners()
                 SpokeAPI.Instance.SpokeWindow = undefined

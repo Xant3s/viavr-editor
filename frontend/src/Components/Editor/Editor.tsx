@@ -91,7 +91,7 @@ export const Editor = () => {
             </div>
             <div hidden={viewID === 0} style={{marginBottom:'35px'}}></div>            
             <MeshPreprocessing hidden={viewID !== 6} />
-            <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady} />
+            <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady} returnToWelcomeScreen={returnToWelcomeScreen} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />

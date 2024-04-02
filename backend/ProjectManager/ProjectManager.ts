@@ -90,7 +90,7 @@ export default class ProjectManager {
         if(focusedWindow != null) focusedWindow.setEnabled(false);
         const { canceled, filePaths } = await dialog.showOpenDialog({
             properties: ['openFile'],
-            defaultPath: Path.join(app.getAppPath(), defaultPath),
+            defaultPath: Path.join(AppUtils.getResPath(), defaultPath),
             filters: [{ name: 'VIA-VR project files', extensions: ['via'] }],
         })
         if(focusedWindow != null) focusedWindow.setEnabled(true);

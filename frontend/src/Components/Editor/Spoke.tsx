@@ -24,6 +24,8 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
         if(spokeReady && isTutorial) {
             // SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.exitTutorial, returnToWelcomeScreen)
             setIframeSrc(tutorialIframeSrc)
+        } else if(spokeReady) {
+            setIframeSrc(defaultIframeSrc)
         }
     }, [isTutorial, returnToWelcomeScreen, spokeReady])
     

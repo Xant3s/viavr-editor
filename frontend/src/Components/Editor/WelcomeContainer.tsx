@@ -2,13 +2,9 @@ import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
 import { Alert, toaster } from 'evergreen-ui'
 import { Row } from '../StyledComponents/Row'
 import { Button } from '../StyledComponents/Button'
-import React, { useState } from 'react'
 
 
-export const WelcomeContainer = ({ setPage, startTutorial }) => {
-    const [viewID, setViewID] = useState(0)
-
-
+export const WelcomeContainer = ({ hidden, startTutorial }) => {
     const downloadProjectTemplates = async () => {
         const status = await api.invoke(api.channels.toMain.downloadProjectTemplates)
         if (status === 200) {
@@ -23,7 +19,7 @@ export const WelcomeContainer = ({ setPage, startTutorial }) => {
     }
 
     return (
-        <WelcomeContainerStyle hidden={viewID === 1}>
+        <WelcomeContainerStyle hidden={hidden}>
             <Alert
                 intent="warning"
                 title="Before you begin, please be aware:"
@@ -44,7 +40,7 @@ export const WelcomeContainer = ({ setPage, startTutorial }) => {
                 <Button onClick={startTutorial}>Start Tutorial</Button>
             </Row>
             <Row style={{marginBottom: '10px'}}>
-                <Button style={{width: '190px'}} onClick={() => setPage('preferences')}>
+                <Button style={{width: '190px'}} onClick={() => api.invoke(api.channels.toMain.createNewProject)}>
                       Create New Project
                 </Button>
                 <Button  style={{width: '190px'}} onClick={async () => {

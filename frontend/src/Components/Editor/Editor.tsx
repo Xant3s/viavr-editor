@@ -10,6 +10,7 @@ import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
 import { ModalWindow } from '../Utils/UI'
+import { WelcomeContainer } from './WelcomeContainer'
 
 
 export const Editor = () => {
@@ -86,9 +87,7 @@ export const Editor = () => {
     return (
         <>
             <TabHeader setId={setViewID} hidden={viewID === 0} isInTutorialMode={isTutorial} returnToWelcomeScreen={returnToWelcomeScreen} />
-            <div>
-                <ProjectSelection hidden={viewID !== 0} startTutorial={onStartTutorial} />
-            </div>
+            <WelcomeContainer hidden={viewID !== 0}  startTutorial={onStartTutorial}/>
             <div hidden={viewID === 0} style={{marginBottom:'35px'}}></div>            
             <MeshPreprocessing hidden={viewID !== 6} />
             <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady} returnToWelcomeScreen={returnToWelcomeScreen} />

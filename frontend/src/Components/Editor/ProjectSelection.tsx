@@ -9,7 +9,7 @@ export const ProjectSelection = ({ hidden, startTutorial }) => {
 
     return (
         <div hidden={hidden}>
-            {page === 'welcome' && <WelcomeContainer setPage={setPage} startTutorial={startTutorial}/>}
+            {/*{page === 'welcome' && <WelcomeContainer setPage={setPage} startTutorial={startTutorial}/>}*/}
             {page === 'preferences' && <CapturePreferencesContainer setPage={setPage} setPreferences={setPreferences} />}
             {page === 'recommendation' && <TemplateRecommendationContainer setPage={setPage} preferences={preferences} />}
         </div>

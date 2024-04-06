@@ -15,11 +15,11 @@ export const AddAvatarForm = ({addAvatar}) => {
     return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
         <form onSubmit={e => handleSubmit(e)}>
             <TextInput name='new-avatar-name-input'
-                       placeholder='New avatar name...'
+                       placeholder='New character name...'
                        value={newAvatarName}
                        onChange={(e) => setNewAvatarName(e.target.value)} required />
             <Button appearance='primary' style={{ marginRight: '5px', marginLeft:'5px' }} type="submit">
-                Create new avatar
+                Create new character
             </Button>
         </form>
     </div>

@@ -9,7 +9,7 @@ interface props {
 
 export const QRCodePreview = ({ qrCode, avatarName }: props) => {
     return <div>
-        Scan this QR code with the VIA-VR avatar app:
+        Scan this QR code with the VIA-VR character app:
         <div style={{
             display: 'flex',
             flexDirection: 'column',
@@ -19,7 +19,7 @@ export const QRCodePreview = ({ qrCode, avatarName }: props) => {
             marginTop: '5px',
         }}>
             <SVG src={qrCode} width={256} />
-            <div>Avatar: {avatarName}</div>
+            <div>Character: {avatarName}</div>
         </div>
     </div>
 }

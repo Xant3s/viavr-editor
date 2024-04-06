@@ -36,23 +36,23 @@ export default function AlertDialog({open, setOpen, handleDialog, avatarIsOnServ
                 <DialogContent>
                     {avatarIsOnServer ?
                         <DialogContentText id='alert-dialog-description'>
-                            The avatar will be removed from the project and erased from the disk.
-                            You can choose to additionally delete the avatar from the avatar server.
-                            Deleting the avatar cannot be undone.
+                            The character will be removed from the project and erased from the disk.
+                            You can choose to additionally delete the character from the avatar server.
+                            Deleting the character cannot be undone.
                         </DialogContentText>
                     :
                         <DialogContentText id='alert-dialog-description'>
-                            The avatar will be removed from the project and erased from the disk.
-                            Deleting the avatar cannot be undone.
+                            The character will be removed from the project and erased from the disk.
+                            Deleting the character cannot be undone.
                         </DialogContentText>
                     }
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => handle('abort')}>Abort</Button>
-                    <Button onClick={() => handle('delete')} autoFocus>Delete avatar</Button>
+                    <Button onClick={() => handle('delete')} autoFocus>Delete character</Button>
 
                     {avatarIsOnServer &&
-                        <Button onClick={() => handle('deleteFromServer')} autoFocus>Delete avatar also from server</Button>
+                        <Button onClick={() => handle('deleteFromServer')} autoFocus>Delete character also from server</Button>
                     }
                 </DialogActions>
             </Dialog>

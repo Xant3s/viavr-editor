@@ -72,7 +72,7 @@ export const AvatarEditor = ({ hidden }) => {
             notifyUserAboutError(e as string)
             return 1
         }
-        toaster.success('Avatar deleted from server')
+        toaster.success('Character deleted from server')
         return 0
     }
     
@@ -119,7 +119,7 @@ export const AvatarEditor = ({ hidden }) => {
 
     return <AvatarEditorContainer hidden={hidden}>
         <AvatarServerWarning avatarServerUrl={avatarServerUrl} />
-        <h1>Avatar Editor</h1>
+        <h1>Character Editor</h1>
         {qrCode !== '' && <QRCodePreview qrCode={qrCode} avatarName={qrCodeAvatarName} />}
         <AvatarList avatars={avatars} updateQrCode={updateQrCode} deleteAvatar={deleteAvatar} 
                     deleteAvatarFromServer={deleteAvatarFromServer}

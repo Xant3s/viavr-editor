@@ -59,7 +59,7 @@ export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScre
                             <Tooltip id="Behaviors" place="bottom" style={{fontSize: '14px'}} />
                             </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(3)} style={lastClicked === 3 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Avatars
+                            Characters
                             <HelpOutlineIcon data-tooltip-id="Avatars" data-tooltip-content="Create and download characters via the VIA-VR avatar app." style={tooltipIconStyle}/>
                             <Tooltip id="Avatars" place="bottom" style={{fontSize: '14px'}} />
                             </TabButton>

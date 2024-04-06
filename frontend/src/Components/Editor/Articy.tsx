@@ -93,7 +93,7 @@ export const Articy = ({ hidden }) => {
         <h1>Articy</h1>
         <Table style={{marginBottom: '20px', borderColor:'#6C737A'}}>
             <Table.Head style={tableHeaderStyle}>
-                <Table.TextHeaderCell>Avatar</Table.TextHeaderCell>
+                <Table.TextHeaderCell>Character</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Dialog</Table.TextHeaderCell>
             </Table.Head>
             <Table.Body minHeight={240} maxHeight={320} minWidth={'600px'}>

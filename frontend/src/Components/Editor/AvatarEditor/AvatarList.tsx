@@ -135,7 +135,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
         {avatars.length===0 && 
                         <div>
                             <p style={{color:'#BCBEC1'}}> 
-                                Add an avatar using the Add Avatar Button.<br></br>
+                                Add an avatar using the Add Character Button.<br></br>
                             </p>
                         </div>
                         }
@@ -144,7 +144,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                 <Table.Row key={avatar.token} style={tableRowStyle}>
                     <Table.TextCell>
                         <TextInput name='avatar-name-input'
-                                   placeholder='Please enter the avatars name'
+                                   placeholder='Please enter the characters name'
                                    value={avatar.name}
                                    style={{ backgroundColor:'white',
                                             width:'90%' }}
@@ -214,10 +214,10 @@ const DownloadButton = ({avatar, setDownloaded}: { avatar: AvatarInfo, setDownlo
                           setDownloading(true)
                           const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.token)
                           if(result === 0) {
-                              toaster.success('Avatar downloaded successfully')
+                              toaster.success('Character downloaded successfully')
                               setDownloaded()
                           } else {
-                              toaster.danger('Avatar download failed')
+                              toaster.danger('Character download failed')
                           }
                           setDownloading(false)
                       }}

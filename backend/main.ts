@@ -32,6 +32,13 @@ const startup = async () => {
     new AvatarManager()
     await SceneUtils.register()
     Logger.get()
+    app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+  
+        // Prevent having error
+        event.preventDefault()
+        // and continue
+        callback(true)
+    })
 }
 
 const tryOpenProject = async () => {

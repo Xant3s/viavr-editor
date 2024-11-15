@@ -91,10 +91,10 @@ sebastian.von.mammen@uni-wuerzburg.de
 See [Developer_Documentation.pdf](Developer_Documentation.pdf)
 
 
-## Prerequesites for Development
+## Prerequisites for Development
 
 - Make sure to clone recursively, i.e. including all submodules. Do not just download the zip file
-- See prerequesites above
+- See prerequisites above
 
 ## Required Ports
 

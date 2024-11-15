@@ -11,7 +11,7 @@ export let actions: Action[] = []
 export let availableEvents: Event[] = []
 
 export const EventsEditor = ({hidden}) => {
-    const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.name, value: event.name })))
+    const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.displayName, value: event.name })))
 
     const [events, setEvents] = useState<Event[]>([])
     const [event, setEvent] = useState<string>('')
@@ -74,7 +74,7 @@ export const EventsEditor = ({hidden}) => {
 
 function setAvailableEvents(eventList) {
     availableEvents = eventList
-    setOptions(availableEvents.map(event => ({ label: event.displayName, value: event.displayName })))
+    setOptions(availableEvents.map(event => ({ label: event.displayName, value: event.name })))
 }
 
 function setEventAndText(eventName) {
@@ -82,19 +82,19 @@ function setEventAndText(eventName) {
     setEventButtonText(eventName)
 }
 
-const addEvent = async (type) => {
+const addEvent = async (eventName: string) => {
 
-    const e = availableEvents.find(item => item.displayName === type)
+    const e = availableEvents.find(item => item.name === eventName)
 
     if (e !== undefined) {
        // e.actionSequence = []
         //e.id = Date.now()
         //setEvents([...events, e]);
 
-        const name = type
+        const name = eventName
         const param = e.parameters.map(x => Object.assign({}, x)) 
         
-        setEvents([...events, {description: e.description ,displayName: e.displayName ,name, id: Date.now(), parameters: param, actionSequence: []}]); 
+        setEvents([...events, {description: e.description, displayName: e.displayName, name: name, id: Date.now(), parameters: param, actionSequence: []}]); 
 
   
         await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)

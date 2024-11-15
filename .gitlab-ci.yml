@@ -37,7 +37,7 @@ deploy-documentation:
         - master
 
 lint:
-  image: node:16
+  image: node:22
   stage: build
   cache:
     paths:
@@ -51,7 +51,7 @@ lint:
     - docker
 
 backend:
-   image: node:16
+   image: node:22
    stage: build
    cache:
      paths:
@@ -68,7 +68,7 @@ backend:
      - docker
 
 frontend:
-   image: node:16
+   image: node:22
    stage: build
    cache:
      paths:
@@ -85,7 +85,7 @@ frontend:
      - docker
 
 package-win:
-  image: electronuserland/builder:16-wine
+  image: electronuserland/builder:wine # 22-wine doesn't exist
   stage: deploy
   cache:
     paths:
@@ -104,11 +104,11 @@ package-win:
     expire_in: 1 week
   tags:
     - docker
-  only:
-    - master
+#  only:
+#    - master
 
 #package-linux:
-#  image: node:16
+#  image: node:22
 #  stage: build
 #  cache:
 #    paths:
@@ -129,7 +129,7 @@ package-win:
 #    - docker
 
 #package-mac:
-#  image: node:16
+#  image: node:22
 #  stage: build
 #  cache:
 #    paths:

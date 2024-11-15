@@ -164,3 +164,4 @@ Further Contributors (in alphabetical order):
 - Sebastian Dietz
 - Sven Gerlach
 - Tobias Brandner
+- Wenzel Hünting

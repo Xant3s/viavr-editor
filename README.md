@@ -23,7 +23,7 @@ This repository contains the editor part of the VIA-VR project, made by the Game
 Before using the VIA-VR software, an IT administrator must install the following required software to ensure its proper functionality.
 
 - Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
-- Make sure [node.js](https://nodejs.org/en/download/) >=22.x is installed
+- Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 

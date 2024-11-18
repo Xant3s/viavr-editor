@@ -23,7 +23,7 @@ This repository contains the editor part of the VIA-VR project, made by the Game
 Before using the VIA-VR software, an IT administrator must install the following required software to ensure its proper functionality.
 
 - Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
-- Make sure [node.js](https://nodejs.org/en/download/) 16.x (>=16.10) is installed. Mozilla Spoke does not support Node versions newer than 16.x (e.g. 17.x)
+- Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 
@@ -31,7 +31,7 @@ Before using the VIA-VR software, an IT administrator must install the following
     node -v
     npm -v
     ```
-  - Node >=16.10 will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator:
+  - Node 22.x will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator:
 
     ```bash
     corepack enable

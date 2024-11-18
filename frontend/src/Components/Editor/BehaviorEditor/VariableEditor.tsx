@@ -61,11 +61,11 @@ export const VariableEditor = ({ isActive }) => {
     return (
         <SettingAccordion
             summary={
-                <div style={{display:'flex', alignItems:'center'}}>
-                    <p style={{margin:'0px', padding:'0px'}}>Variables</p>
+                <span style={{display:'flex', alignItems:'center'}}>
+                    <span style={{margin:'0px', padding:'0px'}}>Variables</span>
                     <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={variablesTip} style={{ marginLeft: 5, fontSize: 14 }}/>
                     <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
-                </div>
+                </span>
             }
             details={
                 <div>

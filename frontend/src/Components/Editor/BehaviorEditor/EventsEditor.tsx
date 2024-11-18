@@ -121,11 +121,11 @@ const handleEventClose = () =>{
 return (
     <SettingAccordion
         summary={
-            <div style={{display:'flex', alignItems:'center'}}>
-            <p style={{margin:'0px', padding:'0px'}}>Events</p>
-            <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Events can be used to start actions after a certain condition is met. This functionality can be added by enabling additional packages."} style={{ marginLeft: 5, fontSize: 14 }}/>
-            <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
-        </div>
+            <span style={{display:'flex', alignItems:'center'}}>
+                <span style={{margin:'0px', padding:'0px'}}>Events</span>
+                <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Events can be used to start actions after a certain condition is met. This functionality can be added by enabling additional packages."} style={{ marginLeft: 5, fontSize: 14 }}/>
+                <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
+            </span>
         }
         details={
             <div>

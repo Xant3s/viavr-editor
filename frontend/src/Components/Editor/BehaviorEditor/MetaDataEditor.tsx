@@ -162,11 +162,11 @@ export const MetaDataEditor = ({ isActive }) => {
 
     return <SettingAccordion
         summary={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <p style={{ margin: '0px', padding: '0px' }}>Meta Data</p>
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ margin: '0px', padding: '0px' }}>Meta Data</span>
                 <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Objects can be tagged so that other parts of VIA-VR can work with them. Packages can look for specific tags to use the corresponding objects."} style={{ marginLeft: 5, fontSize: 14 }} />
                 <Tooltip id="Variables" place="right" style={{ fontSize: '14px' }} />
-            </div>
+            </span>
         }
         details={(
             <div>

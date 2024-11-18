@@ -90,7 +90,6 @@
     "tree-kill": "^1.2.2",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
-    "@hello-pangea/dnd": "^16.3.0",
     "compare-versions": "^6.1.0"
   },
   "build": {
@@ -130,5 +129,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }

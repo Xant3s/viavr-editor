@@ -1,8 +1,8 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { Button, Checkbox, CrossIcon, IconButton, Pane, Select, SelectMenu, Table, TextInput, TrashIcon, ChevronDownIcon } from 'evergreen-ui'
+import { Button, Pane, SelectMenu, ChevronDownIcon } from 'evergreen-ui'
 import { useCallback, useEffect, useState } from 'react'
 import EventComponent from './EventComponent'
-import { Action, Event, Parameter, eventTypes } from '../../../@types/Behaviors'
+import { Action, Event } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {Tooltip} from 'react-tooltip'
@@ -12,14 +12,13 @@ export let availableEvents: Event[] = []
 
 export const EventsEditor = ({hidden}) => {
     const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.displayName, value: event.name })))
-
     const [events, setEvents] = useState<Event[]>([])
     const [event, setEvent] = useState<string>('')
     const [eventButtonText, setEventButtonText] = useState<string>('')
     const [triedAddingEvent, setTriedAddingEvent] = useState<boolean>()
-
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
 
+    
     const loadSceneObjects = async () => {
         let objects = await api.invoke(api.channels.toMain.getSceneObjects)
         const emptyObject = {
@@ -36,8 +35,8 @@ export const EventsEditor = ({hidden}) => {
         const packagesWithActions = packages.filter(item => 'actions' in item)
         let actionList: Action[] = []
         packagesWithActions.forEach(packageWithActions => {
-            actionList = actionList.concat(packageWithActions["actions"] as Action[])
-        });
+            actionList = actionList.concat(packageWithActions['actions'] as Action[])
+        })
 
         setActions(actionList)
     }, [])
@@ -58,8 +57,8 @@ export const EventsEditor = ({hidden}) => {
         setAvailableEvents(eventList)
     }, [])
 
-    const loadSavedEvents = async() => {
-        const loadedEvents = await api.invoke(api.channels.toMain.getBuildSetting, 'events') ?? [];
+    const loadSavedEvents = async () => {
+        const loadedEvents = await api.invoke(api.channels.toMain.getBuildSetting, 'events') ?? []
         setEvents(loadedEvents)
     }
 
@@ -83,28 +82,20 @@ function setEventAndText(eventName) {
 }
 
 const addEvent = async (eventName: string) => {
-
     const e = availableEvents.find(item => item.name === eventName)
 
     if (e !== undefined) {
-       // e.actionSequence = []
-        //e.id = Date.now()
-        //setEvents([...events, e]);
-
         const name = eventName
         const param = e.parameters.map(x => Object.assign({}, x)) 
-        
-        setEvents([...events, {description: e.description, displayName: e.displayName, name: name, id: Date.now(), parameters: param, actionSequence: []}]); 
-
-  
+        setEvents([...events, {description: e.description, displayName: e.displayName, name: name, id: Date.now(), parameters: param, actionSequence: []}])
         await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)
     }
-};
+}
 
 const removeEvent = async (id) => {
     setEvents(events.filter(event => event["id"] !== id));
     await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)
-};
+}
 
 async function updateEvent(event) {
     const updatedEvents = events.map((obj) => {
@@ -171,7 +162,6 @@ return (
                         setTriedAddingEvent(true);
                     }
                     }}
-                    //disabled={!event}
                     >
                     Add Event
                 </Button>
@@ -179,5 +169,4 @@ return (
         </div>
         }
     />
-)
-}
+)}

@@ -7,12 +7,10 @@ import { FormControl, FormHelperText } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {Tooltip} from 'react-tooltip'
 
-// export let availableActions: Action[] = []
-export let availableEvents: Event[] = []
 
 export const EventsEditor = ({hidden}) => {
+    const [availableEvents, setAvailableEvents] = useState<Event[]>([])
     const [availableActions, setAvailableActions] = useState<Action[]>([])
-    const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.displayName, value: event.name })))
     const [events, setEvents] = useState<Event[]>([])
     const [event, setEvent] = useState<string>('')
     const [eventButtonText, setEventButtonText] = useState<string>('')
@@ -44,7 +42,6 @@ export const EventsEditor = ({hidden}) => {
 
     const loadEvents = useCallback(async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
-
         const packagesWithEvents = packages.filter(item => 'events' in item)
         let eventList: Event[] = []
         packagesWithEvents.forEach(packageWithEvents => {
@@ -67,11 +64,6 @@ export const EventsEditor = ({hidden}) => {
             loadSavedEvents()
         }
     }, [loadActions, loadEvents, hidden])
-
-function setAvailableEvents(eventList) {
-    availableEvents = eventList
-    setOptions(availableEvents.map(event => ({ label: event.displayName, value: event.name })))
-}
 
 function setEventAndText(eventName) {
     setEvent(eventName)
@@ -133,7 +125,7 @@ return (
                 <FormControl>
                 <SelectMenu
                     title='Select event'
-                    options={options}
+                    options={availableEvents.map(event => ({ label: event.displayName, value: event.name }))}
                     selected={event}
                     onSelect={item => {
                         setEventAndText(item.value.toString())

@@ -1,11 +1,7 @@
-import { useEffect, useState } from 'react';
-import { SettingAccordion, SettingAccordionMeta } from '../../Settings/SettingAccordion'
+import { SettingAccordionMeta } from '../../Settings/SettingAccordion'
 import { IconButton, CrossIcon } from 'evergreen-ui'
-import { Meta } from '../../../@types/Behaviors'
 
 const MetaDataComponent = (props) => {
-
-
     return (
         <SettingAccordionMeta
             summary={props.meta["name"]} 

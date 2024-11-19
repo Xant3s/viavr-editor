@@ -1,12 +1,20 @@
-import { Button, Pane, SelectMenu, TextInput, DragHandleVerticalIcon, Select } from 'evergreen-ui';
-import React, { useEffect, useState } from 'react';
-import { Action } from '../../../@types/Behaviors';
-import { SettingAccordion, SettingAccordionAction } from '../../Settings/SettingAccordion'
-import { actions } from './EventsEditor';
+import { Button, Pane, SelectMenu, TextInput, DragHandleVerticalIcon, Select } from 'evergreen-ui'
+import React, { useEffect, useState } from 'react'
+import { Action } from '../../../@types/Behaviors'
+import { SettingAccordionAction } from '../../Settings/SettingAccordion'
+import { actions } from './EventsEditor'
 
-const ActionComponent = (props) => {
+interface Props {
+    depth: number
+    sceneObjects: any[]
+    component: any
+    callback: any
+    OnClose: any
+}
+
+const ActionComponent = (props: Props) => {
     const [options, setOptions] = useState(actions.map(action => ({ label: action.displayName, value: action.name })))
-    const [action, setAction] = useState<Action>();
+    const [action, setAction] = useState<Action>()
     const [actionButtonText, setActionButtonText] = useState<string>('')
 
     useEffect(() => {
@@ -20,7 +28,7 @@ const ActionComponent = (props) => {
     function setActionAndText(actionName) {
         const action = actions.find(action => (action.name === actionName))
         setAction(action)
-        setActionButtonText(actionName);
+        setActionButtonText(actionName)
         props.callback(props.component, action)
     }
 
@@ -117,7 +125,7 @@ const ActionComponent = (props) => {
                 </Pane>
             }
         />
-    );
-};
+    )
+}
 
-export default ActionComponent;
+export default ActionComponent

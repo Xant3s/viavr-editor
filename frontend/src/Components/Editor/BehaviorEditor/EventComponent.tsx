@@ -2,10 +2,18 @@ import { useState } from 'react';
 import { SettingAccordionEvent } from '../../Settings/SettingAccordion'
 import ActionSequence from './ActionSequence';
 import { TextInput, Select, Pane } from 'evergreen-ui';
-import { Event } from '../../../@types/Behaviors'
+import { Action, Event } from '../../../@types/Behaviors'
+import { ActionSequenceComponent } from './EventsEditor'
 
+interface Props {
+    event: Event
+    availableActions: Action[]
+    sceneObjects: any[]
+    callback: (event: Event) => void
+    OnClose: () => void
+}
 
-const EventComponent = (props) => {
+const EventComponent = (props: Props) => {
     const [event, setEvent] = useState<Event>(props.event)
     const [selectedObject, setSelectedObject] = useState<any>({})
     // if there is a parameter "gameobject" or "other" that is not empty
@@ -21,8 +29,8 @@ const EventComponent = (props) => {
         props.callback(event)
     }
 
-    function updateActionSequence(sequence) {
-        event.actionSequence = sequence
+    function updateActionSequence(sequence: ActionSequenceComponent[]) {
+        event.actionSequence = sequence.map(({id, ...rest}) => rest)
         props.callback(event)
     }
 
@@ -85,7 +93,7 @@ const EventComponent = (props) => {
                             This event contains no parameters.
                         </p>
                     )}
-                    <ActionSequence depth={1} loadedSequence={props.event.actionSequence} availableActions={props.availableActions} sceneObjects={props.sceneObjects} callback={updateActionSequence}></ActionSequence>
+                    <ActionSequence depth={1} sequence={props.event.actionSequence.map((component, index) => ({...component, id: index}))} availableActions={props.availableActions} sceneObjects={props.sceneObjects} updateSequence={updateActionSequence}></ActionSequence>
                 </Pane>
             }
         />

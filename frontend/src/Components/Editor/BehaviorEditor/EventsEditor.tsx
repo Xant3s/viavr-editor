@@ -2,11 +2,12 @@ import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Pane, SelectMenu, ChevronDownIcon } from 'evergreen-ui'
 import { useCallback, useEffect, useState } from 'react'
 import EventComponent from './EventComponent'
-import { Action, Event } from '../../../@types/Behaviors'
+import { Action, Event, IfElse } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
 
+export type ActionSequenceComponent  = (Action | IfElse) & {id: number}
 
 export const EventsEditor = ({hidden}) => {
     const [availableEvents, setAvailableEvents] = useState<Event[]>([])

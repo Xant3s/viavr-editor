@@ -17,7 +17,6 @@ const ActionComponent = (props: Props) => {
 
     function selectAction(actionName: string) {
         const action = props.availableActions.find(action => (action.name === actionName))
-        console.log(`select action ${actionName}`, props.action === undefined, action === undefined)
         props.updateAction(action)
     }
 

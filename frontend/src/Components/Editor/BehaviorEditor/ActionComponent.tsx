@@ -1,6 +1,6 @@
 import { Button, Pane, SelectMenu, TextInput, DragHandleVerticalIcon, Select } from 'evergreen-ui'
 import React, { useEffect, useState } from 'react'
-import { Action } from '../../../@types/Behaviors'
+import { Action, Parameter } from '../../../@types/Behaviors'
 import { SettingAccordionAction } from '../../Settings/SettingAccordion'
 
 interface Props {
@@ -15,26 +15,17 @@ interface Props {
 const ActionComponent = (props: Props) => {
     const [options, setOptions] = useState(props.availableActions.map(action => ({ label: action.displayName, value: action.name })))
     const [action, setAction] = useState<Action>()
-    const [actionButtonText, setActionButtonText] = useState<string>('')
 
-    useEffect(() => {
-        updateOptions()
-    })
 
-    function updateOptions() {
-        setOptions(props.availableActions.map(action => ({ label: action.name, value: action.name })))
-    }
-
-    function setActionAndText(actionName) {
+    function updateAction(actionName: string) {
         const action = props.availableActions.find(action => (action.name === actionName))
         setAction(action)
-        setActionButtonText(actionName)
         props.callback(props.component, action)
     }
 
-    function updateParameter(param, value) {
+    function updateParameter(param: Parameter, value: string) {
         if (action !== undefined) {
-            const parameter = action.parameters.find(parameter => parameter.name === param.name);
+            const parameter = action.parameters.find(parameter => parameter.name === param.name)
             if (parameter !== undefined) {
                 parameter.value = value
             }
@@ -43,14 +34,18 @@ const ActionComponent = (props: Props) => {
     }
 
     useEffect(() => {
+        setOptions(props.availableActions.map(action => ({ label: action.name, value: action.name })))
+    }, [props.availableActions])
+
+    useEffect(() => {
+        // initial load
         const newAction = props.availableActions.find(action => (action.name === props.component.name));
         if (newAction) {
             newAction.parameters = props.component.parameters
             setAction(newAction)
-            setActionButtonText(newAction.displayName)
         }
 
-    }, [props.component.name, props.component.parameters])
+    }, [props.availableActions, props.component.name, props.component.parameters])
 
     return (
         <SettingAccordionAction
@@ -74,12 +69,10 @@ const ActionComponent = (props: Props) => {
                         title='Select action'
                         options={options}
                         selected={action?.displayName}
-                        onSelect={item => {
-                            setActionAndText(item.value)
-                        }}
-                        onDeselect={_ => { setActionAndText("") }}
+                        onSelect={item => updateAction(item.value as string)}
+                        onDeselect={_ => updateAction('')}
                     >
-                        <Button>{actionButtonText || 'Select action...'}</Button>
+                        <Button>{action?.displayName || 'Select action...'}</Button>
                     </SelectMenu>
                     {action?.parameters?.map((parameter, index) => (
                         <div key={index} style={{ display: 'flex', alignItems: 'center' }} >
@@ -89,7 +82,6 @@ const ActionComponent = (props: Props) => {
                                 </p>
                             </div>
                             {parameter["name"] === 'gameObject' || parameter["name"] === 'other' ? (
-                                // Render a slider with gameObject's from the scene for 'gameObject' parameters
                                 <div>
                                     <Select value={parameter.value} onChange={e => updateParameter(parameter, e.target.value)} required>
                                         {props.sceneObjects.map((object, index) => (

@@ -1,51 +1,47 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { Button, Checkbox, Select, Table, TextInput, TrashIcon } from 'evergreen-ui'
+import { Button, Select, Table, TextInput, TrashIcon } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import {Tooltip} from 'react-tooltip'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import { Tooltip } from 'react-tooltip'
 
 export const VariableEditor = ({ isActive }) => {
     const [variables, setVariables] = useState<string[][]>([])
 
     const variablesTip = "Variables can be used for actions and events. They can store data, like numbers, text, or yes/no-values."
-
+    
     const tableRowStyle = {
         backgroundColor: '#4D535B',
         color: '#4D535B',
-        borderColor:'#6C737A' 
-    };
-    const tableHeaderStyle ={
+        borderColor: '#6C737A',
+    }
+    const tableHeaderStyle = {
         backgroundColor: '#6C737A',
-        color:'white',
-        borderColor:'#6C737A',
-    };
-
+        color: 'white',
+        borderColor: '#6C737A',
+    }
     
 
     // TODO: update build settings onLeaveFocus
 
-    const deleteVariable = (index: number) => {
-        const lhs = variables.slice(0, index)
-        const rhs = variables.slice(index + 1)
-        const newVariables = [...lhs, ...rhs]
-        setVariables(newVariables)
-        updateBuildSettings()
+    const deleteVariable = async (index: number) => {
+        const updatedVariables = variables.filter((_, i) => i !== index)
+        setVariables(updatedVariables)
+        await updateBuildSettings()
     }
 
     const updateBuildSettings = async () => {
-        const variableObjects = variables.map(([name, type, value], index) => {
-            const obj = {
+        const variableObjects = variables.map(([name, type, value]) => {
+            return {
                 "name": name,
                 "type": type,
                 "value": value
             }
-            return obj
         })
         await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variableObjects)
     }
 
     const loadVariables = async() => {
-        const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? [];
+        const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? []
         const loadedVariables = loadedVariableObjects.map(variable => {
             return [variable["name"], variable["type"], variable["value"]]
         })

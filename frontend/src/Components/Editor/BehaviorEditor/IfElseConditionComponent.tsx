@@ -76,88 +76,89 @@ const IfElseConditionComponent = (props) => {
     }
 
     return (
-        <SettingAccordionAction
-            summary={<div style={{alignItems:'center', display:'flex'}}>
-            <DragHandleVerticalIcon style={{marginRight:'5px'}}></DragHandleVerticalIcon>
-            If-Else Condition Component
-            </div>}
-            onClose={() => handleClose()}
-            details={
-                <Pane
-                    padding={2}
-                    marginBottom={10}
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                >
-                    <div style={{borderBottom: '2px solid #6C737A', paddingBottom:'12px'}}>
-                    <h3>If:</h3>
-                    <div style={{display: 'flex', justifyContent:'start', alignItems:'center'}}>
-                        <SelectMenu
-                            title="Variable"
-                            options={variables}
-                            selected={ifElse?.variable}
-                            onSelect={item => {
-                                setVariableAndText(item.value.toString());
-                                const selectedType = variables.find((variable) => variable.label === item.label)?.type || '';
-                                setVariableType(selectedType)
-                                //console.log(selectedType)           
-                            }}
-                            onDeselect={_ => { setVariableAndText(""); setVariableType("") }}
-                            onOpen={() => loadVariables()}
-                        >
-                            <Button>{variableButtonText || 'Select variable...'}</Button>
-                        </SelectMenu>
-                        <Select style={{marginLeft:'7px', marginRight:'7px', minWidth:'20%'}} 
-                            name="select-operator" value={operatorButtonText} 
-                        onChange={e => {setOperatorAndText(e.target.value)
-                                            }} required>
-                            <option key={0} value={"="}>
-                                {"Equals"}
-                            </option>
-                            <option key={1} value={"!="}>
-                                {"Does Not Equal"}
-                            </option>
-                            <option key={2} value={">"}>
-                                {"Is Greater Than"}
-                            </option>
-                            <option key={2} value={"<"}>
-                                {"Is Less Than"}
-                            </option>
-                        </Select>
-                        
-                        {ifElse.variabletype === "boolean"?
-                        (
-                            <Select style={{marginLeft:'7px', marginRight:'7px',}} name="select-type" onChange={e => {
-                                setComparison(e.target.value)
-                                }} required>
-                                <option key={0} value="true">{"Yes"}</option>
-                                <option key={1} value="false">{"No"}</option>
-                            </Select>
-                        ):
-                        (
-                            <TextInput
-                            style={{marginRight:'7px', maxWidth:'40%'}}
-                            type="text"
-                            placeholder="Comparison"
-                            onChange={e => setComparison(e.target.value)}
-                            /> )}
-                         
-                    </div>
-                    </div>
-
-                    <div style={{borderBottom: '2px solid #6C737A'}}>
-                    <h3 style={{marginBottom:'0px'}}>Then:</h3>
-                    {<ActionSequence depth={props.depth+1} sceneObjects={props.sceneObjects} callback={updateThenActionSequence}></ActionSequence>}
-                    </div>
-                    
-                    <div>
-                    <h3 style={{marginBottom:'0px'}}>Else:</h3>
-                    {<ActionSequence depth={props.depth+1} sceneObjects={props.sceneObjects} callback={updateElseActionSequence}></ActionSequence>}
-                    </div>
-                </Pane>
-            }
-        />
+        <>Feature unavailable</>
+        // <SettingAccordionAction
+        //     summary={<div style={{alignItems:'center', display:'flex'}}>
+        //     <DragHandleVerticalIcon style={{marginRight:'5px'}}></DragHandleVerticalIcon>
+        //     If-Else Condition Component
+        //     </div>}
+        //     onClose={() => handleClose()}
+        //     details={
+        //         <Pane
+        //             padding={2}
+        //             marginBottom={10}
+        //             display="flex"
+        //             flexDirection="column"
+        //             alignItems="center"
+        //         >
+        //             <div style={{borderBottom: '2px solid #6C737A', paddingBottom:'12px'}}>
+        //             <h3>If:</h3>
+        //             <div style={{display: 'flex', justifyContent:'start', alignItems:'center'}}>
+        //                 <SelectMenu
+        //                     title="Variable"
+        //                     options={variables}
+        //                     selected={ifElse?.variable}
+        //                     onSelect={item => {
+        //                         setVariableAndText(item.value.toString());
+        //                         const selectedType = variables.find((variable) => variable.label === item.label)?.type || '';
+        //                         setVariableType(selectedType)
+        //                         //console.log(selectedType)           
+        //                     }}
+        //                     onDeselect={_ => { setVariableAndText(""); setVariableType("") }}
+        //                     onOpen={() => loadVariables()}
+        //                 >
+        //                     <Button>{variableButtonText || 'Select variable...'}</Button>
+        //                 </SelectMenu>
+        //                 <Select style={{marginLeft:'7px', marginRight:'7px', minWidth:'20%'}} 
+        //                     name="select-operator" value={operatorButtonText} 
+        //                 onChange={e => {setOperatorAndText(e.target.value)
+        //                                     }} required>
+        //                     <option key={0} value={"="}>
+        //                         {"Equals"}
+        //                     </option>
+        //                     <option key={1} value={"!="}>
+        //                         {"Does Not Equal"}
+        //                     </option>
+        //                     <option key={2} value={">"}>
+        //                         {"Is Greater Than"}
+        //                     </option>
+        //                     <option key={2} value={"<"}>
+        //                         {"Is Less Than"}
+        //                     </option>
+        //                 </Select>
+        //                
+        //                 {ifElse.variabletype === "boolean"?
+        //                 (
+        //                     <Select style={{marginLeft:'7px', marginRight:'7px',}} name="select-type" onChange={e => {
+        //                         setComparison(e.target.value)
+        //                         }} required>
+        //                         <option key={0} value="true">{"Yes"}</option>
+        //                         <option key={1} value="false">{"No"}</option>
+        //                     </Select>
+        //                 ):
+        //                 (
+        //                     <TextInput
+        //                     style={{marginRight:'7px', maxWidth:'40%'}}
+        //                     type="text"
+        //                     placeholder="Comparison"
+        //                     onChange={e => setComparison(e.target.value)}
+        //                     /> )}
+        //                 
+        //             </div>
+        //             </div>
+        //
+        //             <div style={{borderBottom: '2px solid #6C737A'}}>
+        //             <h3 style={{marginBottom:'0px'}}>Then:</h3>
+        //             {<ActionSequence depth={props.depth+1} sceneObjects={props.sceneObjects} availableActions={props.availableActions} callback={updateThenActionSequence}></ActionSequence>}
+        //             </div>
+        //            
+        //             <div>
+        //             <h3 style={{marginBottom:'0px'}}>Else:</h3>
+        //             {<ActionSequence depth={props.depth+1} sceneObjects={props.sceneObjects} availableActions={props.availableActions} callback={updateElseActionSequence}></ActionSequence>}
+        //             </div>
+        //         </Pane>
+        //     }
+        // />
     );
 };
 

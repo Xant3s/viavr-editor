@@ -1,22 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import ActionComponent from './ActionComponent';
-import IfElseConditionComponent from './IfElseConditionComponent';
-import { Button, CrossIcon, Icon, IconButton, Pane } from 'evergreen-ui';
+import React, { useEffect, useState } from 'react'
+import ActionComponent from './ActionComponent'
+import IfElseConditionComponent from './IfElseConditionComponent'
+import { Button, Pane } from 'evergreen-ui'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
+import { Action } from '../../../@types/Behaviors'
 
-const ActionSequence = (props) => {
-    const [components, setComponents] = useState<object[]>([]);
+interface Props {
+    depth: number
+    loadedSequence: any
+    availableActions: Action[]
+    sceneObjects: any[]
+    callback: any
+}
+
+
+const ActionSequence = (props: Props) => {
+    const [components, setComponents] = useState<object[]>([])
 
     const addComponent = (type) => {
-        setComponents([...components, { type, id: Date.now() }]);        
+        setComponents([...components, { type, id: Date.now() }])
         props.callback(components)
-    };
+    }
 
     const removeComponent = (id) => {
-        setComponents(components.filter(component => component["id"] !== id));
+        setComponents(components.filter(component => component["id"] !== id))
         props.callback(components)
-        console.log("removed action component: " + id)
-    };
+    }
 
     function callbackAction(givenComponent, action) {
         const comp = components.find(component => component["id"] === givenComponent.id)
@@ -41,28 +50,26 @@ const ActionSequence = (props) => {
 
     const renderComponent = (component) => {
         if (component.type === 'action') {
-            return <ActionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackAction} OnClose={() => removeComponent(component["id"])}/>;
+            return <ActionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackAction} OnClose={() => removeComponent(component["id"])}/>
         } else if (component.type === 'ifElse') {
-            return <IfElseConditionComponent depth={props.depth+1} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackIfElse} OnClose={() => removeComponent(component["id"])}/>;
+            return <IfElseConditionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackIfElse} OnClose={() => removeComponent(component["id"])}/>
         }
-        return null;
-    };
+        return null
+    }
 
     const reorder = (startIndex, endIndex) => {
         const result = Array.from(components)
-        const [removed] = result.splice(startIndex, 1);
-        result.splice(endIndex, 0, removed);
-
-        return result;
+        const [removed] = result.splice(startIndex, 1)
+        result.splice(endIndex, 0, removed)
+        return result
     }
 
     const handleDragEnd = (result) => {
         // dropped outside the list
-        if (!result.destination) return;
-
+        if (!result.destination) return
         setComponents(reorder(result.source.index, result.destination.index))
         props.callback(components)
-    };
+    }
 
     useEffect(() => {
         setComponents(props.loadedSequence)
@@ -131,7 +138,7 @@ const ActionSequence = (props) => {
             )}
             </div>
         </Pane>
-    );
-};
+    )
+}
 
-export default ActionSequence;
+export default ActionSequence

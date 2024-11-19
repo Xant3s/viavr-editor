@@ -16,7 +16,7 @@ export class Event {
 export class Meta {
     uuid = ''
     name = ''
-    tags: [] = []
+    tags: string[] = []
     index = 0
 }
 

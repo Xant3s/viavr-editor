@@ -1,11 +1,12 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { Button, Select, SelectMenu, IconButton, CrossIcon, Pane } from 'evergreen-ui'
+import { Button, Select, SelectMenu, Pane } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
 import { Meta } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material'
 import MetaDataComponent from './MetaDataComponent'
+
 
 export const MetaDataEditor = ({ isActive }) => {
     const [options] = useState(["Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label })))
@@ -15,10 +16,9 @@ export const MetaDataEditor = ({ isActive }) => {
     const [selectButtonText, setSelectButtonText] = useState<string>('')
     const [selectedTags, setSelectedTags] = useState<any[]>([])
     const [triedAddingMeta, setTriedAddingMeta] = useState<boolean>()
-
     const [metas, setMetas] = useState<Meta[]>([])
 
-    const saveObjectTags = async (newMetas) => {
+    const saveObjectTags = async (newMetas: Meta[]) => {
         // Create objectTags from metas
         const objectTags = {}
         newMetas.forEach(meta => {
@@ -28,16 +28,16 @@ export const MetaDataEditor = ({ isActive }) => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'metas', newMetas)
     }
 
-    const onUpdateSelectedObject = async value => {
+    const onUpdateSelectedObject = async (uuid: string) => {
         const tags = await api.invoke(api.channels.toMain.getBuildSetting, 'objectTags') ?? {}
-        const objectTags = tags[value] ?? []
-        setSelectedObjectUUID(value)
+        const objectTags: string[] = tags[uuid] ?? []
+        setSelectedObjectUUID(uuid)
         setSelectedTags(objectTags)
         setSelectButtonText(calculateSelectButtonText(objectTags))
-        calculateAvailableTags(value)
+        await calculateAvailableTags(uuid)
     }
 
-    const onUpdateSelectedTags = async (selectedItems) => {
+    const onUpdateSelectedTags = async (selectedItems: string[]) => {
         setSelectedTags(selectedItems)
         setSelectButtonText(calculateSelectButtonText(selectedItems))
     }
@@ -54,9 +54,7 @@ export const MetaDataEditor = ({ isActive }) => {
     }
 
     const calculateAvailableTags = async (object) => {
-
         const objName = sceneObjects.find(sceneObj => object === sceneObj.uuid).name
-
         const obj = metas.find(meta => objName === meta.name)
 
         if (obj !== undefined) {
@@ -67,7 +65,6 @@ export const MetaDataEditor = ({ isActive }) => {
         else {
             setAvailableTags(options)
         }
-
     }
 
     const loadSceneObjects = async () => {
@@ -80,7 +77,7 @@ export const MetaDataEditor = ({ isActive }) => {
             if (!objects.some(object => object.uuid === key)) {
                 delete tags[key]
             }
-        });
+        })
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
     }
 
@@ -89,53 +86,44 @@ export const MetaDataEditor = ({ isActive }) => {
         setMetas(loadedMetas)
     }
 
-    const addMeta = async (tags) => {
-        // tags -> array of strings
-        // metas -> array of objects {uuid, name, tags, index}
-
+    const addMeta = async (tags: string[]) => {
         //default object
         if (!selectedObjectUUID) {
             setSelectedObjectUUID(sceneObjects[0].uuid)
-                
         }
-        const metaObjName = sceneObjects.find(sceneObj => selectedObjectUUID === sceneObj.uuid).name
-    
+        const metaObjName: string = sceneObjects.find(sceneObj => selectedObjectUUID === sceneObj.uuid).name
         const object = metas.find(metaObj => metaObjName === metaObj.name)
 
-        let newMetas
+        let newMetas: Meta[]
         if (object !== undefined) {
             const updatedObjTags: any = [...object.tags, ...tags]
             const newMetaObj: Meta = { uuid: selectedObjectUUID, name: metaObjName, tags: updatedObjTags, index: object.index }
-
             const updatedMetas = [...metas.filter(meta => meta["name"] !== metaObjName), newMetaObj]
             newMetas = [...updatedMetas.sort((m1, m2) => m1.index - m2.index)]
-
-            setMetas(newMetas)
         }
         else {
-            newMetas = [...metas, { uuid: selectedObjectUUID, name: metaObjName, tags: tags, index: metas.length }];
-            setMetas(newMetas)
+            newMetas = [...metas, { uuid: selectedObjectUUID, name: metaObjName, tags: tags, index: metas.length }]
         }
+        setMetas(newMetas)
 
-        onUpdateSelectedTags([])
-
+        await onUpdateSelectedTags([])
 
         const updatedAvailableTags = availableTags.filter(tag => !tags.includes(tag.value))
         setAvailableTags(updatedAvailableTags)
 
-        saveObjectTags(newMetas)
+        await saveObjectTags(newMetas)
     }
 
-    const removeMeta = async (name) => {
-        const newMetas = metas.filter(meta => meta["name"] !== name);
-        setMetas(newMetas);
+    const removeMeta = async (name: string) => {
+        const newMetas = metas.filter(meta => meta["name"] !== name)
+        setMetas(newMetas)
         setAvailableTags(options)
-        saveObjectTags(newMetas)
+        await saveObjectTags(newMetas)
     }
 
     const removeTag = async (metaObj: Meta, tag) => {
         if (metaObj.tags.length <= 1) {
-            removeMeta(metaObj.name)
+            await removeMeta(metaObj.name)
             return
         }
 
@@ -150,7 +138,7 @@ export const MetaDataEditor = ({ isActive }) => {
         const updatedAvailableTags = [...availableTags, { label: tag, value: tag }]
         setAvailableTags(updatedAvailableTags)
 
-        saveObjectTags(sortedMetas)
+        await saveObjectTags(sortedMetas)
     }
 
     useEffect(() => {
@@ -217,13 +205,13 @@ export const MetaDataEditor = ({ isActive }) => {
                         cursor: (selectedTags.length > 0) ? 'pointer' : 'auto',
                         border: (selectedTags.length > 0) ? '#006EFF' : 'gray',
                     }}
-                    onClick={() => {
+                    onClick={async () => {
                         if (selectedTags.length > 0) {
-                            addMeta(selectedTags);
-                            setTriedAddingMeta(false);
+                            await addMeta(selectedTags)
+                            setTriedAddingMeta(false)
                         }
                         else {
-                            setTriedAddingMeta(true);
+                            setTriedAddingMeta(true)
                         }
                     }}>
                     Add Tags

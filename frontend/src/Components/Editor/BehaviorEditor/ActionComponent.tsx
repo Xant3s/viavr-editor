@@ -4,56 +4,45 @@ import { Action, Parameter } from '../../../@types/Behaviors'
 import { SettingAccordionAction } from '../../Settings/SettingAccordion'
 
 interface Props {
-    depth: number
+    action: Action | undefined
     availableActions: Action[]
     sceneObjects: any[]
-    component: any
-    callback: any
-    OnClose: any
+    updateAction: (newAction: Action | undefined) => void
+    deleteActionComponent: () => void
 }
 
 const ActionComponent = (props: Props) => {
     const [options, setOptions] = useState(props.availableActions.map(action => ({ label: action.displayName, value: action.name })))
-    const [action, setAction] = useState<Action>()
 
 
-    function updateAction(actionName: string) {
+    function selectAction(actionName: string) {
         const action = props.availableActions.find(action => (action.name === actionName))
-        setAction(action)
-        props.callback(props.component, action)
+        console.log(`select action ${actionName}`, props.action === undefined, action === undefined)
+        props.updateAction(action)
     }
 
     function updateParameter(param: Parameter, value: string) {
-        if (action !== undefined) {
-            const parameter = action.parameters.find(parameter => parameter.name === param.name)
-            if (parameter !== undefined) {
-                parameter.value = value
-            }
+        if(props.action === undefined) return
+        const newAction = props.action
+        const parameter = newAction.parameters.find(parameter => parameter.name === param.name)
+        if(parameter !== undefined) {
+            parameter.value = value
         }
-        props.callback(props.component, action)
+        props.updateAction(newAction)
     }
 
     useEffect(() => {
         setOptions(props.availableActions.map(action => ({ label: action.name, value: action.name })))
     }, [props.availableActions])
 
-    useEffect(() => {
-        // initial load
-        const newAction = props.availableActions.find(action => (action.name === props.component.name));
-        if (newAction) {
-            newAction.parameters = props.component.parameters
-            setAction(newAction)
-        }
-
-    }, [props.availableActions, props.component.name, props.component.parameters])
-
+    
     return (
         <SettingAccordionAction
             summary={<div style={{ alignItems: 'center', display: 'flex' }}>
                 <DragHandleVerticalIcon style={{ marginRight: '5px' }}></DragHandleVerticalIcon>
                 Action Component
             </div>}
-            onClose={() => props.OnClose()}
+            onClose={() => props.deleteActionComponent()}
             details={
                 <Pane
                     padding={20}
@@ -68,13 +57,13 @@ const ActionComponent = (props: Props) => {
                     <SelectMenu
                         title='Select action'
                         options={options}
-                        selected={action?.displayName}
-                        onSelect={item => updateAction(item.value as string)}
-                        onDeselect={_ => updateAction('')}
+                        selected={props.action?.displayName}
+                        onSelect={item => selectAction(item.value as string)}
+                        onDeselect={_ => selectAction('')}
                     >
-                        <Button>{action?.displayName || 'Select action...'}</Button>
+                        <Button>{props.action?.displayName || 'Select action...'}</Button>
                     </SelectMenu>
-                    {action?.parameters?.map((parameter, index) => (
+                    {props.action?.parameters?.map((parameter, index) => (
                         <div key={index} style={{ display: 'flex', alignItems: 'center' }} >
                             <div style={{ textAlign: 'left', float: 'left', marginLeft: '15px', width: '180px' }}>
                                 <p>

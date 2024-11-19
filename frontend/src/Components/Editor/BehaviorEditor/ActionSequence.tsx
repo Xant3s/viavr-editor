@@ -50,7 +50,12 @@ const ActionSequence = (props: Props) => {
 
     const renderComponent = (component) => {
         if (component.type === 'action') {
-            return <ActionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackAction} OnClose={() => removeComponent(component["id"])}/>
+            const action = props.availableActions.find(action => (action.name === component.name))
+            if(action) {
+                action.parameters = component.parameters
+            }
+            
+            return <ActionComponent action={action} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} updateAction={(action) => callbackAction(component, action)} deleteActionComponent={() => removeComponent(component["id"])}/>
         } else if (component.type === 'ifElse') {
             return <IfElseConditionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackIfElse} OnClose={() => removeComponent(component["id"])}/>
         }

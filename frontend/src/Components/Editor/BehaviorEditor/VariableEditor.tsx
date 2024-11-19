@@ -3,9 +3,10 @@ import { Button, Select, Table, TextInput, TrashIcon } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
+import { Variable } from '../../../@types/Behaviors'
 
 export const VariableEditor = ({ isActive }) => {
-    const [variables, setVariables] = useState<string[][]>([])
+    const [variables, setVariables] = useState<Variable[]>([])
 
     const variablesTip = "Variables can be used for actions and events. They can store data, like numbers, text, or yes/no-values."
     
@@ -30,22 +31,12 @@ export const VariableEditor = ({ isActive }) => {
     }
 
     const updateBuildSettings = async () => {
-        const variableObjects = variables.map(([name, type, value]) => {
-            return {
-                "name": name,
-                "type": type,
-                "value": value
-            }
-        })
-        await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variableObjects)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variables)
     }
 
     const loadVariables = async() => {
         const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? []
-        const loadedVariables = loadedVariableObjects.map(variable => {
-            return [variable["name"], variable["type"], variable["value"]]
-        })
-        setVariables(loadedVariables)
+        setVariables(loadedVariableObjects)
     }
 
     useEffect(() => {
@@ -81,7 +72,7 @@ export const VariableEditor = ({ isActive }) => {
                         </div>
                         }
                         <Table.Body maxHeight={'200px'} minWidth={'600px'}>
-                            {variables.map(([name, type, value], index) => (
+                            {variables.map(({name, type, value}, index) => (
                                 <Table.Row key={index} style={tableRowStyle}>
                                     <Table.TextCell>
                                         <TextInput
@@ -89,24 +80,24 @@ export const VariableEditor = ({ isActive }) => {
                                             placeholder="Please enter a name"
                                             style={{width:'90%'}}
                                             value={name}
-                                            onChange={e => {
+                                            onChange={async e => {
                                                 setVariables([
                                                     ...variables.slice(0, index),
-                                                    [e.target.value, type, value],
+                                                    {name: e.target.value, type: type, value: value},
                                                     ...variables.slice(index + 1),
                                                 ])
-                                                updateBuildSettings()
+                                                await updateBuildSettings()
                                             }}
                                         />
                                     </Table.TextCell>
                                     <Table.TextCell>
-                                        <Select name="select-type" style={{width:'80%'}} value={type} onChange={e => {
+                                        <Select name="select-type" style={{width:'80%'}} value={type} onChange={async e => {
                                             setVariables([
                                                 ...variables.slice(0, index),
-                                                [name, e.target.value, e.target.value==='boolean'?'true':''],
+                                                {name: name, type: e.target.value, value: e.target.value==='boolean'?'true':''},
                                                 ...variables.slice(index + 1),
                                             ])
-                                            updateBuildSettings()
+                                            await updateBuildSettings()
                                         }} required>
                                             <option key={0} value={"number"}>
                                                 {"Number"}
@@ -126,25 +117,25 @@ export const VariableEditor = ({ isActive }) => {
                                                 placeholder="Please enter a value"
                                                 value={value}
                                                 style={{width:'90%'}}
-                                                onChange={e => {
+                                                onChange={async e => {
                                                     setVariables([
                                                         ...variables.slice(0, index),
-                                                        [name, type, e.target.value],
+                                                        {name: name, type: type, value: e.target.value},
                                                         ...variables.slice(index + 1),
                                                     ])
-                                                    updateBuildSettings()
+                                                    await updateBuildSettings()
                                                 }}
                                             />
                                         )}
                                         {type === 'boolean' && (
                                             
-                                            <Select style={{width:'90%' }} name="select-type" value={value} onChange={e => {
+                                            <Select style={{width:'90%' }} name="select-type" value={value} onChange={async e => {
                                                 setVariables([
                                                 ...variables.slice(0, index),
-                                                [name, type, e.target.value],
+                                                {name: name, type: type, value: e.target.value},
                                                 ...variables.slice(index + 1),
                                                 ])
-                                                updateBuildSettings()
+                                                await updateBuildSettings()
                                                 }} required>
                                                 <option key={0} value="true">{"Yes"}</option>
                                                 <option key={1} value="false">{"No"}</option>
@@ -167,9 +158,9 @@ export const VariableEditor = ({ isActive }) => {
                         </Table.Body>
                     </Table>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
-                        <Button appearance="primary" onClick={() => {
-                            setVariables([...variables, ['', 'number', '0']])
-                            updateBuildSettings()
+                        <Button appearance="primary" onClick={async () => {
+                            setVariables([...variables, {name: '', type: 'number', value: '0'}])
+                            await updateBuildSettings()
                         }}>
                             Add Variable
                         </Button>

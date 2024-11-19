@@ -2,10 +2,10 @@ import { Button, Pane, SelectMenu, TextInput, DragHandleVerticalIcon, Select } f
 import React, { useEffect, useState } from 'react'
 import { Action } from '../../../@types/Behaviors'
 import { SettingAccordionAction } from '../../Settings/SettingAccordion'
-import { actions } from './EventsEditor'
 
 interface Props {
     depth: number
+    availableActions: Action[]
     sceneObjects: any[]
     component: any
     callback: any
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const ActionComponent = (props: Props) => {
-    const [options, setOptions] = useState(actions.map(action => ({ label: action.displayName, value: action.name })))
+    const [options, setOptions] = useState(props.availableActions.map(action => ({ label: action.displayName, value: action.name })))
     const [action, setAction] = useState<Action>()
     const [actionButtonText, setActionButtonText] = useState<string>('')
 
@@ -22,11 +22,11 @@ const ActionComponent = (props: Props) => {
     })
 
     function updateOptions() {
-        setOptions(actions.map(action => ({ label: action.name, value: action.name })))
+        setOptions(props.availableActions.map(action => ({ label: action.name, value: action.name })))
     }
 
     function setActionAndText(actionName) {
-        const action = actions.find(action => (action.name === actionName))
+        const action = props.availableActions.find(action => (action.name === actionName))
         setAction(action)
         setActionButtonText(actionName)
         props.callback(props.component, action)
@@ -43,7 +43,7 @@ const ActionComponent = (props: Props) => {
     }
 
     useEffect(() => {
-        const newAction = actions.find(action => (action.name === props.component.name));
+        const newAction = props.availableActions.find(action => (action.name === props.component.name));
         if (newAction) {
             newAction.parameters = props.component.parameters
             setAction(newAction)

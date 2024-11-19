@@ -41,7 +41,7 @@ const ActionSequence = (props) => {
 
     const renderComponent = (component) => {
         if (component.type === 'action') {
-            return <ActionComponent depth={props.depth+1} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackAction} OnClose={() => removeComponent(component["id"])}/>;
+            return <ActionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackAction} OnClose={() => removeComponent(component["id"])}/>;
         } else if (component.type === 'ifElse') {
             return <IfElseConditionComponent depth={props.depth+1} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackIfElse} OnClose={() => removeComponent(component["id"])}/>;
         }

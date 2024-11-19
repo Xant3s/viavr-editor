@@ -93,7 +93,7 @@ const EventComponent = (props) => {
                             This event contains no parameters.
                         </p>
                     )}
-                    <ActionSequence depth={1} loadedSequence={props.event.actionSequence} sceneObjects={props.sceneObjects} callback={updateActionSequence}></ActionSequence>
+                    <ActionSequence depth={1} loadedSequence={props.event.actionSequence} availableActions={props.availableActions} sceneObjects={props.sceneObjects} callback={updateActionSequence}></ActionSequence>
                 </Pane>
             }
         />

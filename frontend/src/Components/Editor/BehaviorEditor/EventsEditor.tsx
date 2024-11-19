@@ -7,10 +7,11 @@ import { FormControl, FormHelperText } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {Tooltip} from 'react-tooltip'
 
-export let actions: Action[] = []
+// export let availableActions: Action[] = []
 export let availableEvents: Event[] = []
 
 export const EventsEditor = ({hidden}) => {
+    const [availableActions, setAvailableActions] = useState<Action[]>([])
     const [options, setOptions] = useState(availableEvents.map(event => ({ label: event.displayName, value: event.name })))
     const [events, setEvents] = useState<Event[]>([])
     const [event, setEvent] = useState<string>('')
@@ -38,12 +39,8 @@ export const EventsEditor = ({hidden}) => {
             actionList = actionList.concat(packageWithActions['actions'] as Action[])
         })
 
-        setActions(actionList)
+        setAvailableActions(actionList)
     }, [])
-
-    function setActions(actionList) {
-        actions = actionList
-    }
 
     const loadEvents = useCallback(async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
@@ -129,7 +126,7 @@ return (
                         width="100%"
                         marginBottom={8}
                     >
-                        <EventComponent event={event} sceneObjects={sceneObjects} callback={updateEvent} OnClose={() => removeEvent(event["id"])}/>
+                        <EventComponent event={event} availableActions={availableActions} sceneObjects={sceneObjects} callback={updateEvent} OnClose={() => removeEvent(event["id"])}/>
                         {/* <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeEvent(event["id"])} /> */}
                     </Pane>
                 ))}

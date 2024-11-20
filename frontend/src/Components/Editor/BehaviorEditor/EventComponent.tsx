@@ -96,7 +96,11 @@ const EventComponent = (props: Props) => {
                             This event contains no parameters.
                         </p>
                     )}
-                    <ActionSequence depth={1} sequence={props.event.actionSequence.map((component, index) => ({...component, id: index}))} availableActions={props.availableActions} sceneObjects={props.sceneObjects} updateSequence={updateActionSequence}></ActionSequence>
+                    <ActionSequence depth={1} 
+                                    sequence={props.event.actionSequence.map((component, index) => ({...component, id: index}))} 
+                                    availableActions={props.availableActions} 
+                                    sceneObjects={props.sceneObjects} 
+                                    updateSequence={updateActionSequence}></ActionSequence>
                 </Pane>
             }
         />

@@ -31,8 +31,8 @@ const ActionSequence = (props: Props) => {
             else: [], 
             operator: '', 
             then: [], 
-            variable: '', 
-            variabletype: '',
+            variableName: '', 
+            variableType: '',
         }
         props.updateSequence([...props.sequence, { ...newIfElse, id: Date.now() }])
     }
@@ -52,7 +52,7 @@ const ActionSequence = (props: Props) => {
         props.updateSequence(props.sequence)
     }
 
-    function callbackIfElse(givenComponent: ActionSequenceComponent, ifElse) {
+    function callbackIfElse(givenComponent: ActionSequenceComponent, ifElse: IfElse) {
         const comp = props.sequence.find(component => component["id"] === givenComponent.id)
         if (comp !== undefined) {
             comp["variable"] = ifElse["variable"]
@@ -68,18 +68,21 @@ const ActionSequence = (props: Props) => {
         const isAction = component['name'] !== undefined
 
         if(isAction) {
-            return <ActionComponent action={component as Action} availableActions={props.availableActions}
-                                    sceneObjects={props.sceneObjects} key={component.id}
+            return <ActionComponent key={component.id}
+                                    action={component as Action} 
+                                    availableActions={props.availableActions}
+                                    sceneObjects={props.sceneObjects} 
                                     updateAction={(action) => callbackAction(component, action as Action)}
                                     deleteActionComponent={() => removeComponent(component.id)} />
         }
         
-        return <IfElseConditionComponent depth={props.depth + 1} 
+        return <IfElseConditionComponent key={component.id} 
+                                         depth={props.depth + 1} 
+                                         ifElse={component as IfElse}
                                          availableActions={props.availableActions} 
                                          sceneObjects={props.sceneObjects} 
-                                         key={component.id} 
-                                         component={component} 
-                                         callback={callbackIfElse} OnClose={() => removeComponent(component.id)}
+                                         updateIfElse={(ifElse => callbackIfElse(component, ifElse as IfElse))} 
+                                         deleteIfElse={() => removeComponent(component.id)}
         />
     }
 

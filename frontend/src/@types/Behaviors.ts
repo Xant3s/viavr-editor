@@ -33,12 +33,12 @@ export class Action {
 }
 
 export class IfElse {
-    variable = ''
-    variabletype = ''
+    variableName = ''
+    variableType = ''
     operator = ''
     comparison = ''
-    then: [] = []
-    else: [] = []
+    then: ActionOrIfElse[] = []
+    else: ActionOrIfElse[] = []
 }
 
 export type ActionOrIfElse = Action | IfElse

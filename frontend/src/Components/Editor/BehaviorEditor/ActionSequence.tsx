@@ -64,18 +64,23 @@ const ActionSequence = (props: Props) => {
         props.updateSequence(props.sequence)
     }
 
-    const renderComponent = (component) => {
-        if (component.type === 'action') {
-            const action = props.availableActions.find(action => (action.name === component.name))
-            if(action) {
-                action.parameters = component.parameters
-            }
-            
-            return <ActionComponent action={action} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} updateAction={(action) => callbackAction(component, action as Action)} deleteActionComponent={() => removeComponent(component["id"])}/>
-        } else if (component.type === 'ifElse') {
-            return <IfElseConditionComponent depth={props.depth+1} availableActions={props.availableActions} sceneObjects={props.sceneObjects} key={component.id} component={component} callback={callbackIfElse} OnClose={() => removeComponent(component["id"])}/>
+    const renderComponent = (component: ActionSequenceComponent) => {
+        const isAction = component['name'] !== undefined
+
+        if(isAction) {
+            return <ActionComponent action={component as Action} availableActions={props.availableActions}
+                                    sceneObjects={props.sceneObjects} key={component.id}
+                                    updateAction={(action) => callbackAction(component, action as Action)}
+                                    deleteActionComponent={() => removeComponent(component.id)} />
         }
-        return null
+        
+        return <IfElseConditionComponent depth={props.depth + 1} 
+                                         availableActions={props.availableActions} 
+                                         sceneObjects={props.sceneObjects} 
+                                         key={component.id} 
+                                         component={component} 
+                                         callback={callbackIfElse} OnClose={() => removeComponent(component.id)}
+        />
     }
 
     const reorder = (startIndex, endIndex) => {
@@ -131,7 +136,6 @@ const ActionSequence = (props: Props) => {
                                                     marginBottom={8}
                                                 >
                                                     {renderComponent(component)}
-                                                   {/* <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeComponent(component["id"])} /> */}
                                                 </Pane>
                                             )}
                                         </Draggable>
@@ -144,7 +148,9 @@ const ActionSequence = (props: Props) => {
                 </DragDropContext>): <p style={{fontSize: '12px', color:'#b8bcbf'}}>No Actions added. Add an Action or If-Else Component to declare <br /> what happens in case the event is called.  </p>}
             </div>
             <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-            <Button style={{marginRight:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} onClick={addAction}>Add Action</Button>
+            <Button style={{marginRight:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} 
+                    onClick={addAction}>Add Action
+            </Button>
             {props.depth < 3 && (
             <Button 
             style={{marginLeft:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} 

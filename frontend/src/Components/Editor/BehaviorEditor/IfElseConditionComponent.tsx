@@ -30,6 +30,7 @@ const IfElseConditionComponent = (props: Props) => {
         const newIfElse = props.ifElse
         newIfElse.variable = variable?.name || ''
         newIfElse.variabletype = variable?.type || ''
+        newIfElse.operator = props.ifElse.operator === '' ? '=' : props.ifElse.operator
         props.updateIfElse(newIfElse)
     }
 
@@ -83,7 +84,7 @@ const IfElseConditionComponent = (props: Props) => {
                             title="Variable"
                             options={availableVariables.map(variable => ({...variable,  label: variable.name}))}
                             selected={props.ifElse?.variable}
-                            onSelect={item => setVariable(item.value.toString())}
+                            onSelect={item => setVariable(item.label)}
                             onDeselect={_ => setVariable(undefined)}
                             onOpen={() => loadVariables()}
                         >

@@ -17,17 +17,22 @@ const EventComponent = (props: Props) => {
     const [options] = useState(["", "Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label, })))
 
 
-    function updateParameters(param: Parameter, value: string) {
-        const parameter = props.event.parameters.find(parameter => parameter.name === param.name);
-        if (parameter !== undefined) {
-            parameter.value = value
-            props.updateEvent(props.event)
-        }
+    function updateParameterValue(parameterToChange: Parameter, value: string) {
+        const updatedParameters = props.event.parameters.map(parameter =>
+            parameter.name === parameterToChange.name
+                ? { ...parameter, value }
+                : parameter
+        )
+
+        const updatedEvent = {...props.event, parameters: updatedParameters}
+        props.updateEvent(updatedEvent)
     }
 
     function updateActionSequence(sequence: ActionSequenceComponent[]) {
-        props.event.actionSequence = sequence.map(({id, ...rest}) => rest)
-        props.updateEvent(props.event)
+        const newSequence = sequence.map(({id, ...rest}) => rest)
+        const newEvent = props.event
+        newEvent.actionSequence = newSequence
+        props.updateEvent(newEvent)
     }
 
     return (
@@ -55,7 +60,7 @@ const EventComponent = (props: Props) => {
                                     {parameter["name"] === 'gameObject' || parameter["name"] === 'other' ? (
                                         // Render a slider with gameObject's from the scene for 'gameObject' parameters
                                         <div>
-                                            <Select value={parameter["value"]} onChange={e => updateParameters(parameter, e.target.value)} required>
+                                            <Select value={parameter["value"]} onChange={e => updateParameterValue(parameter, e.target.value)} required>
                                                 {props.sceneObjects.map((object, index) => (
                                                     <option key={index} value={object.uuid}>
                                                         {object.name}
@@ -66,7 +71,7 @@ const EventComponent = (props: Props) => {
                                     ) : (parameter["name"] === 'tag' ? (
                                         <div>
                                             <Select
-                                                value={parameter["value"]} onChange={e => updateParameters(parameter, e.target.value)} required>
+                                                value={parameter["value"]} onChange={e => updateParameterValue(parameter, e.target.value)} required>
                                                 {options.map((object, index) => (
                                                     <option key={index} value={object.value}>
                                                         {object.label}
@@ -80,7 +85,7 @@ const EventComponent = (props: Props) => {
                                             type="text"
                                             placeholder="Parameter Value"
                                             value={parameter["value"]}
-                                            onChange={(e) => updateParameters(parameter, e.target.value)}
+                                            onChange={(e) => updateParameterValue(parameter, e.target.value)}
                                         />
                                     )}
                                 </div>

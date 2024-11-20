@@ -31,8 +31,8 @@ const ActionSequence = (props: Props) => {
             else: [], 
             operator: '', 
             then: [], 
-            variableName: '', 
-            variableType: '',
+            variable: '', 
+            variabletype: '',
         }
         props.updateSequence([...props.sequence, { ...newIfElse, id: Date.now() }])
     }

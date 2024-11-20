@@ -28,8 +28,8 @@ const IfElseConditionComponent = (props: Props) => {
     function setVariable(variableName: string | undefined) {
         const variable = availableVariables.find(variable => variable.name === variableName)
         const newIfElse = props.ifElse
-        newIfElse.variableName = variable?.name || ''
-        newIfElse.variableType = variable?.type || ''
+        newIfElse.variable = variable?.name || ''
+        newIfElse.variabletype = variable?.type || ''
         props.updateIfElse(newIfElse)
     }
 
@@ -82,12 +82,12 @@ const IfElseConditionComponent = (props: Props) => {
                         <SelectMenu
                             title="Variable"
                             options={availableVariables.map(variable => ({...variable,  label: variable.name}))}
-                            selected={props.ifElse?.variableName}
+                            selected={props.ifElse?.variable}
                             onSelect={item => setVariable(item.value.toString())}
                             onDeselect={_ => setVariable(undefined)}
                             onOpen={() => loadVariables()}
                         >
-                            <Button>{props.ifElse?.variableName || 'Select variable...'}</Button>
+                            <Button>{props.ifElse?.variable || 'Select variable...'}</Button>
                         </SelectMenu>
                         <Select style={{marginLeft:'7px', marginRight:'7px', minWidth:'20%'}} 
                             name="select-operator" value={props.ifElse?.operator} 
@@ -107,7 +107,7 @@ const IfElseConditionComponent = (props: Props) => {
                             </option>
                         </Select>
 
-                        {props.ifElse.variableType === "boolean"?
+                        {props.ifElse.variabletype === "boolean"?
                         (
                             <Select style={{marginLeft:'7px', marginRight:'7px',}} name="select-type" onChange={e => {
                                 setComparison(e.target.value)

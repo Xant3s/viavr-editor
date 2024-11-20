@@ -2,52 +2,50 @@ import { useState } from 'react';
 import { SettingAccordionEvent } from '../../Settings/SettingAccordion'
 import ActionSequence from './ActionSequence';
 import { TextInput, Select, Pane } from 'evergreen-ui';
-import { Action, Event } from '../../../@types/Behaviors'
+import { Action, Event, Parameter } from '../../../@types/Behaviors'
 import { ActionSequenceComponent } from './EventsEditor'
 
 interface Props {
     event: Event
+    updateEvent: (event: Event) => void
+    deleteEvent: () => void
     availableActions: Action[]
     sceneObjects: any[]
-    callback: (event: Event) => void
-    OnClose: () => void
 }
 
 const EventComponent = (props: Props) => {
-    const [event, setEvent] = useState<Event>(props.event)
-    const [selectedObject, setSelectedObject] = useState<any>({})
-    // if there is a parameter "gameobject" or "other" that is not empty
-    // selectedObject must be set to the corresponding object from props.sceneObjects (search for sceneObject.uuid with the value in the parameter)
     const [options] = useState(["", "Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label, })))
 
 
-    function updateParameters(param, value) {
-        const parameter = event.parameters.find(parameter => parameter.name === param.name);
+    function updateParameters(param: Parameter, value: string) {
+        const parameter = props.event.parameters.find(parameter => parameter.name === param.name);
         if (parameter !== undefined) {
             parameter.value = value
+            props.updateEvent(props.event)
         }
-        props.callback(event)
     }
 
     function updateActionSequence(sequence: ActionSequenceComponent[]) {
-        event.actionSequence = sequence.map(({id, ...rest}) => rest)
-        props.callback(event)
+        props.event.actionSequence = sequence.map(({id, ...rest}) => rest)
+        props.updateEvent(props.event)
     }
 
     return (
         <SettingAccordionEvent
             summary={props.event.displayName}
-            onClose={() => props.OnClose()}
+            onClose={() => props.deleteEvent()}
             details={
                 <Pane>
-                    {event.parameters.length > 0 ? (
+                    {props.event.parameters.length > 0 ? (
                         <div style={{ marginBottom: '10px', borderBottom: 'solid', borderColor: '#4D535B', borderWidth: '1px', paddingBottom: '25px' }}>
-                            {event.description &&
-                                (<div style={{ backgroundColor: '#848c91', borderRadius: '6px', fontSize: '14px', margin: '5px', padding: '5px' }}> {event.description}</div>)
+                            {props.event.description &&
+                                <div style={{ backgroundColor: '#848c91', borderRadius: '6px', fontSize: '14px', margin: '5px', padding: '5px' }}>
+                                    {props.event.description}
+                                </div>
                             }
 
                             <h3>Parameters </h3>
-                            {event.parameters.map((parameter, index) => (
+                            {props.event.parameters.map((parameter, index) => (
                                 <div key={index} style={{ display: 'flex', alignItems: 'center' }} >
                                     <div style={{ textAlign: 'left', float: 'left', marginLeft: '15px', width: '180px' }}>
                                         <p>

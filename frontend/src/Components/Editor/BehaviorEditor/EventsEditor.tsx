@@ -113,7 +113,7 @@ export const EventsEditor = ({hidden}) => {
                             width="100%"
                             marginBottom={8}
                         >
-                            <EventComponent event={event} availableActions={availableActions} sceneObjects={sceneObjects} callback={updateEvent} OnClose={() => removeEvent(event["id"])}/>
+                            <EventComponent event={event} availableActions={availableActions} sceneObjects={sceneObjects} updateEvent={updateEvent} deleteEvent={() => removeEvent(event["id"])}/>
                             {/* <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeEvent(event["id"])} /> */}
                         </Pane>
                     ))}

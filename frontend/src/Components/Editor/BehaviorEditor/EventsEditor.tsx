@@ -1,6 +1,6 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Pane, SelectMenu, ChevronDownIcon } from 'evergreen-ui'
-import { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import EventComponent from './EventComponent'
 import { Action, Event, IfElse } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material'
@@ -9,13 +9,18 @@ import { Tooltip } from 'react-tooltip'
 
 export type ActionSequenceComponent  = (Action | IfElse) & {id: number}
 
-export const EventsEditor = ({hidden}) => {
+interface Props {
+    hidden: boolean
+}
+
+export const EventsEditor: React.FC<Props> = ({hidden}) => {
     const [availableEvents, setAvailableEvents] = useState<Event[]>([])
     const [availableActions, setAvailableActions] = useState<Action[]>([])
-    const [events, setEvents] = useState<Event[]>([])
-    const [event, setEvent] = useState<string | undefined>()
-    const [triedAddingEvent, setTriedAddingEvent] = useState<boolean>()
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
+    const [events, setEvents] = useState<Event[]>([])
+    
+    const [selectedEvent, setSelectedEvent] = useState<string | undefined>()
+    const [triedAddingEvent, setTriedAddingEvent] = useState<boolean>()
 
     
     const loadSceneObjects = async () => {
@@ -29,7 +34,7 @@ export const EventsEditor = ({hidden}) => {
         setSceneObjects(objects)
     }
 
-    const loadActions = useCallback(async () => {
+    const loadAvailableActions = useCallback(async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         const packagesWithActions = packages.filter(item => 'actions' in item)
         let actionList: Action[] = []
@@ -40,7 +45,7 @@ export const EventsEditor = ({hidden}) => {
         setAvailableActions(actionList)
     }, [])
 
-    const loadEvents = useCallback(async () => {
+    const loadAvailableEvents = useCallback(async () => {
         const packages = await api.invoke(api.channels.toMain.queryPackages)
         const packagesWithEvents = packages.filter(item => 'events' in item)
         let eventList: Event[] = []
@@ -51,47 +56,42 @@ export const EventsEditor = ({hidden}) => {
         setAvailableEvents(eventList)
     }, [])
 
-    const loadSavedEvents = async () => {
+    const loadEventsFromBuildSettings = async () => {
         const loadedEvents = await api.invoke(api.channels.toMain.getBuildSetting, 'events') ?? []
         setEvents(loadedEvents)
     }
 
     useEffect(() => {
-        loadActions()
-        loadEvents()
+        loadAvailableActions()
+        loadAvailableEvents()
         if(!hidden) {
             loadSceneObjects()
-            loadSavedEvents()
+            loadEventsFromBuildSettings()
         }
-    }, [loadActions, loadEvents, hidden])
+    }, [loadAvailableActions, loadAvailableEvents, hidden])
     
-    const addEvent = async (eventName: string) => {
-        const e = availableEvents.find(item => item.name === eventName)
-    
-        if (e !== undefined) {
-            const name = eventName
-            const param = e.parameters.map(x => Object.assign({}, x)) 
-            setEvents([...events, {description: e.description, displayName: e.displayName, name: name, id: Date.now(), parameters: param, actionSequence: []}])
-            await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)
-        }
+    const addEvent = async (name: string) => {
+        const newEvent = availableEvents.find(event => event.name === name)
+        if(newEvent === undefined) return
+        newEvent.id = Date.now()
+        newEvent.actionSequence = []
+        const newEvents = [...events, newEvent]
+        setEvents(newEvents)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'events', newEvents)
     }
     
-    const removeEvent = async (id) => {
-        setEvents(events.filter(event => event["id"] !== id));
-        await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)
+    const removeEvent = async (id: number) => {
+        const newEvents = events.filter(event => event['id'] !== id)
+        setEvents(newEvents)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'events', newEvents)
     }
     
-    async function updateEvent(event) {
-        const updatedEvents = events.map((obj) => {
-            return obj.id === event.id ? event : obj;
-        })
+    async function updateEvent(newEvent: Event) {
+        const updatedEvents = events.map(event => event.id === newEvent.id ? newEvent : event)
         setEvents(updatedEvents)
-        await api.invoke(api.channels.toMain.setBuildSetting, 'events', events)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'events', updatedEvents)
     }
-    
-    const handleEventClose = () =>{
-        console.log("call method in events editor")
-    }
+
     
     return (
         <SettingAccordion
@@ -113,43 +113,44 @@ export const EventsEditor = ({hidden}) => {
                             width="100%"
                             marginBottom={8}
                         >
-                            <EventComponent event={event} availableActions={availableActions} sceneObjects={sceneObjects} updateEvent={updateEvent} deleteEvent={() => removeEvent(event["id"])}/>
-                            {/* <IconButton icon={CrossIcon} color="muted" cursor="pointer" onClick={() => removeEvent(event["id"])} /> */}
+                            <EventComponent event={event} 
+                                            availableActions={availableActions} 
+                                            sceneObjects={sceneObjects} 
+                                            updateEvent={updateEvent} 
+                                            deleteEvent={() => removeEvent(event.id)}
+                            />
                         </Pane>
                     ))}
                     <FormControl>
                     <SelectMenu
                         title='Select event'
                         options={availableEvents.map(event => ({ label: event.displayName, value: event.name }))}
-                        selected={event}
-                        onSelect={item => {
-                            setEvent(item.value.toString())
-                        }}
-                        onDeselect={_ => { setEvent(undefined) }}
+                        selected={selectedEvent}
+                        onSelect={item => setSelectedEvent(item.value.toString())}
+                        onDeselect={_ => { setSelectedEvent(undefined) }}
                     >
-                        <Button>{event || 'Select event...'} <ChevronDownIcon style={{marginLeft: '2px'}} /> </Button>
+                        <Button>{selectedEvent || 'Select event...'} <ChevronDownIcon style={{marginLeft: '2px'}} /> </Button>
                     </SelectMenu>
-                    {triedAddingEvent && !event && <FormHelperText style={{color:'red'}}>You have to select an event to add!</FormHelperText>}
+                    {triedAddingEvent && !selectedEvent && <FormHelperText style={{color:'red'}}>You have to select an event to add!</FormHelperText>}
                     </FormControl>
                     <Button
                         style={{marginLeft: '5px',
-                        background: event ? '#006EFF' : '#afb2ba',
-                        color: event ? 'white' : 'gray',
-                        cursor: event? 'pointer' : 'auto',
-                        border: event ? '#006EFF' : 'gray',}}
-                        onClick={() => {
-                        if (event) {
-                        addEvent(event);
-                        setTriedAddingEvent(false);
-                        }
-                        else{
-                            setTriedAddingEvent(true);
-                        }
+                        background: selectedEvent ? '#006EFF' : '#afb2ba',
+                        color: selectedEvent ? 'white' : 'gray',
+                        cursor: selectedEvent? 'pointer' : 'auto',
+                        border: selectedEvent ? '#006EFF' : 'gray',}}
+                        onClick={async () => {
+                            if (selectedEvent) {
+                                await addEvent(selectedEvent)
+                                setTriedAddingEvent(false)
+                            }
+                            else{
+                                setTriedAddingEvent(true)
+                            }
                         }}
                         >
                         Add Event
                     </Button>
-                    
             </div>
             }
         />

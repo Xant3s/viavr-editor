@@ -1,55 +1,42 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { Button, Checkbox, Select, Table, TextInput, TrashIcon } from 'evergreen-ui'
+import { Button, Select, Table, TextInput, TrashIcon } from 'evergreen-ui'
 import { useEffect, useState } from 'react'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import {Tooltip} from 'react-tooltip'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import { Tooltip } from 'react-tooltip'
+import { Variable } from '../../../@types/Behaviors'
 
 export const VariableEditor = ({ isActive }) => {
-    const [variables, setVariables] = useState<string[][]>([])
+    const [variables, setVariables] = useState<Variable[]>([])
 
     const variablesTip = "Variables can be used for actions and events. They can store data, like numbers, text, or yes/no-values."
-
+    
     const tableRowStyle = {
         backgroundColor: '#4D535B',
         color: '#4D535B',
-        borderColor:'#6C737A' 
-    };
-    const tableHeaderStyle ={
+        borderColor: '#6C737A',
+    }
+    const tableHeaderStyle = {
         backgroundColor: '#6C737A',
-        color:'white',
-        borderColor:'#6C737A',
-    };
-
+        color: 'white',
+        borderColor: '#6C737A',
+    }
     
 
     // TODO: update build settings onLeaveFocus
 
-    const deleteVariable = (index: number) => {
-        const lhs = variables.slice(0, index)
-        const rhs = variables.slice(index + 1)
-        const newVariables = [...lhs, ...rhs]
-        setVariables(newVariables)
-        updateBuildSettings()
+    const deleteVariable = async (index: number) => {
+        const updatedVariables = variables.filter((_, i) => i !== index)
+        setVariables(updatedVariables)
+        await updateBuildSettings()
     }
 
     const updateBuildSettings = async () => {
-        const variableObjects = variables.map(([name, type, value], index) => {
-            const obj = {
-                "name": name,
-                "type": type,
-                "value": value
-            }
-            return obj
-        })
-        await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variableObjects)
+        await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variables)
     }
 
     const loadVariables = async() => {
-        const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? [];
-        const loadedVariables = loadedVariableObjects.map(variable => {
-            return [variable["name"], variable["type"], variable["value"]]
-        })
-        setVariables(loadedVariables)
+        const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? []
+        setVariables(loadedVariableObjects)
     }
 
     useEffect(() => {
@@ -61,11 +48,11 @@ export const VariableEditor = ({ isActive }) => {
     return (
         <SettingAccordion
             summary={
-                <div style={{display:'flex', alignItems:'center'}}>
-                    <p style={{margin:'0px', padding:'0px'}}>Variables</p>
+                <span style={{display:'flex', alignItems:'center'}}>
+                    <span style={{margin:'0px', padding:'0px'}}>Variables</span>
                     <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={variablesTip} style={{ marginLeft: 5, fontSize: 14 }}/>
                     <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
-                </div>
+                </span>
             }
             details={
                 <div>
@@ -85,7 +72,7 @@ export const VariableEditor = ({ isActive }) => {
                         </div>
                         }
                         <Table.Body maxHeight={'200px'} minWidth={'600px'}>
-                            {variables.map(([name, type, value], index) => (
+                            {variables.map(({name, type, value}, index) => (
                                 <Table.Row key={index} style={tableRowStyle}>
                                     <Table.TextCell>
                                         <TextInput
@@ -93,24 +80,24 @@ export const VariableEditor = ({ isActive }) => {
                                             placeholder="Please enter a name"
                                             style={{width:'90%'}}
                                             value={name}
-                                            onChange={e => {
+                                            onChange={async e => {
                                                 setVariables([
                                                     ...variables.slice(0, index),
-                                                    [e.target.value, type, value],
+                                                    {name: e.target.value, type: type, value: value},
                                                     ...variables.slice(index + 1),
                                                 ])
-                                                updateBuildSettings()
+                                                await updateBuildSettings()
                                             }}
                                         />
                                     </Table.TextCell>
                                     <Table.TextCell>
-                                        <Select name="select-type" style={{width:'80%'}} value={type} onChange={e => {
+                                        <Select name="select-type" style={{width:'80%'}} value={type} onChange={async e => {
                                             setVariables([
                                                 ...variables.slice(0, index),
-                                                [name, e.target.value, e.target.value==='boolean'?'true':''],
+                                                {name: name, type: e.target.value, value: e.target.value==='boolean'?'true':''},
                                                 ...variables.slice(index + 1),
                                             ])
-                                            updateBuildSettings()
+                                            await updateBuildSettings()
                                         }} required>
                                             <option key={0} value={"number"}>
                                                 {"Number"}
@@ -130,25 +117,25 @@ export const VariableEditor = ({ isActive }) => {
                                                 placeholder="Please enter a value"
                                                 value={value}
                                                 style={{width:'90%'}}
-                                                onChange={e => {
+                                                onChange={async e => {
                                                     setVariables([
                                                         ...variables.slice(0, index),
-                                                        [name, type, e.target.value],
+                                                        {name: name, type: type, value: e.target.value},
                                                         ...variables.slice(index + 1),
                                                     ])
-                                                    updateBuildSettings()
+                                                    await updateBuildSettings()
                                                 }}
                                             />
                                         )}
                                         {type === 'boolean' && (
                                             
-                                            <Select style={{width:'90%' }} name="select-type" value={value} onChange={e => {
+                                            <Select style={{width:'90%' }} name="select-type" value={value} onChange={async e => {
                                                 setVariables([
                                                 ...variables.slice(0, index),
-                                                [name, type, e.target.value],
+                                                {name: name, type: type, value: e.target.value},
                                                 ...variables.slice(index + 1),
                                                 ])
-                                                updateBuildSettings()
+                                                await updateBuildSettings()
                                                 }} required>
                                                 <option key={0} value="true">{"Yes"}</option>
                                                 <option key={1} value="false">{"No"}</option>
@@ -171,9 +158,9 @@ export const VariableEditor = ({ isActive }) => {
                         </Table.Body>
                     </Table>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
-                        <Button appearance="primary" onClick={() => {
-                            setVariables([...variables, ['', 'number', '0']])
-                            updateBuildSettings()
+                        <Button appearance="primary" onClick={async () => {
+                            setVariables([...variables, {name: '', type: 'number', value: '0'}])
+                            await updateBuildSettings()
                         }}>
                             Add Variable
                         </Button>

@@ -10,13 +10,13 @@ export class Event {
     name = ''
     id = 0
     parameters: Parameter[] = []
-    actionSequence: [] = []
+    actionSequence: ActionOrIfElse[] = []
 }
 
 export class Meta {
     uuid = ''
     name = ''
-    tags: [] = []
+    tags: string[] = []
     index = 0
 }
 
@@ -37,9 +37,11 @@ export class IfElse {
     variabletype = ''
     operator = ''
     comparison = ''
-    then: [] = []
-    else: [] = []
+    then: ActionOrIfElse[] = []
+    else: ActionOrIfElse[] = []
 }
+
+export type ActionOrIfElse = Action | IfElse
 
 export const eventTypes =
     {

@@ -94,16 +94,16 @@ const IfElseConditionComponent = (props: Props) => {
                             name="select-operator" value={props.ifElse?.operator} 
                         onChange={e => {setOperator(e.target.value)
                                             }} required>
-                            <option key={0} value={"="}>
+                            <option key={"Equals"} value={"="}>
                                 {"Equals"}
                             </option>
-                            <option key={1} value={"!="}>
+                            <option key={"Does Not Equal"} value={"!="}>
                                 {"Does Not Equal"}
                             </option>
-                            <option key={2} value={">"}>
+                            <option key={"Is Greater Than"} value={">"}>
                                 {"Is Greater Than"}
                             </option>
-                            <option key={2} value={"<"}>
+                            <option key={"Is Less Than"} value={"<"}>
                                 {"Is Less Than"}
                             </option>
                         </Select>
@@ -113,8 +113,8 @@ const IfElseConditionComponent = (props: Props) => {
                             <Select style={{marginLeft:'7px', marginRight:'7px',}} name="select-type" onChange={e => {
                                 setComparison(e.target.value)
                                 }} required>
-                                <option key={0} value="true">{"Yes"}</option>
-                                <option key={1} value="false">{"No"}</option>
+                                <option key={"true"} value="true">{"Yes"}</option>
+                                <option key={"false"} value="false">{"No"}</option>
                             </Select>
                         ):
                         (

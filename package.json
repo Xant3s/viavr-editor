@@ -8,9 +8,9 @@
   "homepage": ".",
   "private": true,
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && cd res/plugins/spoke && yarn install --ignore-scripts",
+    "postinstall": "electron-builder install-app-deps && cd res/plugins/spoke && yarn install --ignore-scripts --registry https://registry.npmjs.org",
     "prestart": "npm run build:backend",
-    "start": "concurrently \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\"",
+    "start": "concurrently --kill-others \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\"",
     "start:frontend": "react-app-rewired start",
     "install:rs-server": "start cmd /k \"cd rs-server && pip install -r requirements.txt \"",
     "start:rs-server": "start cmd /k \"python rs-server/server.py\"",
@@ -67,12 +67,14 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "adm-zip": "^0.5.9",
+    "compare-versions": "^6.1.0",
     "electron-devtools-installer": "^3.2.0",
     "electron-is-dev": "^2.0.0",
     "electron-reload": "^2.0.0-alpha.1",
     "evergreen-ui": "^6.10.1",
     "extract-zip": "^2.0.1",
     "fast-folder-size": "^1.6.2",
+    "find-process": "^1.4.7",
     "flexlayout-react": "^0.7.3",
     "fs-extra": "^10.1.0",
     "jquery": "^3.6.0",
@@ -89,8 +91,7 @@
     "styled-components": "^5.3.5",
     "tree-kill": "^1.2.2",
     "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4",
-    "compare-versions": "^6.1.0"
+    "web-vitals": "^2.1.4"
   },
   "build": {
     "extends": null,

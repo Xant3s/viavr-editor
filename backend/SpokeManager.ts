@@ -4,11 +4,13 @@ import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
 import PreferencesManager from './Preferences/PreferencesManager'
 import { Logger } from './Logger'
+import find from 'find-process'
 
 export default class SpokeManager {
     private static instance: SpokeManager
-    private startCommand = `cd ${AppUtils.getResPath()}plugins/Spoke && yarn start`
-    private spoke!: child_process.ChildProcess
+    private startCommand = `yarn start`
+    private port = 9090
+    private pids: number[] = []
 
 
     public static getInstance(): SpokeManager {
@@ -20,34 +22,50 @@ export default class SpokeManager {
 
     private constructor() {
         this.startSpoke()
-        app.on('quit', this.stopSpoke)
+        app.on('quit', this.stopSpoke.bind(this))
     }
 
-    private startSpoke() {
+    private async startSpoke() {
+        const foundPids = await this.tryGetSpokePid(this.port)
+        this.pids = [...this.pids, ...foundPids]
+        
         const psCommand = `powershell -Command "Start-Process -FilePath 'cmd.exe' -ArgumentList '/c ${this.startCommand.replace(/"/g, '`"')}' -WindowStyle Hidden"`
-        this.spoke = child_process.spawn(psCommand, {
+        const powerShellProcess = child_process.spawn(psCommand, {
             shell: true,
             detached: true,
+            cwd: `${AppUtils.getResPath()}plugins/Spoke`
         })
-        this.spoke.on('error', (error) => {
-            Logger.get().logVerbose(`Spoke process error: ${error}`)
-        })
-        this.spoke.on('exit', (code, signal) => {
-            if (code !== null) {
-                Logger.get().logVerbose(`Spoke process exited with code ${code}. Perhaps another Spoke process was already running?`)
-            } else if (signal !== null) {
-                Logger.get().logVerbose(`Spoke process killed with signal ${signal}.`)
-            } else {
-                Logger.get().log(`Spoke process exited`)
-            }
-        })
+
+        await this.sleep(5_000)  // Workaround. tryGetSpokePid in stopSpoke doesn't seem to work.
+        const newPids = await this.tryGetSpokePid(this.port)
+        this.pids = [...this.pids, ...newPids]
     }
 
     private async stopSpoke() {
         const shouldStop: boolean = await PreferencesManager.getInstance().get<boolean>('dev.stopSpoke') as boolean
 
         if(app.isPackaged || shouldStop) {
-            kill(SpokeManager.getInstance().spoke.pid ?? 0)
+            this.pids.forEach(pid => kill(pid))
         }
+    }
+
+    private async tryGetSpokePid(port = 9090) {
+        try {
+            const processes = await find('port', port)
+            if(processes.length === 0) return []
+
+            processes.forEach(p => {
+                Logger.get().logVerbose(`Process using port ${port}: PID=${p.pid}, Name=${p.name}`)
+            })
+
+            return processes.map(p => p.pid)
+        } catch(error) {
+            Logger.get().logVerbose(`Error finding process by port: ${error}`)
+            return []
+        }
+    }
+
+    private sleep(timeInMs: number) {
+        return new Promise<void>((resolve) => setTimeout(() => resolve(), timeInMs))
     }
 }

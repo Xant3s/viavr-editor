@@ -3,7 +3,7 @@
 	url = ../spoke.git
 [submodule "res/plugins/viavr-reticulum"]
 	path = res/plugins/viavr-reticulum
-	url = https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-reticulum.git
+	url = ../viavr-reticulum.git
 [submodule "res/plugins/viavr-nearspark"]
 	path = res/plugins/viavr-nearspark
-	url = https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-nearspark.git
+	url = ../viavr-nearspark.git

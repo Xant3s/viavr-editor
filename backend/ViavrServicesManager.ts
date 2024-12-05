@@ -7,8 +7,8 @@ import http from 'http' // Import HTTP module for checking the port
 
 export default class ViavrServicesManager {
     private static instance: ViavrServicesManager
-    private reticulumPSInstace: child_process.ChildProcess | null = null
-    private nearsparkPSInstace: child_process.ChildProcess | null = null
+    private reticulumPSInstance: child_process.ChildProcess | null = null
+    private nearsparkPSInstance: child_process.ChildProcess | null = null
 
     public static getInstance(): ViavrServicesManager {
         if(!ViavrServicesManager.instance) {
@@ -28,7 +28,7 @@ export default class ViavrServicesManager {
         const scriptPath = `${AppUtils.getResPath()}plugins/viavr-reticulum/run_reticulum_without_checks.ps1`
         const psCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "${scriptPath}"`
 
-        this.reticulumPSInstace = child_process.spawn(psCommand, {
+        this.reticulumPSInstance = child_process.spawn(psCommand, {
             shell: true,
             detached: true,
             cwd: `${AppUtils.getResPath()}plugins/viavr-reticulum`,
@@ -41,7 +41,7 @@ export default class ViavrServicesManager {
         const nearSparkScriptPath = `${AppUtils.getResPath()}plugins/viavr-nearspark/`
         const nearSparkPsCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "cd '${nearSparkScriptPath}'; node app.js"`
 
-        this.nearsparkPSInstace = child_process.spawn(nearSparkPsCommand, {
+        this.nearsparkPSInstance = child_process.spawn(nearSparkPsCommand, {
             shell: true,
             detached: true,
             cwd: nearSparkScriptPath, // Optional since we're explicitly setting the directory in the command
@@ -81,12 +81,12 @@ export default class ViavrServicesManager {
 
     private restartReticulumService() {
         console.log('Restarting Reticulum service...')
-        if(this.reticulumPSInstace && this.reticulumPSInstace.pid) {
-            kill(this.reticulumPSInstace.pid, 'SIGKILL', (err) => {
+        if(this.reticulumPSInstance && this.reticulumPSInstance.pid) {
+            kill(this.reticulumPSInstance.pid, 'SIGKILL', (err) => {
                 if(err) {
                     console.error('Failed to kill Reticulum process:', err)
                 }
-                this.reticulumPSInstace = null
+                this.reticulumPSInstance = null
                 // Restart the service
                 this.startVIAVRServices()
             })
@@ -118,20 +118,20 @@ export default class ViavrServicesManager {
 
 
     private killProcess() {
-        if(this.reticulumPSInstace) {
-            const pid = this.reticulumPSInstace.pid
+        if(this.reticulumPSInstance) {
+            const pid = this.reticulumPSInstance.pid
             if(pid) {
                 kill(pid, 'SIGKILL', (err) => {
                     if(err) {
-                        console.error('Retciulum kill failed', err)
+                        console.error('Reticulum kill failed', err)
                     }
                 })
             }
             console.log('Reticulum with pid', pid, 'killed')
-            this.reticulumPSInstace = null
+            this.reticulumPSInstance = null
         }
-        if(this.nearsparkPSInstace) {
-            const pid = this.nearsparkPSInstace.pid
+        if(this.nearsparkPSInstance) {
+            const pid = this.nearsparkPSInstance.pid
             if(pid) {
                 kill(pid, 'SIGKILL', (err) => {
                     if(err) {
@@ -140,7 +140,7 @@ export default class ViavrServicesManager {
                 })
             }
             console.log('Nearspark with pid', pid, 'killed')
-            this.nearsparkPSInstace = null
+            this.nearsparkPSInstance = null
         }
     }
 }

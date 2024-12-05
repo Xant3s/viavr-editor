@@ -81,8 +81,8 @@ export default class ViavrServicesManager {
 
     private restartReticulumService() {
         console.log('Restarting Reticulum service...')
-        if(this.reticulumPSInstace) {
-            kill(this.reticulumPSInstace.pid!, 'SIGKILL', (err) => {
+        if(this.reticulumPSInstace && this.reticulumPSInstace.pid) {
+            kill(this.reticulumPSInstace.pid, 'SIGKILL', (err) => {
                 if(err) {
                     console.error('Failed to kill Reticulum process:', err)
                 }
@@ -93,7 +93,7 @@ export default class ViavrServicesManager {
         }
     }
 
-    private checkPort(port: number, host: string = 'localhost'): Promise<boolean> {
+    private checkPort(port: number, host = 'localhost'): Promise<boolean> {
         return new Promise((resolve) => {
             const socket = new net.Socket()
             socket.setTimeout(1000) // Timeout after 1 second

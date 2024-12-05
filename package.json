@@ -27,7 +27,8 @@
     "clean": "rimraf ./build ./dist",
     "eject": "react-scripts eject",
     "installReticulum": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_check_install.ps1\"",
-    "runReticulum": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_Windows_Reticulum.ps1\"",
+    "runReticulumWithChecks": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_Windows_Reticulum.ps1\"",
+    "runReticulum": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_reticulum_without_checks.ps1\"",
     "runNearSpark": "cd ./res/plugins/viavr-nearspark && node app.js"
   },
   "devDependencies": {

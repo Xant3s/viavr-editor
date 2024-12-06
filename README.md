@@ -52,17 +52,17 @@ Before using the VIA-VR software, an IT administrator must install the following
       ```bash
       npm install
       ```
-	    - **To verify the installation:**  
-	        Run 
-          ```bash
-          npm run runNearSpark
-          ```
-          or, from the `nearspark` folder, execute:  
-	        `node app.js`.
-	        
-	        If the console prints:  
-	        `[...] on HTTPS port 5001`,  
-	        nearspark was installed successfully.
+  - **To verify the installation:**  
+      Run 
+      ```bash
+      npm run runNearSpark
+      ```
+      or, from the `nearspark` folder, execute:  
+      `node app.js`.
+      
+      If the console prints:  
+      `[...] on HTTPS port 5001`,  
+      nearspark was installed successfully.
 
 - To install [reticulum](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-reticulum):
 	- Either run the npm script:

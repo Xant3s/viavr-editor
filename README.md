@@ -159,6 +159,7 @@ Further Contributors (in alphabetical order):
 - Jonas Schindler
 - Lea Kohl
 - Lennard Rüffert
+- Marie Louise Eichner
 - Roman Bornschier
 - Sarah Hofmann
 - Sebastian Dietz

@@ -22,7 +22,6 @@ This repository contains the editor part of the VIA-VR project, made by the Game
 
 Before using the VIA-VR software, an IT administrator must install the following required software to ensure its proper functionality.
 
-- Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
 - Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
@@ -142,8 +141,6 @@ See [Developer_Documentation.pdf](Developer_Documentation.pdf)
 ## How to Start (Currently Only Tested on Windows)
 
 - We recommend doing the following steps in cmd.exe
-- Run the following command to install the recommender system
-  - `npm run install:rs-server`
 - Run the following commands to install Nearspark:
   - `npm installNearSpark`
 - Run the following commands to install Reticulum:
@@ -179,7 +176,7 @@ The page will reload if you make edits. You will also see any lint errors in the
 As there is no active maintainer for this project, contributions are not being actively reviewed or merged. However, if you wish to extend or build upon this work, you are welcome to fork the repository and continue development on your own.
 
 
-## Contributers
+## Contributors
 
 Project Lead: Prof. Dr. Sebastian von Mammen
 
@@ -201,6 +198,7 @@ Further Contributors (in alphabetical order):
 - Jonas Schindler
 - Lea Kohl
 - Lennard Rüffert
+- Marie Louise Eichner
 - Roman Bornschier
 - Sarah Hofmann
 - Sebastian Dietz

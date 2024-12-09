@@ -27,6 +27,7 @@ export default class ViavrServicesManager {
     private async startVIAVRServices() {
         // Kill `erl.exe` if running (effectifly kills every running reticulum instance)
         await this.killErlProcess();
+        this.killNearSparkProcessIfAble(); //just to prevent spawning unnessecary NearSpark instances if something goes wrong
 
         //Reticulum
         const scriptPath = `${AppUtils.getResPath()}plugins/viavr-reticulum/run_reticulum_without_checks.ps1`
@@ -42,7 +43,6 @@ export default class ViavrServicesManager {
         this.monitorReticulumService()
 
         // NearSpark
-        this.killNearSparkProcessIfAble(); //just to prevent spawning unnessecary NearSpark instances if something goes wrong
         const nearSparkScriptPath = `${AppUtils.getResPath()}plugins/viavr-nearspark/`
         const nearSparkPsCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "cd '${nearSparkScriptPath}'; node app.js"`
 
@@ -63,8 +63,8 @@ export default class ViavrServicesManager {
         this.CURRENT_RETICULUM_CHECKS++;
         
         const MAX_RETRIES = 2 // Maximum retries before restarting the service
-        const CHECK_INTERVAL = 2000 // 2 seconds
-        const WAIT_BEFORE_CHECK = 5000 // 5 seconds before starting checks
+        const CHECK_INTERVAL = 4000 // 2 seconds
+        const WAIT_BEFORE_CHECK = 8000 // 5 seconds before starting checks
 
         let retries = 0
 

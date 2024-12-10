@@ -44,6 +44,7 @@ lint:
       - node_modules
   before_script:
     - npm i yarn
+    - yarn config set network-timeout 600000
     - npm i
   script:
     - npm run lint
@@ -61,6 +62,7 @@ backend:
      - npm -v
      - npm i yarn
      - yarn -v
+     - yarn config set network-timeout 600000
      - npm i
    script:
      - npm run build:backend
@@ -78,6 +80,7 @@ frontend:
      - npm -v
      - npm i yarn
      - yarn -v
+     - yarn config set network-timeout 600000
      - npm i
    script:
      - npm run build:frontend
@@ -95,6 +98,7 @@ package-win:
     - npm -v
     - npm i yarn
     - yarn -v
+    - yarn config set network-timeout 600000
     - npm i
   script:
     - npm run package:win

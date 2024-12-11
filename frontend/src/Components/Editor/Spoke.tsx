@@ -8,7 +8,7 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
     const defaultIframeSrc = 'https://localhost:9090'
     const tutorialIframeSrc = 'https://localhost:9090/projects/tutorial'
     const [spokeReady, setSpokeReady] = useState(false)
-    const [iframeSrc, setIframeSrc] = useState(defaultIframeSrc)
+    const [iframeSrc, setIframeSrc] = useState('')  // initially empty
     const spokeIframe = useRef<HTMLIFrameElement | null>(null)
 
 

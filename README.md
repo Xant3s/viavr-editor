@@ -22,7 +22,6 @@ This repository contains the editor part of the VIA-VR project, made by the Game
 
 Before using the VIA-VR software, an IT administrator must install the following required software to ensure its proper functionality.
 
-- Make sure Python [(version 3.8 or 3.9)](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe) is installed. The recommender system requires Python.
 - Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
@@ -43,8 +42,46 @@ Before using the VIA-VR software, an IT administrator must install the following
     yarn -v
     ```
 
+ - To Install [nearspark](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-nearspark):
+	- Either run the npm script:
+      ```bash
+      npm run installNearSpark
+      ```
+  - Or navigate to the root folder `res\plugins\viavr-nearspark\` in a console and run:
+      ```bash
+      npm install
+      ```
+  - **To verify the installation:**  
+      Run 
+      ```bash
+      npm run runNearSpark
+      ```
+      or, from the `nearspark` folder, execute:  
+      `node app.js`.
+      
+      If the console prints:  
+      `[...] on HTTPS port 5001`,  
+      nearspark was installed successfully.
+
+- To install [reticulum](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-reticulum):
+	- Either run the npm script:
+      ```bash
+      npm run installReticulum
+      ```  
+	- Or navigate to the root folder `res\plugins\viavr-reticulum\` in a PowerShell console and execute:  
+	    `run_check_install.ps1`
+	    - **To verify the installation:**  
+	        Check the output of the script. Then run: 
+          ```bash
+          npm run runReticulumWithChecks
+          ```    
+	        If you see the message:  
+	        `[info] Access RetWeb.Endpoint at https://localhost:4000`,  
+	        Reticulum was installed successfully.
+        
 - Make sure Unity 2021.3.31f1 is installed
   - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
+  - To verify that Unity was installed successfully, check if the folder `C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\build-tools` exists and is not empty. If this folder doesn't exist, reinstall Unity with Android Build Support 
   - Make sure the IL2CPP scripting backend is installed
 - Make sure your internet connection is working properly
 - Download either the portable or installer version from the release page of this repository
@@ -104,8 +141,10 @@ See [Developer_Documentation.pdf](Developer_Documentation.pdf)
 ## How to Start (Currently Only Tested on Windows)
 
 - We recommend doing the following steps in cmd.exe
-- Run the following command to install the recommender system
-  - `npm run install:rs-server`
+- Run the following commands to install Nearspark:
+  - `npm installNearSpark`
+- Run the following commands to install Reticulum:
+  - `npm installReticulum`
 - Run the following commands to install the application:
   - `npm install`
 - Run the following command to start the application
@@ -137,7 +176,7 @@ The page will reload if you make edits. You will also see any lint errors in the
 As there is no active maintainer for this project, contributions are not being actively reviewed or merged. However, if you wish to extend or build upon this work, you are welcome to fork the repository and continue development on your own.
 
 
-## Contributers
+## Contributors
 
 Project Lead: Prof. Dr. Sebastian von Mammen
 

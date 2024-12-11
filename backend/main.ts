@@ -7,6 +7,7 @@ import ProjectManager from './ProjectManager/ProjectManager'
 import SceneExporter from './ProjectManager/SceneExporter'
 import DialogUtils from './Utils/DialogUtils'
 import ProjectSettingsManager from './ProjectManager/ProjectSettingsManager'
+import ViavrServicesManager from './ViavrServicesManager'
 import { Prototypes } from './Prototypes'
 import { ArticyManager } from './ArticyManager'
 import { SceneUtils } from './Utils/SceneUtils'
@@ -18,6 +19,7 @@ import { Logger } from './Logger'
 const startup = async () => {
     const mainWindow = new MainWindow()
     SpokeManager.getInstance()
+    ViavrServicesManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()
     const sceneExport = new SceneExporter(mainWindow)

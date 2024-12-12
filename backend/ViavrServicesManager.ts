@@ -63,8 +63,8 @@ export default class ViavrServicesManager {
         this.CURRENT_RETICULUM_CHECKS++;
         
         const MAX_RETRIES = 2 // Maximum retries before restarting the service
-        const CHECK_INTERVAL = 4000 // 2 seconds
-        const WAIT_BEFORE_CHECK = 8000 // 5 seconds before starting checks
+        const CHECK_INTERVAL = 5000*this.CURRENT_RETICULUM_CHECKS // 5 seconds Intervall increased by current check
+        const WAIT_BEFORE_CHECK = 8000 // 8 seconds before starting checks
 
         let retries = 0
 

@@ -3,14 +3,13 @@ import * as child_process from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
 import net from 'net' // Import the net module for TCP connections
-import http from 'http' // Import HTTP module for checking the port
 
 export default class ViavrServicesManager {
     private static instance: ViavrServicesManager
     private reticulumPSInstance: child_process.ChildProcess | null = null
     private nearsparkPSInstance: child_process.ChildProcess | null = null
-    private MAX_RETICULUM_CHECKS = 3;
-    private CURRENT_RETICULUM_CHECKS = 0;
+    private MAX_RETICULUM_CHECKS = 3
+    private CURRENT_RETICULUM_CHECKS = 0
 
     public static getInstance(): ViavrServicesManager {
         if(!ViavrServicesManager.instance) {
@@ -21,13 +20,12 @@ export default class ViavrServicesManager {
 
     private constructor() {
         this.startVIAVRServices()
-        app.on('quit', this.killProcess.bind(this))
+        app.on('quit', this.stopAllChildProcesses.bind(this))
     }
 
     private async startVIAVRServices() {
-        // Kill `erl.exe` if running (effectifly kills every running reticulum instance)
-        await this.killErlProcess();
-        this.killNearSparkProcessIfAble(); //just to prevent spawning unnessecary NearSpark instances if something goes wrong
+        await this.killErlProcess() // Kill `erl.exe` if running (effectively kills every running reticulum instance)
+        this.killProcess(this.nearsparkPSInstance)  //just to prevent spawning unnecessary NearSpark instances if something goes wrong
 
         //Reticulum
         const scriptPath = `${AppUtils.getResPath()}plugins/viavr-reticulum/run_reticulum_without_checks.ps1`
@@ -55,15 +53,14 @@ export default class ViavrServicesManager {
 
     //Monitor Reticulum startup
     private async monitorReticulumService() {
-        if(this.CURRENT_RETICULUM_CHECKS >= this.MAX_RETICULUM_CHECKS)
-        {
-            console.log("Tryed to restart reticulum " + this.MAX_RETICULUM_CHECKS + " times. Aborting reticulum checks please try to reinstall/check Reticulum installation.")
-            return;
+        if(this.CURRENT_RETICULUM_CHECKS >= this.MAX_RETICULUM_CHECKS) {
+            console.log('Tryed to restart reticulum ' + this.MAX_RETICULUM_CHECKS + ' times. Aborting reticulum checks please try to reinstall/check Reticulum installation.')
+            return
         }
-        this.CURRENT_RETICULUM_CHECKS++;
-        
+        this.CURRENT_RETICULUM_CHECKS++
+
         const MAX_RETRIES = 2 // Maximum retries before restarting the service
-        const CHECK_INTERVAL = 5000*this.CURRENT_RETICULUM_CHECKS // 5 seconds Intervall increased by current check
+        const CHECK_INTERVAL = 5000 * this.CURRENT_RETICULUM_CHECKS // 5 seconds interval increased by current check
         const WAIT_BEFORE_CHECK = 8000 // 8 seconds before starting checks
 
         let retries = 0
@@ -85,68 +82,31 @@ export default class ViavrServicesManager {
                     clearInterval(interval) // Stop checking
 
                     // Restart the service
-                    this.restartReticulumService()
+                    this.killProcess(this.reticulumPSInstance)
+                    await this.startVIAVRServices()
                 }
             }
         }, CHECK_INTERVAL)
     }
 
-    private killProcess() 
-    {
-        if(this.reticulumPSInstance) {
-            const pid = this.reticulumPSInstance.pid
-            if(pid) {
-                kill(pid, 'SIGKILL', (err) => {
-                    if(err) {
-                        console.error('Reticulum kill failed', err)
-                    }
-                })
-            }
-            console.log('Reticulum with pid', pid, 'killed')
-            this.reticulumPSInstance = null
-        }
-        if(this.nearsparkPSInstance) {
-            const pid = this.nearsparkPSInstance.pid
-            if(pid) {
-                kill(pid, 'SIGKILL', (err) => {
-                    if(err) {
-                        console.error('Nearspark kill failed', err)
-                    }
-                })
-            }
-            console.log('Nearspark with pid', pid, 'killed')
-            this.nearsparkPSInstance = null
-        }
+    private stopAllChildProcesses() {
+        this.killProcess(this.reticulumPSInstance)
+        this.killProcess(this.nearsparkPSInstance)
     }
-
-    private killNearSparkProcessIfAble()
-    {
-        if(this.nearsparkPSInstance) {
-            const pid = this.nearsparkPSInstance.pid
-            if(pid) {
-                kill(pid, 'SIGKILL', (err) => {
-                    if(err) {
-                        console.error('Nearspark kill failed', err)
-                    }
-                })
-            }
-            console.log('Nearspark with pid', pid, 'killed')
-            this.nearsparkPSInstance = null
-        }
-    }
-
-    private restartReticulumService() {
-        console.log('Restarting Reticulum service...')
-        if(this.reticulumPSInstance && this.reticulumPSInstance.pid) {
-            kill(this.reticulumPSInstance.pid, 'SIGKILL', (err) => {
+    
+    private killProcess(process: child_process.ChildProcess | null) {
+        if(!process || !process.pid) return
+        try {
+            kill(process.pid, 'SIGKILL', (err) => {
                 if(err) {
-                    console.error('Failed to kill Reticulum process:', err)
+                    console.error('Process kill failed', err)
                 }
-                this.reticulumPSInstance = null
-                // Restart the service
-                this.startVIAVRServices()
             })
+            console.log(`Stopped process with pid ${process.pid}`)
+        } catch(e) {
+            console.error(e)
         }
+        process = null
     }
 
     private checkPort(port: number, host = 'localhost'): Promise<boolean> {
@@ -175,14 +135,14 @@ export default class ViavrServicesManager {
     private async killErlProcess(): Promise<void> {
         //Just to make sure if Reticulum gets stuck in any way that this will resolve the Problem
         return new Promise((resolve) => {
-            const psCommand = `powershell -Command "Get-Process erl -ErrorAction SilentlyContinue | Stop-Process -Force"`;
-    
+            const psCommand = `powershell -Command "Get-Process erl -ErrorAction SilentlyContinue | Stop-Process -Force"`
+
             child_process.exec(psCommand, (error, stdout, stderr) => {
-                if (error) {
+                if(error) {
                     //Expected fail if no instance of erl.exe is running
                 }
-                resolve(); // Resolve the promise after the command finishes
-            });
-        });
+                resolve() // Resolve the promise after the command finishes
+            })
+        })
     }
 }

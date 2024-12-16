@@ -1,3 +1,9 @@
 [submodule "res/plugins/spoke"]
 	path = res/plugins/spoke
 	url = ../spoke.git
+[submodule "res/plugins/viavr-reticulum"]
+	path = res/plugins/viavr-reticulum
+	url = ../viavr-reticulum.git
+[submodule "res/plugins/viavr-nearspark"]
+	path = res/plugins/viavr-nearspark
+	url = ../viavr-nearspark.git

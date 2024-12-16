@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps && cd res/plugins/spoke && yarn install --ignore-scripts --registry https://registry.npmjs.org",
     "prestart": "npm run build:backend",
-    "start": "concurrently --kill-others \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\"",
+    "start": "concurrently --kill-others \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\" ",
     "start:frontend": "react-app-rewired start",
     "build:all": " npm run build:frontend && npm run build:backend",
     "build:backend": "tsc -p backend/tsconfig.json",
@@ -23,7 +23,12 @@
     "test": "mocha --config test/.mocharc.jsonc",
     "lint": "eslint --ext .ts,.tsx backend frontend",
     "clean": "rimraf ./build ./dist",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "installReticulum": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_check_install.ps1\"",
+    "runReticulumWithChecks": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_Windows_Reticulum.ps1\"",
+    "runReticulum": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_reticulum_without_checks.ps1\"",
+    "installNearSpark": "cd ./res/plugins/viavr-nearspark && npm install",
+    "runNearSpark": "cd ./res/plugins/viavr-nearspark && node app.js"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.0",

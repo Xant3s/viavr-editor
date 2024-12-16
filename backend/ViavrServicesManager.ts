@@ -42,7 +42,7 @@ export default class ViavrServicesManager {
 
         // NearSpark
         const nearSparkScriptPath = `${AppUtils.getResPath()}plugins/viavr-nearspark/`
-        const nearSparkPsCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "cd '${nearSparkScriptPath}'; node app.js"`
+        const nearSparkPsCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden cd ${nearSparkScriptPath} && node app.js"`
 
         this.nearsparkPSInstance = child_process.spawn(nearSparkPsCommand, {
             shell: true,

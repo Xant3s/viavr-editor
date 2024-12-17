@@ -43,12 +43,10 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
         <SpokeIframe id={'iframe-spoke'} ref={el => {
             spokeIframe.current = el
             if(el) {
-                SpokeAPI.Instance.SpokeWindow = spokeIframe.current?.contentWindow as Window
                 SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.projectPageSelected, onSpokeProjectPageSelected)
                 SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.exitTutorial, returnToWelcomeScreen)
             } else {
                 SpokeAPI.Instance.clearAllEventListeners()
-                SpokeAPI.Instance.SpokeWindow = undefined
             }
         }} title={'Spoke Editor'} src={iframeSrc}
             style={{ display: spokeReady ? 'block' : 'none' }} 

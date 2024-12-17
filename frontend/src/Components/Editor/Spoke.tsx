@@ -29,6 +29,16 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
         }
     }, [isTutorial, returnToWelcomeScreen, spokeReady])
     
+    useEffect(() => {
+        const handle = api.on(api.channels.fromMain.spokePortTaken, () => {
+            setIframeSrc(defaultIframeSrc)
+        })
+
+        return () => {
+            api.removeListener(api.channels.fromMain.spokePortTaken, handle)
+        }
+    }, [])
+    
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         <SpokeIframe id={'iframe-spoke'} ref={el => {
             spokeIframe.current = el

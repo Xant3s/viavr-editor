@@ -2,7 +2,8 @@ import { app } from 'electron'
 import * as child_process from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
-import net from 'net' // Import the net module for TCP connections
+import net from 'net'
+import { checkPort } from './Utils/CheckPort' // Import the net module for TCP connections
 
 export default class ViavrServicesManager {
     private static instance: ViavrServicesManager
@@ -70,7 +71,7 @@ export default class ViavrServicesManager {
         await new Promise((resolve) => setTimeout(resolve, WAIT_BEFORE_CHECK))
 
         const interval = setInterval(async () => {
-            const isReachable = await this.checkPort(4000, 'localhost')
+            const isReachable = await checkPort(4000, 'localhost')
             if(isReachable) {
                 console.log('Reticulum is running on localhost:4000')
                 retries = 0 // Reset retries if the service is reachable
@@ -108,29 +109,6 @@ export default class ViavrServicesManager {
             console.error(e)
         }
         process = null
-    }
-
-    private checkPort(port: number, host = 'localhost'): Promise<boolean> {
-        return new Promise((resolve) => {
-            const socket = new net.Socket()
-            socket.setTimeout(1000) // Timeout after 1 second
-
-            // Resolve true if the connection succeeds
-            socket.connect(port, host, () => {
-                socket.destroy() // Close the socket
-                resolve(true)
-            })
-
-            // Resolve false if there’s an error or timeout
-            socket.on('error', () => {
-                socket.destroy()
-                resolve(false)
-            })
-            socket.on('timeout', () => {
-                socket.destroy()
-                resolve(false)
-            })
-        })
     }
 
     private async killErlProcess(): Promise<void> {

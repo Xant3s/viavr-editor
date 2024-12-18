@@ -1,6 +1,6 @@
 # Get the current directory
 $currentPath = (Get-Location).Path
-$folderName = "VSC"
+$folderName = "dependenciesScripts\VSC"
 # Check if the current path does not end with "VSC"
 if (-not ($currentPath -like "*\$folderName")) 
 {
@@ -35,4 +35,5 @@ Write-Host "Installing vs passively..." -ForegroundColor Cyan
 Start-Process -FilePath "./$vsInstaller" -ArgumentList `
 "--passive --wait --norestart --nocache $workloads" -NoNewWindow -Wait
 
+Set-Location $currentPath
 Write-Host "Visual Studio installation complete!" -ForegroundColor Green

@@ -1,16 +1,15 @@
 # Get the current directory
 $currentPath = (Get-Location).Path
-
+$folderName = "dependenciesScripts\Node"
 # Check if the current path does not end with "Node"
-if (-not ($currentPath -like "*\Node")) 
+if (-not ($currentPath -like "*\$folderName")) 
 {
-    # Change to the Cygwin directory
-    Set-Location -Path "Node\"
-    Write-Host "Changed directory to Node" -ForegroundColor Green
+    Set-Location -Path "$folderName\"
+    Write-Host "Changed directory to $folderName" -ForegroundColor Green
 } 
 else 
 {
-    Write-Host "Already in the Node directory" -ForegroundColor Yellow
+    Write-Host "Already in the $folderName directory" -ForegroundColor Yellow
 }
 
 
@@ -40,7 +39,7 @@ else
 # Install Node.js passively
 Write-Host "Installing Node.js passively..." -ForegroundColor Cyan
 Start-Process msiexec.exe -ArgumentList "/i `"$PWD\$nodeMSIPackage`" /qr INSTALLDIR=`"$installDir`""  -Wait
-
+Set-Location $currentPath
 # Check if Node.js was installed
 if (Test-Path "$installDir\node.exe") {
     Write-Host "Node.js was installed successfully!" -ForegroundColor Green

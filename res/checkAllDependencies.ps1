@@ -104,6 +104,7 @@ else
     {
         Write-Host "But $unityHubPath exists. Maybe some other Unity version was already installed on the System." -ForegroundColor Yellow
         Write-Host "The Unity version recommended for viavr is: $unityRecVersion" -ForegroundColor Yellow
+        Write-Host "If using another Unity version please make sure the Andriod build tools are installed." -ForegroundColor Yellow
     }
 }
 

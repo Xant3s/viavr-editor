@@ -1,16 +1,19 @@
 #First make sure script is running as admin
+param (
+    [string]$WorkingDir
+)
 function Check-Admin 
 {
     return ([bool](New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 }
 function Relaunch-AsAdmin 
 {
+    Push-Location $PSScriptRoot
     $workingDir = (Get-Location).Path  
     $scriptPath = "$workingDir\checkInstallAll.ps1"
     Start-Process -FilePath "powershell.exe" `
-                  -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`"" `
-                  -WorkingDirectory $workingDir `
-                  -Verb RunAs
+                -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`" -WorkingDir `"$workingDir`"" `
+                -Verb RunAs
     exit # Exit the current script to let the elevated instance handle the task
 }
 if (-not (Check-Admin)) 
@@ -23,6 +26,9 @@ else
 {
     Write-Host "Script is running as administrator." -ForegroundColor Green
 }
+if (![string]::IsNullOrEmpty($WorkingDir)) {
+    Set-Location $WorkingDir
+} 
 ###Helper Functions Start###
 function Check-Command {
     param (
@@ -93,6 +99,7 @@ $nodeVersionInstalledByScript = "v22.11.0"
 Push-Location
 
 #Node
+Write-Host ""
 Write-Host "Check if folder $nodePath exists." -ForegroundColor Cyan
 if (Test-Path "$nodePath")
 {
@@ -108,7 +115,7 @@ else
     else
     {
         Write-Host "$nodePath dosent exist and node isnt available in PATH. Trying to install node version $nodeVersionInstalledByScript ..." -ForegroundColor Cyan
-        & "$PWD\dependenciesScrips\Node\nodeInstaller.ps1"
+        & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
         if (Test-Path "$nodePath")
         {
             Write-Host "Node Path exists now." -ForegroundColor Green
@@ -122,6 +129,7 @@ else
     }
     
 }
+Write-Host ""
 Write-Host "Checking if node is avialable in PATH " -ForegroundColor Cyan
 if(Check-Command -command "node --version")
 {
@@ -156,6 +164,7 @@ else
     Write-Host "Minimum Required Version: 22.x or higher." -ForegroundColor Cyan
 }
 #Yarn
+Write-Host ""
 Write-Host "Checking if yarn is accessible ... " -ForegroundColor Cyan
 if(Check-Command -command "yarn -v")
 {
@@ -178,6 +187,7 @@ else
 }
 Pop-Location
 ###VSC Installation###
+Write-Host ""
 Push-Location
 $vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"  
 Write-Host "Check if folder $vscPath exists." -ForegroundColor Cyan
@@ -188,7 +198,7 @@ if (Test-Path "$vscPath")
 else
 {
     Write-Host "Visual Studio path dosent exists. Trying to install visual studio" -ForegroundColor Red 
-    & "$PWD\dependenciesScrips\VSC\vscInstaller.ps1"
+    & "$PWD\dependenciesScripts\VSC\vscInstaller.ps1"
     if (Test-Path "$vscPath")
     {
         Write-Host "Visual studio folder exists now." -ForegroundColor Green
@@ -209,6 +219,7 @@ Write-Host "The installed visual studio version is $vsVersion." -ForegroundColor
 Pop-Location
 
 #Unity
+Write-Host ""
 Push-Location
 $unityRecVersion = "2021.3.31f1"
 $unityPath = "C:\Program Files\Unity $unityRecVersion"
@@ -217,25 +228,53 @@ if (Test-Path "$unityPath")
 {
     Write-Host "$unityPath exists." -ForegroundColor Green
 }
+elseif(Test-Path "$unityHubPath")
+{
+    Write-Host "But $unityHubPath exists. Maybe some other Unity version was already installed on the System." -ForegroundColor Yellow
+    Write-Host "The Unity version recommended for viavr is: $unityRecVersion" -ForegroundColor Yellow
+    # Ask the user a Y/N question
+    $response = Read-Host "Do you want to download and install Unity 2021.3.31f1? (Y/N)"
+    if ($response -match "^[Yy]$") {
+        Write-Host "Starting Unity install script... " -ForegroundColor Cyan
+        & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
+        if (Test-Path "$unityPath")
+        {
+            Write-Host "$unityPath exists." -ForegroundColor Green
+        }
+        else
+        {
+            Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
+            Pause
+            Exit 0 
+        }
+    } elseif ($response -match "^[Nn]$") {
+        Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
+        Write-Host "If using another Unity version please make sure the Andriod build tools are installed." -ForegroundColor Yellow
+    } else {
+        Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
+        Write-Host "If using another Unity version please make sure the Andriod build tools are installed." -ForegroundColor Yellow
+    }
+}
 else
 {
     Write-Host "$unityPath dosent exists." -ForegroundColor Red
-    if(Test-Path "$unityHubPath")
+    Write-Host "Executing unity installation script ... " -ForegroundColor Yellow
+    & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
+    if (Test-Path "$unityPath")
     {
-        Write-Host "But $unityHubPath exists. Maybe some other Unity version was already installed on the System." -ForegroundColor Yellow
-        Write-Host "The Unity version recommended for viavr is: $unityRecVersion" -ForegroundColor Yellow
-        # Ask the user a Y/N question
-        $response = Read-Host "Do you want to download and install Unity 2021.3.31f1? (Y/N)"
-        if ($response -match "^[Yy]$") {
-            Write-Host "Starting Unity install script... " -ForegroundColor Cyan
-            & "$PWD\dependenciesScrips\Unity\unityInstaller.ps1"
-        } elseif ($response -match "^[Nn]$") {
-            Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
-        } else {
-            Write-Host "Invalid input. Unityversion $unityRecVersion will not be installed." -ForegroundColor Red
-        }
+        Write-Host "$unityPath exists." -ForegroundColor Green
     }
-}
+    else
+    {
+        Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
+        Pause
+        Exit 0 
+    }
 
+}
+Write-Host ""
+Write-Host "Dependency installation complete." -ForegroundColor Green
+Write-Host "Please note the dependencies for Reticulum and nearspark are installed speretly through npm install." -ForegroundColor Green
+Write-Host "If you want to check all the dependencies (including reticulum) please execute checkAllDependencies.ps1"  -ForegroundColor Green
 Pause
 

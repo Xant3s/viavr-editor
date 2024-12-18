@@ -2,28 +2,24 @@ type Callback = (content?: string) => void
 
 export class SpokeAPI {
     private static instance: SpokeAPI
-    private spokeWindow: Window | undefined
     private events = new Map<string, Callback[]>()
     private spokeDoneLoading = false
 
 
-    private constructor() {}
+    private constructor() {
+        window.addEventListener('message', this.onMessageFromSpoke)
+    }
 
     public static get Instance(): SpokeAPI {
         return this.instance || (this.instance = new this())
     }
 
-    public set SpokeWindow(spokeWindow: Window | undefined) {
-        SpokeAPI.Instance.spokeWindow = spokeWindow
-        SpokeAPI.Instance.spokeWindow?.addEventListener('message', this.onMessageFromSpoke)
-    }
-
     public get IsReady() {
-        return SpokeAPI.Instance.spokeWindow !== undefined && SpokeAPI.Instance.spokeDoneLoading
+        return SpokeAPI.Instance.spokeDoneLoading
     }
 
     public postMessage(message: string, content?: string) {
-        SpokeAPI.Instance.spokeWindow?.postMessage({
+        window.postMessage({
             channel: message,
             content: content
         }, '*')
@@ -42,13 +38,9 @@ export class SpokeAPI {
     }
     
     public addEventListener(channel: string, func: Callback) {
-        if(SpokeAPI.Instance.spokeWindow !== undefined) {
-            const callbacks: Callback[] = SpokeAPI.Instance.events.get(channel) || []
-            callbacks.push(func)
-            SpokeAPI.Instance.events.set(channel, callbacks)
-        } else {
-            console.error('Spoke is not ready')
-        }
+        const callbacks: Callback[] = SpokeAPI.Instance.events.get(channel) || []
+        callbacks.push(func)
+        SpokeAPI.Instance.events.set(channel, callbacks)
     }
     
     public clearAllEventListeners() {

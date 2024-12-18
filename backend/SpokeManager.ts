@@ -3,6 +3,9 @@ import * as child_process from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
 import PreferencesManager from './Preferences/PreferencesManager'
+import { checkPort } from './Utils/CheckPort'
+import { channels } from './API'
+import MainWindow from './MainWindow'
 
 export default class SpokeManager {
     private static instance: SpokeManager
@@ -36,5 +39,15 @@ export default class SpokeManager {
         if(app.isPackaged || shouldStop) {
             if(this.spokeProcess && this.spokeProcess.pid) kill(this.spokeProcess.pid)
         }
+    }
+    
+    public waitForSpokePort(mainWindow: MainWindow) {
+        const interval = setInterval(async () => {
+            const portBlocked = await checkPort(9090)
+            if(portBlocked) {
+                clearInterval(interval)
+                mainWindow.send(channels.fromMain.spokePortTaken)
+            }
+        }, 100)
     }
 }

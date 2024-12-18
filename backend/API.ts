@@ -52,6 +52,7 @@ export const channels = {
         spokeExportScene: 'spoke:export-scene',
         spokeSceneSavedSuccessfully: 'spoke:scene-saved-successfully',
         spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
+        spokePortTaken: 'spoke:portTaken',
         externalWindowOpened:'articy:open-editor-and-disable-window',
         externalWindowClosed:'articy:open-editor',
         tryExitApplication: 'editor:try-exit'

@@ -18,7 +18,7 @@ import { Logger } from './Logger'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
-    SpokeManager.getInstance()
+    SpokeManager.getInstance().waitForSpokePort(mainWindow)
     ViavrServicesManager.getInstance()
     const preferencesManager = PreferencesManager.getInstance()
     await preferencesManager.init()

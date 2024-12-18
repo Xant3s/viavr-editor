@@ -41,43 +41,6 @@ Before using the VIA-VR software, an IT administrator must install the following
     ```bash
     yarn -v
     ```
-
- - To Install [nearspark](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-nearspark):
-	- Either run the npm script:
-      ```bash
-      npm run installNearSpark
-      ```
-  - Or navigate to the root folder `res\plugins\viavr-nearspark\` in a console and run:
-      ```bash
-      npm install
-      ```
-  - **To verify the installation:**  
-      Run 
-      ```bash
-      npm run runNearSpark
-      ```
-      or, from the `nearspark` folder, execute:  
-      `node app.js`.
-      
-      If the console prints:  
-      `[...] on HTTPS port 5001`,  
-      nearspark was installed successfully.
-
-- To install [reticulum](https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/editor/viavr-reticulum):
-	- Either run the npm script:
-      ```bash
-      npm run installReticulum
-      ```  
-	- Or navigate to the root folder `res\plugins\viavr-reticulum\` in a PowerShell console and execute:  
-	    `run_check_install.ps1`
-	    - **To verify the installation:**  
-	        Check the output of the script. Then run: 
-          ```bash
-          npm run runReticulumWithChecks
-          ```    
-	        If you see the message:  
-	        `[info] Access RetWeb.Endpoint at https://localhost:4000`,  
-	        Reticulum was installed successfully.
         
 - Make sure Unity 2021.3.31f1 is installed
   - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above

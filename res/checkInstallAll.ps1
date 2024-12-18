@@ -108,7 +108,7 @@ else
     else
     {
         Write-Host "$nodePath dosent exist and node isnt available in PATH. Trying to install node version $nodeVersionInstalledByScript ..." -ForegroundColor Cyan
-        & "$PWD\dependencyScrips\Node\nodeInstaller.ps1"
+        & "$PWD\dependenciesScrips\Node\nodeInstaller.ps1"
         if (Test-Path "$nodePath")
         {
             Write-Host "Node Path exists now." -ForegroundColor Green
@@ -188,7 +188,7 @@ if (Test-Path "$vscPath")
 else
 {
     Write-Host "Visual Studio path dosent exists. Trying to install visual studio" -ForegroundColor Red 
-    & "$PWD\VSC\vscInstaller.ps1"
+    & "$PWD\dependenciesScrips\VSC\vscInstaller.ps1"
     if (Test-Path "$vscPath")
     {
         Write-Host "Visual studio folder exists now." -ForegroundColor Green
@@ -228,7 +228,7 @@ else
         $response = Read-Host "Do you want to download and install Unity 2021.3.31f1? (Y/N)"
         if ($response -match "^[Yy]$") {
             Write-Host "Starting Unity install script... " -ForegroundColor Cyan
-            & "$PWD\Unity\unityInstaller.ps1"
+            & "$PWD\dependenciesScrips\Unity\unityInstaller.ps1"
         } elseif ($response -match "^[Nn]$") {
             Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
         } else {

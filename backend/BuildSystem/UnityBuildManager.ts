@@ -90,6 +90,7 @@ export default class UnityBuildManager {
         const chosenFolders = await dialog.showOpenDialog({ 
             properties: ['openDirectory', 'createDirectory'],
             defaultPath: app.getPath('desktop'),
+            title: 'Please specify where the VR experience should be created. Make sure the folder is empty.'
         })
         return chosenFolders.filePaths[0]
     }

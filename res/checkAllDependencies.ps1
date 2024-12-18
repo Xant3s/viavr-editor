@@ -62,7 +62,7 @@ if(Check-Command -command "node --version")
 }
 else
 {
-    Write-Host "Node is available in PATH." -ForegroundColor Red
+    Write-Host "Node is not available in PATH." -ForegroundColor Red
 }
 #Yarn 
 Write-Host ""

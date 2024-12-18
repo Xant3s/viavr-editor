@@ -274,7 +274,7 @@ else
 }
 Write-Host ""
 Write-Host "Dependency installation complete." -ForegroundColor Green
-Write-Host "Please note the dependencies for Reticulum and nearspark are installed speretly through npm install." -ForegroundColor Green
-Write-Host "If you want to check all the dependencies (including reticulum) please execute checkAllDependencies.ps1"  -ForegroundColor Green
+#Write-Host "Please note the dependencies for Reticulum and nearspark are installed speretly through npm install." -ForegroundColor Green
+#Write-Host "If you want to check all the dependencies (including reticulum) please execute checkAllDependencies.ps1"  -ForegroundColor Green
 Pause
 

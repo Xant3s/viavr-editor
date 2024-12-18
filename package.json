@@ -8,7 +8,7 @@
   "homepage": ".",
   "private": true,
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && cd res/plugins/spoke && yarn install --ignore-scripts --registry https://registry.npmjs.org",
+    "postinstall": "electron-builder install-app-deps && cd res/plugins/spoke && yarn install --ignore-scripts --registry https://registry.npmjs.org && npm run installNearSpark && npm run installReticulum",
     "prestart": "npm run build:backend",
     "start": "concurrently --kill-others \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\" ",
     "start:frontend": "react-app-rewired start",

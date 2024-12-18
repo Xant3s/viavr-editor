@@ -1,4 +1,4 @@
-import { dialog, ipcMain as ipc } from 'electron'
+import { app, dialog, ipcMain as ipc } from 'electron'
 import Utils from './Utils'
 import UnityPackageManager from './UnityPackageManager'
 import PreferencesManager from '../Preferences/PreferencesManager'
@@ -87,7 +87,10 @@ export default class UnityBuildManager {
     }
 
     private static async promptUserForProjectBuildPath(): Promise<string> {
-        const chosenFolders = await dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] })
+        const chosenFolders = await dialog.showOpenDialog({ 
+            properties: ['openDirectory', 'createDirectory'],
+            defaultPath: app.getPath('desktop'),
+        })
         return chosenFolders.filePaths[0]
     }
 

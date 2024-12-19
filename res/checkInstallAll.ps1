@@ -189,7 +189,7 @@ Pop-Location
 ###VSC Installation###
 Write-Host ""
 Push-Location
-$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"  
+$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"  
 Write-Host "Check if folder $vscPath exists." -ForegroundColor Cyan
 if (Test-Path "$vscPath")
 {
@@ -277,4 +277,7 @@ Write-Host "Dependency installation complete." -ForegroundColor Green
 #Write-Host "Please note the dependencies for Reticulum and nearspark are installed speretly through npm install." -ForegroundColor Green
 #Write-Host "If you want to check all the dependencies (including reticulum) please execute checkAllDependencies.ps1"  -ForegroundColor Green
 Pause
+Write-Host ""
+Write-Host "Starting Unity Editor: A pop-up about a license error may appear. Please click 'Open Hub' and sign in or create an account as needed." -ForegroundColor Cyan
+#Todo start-Process unity editor
 

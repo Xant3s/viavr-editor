@@ -45,7 +45,7 @@ lint:
   before_script:
     - npm i yarn
     - yarn config set network-timeout 600000
-    - npm i || (cd res/plugins/spoke && yarn install && cd ../../..)
+    - npm i --ignore-scripts && npm run postinstall:linux || (cd res/plugins/spoke && yarn install && cd ../../..)
   script:
     - npm run lint
   tags:
@@ -63,7 +63,7 @@ backend:
      - npm i yarn
      - yarn -v
      - yarn config set network-timeout 600000
-     - npm i || (cd res/plugins/spoke && yarn install && cd ../../..)
+     - npm i --ignore-scripts && npm run postinstall:linux || (cd res/plugins/spoke && yarn install && cd ../../..)
    script:
      - npm run build:backend
    tags:
@@ -81,7 +81,7 @@ frontend:
      - npm i yarn
      - yarn -v
      - yarn config set network-timeout 600000
-     - npm i || (cd res/plugins/spoke && yarn install && cd ../../..)
+     - npm i --ignore-scripts && npm run postinstall:linux || (cd res/plugins/spoke && yarn install && cd ../../..)
    script:
      - npm run build:frontend
    tags:
@@ -99,7 +99,7 @@ package-win:
     - npm i yarn
     - yarn -v
     - yarn config set network-timeout 600000
-    - npm i || (cd res/plugins/spoke && yarn install && cd ../../..)
+    - npm i --ignore-scripts && npm run postinstall:linux || (cd res/plugins/spoke && yarn install && cd ../../..)
   script:
     - npm run package:win
   artifacts:

@@ -120,7 +120,12 @@
       "**/*.node"
     ],
     "buildDependenciesFromSource": true,
-    "npmRebuild": true
+    "npmRebuild": true,
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "include": "res/installer.nsh"
+    }
   },
   "browserslist": {
     "production": [

@@ -19,7 +19,7 @@ $vsInstallerUrl = "https://aka.ms/vs/17/release/vs_community.exe"
 # Define download and installation paths
 $vsInstaller = "vs_community.exe"
 # Define workload for Unity
-$workloads = "--add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Workload.Game"
+$workloads = "--add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.Game"
 
 
 # Download Git Installer

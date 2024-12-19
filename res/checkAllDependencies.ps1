@@ -1,6 +1,8 @@
 ###Variabels###
 $nodePath = "C:\Program Files\nodejs"
+
 $vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"
+
 $unityRecVersion = "2021.3.31f1"
 $unityPath = "C:\Program Files\Unity $unityRecVersion"
 $unityHubPath = "C:\Program Files\Unity Hub"
@@ -8,6 +10,19 @@ $unityHubPath = "C:\Program Files\Unity Hub"
 $cygwinPath = "C:\cygwin64"
 $postgresPath = "C:\Program Files\PostgreSQL\16\bin"
 $postgresPort = 5432
+
+$EditorPath = Split-Path $PSScriptRoot -Parent
+$SpokePath = Join-Path $EditorPath "res\plugins\spoke\node_modules"
+$NearSparkPath = Join-Path $EditorPath "res\plugins\viavr-nearspark\node_modules"
+$ReticulumPath = Join-Path $EditorPath "res\plugins\viavr-reticulum\_build"
+$EditorPath = Join-Path $EditorPath "\node_modules"
+$Paths = @{
+    "Editor"      = $EditorPath
+    "Spoke"       = $SpokePath
+    "NearSpark"   = $NearSparkPath
+    "Reticulum"   = $ReticulumPath
+}
+
 
 ###Functions###
 function Check-Command {
@@ -171,4 +186,21 @@ else
 #Folders:
 Write-Host ""
 Pause 
-Write-Host "### Node/Reticulum packages ###" -ForegroundColor Yellow
+Write-Host "### Node/Reticulum modules/packages ###" -ForegroundColor Yellow
+Write-Host ""
+#Check if node_modules folder exist 
+foreach ($Key in $Paths.Keys) {
+    $CurrentPath = $Paths[$Key]
+    if (Test-Path $CurrentPath) {
+        Write-Host "$Key" -ForegroundColor Cyan
+        Write-Host "modules folder found:" -ForegroundColor Green
+        Write-Host "$CurrentPath" -ForegroundColor Green
+        Write-Host ""
+    } else {
+        Write-Host "$Key" -ForegroundColor Cyan
+        Write-Host "modules folder not found:" -ForegroundColor Red
+        Write-Host "$CurrentPath" -ForegroundColor Red
+        Write-Host ""
+    }
+    
+}

@@ -1,7 +1,7 @@
 ###Variabels###
 $nodePath = "C:\Program Files\nodejs"
 
-$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"
+$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
 
 $unityRecVersion = "2021.3.31f1"
 $unityPath = "C:\Program Files\Unity\Hub\Editor\$unityRecVersion\Editor\"
@@ -99,9 +99,13 @@ Write-Host "Visual Studio:" -ForegroundColor Cyan
 if (Test-Path "$vscPath")
 {
     Write-Host "$vscPath exists." -ForegroundColor Green
-    $vswhere = "$vscPath\Installer\vswhere.exe"
+    $vswhere = "$vscPath\vswhere.exe"
     $vsVersion = & $vswhere -latest -products * -property installationVersion
     Write-Host "The installed visual studio version is $vsVersion.(15=VSC2017 16=VSC2019 17=VSC2022)" -ForegroundColor Green
+    if(-not $vsVersion)
+    {
+        Write-Host "It appears that Visual Studio was installed at some point but was later uninstalled." -ForegroundColor Yellow
+    }
 }
 else
 {
@@ -116,7 +120,7 @@ if (Test-Path "$unityHubExecutable")
     #If unity Hub already was installed -> assuming that sign in into Unity unnessecary
     if(Test-Path "$unityPath")
     {
-        Write-Host "$unityPath exists."    
+        Write-Host "$unityPath exists." -ForegroundColor Green    
     }
     else
     {

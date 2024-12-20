@@ -189,11 +189,33 @@ Pop-Location
 ###VSC Installation###
 Write-Host ""
 Push-Location
-$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"  
+$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer"  
 Write-Host "Check if folder $vscPath exists." -ForegroundColor Cyan
 if (Test-Path "$vscPath")
 {
-    Write-Host "Visual Studio folder exists." -ForegroundColor Green
+    Write-Host "$vscPath folder exists." -ForegroundColor Green
+    $vswhere = "$vscPath\vswhere.exe"
+    $vsVersion = & $vswhere -latest -products * -property installationVersion
+    if(-not $vsVersion)
+    {
+        Write-Host "It appears that Visual Studio was installed at some point but was later uninstalled." -ForegroundColor Yellow
+        $response = Read-Host "Do you want to download and install Visual Studio? (Y/N)"
+        if ($response -match "^[Yy]$")
+        {
+            Write-Host "Starting Visual Studio installation script ..."
+            & "$PWD\dependenciesScripts\VSC\vscInstaller.ps1"
+        }
+        elseif ($response -match "^[Nn]$")
+        {
+            Write-Host "Visual Studio is not being installed. Please note that an existing 
+            Visual Studio installation cannot be verified through this script." -ForegroundColor Yellow
+        }
+        else
+        {
+            Write-Host "Visual Studio is not being installed. Please note that an existing 
+            Visual Studio installation cannot be verified through this script." -ForegroundColor Yellow
+        }
+    }
 }
 else
 {
@@ -202,6 +224,7 @@ else
     if (Test-Path "$vscPath")
     {
         Write-Host "Visual studio folder exists now." -ForegroundColor Green
+        
     }
     else
     {
@@ -211,9 +234,8 @@ else
     }
 }
 #vswhere to check version
-$vswhere = "$vscPath\Installer\vswhere.exe"
+$vswhere = "$vscPath\vswhere.exe"
 $vsVersion = & $vswhere -latest -products * -property installationVersion
-$vsInfo = & $vswhere -latest -products * -format json | ConvertFrom-Json
 Write-Host "The installed visual studio version is $vsVersion." -ForegroundColor Cyan
 #checkModules?
 Pop-Location
@@ -304,8 +326,12 @@ else #This is the case expected if no unity hub / unity version installed
 Write-Host ""
 if($shouldUnityBestartedAtTheEnd)
 {
+    Write-Host "Dependency installation complete."
+    Write-Host ""
     Write-Host "Starting Unity Editor: A pop-up about a license error may appear. 
     Please click 'Open Hub' and sign in or create an account as needed." -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "You can close this Window at any point to continue installation." -ForegroundColor Cyan
     Start-Process -FilePath "$unityPath\Unity.exe" -Wait
 
 }

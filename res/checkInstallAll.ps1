@@ -28,7 +28,20 @@ else
 }
 if (![string]::IsNullOrEmpty($WorkingDir)) {
     Set-Location $WorkingDir
+}
+###Adjust folder if packaged by installer ###
+# Check if "resources" folder exists and if switch
+if (Test-Path -Path ".\resources" -PathType Container) 
+{
+    # Switch to "resources" folder
+    Set-Location ".\resources"
 } 
+# Check if "res" folder exists and if switch
+if (Test-Path -Path ".\res" -PathType Container) 
+{
+    # Switch to "res" folder
+    Set-Location ".\res"
+}
 ###Helper Functions Start###
 function Check-Command {
     param (

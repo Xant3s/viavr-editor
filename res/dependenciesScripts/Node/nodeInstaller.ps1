@@ -17,9 +17,8 @@ else
 $nodeVersion = "v22.11.0" #https://nodejs.org/dist/
 $nodeMSIPackage = "node-$nodeVersion-x64.msi"
 $nodeDownloadUrl = "https://nodejs.org/dist/$nodeVersion/$nodeMSIPackage"
-$nodeInstallerPath = ".\$nodeMSIPackage"
 $installDir = "C:\Program Files\nodejs"
-if (Test-Path "$nodeInstallerPath")
+if (Test-Path "$nodeMSIPackage")
 {
     Write-Host "Installer already downloaded. Proceed to installation" -ForegroundColor Yellow
 }
@@ -27,7 +26,7 @@ else
 {
     try
     {
-        Start-BitsTransfer -Source $nodeDownloadUrl -Destination $nodeInstallerPath 
+        Invoke-WebRequest -Uri $nodeDownloadUrl -OutFile $nodeMSIPackage -UseBasicParsing
     }catch
     {
         Write-Host "Failed to Download Node. Aborting..." -ForegroundColor Red
@@ -35,7 +34,6 @@ else
     }
     Write-Host "Download successfull." -ForegroundColor Green
 }
-
 # Install Node.js passively
 Write-Host "Installing Node.js passively..." -ForegroundColor Cyan
 Start-Process msiexec.exe -ArgumentList "/i `"$PWD\$nodeMSIPackage`" /qr INSTALLDIR=`"$installDir`""  -Wait

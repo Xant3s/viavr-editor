@@ -27,7 +27,7 @@ else
 {
     try
     {
-        Invoke-WebRequest -Uri $nodeDownloadUrl -OutFile $nodeInstallerPath -UseBasicParsing
+        Start-BitsTransfer -Source $nodeDownloadUrl -Destination $nodeInstallerPath 
     }catch
     {
         Write-Host "Failed to Download Node. Aborting..." -ForegroundColor Red

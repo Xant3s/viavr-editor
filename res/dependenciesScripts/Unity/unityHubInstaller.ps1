@@ -19,7 +19,14 @@ $unityHubInstaller = "UnityHubSetup.exe"
 # Download Unity Hub
 if (-not (Test-Path $unityHubInstaller)) {
     Write-Host "Starting Unity Hub download. If the script dosent continue automatically due to the long downloadtime please press enter after the download is finished to continue." -ForegroundColor Yellow
-    Start-BitsTransfer -Source $unityHubUrl -Destination $unityHubInstaller 
+    try
+    {
+        Start-BitsTransfer -Source $unityHubUrl -Destination $unityHubInstaller
+    }catch
+    {
+        Write-Host "Failed to Download Unity Hub. Aborting..." -ForegroundColor Red
+        return
+    }
     Write-Host "Downloaded Unity Hub installer" -ForegroundColor Green
 } else {
     Write-Host "Unity Hub installer already exists" -ForegroundColor Cyan

@@ -24,7 +24,14 @@ $workloads = "--add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microso
 
 # Download Git Installer
 if (-not (Test-Path $vsInstaller)) {
-    Invoke-WebRequest -Uri $vsInstallerUrl -OutFile $vsInstaller -UseBasicParsing
+    try
+    {
+        Start-BitsTransfer -Source $vsInstallerUrl -Destination $vsInstaller 
+    }catch
+    {
+        Write-Host "Failed to Download Visual Studio. Aborting..." -ForegroundColor Red
+        return
+    }
     Write-Host "Downloaded Visual Studio installer" -ForegroundColor Green
 } else {
     Write-Host "Visual Studio installer already exists" -ForegroundColor Cyan

@@ -4,8 +4,10 @@ $nodePath = "C:\Program Files\nodejs"
 $vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"
 
 $unityRecVersion = "2021.3.31f1"
-$unityPath = "C:\Program Files\Unity $unityRecVersion"
+$unityPath = "C:\Program Files\Unity\Hub\Editor\$unityRecVersion\Editor\"
 $unityHubPath = "C:\Program Files\Unity Hub"
+$unityHubExecutable = "$unityHubPath\Unity Hub.exe"
+
 
 $cygwinPath = "C:\cygwin64"
 $postgresPath = "C:\Program Files\PostgreSQL\16\bin"
@@ -107,20 +109,26 @@ else
 }
 #Unity
 Write-Host ""
-Write-Host "Unity:" -ForegroundColor Cyan
-if (Test-Path "$unityPath")
+Write-Host "Unity (hub):" -ForegroundColor Cyan
+if (Test-Path "$unityHubExecutable")
 {
-    Write-Host "$unityPath exists." -ForegroundColor Green
+    Write-Host "$unityHubExecutable exists." -ForegroundColor Green
+    #If unity Hub already was installed -> assuming that sign in into Unity unnessecary
+    if(Test-Path "$unityPath")
+    {
+        Write-Host "$unityPath exists."    
+    }
+    else
+    {
+        Write-Host "But $unityPath dosent exists. Maybe some other Unity version was already installed on the System." -ForegroundColor Yellow
+        Write-Host "The Unity version recommended for viavr is: $unityRecVersion" -ForegroundColor Yellow
+        Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
+    }
 }
 else
 {
-    Write-Host "$unityPath dosent exists." -ForegroundColor Red
-    if(Test-Path "$unityHubPath")
-    {
-        Write-Host "But $unityHubPath exists. Maybe some other Unity version was already installed on the System." -ForegroundColor Yellow
-        Write-Host "The Unity version recommended for viavr is: $unityRecVersion" -ForegroundColor Yellow
-        Write-Host "If using another Unity version please make sure the Andriod build tools are installed." -ForegroundColor Yellow
-    }
+    Write-Host "$unityHubExecutable dosent exists." -ForegroundColor Red
+    
 }
 
 Write-Host ""

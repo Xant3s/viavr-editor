@@ -189,7 +189,7 @@ Pop-Location
 ###VSC Installation###
 Write-Host ""
 Push-Location
-$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"  
+$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio"  
 Write-Host "Check if folder $vscPath exists." -ForegroundColor Cyan
 if (Test-Path "$vscPath")
 {
@@ -222,62 +222,95 @@ Pop-Location
 Write-Host ""
 Push-Location
 $unityRecVersion = "2021.3.31f1"
-$unityPath = "C:\Program Files\Unity $unityRecVersion"
+$unityPath = "C:\Program Files\Unity\Hub\Editor\$unityRecVersion\Editor\"
 $unityHubPath = "C:\Program Files\Unity Hub"
-if (Test-Path "$unityPath")
+$unityHubExecutable = "$unityHubPath\Unity Hub.exe"
+$shouldUnityBestartedAtTheEnd = $false
+#Hub
+if (Test-Path "$unityHubExecutable")
 {
-    Write-Host "$unityPath exists." -ForegroundColor Green
-}
-elseif(Test-Path "$unityHubPath")
-{
-    Write-Host "But $unityHubPath exists. Maybe some other Unity version was already installed on the System." -ForegroundColor Yellow
-    Write-Host "The Unity version recommended for viavr is: $unityRecVersion" -ForegroundColor Yellow
-    # Ask the user a Y/N question
-    $response = Read-Host "Do you want to download and install Unity 2021.3.31f1? (Y/N)"
-    if ($response -match "^[Yy]$") {
-        Write-Host "Starting Unity install script... " -ForegroundColor Cyan
-        & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
-        if (Test-Path "$unityPath")
-        {
-            Write-Host "$unityPath exists." -ForegroundColor Green
-        }
-        else
-        {
-            Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
-            Pause
-            Exit 0 
-        }
-    } elseif ($response -match "^[Nn]$") {
-        Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
-        Write-Host "If using another Unity version please make sure the Andriod build tools are installed." -ForegroundColor Yellow
-    } else {
-        Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
-        Write-Host "If using another Unity version please make sure the Andriod build tools are installed." -ForegroundColor Yellow
-    }
-}
-else
-{
-    Write-Host "$unityPath dosent exists." -ForegroundColor Red
-    Write-Host "Executing unity installation script ... " -ForegroundColor Yellow
-    & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
-    if (Test-Path "$unityPath")
+    Write-Host "$unityHubExecutable exists." -ForegroundColor Green
+    #Hub found this suggests an already started unity version 
+    if(Test-Path "$unityPath")
     {
-        Write-Host "$unityPath exists." -ForegroundColor Green
+        Write-Host "And $unityPath exists." -ForegroundColor Green
     }
     else
     {
-        Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
+        Write-Host "$unityPath not found." -ForegroundColor Yellow
+        $response = Read-Host "Do you want to download and install Unity 2021.3.31f1 via Unity Hub? (Y/N)"
+        if ($response -match "^[Yy]$") 
+        {
+            Write-Host "Starting Unity install script... " -ForegroundColor Cyan
+            & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
+            if (Test-Path "$unityPath")
+            {
+                Write-Host "$unityPath exists." -ForegroundColor Green
+            }
+            else
+            {
+                Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
+                Pause
+                Exit 0 
+            }
+        }
+        elseif ($response -match "^[Nn]$") 
+        {
+            Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
+            Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
+        }
+        else 
+        {
+            Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
+            Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
+        }
+    }
+}
+elseif(Test-Path "$unityPath") #Hub dosent found but Unity version somehow? Edgecase ->Ignoring
+{
+    Write-Host "$unityPath found without $unityHubExecutable. Maybe Unity Hub is installed on another drive?." -ForegroundColor Yellow
+    
+}
+else #This is the case expected if no unity hub / unity version installed
+{
+    Write-Host "$unityHubExecutable not found." -ForegroundColor Red
+    Write-Host "Executing Unity hub installation script ... " -ForegroundColor Yellow
+    & "$PWD\dependenciesScripts\Unity\unityHubInstaller.ps1"
+    if (Test-Path "$unityHubExecutable")
+    {
+        Write-Host "$unityHubExecutable found." -ForegroundColor Green
+        Write-Host "Starting Unity installation via Unity Hub ... " -ForegroundColor Cyan
+        & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
+        if (Test-Path "$unityPath")
+        {
+            $shouldUnityBestartedAtTheEnd = $true 
+            Write-Host "$unityPath found." -ForegroundColor Green
+        }
+        else
+        {
+            Write-Host "$unityPath not found. Please check the output. Exiting..." -ForegroundColor Red
+            Pause
+            Exit 0 
+        }
+    }
+    else
+    {
+        Write-Host "$unityHubExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
         Pause
         Exit 0 
     }
 
 }
 Write-Host ""
-Write-Host "Dependency installation complete." -ForegroundColor Green
-#Write-Host "Please note the dependencies for Reticulum and nearspark are installed speretly through npm install." -ForegroundColor Green
-#Write-Host "If you want to check all the dependencies (including reticulum) please execute checkAllDependencies.ps1"  -ForegroundColor Green
-Pause
+if($shouldUnityBestartedAtTheEnd)
+{
+    Write-Host "Starting Unity Editor: A pop-up about a license error may appear. 
+    Please click 'Open Hub' and sign in or create an account as needed." -ForegroundColor Cyan
+    Start-Process -FilePath "$unityPath\Unity.exe" -Wait
+
+}
 Write-Host ""
-Write-Host "Starting Unity Editor: A pop-up about a license error may appear. Please click 'Open Hub' and sign in or create an account as needed." -ForegroundColor Cyan
-#Todo start-Process unity editor
+Write-Host "Dependency installation complete." -ForegroundColor Green
+Pause
+
 

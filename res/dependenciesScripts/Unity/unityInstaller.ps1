@@ -12,30 +12,15 @@ else
     Write-Host "Already in the $folderName directory" -ForegroundColor Yellow
 }
 
-#Unity hub installer
-$unityHubUrl = "https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe"
-$unityHubInstaller = "UnityHubSetup.exe"
+#Unity hub variables
 $unityHubPath = "C:\Program Files\Unity Hub\Unity Hub.exe"
 
-# Download Unity Hubt
-if (-not (Test-Path $unityHubInstaller)) {
-    Write-Host "Starting Unity Hub download. If the script dosent continue automatically due to the long downloadtime please press enter after the download is finished to continue." -ForegroundColor Yellow
-    Start-BitsTransfer -Source $unityHubUrl -Destination $unityHubInstaller 
-    Write-Host "Downloaded Unity Hub installer" -ForegroundColor Green
-} else {
-    Write-Host "Unity Hub installer already exists" -ForegroundColor Cyan
-}
-
-# Install Unity
-Write-Host "Installing unity hub silently..." -ForegroundColor Cyan
-Write-Host "If the script dosent continue automatically due to the long installation time please press enter after the installation is finished to continue." -ForegroundColor Cyan
-Start-Process -FilePath "./$unityHubInstaller" -ArgumentList `
-"/S" -Wait
 Write-Host ""
 Write-Host "Installing unity version 2021.3.31f1 through Unity Hub ... " -ForegroundColor Cyan
 Write-Host "If the installation process appears to be stuck, try pressing Enter after waiting for a while." -ForegroundColor Cyan
 Start-Process -FilePath "$unityHubPath" -ArgumentList `
 "-- --headless install --version 2021.3.31f1 --changeset 3409e2af086f" -Wait
+Write-Host "Finished installing Unity through Unity Hub" -ForegroundColor Green
 Write-Host ""
 Write-Host "Adding required andriod build tools through Unity Hub ... " -ForegroundColor Cyan
 Write-Host "If the installation process appears to be stuck, try pressing Enter after waiting for a while." -ForegroundColor Cyan

@@ -123,7 +123,8 @@
     "npmRebuild": true,
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
+      "allowToChangeInstallationDirectory": false,
+      "perMachine": true,
       "include": "res/installer.nsh"
     }
   },

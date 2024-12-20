@@ -336,6 +336,8 @@ else #This is the case expected if no unity hub / unity version installed
     }
 
 }
+Pop-Location
+Push-Location
 Write-Host ""
 if($shouldUnityBestartedAtTheEnd)
 {
@@ -344,10 +346,18 @@ if($shouldUnityBestartedAtTheEnd)
     Write-Host "Starting Unity Editor: A pop-up about a license error may appear. 
     Please click 'Open Hub' and sign in or create an account as needed." -ForegroundColor Cyan
     Write-Host ""
-    Write-Host "You can close this Window at any point to continue installation." -ForegroundColor Cyan
-    Start-Process -FilePath "$unityPath\Unity.exe" -Wait
+    Write-Host "You press enter at any point to continue installation." -ForegroundColor Cyan
+    Start-Process -FilePath "$unityPath\Unity.exe"
+    Pause
 
 }
+Write-Host ""
+Write-Host "Dependency installation for editor complete." -ForegroundColor Green
+Write-Host ""
+Write-Host "Installing dependencies for Reticulum." -ForegroundColor Cyan
+Set-Location ".\plugins\viavr-reticulum\"
+& ".\run_check_install.ps1"
+Pop-Location
 Write-Host ""
 Write-Host "Dependency installation complete." -ForegroundColor Green
 Pause

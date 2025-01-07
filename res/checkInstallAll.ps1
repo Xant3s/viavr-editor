@@ -194,9 +194,8 @@ if(Check-Command -command "yarn -v")
 }
 else
 {
-    Write-Host "Yarn isnt accessible. Trying to enable corepack ..." -ForegroundColor Yellow 
-    Write-Host "!IMPORTANT! After 10seconds: due to a currently unresolved problem regarding corepack installation please input y in the console and press enter." -ForegroundColor Yellow
-    corepack enable
+    Write-Host "Yarn is not installed. Trying to install..." -ForegroundColor Yellow 
+    npm i -g yarn
     if(Check-Command -command "yarn -v")
     {
         Write-Host "Yarn is installed now" -ForegroundColor Green 

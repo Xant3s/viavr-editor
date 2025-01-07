@@ -55,11 +55,17 @@ function Check-Command {
         return $false
     }
 }
+
+function Check-GitInstalled {
+    # Check if Git is available in the PATH
+    $gitCheck = Get-Command "git" -ErrorAction SilentlyContinue
+    return $null -ne $gitCheck
+}
 ###Helper Functions End###
 
 ### GIT ### Not used
 #Define paths for git
-<# $gitFolder = "C:\Program Files\Git\"
+$gitFolder = "C:\Program Files\Git\"
 Push-Location #If the installer moves the script
 Write-Host "Check if folder $gitFolder exists." -ForegroundColor Cyan
 if (Test-Path "$gitFolder")
@@ -69,7 +75,7 @@ if (Test-Path "$gitFolder")
 else
 {
     Write-Host "Git Path dosent exists. Trying to install git v2.47.1" -ForegroundColor Red 
-    & "$PWD\Git\gitInstaller.ps1"
+    & "$PWD\dependenciesScripts\Git\gitInstaller.ps1"
     if (Test-Path "$gitFolder")
     {
         Write-Host "Git folder exists now." -ForegroundColor Green
@@ -78,7 +84,7 @@ else
     {
         Write-Host "Something went wrong during the git installation please check the output. Exiting installation script..." -ForegroundColor Red
         Pause
-        Exit 0
+        Exit 1
     }
 } 
 Write-Host "Checking if git is avialable in PATH " -ForegroundColor Cyan
@@ -99,11 +105,11 @@ else
     {
         Write-Host "Couldnt set git to PATH aborting script ... " -ForegroundColor Red
         Pause
-        Exit 0
+        Exit 2
     }
 }
 Pop-Location #go back to previous Folder if changed
-#>
+
 ### NODE ###
 # Define paths for node
 $nodePath = "C:\Program Files\nodejs"  

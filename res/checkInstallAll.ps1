@@ -63,6 +63,9 @@ function Check-GitInstalled {
 }
 ###Helper Functions End###
 
+# Start logging
+Start-Transcript -Path "C:\viavr-install.log" -Append
+
 ### GIT ### Not used
 #Define paths for git
 $gitFolder = "C:\Program Files\Git\"
@@ -366,6 +369,10 @@ Set-Location ".\plugins\viavr-reticulum\"
 Pop-Location
 Write-Host ""
 Write-Host "Dependency installation complete." -ForegroundColor Green
+
+# Stop logging
+Stop-Transcript
+
 Pause
 
 

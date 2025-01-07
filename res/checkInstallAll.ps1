@@ -137,7 +137,7 @@ else
         {
             Write-Host "Something went wrong during the node installation please check the output. Exiting installation script..." -ForegroundColor Red
             Pause
-            Exit 0
+            Exit 3
         }
     }
     
@@ -163,7 +163,7 @@ else
     {
         Write-Host "Couldnt set Node to PATH aborting script ... " -ForegroundColor Red
         Pause
-        Exit 0
+        Exit 4
     }
 }
 if($nodeInstalledVersion -eq $nodeVersionInstalledByScript)
@@ -195,7 +195,7 @@ else
     {
         Write-Host "Yarn couldnt be installed correctly or isnt available in Path. Exiting Script ... " -ForegroundColor Red
         Pause 
-        Exit 0
+        Exit 5
     }
 }
 Pop-Location
@@ -243,7 +243,7 @@ else
     {
         Write-Host "Something went wrong during the visual studio installation please check the output. Exiting installation script..." -ForegroundColor Red
         Pause
-        Exit 0
+        Exit 6
     }
 }
 #vswhere to check version
@@ -286,7 +286,7 @@ if (Test-Path "$unityHubExecutable")
             {
                 Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
                 Pause
-                Exit 0 
+                Exit 7 
             }
         }
         elseif ($response -match "^[Nn]$") 
@@ -325,14 +325,14 @@ else #This is the case expected if no unity hub / unity version installed
         {
             Write-Host "$unityPath not found. Please check the output. Exiting..." -ForegroundColor Red
             Pause
-            Exit 0 
+            Exit 8 
         }
     }
     else
     {
         Write-Host "$unityHubExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
         Pause
-        Exit 0 
+        Exit 9 
     }
 
 }

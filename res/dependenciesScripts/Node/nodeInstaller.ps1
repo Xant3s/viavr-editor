@@ -26,6 +26,7 @@ else
 {
     try
     {
+        Write-Host "Starting download. Please press enter to continue if nothing happens for a few minutes." -ForegroundColor Yellow
         Invoke-WebRequest -Uri $nodeDownloadUrl -OutFile $nodeMSIPackage -UseBasicParsing
     }catch
     {

@@ -28,9 +28,9 @@ export default class ViavrServicesManager {
 
     private async startReticulum() {
         await this.killErlProcess() // Kill `erl.exe` if running (effectively kills every running reticulum instance)
-        
+
         const scriptPath = `${AppUtils.getResPath()}plugins/viavr-reticulum/run_reticulum_without_checks.ps1`
-        const psCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "${scriptPath}"`
+        const psCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Verb RunAs -File "${scriptPath}"`
 
         this.reticulumPSInstance = child_process.spawn(psCommand, {
             shell: true,

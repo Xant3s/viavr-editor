@@ -16,6 +16,11 @@ function Relaunch-AsAdmin
                 -Verb RunAs
     exit # Exit the current script to let the elevated instance handle the task
 }
+
+Write-Host "We're now installing software that is required for VIA-VR. Please make sure you have a stable internet connection and your PC is not going into sleep mode or tunred off." -ForegroundColor Cyan
+Write-Host "Please do not close any windows that may pop up." -ForegroundColor Cyan
+Write-Host "IMPORTANT: Please follow the instructions carefully and confirm all prompts during the installation with yes. The installation process will take a while." -ForegroundColor Cyan
+
 if (-not (Check-Admin)) 
 {
     Write-Host "Script is not running as administrator. Restarting with administrator rights..." -ForegroundColor Red 

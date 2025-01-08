@@ -20,35 +20,7 @@ This repository contains the editor part of the VIA-VR project, made by the Game
 
 ## Prerequisites
 
-Before using the VIA-VR software, an IT administrator must install the following required software to ensure its proper functionality.
-
-- Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
-
-  - To check that Node.js was installed correctly, type the following commands in your terminal client:
-
-    ```bash
-    node -v
-    npm -v
-    ```
-  - Node 22.x will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator:
-
-    ```bash
-    corepack enable
-    ```
-
-  - To check that Yarn was installed correctly, type the following command in your terminal client:
-
-    ```bash
-    yarn -v
-    ```
-        
-- Make sure Unity 2021.3.31f1 is installed
-  - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
-  - To verify that Unity was installed successfully, check if the folder `C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\build-tools` exists and is not empty. If this folder doesn't exist, reinstall Unity with Android Build Support 
-  - Make sure the IL2CPP scripting backend is installed
-- Make sure your internet connection is working properly
-- Download either the portable or installer version from the release page of this repository
-
+To function properly, VIA-VR needs other software to be installed on your PC. The VIA-VR installer download and installs all required software. Please make sure to follow all instructions during the installation process carefully. You can download the installer from the release page of this repository.
 
 ## How to Use the Application
 
@@ -88,26 +60,57 @@ sebastian.von.mammen@uni-wuerzburg.de
 
 # For Developers
 
+The following is for programmers only.
+
 See [Developer_Documentation.pdf](Developer_Documentation.pdf)
 
 
 ## Prerequisites for Development
 
 - Make sure to clone recursively, i.e. including all submodules. Do not just download the zip file
-- See prerequisites above
+
+### Install Prerequisites via Script
+
+Navigate to the "res" folder and run "checkInstallAll.ps1" with Powershell. Script execution policies must be allowed on your PC.
+
+### Install Prerequisites Manually
+
+Alternatively, you can install to following manually (not recommended):
+
+- Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
+
+  - To check that Node.js was installed correctly, type the following commands in your terminal client:
+
+    ```bash
+    node -v
+    npm -v
+    ```
+  - Node 22.x will include Corepack, which includes [Yarn](https://yarnpkg.com/). To enable Corepack, run as administrator:
+
+    ```bash
+    corepack enable
+    ```
+
+  - To check that Yarn was installed correctly, type the following command in your terminal client:
+
+    ```bash
+    yarn -v
+    ```
+        
+- Make sure Unity 2021.3.31f1 is installed
+  - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
+  - To verify that Unity was installed successfully, check if the folder `C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\build-tools` exists and is not empty. If this folder doesn't exist, reinstall Unity with Android Build Support 
+  - Make sure the IL2CPP scripting backend is installed
+- Make sure your internet connection is working properly
+
 
 ## Required Ports
 
 - 3000
 - 9090
 
-## How to Start (Currently Only Tested on Windows)
+## How to Start (Windows Only)
 
-- We recommend doing the following steps in cmd.exe
-- Run the following commands to install Nearspark:
-  - `npm installNearSpark`
-- Run the following commands to install Reticulum:
-  - `npm installReticulum`
 - Run the following commands to install the application:
   - `npm install`
 - Run the following command to start the application
@@ -129,7 +132,7 @@ The page will reload if you make edits. You will also see any lint errors in the
 
 - Run the following commands:
   - Run `npm install`
-  - Run `npm run package` to build an executable for your system
+  - Run `npm run package:win` to build an executable for your system
 - Install [Yarn](https://yarnpkg.com/) on the target PC
 - Copy the setup executable from the `dist` folder to the target PC
 - Run the setup executable on the target PC

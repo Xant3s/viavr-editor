@@ -22,3 +22,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+res/dependenciesScripts/Unity/unity2021.exe
+res/dependenciesScripts/Unity/unity2021Andriod.exe
+res/dependenciesScripts/Node/node-v22.11.0-x64.msi
+res/dependenciesScripts/VSC/vs_community.exe
+

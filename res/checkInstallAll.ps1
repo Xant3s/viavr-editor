@@ -92,6 +92,7 @@ else
     {
         Write-Host "Something went wrong during the git installation please check the output. Exiting installation script..." -ForegroundColor Red
         Pause
+        Stop-Transcript
         Exit 1
     }
 } 
@@ -113,6 +114,7 @@ else
     {
         Write-Host "Couldnt set git to PATH aborting script ... " -ForegroundColor Red
         Pause
+        Stop-Transcript
         Exit 2
     }
 }
@@ -151,6 +153,7 @@ else
         {
             Write-Host "Something went wrong during the node installation please check the output. Exiting installation script..." -ForegroundColor Red
             Pause
+            Stop-Transcript
             Exit 3
         }
     }
@@ -177,6 +180,7 @@ else
     {
         Write-Host "Couldnt set Node to PATH aborting script ... " -ForegroundColor Red
         Pause
+        Stop-Transcript
         Exit 4
     }
 }
@@ -208,7 +212,8 @@ else
     }else
     {
         Write-Host "Yarn couldnt be installed correctly or isnt available in Path. Exiting Script ... " -ForegroundColor Red
-        Pause 
+        Pause
+        Stop-Transcript
         Exit 5
     }
 }
@@ -257,6 +262,7 @@ else
     {
         Write-Host "Something went wrong during the visual studio installation please check the output. Exiting installation script..." -ForegroundColor Red
         Pause
+        Stop-Transcript
         Exit 6
     }
 }
@@ -300,6 +306,7 @@ if (Test-Path "$unityHubExecutable")
             {
                 Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
                 Pause
+                Stop-Transcript
                 Exit 7 
             }
         }
@@ -339,6 +346,7 @@ else #This is the case expected if no unity hub / unity version installed
         {
             Write-Host "$unityPath not found. Please check the output. Exiting..." -ForegroundColor Red
             Pause
+            Stop-Transcript
             Exit 8 
         }
     }
@@ -346,6 +354,7 @@ else #This is the case expected if no unity hub / unity version installed
     {
         Write-Host "$unityHubExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
         Pause
+        Stop-Transcript
         Exit 9 
     }
 

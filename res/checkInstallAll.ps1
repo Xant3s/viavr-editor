@@ -364,15 +364,17 @@ Push-Location
 Write-Host ""
 if($shouldUnityBestartedAtTheEnd)
 {
-    Write-Host "Dependency installation complete."
     Write-Host ""
-    Write-Host "Starting Unity Editor: A pop-up about a license error may appear. 
-    Please click 'Open Hub' and sign in or create an account as needed." -ForegroundColor Cyan
-    Write-Host ""
-    Write-Host "You press enter at any point to continue installation." -ForegroundColor Cyan
-    Start-Process -FilePath "$unityPath\Unity.exe"
+    Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub. 
+    Please sign in or create an account." -ForegroundColor Cyan
+    Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Cyan
+    Write-Host "Should anything go wrong please continue with the installation. You can manually start the Unity Hub, login, and get a license later."
+    Write-Host "Press enter to continue. I'll start the Unity Hub for you."
     Pause
-
+    Start-Process -FilePath "$unityHubExecutable"
+    Write-Host ""
+    Write-Host "Press enter to install the remaining dependencies." -ForegroundColor Cyan
+    Pause
 }
 Write-Host ""
 Write-Host "Dependency installation for editor complete." -ForegroundColor Green

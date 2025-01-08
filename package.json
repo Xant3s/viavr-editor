@@ -126,6 +126,7 @@
       "allowToChangeInstallationDirectory": false,
       "oneClick": true,
       "perMachine": false,
+      "runAfterFinish": false,
       "include": "res/installer.nsh"
     }
   },

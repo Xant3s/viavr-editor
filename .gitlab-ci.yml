@@ -87,27 +87,27 @@ frontend:
    tags:
      - docker
 
-package-win:
-  image: electronuserland/builder:wine # 22-wine doesn't exist
-  stage: deploy
-  cache:
-    paths:
-      - node_modules
-  before_script:
-    - node -v
-    - npm -v
-    - npm i yarn
-    - yarn -v
-    - yarn config set network-timeout 600000
-    - npm i --ignore-scripts && npm run postinstall:linux || (cd res/plugins/spoke && yarn install && cd ../../..)
-  script:
-    - npm run package:win
-  artifacts:
-    paths:
-      - dist/
-    expire_in: 1 week
-  tags:
-    - docker
+#package-win:
+#  image: electronuserland/builder:wine # 22-wine doesn't exist
+#  stage: deploy
+#  cache:
+#    paths:
+#      - node_modules
+#  before_script:
+#    - node -v
+#    - npm -v
+#    - npm i yarn
+#    - yarn -v
+#    - yarn config set network-timeout 600000
+#    - npm i --ignore-scripts && npm run postinstall:linux || (cd res/plugins/spoke && yarn install && cd ../../..)
+#  script:
+#    - npm run package:win
+#  artifacts:
+#    paths:
+#      - dist/
+#    expire_in: 1 week
+#  tags:
+#    - docker
 #  only:
 #    - master
 

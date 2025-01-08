@@ -365,13 +365,13 @@ Write-Host ""
 if($shouldUnityBestartedAtTheEnd)
 {
     Write-Host ""
-    Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub. 
-    Please sign in or create an account." -ForegroundColor Cyan
-    Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Cyan
+    Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub." -ForegroundColor Yellow
+    Write-Host "Please sign in or create an account." -ForegroundColor Yellow
+    Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
     Write-Host "Should anything go wrong please continue with the installation. You can manually start the Unity Hub, login, and get a license later."
     Write-Host "Press enter to continue. I'll start the Unity Hub for you."
     Pause
-    Start-Process -FilePath "$unityHubExecutable"
+    Start-Process -RedirectStandardOutput "null" -FilePath "$unityHubExecutable"
     Write-Host ""
     Write-Host "Press enter to install the remaining dependencies." -ForegroundColor Cyan
     Pause

@@ -122,9 +122,10 @@
     "buildDependenciesFromSource": true,
     "npmRebuild": true,
     "nsis": {
-      "oneClick": false,
+      "allowElevation": true,
       "allowToChangeInstallationDirectory": false,
-      "perMachine": true,
+      "oneClick": true,
+      "perMachine": false,
       "include": "res/installer.nsh"
     }
   },

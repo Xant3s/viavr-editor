@@ -218,10 +218,22 @@ else
     }
 }
 Pop-Location
+
+
+Write-Host ""
+Write-Host "Installing dependencies for Reticulum." -ForegroundColor Cyan
+Push-Location
+Set-Location ".\plugins\viavr-reticulum\"
+& ".\run_check_install.ps1"
+Pop-Location
+Write-Host ""
+Write-Host "Dependency installation complete." -ForegroundColor Green
+
+
 ###VSC Installation###
 Write-Host ""
 Push-Location
-$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer"  
+$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
 Write-Host "Check if folder $vscPath exists." -ForegroundColor Cyan
 if (Test-Path "$vscPath")
 {
@@ -251,12 +263,12 @@ if (Test-Path "$vscPath")
 }
 else
 {
-    Write-Host "Visual Studio path dosent exists. Trying to install visual studio" -ForegroundColor Red 
+    Write-Host "Visual Studio path dosent exists. Trying to install visual studio" -ForegroundColor Red
     & "$PWD\dependenciesScripts\VSC\vscInstaller.ps1"
     if (Test-Path "$vscPath")
     {
         Write-Host "Visual studio folder exists now." -ForegroundColor Green
-        
+
     }
     else
     {
@@ -294,7 +306,7 @@ if (Test-Path "$unityHubExecutable")
     {
         Write-Host "$unityPath not found." -ForegroundColor Yellow
         $response = Read-Host "Do you want to download and install Unity 2021.3.31f1 via Unity Hub? (Y/N)"
-        if ($response -match "^[Yy]$") 
+        if ($response -match "^[Yy]$")
         {
             Write-Host "Starting Unity install script... " -ForegroundColor Cyan
             & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
@@ -307,15 +319,15 @@ if (Test-Path "$unityHubExecutable")
                 Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
                 Pause
                 Stop-Transcript
-                Exit 7 
+                Exit 7
             }
         }
-        elseif ($response -match "^[Nn]$") 
+        elseif ($response -match "^[Nn]$")
         {
             Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
             Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
         }
-        else 
+        else
         {
             Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
             Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
@@ -325,7 +337,7 @@ if (Test-Path "$unityHubExecutable")
 elseif(Test-Path "$unityPath") #Hub dosent found but Unity version somehow? Edgecase ->Ignoring
 {
     Write-Host "$unityPath found without $unityHubExecutable. Maybe Unity Hub is installed on another drive?." -ForegroundColor Yellow
-    
+
 }
 else #This is the case expected if no unity hub / unity version installed
 {
@@ -339,7 +351,7 @@ else #This is the case expected if no unity hub / unity version installed
         & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
         if (Test-Path "$unityPath")
         {
-            $shouldUnityBestartedAtTheEnd = $true 
+            $shouldUnityBestartedAtTheEnd = $true
             Write-Host "$unityPath found." -ForegroundColor Green
         }
         else
@@ -347,7 +359,7 @@ else #This is the case expected if no unity hub / unity version installed
             Write-Host "$unityPath not found. Please check the output. Exiting..." -ForegroundColor Red
             Pause
             Stop-Transcript
-            Exit 8 
+            Exit 8
         }
     }
     else
@@ -355,11 +367,12 @@ else #This is the case expected if no unity hub / unity version installed
         Write-Host "$unityHubExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
         Pause
         Stop-Transcript
-        Exit 9 
+        Exit 9
     }
 
 }
 Pop-Location
+
 Push-Location
 Write-Host ""
 if($shouldUnityBestartedAtTheEnd)
@@ -378,13 +391,7 @@ if($shouldUnityBestartedAtTheEnd)
 }
 Write-Host ""
 Write-Host "Dependency installation for editor complete." -ForegroundColor Green
-Write-Host ""
-Write-Host "Installing dependencies for Reticulum." -ForegroundColor Cyan
-Set-Location ".\plugins\viavr-reticulum\"
-& ".\run_check_install.ps1"
 Pop-Location
-Write-Host ""
-Write-Host "Dependency installation complete." -ForegroundColor Green
 
 # Stop logging
 Stop-Transcript

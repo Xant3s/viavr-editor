@@ -290,6 +290,7 @@ Write-Host ""
 Push-Location
 $unityRecVersion = "2021.3.31f1"
 $unityPath = "C:\Program Files\Unity\Hub\Editor\$unityRecVersion\Editor\"
+$unityExecutable = "$unityPath\Unity.exe"
 $unityHubPath = "C:\Program Files\Unity Hub"
 $unityHubExecutable = "$unityHubPath\Unity Hub.exe"
 $shouldUnityBestartedAtTheEnd = $false
@@ -298,25 +299,25 @@ if (Test-Path "$unityHubExecutable")
 {
     Write-Host "$unityHubExecutable exists." -ForegroundColor Green
     #Hub found this suggests an already started unity version 
-    if(Test-Path "$unityPath")
+    if(Test-Path "$unityExecutable")
     {
-        Write-Host "And $unityPath exists." -ForegroundColor Green
+        Write-Host "And $unityExecutable exists." -ForegroundColor Green
     }
     else
     {
-        Write-Host "$unityPath not found." -ForegroundColor Yellow
+        Write-Host "$unityExecutable not found." -ForegroundColor Yellow
         $response = Read-Host "Do you want to download and install Unity 2021.3.31f1 via Unity Hub? (Y/N)"
         if ($response -match "^[Yy]$")
         {
             Write-Host "Starting Unity install script... " -ForegroundColor Cyan
             & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
-            if (Test-Path "$unityPath")
+            if (Test-Path "$unityExecutable")
             {
-                Write-Host "$unityPath exists." -ForegroundColor Green
+                Write-Host "$unityExecutable exists." -ForegroundColor Green
             }
             else
             {
-                Write-Host "$unityPath dosent exists. Please check the output. Exiting..." -ForegroundColor Red
+                Write-Host "$unityExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
                 Pause
                 Stop-Transcript
                 Exit 7
@@ -334,9 +335,9 @@ if (Test-Path "$unityHubExecutable")
         }
     }
 }
-elseif(Test-Path "$unityPath") #Hub dosent found but Unity version somehow? Edgecase ->Ignoring
+elseif(Test-Path "$unityExecutable") #Hub dosent found but Unity version somehow? Edgecase ->Ignoring
 {
-    Write-Host "$unityPath found without $unityHubExecutable. Maybe Unity Hub is installed on another drive?." -ForegroundColor Yellow
+    Write-Host "$unityExecutable found without $unityHubExecutable. Maybe Unity Hub is installed on another drive?." -ForegroundColor Yellow
 
 }
 else #This is the case expected if no unity hub / unity version installed
@@ -349,14 +350,14 @@ else #This is the case expected if no unity hub / unity version installed
         Write-Host "$unityHubExecutable found." -ForegroundColor Green
         Write-Host "Starting Unity installation via Unity Hub ... " -ForegroundColor Cyan
         & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
-        if (Test-Path "$unityPath")
+        if (Test-Path "$unityExecutable")
         {
             $shouldUnityBestartedAtTheEnd = $true
-            Write-Host "$unityPath found." -ForegroundColor Green
+            Write-Host "$unityExecutable found." -ForegroundColor Green
         }
         else
         {
-            Write-Host "$unityPath not found. Please check the output. Exiting..." -ForegroundColor Red
+            Write-Host "$unityExecutable not found. Please check the output. Exiting..." -ForegroundColor Red
             Pause
             Stop-Transcript
             Exit 8

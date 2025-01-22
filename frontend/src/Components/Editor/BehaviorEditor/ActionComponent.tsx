@@ -31,7 +31,7 @@ const ActionComponent = (props: Props) => {
     }
 
     useEffect(() => {
-        setOptions(props.availableActions.map(action => ({ label: action.name, value: action.name })))
+        setOptions(props.availableActions.map(action => ({ label: action.displayName, value: action.name })))
     }, [props.availableActions])
 
     

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { translationsData } from './TranslationsData'
 
 const TranslationContext = createContext({
@@ -10,28 +10,28 @@ const TranslationContext = createContext({
 export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [language, setLanguage] = useState('en')
     const [translations, setTranslations] = useState(translationsData["en"]); // Default to English
-    
+
+
+    const updateLanguage = useCallback(async (newLanguage: 'en' | 'de') => {
+        const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
+        await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
+
+        // Load the correct translation data when language changes
+        setTranslations(translationsData[newLanguage] || translationsData["en"])
+        setLanguage(newLanguage)
+    }, []) 
     
     useEffect(() => {
         (async () => {
             const languagePref = await api.invoke(api.channels.toMain.requestPreference, 'language')
-            let language: string = languagePref.value
-            if(language === 'system') {
-               language = await api.invoke(api.channels.toMain.detectSystemLanguage)
-                console.log('language', language)
+            let lang: string = languagePref.value
+            if(lang === 'system') {
+               lang = await api.invoke(api.channels.toMain.detectSystemLanguage)
             }
-            setLanguage(language)
+            await updateLanguage(lang as 'en' | 'de')
         })()
-    }, [])
-
-    useEffect(() => {
-        const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
-        api.invoke(api.channels.toMain.changePreference, languagePrefUuid, language)
-
-        // Load the correct translation data when language changes
-        setTranslations(translationsData[language] || translationsData["en"])
-    }, [language])
-
+    }, [updateLanguage])
+    
     const translate = (key: string) => translations[key] || key
 
     return (

@@ -24,6 +24,8 @@ export const WelcomeContainer = ({ hidden, startTutorial }) => {
     return (
         <WelcomeContainerStyle hidden={hidden}>
             <h1>{translate('welcome')}</h1>
+            <button onClick={() => setLanguage("en")}>English</button>
+            <button onClick={() => setLanguage("de")}>Deutsch</button>
             <div style={{textAlign: 'center', marginBottom: '10px'}}>
                 If you&apos;re new here we recommend going through the tutorial.<br />
                 Otherwise, jump right in and create a project from scratch or from one of our templates.

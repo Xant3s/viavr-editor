@@ -8,7 +8,7 @@ export class LocalizationManager {
 
     
     constructor() {
-        ipcMain.handle(API.channels.toMain.detectSystemLanguage, this.detectLanguage)
+        ipcMain.handle(API.channels.toMain.detectSystemLanguage, this.detectLanguage.bind(this))
     }
     
 

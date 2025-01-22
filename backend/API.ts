@@ -43,10 +43,12 @@ export const channels = {
         saveScene: 'scene-exporter:save-current-scene',
         downloadAvatar: 'avatar:download',
         deleteAvatarFromFileSystem: 'avatar:delete',
-        exitApplication: 'main-window:exit-application'
+        exitApplication: 'main-window:exit-application',
+        detectSystemLanguage: 'localization:detect-system-language',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
+        preferenceChangedFromBackendLanguage: 'preferences:preference-changed-from-backend-language',
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
         spokeExportScene: 'spoke:export-scene',

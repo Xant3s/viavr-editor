@@ -1,10 +1,16 @@
-import { app } from 'electron'
+import { app, ipcMain } from 'electron'
 import PreferencesManager from './Preferences/PreferencesManager'
 import { StringSetting } from '../frontend/src/@types/Settings'
+import { API } from './API'
 
 export class LocalizationManager {
     private availableLanguages = ['en', 'de']
 
+    
+    constructor() {
+        ipcMain.handle(API.channels.toMain.detectSystemLanguage, this.detectLanguage)
+    }
+    
 
     // If language is unknown detect system language and set it in the preferences.     
     public async ensureLanguageIsInPreferences() {

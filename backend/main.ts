@@ -15,6 +15,7 @@ import { ProjectTags } from './ProjectManager/ProjectTags'
 import MeshPreprocessor from './MeshPreprocessor'
 import { AvatarManager } from './AvatarManager'
 import { Logger } from './Logger'
+import { LocalizationManager } from './LocalizationManager'
 
 const startup = async () => {
     const mainWindow = new MainWindow()
@@ -33,6 +34,7 @@ const startup = async () => {
     new MeshPreprocessor()
     new AvatarManager()
     await SceneUtils.register()
+    await new LocalizationManager().ensureLanguageIsInPreferences()
     Logger.get()
     app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
   

@@ -1,13 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-
-const translationsData: Record<string, Record<string, string>> = {
-    en: {
-        welcome: 'Welcome',
-    },
-    de: {
-        welcome: 'Willkommen',
-    },
-}
+import { translationsData } from './TranslationsData'
 
 const TranslationContext = createContext({
     translate: (key: string) => key,

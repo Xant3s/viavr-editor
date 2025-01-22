@@ -62,6 +62,7 @@ export default class MainWindow {
                 webSecurity: false,
                 preload: path.join(__dirname, 'preload.js'),
             },
+            title: `VIA-VR Editor ${app.getVersion()}` 
         })
         MainWindow.window.on("close", () => {
             if(ProjectManager.getInstance().projectIsLoaded()) {

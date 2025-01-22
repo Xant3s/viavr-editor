@@ -2,9 +2,12 @@ import { WelcomeContainerStyle } from '../StyledComponents/Editor/StyledEditor'
 import { toaster } from 'evergreen-ui'
 import { Row } from '../StyledComponents/Row'
 import { Button } from '../StyledComponents/Button'
+import { useTranslation } from '../../LocalizationContext'
 
 
 export const WelcomeContainer = ({ hidden, startTutorial }) => {
+    const {translate, language, setLanguage} = useTranslation()
+    
     const downloadProjectTemplates = async () => {
         const status = await api.invoke(api.channels.toMain.downloadProjectTemplates)
         if (status === 200) {
@@ -20,7 +23,7 @@ export const WelcomeContainer = ({ hidden, startTutorial }) => {
 
     return (
         <WelcomeContainerStyle hidden={hidden}>
-            <h1>Welcome</h1>
+            <h1>{translate('welcome')}</h1>
             <div style={{textAlign: 'center', marginBottom: '10px'}}>
                 If you&apos;re new here we recommend going through the tutorial.<br />
                 Otherwise, jump right in and create a project from scratch or from one of our templates.

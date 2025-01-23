@@ -8,7 +8,8 @@ export declare interface SettingsProps {
     title: string,
     loadSettingsChannel: string,
     changeSettingChannel: string,
-    registerUpdateCallbacksFromBackend?: (setPref) => void
+    registerUpdateCallbacksFromBackend?: (setPref) => void,
+    children?: React.ReactNode,
 }
 
 export const Settings = ({
@@ -16,6 +17,7 @@ export const Settings = ({
     loadSettingsChannel,
     changeSettingChannel,
     registerUpdateCallbacksFromBackend,
+    children
 }: SettingsProps) => {
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
@@ -52,6 +54,7 @@ export const Settings = ({
             <br />
 
             <SettingsContainer>
+                {children}
                 {
                     Array.from(prefs.entries())
                         // @ts-ignore

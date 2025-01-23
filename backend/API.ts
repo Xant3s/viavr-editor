@@ -48,7 +48,6 @@ export const channels = {
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
-        preferenceChangedFromBackendLanguage: 'preferences:preference-changed-from-backend-language',
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
         spokeExportScene: 'spoke:export-scene',

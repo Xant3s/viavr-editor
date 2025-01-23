@@ -10,18 +10,18 @@ export class LocalizationManager {
     constructor() {
         ipcMain.handle(API.channels.toMain.detectSystemLanguage, this.detectLanguage.bind(this))
     }
-    
 
+    
     // If language is unknown detect system language and set it in the preferences.     
     public async ensureLanguageIsInPreferences() {
-        const languagePref = await PreferencesManager.getInstance().get<StringSetting>('language')
+        const languagePref = await PreferencesManager.getInstance().get<StringSetting>('dev.language')
         const language = languagePref.value
         const languageIsUnknown = language !== 'en' && language !== 'de' && language !== 'system'
         if (languageIsUnknown || language === 'system') {
             const detectedLanguage = this.detectLanguage()
             if(languageIsUnknown) {
                 const newLanguagePref = {...languagePref, value: detectedLanguage}
-                await PreferencesManager.getInstance().set<StringSetting>('language', newLanguagePref)
+                await PreferencesManager.getInstance().set<StringSetting>('dev.language', newLanguagePref)
             }
         }
     }

@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { translationsData } from './TranslationsData'
+import { Combobox } from 'evergreen-ui'
 
 interface TranslationContextType {
     translate: (key: string) => string;
@@ -29,7 +30,7 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
     useEffect(() => {
         (async () => {
-            const languagePref = await api.invoke(api.channels.toMain.requestPreference, 'language')
+            const languagePref = await api.invoke(api.channels.toMain.requestPreference, 'dev.language')
             let lang: string = languagePref.value
             if(lang === 'system') {
                 lang = await api.invoke(api.channels.toMain.detectSystemLanguage)
@@ -48,3 +49,40 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
 }
 
 export const useTranslation = () => useContext(TranslationContext)
+
+
+export const LanguageSelector: React.FC = () => {
+    const [lang, setLang] = useState<string>('')
+
+
+    useEffect(() => {
+        (async () => {
+            const languagePref = await api.invoke(api.channels.toMain.requestPreference, 'dev.language')
+            const language: string = languagePref.value
+            setLang(language)
+        })()
+    }, [])
+
+
+    const handleChange = async (newLanguage: string) => {
+        // const newLanguage = event.target.value as string
+        console.log(newLanguage)
+        const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
+        await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
+        setLang(newLanguage)
+    }
+
+    return (
+        // TODO: notify context
+        // TODO: prevent user from typing
+        <Combobox
+            items={['de', 'en', 'system']}
+            onChange={selected => handleChange(selected)}
+            placeholder={lang}
+            autocompleteProps={{
+                title: 'Language'
+            }}
+            isFilterable={false}
+        />
+    )
+}

@@ -5,7 +5,7 @@ import { Select } from 'evergreen-ui'
 interface TranslationContextType {
     translate: (key: string) => string;
     language: string;
-    setLanguage: (newLanguage: 'en' | 'de') => Promise<void>;
+    setLanguage: (newLanguage: 'en' | 'de', updatePreferences?: boolean) => Promise<void>;
 }
 
 const TranslationContext = createContext<TranslationContextType>({
@@ -19,9 +19,11 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const [language, setLanguage] = useState<string>('en')
     const [translations, setTranslations] = useState(translationsData['en']) // Default to English
 
-    const updateLanguage = useCallback(async (newLanguage: 'en' | 'de') => {
-        const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
-        await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
+    const updateLanguage = useCallback(async (newLanguage: 'en' | 'de', updatePreferences = true) => {
+        if(updatePreferences) {
+            const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
+            await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
+        }
         console.log('update language', newLanguage)
 
         // Load the correct translation data when language changes
@@ -73,7 +75,7 @@ export const LanguageSelector: React.FC = () => {
         await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
         setLang(newLanguage)
         const definitiveLanguage = await api.invoke(api.channels.toMain.getDefinitiveLanguage)
-        await setLanguage(definitiveLanguage as 'en' | 'de')
+        await setLanguage(definitiveLanguage as 'en' | 'de', false)
     }
 
     return (

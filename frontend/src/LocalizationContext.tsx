@@ -22,6 +22,7 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const updateLanguage = useCallback(async (newLanguage: 'en' | 'de') => {
         const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
         await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
+        console.log('update language', newLanguage)
 
         // Load the correct translation data when language changes
         setTranslations(translationsData[newLanguage] || translationsData['en'])
@@ -52,6 +53,7 @@ export const useTranslation = () => useContext(TranslationContext)
 
 
 export const LanguageSelector: React.FC = () => {
+    const { translate, language, setLanguage } = useTranslation()
     const [lang, setLang] = useState<string>('')
 
 
@@ -64,19 +66,20 @@ export const LanguageSelector: React.FC = () => {
     }, [])
 
 
+    // TODO: notification doesn't reach other windows
     const handleChange = async (newLanguage: string) => {
-        // const newLanguage = event.target.value as string
         console.log(newLanguage)
         const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
         await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
         setLang(newLanguage)
+        // TODO: ensure not system
+        await setLanguage(newLanguage as 'en' | 'de')
     }
 
     return (
-        // TODO: notify context
         <Select value={lang} onChange={event => handleChange(event.target.value)}
         style={{maxWidth: '200px'}}>
-            <option value="system" selected>System default</option>
+            <option value="system">System default</option>
             <option value="en">English</option>
             <option value="de">German</option>
         </Select>

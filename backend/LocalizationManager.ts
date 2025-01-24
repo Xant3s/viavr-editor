@@ -1,15 +1,19 @@
-import { app, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import PreferencesManager from './Preferences/PreferencesManager'
 import { StringSetting } from '../frontend/src/@types/Settings'
-import { API } from './API'
+import { API, channels } from './API'
+import MainWindow from './MainWindow'
 
 export class LocalizationManager {
     private availableLanguages = ['en', 'de']
+    private mainWindow: MainWindow | null = null
 
     
-    constructor() {
+    constructor(mainWindow: MainWindow) {
+        this.mainWindow = mainWindow
         ipcMain.handle(API.channels.toMain.detectSystemLanguage, this.detectLanguage.bind(this))
         ipcMain.handle(API.channels.toMain.getDefinitiveLanguage, this.getDefinitiveLanguage.bind(this))
+        ipcMain.handle(API.channels.toMain.sendNewLanguageToAllWindows, (_,  lang) => this.broadcastNewLanguage(lang))
     }
 
     
@@ -40,5 +44,12 @@ export class LocalizationManager {
     private detectLanguage(): string {
         const systemLang = (app.getLocale() || 'en').split('-')[0] // Detect system language
         return this.availableLanguages.includes(systemLang) ? systemLang : 'en' // Default to English
+    }
+    
+    private broadcastNewLanguage(newLanguage: string): void {
+        BrowserWindow.getAllWindows().forEach(win => {
+            this.mainWindow?.send(channels.fromMain.newLanguage, newLanguage)
+            win.webContents.send(channels.fromMain.newLanguage, newLanguage)
+        })
     }
 }

@@ -34,7 +34,7 @@ const startup = async () => {
     new MeshPreprocessor()
     new AvatarManager()
     await SceneUtils.register()
-    await new LocalizationManager().ensureLanguageIsInPreferences()
+    await new LocalizationManager(mainWindow).ensureLanguageIsInPreferences()
     Logger.get()
     app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
   

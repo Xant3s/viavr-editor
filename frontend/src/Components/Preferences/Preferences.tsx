@@ -2,7 +2,6 @@ import { FC } from 'react'
 import { Settings } from '../Settings/Settings'
 import { LanguageSelector } from '../../LocalizationContext'
 import { SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
-import { TextInput } from 'evergreen-ui'
 import { Box } from '@mui/material'
 
 export const Preferences: FC = () => {

@@ -32,6 +32,13 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
     }, [])
 
     useEffect(() => {
+        api.on(api.channels.fromMain.newLanguage, (newLanguage: string) => {
+            setTranslations(translationsData[newLanguage] || translationsData['en'])
+            setLanguage(newLanguage)
+        })
+    }, [])
+
+    useEffect(() => {
         (async () => {
             const languagePref = await api.invoke(api.channels.toMain.requestPreference, 'dev.language')
             let lang: string = languagePref.value
@@ -68,7 +75,6 @@ export const LanguageSelector: React.FC = () => {
     }, [])
 
 
-    // TODO: notification doesn't reach other windows
     const handleChange = async (newLanguage: string) => {
         console.log(newLanguage)
         const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
@@ -76,6 +82,7 @@ export const LanguageSelector: React.FC = () => {
         setLang(newLanguage)
         const definitiveLanguage = await api.invoke(api.channels.toMain.getDefinitiveLanguage)
         await setLanguage(definitiveLanguage as 'en' | 'de', false)
+        await api.invoke(api.channels.toMain.sendNewLanguageToAllWindows, definitiveLanguage)
     }
 
     return (

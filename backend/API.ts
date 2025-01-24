@@ -45,6 +45,7 @@ export const channels = {
         deleteAvatarFromFileSystem: 'avatar:delete',
         exitApplication: 'main-window:exit-application',
         detectSystemLanguage: 'localization:detect-system-language',
+        getDefinitiveLanguage: 'localization:get-definitive-language',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

@@ -9,6 +9,7 @@ export class LocalizationManager {
     
     constructor() {
         ipcMain.handle(API.channels.toMain.detectSystemLanguage, this.detectLanguage.bind(this))
+        ipcMain.handle(API.channels.toMain.getDefinitiveLanguage, this.getDefinitiveLanguage.bind(this))
     }
 
     
@@ -24,6 +25,16 @@ export class LocalizationManager {
                 await PreferencesManager.getInstance().set<StringSetting>('dev.language', newLanguagePref)
             }
         }
+    }
+    
+    private async getDefinitiveLanguage() {
+        const languagePref = await PreferencesManager.getInstance().get<StringSetting>('dev.language')
+        const language = languagePref.value
+        const languageIsUnknown = language !== 'en' && language !== 'de' && language !== 'system'
+        if (languageIsUnknown || language === 'system') {
+            return this.detectLanguage()
+        }
+        return language
     }
 
     private detectLanguage(): string {

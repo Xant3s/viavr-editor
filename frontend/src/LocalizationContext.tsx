@@ -76,7 +76,6 @@ export const LanguageSelector: React.FC = () => {
 
 
     const handleChange = async (newLanguage: string) => {
-        console.log(newLanguage)
         const languagePrefUuid = '941802b4-b837-4eea-b709-d1b002b47e15'
         await api.invoke(api.channels.toMain.changePreference, languagePrefUuid, newLanguage)
         setLang(newLanguage)

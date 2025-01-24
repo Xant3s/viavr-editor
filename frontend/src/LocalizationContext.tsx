@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { translationsData } from './TranslationsData'
-import { Combobox } from 'evergreen-ui'
+import { Select } from 'evergreen-ui'
 
 interface TranslationContextType {
     translate: (key: string) => string;
@@ -74,15 +74,11 @@ export const LanguageSelector: React.FC = () => {
 
     return (
         // TODO: notify context
-        // TODO: prevent user from typing
-        <Combobox
-            items={['de', 'en', 'system']}
-            onChange={selected => handleChange(selected)}
-            placeholder={lang}
-            autocompleteProps={{
-                title: 'Language'
-            }}
-            isFilterable={false}
-        />
+        <Select value={lang} onChange={event => handleChange(event.target.value)}
+        style={{maxWidth: '200px'}}>
+            <option value="system" selected>System default</option>
+            <option value="en">English</option>
+            <option value="de">German</option>
+        </Select>
     )
 }

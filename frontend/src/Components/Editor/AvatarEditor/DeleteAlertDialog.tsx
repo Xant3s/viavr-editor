@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-
+import { useTranslation } from '../../../LocalizationContext'
 
 export type DeleteDialogResponse = 'abort' | 'delete' | 'deleteFromServer'
 
@@ -17,11 +17,13 @@ interface props {
 }
 
 export default function AlertDialog({open, setOpen, handleDialog, avatarIsOnServer}: props) {
+    const {translate, language, setLanguage} = useTranslation()
+
     const handle = (response: DeleteDialogResponse) => {
         handleDialog(response)
         setOpen(false)
     }
-    
+
     return (
         <div>
             <Dialog
@@ -31,28 +33,28 @@ export default function AlertDialog({open, setOpen, handleDialog, avatarIsOnServ
                 aria-describedby='alert-dialog-description'
             >
                 <DialogTitle id='alert-dialog-title'>
-                    {'Delete avatar?'}
+                    {translate('deleteAvatar')}
                 </DialogTitle>
                 <DialogContent>
                     {avatarIsOnServer ?
                         <DialogContentText id='alert-dialog-description'>
-                            The character will be removed from the project and erased from the disk.
-                            You can choose to additionally delete the character from the avatar server.
-                            Deleting the character cannot be undone.
+                            {translate('characterRemovedFromProjectAndDisk')}
+                            {translate('deleteFromServerInfo')}
+                            {translate('deletingCannotBeUndone')}
                         </DialogContentText>
-                    :
+                        :
                         <DialogContentText id='alert-dialog-description'>
-                            The character will be removed from the project and erased from the disk.
-                            Deleting the character cannot be undone.
+                            {translate('characterRemovedFromProjectAndDisk')}
+                            {translate('deletingCannotBeUndone')}
                         </DialogContentText>
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => handle('abort')}>Abort</Button>
-                    <Button onClick={() => handle('delete')} autoFocus>Delete character</Button>
+                    <Button onClick={() => handle('abort')}>{translate('abort')}</Button>
+                    <Button onClick={() => handle('delete')} autoFocus>{translate('deleteCharacter')}</Button>
 
                     {avatarIsOnServer &&
-                        <Button onClick={() => handle('deleteFromServer')} autoFocus>Delete character also from server</Button>
+                        <Button onClick={() => handle('deleteFromServer')} autoFocus>{translate('deleteCharacterFromServer')}</Button>
                     }
                 </DialogActions>
             </Dialog>

@@ -1,6 +1,6 @@
 import { InlineAlert } from 'evergreen-ui'
 import * as React from 'react'
-
+import { useTranslation } from '../../../LocalizationContext'
 
 interface props {
     avatarServerUrl: string
@@ -13,12 +13,13 @@ const bannerStyle = {
     display: 'inline-block',
 }
 
-
 export const AvatarServerWarning = ({ avatarServerUrl }: props) => {
+    const { translate, language, setLanguage } = useTranslation()
+
     return <>
-        {avatarServerUrl === '' && 
+        {avatarServerUrl === '' &&
             <div style={bannerStyle}>
-                <InlineAlert intent='danger'>Please specify an avatar server url in the preferences.</InlineAlert>
+                <InlineAlert intent='danger'>{translate('avatar_server_warning')}</InlineAlert>
             </div>
         }
     </>

@@ -5,6 +5,8 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import DeleteAlertDialog, { DeleteDialogResponse } from './DeleteAlertDialog'
 import { CenteredSpinner } from '../../Utils/CenteredSpinner'
+import { useTranslation } from '../../../LocalizationContext'
+
 
 type Status = 'waitingforupload'| 'uploading'| 'queued'| 'processing'| 'done'| 'downloaded' | 'expired' | 'failed to talk to the server'
 
@@ -18,6 +20,7 @@ interface props {
 }
 
 export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFromServer, sceneObjects, updateAvatar }: props) => {
+    const {translate, language, setLanguage} = useTranslation()
     const [avatarServerUrl, setAvatarServerUrl] = React.useState<string>('')
     const [showDeletePrompt, setShowDeletePrompt] = React.useState(false)
     const [avatarStatusList, setAvatarStatusList] = React.useState<Map<string, Status>>(new Map<string, Status>())  // token -> status
@@ -26,7 +29,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
     const tableRowStyle = {
         backgroundColor: '#3A4048',
         color: '#4D535B',
-        borderColor:'#6C737A' 
+        borderColor:'#6C737A'
     };
     const tableHeaderStyle ={
         backgroundColor: '#6C737A',
@@ -48,7 +51,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
             return avatar
         })
     }
-    
+
     const handleDeleteDialog = async (avatarToken: string, dialogResponse: DeleteDialogResponse) => {
         if(dialogResponse === 'abort') return
         let errorCode = 0
@@ -59,7 +62,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
             deleteAvatar(avatarToken)
         }
     }
-    
+
     const getAction = (avatar: AvatarInfo) => {
         const status = avatarStatusList.get(avatar.token) || 'waitingforupload'
         switch(status) {
@@ -114,40 +117,40 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                 return wasDownloaded ? 'downloaded' : 'failed to talk to the server'
             }
         }
-        
+
         const updateStatusInterval = setInterval(updateStatus, statusUpdateInterval)
         return () => clearInterval(updateStatusInterval)
     }, [avatars, avatarStatusList, avatarServerUrl])
 
     function statusToText(status: Status): string {
-        if(status === 'done') return 'ready to download'
+        if(status === 'done') return translate('avatarList.readyToDownload')
         return status
     }
 
     return <Table style={{borderColor:'#6C737A'}}>
         <Table.Head style={tableHeaderStyle}>
-            <Table.TextHeaderCell>Name</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Placeholder Object</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Status</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Action</Table.TextHeaderCell>
-            <Table.TextHeaderCell>Delete</Table.TextHeaderCell>
+            <Table.TextHeaderCell>{translate('avatarList.name')}</Table.TextHeaderCell>
+            <Table.TextHeaderCell>{translate('avatarList.placeholderObject')}</Table.TextHeaderCell>
+            <Table.TextHeaderCell>{translate('avatarList.status')}</Table.TextHeaderCell>
+            <Table.TextHeaderCell>{translate('avatarList.action')}</Table.TextHeaderCell>
+            <Table.TextHeaderCell>{translate('avatarList.delete')}</Table.TextHeaderCell>
         </Table.Head>
-        {avatars.length===0 && 
-                        <div>
-                            <p style={{color:'#BCBEC1'}}> 
-                                Add an avatar using the Add Character Button.<br></br>
-                            </p>
-                        </div>
-                        }
+        {avatars.length===0 &&
+            <div>
+                <p style={{color:'#BCBEC1'}}>
+                    {translate('avatarList.addAvatarInfo')}
+                </p>
+            </div>
+        }
         <Table.Body minHeight={240} maxHeight={320} minWidth={'600px'}>
             {avatars.map(avatar => (
                 <Table.Row key={avatar.token} style={tableRowStyle}>
                     <Table.TextCell>
                         <TextInput name='avatar-name-input'
-                                   placeholder='Please enter the characters name'
+                                   placeholder={translate('avatarList.enterCharacterName')}
                                    value={avatar.name}
                                    style={{ backgroundColor:'white',
-                                            width:'90%' }}
+                                       width:'90%' }}
                                    onChange={(e) => changeAvatarName(avatar.token, e.target.value)} required />
                     </Table.TextCell>
                     <Table.TextCell>
@@ -183,7 +186,7 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
                                 onClick={async () => setShowDeletePrompt(true)}
                                 style={{color:'white', backgroundColor:'#3A4048'}}
                         >
-                            Delete
+                            {translate('avatarList.delete')}
                         </Button>
                     </Table.TextCell>
                 </Table.Row>
@@ -193,17 +196,20 @@ export const AvatarList = ({ avatars, updateQrCode, deleteAvatar, deleteAvatarFr
 }
 
 const ShowQrCodeButton = ({avatar, updateQrCode}: {avatar: AvatarInfo, updateQrCode: (avatarToken: string, avatarName: string) => void}) => {
+    const { translate } = useTranslation()
+
     return <Button appearance='primary'
-            style={{ width: '100%' }}
-            onClick={() => {
-                updateQrCode(avatar.token, avatar.name)
-            }}
+                   style={{ width: '100%' }}
+                   onClick={() => {
+                       updateQrCode(avatar.token, avatar.name)
+                   }}
     >
-        Show QR Code
+        {translate('avatarList.showQrCode')}
     </Button>
 }
 
 const DownloadButton = ({avatar, setDownloaded}: { avatar: AvatarInfo, setDownloaded: () => void }) => {
+    const { translate } = useTranslation()
     const [downloading, setDownloading] = React.useState(false)
 
     return <>
@@ -214,16 +220,16 @@ const DownloadButton = ({avatar, setDownloaded}: { avatar: AvatarInfo, setDownlo
                           setDownloading(true)
                           const result = await api.invoke(api.channels.toMain.downloadAvatar, avatar.token)
                           if(result === 0) {
-                              toaster.success('Character downloaded successfully')
+                              toaster.success(translate('avatarList.downloadSuccess'))
                               setDownloaded()
                           } else {
-                              toaster.danger('Character download failed')
+                              toaster.danger(translate('avatarList.downloadFailure'))
                           }
                           setDownloading(false)
                       }}
             >
-                Download
+                {translate('avatarList.download')}
             </Button>
         }
-    </> 
+    </>
 }

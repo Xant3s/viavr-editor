@@ -69,6 +69,51 @@ function Install-Software {
     Write-Log "$Name installation took: $($stopwatch.Elapsed.TotalSeconds) seconds"
 }
 
+function Download-File {
+    param (
+        [string]$url,
+        [string]$destination
+    )
+
+    Write-Host "Attempting to download from: $url"
+
+    # Try using BitsTransfer
+    try {
+        Write-Host "Using BitsTransfer..."
+        $transferJob = Start-BitsTransfer -Source $url -Destination $destination -Asynchronous
+        Wait-BitsTransfer -BitsJob $transferJob
+        Write-Host "Download completed using BitsTransfer." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "BitsTransfer failed: $_" -ForegroundColor Red
+    }
+
+    # Try using WebClient if BitsTransfer fails
+    try {
+        Write-Host "Using WebClient..."
+        $webClient = New-Object System.Net.WebClient
+        $webClient.DownloadFile($url, $destination)
+        Write-Host "Download completed using WebClient." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "WebClient failed: $_" -ForegroundColor Red
+    }
+
+    # Finally, try using Invoke-WebRequest if both above methods fail
+    try {
+        Write-Host "Using Invoke-WebRequest..."
+        Invoke-WebRequest -Uri $url -OutFile $destination
+        Write-Host "Download completed using Invoke-WebRequest." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "Invoke-WebRequest failed: $_" -ForegroundColor Red
+        Write-Host "All download methods failed." -ForegroundColor Red
+    }
+}
+
+
+### START ###
+
 Write-Host "We're now installing software required for VIA-VR. Please ensure you have a stable internet connection." -ForegroundColor Yellow
 Write-Host "IMPORTANT: Follow all instructions carefully and confirm prompts by pressing 'Y' and Enter when asked." -ForegroundColor Yellow
 Write-Host "This process may take a while. Please do not close any pop-up windows." -ForegroundColor Yellow

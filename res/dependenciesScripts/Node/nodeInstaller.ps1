@@ -1,3 +1,48 @@
+function Download-File {
+    param (
+        [string]$url,
+        [string]$destination
+    )
+
+    Write-Host "Attempting to download from: $url"
+
+    # Try using BitsTransfer
+    try {
+        Write-Host "Using BitsTransfer..."
+        $transferJob = Start-BitsTransfer -Source $url -Destination $destination -Asynchronous
+        Wait-BitsTransfer -BitsJob $transferJob
+        Write-Host "Download completed using BitsTransfer." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "BitsTransfer failed: $_" -ForegroundColor Red
+    }
+
+    # Try using WebClient if BitsTransfer fails
+    try {
+        Write-Host "Using WebClient..."
+        $webClient = New-Object System.Net.WebClient
+        $webClient.DownloadFile($url, $destination)
+        Write-Host "Download completed using WebClient." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "WebClient failed: $_" -ForegroundColor Red
+    }
+
+    # Finally, try using Invoke-WebRequest if both above methods fail
+    try {
+        Write-Host "Using Invoke-WebRequest..."
+        Invoke-WebRequest -Uri $url -OutFile $destination
+        Write-Host "Download completed using Invoke-WebRequest." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "Invoke-WebRequest failed: $_" -ForegroundColor Red
+        Write-Host "All download methods failed." -ForegroundColor Red
+    }
+}
+
+
+
+
 # Get the current directory
 $currentPath = (Get-Location).Path
 $folderName = "dependenciesScripts\Node"
@@ -26,8 +71,7 @@ else
 {
     try
     {
-        Write-Host "Starting download. Please press enter to continue if nothing happens for a few minutes." -ForegroundColor Yellow
-        Invoke-WebRequest -Uri $nodeDownloadUrl -OutFile $nodeMSIPackage -UseBasicParsing
+        Download-File -url $nodeDownloadUrl -destination $nodeMSIPackage
     }catch
     {
         Write-Host "Failed to Download Node. Aborting..." -ForegroundColor Red

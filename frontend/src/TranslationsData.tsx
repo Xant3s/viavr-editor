@@ -6,7 +6,20 @@ export const translationsData: Record<string, Record<string, string>> = {
         "start_tutorial": "Start Tutorial",
         "create_new_project": "Create New Project",
         "open_project": "Open Project",
-        "open_project_from_folder": "Open Project from Folder"
+        "open_project_from_folder": "Open Project from Folder",
+        "exit_tutorial": "Exit Tutorial",
+        "optimize": "Optimize",
+        "optimize_tooltip": "Optimize 3D objects in the .glb file format.",
+        "objects": "Objects",
+        "objects_tooltip": "Create and edit objects in the scene.",
+        "behaviors": "Behaviors",
+        "behaviors_tooltip": "Tag objects and create events.",
+        "characters": "Characters",
+        "characters_tooltip": "Create and download characters via the VIA-VR avatar app.",
+        "articy": "Articy",
+        "articy_tooltip": "Use the Articy editor to create dialogs and assign dialogs to characters.",
+        "export": "Export",
+        "export_tooltip": "Create the experience, select and configure additional features."
     },
     "de": {
         "welcome": "Willkommen",
@@ -15,6 +28,19 @@ export const translationsData: Record<string, Record<string, string>> = {
         "start_tutorial": "Tutorial starten",
         "create_new_project": "Neues Projekt erstellen",
         "open_project": "Projekt öffnen",
-        "open_project_from_folder": "Projekt aus Ordner öffnen"
+        "open_project_from_folder": "Projekt aus Ordner öffnen",
+        "exit_tutorial": "Tutorial beenden",
+        "optimize": "Optimieren",
+        "optimize_tooltip": "Optimieren Sie 3D-Objekte im .glb-Dateiformat.",
+        "objects": "Objekte",
+        "objects_tooltip": "Erstellen und bearbeiten Sie Objekte in der Szene.",
+        "behaviors": "Verhalten",
+        "behaviors_tooltip": "Objekte taggen und Ereignisse erstellen.",
+        "characters": "Charaktere",
+        "characters_tooltip": "Erstellen und laden Sie Charaktere über die VIA-VR-Avatar-App herunter.",
+        "articy": "Articy",
+        "articy_tooltip": "Verwenden Sie den Articy-Editor, um Dialoge zu erstellen und Charakteren zuzuweisen.",
+        "export": "Exportieren",
+        "export_tooltip": "Erstellen Sie das Erlebnis, wählen Sie zusätzliche Funktionen aus und konfigurieren Sie diese."
     }
 }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { TabButton } from '../StyledComponents/TabButton';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import {Tooltip} from 'react-tooltip'
-
+import { Tooltip } from 'react-tooltip'
+import { useTranslation } from '../../LocalizationContext'
 
 interface props {
     setId: (id: number) => void
@@ -13,14 +13,13 @@ interface props {
 
 const tooltipIconStyle = { marginLeft: 10, fontSize: 14 }
 
-
-export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScreen}) => {
+export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScreen }) => {
+    const {translate, language, setLanguage} = useTranslation()
     const [lastClicked, setLastClicked] = useState<number>(1)
     const [isDisabled, setDisabled] = useState(false)
-    
-    
+
     const handleClick = (id: number) => {
-        if(!isDisabled) {
+        if (!isDisabled) {
             setId(id);
             setLastClicked(id);
         }
@@ -33,51 +32,52 @@ export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScre
 
     return (
         <div hidden={hidden} style={{
-            textAlign: 'left', 
+            textAlign: 'left',
             backgroundColor: '#1A1A1A',
-            position:'fixed',
-            width:'100%',
+            position: 'fixed',
+            width: '100%',
             top: '0px',
             zIndex: 2,
-             }}>
+        }}>
             <div style={{ paddingTop: '5px', paddingRight: '0px', paddingLeft: '0px', display: 'inline-block' }}>
-                {isInTutorialMode ? <TabButton disabled={false} onClick={returnToWelcomeScreen}>Exit Tutorial</TabButton>
+                {isInTutorialMode ?
+                    <TabButton disabled={false} onClick={returnToWelcomeScreen}>
+                        {translate('exit_tutorial')}
+                    </TabButton>
                     : <>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(6)} style={lastClicked === 6 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Optimize
-                            <HelpOutlineIcon data-tooltip-id="Optimize" data-tooltip-content="Optimize 3D objects in the .glb file format." style={tooltipIconStyle}/>
-                            <Tooltip id="Optimize" place="bottom" style={{fontSize: '14px'}} />
+                            {translate('optimize')}
+                            <HelpOutlineIcon data-tooltip-id="Optimize" data-tooltip-content={translate('optimize_tooltip')} style={tooltipIconStyle}/>
+                            <Tooltip id="Optimize" place="bottom" style={{ fontSize: '14px' }} />
                         </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(1)} style={lastClicked === 1 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Objects
-                            <HelpOutlineIcon data-tooltip-id="Objects" data-tooltip-content="Create and edit objects in the scene." style={tooltipIconStyle}/>
-                            <Tooltip id="Objects" place="bottom" style={{fontSize: '14px'}} />
+                            {translate('objects')}
+                            <HelpOutlineIcon data-tooltip-id="Objects" data-tooltip-content={translate('objects_tooltip')} style={tooltipIconStyle}/>
+                            <Tooltip id="Objects" place="bottom" style={{ fontSize: '14px' }} />
                         </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(2)} style={lastClicked === 2 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Behaviors
-                            <HelpOutlineIcon data-tooltip-id="Behaviors" data-tooltip-content="Tag objects and create events." style={tooltipIconStyle}/>
-                            <Tooltip id="Behaviors" place="bottom" style={{fontSize: '14px'}} />
-                            </TabButton>
+                            {translate('behaviors')}
+                            <HelpOutlineIcon data-tooltip-id="Behaviors" data-tooltip-content={translate('behaviors_tooltip')} style={tooltipIconStyle}/>
+                            <Tooltip id="Behaviors" place="bottom" style={{ fontSize: '14px' }} />
+                        </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(3)} style={lastClicked === 3 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Characters
-                            <HelpOutlineIcon data-tooltip-id="Avatars" data-tooltip-content="Create and download characters via the VIA-VR avatar app." style={tooltipIconStyle}/>
-                            <Tooltip id="Avatars" place="bottom" style={{fontSize: '14px'}} />
-                            </TabButton>
+                            {translate('characters')}
+                            <HelpOutlineIcon data-tooltip-id="Avatars" data-tooltip-content={translate('characters_tooltip')} style={tooltipIconStyle}/>
+                            <Tooltip id="Avatars" place="bottom" style={{ fontSize: '14px' }} />
+                        </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(4)} style={lastClicked === 4 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Articy
-                            <HelpOutlineIcon data-tooltip-id="Articy" data-tooltip-content="Use the Articy editor to create dialogs and assign dialogs to characters."  style={tooltipIconStyle}/>
-                            <Tooltip id="Articy" place="bottom" style={{fontSize: '14px'}} />
-                            </TabButton>
+                            {translate('articy')}
+                            <HelpOutlineIcon data-tooltip-id="Articy" data-tooltip-content={translate('articy_tooltip')} style={tooltipIconStyle}/>
+                            <Tooltip id="Articy" place="bottom" style={{ fontSize: '14px' }} />
+                        </TabButton>
                         <TabButton disabled={isDisabled} onClick={() => handleClick(7)} style={lastClicked === 7 ? { background: '#3A4048', color: '#FFFFFF' } : {}}>
-                            Export
-                            <HelpOutlineIcon data-tooltip-id="Export" data-tooltip-content="Create the experience, select and configure additional features." style={tooltipIconStyle}/>
-                            <Tooltip id="Export" place="bottom" style={{fontSize: '14px'}} />
-                            </TabButton>
-
+                            {translate('export')}
+                            <HelpOutlineIcon data-tooltip-id="Export" data-tooltip-content={translate('export_tooltip')} style={tooltipIconStyle}/>
+                            <Tooltip id="Export" place="bottom" style={{ fontSize: '14px' }} />
+                        </TabButton>
                     </>
                 }
             </div>
         </div>
     );
 };
-

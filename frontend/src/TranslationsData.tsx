@@ -66,7 +66,8 @@ export const translationsData: Record<string, Record<string, string>> = {
         "avatarList.download": "Download",
         "avatarList.downloadSuccess": "Character downloaded successfully",
         "avatarList.downloadFailure": "Character download failed",
-        "avatarList.readyToDownload": "Ready to download"
+        "avatarList.readyToDownload": "Ready to download",
+        "articy.openEditor": "Open Articy Editor"
     },
     "de": {
         "welcome": "Willkommen",
@@ -135,6 +136,7 @@ export const translationsData: Record<string, Record<string, string>> = {
         "avatarList.download": "Herunterladen",
         "avatarList.downloadSuccess": "Charakter erfolgreich heruntergeladen",
         "avatarList.downloadFailure": "Fehler beim Herunterladen des Charakters",
-        "avatarList.readyToDownload": "Bereit zum Herunterladen"
+        "avatarList.readyToDownload": "Bereit zum Herunterladen",
+        "articy.openEditor": "Articy-Editor öffnen"
     }
 }

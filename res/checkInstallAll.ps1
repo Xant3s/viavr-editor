@@ -79,17 +79,17 @@ function Download-File {
 
     # Try using BitsTransfer
     try {
-        Write-Host "Using BitsTransfer..."
+        Write-Log "Using BitsTransfer..."
         Start-BitsTransfer -Source $url -Destination $destination
         Write-Host "Download completed using BitsTransfer." -ForegroundColor Green
         return
     } catch {
-        Write-Host "BitsTransfer failed: $_" -ForegroundColor Red
+        Write-Log "BitsTransfer failed: $_" -ForegroundColor Red
     }
 
     # Try using WebClient if BitsTransfer fails
     try {
-        Write-Host "Using WebClient..."
+        Write-Log "Using WebClient..."
         $webClient = New-Object System.Net.WebClient
         $webClient.DownloadFile($url, $destination)
         Write-Host "Download completed using WebClient." -ForegroundColor Green
@@ -100,7 +100,7 @@ function Download-File {
 
     # Finally, try using Invoke-WebRequest if both above methods fail
     try {
-        Write-Host "Using Invoke-WebRequest..."
+        Write-Log "Using Invoke-WebRequest..."
         Invoke-WebRequest -Uri $url -OutFile $destination
         Write-Host "Download completed using Invoke-WebRequest." -ForegroundColor Green
         return
@@ -151,6 +151,7 @@ Install-Software -Name "Git" -InstallScript {
 ### NODE ###
 Install-Software -Name "Node.js" -InstallScript {
     & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
+    node -v
 } -CheckInstalled {
     $nodeVersion = node -v 2>$null
     if ($nodeVersion -match "^v22\.") {
@@ -165,11 +166,12 @@ Install-Software -Name "Node.js" -InstallScript {
 
 ### YARN ###
 Install-Software -Name "Yarn" -InstallScript {
-    Write-Host "Yarn is not accessible. Trying to enable corepack ..." -ForegroundColor Yellow
+    Write-Host "Yarn is not accessible. Trying to enable corepack..." -ForegroundColor Yellow
     Write-Host "Please press enter to install yarn." -ForegroundColor Yellow
     corepack enable
     yarn -v
 } -CheckInstalled {
+    Write-Host "Please press enter to continue." -ForegroundColor Yellow
     Check-Command -command "yarn -v"
 }
 

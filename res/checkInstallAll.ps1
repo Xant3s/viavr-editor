@@ -165,9 +165,10 @@ Install-Software -Name "Node.js" -InstallScript {
 
 ### YARN ###
 Install-Software -Name "Yarn" -InstallScript {
-    Write-Host "Yarn isnt accessible. Trying to enable corepack ..." -ForegroundColor Yellow
-    Write-Host "!IMPORTANT! After 10seconds: due to a currently unresolved problem regarding corepack installation please input y in the console and press enter." -ForegroundColor Yellow
+    Write-Host "Yarn is not accessible. Trying to enable corepack ..." -ForegroundColor Yellow
+    Write-Host "Please press enter to install yarn." -ForegroundColor Yellow
     corepack enable
+    yarn -v
 } -CheckInstalled {
     Check-Command -command "yarn -v"
 }

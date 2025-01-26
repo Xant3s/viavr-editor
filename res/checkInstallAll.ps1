@@ -221,11 +221,11 @@ Install-Software -Name "Unity" -InstallScript {
 
     Write-Host "Installing Unity..."
 
-    # Install Unity Editor silently
-    & "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" /S
+    # Install Unity Editor silently and wait for completion
+    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" -ArgumentList "/S" -Wait
 
-    # Install Android Support for Unity Editor silently
-    & "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" /S
+    # Install Android Support for Unity Editor silently and wait for completion
+    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" -ArgumentList "/S" -Wait
 
     # Define extraction path
     $androidPlayerPath = "C:\Program Files\Unity 2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer"
@@ -235,8 +235,9 @@ Install-Software -Name "Unity" -InstallScript {
         New-Item -ItemType Directory -Path $androidPlayerPath -Force | Out-Null
     }
 
-    # Extract AndroidPlayer.zip to the correct location
+    # Extract AndroidPlayer.zip to the correct location and wait for completion
     Expand-Archive -Path "$PWD\plugins\unity\AndroidPlayer.zip" -DestinationPath $androidPlayerPath -Force
+
 } -CheckInstalled {
     Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe"
 }

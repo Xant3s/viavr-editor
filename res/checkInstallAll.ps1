@@ -151,7 +151,8 @@ Install-Software -Name "Git" -InstallScript {
 ### NODE ###
 Install-Software -Name "Node.js" -InstallScript {
     & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
-
+    Write-Log "Press enter to continue."
+    
     # Add Node.js to the PATH
     $nodePath = "C:\Program Files\nodejs"
     if (!(Test-Path $nodePath)) {
@@ -240,9 +241,14 @@ Install-Software -Name "Unity" -InstallScript {
     Start-Process -FilePath "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" -ArgumentList "/S" -Wait
 
     # Install Android Support for Unity Editor silently and wait for completion
+    Write-Host "Installing Android support for Unity..."
+    Write-Log "Installing Android support for Unity..."
     Start-Process -FilePath "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" -ArgumentList "/S" -Wait
 
+    
     # Define extraction path
+    Write-Host "Installing Android build tools for Unity..."
+    Write-Log "Installing Android build tools for Unity..."
     $androidPlayerPath = "C:\Program Files\Unity 2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer"
 
     # Ensure destination directory exists
@@ -252,6 +258,7 @@ Install-Software -Name "Unity" -InstallScript {
 
     # Extract AndroidPlayer.zip to the correct location and wait for completion
     Expand-Archive -Path "$PWD\plugins\unity\AndroidPlayer.zip" -DestinationPath $androidPlayerPath -Force
+    Write-Log "Unity installed"
 
 } -CheckInstalled {
     Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe"

@@ -151,6 +151,21 @@ Install-Software -Name "Git" -InstallScript {
 ### NODE ###
 Install-Software -Name "Node.js" -InstallScript {
     & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
+
+    # Add Node.js to the PATH
+    $nodePath = "C:\Program Files\nodejs"
+    if (!(Test-Path $nodePath)) {
+        Write-Host "Node.js installation directory not found at $nodePath. Ensure Node.js installed correctly." -ForegroundColor Red
+        exit 1
+    }
+
+    # Update PATH in the current session
+    $env:Path += ";$nodePath"
+
+    # Persist PATH update for future sessions
+    [System.Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::Machine)
+
+    # Verify installation
     node -v
 } -CheckInstalled {
     $nodeVersion = node -v 2>$null

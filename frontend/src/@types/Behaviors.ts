@@ -30,6 +30,7 @@ export class Action {
     displayName = ''
     name = ''
     parameters: Parameter[] = []
+    type = 'action'
 }
 
 export class IfElse {
@@ -39,6 +40,7 @@ export class IfElse {
     comparison = ''
     then: ActionOrIfElse[] = []
     else: ActionOrIfElse[] = []
+    type = 'ifElse'
 }
 
 export type ActionOrIfElse = Action | IfElse

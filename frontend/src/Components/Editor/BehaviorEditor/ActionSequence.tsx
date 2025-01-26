@@ -20,7 +20,8 @@ const ActionSequence = (props: Props) => {
         const newAction: Action = {
             displayName: '', 
             name: '', 
-            parameters: []
+            parameters: [],
+            type: 'action',
         }
         props.updateSequence([...props.sequence, { ...newAction, id: Date.now() }])
     }
@@ -33,6 +34,7 @@ const ActionSequence = (props: Props) => {
             then: [], 
             variable: '', 
             variabletype: '',
+            type: 'ifElse',
         }
         props.updateSequence([...props.sequence, { ...newIfElse, id: Date.now() }])
     }

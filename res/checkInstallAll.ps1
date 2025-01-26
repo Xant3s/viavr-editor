@@ -67,6 +67,7 @@ function Install-Software {
     $stopwatch.Stop()
 
     if (&$CheckInstalled) {
+        Write-Host "$Name installation completed in $($stopwatch.Elapsed.TotalSeconds) seconds." -ForegroundColor Green
         Write-Log "$Name installation took: $($stopwatch.Elapsed.TotalSeconds) seconds"
     } else {
         Write-Log "$Name installation failed."
@@ -74,11 +75,90 @@ function Install-Software {
     }
 }
 
+function Download-File {
+    param (
+        [string]$url,
+        [string]$destination
+    )
+
+    Write-Host "Attempting to download from: $url"
+
+    # Try using BitsTransfer
+    try {
+        Write-Log "Using BitsTransfer..."
+        Start-BitsTransfer -Source $url -Destination $destination
+        Write-Host "Download completed using BitsTransfer." -ForegroundColor Green
+        return
+    } catch {
+        Write-Log "BitsTransfer failed: $_" -ForegroundColor Red
+    }
+
+    # Try using WebClient if BitsTransfer fails
+    try {
+        Write-Log "Using WebClient..."
+        $webClient = New-Object System.Net.WebClient
+        $webClient.DownloadFile($url, $destination)
+        Write-Host "Download completed using WebClient." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "WebClient failed: $_" -ForegroundColor Red
+    }
+
+    # Finally, try using Invoke-WebRequest if both above methods fail
+    try {
+        Write-Log "Using Invoke-WebRequest..."
+        Invoke-WebRequest -Uri $url -OutFile $destination
+        Write-Host "Download completed using Invoke-WebRequest." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "Invoke-WebRequest failed: $_" -ForegroundColor Red
+        Write-Host "All download methods failed." -ForegroundColor Red
+    }
+}
+
+function Extract-Zip {
+    param (
+        [string]$zipPath,
+        [string]$destination
+    )
+
+    Write-Log "Attempting to extract using tar..."
+    try {
+        tar -xf $zipPath -C $destination
+        Write-Log "Extraction completed using tar." -ForegroundColor Green
+    } catch {
+        Write-Log "tar extraction failed, falling back to Expand-Archive..." -ForegroundColor Yellow
+
+        # Ensure destination directory exists
+        if (!(Test-Path $destination)) {
+            New-Item -ItemType Directory -Path $destination -Force | Out-Null
+        }
+
+        try {
+            Expand-Archive -Path $zipPath -DestinationPath $destination -Force
+            Write-Log "Extraction completed using Expand-Archive." -ForegroundColor Green
+        } catch {
+            Write-Log "Expand-Archive also failed: $_" -ForegroundColor Red
+            exit 1
+        }
+    }
+}
+
+
+
 ### START ###
+
+Write-Host "We're now installing software required for VIA-VR. Please ensure you have a stable internet connection." -ForegroundColor Yellow
+Write-Host "IMPORTANT: Follow all instructions carefully and confirm prompts by pressing 'Y' and Enter when asked." -ForegroundColor Yellow
+Write-Host "This process may take a while. Please do not close any pop-up windows." -ForegroundColor Yellow
+Pause
+
 if (-not (Check-Admin)) {
     Write-Host "Script is not running as administrator. Restarting with administrator rights, please confirm the prompt." -ForegroundColor Yellow
+    Pause
     Relaunch-AsAdmin
 } else {
+    Write-Host "Script is running as administrator." -ForegroundColor Green
     Write-Log "Script is running as administrator."
 }
 
@@ -116,7 +196,8 @@ Install-Software -Name "Node.js" -InstallScript {
         Write-Log "Node.js not found in path after installation."
         $global:failedInstalls += "Node.js"
         $nodeAvailable = $false
-    } else {
+    }
+    else {
         # Update PATH in the current session
         $env:Path += ";$nodePath"
 

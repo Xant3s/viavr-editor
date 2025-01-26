@@ -132,6 +132,7 @@ if (![string]::IsNullOrEmpty($WorkingDir)) {
 }
 
 Write-Log "Installation process started."
+Start-Transcript -Path "C:\viavr-install-transcript.log" -Append
 
 ### GIT ###
 Install-Software -Name "Git" -InstallScript {
@@ -213,5 +214,6 @@ Write-Host ""
 
 Write-Host "Installation complete. Press Enter to exit." -ForegroundColor Green
 Write-Log "Installation process completed."
+Stop-Transcript
 
 Pause

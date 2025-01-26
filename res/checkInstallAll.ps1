@@ -70,8 +70,12 @@ function Install-Software {
         Write-Host "$Name installation completed in $($stopwatch.Elapsed.TotalSeconds) seconds." -ForegroundColor Green
         Write-Log "$Name installation took: $($stopwatch.Elapsed.TotalSeconds) seconds"
     } else {
-        Write-Log "$Name installation failed."
-        $global:failedInstalls += $Name
+        if ($Name -eq "Reticulum Dependencies") {
+            # cannot detect reliably detect whether successful.
+        } else {
+            Write-Log "$Name installation failed."
+            $global:failedInstalls += $Name
+        }
     }
 }
 

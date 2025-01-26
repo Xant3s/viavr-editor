@@ -5,6 +5,7 @@ param (
 
 # Define log file path
 $logFile = "C:\viavr-install.log"
+$failedInstalls = @()
 
 # Function to log messages
 function Write-Log {
@@ -65,94 +66,19 @@ function Install-Software {
     &$InstallScript
     $stopwatch.Stop()
 
-    Write-Host "$Name installation completed in $($stopwatch.Elapsed.TotalSeconds) seconds." -ForegroundColor Green
-    Write-Log "$Name installation took: $($stopwatch.Elapsed.TotalSeconds) seconds"
-}
-
-function Download-File {
-    param (
-        [string]$url,
-        [string]$destination
-    )
-
-    Write-Host "Attempting to download from: $url"
-
-    # Try using BitsTransfer
-    try {
-        Write-Log "Using BitsTransfer..."
-        Start-BitsTransfer -Source $url -Destination $destination
-        Write-Host "Download completed using BitsTransfer." -ForegroundColor Green
-        return
-    } catch {
-        Write-Log "BitsTransfer failed: $_" -ForegroundColor Red
-    }
-
-    # Try using WebClient if BitsTransfer fails
-    try {
-        Write-Log "Using WebClient..."
-        $webClient = New-Object System.Net.WebClient
-        $webClient.DownloadFile($url, $destination)
-        Write-Host "Download completed using WebClient." -ForegroundColor Green
-        return
-    } catch {
-        Write-Host "WebClient failed: $_" -ForegroundColor Red
-    }
-
-    # Finally, try using Invoke-WebRequest if both above methods fail
-    try {
-        Write-Log "Using Invoke-WebRequest..."
-        Invoke-WebRequest -Uri $url -OutFile $destination
-        Write-Host "Download completed using Invoke-WebRequest." -ForegroundColor Green
-        return
-    } catch {
-        Write-Host "Invoke-WebRequest failed: $_" -ForegroundColor Red
-        Write-Host "All download methods failed." -ForegroundColor Red
+    if (&$CheckInstalled) {
+        Write-Log "$Name installation took: $($stopwatch.Elapsed.TotalSeconds) seconds"
+    } else {
+        Write-Log "$Name installation failed."
+        $global:failedInstalls += $Name
     }
 }
-
-function Extract-Zip {
-    param (
-        [string]$zipPath,
-        [string]$destination
-    )
-
-    Write-Log "Attempting to extract using tar..."
-    try {
-        tar -xf $zipPath -C $destination
-        Write-Log "Extraction completed using tar." -ForegroundColor Green
-    } catch {
-        Write-Log "tar extraction failed, falling back to Expand-Archive..." -ForegroundColor Yellow
-
-        # Ensure destination directory exists
-        if (!(Test-Path $destination)) {
-            New-Item -ItemType Directory -Path $destination -Force | Out-Null
-        }
-
-        try {
-            Expand-Archive -Path $zipPath -DestinationPath $destination -Force
-            Write-Log "Extraction completed using Expand-Archive." -ForegroundColor Green
-        } catch {
-            Write-Log "Expand-Archive also failed: $_" -ForegroundColor Red
-            exit 1
-        }
-    }
-}
-
-
 
 ### START ###
-
-Write-Host "We're now installing software required for VIA-VR. Please ensure you have a stable internet connection." -ForegroundColor Yellow
-Write-Host "IMPORTANT: Follow all instructions carefully and confirm prompts by pressing 'Y' and Enter when asked." -ForegroundColor Yellow
-Write-Host "This process may take a while. Please do not close any pop-up windows." -ForegroundColor Yellow
-Pause
-
 if (-not (Check-Admin)) {
     Write-Host "Script is not running as administrator. Restarting with administrator rights, please confirm the prompt." -ForegroundColor Yellow
-    Pause
     Relaunch-AsAdmin
 } else {
-    Write-Host "Script is running as administrator." -ForegroundColor Green
     Write-Log "Script is running as administrator."
 }
 
@@ -178,6 +104,7 @@ Install-Software -Name "Git" -InstallScript {
 }
 
 ### NODE ###
+$nodeAvailable = $true
 Install-Software -Name "Node.js" -InstallScript {
     & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
     Write-Host "Press enter to continue."
@@ -186,17 +113,19 @@ Install-Software -Name "Node.js" -InstallScript {
     $nodePath = "C:\Program Files\nodejs"
     if (!(Test-Path $nodePath)) {
         Write-Host "Node.js installation directory not found at $nodePath. Ensure Node.js installed correctly." -ForegroundColor Red
-        exit 1
+        Write-Log "Node.js not found in path after installation."
+        $global:failedInstalls += "Node.js"
+        $nodeAvailable = $false
+    } else {
+        # Update PATH in the current session
+        $env:Path += ";$nodePath"
+
+        # Persist PATH update for future sessions
+        [System.Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::Machine)
+
+        # Verify installation
+        node -v
     }
-
-    # Update PATH in the current session
-    $env:Path += ";$nodePath"
-
-    # Persist PATH update for future sessions
-    [System.Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::Machine)
-
-    # Verify installation
-    node -v
 } -CheckInstalled {
     if (Check-Command -command "node -v") {
         $nodeVersion = node -v 2>$null
@@ -214,14 +143,16 @@ Install-Software -Name "Node.js" -InstallScript {
 }
 
 ### YARN ###
-Install-Software -Name "Yarn" -InstallScript {
-    Write-Host "Yarn is not accessible. Trying to enable corepack..." -ForegroundColor Yellow
-    Write-Host "Please press enter to install yarn." -ForegroundColor Yellow
-    corepack enable
-    yarn -v
-} -CheckInstalled {
-    Write-Host "Please press enter to continue." -ForegroundColor Yellow
-    Check-Command -command "yarn -v"
+if ($nodeAvailable) {
+    Install-Software -Name "Yarn" -InstallScript {
+        Write-Host "Yarn is not accessible. Trying to enable corepack..." -ForegroundColor Yellow
+        Write-Host "Please press enter to install yarn." -ForegroundColor Yellow
+        corepack enable
+        yarn -v
+    } -CheckInstalled {
+        Write-Host "Please press enter to continue." -ForegroundColor Yellow
+        Check-Command -command "yarn -v"
+    }
 }
 
 ### Reticulum Dependencies ###
@@ -252,13 +183,6 @@ Install-Software -Name "Unity Hub" -InstallScript {
     # Run the installer silently and wait for completion
     Write-Host "Installing Unity Hub..."
     Start-Process -FilePath $unityHubInstaller -ArgumentList "/S" -Wait
-
-    # Verify installation
-    if (!(Test-Path "C:\Program Files\Unity Hub\Unity Hub.exe")) {
-        Write-Host "Unity Hub installation failed." -ForegroundColor Red
-        exit 1
-    }
-
     Write-Host "Unity Hub installation completed." -ForegroundColor Green
 } -CheckInstalled {
     Test-Path "C:\Program Files\Unity Hub\Unity Hub.exe"
@@ -327,6 +251,13 @@ Write-Host "Should anything go wrong please continue with the installation. You 
 Pause
 Start-Process -RedirectStandardOutput "null" -FilePath "C:\Program Files\Unity Hub\Unity Hub.exe"
 Write-Host ""
+
+### COMPLETION ###
+if ($failedInstalls.Count -gt 0) {
+    Write-Host "The following installations failed: $($failedInstalls -join ', ')" -ForegroundColor Red
+    Write-Host "Please retry running the script or manually install the missing software." -ForegroundColor Yellow
+    Write-Log "Failed installations: $($failedInstalls -join ', ')"
+}
 
 Write-Host "Installation complete. Press Enter to exit." -ForegroundColor Green
 Write-Log "Installation process completed."

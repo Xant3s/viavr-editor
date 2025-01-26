@@ -200,7 +200,43 @@ Install-Software -Name "Unity Hub" -InstallScript {
 
 ### Unity ###
 Install-Software -Name "Unity" -InstallScript {
-    & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
+    $unityPluginsDir = "$PWD\plugins\unity"
+
+    # Ensure the directory exists
+    if (!(Test-Path $unityPluginsDir)) {
+        New-Item -ItemType Directory -Path $unityPluginsDir -Force | Out-Null
+    }
+    
+    # List of files to download
+    $filesToDownload = @(
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/AndroidPlayer.zip"; destination = "$unityPluginsDir\AndroidPlayer.zip" },
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnitySetup64-2021.3.31f1.exe"; destination = "$unityPluginsDir\UnitySetup64-2021.3.31f1.exe" },
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe"; destination = "$unityPluginsDir\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" }
+    )
+
+    # Download files
+    foreach ($file in $filesToDownload) {
+        Download-File -url $file.url -destination $file.destination
+    }
+
+    Write-Host "Installing Unity..."
+
+    # Install Unity Editor silently
+    & "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" /S
+
+    # Install Android Support for Unity Editor silently
+    & "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" /S
+
+    # Define extraction path
+    $androidPlayerPath = "C:\Program Files\Unity 2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer"
+
+    # Ensure destination directory exists
+    if (!(Test-Path $androidPlayerPath)) {
+        New-Item -ItemType Directory -Path $androidPlayerPath -Force | Out-Null
+    }
+
+    # Extract AndroidPlayer.zip to the correct location
+    Expand-Archive -Path "$PWD\plugins\unity\AndroidPlayer.zip" -DestinationPath $androidPlayerPath -Force
 } -CheckInstalled {
     Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe"
 }

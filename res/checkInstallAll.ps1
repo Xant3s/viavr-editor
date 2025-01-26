@@ -180,7 +180,7 @@ Install-Software -Name "Git" -InstallScript {
 ### NODE ###
 Install-Software -Name "Node.js" -InstallScript {
     & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
-    Write-Log "Press enter to continue."
+    Write-Host "Press enter to continue."
     
     # Add Node.js to the PATH
     $nodePath = "C:\Program Files\nodejs"
@@ -198,7 +198,7 @@ Install-Software -Name "Node.js" -InstallScript {
     # Verify installation
     node -v
 } -CheckInstalled {
-    if (Check-Command -command "node") {
+    if (Check-Command -command "node -v") {
         $nodeVersion = node -v 2>$null
         if ($nodeVersion -match "^v22\.") {
             return $true
@@ -242,7 +242,24 @@ Install-Software -Name "Visual Studio" -InstallScript {
 
 ### Unity Hub ###
 Install-Software -Name "Unity Hub" -InstallScript {
-    & "$PWD\dependenciesScripts\Unity\unityHubInstaller.ps1"
+    $unityHubInstaller = "$env:TEMP\UnityHubSetup.exe"
+    $unityHubURL = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnityHubSetup.exe"
+
+    # Download Unity Hub installer
+    Write-Host "Downloading Unity Hub..."
+    Download-File -url $unityHubURL -destination $unityHubInstaller
+
+    # Run the installer silently and wait for completion
+    Write-Host "Installing Unity Hub..."
+    Start-Process -FilePath $unityHubInstaller -ArgumentList "/S" -Wait
+
+    # Verify installation
+    if (!(Test-Path "C:\Program Files\Unity Hub\Unity Hub.exe")) {
+        Write-Host "Unity Hub installation failed." -ForegroundColor Red
+        exit 1
+    }
+
+    Write-Host "Unity Hub installation completed." -ForegroundColor Green
 } -CheckInstalled {
     Test-Path "C:\Program Files\Unity Hub\Unity Hub.exe"
 }
@@ -298,7 +315,7 @@ Install-Software -Name "Unity" -InstallScript {
     Write-Log "Unity installed"
 
 } -CheckInstalled {
-    Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe"
+    Test-Path "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe"
 }
 
 ### Unity License ###

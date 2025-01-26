@@ -110,6 +110,35 @@ function Download-File {
     }
 }
 
+function Extract-Zip {
+    param (
+        [string]$zipPath,
+        [string]$destination
+    )
+
+    Write-Log "Attempting to extract using tar..."
+    try {
+        tar -xf $zipPath -C $destination
+        Write-Log "Extraction completed using tar." -ForegroundColor Green
+    } catch {
+        Write-Log "tar extraction failed, falling back to Expand-Archive..." -ForegroundColor Yellow
+
+        # Ensure destination directory exists
+        if (!(Test-Path $destination)) {
+            New-Item -ItemType Directory -Path $destination -Force | Out-Null
+        }
+
+        try {
+            Expand-Archive -Path $zipPath -DestinationPath $destination -Force
+            Write-Log "Extraction completed using Expand-Archive." -ForegroundColor Green
+        } catch {
+            Write-Log "Expand-Archive also failed: $_" -ForegroundColor Red
+            exit 1
+        }
+    }
+}
+
+
 
 ### START ###
 
@@ -257,7 +286,11 @@ Install-Software -Name "Unity" -InstallScript {
     }
 
     # Extract AndroidPlayer.zip to the correct location and wait for completion
-    Expand-Archive -Path "$PWD\plugins\unity\AndroidPlayer.zip" -DestinationPath $androidPlayerPath -Force
+    # Ensure destination directory exists
+    if (!(Test-Path $androidPlayerPath)) {
+        New-Item -ItemType Directory -Path $androidPlayerPath -Force | Out-Null
+    }
+    Extract-Zip -zipPath "$PWD\plugins\unity\AndroidPlayer.zip" -destination $androidPlayerPath
     Write-Log "Unity installed"
 
 } -CheckInstalled {

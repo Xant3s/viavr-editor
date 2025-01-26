@@ -198,15 +198,19 @@ Install-Software -Name "Node.js" -InstallScript {
     # Verify installation
     node -v
 } -CheckInstalled {
-    $nodeVersion = node -v 2>$null
-    if ($nodeVersion -match "^v22\.") {
-        return $true
-    } elseif ($nodeVersion) {
-        Write-Host "Detected Node.js version: $nodeVersion. Please uninstall it and rerun the installer." -ForegroundColor Red
-        Pause
-        exit
+    if (Check-Command -command "node") {
+        $nodeVersion = node -v 2>$null
+        if ($nodeVersion -match "^v22\.") {
+            return $true
+        } elseif ($nodeVersion) {
+            Write-Host "Detected Node.js version: $nodeVersion. Please uninstall it and rerun the installer." -ForegroundColor Red
+            Pause
+            exit
+        }
+        return $false
+    } else {
+        return $false
     }
-    return $false
 }
 
 ### YARN ###

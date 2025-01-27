@@ -328,6 +328,13 @@ Install-Software -Name "Unity" -InstallScript {
 }
 
 ### Unity License ###
+Write-Host "Starting and stopping Unity once. You don't have to do anything." -ForegroundColor Yellow
+Start-Process -FilePath "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe"
+Start-Sleep -Seconds 20 # Wait a few seconds (allows Unity to initialize)
+$process = Get-Process | Where-Object { $_.Path -eq "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe" }
+if ($process) {
+    Stop-Process -Id $process.Id -Force
+}
 Write-Host ""
 Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub." -ForegroundColor Yellow
 Write-Host "Please sign in or create an account." -ForegroundColor Yellow

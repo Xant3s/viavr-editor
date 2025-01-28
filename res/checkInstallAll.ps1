@@ -331,6 +331,19 @@ Install-Software -Name "Unity" -InstallScript {
 }
 
 ### Unity License ###
+Write-Host ""
+Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub." -ForegroundColor Yellow
+Write-Host "Please sign in or create an account." -ForegroundColor Yellow
+Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
+Write-Host "Should anything go wrong please continue with the installation. You can manually start the Unity Hub, login, and get a license later."
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+Pause
+Start-Process -RedirectStandardOutput "null" -FilePath "C:\Program Files\Unity Hub\Unity Hub.exe"
+Write-Host ""
+Write-Host "Please press enter and continue once you have a valid Unity license."
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+Pause
+
 Write-Host "Starting and stopping Unity once. You don't have to do anything." -ForegroundColor Yellow
 Start-Process -FilePath "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe"
 Start-Sleep -Seconds 20 # Wait a few seconds (allows Unity to initialize)
@@ -338,15 +351,6 @@ $process = Get-Process | Where-Object { $_.Path -eq "C:\Program Files\Unity 2021
 if ($process) {
     Stop-Process -Id $process.Id -Force
 }
-Write-Host ""
-Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub." -ForegroundColor Yellow
-Write-Host "Please sign in or create an account." -ForegroundColor Yellow
-Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
-Write-Host "Should anything go wrong please continue with the installation. You can manually start the Unity Hub, login, and get a license later."
-$null = $Host.UI.RawUI.FlushInputBuffer()
-Pause
-Start-Process -RedirectStandardOutput "null" -FilePath "C:\Program Files\Unity Hub\Unity Hub.exe"
-Write-Host ""
 
 ### COMPLETION ###
 if ($failedInstalls.Count -gt 0) {
@@ -359,4 +363,5 @@ Write-Host "Installation complete. Press Enter to exit." -ForegroundColor Green
 Write-Log "Installation process completed."
 Stop-Transcript
 
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
 Pause

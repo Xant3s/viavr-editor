@@ -155,10 +155,12 @@ function Extract-Zip {
 Write-Host "We're now installing software required for VIA-VR. Please ensure you have a stable internet connection." -ForegroundColor Yellow
 Write-Host "IMPORTANT: Follow all instructions carefully and confirm prompts by pressing 'Y' and Enter when asked." -ForegroundColor Yellow
 Write-Host "This process may take a while. Please do not close any pop-up windows." -ForegroundColor Yellow
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
 Pause
 
 if (-not (Check-Admin)) {
     Write-Host "Script is not running as administrator. Restarting with administrator rights, please confirm the prompt." -ForegroundColor Yellow
+    $null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
     Pause
     Relaunch-AsAdmin
 } else {
@@ -218,6 +220,7 @@ Install-Software -Name "Node.js" -InstallScript {
             return $true
         } elseif ($nodeVersion) {
             Write-Host "Detected Node.js version: $nodeVersion. Please uninstall it and rerun the installer." -ForegroundColor Red
+            $null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
             Pause
             exit
         }
@@ -340,6 +343,7 @@ Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'l
 Write-Host "Please sign in or create an account." -ForegroundColor Yellow
 Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
 Write-Host "Should anything go wrong please continue with the installation. You can manually start the Unity Hub, login, and get a license later."
+$null = $Host.UI.RawUI.FlushInputBuffer()
 Pause
 Start-Process -RedirectStandardOutput "null" -FilePath "C:\Program Files\Unity Hub\Unity Hub.exe"
 Write-Host ""

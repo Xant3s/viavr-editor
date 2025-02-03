@@ -139,7 +139,8 @@ export const translationsData: Record<string, Record<string, string>> = {
         "action_component_summary": "Action Component",
         "action_component_select_action_title": "Select action",
         "action_component_select_action_placeholder": "Select action...",
-        "action_component_parameter_placeholder": "Parameter Value"
+        "action_component_parameter_placeholder": "Parameter Value",
+        "settings_exit": "Exit"
     },
     "de": {
         "welcome": "Willkommen",
@@ -281,6 +282,7 @@ export const translationsData: Record<string, Record<string, string>> = {
         "action_component_summary": "Aktionskomponente",
         "action_component_select_action_title": "Aktion auswählen",
         "action_component_select_action_placeholder": "Aktion auswählen...",
-        "action_component_parameter_placeholder": "Parameterwert"
+        "action_component_parameter_placeholder": "Parameterwert",
+        "settings_exit": "Beenden"
     }
 }

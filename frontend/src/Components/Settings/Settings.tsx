@@ -3,6 +3,7 @@ import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferenc
 import { Setting } from './Setting'
 import { value_t } from '../../@types/Settings'
 import { Button } from '../StyledComponents/Button'
+import { useTranslation } from '../../LocalizationContext'
 
 export declare interface SettingsProps {
     title: string,
@@ -19,6 +20,7 @@ export const Settings = ({
     registerUpdateCallbacksFromBackend,
     children
 }: SettingsProps) => {
+    const { translate } = useTranslation()
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
     const setPref = (key: string, value: any) => {
@@ -63,7 +65,9 @@ export const Settings = ({
                 }
             </SettingsContainer>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#15171B' }}>
-                <Button style={{ fontSize: '18px', }} onClick={closeWindow}> Exit </Button>
+                <Button style={{ fontSize: '18px' }} onClick={closeWindow}>
+                    {translate('settings_exit')}
+                </Button>
             </div>
         </StyledSettings>
     )

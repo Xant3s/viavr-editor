@@ -140,7 +140,8 @@ export const translationsData: Record<string, Record<string, string>> = {
         "action_component_select_action_title": "Select action",
         "action_component_select_action_placeholder": "Select action...",
         "action_component_parameter_placeholder": "Parameter Value",
-        "settings_exit": "Exit"
+        "settings_exit": "Exit",
+        "project_settings_title": "Project Settings"
     },
     "de": {
         "welcome": "Willkommen",
@@ -283,6 +284,7 @@ export const translationsData: Record<string, Record<string, string>> = {
         "action_component_select_action_title": "Aktion auswählen",
         "action_component_select_action_placeholder": "Aktion auswählen...",
         "action_component_parameter_placeholder": "Parameterwert",
-        "settings_exit": "Beenden"
+        "settings_exit": "Beenden",
+        "project_settings_title": "Projekteinstellungen"
     }
 }

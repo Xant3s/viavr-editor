@@ -85,13 +85,13 @@ function Download-File {
         [string]$destination
     )
 
-    Write-Host "Attempting to download from: $url"
+    Write-Host "Starting download..."
 
     # Try using BitsTransfer
     try {
         Write-Log "Using BitsTransfer..."
         Start-BitsTransfer -Source $url -Destination $destination
-        Write-Host "Download completed using BitsTransfer." -ForegroundColor Green
+        Write-Host "Download completed." -ForegroundColor Green
         return
     } catch {
         Write-Log "BitsTransfer failed: $_" -ForegroundColor Red
@@ -102,7 +102,7 @@ function Download-File {
         Write-Log "Using WebClient..."
         $webClient = New-Object System.Net.WebClient
         $webClient.DownloadFile($url, $destination)
-        Write-Host "Download completed using WebClient." -ForegroundColor Green
+        Write-Host "Download completed." -ForegroundColor Green
         return
     } catch {
         Write-Host "WebClient failed: $_" -ForegroundColor Red
@@ -112,7 +112,7 @@ function Download-File {
     try {
         Write-Log "Using Invoke-WebRequest..."
         Invoke-WebRequest -Uri $url -OutFile $destination
-        Write-Host "Download completed using Invoke-WebRequest." -ForegroundColor Green
+        Write-Host "Download completed." -ForegroundColor Green
         return
     } catch {
         Write-Host "Invoke-WebRequest failed: $_" -ForegroundColor Red

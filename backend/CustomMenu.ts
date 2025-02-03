@@ -1,51 +1,82 @@
-import { app, ipcMain as ipc, Menu, shell } from 'electron'
-import { API } from './API'
+import { ipcMain as ipc, Menu, shell } from 'electron'
+import PreferencesManager from './Preferences/PreferencesManager'
+import { StringSetting } from '../frontend/src/@types/Settings'
 
 export default class CustomMenu {
     private projectLoaded = false
+    private articyNotOpen = true
+    
+    private translationData = {
+        "en": {
+            "menu_file": "File",
+            "menu_save_project": "Save Project",
+            "menu_project_settings": "Project Settings",
+            "menu_preferences": "Preferences",
+            "menu_exit": "Exit",
+            "menu_about": "About",
+            "menu_user_manual": "User Manual",
+            "menu_dev_tools": "Dev Tools",
+            "menu_open_pwd": "Open present working directory",
+            "menu_help": "Help",
+        },
+        "de": {
+            "menu_file": "Datei",
+            "menu_save_project": "Projekt speichern",
+            "menu_project_settings": "Projekteinstellungen",
+            "menu_preferences": "Einstellungen",
+            "menu_exit": "Beenden",
+            "menu_about": "Über",
+            "menu_user_manual": "Benutzerhandbuch",
+            "menu_dev_tools": "Entwicklertools",
+            "menu_open_pwd": "Aktuelles Arbeitsverzeichnis öffnen",
+            "menu_help": "Hilfe",
+        }
+    }
 
-    private articyNotOpen = true;
+    public async loadCustomMenu() {
+        const languagePref = await PreferencesManager.getInstance().get<StringSetting>('dev.language')
+        const language = languagePref.value
 
-    public loadCustomMenu() {
+
         const menu = Menu.buildFromTemplate([
             {
-                label: 'File',
+                label: this.translationData[language]['menu_file'], // "File"
                 submenu: [
                     {
-                        label: 'Save Project',
+                        label: this.translationData[language]['menu_save_project'], // "Save Project"
                         accelerator: 'CmdOrCtrl+S',
                         click: () => ipc.emit('project-manager:save-project'),
                         id: 'SaveProject',
                         enabled: this.projectLoaded && this.articyNotOpen,
                     },
                     {
-                        label: 'Project Settings',
+                        label: this.translationData[language]['menu_project_settings'], // "Project Settings"
                         click: () => ipc.emit('projectSettings:open'),
                         enabled: this.projectLoaded && this.articyNotOpen
                     },
                     {
-                        label: 'Preferences',
+                        label: this.translationData[language]['menu_preferences'], // "Preferences"
                         click: () => ipc.emit('preferences:open'),
                         enabled: this.articyNotOpen
                     },
                     {
-                        label: 'Exit',
+                        label: this.translationData[language]['menu_exit'], // "Exit"
                         click: () => ipc.emit('editor:try-exit'),
                         enabled: this.articyNotOpen
                     },
                 ],
             },
             {
-                role: 'help',
+                label: this.translationData[language]['menu_help'], // "help"
                 submenu: [
                     {
-                        label: 'About',
+                        label: this.translationData[language]['menu_about'], // "About"
                         click() {
                             shell.openExternal('https://www.hci.uni-wuerzburg.de/projects/via-vr/')
                         },
                     },
                     {
-                        label: 'User Manual',
+                        label: this.translationData[language]['menu_user_manual'], // "User Manual"
                         click() {
                             shell.openPath('UserManual.pdf')
                         },
@@ -53,10 +84,10 @@ export default class CustomMenu {
                 ],
             },
             {
-                label: 'Dev Tools',
+                label: this.translationData[language]['menu_dev_tools'], // "Dev Tools"
                 submenu: [
                     {
-                        label: 'Open present working directory',
+                        label: this.translationData[language]['menu_open_pwd'], // "Open present working directory"
                         click: () => ipc.emit('dev:open-pwd'),
                         id: 'OpenDirectory',
                         enabled: this.projectLoaded,

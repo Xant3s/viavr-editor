@@ -84,6 +84,9 @@ export const translationsData: Record<string, Record<string, string>> = {
         "modalWindow_saveProjectAndContinue": "Save Project and Continue",
         "modalWindow_continueWithoutSaving": "Continue without Saving",
         "modalWindow_cancel": "Cancel",
+        "prefs_title": "Preferences",
+        "prefs_language": "Language (en/de/system):"
+
     },
     "de": {
         "welcome": "Willkommen",
@@ -170,5 +173,8 @@ export const translationsData: Record<string, Record<string, string>> = {
         "modalWindow_saveProjectAndContinue": "Projekt speichern und fortfahren",
         "modalWindow_continueWithoutSaving": "Fortfahren ohne Speichern",
         "modalWindow_cancel": "Abbrechen",
+        "prefs_title": "Einstellungen",
+        "prefs_language": "Sprache (en/de/system):"
+
     }
 }

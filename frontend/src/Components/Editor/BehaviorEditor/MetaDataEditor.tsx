@@ -6,9 +6,10 @@ import { Tooltip } from 'react-tooltip'
 import { Meta } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material'
 import MetaDataComponent from './MetaDataComponent'
-
+import { useTranslation } from '../../../LocalizationContext'
 
 export const MetaDataEditor = ({ isActive }) => {
+    const { translate } = useTranslation()
     const [options] = useState(["Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label })))
     const [availableTags, setAvailableTags] = useState(["Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label }))) // --> options
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
@@ -48,7 +49,7 @@ export const MetaDataEditor = ({ isActive }) => {
         if (selectedItemsLength === 1) {
             selectedNames = selectedItems.toString()
         } else if (selectedItemsLength > 1) {
-            selectedNames = `${selectedItemsLength.toString()} selected...`
+            selectedNames = `${selectedItemsLength.toString()} ${translate('meta_editor_select_tags_button_default')}`
         }
         return selectedNames
     }
@@ -151,8 +152,12 @@ export const MetaDataEditor = ({ isActive }) => {
     return <SettingAccordion
         summary={
             <span style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ margin: '0px', padding: '0px' }}>Meta Data</span>
-                <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Objects can be tagged so that other parts of VIA-VR can work with them. Packages can look for specific tags to use the corresponding objects."} style={{ marginLeft: 5, fontSize: 14 }} />
+                <span style={{ margin: '0px', padding: '0px' }}>{translate('meta_editor_summary_meta_data')}</span>
+                <HelpOutlineIcon
+                    data-tooltip-id="Variables"
+                    data-tooltip-content={translate('meta_editor_tooltip_info')}
+                    style={{ marginLeft: 5, fontSize: 14 }}
+                />
                 <Tooltip id="Variables" place="right" style={{ fontSize: '14px' }} />
             </span>
         }
@@ -174,14 +179,13 @@ export const MetaDataEditor = ({ isActive }) => {
                     {sceneObjects.map((object, index) => (
                         <option key={index} value={object.uuid}>
                             {object.name}
-
                         </option>
                     ))}
                 </Select>
                 <FormControl>
                     <SelectMenu
                         isMultiSelect
-                        title="Select tags"
+                        title={translate('meta_editor_select_tags_title')}
                         options={availableTags}
                         selected={selectedTags}
                         onSelect={async item => {
@@ -193,9 +197,9 @@ export const MetaDataEditor = ({ isActive }) => {
                             await onUpdateSelectedTags(selectedItems)
                         }}
                     >
-                        <Button>{selectButtonText || 'Select tags...'}</Button>
+                        <Button>{selectButtonText || translate('meta_editor_select_tags_button_default')}</Button>
                     </SelectMenu>
-                    {triedAddingMeta && (selectedTags.length === 0) && <FormHelperText style={{ color: 'red' }}>You have to select a tag to add!</FormHelperText>}
+                    {triedAddingMeta && (selectedTags.length === 0) && <FormHelperText style={{ color: 'red' }}>{translate('meta_editor_error_select_tag')}</FormHelperText>}
                 </FormControl>
                 <Button
                     style={{
@@ -214,7 +218,7 @@ export const MetaDataEditor = ({ isActive }) => {
                             setTriedAddingMeta(true)
                         }
                     }}>
-                    Add Tags
+                    {translate('meta_editor_add_tags')}
                 </Button>
             </div>
         )} />

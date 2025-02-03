@@ -5,6 +5,7 @@ import { Button, Pane } from 'evergreen-ui'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import { Action, IfElse } from '../../../@types/Behaviors'
 import { ActionSequenceComponent } from './EventsEditor'
+import { useTranslation } from '../../../LocalizationContext'
 
 interface Props {
     depth: number
@@ -14,8 +15,9 @@ interface Props {
     sceneObjects: any[]
 }
 
-
 const ActionSequence = (props: Props) => {
+    const { translate } = useTranslation()
+
     const addAction = () => {
         const newAction: Action = {
             displayName: '', 
@@ -39,7 +41,7 @@ const ActionSequence = (props: Props) => {
         props.updateSequence([...props.sequence, { ...newIfElse, id: Date.now() }])
     }
 
-    const removeComponent = (id) => {
+    const removeComponent = (id: number) => {
         const newSequence = props.sequence.filter(component => component["id"] !== id)
         props.updateSequence(newSequence)
     }
@@ -88,7 +90,7 @@ const ActionSequence = (props: Props) => {
         />
     }
 
-    const reorder = (startIndex, endIndex) => {
+    const reorder = (startIndex: number, endIndex: number) => {
         const result = Array.from(props.sequence)
         const [removed] = result.splice(startIndex, 1)
         result.splice(endIndex, 0, removed)
@@ -105,64 +107,80 @@ const ActionSequence = (props: Props) => {
         <Pane
             padding={20}
             paddingTop={0}
-            //border="default"
-            //borderRadius={8}
-            //boxShadow="0 1px 2px rgba(67, 90, 111, 0.1), 0 2px 4px rgba(67, 90, 111, 0.1)"
-            //marginBottom={20}
             display="flex"
             flexDirection="column"
             alignItems="center"
         >
-            <h3> Actions</h3>
+            <h3>{translate('action_sequence_heading_actions')}</h3>
             
             <div style={{width:'100%', paddingTop:'15px', paddingBottom:'10px', marginBottom:'10px',
                 borderColor:'#888e94', borderRadius:'8px', borderStyle:'dashed'}}>
                 {props.sequence.length > 0 ? (
-                <DragDropContext onDragEnd={handleDragEnd} >
-                    <Droppable droppableId="action-list" direction="vertical">
-                        {(provided) => (
-                            <div
-                                {...provided.droppableProps}
-                                ref={provided.innerRef}
-                            >
-                                <Pane>
-                                    {props.sequence.map((component, index) => (
-                                        <Draggable key={component.id} draggableId={component.id.toString()} index={index}>
-                                            {(provided) => (
-                                                <Pane
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                    ref={provided.innerRef}
-                                                    key={component.id}
-                                                    display="flex"
-                                                    justifyContent="center"
-                                                    alignItems="center"
-                                                    width="100%"
-                                                    marginBottom={8}
-                                                >
-                                                    {renderComponent(component)}
-                                                </Pane>
-                                            )}
-                                        </Draggable>
-                                    ))}
-                                    {provided.placeholder}
-                                </Pane>
-                            </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>): <p style={{fontSize: '12px', color:'#b8bcbf'}}>No Actions added. Add an Action or If-Else Component to declare <br /> what happens in case the event is called.  </p>}
+                    <DragDropContext onDragEnd={handleDragEnd}>
+                        <Droppable droppableId="action-list" direction="vertical">
+                            {(provided) => (
+                                <div {...provided.droppableProps} ref={provided.innerRef}>
+                                    <Pane>
+                                        {props.sequence.map((component, index) => (
+                                            <Draggable
+                                                key={component.id}
+                                                draggableId={component.id.toString()}
+                                                index={index}
+                                            >
+                                                {(provided) => (
+                                                    <Pane
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        ref={provided.innerRef}
+                                                        key={component.id}
+                                                        display="flex"
+                                                        justifyContent="center"
+                                                        alignItems="center"
+                                                        width="100%"
+                                                        marginBottom={8}
+                                                    >
+                                                        {renderComponent(component)}
+                                                    </Pane>
+                                                )}
+                                            </Draggable>
+                                        ))}
+                                        {provided.placeholder}
+                                    </Pane>
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+                ) : (
+                    <p style={{ fontSize: '12px', color: '#b8bcbf' }}>
+                        {translate('action_sequence_no_actions_added')}
+                    </p>
+                )}
             </div>
-            <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-            <Button style={{marginRight:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} 
-                    onClick={addAction}>Add Action
-            </Button>
-            {props.depth < 3 && (
-            <Button 
-            style={{marginLeft:'5px' ,background:'#006EFF',color:'white', borderColor:'#006EFF'}} 
-            onClick={addIfElse}>
-                Add If-Else Condition
-            </Button>
-            )}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Button
+                    style={{
+                        marginRight: '5px',
+                        background: '#006EFF',
+                        color: 'white',
+                        borderColor: '#006EFF'
+                    }}
+                    onClick={addAction}
+                >
+                    {translate('action_sequence_add_action')}
+                </Button>
+                {props.depth < 3 && (
+                    <Button
+                        style={{
+                            marginLeft: '5px',
+                            background: '#006EFF',
+                            color: 'white',
+                            borderColor: '#006EFF'
+                        }}
+                        onClick={addIfElse}
+                    >
+                        {translate('action_sequence_add_if_else')}
+                    </Button>
+                )}
             </div>
         </Pane>
     )

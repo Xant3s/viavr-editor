@@ -1,6 +1,5 @@
 import { ipcMain as ipc, Menu, shell } from 'electron'
-import PreferencesManager from './Preferences/PreferencesManager'
-import { StringSetting } from '../frontend/src/@types/Settings'
+import { LocalizationManager } from './LocalizationManager'
 
 export default class CustomMenu {
     private projectLoaded = false
@@ -34,8 +33,7 @@ export default class CustomMenu {
     }
 
     public async loadCustomMenu() {
-        const languagePref = await PreferencesManager.getInstance().get<StringSetting>('dev.language')
-        const language = languagePref.value
+        const language = await LocalizationManager.getInstance().getDefinitiveLanguage()
 
 
         const menu = Menu.buildFromTemplate([

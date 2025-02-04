@@ -47,6 +47,8 @@ export const channels = {
         detectSystemLanguage: 'localization:detect-system-language',
         getDefinitiveLanguage: 'localization:get-definitive-language',
         sendNewLanguageToAllWindows: 'localization:broadcast-language',
+        adbGetDeviceConnected: 'adb:get-device-connected',
+        adbInstallApk: 'adb:install-apk',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

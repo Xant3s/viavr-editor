@@ -29,6 +29,9 @@ export const BuildDialog = ({hidden}) => {
     const [isBuilding, setIsBuilding] = useState(false)
     const [isFetchingPackages, setIsFetchingPackages] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const [apkPath, setApkPath] = useState<string>('')
+    const [deviceConnected, setDeviceConnected] = useState<boolean>(false)
+    const [apkIsInstalling, setApkIsInstalling] = useState<boolean>(false)
 
     const handleSaveAndContinue = async () => {
         await saveProjectAndSceneThenBuild();
@@ -134,10 +137,39 @@ export const BuildDialog = ({hidden}) => {
         toaster.success(translate('buildDialog.buildSuccess'), { duration: 5 })
     }
 
+    const handleChooseFile = async () => {
+        const selectedPath: string = await api.invoke(api.channels.toMain.showOpenFileDialog)
+        if (selectedPath) {
+            setApkPath(selectedPath)
+        }
+    }
+
+    const handleCheckDevice = async () => {
+        const connected: boolean = await api.invoke(api.channels.toMain.adbGetDeviceConnected)
+        setDeviceConnected(connected)
+        toaster.notify(connected ? 'Device is connected' : 'No device connected')
+    }
+
+    const handleInstallApk = async () => {
+        if (!apkPath) {
+            toaster.danger('Please select an APK file first')
+            return
+        }
+        setApkIsInstalling(true)
+        const result: boolean = await api.invoke(api.channels.toMain.adbInstallApk, apkPath)
+        if (result) {
+            toaster.success('APK installed successfully')
+        } else {
+            toaster.danger('APK installation failed')
+        }
+        setApkIsInstalling(false)
+    }
+
     useEffect(() => {
         if(hidden) return
         loadScenes()
         loadPackages()
+        handleCheckDevice()
     }, [hidden, loadPackages])
 
     return (
@@ -179,6 +211,29 @@ export const BuildDialog = ({hidden}) => {
                         <div hidden={!isBuilding}>{translate('buildDialog.generatingExperienceMessage')}</div>
                         <Spinner hidden={!isBuilding} style={{ marginLeft: 10 }} />
                     </div>
+
+
+                    <h3>Install Experience to VR Device</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <input
+                            type="text"
+                            value={apkPath}
+                            onChange={(e) => setApkPath(e.target.value)}
+                            placeholder="APK file path"
+                            style={{ flex: '1', padding: '5px' }}
+                        />
+                        <Button onClick={handleChooseFile}>Choose File</Button>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <Button onClick={handleCheckDevice}>Check Device</Button>
+                        {deviceConnected
+                            ? <span style={{ color: 'green' }}>Device Connected</span>
+                            : <span style={{ color: 'red' }}>No Device Connected</span>
+                        }
+                    </div>
+                    <Button onClick={handleInstallApk} disabled={apkIsInstalling}>Install APK</Button>
+                    
+                    
                 </SettingsContainer>
             </StyledSettings>
 

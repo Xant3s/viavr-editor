@@ -297,7 +297,7 @@ Install-Software -Name "Unity" -InstallScript {
         Download-File -url $file.url -destination $file.destination
     }
 
-    Write-Host "Installing Unity..."
+    Write-Host "Installing Unity. This will take a while, please wait..."
 
     # Install Unity Editor silently and wait for completion
     Start-Process -FilePath "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" -ArgumentList "/S" -Wait

@@ -127,11 +127,11 @@ export const BuildDialog = ({hidden}) => {
         const result: 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)
         if (result === 'failure') {
-            toaster.danger(translate('buildDialog.modalTitle'), { duration: 36000 })
+            toaster.danger(translate('buildDialog.buildFailed'), { duration: 36000 })
             return
         }
         await api.invoke(api.channels.toMain.openBuildDirectory)
-        toaster.success(translate('buildDialog.generateExperienceButton'), { duration: 5 })
+        toaster.success(translate('buildDialog.buildSuccess'), { duration: 5 })
     }
 
     useEffect(() => {

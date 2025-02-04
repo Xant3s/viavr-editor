@@ -35,6 +35,7 @@ const startup = async () => {
     new MeshPreprocessor()
     new AvatarManager()
     await SceneUtils.register()
+    LocalizationManager.getInstance().setMainWindow(mainWindow)
     await LocalizationManager.getInstance().ensureLanguageIsInPreferences()
     await new CustomMenu().loadCustomMenu()
     Logger.get()

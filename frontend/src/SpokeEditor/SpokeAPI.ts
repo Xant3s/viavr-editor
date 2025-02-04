@@ -52,6 +52,7 @@ export class SpokeAPI {
             loadScene: 'viavr:load-scene',
             saveScene: 'viavr:export-scene',
             createScene: 'viavr:create-scene',
+            abortTutorial: 'viavr:abort-tutorial',
         },
         fromSpoke: {
             projectPageSelected: 'viavr:projects-page',

@@ -24,6 +24,7 @@ export const Editor = () => {
     const returnToWelcomeScreen = () => {
         setViewID(0)
         setTutorial(false)
+        SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.abortTutorial)
     }
 
     const onStartTutorial = async () => {

@@ -70,7 +70,6 @@ export default class MainWindow {
             }
         )
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
-        new CustomMenu().loadCustomMenu()
         loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()
         if (!app.isPackaged) {

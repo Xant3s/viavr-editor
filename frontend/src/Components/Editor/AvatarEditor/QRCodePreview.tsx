@@ -1,6 +1,6 @@
 import SVG from 'react-inlinesvg'
 import * as React from 'react'
-
+import { useTranslation } from '../../../LocalizationContext'
 
 interface props {
     qrCode: string
@@ -8,8 +8,10 @@ interface props {
 }
 
 export const QRCodePreview = ({ qrCode, avatarName }: props) => {
+    const { translate, language, setLanguage } = useTranslation()
+
     return <div>
-        Scan this QR code with the VIA-VR character app:
+        {translate('qr_code_instruction')}
         <div style={{
             display: 'flex',
             flexDirection: 'column',

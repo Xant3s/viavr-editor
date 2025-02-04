@@ -2,6 +2,7 @@ import { Button, Pane, SelectMenu, TextInput, DragHandleVerticalIcon, Select } f
 import React, { useEffect, useState } from 'react'
 import { Action, Parameter } from '../../../@types/Behaviors'
 import { SettingAccordionAction } from '../../Settings/SettingAccordion'
+import { useTranslation } from '../../../LocalizationContext'
 
 interface Props {
     action: Action | undefined
@@ -12,11 +13,11 @@ interface Props {
 }
 
 const ActionComponent = (props: Props) => {
+    const { translate } = useTranslation()
     const [options, setOptions] = useState(props.availableActions.map(action => ({ label: action.displayName, value: action.name })))
 
-
     function selectAction(actionName: string) {
-        const action = props.availableActions.find(action => (action.name === actionName))
+        const action = props.availableActions.find(action => action.name === actionName)
         props.updateAction(action)
     }
 
@@ -34,33 +35,32 @@ const ActionComponent = (props: Props) => {
         setOptions(props.availableActions.map(action => ({ label: action.displayName, value: action.name })))
     }, [props.availableActions])
 
-    
     return (
         <SettingAccordionAction
-            summary={<div style={{ alignItems: 'center', display: 'flex' }}>
-                <DragHandleVerticalIcon style={{ marginRight: '5px' }}></DragHandleVerticalIcon>
-                Action Component
-            </div>}
+            summary={
+                <div style={{ alignItems: 'center', display: 'flex' }}>
+                    <DragHandleVerticalIcon style={{ marginRight: '5px' }}></DragHandleVerticalIcon>
+                    {translate('action_component_summary')}
+                </div>
+            }
             onClose={() => props.deleteActionComponent()}
             details={
                 <Pane
                     padding={20}
                     border="hidden"
-                    //borderRadius={8}
-                    //boxShadow="0 1px 2px rgba(67, 90, 111, 0.1), 0 2px 4px rgba(67, 90, 111, 0.1)"
                     marginBottom={20}
                     display="flex"
                     flexDirection="column"
                     alignItems="center"
                 >
                     <SelectMenu
-                        title='Select action'
+                        title={translate('action_component_select_action_title')}
                         options={options}
                         selected={props.action?.displayName}
                         onSelect={item => selectAction(item.value as string)}
                         onDeselect={_ => selectAction('')}
                     >
-                        <Button>{props.action?.displayName || 'Select action...'}</Button>
+                        <Button>{props.action?.displayName || translate('action_component_select_action_placeholder')}</Button>
                     </SelectMenu>
                     {props.action?.parameters?.map((parameter, index) => (
                         <div key={index} style={{ display: 'flex', alignItems: 'center' }} >
@@ -80,25 +80,24 @@ const ActionComponent = (props: Props) => {
                                     </Select>
                                 </div>
                             ) : (parameter["name"] === 'tag' ? (
-                                <div>
-                                    <Select
-                                        value={parameter.value} onChange={e => updateParameter(parameter, e.target.value)} required>
-                                        {options.map((object, index) => (
-                                            <option key={index} value={object.value}>
-                                                {object.label}
-                                            </option>
-                                        ))}
-                                    </Select>
-                                </div>
-                            ) :
-                                // Render text input for other parameters
-                                <TextInput
-                                    width={'60%'}
-                                    type="text"
-                                    placeholder="Parameter Value"
-                                    value={parameter["value"]}
-                                    onChange={(e) => updateParameter(parameter, e.target.value)}
-                                />
+                                        <div>
+                                            <Select value={parameter.value} onChange={e => updateParameter(parameter, e.target.value)} required>
+                                                {options.map((object, index) => (
+                                                    <option key={index} value={object.value}>
+                                                        {object.label}
+                                                    </option>
+                                                ))}
+                                            </Select>
+                                        </div>
+                                    ) :
+                                    // Render text input for other parameters
+                                    <TextInput
+                                        width={'60%'}
+                                        type="text"
+                                        placeholder={translate('action_component_parameter_placeholder')}
+                                        value={parameter["value"]}
+                                        onChange={(e) => updateParameter(parameter, e.target.value)}
+                                    />
                             )}
                         </div>
                     ))}

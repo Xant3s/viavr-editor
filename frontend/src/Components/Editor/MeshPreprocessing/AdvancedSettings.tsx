@@ -3,11 +3,13 @@ import { Label, Pane, Switch } from 'evergreen-ui'
 import Typography from '@mui/material/Typography'
 import { Slider } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import {Tooltip} from 'react-tooltip'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import { Tooltip } from 'react-tooltip'
+import { useTranslation } from '../../../LocalizationContext'
 
+export const AdvancedSettings = ({ setSettings }) => {
+    const { translate, language, setLanguage } = useTranslation()
 
-export const AdvancedSettings = ({setSettings}) => {
     const [percentValue, setPercentValue] = useState<number>(50)
     const [embedTextures, setEmbedTextures] = useState<boolean>(true)
     const [embedBuffers, setEmbedBuffers] = useState<boolean>(true)
@@ -16,7 +18,6 @@ export const AdvancedSettings = ({setSettings}) => {
     const [useVertexNormals, setUseVertexNormals] = useState<boolean>(false)
     const [creaseAngle, setCreaseAngle] = useState<number>(70)
     const [normalDeviation, setNormalDeviation] = useState<number>(5)
-
 
     useEffect(() => {
         setSettings({
@@ -31,72 +32,74 @@ export const AdvancedSettings = ({setSettings}) => {
         })
     }, [percentValue, embedTextures, embedBuffers, noNormalMaps, adjustExistingNormalMaps, useVertexNormals, creaseAngle, normalDeviation, setSettings])
 
-
-    return <SettingAccordion summary={'Advanced Settings'} details={
-        <div>
-            <SliderSetting id='percentSlider' value={percentValue} setter={setPercentValue} text='Target percentage' min={1} max={100}
-                            tooltip={'This value specifies by how many percent the individual sub-meshes are to be reduced.'}/>
-            <SwitchSetting id='embedTexturesSwitch' checked={embedTextures} setter={setEmbedTextures} text='Embed textures'
-                            tooltip={'If this setting is used, the textures are saved with the output.gltf file <br /> and no extra image is created. ATTENTION: This leads to a considerably larger GLTF file.'}/>
-            <SwitchSetting id='embedBuffersSwitch' checked={embedBuffers} setter={setEmbedBuffers} text='Embed buffers'
-                            tooltip={'If this setting is used, the buffers are also saved in the output.gltf file. <br />ATTENTION! This leads to a considerably larger GLTF file.'}/>
-            <SwitchSetting id='noNormalMapsSwitch' checked={noNormalMaps} setter={setNoNormalMaps} text='Don&apos;t generate normal map'
-                            tooltip={'The triangle mesh is simplified, but no details are stored in a normal map.<br />Shortens the calculation time.'}/>
-            <SwitchSetting id='adjustExistingNormalMapsSwitch' checked={adjustExistingNormalMaps} setter={setAdjustExistingNormalMaps} text='Adjust existing normal maps'
-                            tooltip={'By default, normal maps are only calculated for meshes for which no normal map exists.<br />With these settings, these normal maps are also adjusted again.'}/>
-            <SwitchSetting id='useVertexNormalsSwitch' checked={useVertexNormals} setter={setUseVertexNormals} text='Use vertex normals'
-                            tooltip={'This setting results in a faster calculation, but can lead to more artefacts.'}/>
-            <SliderSetting id='creaseAngleSlider' value={creaseAngle} setter={setCreaseAngle} text='Crease angle' min={1} max={150}
-                            tooltip={'The "crease_angle" is used to specify when edges are defined as creases. <br />A large angle can lead to <br />artifacts, when there are sharp edges in the model. To elminiate these <br />artifacts, a smaller angle should be selected here.'}/>
-            <SliderSetting id='normalDeviationSlider' value={normalDeviation} setter={setNormalDeviation} text='Normal deviation' min={1} max={100}
-                            tooltip={'This setting specifies how much the result may deviate from the input mesh.<br />A higher value leads to greater errors, too small a value prevents simplification. <br />Normally, this value should be between 5 and 15 degrees.'}/>
-        </div>
-    } />
-}
-
-const SwitchSetting = ({id, checked, setter, text, tooltip}) => {
-    return <Label htmlFor={id} marginBottom={8} display='flex' alignItems='left'
-           justifyContent='left' color='white'>
-        <Switch
-            id={id}
-            checked={checked}
-            onChange={(e) => setter(e.target.checked)}
-            marginRight={8}
+    return (
+        <SettingAccordion
+            summary={translate('advanced_settings_title')}
+            details={
+                <div>
+                    <SliderSetting id='percentSlider' value={percentValue} setter={setPercentValue} text={translate('target_percentage')} min={1} max={100}
+                                   tooltip={translate('target_percentage_tooltip')} />
+                    <SwitchSetting id='embedTexturesSwitch' checked={embedTextures} setter={setEmbedTextures} text={translate('embed_textures')}
+                                   tooltip={translate('embed_textures_tooltip')} />
+                    <SwitchSetting id='embedBuffersSwitch' checked={embedBuffers} setter={setEmbedBuffers} text={translate('embed_buffers')}
+                                   tooltip={translate('embed_buffers_tooltip')} />
+                    <SwitchSetting id='noNormalMapsSwitch' checked={noNormalMaps} setter={setNoNormalMaps} text={translate('no_normal_maps')}
+                                   tooltip={translate('no_normal_maps_tooltip')} />
+                    <SwitchSetting id='adjustExistingNormalMapsSwitch' checked={adjustExistingNormalMaps} setter={setAdjustExistingNormalMaps} text={translate('adjust_existing_normal_maps')}
+                                   tooltip={translate('adjust_existing_normal_maps_tooltip')} />
+                    <SwitchSetting id='useVertexNormalsSwitch' checked={useVertexNormals} setter={setUseVertexNormals} text={translate('use_vertex_normals')}
+                                   tooltip={translate('use_vertex_normals_tooltip')} />
+                    <SliderSetting id='creaseAngleSlider' value={creaseAngle} setter={setCreaseAngle} text={translate('crease_angle')} min={1} max={150}
+                                   tooltip={translate('crease_angle_tooltip')} />
+                    <SliderSetting id='normalDeviationSlider' value={normalDeviation} setter={setNormalDeviation} text={translate('normal_deviation')} min={1} max={100}
+                                   tooltip={translate('normal_deviation_tooltip')} />
+                </div>
+            }
         />
-        <span >{text}</span>
-        <div>
-            <HelpOutlineIcon data-tooltip-id="my-tooltip" data-tooltip-html={tooltip} data-tooltip-place="right" style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }}/>
-        </div>
-        <Tooltip id="my-tooltip"/>
-
-
-    </Label>
+    )
 }
 
-const SliderSetting = ({id, value, setter, text, min, max, tooltip}) => {
-    return     <div>
-    <Typography id={id} gutterBottom style={{ display: 'flex', alignItems: 'center' }}>
-        {text}: {value.toString()}
-      <HelpOutlineIcon
-        data-tooltip-id={`${id}-tooltip`}
-        data-tooltip-html={tooltip}
-        data-tooltip-place="right"
-        style={{ color: '#006EFF', fontSize: 16, marginLeft: 10 }}
-      />
-    </Typography>
-    <div style={{ width: 200 }}>
-      <Slider
-        value={value}
-        min={min}
-        step={1}
-        max={max}
-        getAriaValueText={() => value.toString()}
-        valueLabelFormat={() => value.toString()}
-        onChange={(e, newValue) => setter(newValue as number)}
-        valueLabelDisplay='auto'
-        aria-labelledby='non-linear-slider'
-      />
-    </div>
-    <Tooltip id={`${id}-tooltip`} />
-  </div>
+const SwitchSetting = ({ id, checked, setter, text, tooltip }) => {
+    return (
+        <Label htmlFor={id} marginBottom={8} display='flex' alignItems='left' justifyContent='left' color='white'>
+            <Switch
+                id={id}
+                checked={checked}
+                onChange={(e) => setter(e.target.checked)}
+                marginRight={8}
+            />
+            <span>{text}</span>
+            <div>
+                <HelpOutlineIcon data-tooltip-id={`${id}-tooltip`} data-tooltip-html={tooltip} data-tooltip-place="right"
+                                 style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }} />
+            </div>
+            <Tooltip id={`${id}-tooltip`} />
+        </Label>
+    )
+}
+
+const SliderSetting = ({ id, value, setter, text, min, max, tooltip }) => {
+    return (
+        <div>
+            <Typography id={id} gutterBottom style={{ display: 'flex', alignItems: 'center' }}>
+                {text}: {value.toString()}
+                <HelpOutlineIcon data-tooltip-id={`${id}-tooltip`} data-tooltip-html={tooltip} data-tooltip-place="right"
+                                 style={{ color: '#006EFF', fontSize: 16, marginLeft: 10 }} />
+            </Typography>
+            <div style={{ width: 200 }}>
+                <Slider
+                    value={value}
+                    min={min}
+                    step={1}
+                    max={max}
+                    getAriaValueText={() => value.toString()}
+                    valueLabelFormat={() => value.toString()}
+                    onChange={(e, newValue) => setter(newValue as number)}
+                    valueLabelDisplay='auto'
+                    aria-labelledby='non-linear-slider'
+                />
+            </div>
+            <Tooltip id={`${id}-tooltip`} />
+        </div>
+    )
 }

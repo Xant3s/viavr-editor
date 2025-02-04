@@ -3,12 +3,14 @@ import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferenc
 import { Setting } from './Setting'
 import { value_t } from '../../@types/Settings'
 import { Button } from '../StyledComponents/Button'
+import { useTranslation } from '../../LocalizationContext'
 
 export declare interface SettingsProps {
     title: string,
     loadSettingsChannel: string,
     changeSettingChannel: string,
-    registerUpdateCallbacksFromBackend?: (setPref) => void
+    registerUpdateCallbacksFromBackend?: (setPref) => void,
+    children?: React.ReactNode,
 }
 
 export const Settings = ({
@@ -16,7 +18,9 @@ export const Settings = ({
     loadSettingsChannel,
     changeSettingChannel,
     registerUpdateCallbacksFromBackend,
+    children
 }: SettingsProps) => {
+    const { translate } = useTranslation()
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
     const setPref = (key: string, value: any) => {
@@ -52,6 +56,7 @@ export const Settings = ({
             <br />
 
             <SettingsContainer>
+                {children}
                 {
                     Array.from(prefs.entries())
                         // @ts-ignore
@@ -60,7 +65,9 @@ export const Settings = ({
                 }
             </SettingsContainer>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#15171B' }}>
-                <Button style={{ fontSize: '18px', }} onClick={closeWindow}> Exit </Button>
+                <Button style={{ fontSize: '18px' }} onClick={closeWindow}>
+                    {translate('settings_exit')}
+                </Button>
             </div>
         </StyledSettings>
     )

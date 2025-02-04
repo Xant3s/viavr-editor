@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import * as React from 'react'
 import { AvatarInfo } from '../../@types/AvatarInfo'
 import { MenuItem, Select } from '@mui/material'
+import { useTranslation } from '../../LocalizationContext'
 
 class Dialog {
     articyId = ''
@@ -11,6 +12,7 @@ class Dialog {
 
 
 export const Articy = ({ hidden }) => {
+    const {translate, language, setLanguage} = useTranslation()
     const [isDisabled, setDisabled] = useState(false);
     const [dialogs, setDialogs] = useState<Dialog[]>([])
     const [avatars, setAvatars] = useState<AvatarInfo[]>([])
@@ -18,7 +20,7 @@ export const Articy = ({ hidden }) => {
     const tableRowStyle = {
         backgroundColor: '#3A4048',
         color: '#4D535B',
-        borderColor:'#6C737A' 
+        borderColor:'#6C737A'
     };
     const tableHeaderStyle ={
         backgroundColor: '#6C737A',
@@ -34,7 +36,7 @@ export const Articy = ({ hidden }) => {
     const openArticyEditor = () => {
         api.invoke(api.channels.toMain.openArticyEditor)
     }
-    
+
     const getDialogName = (dialogId: string) => {
         const dialog = dialogs.find(dialog => dialog.articyId === dialogId)
         if(dialog === undefined) return ''
@@ -123,7 +125,7 @@ export const Articy = ({ hidden }) => {
             </Table.Body>
         </Table>
 
-        <Button disabled={isDisabled} appearance='primary' onClick={() => openArticyEditor()}>Open Articy Editor</Button>
+        <Button disabled={isDisabled} appearance='primary' onClick={() => openArticyEditor()}>{translate('articy.openEditor')}</Button>
 
     </div>
 }

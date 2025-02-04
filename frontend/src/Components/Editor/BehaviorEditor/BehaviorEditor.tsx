@@ -1,8 +1,11 @@
 import { MetaDataEditor } from './MetaDataEditor'
 import { VariableEditor } from './VariableEditor'
 import { EventsEditor } from './EventsEditor'
+import { useTranslation } from '../../../LocalizationContext'
 
 export const BehaviorEditor = ({ hidden }) => {
+    const {translate} = useTranslation()
+    
     return (
         <div
             hidden={hidden}
@@ -15,7 +18,7 @@ export const BehaviorEditor = ({ hidden }) => {
                 color: 'white',
             }}
         >
-            <h1>Behavior Editor</h1>
+            <h1>{translate('behaviorEditor')}</h1>
             <MetaDataEditor isActive={!hidden} />
             <VariableEditor isActive={!hidden}/>
             <EventsEditor hidden={hidden} />

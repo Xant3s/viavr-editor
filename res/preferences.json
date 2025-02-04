@@ -1,4 +1,10 @@
 {
+  "dev.language": {
+    "value": "unknown",
+    "label": "Language (en/de/system)",
+    "uuid": "941802b4-b837-4eea-b709-d1b002b47e15",
+    "kind": "string"
+  },
   "unityPath": {
     "value": "C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.31f1\\Editor\\Unity.exe",
     "label": "Path to Unity executable",

@@ -43,7 +43,10 @@ export const channels = {
         saveScene: 'scene-exporter:save-current-scene',
         downloadAvatar: 'avatar:download',
         deleteAvatarFromFileSystem: 'avatar:delete',
-        exitApplication: 'main-window:exit-application'
+        exitApplication: 'main-window:exit-application',
+        detectSystemLanguage: 'localization:detect-system-language',
+        getDefinitiveLanguage: 'localization:get-definitive-language',
+        sendNewLanguageToAllWindows: 'localization:broadcast-language',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
@@ -55,7 +58,8 @@ export const channels = {
         spokePortTaken: 'spoke:portTaken',
         externalWindowOpened:'articy:open-editor-and-disable-window',
         externalWindowClosed:'articy:open-editor',
-        tryExitApplication: 'editor:try-exit'
+        tryExitApplication: 'editor:try-exit',
+        newLanguage: 'localization:new-language',
     },
 }
 

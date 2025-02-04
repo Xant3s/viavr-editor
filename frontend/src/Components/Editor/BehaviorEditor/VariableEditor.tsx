@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
 import { Variable } from '../../../@types/Behaviors'
+import { useTranslation } from '../../../LocalizationContext'
 
 export const VariableEditor = ({ isActive }) => {
+    const { translate } = useTranslation()
     const [variables, setVariables] = useState<Variable[]>([])
 
-    const variablesTip = "Variables can be used for actions and events. They can store data, like numbers, text, or yes/no-values."
-    
+    const variablesTip = translate('var_editor_variables_tip')
+
     const tableRowStyle = {
         backgroundColor: '#4D535B',
         color: '#4D535B',
@@ -20,7 +22,6 @@ export const VariableEditor = ({ isActive }) => {
         color: 'white',
         borderColor: '#6C737A',
     }
-    
 
     // TODO: update build settings onLeaveFocus
 
@@ -49,7 +50,7 @@ export const VariableEditor = ({ isActive }) => {
         <SettingAccordion
             summary={
                 <span style={{display:'flex', alignItems:'center'}}>
-                    <span style={{margin:'0px', padding:'0px'}}>Variables</span>
+                    <span style={{margin:'0px', padding:'0px'}}>{translate('var_editor_summary_variables')}</span>
                     <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={variablesTip} style={{ marginLeft: 5, fontSize: 14 }}/>
                     <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
                 </span>
@@ -58,18 +59,18 @@ export const VariableEditor = ({ isActive }) => {
                 <div>
                     <Table style={{borderColor:'#6C737A'}}>
                         <Table.Head style={tableHeaderStyle}>
-                            <Table.TextHeaderCell>Name</Table.TextHeaderCell>
-                            <Table.TextHeaderCell>Type</Table.TextHeaderCell>
-                            <Table.TextHeaderCell>Default Value</Table.TextHeaderCell>
+                            <Table.TextHeaderCell>{translate('var_editor_table_header_name')}</Table.TextHeaderCell>
+                            <Table.TextHeaderCell>{translate('var_editor_table_header_type')}</Table.TextHeaderCell>
+                            <Table.TextHeaderCell>{translate('var_editor_table_header_default_value')}</Table.TextHeaderCell>
                             <Table.TextHeaderCell maxWidth={'150px'}> </Table.TextHeaderCell>
                         </Table.Head>
-                        {variables.length===0 && 
-                        <div>
-                            <p style={{color:'#BCBEC1'}}> 
-                                Add a Variable using the Add Variable Button.<br></br>
-                                {variablesTip}
-                            </p>
-                        </div>
+                        {variables.length===0 &&
+                            <div>
+                                <p style={{color:'#BCBEC1'}}>
+                                    {translate('var_editor_no_variables_info')}<br></br>
+                                    {variablesTip}
+                                </p>
+                            </div>
                         }
                         <Table.Body maxHeight={'200px'} minWidth={'600px'}>
                             {variables.map(({name, type, value}, index) => (
@@ -77,7 +78,7 @@ export const VariableEditor = ({ isActive }) => {
                                     <Table.TextCell>
                                         <TextInput
                                             name="text-input-name"
-                                            placeholder="Please enter a name"
+                                            placeholder={translate('var_editor_placeholder_enter_name')}
                                             style={{width:'90%'}}
                                             value={name}
                                             onChange={async e => {
@@ -100,13 +101,13 @@ export const VariableEditor = ({ isActive }) => {
                                             await updateBuildSettings()
                                         }} required>
                                             <option key={0} value={"number"}>
-                                                {"Number"}
+                                                {translate('var_editor_select_number')}
                                             </option>
                                             <option key={1} value={"string"}>
-                                                {"Text"}
+                                                {translate('var_editor_select_text')}
                                             </option>
                                             <option key={2} value={"boolean"}>
-                                                {"Yes/No Value"}
+                                                {translate('var_editor_select_boolean')}
                                             </option>
                                         </Select>
                                     </Table.TextCell>
@@ -114,7 +115,7 @@ export const VariableEditor = ({ isActive }) => {
                                         {(type === 'number' || type === 'string') && (
                                             <TextInput
                                                 name="text-input-name"
-                                                placeholder="Please enter a value"
+                                                placeholder={translate('var_editor_placeholder_enter_value')}
                                                 value={value}
                                                 style={{width:'90%'}}
                                                 onChange={async e => {
@@ -136,9 +137,9 @@ export const VariableEditor = ({ isActive }) => {
                                                 ...variables.slice(index + 1),
                                                 ])
                                                 await updateBuildSettings()
-                                                }} required>
-                                                <option key={0} value="true">{"Yes"}</option>
-                                                <option key={1} value="false">{"No"}</option>
+                                            }} required>
+                                                <option key={0} value="true">{translate('var_editor_select_yes')}</option>
+                                                <option key={1} value="false">{translate('var_editor_select_no')}</option>
                                             </Select>
                                         )}
                                     </Table.TextCell>
@@ -150,7 +151,7 @@ export const VariableEditor = ({ isActive }) => {
                                             onClick={() => deleteVariable(index)}
                                             style={{color:'white', backgroundColor:'#4D535B'}}                            
                                         >
-                                            Delete
+                                            {translate('var_editor_delete')}
                                         </Button>
                                     </Table.TextCell>
                                 </Table.Row>
@@ -162,7 +163,7 @@ export const VariableEditor = ({ isActive }) => {
                             setVariables([...variables, {name: '', type: 'number', value: '0'}])
                             await updateBuildSettings()
                         }}>
-                            Add Variable
+                            {translate('var_editor_add_variable')}
                         </Button>
                     </div>
                 </div>

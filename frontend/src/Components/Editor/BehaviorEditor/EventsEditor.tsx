@@ -6,6 +6,7 @@ import { Action, Event, IfElse } from '../../../@types/Behaviors'
 import { FormControl, FormHelperText } from '@mui/material'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
+import { useTranslation } from '../../../LocalizationContext'
 
 export type ActionSequenceComponent  = (Action | IfElse) & {id: number}
 
@@ -13,7 +14,8 @@ interface Props {
     hidden: boolean
 }
 
-export const EventsEditor: React.FC<Props> = ({hidden}) => {
+export const EventsEditor: React.FC<Props> = ({ hidden }) => {
+    const { translate } = useTranslation()
     const [availableEvents, setAvailableEvents] = useState<Event[]>([])
     const [availableActions, setAvailableActions] = useState<Action[]>([])
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
@@ -22,7 +24,6 @@ export const EventsEditor: React.FC<Props> = ({hidden}) => {
     const [selectedEvent, setSelectedEvent] = useState<string | undefined>()
     const [triedAddingEvent, setTriedAddingEvent] = useState<boolean>()
 
-    
     const loadSceneObjects = async () => {
         let objects = await api.invoke(api.channels.toMain.getSceneObjects)
         const emptyObject = {
@@ -85,20 +86,22 @@ export const EventsEditor: React.FC<Props> = ({hidden}) => {
         setEvents(newEvents)
         await api.invoke(api.channels.toMain.setBuildSetting, 'events', newEvents)
     }
-    
+
     async function updateEvent(newEvent: Event) {
         const updatedEvents = events.map(event => event.id === newEvent.id ? newEvent : event)
         setEvents(updatedEvents)
         await api.invoke(api.channels.toMain.setBuildSetting, 'events', updatedEvents)
     }
 
-    
     return (
         <SettingAccordion
             summary={
                 <span style={{display:'flex', alignItems:'center'}}>
-                    <span style={{margin:'0px', padding:'0px'}}>Events</span>
-                    <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={"Events can be used to start actions after a certain condition is met. This functionality can be added by enabling additional packages."} style={{ marginLeft: 5, fontSize: 14 }}/>
+                    <span style={{margin:'0px', padding:'0px'}}>{translate('events_summary_title')}</span>
+                    <HelpOutlineIcon
+                        data-tooltip-id="Variables"
+                        data-tooltip-content={translate('events_tooltip_info')}
+                        style={{ marginLeft: 5, fontSize: 14 }}/>
                     <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
                 </span>
             }
@@ -122,36 +125,44 @@ export const EventsEditor: React.FC<Props> = ({hidden}) => {
                         </Pane>
                     ))}
                     <FormControl>
-                    <SelectMenu
-                        title='Select event'
-                        options={availableEvents.map(event => ({ label: event.displayName, value: event.name }))}
-                        selected={selectedEvent}
-                        onSelect={item => setSelectedEvent(item.value.toString())}
-                        onDeselect={_ => { setSelectedEvent(undefined) }}
-                    >
-                        <Button>{selectedEvent || 'Select event...'} <ChevronDownIcon style={{marginLeft: '2px'}} /> </Button>
-                    </SelectMenu>
-                    {triedAddingEvent && !selectedEvent && <FormHelperText style={{color:'red'}}>You have to select an event to add!</FormHelperText>}
+                        <SelectMenu
+                            title={translate('events_select_event_title')}
+                            options={availableEvents.map(event => ({ label: event.displayName, value: event.name }))}
+                            selected={selectedEvent}
+                            onSelect={item => setSelectedEvent(item.value.toString())}
+                            onDeselect={_ => { setSelectedEvent(undefined) }}
+                        >
+                            <Button>
+                                {selectedEvent || translate('events_select_event_placeholder')}
+                                <ChevronDownIcon style={{marginLeft: '2px'}} />
+                            </Button>
+                        </SelectMenu>
+                        {triedAddingEvent && !selectedEvent &&
+                            <FormHelperText style={{color:'red'}}>
+                                {translate('events_error_select_event')}
+                            </FormHelperText>
+                        }
                     </FormControl>
                     <Button
-                        style={{marginLeft: '5px',
-                        background: selectedEvent ? '#006EFF' : '#afb2ba',
-                        color: selectedEvent ? 'white' : 'gray',
-                        cursor: selectedEvent? 'pointer' : 'auto',
-                        border: selectedEvent ? '#006EFF' : 'gray',}}
+                        style={{
+                            marginLeft: '5px',
+                            background: selectedEvent ? '#006EFF' : '#afb2ba',
+                            color: selectedEvent ? 'white' : 'gray',
+                            cursor: selectedEvent ? 'pointer' : 'auto',
+                            border: selectedEvent ? '#006EFF' : 'gray',
+                        }}
                         onClick={async () => {
                             if (selectedEvent) {
                                 await addEvent(selectedEvent)
                                 setTriedAddingEvent(false)
-                            }
-                            else{
+                            } else {
                                 setTriedAddingEvent(true)
                             }
                         }}
-                        >
-                        Add Event
+                    >
+                        {translate('events_add_event')}
                     </Button>
-            </div>
+                </div>
             }
         />
     )

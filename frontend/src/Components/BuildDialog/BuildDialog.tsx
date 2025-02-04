@@ -15,7 +15,7 @@ import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 import { InfoSpinnerBox } from './InfoSpinnerBox'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { ModalWindow } from '../Utils/UI'
-
+import { useTranslation } from '../../LocalizationContext'
 
 type Scene = {
     isSelected: boolean
@@ -23,13 +23,15 @@ type Scene = {
 }
 
 export const BuildDialog = ({hidden}) => {
+    const { translate, language, setLanguage } = useTranslation()
     const [scenes, setScenes] = useState<Scene[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
     const [isFetchingPackages, setIsFetchingPackages] = useState(false)
     const [showModal, setShowModal] = useState(false)
+
     const handleSaveAndContinue = async () => {
-         await saveProjectAndSceneThenBuild();
+        await saveProjectAndSceneThenBuild();
     };
 
     const handleContinueWithoutSaving = async () => {
@@ -120,16 +122,16 @@ export const BuildDialog = ({hidden}) => {
             setIsBuilding(false)
             return
         }
-        toaster.notify('Started generating the experience, please wait.', { duration: 5 })
+        toaster.notify(translate('buildDialog.generatingExperienceMessage'), { duration: 5 })
         await api.invoke(api.channels.toMain.buildUnityProject)
         const result: 'success' | 'failure' = await api.invoke(api.channels.toMain.checkBuildSuccess)
         setIsBuilding(false)
         if (result === 'failure') {
-            toaster.danger('Something went wrong generating your VIA experience.', { duration: 36000 })
+            toaster.danger(translate('buildDialog.modalTitle'), { duration: 36000 })
             return
         }
         await api.invoke(api.channels.toMain.openBuildDirectory)
-        toaster.success('The experience is now ready.', { duration: 5 })
+        toaster.success(translate('buildDialog.generateExperienceButton'), { duration: 5 })
     }
 
     useEffect(() => {
@@ -141,11 +143,11 @@ export const BuildDialog = ({hidden}) => {
     return (
         <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>
             <StyledSettings hidden={hidden}>
-                <Center><h1>Generate VIA Experience</h1></Center>
-                <InfoSpinnerBox hidden={!isFetchingPackages} text='Fetching package info' />
+                <Center><h1>{translate('buildDialog.generateExperience')}</h1></Center>
+                <InfoSpinnerBox hidden={!isFetchingPackages} text={translate('buildDialog.fetchingPackageInfo')} />
                 <SettingsContainer hidden={hidden} style={{width: 610}}>
                     <SettingAccordion
-                        summary={'Packages'}
+                        summary={translate('buildDialog.packages')}
                         details={
                             <>
                                 {packages.map(p => (
@@ -163,18 +165,18 @@ export const BuildDialog = ({hidden}) => {
                             </>
                         }
                     />
-                    <SettingAccordion summary={'Supervisor Monitor'} details={<SupervisorMonitorSettings hidden={hidden} />} />
+                    <SettingAccordion summary={translate('buildDialog.supervisorMonitor')} details={<SupervisorMonitorSettings hidden={hidden} />} />
                     {getPackagesToDraw().length > 0 && <UnityPackageConfigurations packages={getPackagesToDraw()} />}
                     <br />
                     <div hidden={isBuilding}>
                         <Center>
                             <Button id="btn-build-project" type="button" onClick={() => setShowModal(true)}>
-                                Generate Experience
+                                {translate('buildDialog.generateExperienceButton')}
                             </Button>
                         </Center>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div hidden={!isBuilding}>Generating experience. This will take a while, please wait...</div>
+                        <div hidden={!isBuilding}>{translate('buildDialog.generatingExperienceMessage')}</div>
                         <Spinner hidden={!isBuilding} style={{ marginLeft: 10 }} />
                     </div>
                 </SettingsContainer>
@@ -183,9 +185,7 @@ export const BuildDialog = ({hidden}) => {
             {showModal && <ModalWindow closeModal={() => setShowModal(false)}
                                        onSaveAndContinue={handleSaveAndContinue}
                                        onContinueWithoutSaving={handleContinueWithoutSaving}
-                                       upperTitle="Project should be saved before an experience is generated."/>}
+                                       upperTitle={translate('buildDialog.modalTitle')}/>}
         </Center>
     )
 }
-
-

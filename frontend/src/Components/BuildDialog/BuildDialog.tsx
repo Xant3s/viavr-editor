@@ -22,8 +22,8 @@ type Scene = {
     sceneFileName: string
 }
 
-export const BuildDialog = ({hidden}) => {
-    const { translate, language, setLanguage } = useTranslation()
+export const BuildDialog = ({ hidden }) => {
+    const { translate } = useTranslation()
     const [scenes, setScenes] = useState<Scene[]>([])
     const [packages, setPackages] = useState<any[]>([])
     const [isBuilding, setIsBuilding] = useState(false)
@@ -38,8 +38,6 @@ export const BuildDialog = ({hidden}) => {
     };
 
     const handleContinueWithoutSaving = async () => {
-        // Define the behavior of Continue without Saving
-        // For example:
         await build();
     };
 
@@ -147,20 +145,20 @@ export const BuildDialog = ({hidden}) => {
     const handleCheckDevice = async () => {
         const connected: boolean = await api.invoke(api.channels.toMain.adbGetDeviceConnected)
         setDeviceConnected(connected)
-        toaster.notify(connected ? 'Device is connected' : 'No device connected')
+        toaster.notify(connected ? translate('buildDialog.deviceConnected') : translate('buildDialog.noDeviceConnected'))
     }
 
     const handleInstallApk = async () => {
         if (!apkPath) {
-            toaster.danger('Please select an APK file first')
+            toaster.danger(translate('buildDialog.apkNotSelected'))
             return
         }
         setApkIsInstalling(true)
         const result: boolean = await api.invoke(api.channels.toMain.adbInstallApk, apkPath)
         if (result) {
-            toaster.success('APK installed successfully')
+            toaster.success(translate('buildDialog.apkInstallSuccess'))
         } else {
-            toaster.danger('APK installation failed')
+            toaster.danger(translate('buildDialog.apkInstallFail'))
         }
         setApkIsInstalling(false)
     }
@@ -212,28 +210,27 @@ export const BuildDialog = ({hidden}) => {
                         <Spinner hidden={!isBuilding} style={{ marginLeft: 10 }} />
                     </div>
 
-
-                    <h3>Install Experience to VR Device</h3>
+                    <h3>{translate('buildDialog.installExperienceToVRDevice')}</h3>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <input
                             type="text"
                             value={apkPath}
                             onChange={(e) => setApkPath(e.target.value)}
-                            placeholder="APK file path"
+                            placeholder={translate('buildDialog.apkFilePathPlaceholder')}
                             style={{ flex: '1', padding: '5px' }}
                         />
-                        <Button onClick={handleChooseFile}>Choose File</Button>
+                        <Button onClick={handleChooseFile}>{translate('buildDialog.chooseFile')}</Button>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <Button onClick={handleCheckDevice}>Check Device</Button>
+                        <Button onClick={handleCheckDevice}>{translate('buildDialog.checkDevice')}</Button>
                         {deviceConnected
-                            ? <span style={{ color: 'green' }}>Device Connected</span>
-                            : <span style={{ color: 'red' }}>No Device Connected</span>
+                            ? <span style={{ color: 'green' }}>{translate('buildDialog.deviceConnected')}</span>
+                            : <span style={{ color: 'red' }}>{translate('buildDialog.noDeviceConnected')}</span>
                         }
                     </div>
-                    <Button onClick={handleInstallApk} disabled={apkIsInstalling}>Install APK</Button>
-                    
-                    
+                    <Button onClick={handleInstallApk} disabled={apkIsInstalling}>
+                        {translate('buildDialog.installApk')}
+                    </Button>
                 </SettingsContainer>
             </StyledSettings>
 

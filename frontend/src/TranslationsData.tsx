@@ -144,7 +144,17 @@ export const translationsData: Record<string, Record<string, string>> = {
         "action_component_select_action_placeholder": "Select action...",
         "action_component_parameter_placeholder": "Parameter Value",
         "settings_exit": "Exit",
-        "project_settings_title": "Project Settings"
+        "project_settings_title": "Project Settings",
+        "buildDialog.deviceConnected": "Device Connected",
+        "buildDialog.noDeviceConnected": "No Device Connected",
+        "buildDialog.chooseFile": "Choose File",
+        "buildDialog.apkFilePathPlaceholder": "APK file path",
+        "buildDialog.apkNotSelected": "Please select an APK file first",
+        "buildDialog.apkInstallSuccess": "APK installed successfully",
+        "buildDialog.apkInstallFail": "APK installation failed",
+        "buildDialog.installExperienceToVRDevice": "Install Experience to VR Device",
+        "buildDialog.checkDevice": "Check Device",
+        "buildDialog.installApk": "Install APK",
     },
     "de": {
         "welcome": "Willkommen",
@@ -291,6 +301,16 @@ export const translationsData: Record<string, Record<string, string>> = {
         "action_component_select_action_placeholder": "Aktion auswählen...",
         "action_component_parameter_placeholder": "Parameterwert",
         "settings_exit": "Beenden",
-        "project_settings_title": "Projekteinstellungen"
+        "project_settings_title": "Projekteinstellungen",
+        "buildDialog.deviceConnected": "Gerät verbunden",
+        "buildDialog.noDeviceConnected": "Kein Gerät verbunden",
+        "buildDialog.chooseFile": "Datei wählen",
+        "buildDialog.apkFilePathPlaceholder": "APK-Dateipfad",
+        "buildDialog.apkNotSelected": "Bitte wählen Sie zuerst eine APK-Datei aus",
+        "buildDialog.apkInstallSuccess": "APK erfolgreich installiert",
+        "buildDialog.apkInstallFail": "APK-Installation fehlgeschlagen",
+        "buildDialog.installExperienceToVRDevice": "VR Erlebnis auf VR-Gerät installieren",
+        "buildDialog.checkDevice": "Gerät prüfen",
+        "buildDialog.installApk": "APK installieren",
     }
 }

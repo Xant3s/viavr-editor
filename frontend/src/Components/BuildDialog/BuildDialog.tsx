@@ -153,6 +153,10 @@ export const BuildDialog = ({ hidden }) => {
             toaster.danger(translate('buildDialog.apkNotSelected'))
             return
         }
+        if (!deviceConnected) {
+            toaster.danger(translate('buildDialog.noDeviceConnected'))
+            return
+        }
         setApkIsInstalling(true)
         const result: boolean = await api.invoke(api.channels.toMain.adbInstallApk, apkPath)
         if (result) {

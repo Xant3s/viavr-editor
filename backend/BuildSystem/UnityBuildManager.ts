@@ -99,6 +99,7 @@ export default class UnityBuildManager {
         const registriesSetting = await PreferencesManager.getInstance().get<PackageRegistries>('packageRegistries')
         const packageRegistries = registriesSetting.value
         const manifest = await UnityBuildManager.readManifest(outputPath)
+        this.clearRegistriesFromManifest(manifest)
         for(const packageRegistry of packageRegistries) {
             const scopes = packageRegistry.packageRegistryScopes.value
             for(const scope of scopes) {
@@ -121,6 +122,10 @@ export default class UnityBuildManager {
     private static async writeManifest(manifest: PackageManifest, outputPath: string) {
         const newFileData = JSON.stringify(manifest, null, 4)
         await fs.promises.writeFile(`${outputPath}/Packages/manifest.json`, newFileData)
+    }
+
+    public clearRegistriesFromManifest(manifest: PackageManifest) {
+        manifest.scopedRegistries = []
     }
 
     public addScopedRegistryToManifest(manifest: PackageManifest, packageRegistryUrl: string, packageRegistryName: string, packageRegistryScope: string) {

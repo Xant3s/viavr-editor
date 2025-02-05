@@ -142,11 +142,11 @@ export const BuildDialog = ({ hidden }) => {
         }
     }
 
-    const handleCheckDevice = async () => {
+    const handleCheckDevice = useCallback( async () => {
         const connected: boolean = await api.invoke(api.channels.toMain.adbGetDeviceConnected)
         setDeviceConnected(connected)
         toaster.notify(connected ? translate('buildDialog.deviceConnected') : translate('buildDialog.noDeviceConnected'))
-    }
+    }, [translate])
 
     const handleInstallApk = async () => {
         if (!apkPath) {
@@ -172,7 +172,7 @@ export const BuildDialog = ({ hidden }) => {
         loadScenes()
         loadPackages()
         handleCheckDevice()
-    }, [hidden, loadPackages])
+    }, [hidden, loadPackages, handleCheckDevice])
 
     return (
         <Center style={{backgroundColor: '#15171b'}} hidden={hidden}>

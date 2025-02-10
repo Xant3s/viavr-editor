@@ -1,53 +1,35 @@
-#First make sure script is running as admin
+# First make sure script is running as admin
 param (
     [string]$WorkingDir
 )
-function Check-Admin 
-{
+
+# Define log file path
+$logFile = "C:\viavr-install.log"
+$failedInstalls = @()
+
+# Function to log messages
+function Write-Log {
+    param (
+        [string]$message
+    )
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    "$timestamp - $message" | Out-File -FilePath $logFile -Append -Encoding utf8
+}
+
+function Check-Admin {
     return ([bool](New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 }
-function Relaunch-AsAdmin 
-{
+
+function Relaunch-AsAdmin {
     Push-Location $PSScriptRoot
-    $workingDir = (Get-Location).Path  
+    $workingDir = (Get-Location).Path
     $scriptPath = "$workingDir\checkInstallAll.ps1"
     Start-Process -FilePath "powershell.exe" `
                 -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`" -WorkingDir `"$workingDir`"" `
                 -Verb RunAs
-    exit # Exit the current script to let the elevated instance handle the task
+    exit
 }
 
-Write-Host "We're now installing software that is required for VIA-VR. Please make sure you have a stable internet connection and your PC is not going into sleep mode or tunred off." -ForegroundColor Yellow
-Write-Host "Please do not close any windows that may pop up." -ForegroundColor Yellow
-Write-Host "IMPORTANT: Please follow the instructions carefully and confirm all prompts during the installation with yes. The installation process will take a while." -ForegroundColor Yellow
-
-if (-not (Check-Admin)) 
-{
-    Write-Host "Script is not running as administrator. Restarting with administrator rights..." -ForegroundColor Red 
-    Pause 
-    Relaunch-AsAdmin # Relaunch with admin privileges if needed
-}
-else
-{
-    Write-Host "Script is running as administrator." -ForegroundColor Green
-}
-if (![string]::IsNullOrEmpty($WorkingDir)) {
-    Set-Location $WorkingDir
-}
-###Adjust folder if packaged by installer ###
-# Check if "resources" folder exists and if switch
-if (Test-Path -Path ".\resources" -PathType Container) 
-{
-    # Switch to "resources" folder
-    Set-Location ".\resources"
-} 
-# Check if "res" folder exists and if switch
-if (Test-Path -Path ".\res" -PathType Container) 
-{
-    # Switch to "res" folder
-    Set-Location ".\res"
-}
-###Helper Functions Start###
 function Check-Command {
     param (
         [string]$commandLine
@@ -61,342 +43,325 @@ function Check-Command {
     }
 }
 
-function Check-GitInstalled {
-    # Check if Git is available in the PATH
-    $gitCheck = Get-Command "git" -ErrorAction SilentlyContinue
-    return $null -ne $gitCheck
-}
-###Helper Functions End###
+function Install-Software {
+    param (
+        [string]$Name,
+        [scriptblock]$InstallScript,
+        [scriptblock]$CheckInstalled
+    )
 
-# Start logging
-Start-Transcript -Path "C:\viavr-install.log" -Append
+    Write-Host "Checking if $Name is already installed..."
+    Write-Log "Checking if $Name is already installed..."
 
-### GIT ### Not used
-#Define paths for git
-$gitFolder = "C:\Program Files\Git\"
-Push-Location #If the installer moves the script
-Write-Host "Check if folder $gitFolder exists." -ForegroundColor Cyan
-if (Test-Path "$gitFolder")
-{
-    Write-Host "Git folder exists." -ForegroundColor Green
-}
-else
-{
-    Write-Host "Git Path dosent exists. Trying to install git v2.47.1" -ForegroundColor Red 
-    & "$PWD\dependenciesScripts\Git\gitInstaller.ps1"
-    if (Test-Path "$gitFolder")
-    {
-        Write-Host "Git folder exists now." -ForegroundColor Green
+    if (&$CheckInstalled) {
+        Write-Host "$Name is already installed. Skipping installation." -ForegroundColor Green
+        Write-Log "$Name is already installed. Skipping installation."
+        return
     }
-    else
-    {
-        Write-Host "Something went wrong during the git installation please check the output. Exiting installation script..." -ForegroundColor Red
-        Pause
-        Stop-Transcript
-        Exit 1
-    }
-} 
-Write-Host "Checking if git is avialable in PATH " -ForegroundColor Cyan
-if(Check-GitInstalled)
-{
-    Write-Host "Git is available in PATH." -ForegroundColor Green
-}
-else
-{
-    Write-Host "Git is not available in PATH. Setting PATH variable..." -ForegroundColor Red
-    Write-Host "Adding git to PATH manually this time." -ForegroundColor Cyan
-    $env:Path += ";$gitFolder\cmd"
-    if(Check-GitInstalled)
-    {
-        Write-Host "Git is now available in PATH." -ForegroundColor Green
-    }
-    else
-    {
-        Write-Host "Couldnt set git to PATH aborting script ... " -ForegroundColor Red
-        Pause
-        Stop-Transcript
-        Exit 2
-    }
-}
-Pop-Location #go back to previous Folder if changed
 
-### NODE ###
-# Define paths for node
-$nodePath = "C:\Program Files\nodejs"  
-$nodeInstalledVersion = ""
-$nodeVersionInstalledByScript = "v22.11.0"
-Push-Location
+    Write-Host "Starting installation: $Name"
+    Write-Log "Starting installation: $Name"
 
-#Node
-Write-Host ""
-Write-Host "Check if folder $nodePath exists." -ForegroundColor Cyan
-if (Test-Path "$nodePath")
-{
-    Write-Host "$nodePath exists." -ForegroundColor Green
-}
-else
-{
-    Write-Host "$nodePath does not exists. Checking if Node is available in PATH" -ForegroundColor Yellow 
-    if(Check-Command -command "node --version")
-    {
-        #Skip installation if another Node is installed but not in the default Folder $nodePath
-    }
-    else
-    {
-        Write-Host "$nodePath dosent exist and node isnt available in PATH. Trying to install node version $nodeVersionInstalledByScript ..." -ForegroundColor Cyan
-        & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
-        if (Test-Path "$nodePath")
-        {
-            Write-Host "Node Path exists now." -ForegroundColor Green
-        }
-        else
-        {
-            Write-Host "Something went wrong during the node installation please check the output. Exiting installation script..." -ForegroundColor Red
-            Pause
-            Stop-Transcript
-            Exit 3
-        }
-    }
-    
-}
-Write-Host ""
-Write-Host "Checking if node is avialable in PATH " -ForegroundColor Cyan
-if(Check-Command -command "node --version")
-{
-    $nodeInstalledVersion = node --version
-    Write-Host "Node is available in PATH. Version $nodeInstalledVersion" -ForegroundColor Green
-}
-else
-{
-    Write-Host "Node is not available in PATH. Setting PATH variable..." -ForegroundColor Red
-    Write-Host "Adding node to PATH manually this time." -ForegroundColor Cyan
-    $env:Path += ";C:\Program Files\nodejs\"
-    if(Check-Command -command "node --version")
-    {
-        $nodeInstalledVersion = node --version
-        Write-Host "Node is available in PATH. Version $nodeInstalledVersion" -ForegroundColor Green
-    }
-    else
-    {
-        Write-Host "Couldnt set Node to PATH aborting script ... " -ForegroundColor Red
-        Pause
-        Stop-Transcript
-        Exit 4
-    }
-}
-if($nodeInstalledVersion -eq $nodeVersionInstalledByScript)
-{
-    Write-Host "Node Version matches the version installed by the installer" -ForegroundColor Green
-}
-else
-{
-    Write-Host "Node version dosent match the Version installed by the installer" -ForegroundColor Yellow
-    Write-Host "Your current Version: $nodeInstalledVersion" -ForegroundColor Cyan
-    Write-Host "Minimum Required Version: 22.x or higher." -ForegroundColor Cyan
-}
-#Yarn
-Write-Host ""
-Write-Host "Checking if yarn is accessible ... " -ForegroundColor Cyan
-if(Check-Command -command "yarn -v")
-{
-    Write-Host "Yarn is installed" -ForegroundColor Green 
-}
-else
-{
-    Write-Host "Yarn isnt accessible. Trying to enable corepack ..." -ForegroundColor Yellow 
-    Write-Host "!IMPORTANT! After 10seconds: due to a currently unresolved problem regarding corepack installation please input y in the console and press enter." -ForegroundColor Yellow
-    corepack enable
-    if(Check-Command -command "yarn -v")
-    {
-        Write-Host "Yarn is installed now" -ForegroundColor Green 
-    }else
-    {
-        Write-Host "Yarn couldnt be installed correctly or isnt available in Path. Exiting Script ... " -ForegroundColor Red
-        Pause
-        Stop-Transcript
-        Exit 5
-    }
-}
-Pop-Location
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    &$InstallScript
+    $stopwatch.Stop()
 
-
-Write-Host ""
-Write-Host "Installing dependencies for Reticulum." -ForegroundColor Cyan
-Push-Location
-Set-Location ".\plugins\viavr-reticulum\"
-& ".\run_check_install.ps1"
-Pop-Location
-Write-Host ""
-Write-Host "Dependency installation complete." -ForegroundColor Green
-
-
-###VSC Installation###
-Write-Host ""
-Push-Location
-$vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
-Write-Host "Check if folder $vscPath exists." -ForegroundColor Cyan
-if (Test-Path "$vscPath")
-{
-    Write-Host "$vscPath folder exists." -ForegroundColor Green
-    $vswhere = "$vscPath\vswhere.exe"
-    $vsVersion = & $vswhere -latest -products * -property installationVersion
-    if(-not $vsVersion)
-    {
-        Write-Host "It appears that Visual Studio was installed at some point but was later uninstalled." -ForegroundColor Yellow
-        $response = Read-Host "Do you want to download and install Visual Studio? (Y/N)"
-        if ($response -match "^[Yy]$")
-        {
-            Write-Host "Starting Visual Studio installation script ..."
-            & "$PWD\dependenciesScripts\VSC\vscInstaller.ps1"
-        }
-        elseif ($response -match "^[Nn]$")
-        {
-            Write-Host "Visual Studio is not being installed. Please note that an existing 
-            Visual Studio installation cannot be verified through this script." -ForegroundColor Yellow
-        }
-        else
-        {
-            Write-Host "Visual Studio is not being installed. Please note that an existing 
-            Visual Studio installation cannot be verified through this script." -ForegroundColor Yellow
+    if (&$CheckInstalled) {
+        Write-Host "$Name installation completed in $($stopwatch.Elapsed.TotalSeconds) seconds." -ForegroundColor Green
+        Write-Log "$Name installation took: $($stopwatch.Elapsed.TotalSeconds) seconds"
+    } else {
+        if ($Name -eq "Reticulum Dependencies") {
+            # cannot detect reliably detect whether successful.
+        } else {
+            Write-Log "$Name installation failed."
+            $global:failedInstalls += $Name
         }
     }
 }
-else
-{
-    Write-Host "Visual Studio path dosent exists. Trying to install visual studio" -ForegroundColor Red
-    & "$PWD\dependenciesScripts\VSC\vscInstaller.ps1"
-    if (Test-Path "$vscPath")
-    {
-        Write-Host "Visual studio folder exists now." -ForegroundColor Green
 
+function Download-File {
+    param (
+        [string]$url,
+        [string]$destination
+    )
+
+    Write-Host "Starting download..."
+
+    # Try using BitsTransfer
+    try {
+        Write-Log "Using BitsTransfer..."
+        Start-BitsTransfer -Source $url -Destination $destination
+        Write-Host "Download completed." -ForegroundColor Green
+        return
+    } catch {
+        Write-Log "BitsTransfer failed: $_" -ForegroundColor Red
     }
-    else
-    {
-        Write-Host "Something went wrong during the visual studio installation please check the output. Exiting installation script..." -ForegroundColor Red
-        Pause
-        Stop-Transcript
-        Exit 6
+
+    # Try using WebClient if BitsTransfer fails
+    try {
+        Write-Log "Using WebClient..."
+        $webClient = New-Object System.Net.WebClient
+        $webClient.DownloadFile($url, $destination)
+        Write-Host "Download completed." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "WebClient failed: $_" -ForegroundColor Red
+    }
+
+    # Finally, try using Invoke-WebRequest if both above methods fail
+    try {
+        Write-Log "Using Invoke-WebRequest..."
+        Invoke-WebRequest -Uri $url -OutFile $destination
+        Write-Host "Download completed." -ForegroundColor Green
+        return
+    } catch {
+        Write-Host "Invoke-WebRequest failed: $_" -ForegroundColor Red
+        Write-Host "All download methods failed." -ForegroundColor Red
     }
 }
-#vswhere to check version
-$vswhere = "$vscPath\vswhere.exe"
-$vsVersion = & $vswhere -latest -products * -property installationVersion
-Write-Host "The installed visual studio version is $vsVersion." -ForegroundColor Cyan
-#checkModules?
-Pop-Location
 
-#Unity
-Write-Host ""
-Push-Location
-$unityRecVersion = "2021.3.31f1"
-$unityPath = "C:\Program Files\Unity\Hub\Editor\$unityRecVersion\Editor\"
-$unityExecutable = "$unityPath\Unity.exe"
-$unityHubPath = "C:\Program Files\Unity Hub"
-$unityHubExecutable = "$unityHubPath\Unity Hub.exe"
-$shouldUnityBestartedAtTheEnd = $false
-#Hub
-if (Test-Path "$unityHubExecutable")
-{
-    Write-Host "$unityHubExecutable exists." -ForegroundColor Green
-    #Hub found this suggests an already started unity version 
-    if(Test-Path "$unityExecutable")
-    {
-        Write-Host "And $unityExecutable exists." -ForegroundColor Green
-    }
-    else
-    {
-        Write-Host "$unityExecutable not found." -ForegroundColor Yellow
-        $response = Read-Host "Do you want to download and install Unity 2021.3.31f1 via Unity Hub? (Y/N)"
-        if ($response -match "^[Yy]$")
-        {
-            Write-Host "Starting Unity install script... " -ForegroundColor Cyan
-            & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
-            if (Test-Path "$unityExecutable")
-            {
-                Write-Host "$unityExecutable exists." -ForegroundColor Green
-            }
-            else
-            {
-                Write-Host "$unityExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
-                Pause
-                Stop-Transcript
-                Exit 7
-            }
+function Extract-Zip {
+    param (
+        [string]$zipPath,
+        [string]$destination
+    )
+
+    Write-Log "Attempting to extract using tar..."
+    try {
+        tar -xf $zipPath -C $destination
+        Write-Log "Extraction completed using tar." -ForegroundColor Green
+    } catch {
+        Write-Log "tar extraction failed, falling back to Expand-Archive..." -ForegroundColor Yellow
+
+        # Ensure destination directory exists
+        if (!(Test-Path $destination)) {
+            New-Item -ItemType Directory -Path $destination -Force | Out-Null
         }
-        elseif ($response -match "^[Nn]$")
-        {
-            Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
-            Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
-        }
-        else
-        {
-            Write-Host "Unityversion $unityRecVersion will not be installed." -ForegroundColor Yellow
-            Write-Host "If using another Unity version please make sure the Andriod build tools/sdks are installed." -ForegroundColor Yellow
+
+        try {
+            Expand-Archive -Path $zipPath -DestinationPath $destination -Force
+            Write-Log "Extraction completed using Expand-Archive." -ForegroundColor Green
+        } catch {
+            Write-Log "Expand-Archive also failed: $_" -ForegroundColor Red
+            exit 1
         }
     }
 }
-elseif(Test-Path "$unityExecutable") #Hub dosent found but Unity version somehow? Edgecase ->Ignoring
-{
-    Write-Host "$unityExecutable found without $unityHubExecutable. Maybe Unity Hub is installed on another drive?." -ForegroundColor Yellow
 
-}
-else #This is the case expected if no unity hub / unity version installed
-{
-    Write-Host "$unityHubExecutable not found." -ForegroundColor Red
-    Write-Host "Executing Unity hub installation script ... " -ForegroundColor Yellow
-    & "$PWD\dependenciesScripts\Unity\unityHubInstaller.ps1"
-    if (Test-Path "$unityHubExecutable")
-    {
-        Write-Host "$unityHubExecutable found." -ForegroundColor Green
-        Write-Host "Starting Unity installation via Unity Hub ... " -ForegroundColor Cyan
-        & "$PWD\dependenciesScripts\Unity\unityInstaller.ps1"
-        if (Test-Path "$unityExecutable")
-        {
-            $shouldUnityBestartedAtTheEnd = $true
-            Write-Host "$unityExecutable found." -ForegroundColor Green
-        }
-        else
-        {
-            Write-Host "$unityExecutable not found. Please check the output. Exiting..." -ForegroundColor Red
-            Pause
-            Stop-Transcript
-            Exit 8
-        }
-    }
-    else
-    {
-        Write-Host "$unityHubExecutable dosent exists. Please check the output. Exiting..." -ForegroundColor Red
-        Pause
-        Stop-Transcript
-        Exit 9
-    }
 
-}
-Pop-Location
 
-Push-Location
-Write-Host ""
-if($shouldUnityBestartedAtTheEnd)
-{
-    Write-Host ""
-    Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub." -ForegroundColor Yellow
-    Write-Host "Please sign in or create an account." -ForegroundColor Yellow
-    Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
-    Write-Host "Should anything go wrong please continue with the installation. You can manually start the Unity Hub, login, and get a license later."
-    Write-Host "Press enter to continue. I'll start the Unity Hub for you."
-    Pause
-    Start-Process -RedirectStandardOutput "null" -FilePath "$unityHubExecutable"
-    Write-Host ""
-    Write-Host "Press enter to install the remaining dependencies." -ForegroundColor Cyan
-    Pause
-}
-Write-Host ""
-Write-Host "Dependency installation for editor complete." -ForegroundColor Green
-Pop-Location
+### START ###
 
-# Stop logging
-Stop-Transcript
-
+Write-Host "We're now installing software required for VIA-VR. Please ensure you have a stable internet connection." -ForegroundColor Yellow
+Write-Host "IMPORTANT: Follow all instructions carefully and confirm prompts by pressing 'Y' and Enter when asked." -ForegroundColor Yellow
+Write-Host "This process may take a while. Please do not close any pop-up windows." -ForegroundColor Yellow
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
 Pause
 
+if (-not (Check-Admin)) {
+    Write-Host "Script is not running as administrator. Restarting with administrator rights, please confirm the prompt." -ForegroundColor Yellow
+    $null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+    Pause
+    Relaunch-AsAdmin
+} else {
+    Write-Host "Script is running as administrator." -ForegroundColor Green
+    Write-Log "Script is running as administrator."
+}
 
+if (![string]::IsNullOrEmpty($WorkingDir)) {
+    Set-Location $WorkingDir
+}
+
+Write-Log "Installation process started."
+Start-Transcript -Path "C:\viavr-install-transcript.log" -Append
+
+### GIT ###
+Install-Software -Name "Git" -InstallScript {
+    & "$PWD\dependenciesScripts\Git\gitInstaller.ps1"
+
+    # Check if Git is in PATH after installation
+    $gitPath = "C:\Program Files\Git\cmd"
+    if (!(Get-Command git -ErrorAction SilentlyContinue)) {
+        Write-Log "Git not found in PATH. Adding it..."
+        [System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";$gitPath", [System.EnvironmentVariableTarget]::Machine)
+    }
+} -CheckInstalled {
+    Test-Path "C:\Program Files\Git\cmd\git.exe"
+}
+
+### NODE ###
+$nodeAvailable = $true
+Install-Software -Name "Node.js" -InstallScript {
+    & "$PWD\dependenciesScripts\Node\nodeInstaller.ps1"
+    Write-Host "Press enter to continue."
+    
+    # Add Node.js to the PATH
+    $nodePath = "C:\Program Files\nodejs"
+    if (!(Test-Path $nodePath)) {
+        Write-Host "Node.js installation directory not found at $nodePath. Ensure Node.js installed correctly." -ForegroundColor Red
+        Write-Log "Node.js not found in path after installation."
+        $global:failedInstalls += "Node.js"
+        $nodeAvailable = $false
+    }
+    else {
+        # Update PATH in the current session
+        $env:Path += ";$nodePath"
+
+        # Persist PATH update for future sessions
+        [System.Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::Machine)
+
+        # Verify installation
+        node -v
+    }
+} -CheckInstalled {
+    if (Check-Command -command "node -v") {
+        $nodeVersion = node -v 2>$null
+        if ($nodeVersion -match "^v22\.") {
+            return $true
+        } elseif ($nodeVersion) {
+            Write-Host "Detected Node.js version: $nodeVersion. Please uninstall it and rerun the installer." -ForegroundColor Red
+            $null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+            Pause
+            exit
+        }
+        return $false
+    } else {
+        return $false
+    }
+}
+
+### YARN ###
+if ($nodeAvailable) {
+    Install-Software -Name "Yarn" -InstallScript {
+        Write-Host "Yarn is not accessible. Trying to enable corepack..." -ForegroundColor Yellow
+        Write-Host "Please press enter to install yarn." -ForegroundColor Yellow
+        corepack enable
+        yarn -v
+    } -CheckInstalled {
+        Write-Host "Please press enter to continue." -ForegroundColor Yellow
+        Check-Command -command "yarn -v"
+    }
+}
+
+### Reticulum Dependencies ###
+Install-Software -Name "Reticulum Dependencies" -InstallScript {
+    Push-Location ".\plugins\viavr-reticulum\"
+    & ".\run_check_install.ps1"
+    Pop-Location
+} -CheckInstalled {
+    $false  # No reliable way to check this; always run
+}
+
+### Visual Studio ###
+Install-Software -Name "Visual Studio" -InstallScript {
+    & "$PWD\dependenciesScripts\VSC\vscInstaller.ps1"
+} -CheckInstalled {
+    Test-Path "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe"
+}
+
+### Unity Hub ###
+Install-Software -Name "Unity Hub" -InstallScript {
+    $unityHubInstaller = "$env:TEMP\UnityHubSetup.exe"
+    $unityHubURL = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnityHubSetup.exe"
+
+    # Download Unity Hub installer
+    Write-Host "Downloading Unity Hub..."
+    Download-File -url $unityHubURL -destination $unityHubInstaller
+
+    # Run the installer silently and wait for completion
+    Write-Host "Installing Unity Hub..."
+    Start-Process -FilePath $unityHubInstaller -ArgumentList "/S" -Wait
+    Write-Host "Unity Hub installation completed." -ForegroundColor Green
+} -CheckInstalled {
+    Test-Path "C:\Program Files\Unity Hub\Unity Hub.exe"
+}
+
+### Unity ###
+Install-Software -Name "Unity" -InstallScript {
+    $unityPluginsDir = "$PWD\plugins\unity"
+
+    # Ensure the directory exists
+    if (!(Test-Path $unityPluginsDir)) {
+        New-Item -ItemType Directory -Path $unityPluginsDir -Force | Out-Null
+    }
+    
+    # List of files to download
+    $filesToDownload = @(
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/AndroidPlayer.zip"; destination = "$unityPluginsDir\AndroidPlayer.zip" },
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnitySetup64-2021.3.31f1.exe"; destination = "$unityPluginsDir\UnitySetup64-2021.3.31f1.exe" },
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe"; destination = "$unityPluginsDir\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" }
+    )
+
+    # Download files
+    foreach ($file in $filesToDownload) {
+        Download-File -url $file.url -destination $file.destination
+    }
+
+    Write-Host "Installing Unity. This will take a while, please wait..."
+
+    # Install Unity Editor silently and wait for completion
+    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" -ArgumentList "/S" -Wait
+
+    # Install Android Support for Unity Editor silently and wait for completion
+    Write-Host "Installing Android support for Unity..."
+    Write-Log "Installing Android support for Unity..."
+    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" -ArgumentList "/S" -Wait
+
+    
+    # Define extraction path
+    Write-Host "Installing Android build tools for Unity..."
+    Write-Log "Installing Android build tools for Unity..."
+    $androidPlayerPath = "C:\Program Files\Unity 2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer"
+
+    # Ensure destination directory exists
+    if (!(Test-Path $androidPlayerPath)) {
+        New-Item -ItemType Directory -Path $androidPlayerPath -Force | Out-Null
+    }
+
+    # Extract AndroidPlayer.zip to the correct location and wait for completion
+    # Ensure destination directory exists
+    if (!(Test-Path $androidPlayerPath)) {
+        New-Item -ItemType Directory -Path $androidPlayerPath -Force | Out-Null
+    }
+    Extract-Zip -zipPath "$PWD\plugins\unity\AndroidPlayer.zip" -destination $androidPlayerPath
+    Write-Log "Unity installed"
+
+} -CheckInstalled {
+    Test-Path "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe"
+}
+
+### Unity License ###
+Write-Host ""
+Write-Host "For VIA-VR to work you need a Unity account and a valid license. I'll now start the Unity Hub." -ForegroundColor Yellow
+Write-Host "Please sign in or create an account. You do not have to install Unity." -ForegroundColor Yellow
+Write-Host "Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
+Write-Host "Should anything go wrong please quit Unity Hub (also righ-click it in the system tray and selct 'quit Unity Hub'). You can then manually try again to start the Unity Hub, login, and get a license."
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+Pause
+Start-Process -RedirectStandardOutput "null" -FilePath "C:\Program Files\Unity Hub\Unity Hub.exe"
+Write-Host ""
+Write-Host "Please press enter and continue once you have a valid Unity license."
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+Pause
+
+Write-Host "Starting and stopping Unity once. You don't have to do anything. You should not get any license error. If you do please check your license as mentioned above." -ForegroundColor Yellow
+Start-Process -FilePath "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe"
+Start-Sleep -Seconds 20 # Wait a few seconds (allows Unity to initialize)
+$process = Get-Process | Where-Object { $_.Path -eq "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe" }
+if ($process) {
+    Stop-Process -Id $process.Id -Force
+}
+
+### COMPLETION ###
+if ($failedInstalls.Count -gt 0) {
+    Write-Host "The following installations failed: $($failedInstalls -join ', ')" -ForegroundColor Red
+    Write-Host "Please retry running the script or manually install the missing software." -ForegroundColor Yellow
+    Write-Log "Failed installations: $($failedInstalls -join ', ')"
+}
+
+Write-Host "Installation complete. Press Enter to exit." -ForegroundColor Green
+Write-Log "Installation process completed."
+Stop-Transcript
+
+$null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
+Pause

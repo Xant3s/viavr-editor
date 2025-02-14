@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { WelcomeContainer } from './WelcomeContainer'
 import { CapturePreferencesContainer } from './CapturePreferencesContainer'
 import { TemplateRecommendationContainer } from './TemplateRecommendationContainer'
 

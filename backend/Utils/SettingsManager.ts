@@ -5,7 +5,7 @@ import { Setting_t, value_t } from '../../frontend/src/@types/Settings'
 
 export default class SettingsManager {
     private readonly settingsPath: string
-    private settings
+    private settings: any
     private settingUpdateEvents: Map<string, EventEmitter> = new Map()
     private initialized = false
 
@@ -42,7 +42,7 @@ export default class SettingsManager {
     public async setByUuid(uuid: string, newValue: value_t, settings: any = this.settings) {
         if(!this.initialized) await this.init()
         if(!this.initialized) throw new Error('SettingsManager not initialized')
-        for(const [settingName, setting] of Object.entries(settings)) {
+        for(const [, setting] of Object.entries(settings)) {
             if(typeof setting !== 'object') continue
             if(!('uuid' in (setting as any))) continue
             const s = setting as Setting_t

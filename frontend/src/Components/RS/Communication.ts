@@ -7,8 +7,7 @@ export const getTemplates = async (preferences: any) => {
         },
         body: JSON.stringify(preferences)
     });
-    const data = await response.json()
-    return data
+    return await response.json()
 
 }
 
@@ -21,7 +20,5 @@ export const getDataForAutoComplete = async () => {
             'Content-Type': 'application/json'
         }
     });
-    const data = await response.json()
-    return data
-    
+    return await response.json()
 }

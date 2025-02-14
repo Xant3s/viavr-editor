@@ -9,7 +9,6 @@ import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
 import fastFolderSizeSync = require('fast-folder-size/sync')
-import { FileUtils } from '../Utils/FileUtils'
 import SceneExporter from './SceneExporter'
 import AppUtils from '../Utils/AppUtils'
 

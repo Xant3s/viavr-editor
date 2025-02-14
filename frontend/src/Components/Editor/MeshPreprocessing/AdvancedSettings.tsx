@@ -1,5 +1,5 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
-import { Label, Pane, Switch } from 'evergreen-ui'
+import { Label, Switch } from 'evergreen-ui'
 import Typography from '@mui/material/Typography'
 import { Slider } from '@mui/material'
 import React, { useEffect, useState } from 'react'

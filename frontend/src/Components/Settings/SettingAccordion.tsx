@@ -6,7 +6,7 @@ import { SettingAccordionEvent as StyledAccordionEvent } from '../StyledComponen
 import AccordionDetails from '@mui/material/AccordionDetails'
 import {CrossIcon} from 'evergreen-ui'
 import { Box, IconButton } from '@mui/material'
-import React, { useState } from 'react';
+import React from 'react';
 import { SettingAccordionMeta as StyledAccordionMeta } from '../StyledComponents/Preferences/StyledSettings'
 
 export const SettingAccordion = ({ summary, details }) => {

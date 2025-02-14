@@ -13,7 +13,7 @@ import { PackageRegistries } from './DataStructures/PackageRegistries'
 import { UnityPackageSettingsManager } from './UnityPackageSettingsManager'
 import fs from 'fs'
 import * as fse from 'fs-extra'
-import { PathSetting, Setting_t } from '../../frontend/src/@types/Settings'
+import { Setting_t } from '../../frontend/src/@types/Settings'
 import Path from 'path'
 import { exec } from 'child_process'
 import assert = require('assert')

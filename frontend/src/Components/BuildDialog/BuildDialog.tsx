@@ -2,18 +2,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { Package } from './Package'
 import { Center, SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Button } from '../StyledComponents/Button'
-import {
-    ButtonContainer,
-    ModalBackdrop,
-    ModalContent,
-    ModalTitle
-} from '../StyledComponents/ModalWindow'
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { UnityPackageConfigurations } from './UnityPackageConfigurations'
 import { Spinner, toaster } from 'evergreen-ui'
 import { SupervisorMonitorSettings } from './SupervisorMonitorSettings'
 import { InfoSpinnerBox } from './InfoSpinnerBox'
-import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { ModalWindow } from '../Utils/UI'
 import { useTranslation } from '../../LocalizationContext'
 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { ProjectSelection } from './ProjectSelection'
 import { Spoke } from './Spoke'
 import { TabHeader } from './TabHeader'
 import { BehaviorEditor } from './BehaviorEditor/BehaviorEditor'

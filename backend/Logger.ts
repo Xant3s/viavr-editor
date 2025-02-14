@@ -3,10 +3,9 @@ import { app } from 'electron'
 import fs from 'fs'
 import * as os from 'os'
 import PreferencesManager from './Preferences/PreferencesManager'
-import { PathSetting, Setting_t, StringSetting } from '../frontend/src/@types/Settings'
+import { PathSetting, StringSetting } from '../frontend/src/@types/Settings'
 import { exec } from 'child_process'
 import ProjectManager from './ProjectManager/ProjectManager'
-import { ArticyManager } from './ArticyManager'
 
 export class Logger {
     private static instance: Logger

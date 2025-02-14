@@ -2,7 +2,6 @@ import { app } from 'electron'
 import * as child_process from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
-import net from 'net'
 import { checkPort } from './Utils/CheckPort' // Import the net module for TCP connections
 
 export default class ViavrServicesManager {

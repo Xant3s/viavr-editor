@@ -56,8 +56,7 @@ export const SettingAccordion = styled(Accordion)`
 export const SettingAccordionEvent = styled(Accordion)`
   background-color: #6c737a!important;
   color: white!important;
-  }
-  `
+`
 
 
 export const SettingAccordionMeta = styled(Accordion)`

@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron'
 import { channels } from './API'
-import { exec, spawn } from 'child_process'
+import { exec } from 'child_process'
 import AppUtils from './Utils/AppUtils'
 import {Settings} from '../frontend/src/@types/MeshPreprocessing.js'
 import path from 'path'

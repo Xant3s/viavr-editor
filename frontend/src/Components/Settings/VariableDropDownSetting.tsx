@@ -1,4 +1,4 @@
-import { Button, Select, SelectMenu } from 'evergreen-ui'
+import { Button, SelectMenu } from 'evergreen-ui'
 import { SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
 import { useEffect, useState } from 'react';
 

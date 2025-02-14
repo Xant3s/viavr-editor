@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Setting } from './Setting'
 import { value_t } from '../../@types/Settings'

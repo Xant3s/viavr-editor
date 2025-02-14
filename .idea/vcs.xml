@@ -3,5 +3,9 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/res/plugins/spoke" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/res/plugins/viavr-nearspark" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/res/plugins/viavr-reticulum" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/res/plugins/viavr-reticulum/deps/download" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/res/plugins/viavr-reticulum/deps/stream_data" vcs="Git" />
   </component>
 </project>

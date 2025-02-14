@@ -2,7 +2,6 @@ import { CapturePreferecesContainerStyle } from '../StyledComponents/Editor/Styl
 import { Button, TextInput, toaster, Combobox } from 'evergreen-ui'
 import { PreferenceLabel } from '../StyledComponents/WelcomeScreen'
 import { useEffect, useState } from 'react'
-import { getTemplates } from '../RS/Communication'
 import { getDataForAutoComplete } from '../RS/Communication'
 
 export const CapturePreferencesContainer = ({setPage, setPreferences}) => {

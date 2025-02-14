@@ -1,5 +1,5 @@
 import { ipcMain } from 'electron'
-import { execSync, spawnSync } from 'child_process'
+import { execSync } from 'child_process'
 import { channels } from './API'
 import PreferencesManager from './Preferences/PreferencesManager'
 import path from 'path'

@@ -35,7 +35,7 @@ export default class SettingsManager {
         if(!this.initialized) await this.init()
         if(!this.initialized) throw new Error('SettingsManager not initialized')
         this.settings[name] = value
-        await this.saveSettingToFile()
+        this.saveSettingToFile()
         this.settingUpdateEvents[name]?.emit('update', value)
     }
 
@@ -57,7 +57,7 @@ export default class SettingsManager {
             }
         }
 
-        await this.saveSettingToFile()
+        this.saveSettingToFile()
         this.settingUpdateEvents['anySetting']?.emit('update', undefined)   // emit update event for any setting. Systems have to load the new value themselves.
     }
 
@@ -75,7 +75,8 @@ export default class SettingsManager {
         this.settings = JSON.parse(data.toString())
     }
 
-    public async saveSettingToFile(path: string = this.settingsPath) {
-        await fs.writeFile(path, JSON.stringify(this.settings, null, 2))
+    public saveSettingToFile(path: string = this.settingsPath) {
+        if(!this.settings || Object.keys(this.settings).length === 0) return
+        fs2.writeFileSync(path, JSON.stringify(this.settings, null, 2))
     }
 }

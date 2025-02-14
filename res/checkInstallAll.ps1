@@ -327,7 +327,7 @@ Install-Software -Name "Unity" -InstallScript {
     Write-Log "Unity installed"
 
 } -CheckInstalled {
-    (Test-Path "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe") -or (Test-Path "C:\Program Files\Unity\Hub\Editor\Unity 2021.3.31f1\Editor\Unity.exe")
+    (Test-Path "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe") -or (Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe")
 }
 
 ### Unity License ###

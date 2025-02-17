@@ -1,13 +1,13 @@
 import { SettingAccordion } from '../Settings/SettingAccordion'
 import { Setting } from '../Settings/Setting'
 import { value_t } from '../../@types/Settings'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export const UnityPackageConfigurations = ({ packages }) => {
     const [packageDescriptions, setPackageDescriptions] = useState<any[]>([])
     const [visible, setVisible] = useState(true)    // used to force redraw, no other purpose
 
-    const loadPackageSettings = async () => {
+    const loadPackageSettings = useCallback(async () => {
         for(const packageDescription of packages) {
             const packageConfig = await api.invoke(api.channels.toMain.getPackageSetting, packageDescription.name)
             if(packageConfig !== undefined) {
@@ -16,7 +16,7 @@ export const UnityPackageConfigurations = ({ packages }) => {
         }
         setPackageDescriptions(packages)
         setVisible(true)
-    }
+    }, [packages])
 
     const sendUpdateToBackend = async (uuid: string, newValue: value_t) => {
         await api.invoke(api.channels.toMain.changePackageSetting, uuid, newValue)
@@ -37,11 +37,11 @@ export const UnityPackageConfigurations = ({ packages }) => {
         }
 
         init()
-    })
+    }, [packages, loadPackageSettings])
 
     const drawPackageConfig = (packageDescription) => {
         return <>
-            {(visible || true) &&
+            {(visible) &&
                 Object.entries(packageDescription['configDescription'])
                     .map(([name, setting]) => {
                         const id = packageDescription['name'] + '.' + name

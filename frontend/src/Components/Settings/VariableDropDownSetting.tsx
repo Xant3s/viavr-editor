@@ -1,6 +1,6 @@
 import { Button, SelectMenu } from 'evergreen-ui'
 import { SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react'
 
 export const VariableDropDownSetting = ({ id, uuid, label, value, onChange }) => {
     const [variables, setVariables] = useState<object[]>([])
@@ -12,14 +12,15 @@ export const VariableDropDownSetting = ({ id, uuid, label, value, onChange }) =>
         setVariables(loadedVariables || [])
     }
 
+    const updateOptions = useCallback (() => {
+        setOptions(variables.map(variable => ({ label: variable["name"], value: variable["name"] })))
+    }, [variables])
+
     useEffect(() => {
         loadVariables()
         updateOptions()
-    })
+    }, [updateOptions])
 
-    function updateOptions() {
-        setOptions(variables.map(variable => ({ label: variable["name"], value: variable["name"] })))
-    }
 
     const onSelect = (item) => {
         setSelected(item)

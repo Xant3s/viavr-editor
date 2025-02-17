@@ -70,7 +70,7 @@ export default class CustomMenu {
                     {
                         label: this.translationData[language]['menu_about'], // "About"
                         click() {
-                            shell.openExternal('https://www.hci.uni-wuerzburg.de/projects/via-vr/')
+                            shell.openExternal('https://go.uniwue.de/via-vr')
                         },
                     },
                     {

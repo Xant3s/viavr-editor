@@ -3,7 +3,7 @@
   "version": "0.3.1-nightly",
   "description": "VIA-VR Editor",
   "author": "Games Engineering Research Group, University of Wuerzburg",
-  "license": "none",
+  "license": "Apache-2.0",
   "main": "build/backend/main.js",
   "homepage": ".",
   "private": true,

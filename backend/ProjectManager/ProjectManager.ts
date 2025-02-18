@@ -8,9 +8,9 @@ import { channels } from '../API'
 import EventEmitter from 'events'
 import ProjectSettingsManager from './ProjectSettingsManager'
 import { exec } from 'child_process'
-import fastFolderSizeSync = require('fast-folder-size/sync')
 import SceneExporter from './SceneExporter'
 import AppUtils from '../Utils/AppUtils'
+import { FileUtils } from '../Utils/FileUtils'
 
 
 export default class ProjectManager {
@@ -141,7 +141,7 @@ export default class ProjectManager {
 
         await ProjectSettingsManager.getInstance().set<string>('dev.viavr.editor.version', app.getVersion())
 
-        const pwdSizeInBytes = fastFolderSizeSync(this.presentWorkingDirectory)
+        const pwdSizeInBytes = FileUtils.getFolderSize(this.presentWorkingDirectory)
         if(pwdSizeInBytes !== undefined) {
             const pwdSizeInMB = pwdSizeInBytes / 1024 / 1024
 

@@ -78,7 +78,6 @@
     "electron-reload": "^2.0.0-alpha.1",
     "evergreen-ui": "^6.10.1",
     "extract-zip": "^2.0.1",
-    "fast-folder-size": "^1.6.2",
     "flexlayout-react": "^0.7.3",
     "fs-extra": "^10.1.0",
     "jquery": "^3.6.0",

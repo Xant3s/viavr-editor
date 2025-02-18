@@ -90,7 +90,7 @@ function Download-File {
     # Try using BitsTransfer
     try {
         Write-Log "Using BitsTransfer..."
-        Start-BitsTransfer -Source $url -Destination $destination
+        Start-BitsTransfer -Source $url -Destination $destination -ErrorAction Stop
         Write-Host "Download completed." -ForegroundColor Green
         return
     } catch {

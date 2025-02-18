@@ -66,6 +66,7 @@ export default class ProjectManager {
     }
 
     private async saveSceneAndProject(){
+        this.mainWindow.send(channels.fromMain.saveProjectInProgress)
         await this.exporter.exportScene()
         await this.saveProject()
     }

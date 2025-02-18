@@ -55,6 +55,7 @@ export const channels = {
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
         spokeExportScene: 'spoke:export-scene',
+        saveProjectInProgress: 'project-manager:save-project-in-progress',
         spokeSceneSavedSuccessfully: 'spoke:scene-saved-successfully',
         spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
         spokePortTaken: 'spoke:portTaken',

@@ -58,7 +58,7 @@ else
 
 
 # Step: Downloading Node
-$nodeVersion = "v22.13.1" #https://nodejs.org/dist/
+$nodeVersion = "v22.11.0" #https://nodejs.org/dist/
 $nodeMSIPackage = "node-$nodeVersion-x64.msi"
 $nodeDownloadUrl = "https://nodejs.org/dist/$nodeVersion/$nodeMSIPackage"
 $installDir = "C:\Program Files\nodejs"

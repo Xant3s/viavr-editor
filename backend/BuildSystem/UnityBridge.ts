@@ -28,6 +28,9 @@ export default class UnityBridge {
             Logger.get().log('UnityBridge.OnPostConfiguration')
             await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.OnPostConfiguration', projectPath)
             await Logger.get().save(projectPath + '/build_log.txt')
+            Logger.get().log('UnityBridge.OnPostConfiguration')
+            await this.invokeUnityMethod('de.jmu.ge.BuildUtils.BuildMenu.BuildCommand', projectPath)
+            await Logger.get().save(projectPath + '/build_log.txt')
             // Logger.get().log('UnityBridge.ExecuteAll')
             // await this.invokeUnityMethod('de.jmu.ge.viavr.UnityBridge.Core.UnityBridge.ExecuteAll', projectPath)
         } catch (err) {

@@ -45,7 +45,7 @@
     "chai": "^5.2.0",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
-    "electron": "^34.2.0",
+    "electron": "^18.2.3",
     "electron-builder": "^25.1.8",
     "electron-reloader": "^1.2.3",
     "eslint": "^8.33.0",

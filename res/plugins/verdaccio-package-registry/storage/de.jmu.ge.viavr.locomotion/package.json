@@ -1,0 +1,62 @@
+{
+	"name": "de.jmu.ge.viavr.locomotion",
+	"versions": {
+		"0.5.3": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg"
+			},
+			"description": "This package provides an automatic Locomotion importer, that can read in settings for different movements",
+			"displayName": "Locomotion",
+			"name": "de.jmu.ge.viavr.locomotion",
+			"unity": "2021.2",
+			"unityRelease": "0f1",
+			"version": "0.5.3",
+			"hideInEditor": false,
+			"keywords": [
+				"viavr"
+			],
+			"mandatory": true,
+			"dependencies": {
+				"de.jmu.ge.spokesceneimporter": "0.3.3",
+				"de.jmu.ge.viavr.unitybridge": "0.4.0",
+				"com.unity.nuget.newtonsoft-json": "3.0.2",
+				"com.unity.xr.interaction.toolkit": "2.5.1",
+				"com.unity.inputsystem": "1.2.0",
+				"unity-com.siccity.gltfutility": "0.7.2",
+				"com.unity.render-pipelines.universal": "12.1.6"
+			},
+			"_id": "de.jmu.ge.viavr.locomotion@0.5.3",
+			"_integrity": "sha512-c5kpyHh//9jy/1bEp5P2YOsmrZvJM5u+iT+pjgS8azm5i5a++r3Yjufz8DILiGMm751mzUxlnniKbFVxtgjQPg==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.viavr.locomotion-0.5.3-fixed.tgz",
+			"_from": "file:de.jmu.ge.viavr.locomotion-0.5.3-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-c5kpyHh//9jy/1bEp5P2YOsmrZvJM5u+iT+pjgS8azm5i5a++r3Yjufz8DILiGMm751mzUxlnniKbFVxtgjQPg==",
+				"shasum": "c7cbbe4c933b9a4e2cc09c09a50c70a1e5e71323",
+				"tarball": "http://localhost:4873/de.jmu.ge.viavr.locomotion/-/de.jmu.ge.viavr.locomotion-0.5.3.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:12:41.382Z",
+		"created": "2025-08-07T11:12:41.382Z",
+		"0.5.3": "2025-08-07T11:12:41.382Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.5.3"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.viavr.locomotion-0.5.3.tgz": {
+			"shasum": "c7cbbe4c933b9a4e2cc09c09a50c70a1e5e71323",
+			"version": "0.5.3"
+		}
+	},
+	"_rev": "3-e88902ff19ec72df",
+	"_id": "de.jmu.ge.viavr.locomotion",
+	"readme": "ERROR: No README data found!"
+}

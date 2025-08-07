@@ -1,0 +1,65 @@
+{
+	"name": "de.jmu.ge.spokesceneimporter",
+	"versions": {
+		"0.3.3": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg"
+			},
+			"description": "A tool to transform binary GLTF scenes exported from Spoke into Unity scenes",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/spoke-scene-importer/-/blob/main/README.md",
+			"displayName": "Spoke Scene Importer",
+			"name": "de.jmu.ge.spokesceneimporter",
+			"unity": "2020.1",
+			"unityRelease": "0f1",
+			"version": "0.3.3",
+			"hideInEditor": false,
+			"keywords": [
+				"viavr"
+			],
+			"mandatory": true,
+			"dependencies": {
+				"de.jmu.ge.viavr.unitybridge": "0.4.0",
+				"unity-com.siccity.gltfutility": "0.7.2"
+			},
+			"samples": [
+				{
+					"displayName": "First Example",
+					"description": "A simple example demonstrating the import of two scenes",
+					"path": "Samples~/FirstExample"
+				}
+			],
+			"_id": "de.jmu.ge.spokesceneimporter@0.3.3",
+			"_integrity": "sha512-iWEdbO18cNUu8b+kLykp9QcLIeF7Or7OGcD7EeQHCHQ643FsldrioDxoewMblfcBAcp77R96yUV9jH8RklD6Tg==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.spokesceneimporter-0.3.3-fixed.tgz",
+			"_from": "file:de.jmu.ge.spokesceneimporter-0.3.3-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-iWEdbO18cNUu8b+kLykp9QcLIeF7Or7OGcD7EeQHCHQ643FsldrioDxoewMblfcBAcp77R96yUV9jH8RklD6Tg==",
+				"shasum": "e55357b59f281bb3017b49dddf8591a73176a02b",
+				"tarball": "http://localhost:4873/de.jmu.ge.spokesceneimporter/-/de.jmu.ge.spokesceneimporter-0.3.3.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:24:58.396Z",
+		"created": "2025-08-07T11:24:58.396Z",
+		"0.3.3": "2025-08-07T11:24:58.396Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.3.3"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.spokesceneimporter-0.3.3.tgz": {
+			"shasum": "e55357b59f281bb3017b49dddf8591a73176a02b",
+			"version": "0.3.3"
+		}
+	},
+	"_rev": "3-42e426956861f2ed",
+	"_id": "de.jmu.ge.spokesceneimporter",
+	"readme": "ERROR: No README data found!"
+}

@@ -1,0 +1,96 @@
+{
+	"name": "de.jmu.ge.firetriggers",
+	"versions": {
+		"0.5.0": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg",
+				"url": "https://games.uni-wuerzburg.de"
+			},
+			"description": "A set of fire triggers for Virtual Reality Exposure Therapy.",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/fire-triggers",
+			"displayName": "Fire Triggers",
+			"name": "de.jmu.ge.firetriggers",
+			"unity": "2020.1",
+			"unityRelease": "0f1",
+			"version": "0.5.0",
+			"hideInEditor": false,
+			"dependencies": {},
+			"keywords": [
+				"viavr"
+			],
+			"mandatory": false,
+			"triggers": [
+				{
+					"name": "Candle",
+					"values": [
+						"candle is off",
+						"candle is on"
+					],
+					"path": "Prefabs/Candle"
+				},
+				{
+					"name": "Fireplace",
+					"values": [
+						"fire is out",
+						"fire is small",
+						"fire is normal",
+						"fire is big",
+						"fire is out of control"
+					],
+					"path": "Prefabs/Fireplace"
+				},
+				{
+					"name": "Fireplace Fire",
+					"values": [
+						"out",
+						"small",
+						"normal",
+						"big",
+						"out of control"
+					],
+					"path": "Prefabs/Fireplace Fire"
+				},
+				{
+					"name": "Candle Flame",
+					"values": [
+						"out",
+						"on"
+					],
+					"path": "Prefabs/Candle Flame"
+				}
+			],
+			"_id": "de.jmu.ge.firetriggers@0.5.0",
+			"_integrity": "sha512-UJ/oLAyoSCD0a6KfWoIv97Ltv9cDdvS6k5dCJNfL5ovUd6MmY7WwDcH1rBmq1IIbDNoS9uqnnsc6HstciOI01A==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.firetriggers-0.5.0-fixed.tgz",
+			"_from": "file:de.jmu.ge.firetriggers-0.5.0-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-UJ/oLAyoSCD0a6KfWoIv97Ltv9cDdvS6k5dCJNfL5ovUd6MmY7WwDcH1rBmq1IIbDNoS9uqnnsc6HstciOI01A==",
+				"shasum": "cb7b915853ada96e934b7c1e6f25f554f6b5780a",
+				"tarball": "http://localhost:4873/de.jmu.ge.firetriggers/-/de.jmu.ge.firetriggers-0.5.0.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:24:54.655Z",
+		"created": "2025-08-07T11:24:54.655Z",
+		"0.5.0": "2025-08-07T11:24:54.655Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.5.0"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.firetriggers-0.5.0.tgz": {
+			"shasum": "cb7b915853ada96e934b7c1e6f25f554f6b5780a",
+			"version": "0.5.0"
+		}
+	},
+	"_rev": "3-9b7ea1b3344c345e",
+	"_id": "de.jmu.ge.firetriggers",
+	"readme": "ERROR: No README data found!"
+}

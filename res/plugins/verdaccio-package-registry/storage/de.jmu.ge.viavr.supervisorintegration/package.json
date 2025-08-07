@@ -1,0 +1,62 @@
+{
+	"name": "de.jmu.ge.viavr.supervisorintegration",
+	"versions": {
+		"0.5.3": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg"
+			},
+			"description": "VIA-VR web-based supervisor monitor Unity integration",
+			"displayName": "VIA-VR Supervisor Monitor Integration",
+			"name": "de.jmu.ge.viavr.supervisorintegration",
+			"unity": "2021.2",
+			"unityRelease": "0f1",
+			"version": "0.5.3",
+			"hideInEditor": false,
+			"keywords": [
+				"viavr-hidden"
+			],
+			"samples": [],
+			"mandatory": true,
+			"dependencies": {
+				"de.jmu.ge.logicengine": "2.0.18",
+				"de.jmu.ge.viavr.locomotion": "0.5.1",
+				"de.jmu.ge.viavr.unitybridge": "0.4.0",
+				"com.unity.renderstreaming": "3.1.0-exp.3",
+				"com.unity.textmeshpro": "3.0.6"
+			},
+			"_id": "de.jmu.ge.viavr.supervisorintegration@0.5.3",
+			"readmeFilename": "ReadMe.md",
+			"_integrity": "sha512-ii3yEZJEnPZZ4X5YHUNEmuylgWxRq+2uPFl6XhLqAeK9VbiIfSS61SqsBI3bNr222Av4Ru2BLw/d8pHMLlnTRQ==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.viavr.supervisorintegration-0.5.3-fixed.tgz",
+			"_from": "file:de.jmu.ge.viavr.supervisorintegration-0.5.3-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-ii3yEZJEnPZZ4X5YHUNEmuylgWxRq+2uPFl6XhLqAeK9VbiIfSS61SqsBI3bNr222Av4Ru2BLw/d8pHMLlnTRQ==",
+				"shasum": "5077354b33bd3281edbb41801c8459a774b949a4",
+				"tarball": "http://localhost:4873/de.jmu.ge.viavr.supervisorintegration/-/de.jmu.ge.viavr.supervisorintegration-0.5.3.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:25:03.176Z",
+		"created": "2025-08-07T11:25:03.176Z",
+		"0.5.3": "2025-08-07T11:25:03.176Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.5.3"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.viavr.supervisorintegration-0.5.3.tgz": {
+			"shasum": "5077354b33bd3281edbb41801c8459a774b949a4",
+			"version": "0.5.3"
+		}
+	},
+	"_rev": "3-944173ec37d71216",
+	"_id": "de.jmu.ge.viavr.supervisorintegration",
+	"readme": "﻿# Read me\n\n## Set up sample Scene\n\nFor the sample to work properly you need to provide the file path to the ResultScene which is also provided in the sample folder. Also the \"ResultScene\" needs to be added in the BuildSettings.\n\n## Setting up Config files\n\nFOr the automatic creation and set up of the gameObjects necessary to create the Events, you need to provide a config file in the \"Settings/de.jmu.ge.viavr.webstreaming\" folder."
+}

@@ -1,0 +1,52 @@
+{
+	"name": "unity-com.siccity.gltfutility",
+	"versions": {
+		"0.7.2": {
+			"name": "unity-com.siccity.gltfutility",
+			"displayName": "GLTFUtility",
+			"version": "0.7.2",
+			"unity": "2018.2",
+			"keywords": [
+				"glTF",
+				"import"
+			],
+			"description": "Lightweight glTF loader.",
+			"dependencies": {
+				"com.unity.nuget.newtonsoft-json": "2.0.0"
+			},
+			"_id": "unity-com.siccity.gltfutility@0.7.2",
+			"readmeFilename": "README.md",
+			"_integrity": "sha512-xJ0MXd1KkWy8HDb8mC+WXM7gErMk7qNG+XNJSeWGgq3BG3ApNXalmPMPHrnG9jxjlwdFeN3ZFoFX00z+JS0uPg==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\unity-com.siccity.gltfutility-0.7.2-fixed.tgz",
+			"_from": "file:unity-com.siccity.gltfutility-0.7.2-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-xJ0MXd1KkWy8HDb8mC+WXM7gErMk7qNG+XNJSeWGgq3BG3ApNXalmPMPHrnG9jxjlwdFeN3ZFoFX00z+JS0uPg==",
+				"shasum": "d08382ad1d26cd37067240acd347060f47bee122",
+				"tarball": "http://localhost:4873/unity-com.siccity.gltfutility/-/unity-com.siccity.gltfutility-0.7.2.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:06:15.235Z",
+		"created": "2025-08-07T11:06:15.235Z",
+		"0.7.2": "2025-08-07T11:06:15.235Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.7.2"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"unity-com.siccity.gltfutility-0.7.2.tgz": {
+			"shasum": "d08382ad1d26cd37067240acd347060f47bee122",
+			"version": "0.7.2"
+		}
+	},
+	"_rev": "3-f6cdb190f392b793",
+	"_id": "unity-com.siccity.gltfutility",
+	"readme": "[![Discord](https://img.shields.io/discord/361769369404964864.svg)](https://discord.gg/qgPrHv4)\r\n[![GitHub issues](https://img.shields.io/github/issues/Siccity/GLTFUtility.svg)](https://github.com/Siccity/GLTFUtility/issues)\r\n[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Siccity/GLTFUtility/master/LICENSE.md)\r\n\r\n## GLTFUtility\r\nAllows you to import and export glTF files during runtime and in editor.\r\nglTF is a new opensource 3d model transmission format which supports everything you'll ever need from a format in Unity.\r\n[Read more about glTF here](https://www.khronos.org/gltf/)\r\n\r\n![2019-04-01_00-46-27](https://user-images.githubusercontent.com/6402525/55296304-b2aa5880-5417-11e9-89a8-78ab540dc126.gif)\r\n![image](https://user-images.githubusercontent.com/6402525/55296353-7297a580-5418-11e9-8e76-5078680ee0d3.png)\r\n![image](https://user-images.githubusercontent.com/6402525/55296436-bd65ed00-5419-11e9-9723-31225b99450b.png)\r\n\r\n\r\n### What makes GLTFUtility different?\r\nFocusing on simplicity and ease of use, GLTFUtility aims to be an import-and-forget solution, keeping consistency with built-in functionality.\r\n\r\n### Installation\r\n<details><summary>Using Unity Package Manager (<a href=\"https://docs.unity3d.com/Manual/upm-git.html\">Help</a>)</summary>\r\n\r\n1. `\"com.siccity.gltfutility\": \"https://github.com/siccity/gltfutility.git\"`\r\n</details>\r\n<details><summary>Using git</summary>\r\n\r\n1. Get Newtonsoft.JSON from one of these sources\r\n    * Official upm package: `\"com.unity.nuget.newtonsoft-json\": \"2.0.0-preview\"`,\r\n    * Unofficial git repo: https://github.com/jilleJr/Newtonsoft.Json-for-Unity\r\n2. Clone GLTFUtility by itself or as a submodule\r\n    * Clone into your assets folder `git clone git@github.com:Siccity/GLTFUtility.git`\r\n    * Add repo as submodule `git submodule add git@github.com:Siccity/GLTFUtility.git Assets/Submodules/GLTFUtility`\r\n</details>\r\n<details><summary>Manual download</summary>\r\n\r\n1. Get [Newtonsoft.JSON](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347) from the asset store\r\n2. Download [GLTFUtility-master.zip](https://github.com/Siccity/GLTFUtility/archive/master.zip) and extract to your project assets\r\n</details>\r\n\r\n[Important notice](https://github.com/Siccity/GLTFUtility#Important-shader-note)\r\n\r\n### Features\r\n*System*\r\n- [x] Editor import\r\n- [ ] Editor export\r\n- [x] Runtime import API\r\n- [ ] Runtime export API\r\n- [x] GLTF format\r\n- [x] GLB format\r\n- [x] Multithreading\r\n- [x] URP [#75](https://github.com/Siccity/GLTFUtility/issues/75)\r\n- [ ] HDRP [#73](https://github.com/Siccity/GLTFUtility/issues/73)\r\n- [ ] LWRP\r\n\r\n*Spec*\r\n- [x] Static mesh (with submeshes)\r\n- [x] UVs (up to 8 channels)\r\n- [x] Normals\r\n- [x] Tangents\r\n- [x] Vertex colors\r\n- [x] Materials (metallic/specular, opaque/mask/blend)\r\n- [x] Textures (embedded/external)\r\n- [x] Remote textures (during async only)\r\n- [x] Rig\r\n- [ ] Avatar/Mask [#70](https://github.com/Siccity/GLTFUtility/issues/70)\r\n- [x] Animations (multiple)\r\n- [x] Morph targets (with experimental names)\r\n- [x] Cameras\r\n\r\n*Extensions*\r\n- [x] KHR_texture_transform (partial support)\r\n- [x] KHR_materials_pbrSpecularGlossiness \r\n- [ ] KHR_lights_punctual [#25](https://github.com/Siccity/GLTFUtility/issues/25)\r\n- [x] KHR_draco_mesh_compression [#27](https://github.com/Siccity/GLTFUtility/issues/27)\r\n- [x] KHR_mesh_quantization\r\n\r\n### Known issues\r\n* `ArgumentNullException: Value cannot be null` in build but not in editor.\r\n  * This is most likely due to shaders being stripped from the build. To fix this, add the GLTFUtility shaders to the Always Included Shaders list in Graphic Settings.\r\n* Draco compression does not work on iOS and UWP\r\n  * More info on [#133](https://github.com/Siccity/GLTFUtility/issues/133)\r\n\r\n### Runtime import API\r\n```cs\r\n// Single thread\r\nusing Siccity.GLTFUtility;\r\n\r\nvoid ImportGLTF(string filepath) {\r\n   GameObject result = Importer.LoadFromFile(filepath);\r\n}\r\n```\r\n```cs\r\n// Multithreaded\r\nusing Siccity.GLTFUtility;\r\n\r\nvoid ImportGLTFAsync(string filepath) {\r\n   Importer.ImportGLTFAsync(filepath, new ImportSettings(), OnFinishAsync);\r\n}\r\n\r\nvoid OnFinishAsync(GameObject result) {\r\n   Debug.Log(\"Finished importing \" + result.name);\r\n}\r\n```\r\n\r\n### Important shader note\r\nTo ensure that Unity includes the GLTFUtility shaders in builds, you must add these shaders to the 'Always Included Shaders' list.\r\n\r\n1. Open Edit -> Project Settings\r\n2. Open Graphics\r\n3. Scroll to Always Included Shaders\r\n4. Under Size, increase the value by 4 and hit Enter.\r\n5. In the Project panel, navigate to Packages/GLTFUtility/Materials/Built-in.\r\n6. In this directory are 4 .shader files.\r\n7. Drag and drop each of the 4 files into one of the 4 newly created rows in Always Included Shaders.\r\n"
+}

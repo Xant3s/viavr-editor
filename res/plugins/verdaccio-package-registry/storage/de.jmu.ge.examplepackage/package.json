@@ -1,0 +1,60 @@
+{
+	"name": "de.jmu.ge.examplepackage",
+	"versions": {
+		"0.1.0": {
+			"name": "de.jmu.ge.examplepackage",
+			"displayName": "Example Package",
+			"description": "A minimal example package showcasing how to develop custom Unity packages for use in our package registry.",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/example-package/-/blob/main/README.md",
+			"unity": "2020.1",
+			"version": "0.1.0",
+			"author": {
+				"name": "Info9 University of Würzburg",
+				"url": "https://www.hci.uni-wuerzburg.de/"
+			},
+			"publishConfig": {
+				"registry": "https://packages.samueltruman.com/"
+			},
+			"samples": [
+				{
+					"displayName": "First Sample",
+					"description": "First sample description",
+					"path": "Samples~/FirstSample"
+				}
+			],
+			"_id": "de.jmu.ge.examplepackage@0.1.0",
+			"readmeFilename": "README.md",
+			"_integrity": "sha512-YuiwTj1m2tK6Lhl5jcsy3E3E5gEUsYnl6LcNvu3sqM2ieotwNJoaWMy+ynDJc+7VCFv50oXR/rsiuVqLLwxE3g==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.examplepackage-0.1.0-fixed.tgz",
+			"_from": "file:de.jmu.ge.examplepackage-0.1.0-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-YuiwTj1m2tK6Lhl5jcsy3E3E5gEUsYnl6LcNvu3sqM2ieotwNJoaWMy+ynDJc+7VCFv50oXR/rsiuVqLLwxE3g==",
+				"shasum": "236060fc78dde422722fc4049a30d6c1b7f8a224",
+				"tarball": "http://localhost:4873/de.jmu.ge.examplepackage/-/de.jmu.ge.examplepackage-0.1.0.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:12:09.183Z",
+		"created": "2025-08-07T11:12:09.183Z",
+		"0.1.0": "2025-08-07T11:12:09.183Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.examplepackage-0.1.0.tgz": {
+			"shasum": "236060fc78dde422722fc4049a30d6c1b7f8a224",
+			"version": "0.1.0"
+		}
+	},
+	"_rev": "3-8d4b6401e066afc4",
+	"_id": "de.jmu.ge.examplepackage",
+	"readme": "# Example Package\r\n\r\nShowcasing how to develop custom Unity packages for use in our package registry"
+}

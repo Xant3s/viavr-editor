@@ -1,0 +1,207 @@
+{
+	"name": "de.jmu.ge.logicengine",
+	"versions": {
+		"2.0.20": {
+			"name": "de.jmu.ge.logicengine",
+			"version": "2.0.20",
+			"displayName": "Logic Engine",
+			"description": "The system handling the Unity side of the logic engine for the VIA-VR platform",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/de.jmu.ge.logicengine/-/blob/master/README.md",
+			"unity": "2020.1",
+			"author": {
+				"name": "Games Engineering JMU Würzburg",
+				"url": "https://games.uni-wuerzburg.de"
+			},
+			"hideInEditor": false,
+			"mandatory": true,
+			"dependencies": {
+				"de.jmu.ge.spokesceneimporter": "0.3.3",
+				"de.jmu.ge.viavr.unitybridge": "0.5.0",
+				"com.unity.nuget.newtonsoft-json": "3.0.2",
+				"com.unity.xr.core-utils": "2.0.0",
+				"com.unity.xr.interaction.toolkit": "2.2.0",
+				"unity-com.siccity.gltfutility": "0.7.2"
+			},
+			"samples": [
+				{
+					"displayName": "Example Scenes",
+					"description": "Simple Logic Engine Example Scenes",
+					"path": "Samples~/LogicEngineSampleScenes"
+				}
+			],
+			"keywords": [
+				"viavr"
+			],
+			"actions": [
+				{
+					"name": "de.jmu.ge.Logic.Runtime.ChangeColor",
+					"displayName": "Change color",
+					"parameters": [
+						{
+							"name": "gameObject",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.PlayAnimation",
+					"displayName": "Play animation",
+					"parameters": [
+						{
+							"name": "gameObject",
+							"type": "string",
+							"value": ""
+						},
+						{
+							"name": "animation",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.PlaySound",
+					"displayName": "Play sound",
+					"parameters": [
+						{
+							"name": "gameObject",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.SceneLoader",
+					"displayName": "Load next scene",
+					"parameters": []
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.ChangeVariableValue",
+					"displayName": "Change variable value",
+					"parameters": [
+						{
+							"name": "variable",
+							"type": "string",
+							"value": ""
+						},
+						{
+							"name": "newValue",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.IncrementNumberVariable",
+					"displayName": "Increment number variable",
+					"parameters": [
+						{
+							"name": "variable",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.DisableGameObjectOfEvent",
+					"displayName": "Disable object of event",
+					"parameters": []
+				}
+			],
+			"events": [
+				{
+					"name": "de.jmu.ge.Logic.Runtime.OnCollisionEvent",
+					"displayName": "On Collision",
+					"parameters": [
+						{
+							"name": "gameObject",
+							"type": "string",
+							"value": ""
+						},
+						{
+							"name": "other",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.OnGrabEvent",
+					"displayName": "On Grab",
+					"parameters": []
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.OnPlayerCollisionEvent",
+					"displayName": "On Player Collision",
+					"parameters": [
+						{
+							"name": "other",
+							"type": "string",
+							"value": ""
+						},
+						{
+							"name": "tag",
+							"type": "string",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.OnTimeElapsedEvent",
+					"displayName": "On Time Elapsed",
+					"parameters": [
+						{
+							"name": "time",
+							"type": "number",
+							"value": ""
+						}
+					]
+				},
+				{
+					"name": "de.jmu.ge.Logic.Runtime.OnTimeElapsedRepeatingEvent",
+					"displayName": "On Time Elapsed Repeating",
+					"parameters": [
+						{
+							"name": "time",
+							"type": "number",
+							"value": ""
+						}
+					]
+				}
+			],
+			"_id": "de.jmu.ge.logicengine@2.0.20",
+			"_integrity": "sha512-d5pSgijMKGn7v+s1UV/Zxs5DVvRfW4lrD3dVqXU3CSOCX09nNyjZX0KkBxNzGq1lUV7mWjdjRFZ4/P/myIr6WQ==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.logicengine-2.0.20-fixed.tgz",
+			"_from": "file:de.jmu.ge.logicengine-2.0.20-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-d5pSgijMKGn7v+s1UV/Zxs5DVvRfW4lrD3dVqXU3CSOCX09nNyjZX0KkBxNzGq1lUV7mWjdjRFZ4/P/myIr6WQ==",
+				"shasum": "d8b1932e52b3c65af718cb5d0d291b7819dcb9b6",
+				"tarball": "http://localhost:4873/de.jmu.ge.logicengine/-/de.jmu.ge.logicengine-2.0.20.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:12:32.507Z",
+		"created": "2025-08-07T11:12:32.507Z",
+		"2.0.20": "2025-08-07T11:12:32.507Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "2.0.20"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.logicengine-2.0.20.tgz": {
+			"shasum": "d8b1932e52b3c65af718cb5d0d291b7819dcb9b6",
+			"version": "2.0.20"
+		}
+	},
+	"_rev": "3-fd61162044fb23c1",
+	"_id": "de.jmu.ge.logicengine",
+	"readme": "ERROR: No README data found!"
+}

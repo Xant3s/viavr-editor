@@ -1,0 +1,63 @@
+{
+	"name": "de.jmu.ge.buildutils",
+	"versions": {
+		"0.6.9": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg",
+				"url": "https://games.uni-wuerzburg.de"
+			},
+			"description": "A set of utilities that help build Unity projects. Features include helper scripts for building from the command line, executing pre- and post-build actions, or starting the build process faster from the editor menu using predefined configurations.",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/build-utils/-/wikis/home",
+			"displayName": "Build Utils",
+			"name": "de.jmu.ge.buildutils",
+			"unity": "2020.1",
+			"unityRelease": "0f1",
+			"version": "0.6.9",
+			"hideInEditor": false,
+			"dependencies": {
+				"de.jmu.ge.viavr.unitybridge": "0.1.0",
+				"com.unity.xr.management": "4.0.1"
+			},
+			"keywords": [
+				"viavr"
+			],
+			"publishConfig": {
+				"registry": "https://packages.informatik.uni-wuerzburg.de/"
+			},
+			"mandatory": true,
+			"_id": "de.jmu.ge.buildutils@0.6.9",
+			"readmeFilename": "README.md",
+			"_integrity": "sha512-aTD1U83phYcylZEMqvBwEbcp7knU7gofZkhNTF/f8e8KH/eS8Oeyee1F6kTnbUuhkM0Svc1lS/f/dyEe1YkPAg==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.buildutils-0.6.9-fixed.tgz",
+			"_from": "file:de.jmu.ge.buildutils-0.6.9-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-aTD1U83phYcylZEMqvBwEbcp7knU7gofZkhNTF/f8e8KH/eS8Oeyee1F6kTnbUuhkM0Svc1lS/f/dyEe1YkPAg==",
+				"shasum": "e27b33970cb8308c573f1e2d4cd5b7dc7c8d86d8",
+				"tarball": "http://localhost:4873/de.jmu.ge.buildutils/-/de.jmu.ge.buildutils-0.6.9.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:08:34.047Z",
+		"created": "2025-08-07T11:08:34.047Z",
+		"0.6.9": "2025-08-07T11:08:34.047Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.6.9"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.buildutils-0.6.9.tgz": {
+			"shasum": "e27b33970cb8308c573f1e2d4cd5b7dc7c8d86d8",
+			"version": "0.6.9"
+		}
+	},
+	"_rev": "3-9522d957161676d0",
+	"_id": "de.jmu.ge.buildutils",
+	"readme": "# VIA-VR Build Utils package\r\n\r\nA set of utilities that help build Unity projects. Features include helper scripts for building from the command line, executing pre- and post-build actions, or starting the build process faster from the editor menu using predefined configurations.\r\n\r\n         \r\n## About VIA-VR\r\n\r\nThe VIA-VR project presents an innovative authoring platform designed to revolutionize Virtual Reality (VR) applications in the medical domain. At its core, this platform aims to empower medical professionals to create, modify, and implement VR experiences tailored for educational and therapeutic purposes. By significantly lowering the barriers to entry in terms of development effort and technical expertise required, VIA-VR stands at the forefront of making VR technology more accessible and applicable in healthcare settings.\r\n\r\nVIA-VR is developed by a consortium consisting of:\r\n- Games Engineering Group, Julius-Maximilians-Universität Würzburg\r\n- Human-Computer-Interaction Group, Julius-Maximilians-Universität Würzburg\r\n- Graphics & Geometry Group, Technische Universität Dortmund\r\n- Health-Technology-Ethics Group, Evangelische Hochschule Ludwigsburg\r\n- Articy Software GmbH & Co. KG, Germany\r\n\r\nThe VIA-VR project is funded by the German Federal Ministry of Education and Research (BMBF) as part of the research initiative for Human-Technology Interaction ”Digital Platforms: Interactive Assistance Systems for Humans“ (project number 16SV8444).\r\n\r\nThis repository contains a package that is part of the VIA-VR project, made by the Games Engineering Group at the Julius-Maximilians-Universität Würzburg.\r\n\r\n[Project website](https://www.hci.uni-wuerzburg.de/projects/via-vr/)\r\n\r\n\r\n\r\n## Project Status\r\n\r\nThis repository contains the codebase and resources for a completed research project. The project has reached its intended goals and objectives, and no further active development or maintenance is planned.\r\n\r\n## Contributing\r\n\r\nAs there is no active maintainer for this project, contributions are not being actively reviewed or merged. However, if you wish to extend or build upon this work, you are welcome to fork the repository and continue development on your own.\r\n\r\n\r\n## Contact\r\n\r\nProf. Dr. Sebastian von Mammen  \r\nGames Engineering Group  \r\nChair of Human-Computer Interaction  \r\nJulius-Maximilians-Universität Würzburg\r\nsebastian.von.mammen@uni-wuerzburg.de\r\n\r\n\r\n"
+}

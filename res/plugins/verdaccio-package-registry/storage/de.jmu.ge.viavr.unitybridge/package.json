@@ -1,0 +1,62 @@
+{
+	"name": "de.jmu.ge.viavr.unitybridge",
+	"versions": {
+		"0.6.0": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg"
+			},
+			"description": "Provides API used by VIA-VR Editor to talk to all VIA-VR packages.",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/via-vr-unity-bridge/-/blob/main/README.md",
+			"displayName": "VIA-VR Unity Bridge",
+			"name": "de.jmu.ge.viavr.unitybridge",
+			"unity": "2020.1",
+			"unityRelease": "0f1",
+			"version": "0.6.0",
+			"hideInEditor": false,
+			"keywords": [
+				"viavr"
+			],
+			"mandatory": true,
+			"dependencies": {},
+			"samples": [
+				{
+					"displayName": "Example Unity Package",
+					"description": "A simple example showcasing how any Unity package can be used in VIA-VR via the Unity Bridge.",
+					"path": "Samples~/SamplePackage"
+				}
+			],
+			"_id": "de.jmu.ge.viavr.unitybridge@0.6.0",
+			"_integrity": "sha512-kwVuK66xIeM4cdTbtWI0n1Rl4+pD4voDaPDaz8ilwaOKK3Z9oYVpirE6yGDT9j+wD2nalmZnpEJND4CmN7wBcw==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.viavr.unitybridge-0.6.0-fixed.tgz",
+			"_from": "file:de.jmu.ge.viavr.unitybridge-0.6.0-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-kwVuK66xIeM4cdTbtWI0n1Rl4+pD4voDaPDaz8ilwaOKK3Z9oYVpirE6yGDT9j+wD2nalmZnpEJND4CmN7wBcw==",
+				"shasum": "743cfcc3c22c97a2194741e4ee6c7a819eb03fc2",
+				"tarball": "http://localhost:4873/de.jmu.ge.viavr.unitybridge/-/de.jmu.ge.viavr.unitybridge-0.6.0.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:12:50.947Z",
+		"created": "2025-08-07T11:12:50.947Z",
+		"0.6.0": "2025-08-07T11:12:50.947Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.6.0"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.viavr.unitybridge-0.6.0.tgz": {
+			"shasum": "743cfcc3c22c97a2194741e4ee6c7a819eb03fc2",
+			"version": "0.6.0"
+		}
+	},
+	"_rev": "3-b9cd920263827493",
+	"_id": "de.jmu.ge.viavr.unitybridge",
+	"readme": "ERROR: No README data found!"
+}

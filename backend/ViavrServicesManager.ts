@@ -8,6 +8,7 @@ export default class ViavrServicesManager {
     private static instance: ViavrServicesManager
     private reticulumPSInstance: child_process.ChildProcess | null = null
     private nearsparkPSInstance: child_process.ChildProcess | null = null
+    private verdaccioPSInstance: child_process.ChildProcess | null = null
     private MAX_RETICULUM_CHECKS = 3
     private CURRENT_RETICULUM_CHECKS = 0
 
@@ -23,6 +24,7 @@ export default class ViavrServicesManager {
         
         this.startReticulum()
         this.startNearSpark()
+        this.startVerdaccio()
     }
 
     private async startReticulum() {
@@ -52,10 +54,21 @@ export default class ViavrServicesManager {
         })
     }
 
+    private startVerdaccio() {
+        const verdaccioPath = `${AppUtils.getResPath()}plugins/verdaccio-package-registry/`
+        const verdaccioCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden cd ${verdaccioPath} && npm run verdaccio`
+        console.log(verdaccioPath)
+        this.verdaccioPSInstance = child_process.spawn(verdaccioCommand, {
+            shell: true,
+            detached: true,
+            cwd: verdaccioPath,
+        })
+    }
+
     //Monitor Reticulum startup
     private async monitorReticulumService() {
         if(this.CURRENT_RETICULUM_CHECKS >= this.MAX_RETICULUM_CHECKS) {
-            console.log('Tryed to restart reticulum ' + this.MAX_RETICULUM_CHECKS + ' times. Aborting reticulum checks please try to reinstall/check Reticulum installation.')
+            console.log('Tried to restart reticulum ' + this.MAX_RETICULUM_CHECKS + ' times. Aborting reticulum checks please try to reinstall/check Reticulum installation.')
             return
         }
         this.CURRENT_RETICULUM_CHECKS++
@@ -93,6 +106,7 @@ export default class ViavrServicesManager {
     private stopAllChildProcesses() {
         this.killProcess(this.reticulumPSInstance)
         this.killProcess(this.nearsparkPSInstance)
+        this.killProcess(this.verdaccioPSInstance)
     }
     
     private killProcess(process: child_process.ChildProcess | null) {

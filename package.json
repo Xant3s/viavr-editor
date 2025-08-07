@@ -8,7 +8,7 @@
   "homepage": ".",
   "private": true,
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && npm run installSpoke && npm run installNearSpark && npm run installReticulum",
+    "postinstall": "electron-builder install-app-deps && npm run installSpoke && npm run installNearSpark && npm run installReticulum && npm run installVerdaccio",
     "postinstall:linux": "electron-builder install-app-deps && npm run installSpoke",
     "prestart": "npm run build:backend",
     "start": "concurrently --kill-others \"cross-env BROWSER=none npm run start:frontend\" \"wait-on http://localhost:3000 && npm run watch:backend\" \"wait-on http://localhost:3000 && npm run build:backend && electron .\" ",
@@ -30,7 +30,8 @@
     "runReticulumWithChecks": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_Windows_Reticulum.ps1\"",
     "runReticulum": "powershell -Command \"cd ./res/plugins/viavr-reticulum; ./run_reticulum_without_checks.ps1\"",
     "installNearSpark": "cd ./res/plugins/viavr-nearspark && npm install",
-    "runNearSpark": "cd ./res/plugins/viavr-nearspark && node app.js"
+    "runNearSpark": "cd ./res/plugins/viavr-nearspark && node app.js",
+    "installVerdaccio": "cd res/plugins/verdaccio-package-registry && npm install"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.0",

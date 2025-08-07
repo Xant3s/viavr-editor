@@ -1,0 +1,108 @@
+{
+	"name": "de.jmu.ge.gamificationutils",
+	"versions": {
+		"0.1.10": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg",
+				"url": "https://games.uni-wuerzburg.de"
+			},
+			"description": "Displays game states (scriptable objects) in a prefabricated UI.",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/gamification-utils/-/wikis/home",
+			"displayName": "Gamification Utils",
+			"name": "de.jmu.ge.gamificationutils",
+			"unity": "2020.1",
+			"unityRelease": "0f1",
+			"version": "0.1.10",
+			"hideInEditor": false,
+			"mandatory": false,
+			"dependencies": {
+				"de.jmu.ge.viavr.unitybridge": "0.6.0",
+				"de.jmu.ge.logicengine": "2.0.15"
+			},
+			"samples": [
+				{
+					"displayName": "Simple Example",
+					"description": "Simple Gamification Sample",
+					"path": "Samples~/Simple Gamification Sample"
+				}
+			],
+			"keywords": [
+				"viavr"
+			],
+			"configDescription": {
+				"labels": {
+					"value": [
+						{
+							"name": {
+								"value": "",
+								"uuid": "02c7a696-4bee-4ec2-9b9b-7d9c50ad49e9",
+								"kind": "variable",
+								"label": "Variable"
+							},
+							"fontSize": {
+								"value": "20",
+								"uuid": "a499b2d8-abd0-451b-9674-d6c8f38507b6",
+								"kind": "int",
+								"label": "Font Size"
+							},
+							"fontColor": {
+								"value": "red",
+								"uuid": "b185e84e-a3b1-4763-bfac-27201f409715",
+								"kind": "string",
+								"label": "Font Color"
+							},
+							"position": {
+								"value": "top_left",
+								"uuid": "bbf7a889-f128-4886-9f49-85b82fe8990a",
+								"kind": "dropdown",
+								"label": "Position",
+								"options": [
+									"top_left",
+									"top_right",
+									"bottom_left",
+									"bottom_right"
+								]
+							}
+						}
+					],
+					"uuid": "4cc4b44f-3978-4c45-b79f-e1e5264df7bd",
+					"kind": "list",
+					"listType": "composite",
+					"label": "UI Variables"
+				}
+			},
+			"_id": "de.jmu.ge.gamificationutils@0.1.10",
+			"_integrity": "sha512-q70xlnhNWAt200ifj3Ztj56Sxua/5bh1QSIXXMu0Td8C5JxqP4G0UbbraBHozy5pF+FrfemhDWTDDvugfYXrJw==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.gamificationutils-0.1.10-fixed.tgz",
+			"_from": "file:de.jmu.ge.gamificationutils-0.1.10-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-q70xlnhNWAt200ifj3Ztj56Sxua/5bh1QSIXXMu0Td8C5JxqP4G0UbbraBHozy5pF+FrfemhDWTDDvugfYXrJw==",
+				"shasum": "672b9219f6806ddb2227694476ffe2a3330ae3e9",
+				"tarball": "http://localhost:4873/de.jmu.ge.gamificationutils/-/de.jmu.ge.gamificationutils-0.1.10.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:12:25.482Z",
+		"created": "2025-08-07T11:12:25.482Z",
+		"0.1.10": "2025-08-07T11:12:25.482Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.1.10"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.gamificationutils-0.1.10.tgz": {
+			"shasum": "672b9219f6806ddb2227694476ffe2a3330ae3e9",
+			"version": "0.1.10"
+		}
+	},
+	"_rev": "3-e88814d0e0f8c9d7",
+	"_id": "de.jmu.ge.gamificationutils",
+	"readme": "ERROR: No README data found!"
+}

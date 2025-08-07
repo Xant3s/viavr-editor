@@ -1,0 +1,12 @@
+listen: 0.0.0.0:4873
+storage: ./storage
+max_body_size: 10000mb
+web:
+  enable: false
+packages:
+  '**':
+    access: $all
+    # publish: $authenticated
+    publish: $all
+log:
+  - {type: stdout, format: pretty, level: http}

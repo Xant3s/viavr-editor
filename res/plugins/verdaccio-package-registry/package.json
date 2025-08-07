@@ -1,0 +1,14 @@
+{
+  "name": "local",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "verdaccio": "npx verdaccio --config ./config.yaml"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "verdaccio": "^6.1.6"
+  }
+}

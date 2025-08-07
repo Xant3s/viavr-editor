@@ -1,0 +1,102 @@
+{
+	"name": "de.jmu.ge.viavravatarloader",
+	"versions": {
+		"0.2.11": {
+			"name": "de.jmu.ge.viavravatarloader",
+			"version": "0.2.11",
+			"displayName": "VIA-VR Avatar Loader",
+			"description": "Load, manage and spawn avatars. Rigged avatars can be loaded from resources, pipelined avatars (TU Dortmund) can also be loaded at runtime.",
+			"unity": "2021.3",
+			"documentationUrl": "https://gitlab2.informatik.uni-wuerzburg.de/GE/Dev/ViaVR/components/viavr-avatar-loader",
+			"author": {
+				"name": "University of Wuerzburg - HCI Group",
+				"email": "murat.yalcin@uni-wuerzburg.de",
+				"url": "http://hci.uni-wuerzburg.de/"
+			},
+			"dependencies": {
+				"de.jmu.ge.viavr.unitybridge": "0.5.0",
+				"de.jmu.ge.spokesceneimporter": "0.3.3",
+				"de.jmu.hci.realitystack.vhrl": "1.4.12-doc-experimental"
+			},
+			"keywords": [
+				"viavr"
+			],
+			"mandatory": false,
+			"configDescription": {
+				"labels": {
+					"value": [
+						{
+							"name": {
+								"value": "Playtime",
+								"uuid": "02c7a696-4bee-4ec2-9b9b-7d9c50ad49e9",
+								"kind": "string",
+								"label": "Name"
+							},
+							"fontSize": {
+								"value": "20",
+								"uuid": "a499b2d8-abd0-451b-9674-d6c8f38507b6",
+								"kind": "int",
+								"label": "Font Size"
+							},
+							"fontColor": {
+								"value": "red",
+								"uuid": "b185e84e-a3b1-4763-bfac-27201f409715",
+								"kind": "string",
+								"label": "Font Color"
+							},
+							"position": {
+								"value": "top_left",
+								"uuid": "bbf7a889-f128-4886-9f49-85b82fe8990a",
+								"kind": "dropdown",
+								"label": "Position",
+								"options": [
+									"Avatar_1",
+									"Avatar_2",
+									"Avatar_3",
+									"Avatar_4"
+								]
+							}
+						}
+					],
+					"uuid": "4cc4b44f-3978-4c45-b79f-e1e5264df7bd",
+					"kind": "list",
+					"listType": "composite",
+					"label": "Avatars"
+				}
+			},
+			"_id": "de.jmu.ge.viavravatarloader@0.2.11",
+			"readmeFilename": "README.md",
+			"_integrity": "sha512-d5+SHypMct0llmEBajD0A+mM7Ywg0YJfgz94cc4azocZ0KRUxEgnFFElwkfOgYiL770iJDdabrxoyqHanPjMGw==",
+			"_resolved": "C:\\Users\\secre\\Desktop\\tmp\\de.jmu.ge.viavravatarloader-0.2.11-fixed.tgz",
+			"_from": "file:de.jmu.ge.viavravatarloader-0.2.11-fixed.tgz",
+			"_nodeVersion": "22.11.0",
+			"_npmVersion": "10.9.2",
+			"dist": {
+				"integrity": "sha512-d5+SHypMct0llmEBajD0A+mM7Ywg0YJfgz94cc4azocZ0KRUxEgnFFElwkfOgYiL770iJDdabrxoyqHanPjMGw==",
+				"shasum": "d13c50a751f478605de63b51a933e393c5e48eaa",
+				"tarball": "http://localhost:4873/de.jmu.ge.viavravatarloader/-/de.jmu.ge.viavravatarloader-0.2.11.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2025-08-07T11:12:54.189Z",
+		"created": "2025-08-07T11:12:54.189Z",
+		"0.2.11": "2025-08-07T11:12:54.189Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "0.2.11"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"de.jmu.ge.viavravatarloader-0.2.11.tgz": {
+			"shasum": "d13c50a751f478605de63b51a933e393c5e48eaa",
+			"version": "0.2.11"
+		}
+	},
+	"_rev": "3-a70c48faa38c764f",
+	"_id": "de.jmu.ge.viavravatarloader",
+	"readme": "# viavr-avatar-loader\r\n\r\n\r\n\r\n## Avatar Loader Package for VIA-VR Editor\r\n\r\nAutomatically spawn avatars to placeholders which have specific UUID values in the scene. It uses Avatar Loader package from Reality Stack."
+}

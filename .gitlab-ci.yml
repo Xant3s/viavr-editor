@@ -21,6 +21,7 @@ docfx:
         expire_in: 1 week
     tags:
         - docker
+    when: manual
 
 deploy-documentation:
     image: alpine:latest
@@ -35,6 +36,7 @@ deploy-documentation:
         - lectures
     only:
         - master
+    when: manual
 
 lint:
   image: node:22

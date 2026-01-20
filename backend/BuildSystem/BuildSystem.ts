@@ -30,6 +30,8 @@ export default class BuildSystem {
         ipc.handle(channels.toMain.floorMapNewSvg, (_, image) => this.saveFloorMapSvg(image))
         ipc.handle(channels.toMain.floorMapGetSvg, () => this.floorMapSvg)
         ipc.handle(channels.toMain.floorMapLoadSvg, () => this.loadFloorMapSvg())
+        ipc.handle(channels.toMain.floorMapEditorConfirmClose, () => this.forceCloseFloorMapEditor())
+        ipc.handle(channels.toMain.floorMapEditorCancelClose, () => {/* Do nothing, user cancelled */ })
     }
 
     private async saveFloorMapImage(imageData: string) {
@@ -70,6 +72,17 @@ export default class BuildSystem {
 
     private async openFloorMapEditor() {
         this.floorMapEditor = this.openWindow('floor-map-editor', 1200, 800)
+        this.floorMapEditor.on('close', (e) => {
+            e.preventDefault()
+            this.floorMapEditor?.webContents.send(channels.fromMain.floorMapEditorTryClose)
+        })
+    }
+
+    private forceCloseFloorMapEditor() {
+        if (this.floorMapEditor) {
+            this.floorMapEditor.destroy()
+            this.floorMapEditor = undefined
+        }
     }
 
     private openWindow(page: string, width = 900, height = 900) {

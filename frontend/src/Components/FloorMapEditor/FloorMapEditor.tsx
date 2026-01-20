@@ -2,34 +2,60 @@ import { FC, useEffect, useState } from 'react'
 import { Button } from '../StyledComponents/Button'
 import { DrawioEditor } from './DrawioEditor'
 import { TriggerEditor } from './TriggerEditor'
+import { ModalWindow } from '../Utils/UI'
 
 export const FloorMapEditor: FC = () => {
     const [tabId, setTabId] = useState(0)
     const [floorMapAvailable, setFloorMapAvailable] = useState(false)
+    const [drawioOpen, setDrawioOpen] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
 
     const getTab = (id: number) => {
-        switch(id) {
+        switch (id) {
             case 0:
-                return <DrawioEditor onFloorMapAvailable={() => setFloorMapAvailable(true)} />
+                return <DrawioEditor onFloorMapAvailable={() => setFloorMapAvailable(true)} onDrawioStateChange={setDrawioOpen} />
             case 1:
                 return <TriggerEditor />
         }
     }
 
+    const onCloseConfirmed = async () => {
+        await api.invoke(api.channels.toMain.floorMapEditorConfirmClose)
+    }
+
     useEffect(() => {
         const loadFloorMap = async () => {
             const floorMap = await api.invoke(api.channels.toMain.floorMapLoadSvg)
-            if(floorMap !== undefined) {
+            if (floorMap !== undefined) {
                 setFloorMapAvailable(true)
             }
         }
         loadFloorMap()
-    }, [])
+
+        const onTryClose = () => {
+            if (drawioOpen) {
+                setShowModal(true)
+            } else {
+                api.invoke(api.channels.toMain.floorMapEditorConfirmClose)
+            }
+        }
+
+        const id = api.on(api.channels.fromMain.floorMapEditorTryClose, onTryClose)
+        return () => {
+            api.removeListener(api.channels.fromMain.floorMapEditorTryClose, id)
+        }
+    }, [drawioOpen])
 
     return <>
         <Header setId={setTabId} floorMapAvailable={floorMapAvailable}></Header>
         {getTab(tabId)}
+        {showModal && <ModalWindow closeModal={() => setShowModal(false)}
+            onSaveAndContinue={onCloseConfirmed}
+            onContinueWithoutSaving={onCloseConfirmed}
+            upperTitle='You have unsaved changes in the Floor Map Editor.'
+            lowerTitle='Do you really want to close the window? Unsaved changes will be lost.'
+            buttonText='Close' />}
     </>
 }
 

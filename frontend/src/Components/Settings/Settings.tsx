@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { toaster } from 'evergreen-ui'
 import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Setting } from './Setting'
 import { value_t } from '../../@types/Settings'
@@ -31,8 +32,9 @@ export const Settings = ({
         return api.invoke(loadSettingsChannel)
     }
 
-    const sendSettingUpdateToBackend = (uuid: string, newValue: value_t) => {
-        api.invoke(changeSettingChannel, uuid, newValue)
+    const sendSettingUpdateToBackend = async (uuid: string, newValue: value_t) => {
+        await api.invoke(changeSettingChannel, uuid, newValue)
+        toaster.success(translate('prefs_saved'))
     }
 
     useEffect(() => {

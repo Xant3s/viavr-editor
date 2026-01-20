@@ -157,6 +157,7 @@ export const translationsData: Record<string, Record<string, string>> = {
         "buildDialog.installExperienceToVRDevice": "Install Experience to VR Device",
         "buildDialog.checkDevice": "Check Device",
         "buildDialog.installApk": "Install APK",
+        "prefs_saved": "Preferences saved",
     },
     "de": {
         "welcome": "Willkommen",
@@ -316,5 +317,6 @@ export const translationsData: Record<string, Record<string, string>> = {
         "buildDialog.installExperienceToVRDevice": "VR Erlebnis auf VR-Gerät installieren",
         "buildDialog.checkDevice": "Gerät prüfen",
         "buildDialog.installApk": "APK installieren",
+        "prefs_saved": "Einstellungen gespeichert",
     }
 }

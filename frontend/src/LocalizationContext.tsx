@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { translationsData } from './TranslationsData'
-import { Select } from 'evergreen-ui'
+import { Select, toaster } from 'evergreen-ui'
 
 interface TranslationContextType {
     translate: (key: string) => string;
@@ -82,11 +82,13 @@ export const LanguageSelector: React.FC = () => {
         const definitiveLanguage = await api.invoke(api.channels.toMain.getDefinitiveLanguage)
         await setLanguage(definitiveLanguage as 'en' | 'de', false)
         await api.invoke(api.channels.toMain.sendNewLanguageToAllWindows, definitiveLanguage)
+        const newTranslations = translationsData[definitiveLanguage as string] || translationsData['en']
+        toaster.success(newTranslations['prefs_saved'])
     }
 
     return (
         <Select value={lang} onChange={event => handleChange(event.target.value)}
-        style={{maxWidth: '200px'}}>
+            style={{ maxWidth: '200px' }}>
             <option value="system">System default</option>
             <option value="en">English</option>
             <option value="de">German</option>

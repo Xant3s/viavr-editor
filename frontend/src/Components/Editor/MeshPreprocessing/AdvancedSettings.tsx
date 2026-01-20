@@ -38,21 +38,21 @@ export const AdvancedSettings = ({ setSettings }) => {
             details={
                 <div>
                     <SliderSetting id='percentSlider' value={percentValue} setter={setPercentValue} text={translate('target_percentage')} min={1} max={100}
-                                   tooltip={translate('target_percentage_tooltip')} />
+                        tooltip={translate('target_percentage_tooltip')} />
                     <SwitchSetting id='embedTexturesSwitch' checked={embedTextures} setter={setEmbedTextures} text={translate('embed_textures')}
-                                   tooltip={translate('embed_textures_tooltip')} />
+                        tooltip={translate('embed_textures_tooltip')} />
                     <SwitchSetting id='embedBuffersSwitch' checked={embedBuffers} setter={setEmbedBuffers} text={translate('embed_buffers')}
-                                   tooltip={translate('embed_buffers_tooltip')} />
+                        tooltip={translate('embed_buffers_tooltip')} />
                     <SwitchSetting id='noNormalMapsSwitch' checked={noNormalMaps} setter={setNoNormalMaps} text={translate('no_normal_maps')}
-                                   tooltip={translate('no_normal_maps_tooltip')} />
+                        tooltip={translate('no_normal_maps_tooltip')} />
                     <SwitchSetting id='adjustExistingNormalMapsSwitch' checked={adjustExistingNormalMaps} setter={setAdjustExistingNormalMaps} text={translate('adjust_existing_normal_maps')}
-                                   tooltip={translate('adjust_existing_normal_maps_tooltip')} />
+                        tooltip={translate('adjust_existing_normal_maps_tooltip')} />
                     <SwitchSetting id='useVertexNormalsSwitch' checked={useVertexNormals} setter={setUseVertexNormals} text={translate('use_vertex_normals')}
-                                   tooltip={translate('use_vertex_normals_tooltip')} />
+                        tooltip={translate('use_vertex_normals_tooltip')} />
                     <SliderSetting id='creaseAngleSlider' value={creaseAngle} setter={setCreaseAngle} text={translate('crease_angle')} min={1} max={150}
-                                   tooltip={translate('crease_angle_tooltip')} />
+                        tooltip={translate('crease_angle_tooltip')} />
                     <SliderSetting id='normalDeviationSlider' value={normalDeviation} setter={setNormalDeviation} text={translate('normal_deviation')} min={1} max={100}
-                                   tooltip={translate('normal_deviation_tooltip')} />
+                        tooltip={translate('normal_deviation_tooltip')} />
                 </div>
             }
         />
@@ -71,9 +71,9 @@ const SwitchSetting = ({ id, checked, setter, text, tooltip }) => {
             <span>{text}</span>
             <div>
                 <HelpOutlineIcon data-tooltip-id={`${id}-tooltip`} data-tooltip-html={tooltip} data-tooltip-place="right"
-                                 style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }} />
+                    style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }} />
             </div>
-            <Tooltip id={`${id}-tooltip`} />
+            <Tooltip id={`${id}-tooltip`} style={{ maxWidth: '300px', whiteSpace: 'normal' }} />
         </Label>
     )
 }
@@ -84,7 +84,7 @@ const SliderSetting = ({ id, value, setter, text, min, max, tooltip }) => {
             <Typography id={id} gutterBottom style={{ display: 'flex', alignItems: 'center' }}>
                 {text}: {value.toString()}
                 <HelpOutlineIcon data-tooltip-id={`${id}-tooltip`} data-tooltip-html={tooltip} data-tooltip-place="right"
-                                 style={{ color: '#006EFF', fontSize: 16, marginLeft: 10 }} />
+                    style={{ color: '#006EFF', fontSize: 16, marginLeft: 10 }} />
             </Typography>
             <div style={{ width: 200 }}>
                 <Slider
@@ -99,7 +99,7 @@ const SliderSetting = ({ id, value, setter, text, min, max, tooltip }) => {
                     aria-labelledby='non-linear-slider'
                 />
             </div>
-            <Tooltip id={`${id}-tooltip`} />
+            <Tooltip id={`${id}-tooltip`} style={{ maxWidth: '300px', whiteSpace: 'normal' }} />
         </div>
     )
 }

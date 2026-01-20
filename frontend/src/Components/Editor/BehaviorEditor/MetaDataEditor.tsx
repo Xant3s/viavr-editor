@@ -82,7 +82,7 @@ export const MetaDataEditor = ({ isActive }) => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'objectTags', tags)
     }
 
-    const loadMetas = async() => {
+    const loadMetas = async () => {
         const loadedMetas = await api.invoke(api.channels.toMain.getBuildSetting, 'metas') ?? [];
         setMetas(loadedMetas)
     }
@@ -158,7 +158,7 @@ export const MetaDataEditor = ({ isActive }) => {
                     data-tooltip-content={translate('meta_editor_tooltip_info')}
                     style={{ marginLeft: 5, fontSize: 14 }}
                 />
-                <Tooltip id="Variables" place="right" style={{ fontSize: '14px' }} />
+                <Tooltip id="Variables" place="right" style={{ fontSize: '14px', maxWidth: '300px', whiteSpace: 'normal' }} />
             </span>
         }
         details={(

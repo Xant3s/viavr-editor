@@ -8,7 +8,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
 import { useTranslation } from '../../../LocalizationContext'
 
-export type ActionSequenceComponent  = (Action | IfElse) & {id: number}
+export type ActionSequenceComponent = (Action | IfElse) & { id: number }
 
 interface Props {
     hidden: boolean
@@ -20,7 +20,7 @@ export const EventsEditor: React.FC<Props> = ({ hidden }) => {
     const [availableActions, setAvailableActions] = useState<Action[]>([])
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
     const [events, setEvents] = useState<Event[]>([])
-    
+
     const [selectedEvent, setSelectedEvent] = useState<string | undefined>()
     const [triedAddingEvent, setTriedAddingEvent] = useState<boolean>()
 
@@ -65,22 +65,22 @@ export const EventsEditor: React.FC<Props> = ({ hidden }) => {
     useEffect(() => {
         loadAvailableActions()
         loadAvailableEvents()
-        if(!hidden) {
+        if (!hidden) {
             loadSceneObjects()
             loadEventsFromBuildSettings()
         }
     }, [loadAvailableActions, loadAvailableEvents, hidden])
-    
+
     const addEvent = async (name: string) => {
         const newEvent = availableEvents.find(event => event.name === name)
-        if(newEvent === undefined) return
+        if (newEvent === undefined) return
         newEvent.id = Date.now()
         newEvent.actionSequence = []
         const newEvents = [...events, newEvent]
         setEvents(newEvents)
         await api.invoke(api.channels.toMain.setBuildSetting, 'events', newEvents)
     }
-    
+
     const removeEvent = async (id: number) => {
         const newEvents = events.filter(event => event['id'] !== id)
         setEvents(newEvents)
@@ -96,13 +96,13 @@ export const EventsEditor: React.FC<Props> = ({ hidden }) => {
     return (
         <SettingAccordion
             summary={
-                <span style={{display:'flex', alignItems:'center'}}>
-                    <span style={{margin:'0px', padding:'0px'}}>{translate('events_summary_title')}</span>
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                    <span style={{ margin: '0px', padding: '0px' }}>{translate('events_summary_title')}</span>
                     <HelpOutlineIcon
                         data-tooltip-id="Variables"
                         data-tooltip-content={translate('events_tooltip_info')}
-                        style={{ marginLeft: 5, fontSize: 14 }}/>
-                    <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
+                        style={{ marginLeft: 5, fontSize: 14 }} />
+                    <Tooltip id="Variables" place="right" style={{ fontSize: '14px', maxWidth: '300px', whiteSpace: 'normal' }} />
                 </span>
             }
             details={
@@ -116,11 +116,11 @@ export const EventsEditor: React.FC<Props> = ({ hidden }) => {
                             width="100%"
                             marginBottom={8}
                         >
-                            <EventComponent event={event} 
-                                            availableActions={availableActions} 
-                                            sceneObjects={sceneObjects} 
-                                            updateEvent={updateEvent} 
-                                            deleteEvent={() => removeEvent(event.id)}
+                            <EventComponent event={event}
+                                availableActions={availableActions}
+                                sceneObjects={sceneObjects}
+                                updateEvent={updateEvent}
+                                deleteEvent={() => removeEvent(event.id)}
                             />
                         </Pane>
                     ))}
@@ -134,11 +134,11 @@ export const EventsEditor: React.FC<Props> = ({ hidden }) => {
                         >
                             <Button>
                                 {selectedEvent || translate('events_select_event_placeholder')}
-                                <ChevronDownIcon style={{marginLeft: '2px'}} />
+                                <ChevronDownIcon style={{ marginLeft: '2px' }} />
                             </Button>
                         </SelectMenu>
                         {triedAddingEvent && !selectedEvent &&
-                            <FormHelperText style={{color:'red'}}>
+                            <FormHelperText style={{ color: 'red' }}>
                                 {translate('events_error_select_event')}
                             </FormHelperText>
                         }

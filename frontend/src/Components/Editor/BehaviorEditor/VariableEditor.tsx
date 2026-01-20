@@ -35,7 +35,7 @@ export const VariableEditor = ({ isActive }) => {
         await api.invoke(api.channels.toMain.setBuildSetting, 'variables', variables)
     }
 
-    const loadVariables = async() => {
+    const loadVariables = async () => {
         const loadedVariableObjects = await api.invoke(api.channels.toMain.getBuildSetting, 'variables') ?? []
         setVariables(loadedVariableObjects)
     }
@@ -49,42 +49,42 @@ export const VariableEditor = ({ isActive }) => {
     return (
         <SettingAccordion
             summary={
-                <span style={{display:'flex', alignItems:'center'}}>
-                    <span style={{margin:'0px', padding:'0px'}}>{translate('var_editor_summary_variables')}</span>
-                    <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={variablesTip} style={{ marginLeft: 5, fontSize: 14 }}/>
-                    <Tooltip id="Variables" place="right" style={{fontSize: '14px'}} />
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                    <span style={{ margin: '0px', padding: '0px' }}>{translate('var_editor_summary_variables')}</span>
+                    <HelpOutlineIcon data-tooltip-id="Variables" data-tooltip-content={variablesTip} style={{ marginLeft: 5, fontSize: 14 }} />
+                    <Tooltip id="Variables" place="right" style={{ fontSize: '14px', maxWidth: '300px', whiteSpace: 'normal' }} />
                 </span>
             }
             details={
                 <div>
-                    <Table style={{borderColor:'#6C737A'}}>
+                    <Table style={{ borderColor: '#6C737A' }}>
                         <Table.Head style={tableHeaderStyle}>
                             <Table.TextHeaderCell>{translate('var_editor_table_header_name')}</Table.TextHeaderCell>
                             <Table.TextHeaderCell>{translate('var_editor_table_header_type')}</Table.TextHeaderCell>
                             <Table.TextHeaderCell>{translate('var_editor_table_header_default_value')}</Table.TextHeaderCell>
                             <Table.TextHeaderCell maxWidth={'150px'}> </Table.TextHeaderCell>
                         </Table.Head>
-                        {variables.length===0 &&
+                        {variables.length === 0 &&
                             <div>
-                                <p style={{color:'#BCBEC1'}}>
+                                <p style={{ color: '#BCBEC1' }}>
                                     {translate('var_editor_no_variables_info')}<br></br>
                                     {variablesTip}
                                 </p>
                             </div>
                         }
                         <Table.Body maxHeight={'200px'} minWidth={'600px'}>
-                            {variables.map(({name, type, value}, index) => (
+                            {variables.map(({ name, type, value }, index) => (
                                 <Table.Row key={index} style={tableRowStyle}>
                                     <Table.TextCell>
                                         <TextInput
                                             name="text-input-name"
                                             placeholder={translate('var_editor_placeholder_enter_name')}
-                                            style={{width:'90%'}}
+                                            style={{ width: '90%' }}
                                             value={name}
                                             onChange={async e => {
                                                 setVariables([
                                                     ...variables.slice(0, index),
-                                                    {name: e.target.value, type: type, value: value},
+                                                    { name: e.target.value, type: type, value: value },
                                                     ...variables.slice(index + 1),
                                                 ])
                                                 await updateBuildSettings()
@@ -92,10 +92,10 @@ export const VariableEditor = ({ isActive }) => {
                                         />
                                     </Table.TextCell>
                                     <Table.TextCell>
-                                        <Select name="select-type" style={{width:'80%'}} value={type} onChange={async e => {
+                                        <Select name="select-type" style={{ width: '80%' }} value={type} onChange={async e => {
                                             setVariables([
                                                 ...variables.slice(0, index),
-                                                {name: name, type: e.target.value, value: e.target.value==='boolean'?'true':''},
+                                                { name: name, type: e.target.value, value: e.target.value === 'boolean' ? 'true' : '' },
                                                 ...variables.slice(index + 1),
                                             ])
                                             await updateBuildSettings()
@@ -117,11 +117,11 @@ export const VariableEditor = ({ isActive }) => {
                                                 name="text-input-name"
                                                 placeholder={translate('var_editor_placeholder_enter_value')}
                                                 value={value}
-                                                style={{width:'90%'}}
+                                                style={{ width: '90%' }}
                                                 onChange={async e => {
                                                     setVariables([
                                                         ...variables.slice(0, index),
-                                                        {name: name, type: type, value: e.target.value},
+                                                        { name: name, type: type, value: e.target.value },
                                                         ...variables.slice(index + 1),
                                                     ])
                                                     await updateBuildSettings()
@@ -129,12 +129,12 @@ export const VariableEditor = ({ isActive }) => {
                                             />
                                         )}
                                         {type === 'boolean' && (
-                                            
-                                            <Select style={{width:'90%' }} name="select-type" value={value} onChange={async e => {
+
+                                            <Select style={{ width: '90%' }} name="select-type" value={value} onChange={async e => {
                                                 setVariables([
-                                                ...variables.slice(0, index),
-                                                {name: name, type: type, value: e.target.value},
-                                                ...variables.slice(index + 1),
+                                                    ...variables.slice(0, index),
+                                                    { name: name, type: type, value: e.target.value },
+                                                    ...variables.slice(index + 1),
                                                 ])
                                                 await updateBuildSettings()
                                             }} required>
@@ -149,7 +149,7 @@ export const VariableEditor = ({ isActive }) => {
                                             appearance="Minimal"
                                             intent="none"
                                             onClick={() => deleteVariable(index)}
-                                            style={{color:'white', backgroundColor:'#4D535B'}}                            
+                                            style={{ color: 'white', backgroundColor: '#4D535B' }}
                                         >
                                             {translate('var_editor_delete')}
                                         </Button>
@@ -160,7 +160,7 @@ export const VariableEditor = ({ isActive }) => {
                     </Table>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
                         <Button appearance="primary" onClick={async () => {
-                            setVariables([...variables, {name: '', type: 'number', value: '0'}])
+                            setVariables([...variables, { name: '', type: 'number', value: '0' }])
                             await updateBuildSettings()
                         }}>
                             {translate('var_editor_add_variable')}

@@ -1,6 +1,6 @@
 import { Checkbox } from '../Utils/UI'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import {Tooltip} from 'react-tooltip'
+import { Tooltip } from 'react-tooltip'
 
 type ToggleFunction = (name: string) => void
 
@@ -33,9 +33,9 @@ export const Package = ({
             />
             <span title={description} style={{ paddingLeft: '10px', color: 'gray' }}>{version}</span>
             <div>
-            <HelpOutlineIcon data-tooltip-id="my-tooltip" data-tooltip-html={description} data-tooltip-place="top" style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }}/>
+                <HelpOutlineIcon data-tooltip-id="my-tooltip" data-tooltip-html={description} data-tooltip-place="top" style={{ color: '#006EFF', marginLeft: 10, fontSize: 16 }} />
             </div>
-            <Tooltip id="my-tooltip"/>
+            <Tooltip id="my-tooltip" style={{ maxWidth: '300px', whiteSpace: 'normal' }} />
         </div>
     )
 }

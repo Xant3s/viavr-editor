@@ -13,23 +13,23 @@ export const Checkbox = ({ id, checked, onChange, label, title = undefined, disa
     )
 }
 
-export function ModalWindow({ closeModal, onSaveAndContinue, onContinueWithoutSaving, upperTitle }) {
+export function ModalWindow({ closeModal, onSaveAndContinue, onContinueWithoutSaving, upperTitle, lowerTitle = undefined, buttonText = undefined }: any) {
     const { translate, language, setLanguage } = useTranslation()
 
     return (
         <ModalBackdrop>
             <ModalContent>
                 <ModalTitle>{upperTitle}</ModalTitle>
-                <ModalTitle>{translate('modalWindow_saveProjectMessage')}</ModalTitle>
+                <ModalTitle>{lowerTitle || translate('modalWindow_saveProjectMessage')}</ModalTitle>
                 <ButtonContainer>
                     <Button onClick={async () => {
                         closeModal()
                         onSaveAndContinue()
-                    }}>{translate('modalWindow_saveProjectAndContinue')}</Button>
-                    <Button onClick={() => {
+                    }}>{buttonText || translate('modalWindow_saveProjectAndContinue')}</Button>
+                    {!buttonText && <Button onClick={() => {
                         closeModal()
                         onContinueWithoutSaving()
-                    }}>{translate('modalWindow_continueWithoutSaving')}</Button>
+                    }}>{translate('modalWindow_continueWithoutSaving')}</Button>}
                     <Button onClick={() => closeModal()}>{translate('modalWindow_cancel')}</Button>
                 </ButtonContainer>
             </ModalContent>

@@ -1,6 +1,6 @@
 import { ipcRenderer } from 'electron'
 import Path from 'path'
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid'
 
 export const channels = {
     toMain: {
@@ -25,6 +25,7 @@ export const channels = {
         getBuildSetting: 'buildSettings:get',
         createNewProject: 'project-manager:create-new-project',
         openArticyEditor: 'articy:open-editor',
+        unloadProject: 'project-manager:unload-project',
         openProject: 'project-manager:open-project',
         openProjectFolder: 'project-manager:open-project-folder',
         openFloorMapEditor: 'BuildSystem:open-floor-map-editor',
@@ -54,13 +55,14 @@ export const channels = {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',
         projectCreated: 'project-manager:project-created',
         projectOpened: 'project-manager:project-opened',
+        projectUnloaded: 'project-manager:project-unloaded',
         spokeExportScene: 'spoke:export-scene',
         saveProjectInProgress: 'project-manager:save-project-in-progress',
         spokeSceneSavedSuccessfully: 'spoke:scene-saved-successfully',
         spokeProjectSavedSuccessfully: 'spoke:project-saved-successfully',
         spokePortTaken: 'spoke:portTaken',
-        externalWindowOpened:'articy:open-editor-and-disable-window',
-        externalWindowClosed:'articy:open-editor',
+        externalWindowOpened: 'articy:open-editor-and-disable-window',
+        externalWindowClosed: 'articy:open-editor',
         tryExitApplication: 'editor:try-exit',
         newLanguage: 'localization:new-language',
     },

@@ -4,13 +4,14 @@ import { LocalizationManager } from './LocalizationManager'
 export default class CustomMenu {
     private projectLoaded = false
     private articyNotOpen = true
-    
+
     private translationData = {
         "en": {
             "menu_file": "File",
             "menu_save_project": "Save Project",
             "menu_project_settings": "Project Settings",
             "menu_preferences": "Preferences",
+            "menu_back_to_main_menu": "Back to Main Menu",
             "menu_exit": "Exit",
             "menu_about": "About",
             "menu_user_manual": "User Manual",
@@ -23,6 +24,7 @@ export default class CustomMenu {
             "menu_save_project": "Projekt speichern",
             "menu_project_settings": "Projekteinstellungen",
             "menu_preferences": "Einstellungen",
+            "menu_back_to_main_menu": "Zurück zum Hauptmenü",
             "menu_exit": "Beenden",
             "menu_about": "Über",
             "menu_user_manual": "Benutzerhandbuch",
@@ -56,6 +58,12 @@ export default class CustomMenu {
                         label: this.translationData[language]['menu_preferences'], // "Preferences"
                         click: () => ipc.emit('preferences:open'),
                         enabled: this.articyNotOpen
+                    },
+                    {
+                        label: this.translationData[language]['menu_back_to_main_menu'], // "Back to Main Menu"
+                        click: () => ipc.emit('project-manager:unload-project'),
+                        id: 'UnloadProject',
+                        enabled: this.projectLoaded && this.articyNotOpen
                     },
                     {
                         label: this.translationData[language]['menu_exit'], // "Exit"
@@ -107,14 +115,19 @@ export default class CustomMenu {
         this.loadCustomMenu()
     }
 
-    public lockMenuOptionsUponArticyOpened(){
+    public lockMenuOptionsUponArticyOpened() {
         this.articyNotOpen = false
         this.loadCustomMenu()
     }
 
-    public unlockMenuOptionsUponArticyClosed(){
+    public unlockMenuOptionsUponArticyClosed() {
         this.articyNotOpen = true
         this.projectLoaded = true
+        this.loadCustomMenu()
+    }
+
+    public lockMenuOptionsUponProjectClosed() {
+        this.projectLoaded = false
         this.loadCustomMenu()
     }
 }

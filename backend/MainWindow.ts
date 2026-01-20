@@ -1,4 +1,4 @@
-import { app, BrowserWindow,  ipcMain as ipc } from 'electron'
+import { app, BrowserWindow, ipcMain as ipc } from 'electron'
 import * as path from 'path'
 import CustomMenu from './CustomMenu'
 import { loadPage } from './Utils/ElectronUtils'
@@ -33,13 +33,18 @@ export default class MainWindow {
         menu.unlockMenuOptionsUponProjectOpened()
     }
 
-    public disableMenuOptionsOnArticyOpened(){
+    public disableMenuOptionsOnProjectClosed() {
+        const menu = new CustomMenu()
+        menu.lockMenuOptionsUponProjectClosed()
+    }
+
+    public disableMenuOptionsOnArticyOpened() {
         this.send(channels.fromMain.externalWindowOpened)
         const menu = new CustomMenu()
         menu.lockMenuOptionsUponArticyOpened()
     }
 
-    public enableMenuOptionsOnArticyClosed(){
+    public enableMenuOptionsOnArticyClosed() {
         this.send(channels.fromMain.externalWindowClosed)
         const menu = new CustomMenu()
         menu.unlockMenuOptionsUponArticyClosed()
@@ -49,7 +54,7 @@ export default class MainWindow {
         MainWindow.window.webContents.send(channel, ...args)
     }
 
-    private exitApplication(){
+    private exitApplication() {
         // @ts-ignore
         MainWindow.window = null
         app.exit(0)
@@ -62,12 +67,13 @@ export default class MainWindow {
                 webSecurity: false,
                 preload: path.join(__dirname, 'preload.js'),
             },
-            title: `VIA-VR Editor ${app.getVersion()}` 
+            title: `VIA-VR Editor ${app.getVersion()}`
         })
         MainWindow.window.on("close", () => {
-            if(ProjectManager.getInstance().projectIsLoaded()) {
-                MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)}
+            if (ProjectManager.getInstance().projectIsLoaded()) {
+                MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)
             }
+        }
         )
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         loadPage(MainWindow.window, 'index')

@@ -20,9 +20,10 @@ export default class ProjectManager {
     private _projectPath!: string
     private _presentWorkingDirectory!: string
     private onProjectOpenedEvent: EventEmitter = new EventEmitter()
+    private onProjectUnloadedEvent: EventEmitter = new EventEmitter()
     private exporter!: SceneExporter
 
-    
+
     public static getInstance(): ProjectManager {
         if(!ProjectManager.instance) {
             ProjectManager.instance = new ProjectManager()
@@ -30,7 +31,7 @@ export default class ProjectManager {
         return ProjectManager.instance
     }
 
-    public init(mainWindow: MainWindow, sceneExporter : SceneExporter) {
+    public init(mainWindow: MainWindow, sceneExporter: SceneExporter) {
         this.mainWindow = mainWindow
         this.exporter = sceneExporter
     }
@@ -54,18 +55,23 @@ export default class ProjectManager {
         this.onProjectOpenedEvent.addListener('project-loaded', callback)
     }
 
+    public registerOnProjectUnloadedListener(callback: () => void) {
+        this.onProjectUnloadedEvent.addListener('project-unloaded', callback)
+    }
+
     private constructor() {
         ipc.handle(channels.toMain.createNewProject, async () => this.createNewProject())
         ipc.handle(channels.toMain.openProject, async (event, recommendedProjectPath) => this.openProjectFromFile(recommendedProjectPath))
         ipc.handle(channels.toMain.openProjectFolder, async () => this.openProjectFromFolder())
         ipc.on('project-manager:save-project', async () => this.saveSceneAndProject())
+        ipc.on('project-manager:unload-project', async () => this.unloadProject())
         ipc.handle(channels.toMain.saveProject, async () => this.saveSceneAndProject())
         ipc.on('dev:open-pwd', async () => this.openPresentWorkingDirectory())
         ipc.handle(channels.toMain.getPresentWorkingDirectory, async () => this._presentWorkingDirectory)
-        ipc.handle(channels.toMain.getSceneFileContents, async() => await this.getSceneFileContents())
+        ipc.handle(channels.toMain.getSceneFileContents, async () => await this.getSceneFileContents())
     }
 
-    private async saveSceneAndProject(){
+    private async saveSceneAndProject() {
         this.mainWindow.send(channels.fromMain.saveProjectInProgress)
         await this.exporter.exportScene()
         await this.saveProject()
@@ -132,6 +138,14 @@ export default class ProjectManager {
         this.onProjectOpenedEvent.emit('project-loaded')
         this.mainWindow.send(channels.fromMain.projectOpened)
         this.mainWindow.enableMenuOptionsOnProjectOpened()
+    }
+
+    private unloadProject() {
+        this._projectPath = ''
+        this._presentWorkingDirectory = ''
+        this.onProjectUnloadedEvent.emit('project-unloaded')
+        this.mainWindow.send(channels.fromMain.projectUnloaded)
+        this.mainWindow.disableMenuOptionsOnProjectClosed()
     }
 
     public async saveProject() {

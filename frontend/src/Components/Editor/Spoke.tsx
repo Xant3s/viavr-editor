@@ -18,8 +18,8 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
         }
         setSpokeReady(true)
         onSpokeReady()
-    }, [setSpokeReady, onSpokeReady, isTutorial]) 
-    
+    }, [setSpokeReady, onSpokeReady, isTutorial])
+
     useEffect(() => {
         if(spokeReady && isTutorial) {
             // SpokeAPI.Instance.addEventListener(SpokeAPI.Messages.fromSpoke.exitTutorial, returnToWelcomeScreen)
@@ -28,7 +28,7 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
             setIframeSrc(defaultIframeSrc)
         }
     }, [isTutorial, returnToWelcomeScreen, spokeReady])
-    
+
     useEffect(() => {
         const handle = api.on(api.channels.fromMain.spokePortTaken, () => {
             setIframeSrc(defaultIframeSrc)
@@ -38,7 +38,19 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
             api.removeListener(api.channels.fromMain.spokePortTaken, handle)
         }
     }, [])
-    
+
+    useEffect(() => {
+        const handle = api.on(api.channels.fromMain.projectUnloaded, () => {
+            setSpokeReady(false)
+            setIframeSrc(defaultIframeSrc)
+            SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.navigateToProjectsPage)
+        })
+
+        return () => {
+            api.removeListener(api.channels.fromMain.projectUnloaded, handle)
+        }
+    }, [])
+
     return <SpokeContainer id={'spoke-container'} hidden={hidden}>
         <SpokeIframe id={'iframe-spoke'} ref={el => {
             spokeIframe.current = el
@@ -49,7 +61,7 @@ export const Spoke = ({ hidden, isTutorial, onSpokeReady, returnToWelcomeScreen 
                 SpokeAPI.Instance.clearAllEventListeners()
             }
         }} title={'Spoke Editor'} src={iframeSrc}
-            style={{ display: spokeReady ? 'block' : 'none' }} 
+            style={{ display: spokeReady ? 'block' : 'none' }}
         />
 
         {!spokeReady && <CenteredSpinner />}

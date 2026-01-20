@@ -36,13 +36,13 @@ export class SpokeAPI {
             }
         }
     }
-    
+
     public addEventListener(channel: string, func: Callback) {
         const callbacks: Callback[] = SpokeAPI.Instance.events.get(channel) || []
         callbacks.push(func)
         SpokeAPI.Instance.events.set(channel, callbacks)
     }
-    
+
     public clearAllEventListeners() {
         SpokeAPI.Instance.events = new Map<string, Callback[]>()
     }
@@ -53,6 +53,7 @@ export class SpokeAPI {
             saveScene: 'viavr:export-scene',
             createScene: 'viavr:create-scene',
             abortTutorial: 'viavr:abort-tutorial',
+            navigateToProjectsPage: 'viavr:router-replace-projects',
         },
         fromSpoke: {
             projectPageSelected: 'viavr:projects-page',

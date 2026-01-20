@@ -68,11 +68,13 @@ export const Editor = () => {
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
         const id2 = api.on(api.channels.fromMain.projectOpened, onProjectSelected)
         const id3 = api.on(api.channels.fromMain.tryExitApplication, onTryingToQuit)
+        const id4 = api.on(api.channels.fromMain.projectUnloaded, returnToWelcomeScreen)
 
         return () => {
             api.removeListener(api.channels.fromMain.projectCreated, id1)
             api.removeListener(api.channels.fromMain.projectOpened, id2)
             api.removeListener(api.channels.fromMain.tryExitApplication, id3)
+            api.removeListener(api.channels.fromMain.projectUnloaded, id4)
         }
     }, [])
 
@@ -103,20 +105,20 @@ export const Editor = () => {
     return (
         <>
             <TabHeader setId={setViewID} hidden={viewID === 0} isInTutorialMode={isTutorial}
-                       returnToWelcomeScreen={returnToWelcomeScreen} />
+                returnToWelcomeScreen={returnToWelcomeScreen} />
             <WelcomeContainer hidden={viewID !== 0} startTutorial={onStartTutorial} />
             <div hidden={viewID === 0} style={{ marginBottom: '35px' }}></div>
             <MeshPreprocessing hidden={viewID !== 6} />
             <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady}
-                   returnToWelcomeScreen={returnToWelcomeScreen} />
+                returnToWelcomeScreen={returnToWelcomeScreen} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />
             <BuildDialog hidden={viewID !== 7} />
             {showModal && <ModalWindow closeModal={() => setShowModal(false)}
-                                       onSaveAndContinue={handleSaveAndContinue}
-                                       onContinueWithoutSaving={handleContinueWithoutSaving}
-                                       upperTitle='Project should be saved before closing.' />}
+                onSaveAndContinue={handleSaveAndContinue}
+                onContinueWithoutSaving={handleContinueWithoutSaving}
+                upperTitle='Project should be saved before closing.' />}
             {isExternalWindowOpen && <ArticyOverlay />}
         </>
     )

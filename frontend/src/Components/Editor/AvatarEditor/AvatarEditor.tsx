@@ -52,6 +52,7 @@ export const AvatarEditor = ({ hidden }) => {
     const deleteAvatar = async  (avatarToken: string) => {
         const newAvatars = avatars.filter(avatar => avatar.token !== avatarToken)
         setAvatars(newAvatars)
+        setQrCode('')
         await api.invoke(api.channels.toMain.deleteAvatarFromFileSystem, avatarToken)
         saveAll(newAvatars)
     }

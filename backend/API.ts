@@ -35,6 +35,8 @@ export const channels = {
         floorMapNewSvg: 'floor-map:new-svg',
         floorMapGetSvg: 'floor-map:get-svg',
         floorMapLoadSvg: 'floor-map:load-svg',
+        floorMapEditorConfirmClose: 'floor-map-editor:confirm-close',
+        floorMapEditorCancelClose: 'floor-map-editor:cancel-close',
         getSceneObjects: 'scene:get-objects',
         shareProject: 'share:project',
         downloadProjectTemplates: 'share:download-projects',
@@ -64,6 +66,7 @@ export const channels = {
         externalWindowOpened: 'articy:open-editor-and-disable-window',
         externalWindowClosed: 'articy:open-editor',
         tryExitApplication: 'editor:try-exit',
+        floorMapEditorTryClose: 'floor-map-editor:try-close',
         newLanguage: 'localization:new-language',
     },
 }

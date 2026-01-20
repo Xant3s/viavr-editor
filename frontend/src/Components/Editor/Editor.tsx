@@ -4,6 +4,7 @@ import { TabHeader } from './TabHeader'
 import { BehaviorEditor } from './BehaviorEditor/BehaviorEditor'
 import { AvatarEditor } from './AvatarEditor/AvatarEditor'
 import { Articy } from './Articy'
+import { ArticyOverlay } from './ArticyOverlay'
 import { BuildDialog } from '../BuildDialog/BuildDialog'
 import { MeshPreprocessing } from './MeshPreprocessing/MeshPreprocessing'
 import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
@@ -17,9 +18,10 @@ export const Editor = () => {
     const [showModal, setShowModal] = useState(false)
     const [isTutorial, setTutorial] = useState(false)
     const [loadSceneWhenSpokeIsReady, setLoadSceneWhenSpokeIsReady] = useState(false)
-    let sceneExport : SceneExport | null = null
-    
-    
+    const [isExternalWindowOpen, setIsExternalWindowOpen] = useState(false)
+    let sceneExport: SceneExport | null = null
+
+
     const returnToWelcomeScreen = () => {
         setViewID(0)
         setTutorial(false)
@@ -49,8 +51,9 @@ export const Editor = () => {
         SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.loadScene, sceneFileContents)
     }
 
-    const onTryingToQuit = () =>{
-        setShowModal(true)}
+    const onTryingToQuit = () => {
+        setShowModal(true)
+    }
 
     useEffect(() => {
         const onProjectSelected = async () => {
@@ -61,7 +64,7 @@ export const Editor = () => {
                 setLoadSceneWhenSpokeIsReady(true)
             }
         }
-        
+
         const id1 = api.on(api.channels.fromMain.projectCreated, onProjectSelected)
         const id2 = api.on(api.channels.fromMain.projectOpened, onProjectSelected)
         const id3 = api.on(api.channels.fromMain.tryExitApplication, onTryingToQuit)
@@ -73,24 +76,39 @@ export const Editor = () => {
         }
     }, [])
 
+    useEffect(() => {
+        const onExternalWindowOpened = () => setIsExternalWindowOpen(true)
+        const onExternalWindowClosed = () => setIsExternalWindowOpen(false)
+
+        const id1 = api.on(api.channels.fromMain.externalWindowOpened, onExternalWindowOpened)
+        const id2 = api.on(api.channels.fromMain.externalWindowClosed, onExternalWindowClosed)
+
+        return () => {
+            api.removeListener(api.channels.fromMain.externalWindowOpened, id1)
+            api.removeListener(api.channels.fromMain.externalWindowClosed, id2)
+        }
+    }, [])
+
     const handleSaveAndContinue = async () => {
         await api.invoke(api.channels.toMain.saveScene)
         await SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.saveScene)
         await api.invoke(api.channels.toMain.saveProject)
         await api.invoke(api.channels.toMain.exitApplication)
-    };
+    }
 
     const handleContinueWithoutSaving = async () => {
         await api.invoke(api.channels.toMain.exitApplication)
-    };
+    }
 
     return (
         <>
-            <TabHeader setId={setViewID} hidden={viewID === 0} isInTutorialMode={isTutorial} returnToWelcomeScreen={returnToWelcomeScreen} />
-            <WelcomeContainer hidden={viewID !== 0}  startTutorial={onStartTutorial}/>
-            <div hidden={viewID === 0} style={{marginBottom:'35px'}}></div>            
+            <TabHeader setId={setViewID} hidden={viewID === 0} isInTutorialMode={isTutorial}
+                       returnToWelcomeScreen={returnToWelcomeScreen} />
+            <WelcomeContainer hidden={viewID !== 0} startTutorial={onStartTutorial} />
+            <div hidden={viewID === 0} style={{ marginBottom: '35px' }}></div>
             <MeshPreprocessing hidden={viewID !== 6} />
-            <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady} returnToWelcomeScreen={returnToWelcomeScreen} />
+            <Spoke hidden={viewID !== 1} isTutorial={isTutorial} onSpokeReady={onSpokeReady}
+                   returnToWelcomeScreen={returnToWelcomeScreen} />
             <BehaviorEditor hidden={viewID !== 2} />
             <AvatarEditor hidden={viewID !== 3} />
             <Articy hidden={viewID !== 4} />
@@ -98,7 +116,8 @@ export const Editor = () => {
             {showModal && <ModalWindow closeModal={() => setShowModal(false)}
                                        onSaveAndContinue={handleSaveAndContinue}
                                        onContinueWithoutSaving={handleContinueWithoutSaving}
-                                       upperTitle="Project should be saved before closing."/>}
+                                       upperTitle='Project should be saved before closing.' />}
+            {isExternalWindowOpen && <ArticyOverlay />}
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, Snackbar } from '@mui/material'
+import { toaster } from 'evergreen-ui'
 import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Setting } from './Setting'
 import { value_t } from '../../@types/Settings'
@@ -23,7 +23,6 @@ export const Settings = ({
 }: SettingsProps) => {
     const { translate } = useTranslation()
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
-    const [snackbarOpen, setSnackbarOpen] = useState(false)
 
     const setPref = (key: string, value: any) => {
         setPrefs(new Map(prefs.set(key, value)))
@@ -35,7 +34,7 @@ export const Settings = ({
 
     const sendSettingUpdateToBackend = async (uuid: string, newValue: value_t) => {
         await api.invoke(changeSettingChannel, uuid, newValue)
-        setSnackbarOpen(true)
+        toaster.success(translate('prefs_saved'))
     }
 
     useEffect(() => {
@@ -51,13 +50,6 @@ export const Settings = ({
 
     const closeWindow = () => {
         window.close();
-    };
-
-    const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setSnackbarOpen(false);
     };
 
     return (
@@ -79,11 +71,6 @@ export const Settings = ({
                     {translate('settings_exit')}
                 </Button>
             </div>
-            <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-                <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-                    {translate('prefs_saved')}
-                </Alert>
-            </Snackbar>
         </StyledSettings>
     )
 }

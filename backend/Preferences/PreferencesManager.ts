@@ -5,6 +5,7 @@ import { channels } from '../API'
 import SettingsManager from '../Utils/SettingsManager'
 import { value_t } from '../../frontend/src/@types/Settings'
 import { loadPage } from '../Utils/ElectronUtils'
+import fetch from 'node-fetch'
 
 
 export default class PreferencesManager {
@@ -74,11 +75,19 @@ export default class PreferencesManager {
         if (!url || url.trim() === '') {
             return { reachable: false, error: 'empty' }
         }
+        const controller = new AbortController()
+        const timeout = setTimeout(() => {
+            controller.abort()
+        }, 5000)
+
         try {
-            const response = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(5000) })
-            return { reachable: response.ok }
+            await fetch(url, { method: 'GET', signal: controller.signal })
+            return { reachable: true }
         } catch (e) {
+            console.warn(`Package registry check failed for ${url}:`, e)
             return { reachable: false, error: 'unreachable' }
+        } finally {
+            clearTimeout(timeout)
         }
     }
 }

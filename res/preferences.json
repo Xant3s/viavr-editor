@@ -30,13 +30,15 @@
           "value": "http://localhost:4873",
           "label": "Package registry URL",
           "uuid": "c703f3c4-7d52-495b-bd41-0fb2aae1b95e",
-          "kind": "string"
+          "kind": "string",
+          "required": true
         },
         "packageRegistryName": {
           "value": "Local Package Registry",
           "label": "Package registry name",
           "uuid": "79891996-c104-456f-8d11-3a8eba22130c",
-          "kind": "string"
+          "kind": "string",
+          "required": true
         },
         "packageRegistryScopes": {
           "value": [

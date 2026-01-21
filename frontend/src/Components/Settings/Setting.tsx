@@ -13,9 +13,9 @@ import { VariableDropDownSetting } from './VariableDropDownSetting'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export const Setting = ({
-                            settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {
+    settingKey, setting, updateCallback = (uuid: string, newValue: value_t) => {
     },
-                        }) => {
+}) => {
     const [value, setValue] = useState<value_t>()
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export const Setting = ({
 
     const updateSetting = (uuid: string, newValue: value_t) => {
         const isComposite = setting.kind === 'composite' || (setting.kind === 'list' && setting.listType === 'composite')
-        if(!isComposite) setValue(newValue)
+        if (!isComposite) setValue(newValue)
         updateCallback(uuid, newValue)
     }
 
@@ -32,35 +32,35 @@ export const Setting = ({
         const key = `${keyPrefix}-${settingKey}`
         value = value ?? setting.value
 
-        switch(setting.kind) {
+        switch (setting.kind) {
             case 'string':
                 return <StringSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
-                                      onChange={onChange} />
+                    onChange={onChange} required={setting.required} />
             case 'boolean':
                 return <BoolSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
-                                    onChange={onChange} />
+                    onChange={onChange} />
             case 'int':
                 return <IntSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
-                                   onChange={onChange} min={setting.min} max={setting.max} />
+                    onChange={onChange} min={setting.min} max={setting.max} />
             case 'float':
                 return <FloatSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
-                                     onChange={onChange} min={setting.min} max={setting.max} />
+                    onChange={onChange} min={setting.min} max={setting.max} />
             case 'path':
                 return <PathSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
-                                    onChange={onChange} />
+                    onChange={onChange} />
             case 'dropdown':
                 return <DropDownSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label}
-                                        value={value} onChange={onChange} options={setting.options} />
+                    value={value} onChange={onChange} options={setting.options} />
             case 'composite':
                 return <CompositeSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label}
-                                         value={value} onChange={onChange} createPrefComponent={createSetting} />
+                    value={value} onChange={onChange} createPrefComponent={createSetting} />
             case 'list':
                 return <ListSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label} value={value}
-                                    listType={setting.listType} onChange={onChange}
-                                    createPrefComponent={createSetting} />
+                    listType={setting.listType} onChange={onChange}
+                    createPrefComponent={createSetting} />
             case 'variable':
                 return <VariableDropDownSetting id={settingKey} uuid={setting.uuid} key={key} label={setting.label}
-                                    value={value} onChange={onChange} />
+                    value={value} onChange={onChange} />
         }
     }
 

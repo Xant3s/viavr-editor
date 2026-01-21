@@ -158,6 +158,7 @@ export const translationsData: Record<string, Record<string, string>> = {
         "buildDialog.checkDevice": "Check Device",
         "buildDialog.installApk": "Install APK",
         "prefs_saved": "Preferences saved",
+        "prefs_field_required": "This field is required",
     },
     "de": {
         "welcome": "Willkommen",
@@ -318,5 +319,6 @@ export const translationsData: Record<string, Record<string, string>> = {
         "buildDialog.checkDevice": "Gerät prüfen",
         "buildDialog.installApk": "APK installieren",
         "prefs_saved": "Einstellungen gespeichert",
+        "prefs_field_required": "Dieses Feld ist erforderlich",
     }
 }

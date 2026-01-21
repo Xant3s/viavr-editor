@@ -23,6 +23,7 @@ export const VariableDropdownSetting_typeName = 'variable'
 interface Setting {
     label: string
     uuid: string
+    required?: boolean
 }
 
 export interface StringSetting extends Setting {

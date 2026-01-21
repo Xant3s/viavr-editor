@@ -12,7 +12,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
     const updateSetting = (listIndex: number, newValue: value_t, uuidOverride: string | undefined = undefined) => {
         // Composites use the uuid from the nested setting, other lists use the uuid from the list setting itself
         const id = uuidOverride !== undefined ? uuidOverride : uuid
-        if(listType === 'composite') {
+        if (listType === 'composite') {
             onChange(id, newValue)
         } else {
             const newVal = [...value]
@@ -21,30 +21,30 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
         }
     }
 
-    const createListEntry = (listIndex: number, value) => {        
-        switch(listType) {
+    const createListEntry = (listIndex: number, value) => {
+        switch (listType) {
             case 'string':
                 return <StringSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value}
-                                      onChange={(_, newValue) => updateSetting(listIndex, newValue)} />
+                    onChange={(_, newValue) => updateSetting(listIndex, newValue)} />
             case 'int':
                 return <IntSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value}
-                                   onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined}
-                                   max={undefined} />
+                    onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined}
+                    max={undefined} />
             case 'float':
                 return <FloatSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value}
-                                     onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined}
-                                     max={undefined} />
+                    onChange={(_, newValue) => updateSetting(listIndex, newValue)} min={undefined}
+                    max={undefined} />
             case 'composite':
                 return <CompositeSetting id={`${id}-${listIndex}`} uuid={undefined} label={undefined} value={value}
-                                         onChange={(uuid, newValue) => updateSetting(listIndex, newValue, uuid)}
-                                         createPrefComponent={createPrefComponent} />
+                    onChange={(uuid, newValue) => updateSetting(listIndex, newValue, uuid)}
+                    createPrefComponent={createPrefComponent} />
         }
     }
 
     const addListItem = () => {
         let newValue = [...value]
-        if(listType === 'composite') {
-            if(newValue.length === 0) {
+        if (listType === 'composite') {
+            if (newValue.length === 0) {
                 console.error('ListPreference: Cannot add item to empty list')
                 return
             }
@@ -57,6 +57,9 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
     }
 
     const removeListItem = (index: number) => {
+        if (value.length <= 1) {
+            return // Prevent removing the last item
+        }
         const newValue = [...value]
         newValue.splice(index, 1)
         onChange(uuid, newValue)
@@ -78,7 +81,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
                     value.map((item, index) => (
                         <SettingListEntry key={index} style={{ marginBottom: '0', marginTop: '0' }}>
                             <div>{createListEntry(index, item)}</div>
-                            { value.length > 1 && 
+                            {value.length > 1 &&
                                 <div style={{ display: 'inline-flex', alignItems: 'center' }}>
                                     <RemoveButton onClick={() => removeListItem(index)} />
                                 </div>

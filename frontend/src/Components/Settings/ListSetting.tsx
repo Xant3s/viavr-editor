@@ -6,9 +6,12 @@ import { StringSetting } from './StringSetting'
 import { FloatSetting, IntSetting } from './NumberPreference'
 import { CompositeSetting } from './CompositeSetting'
 import { value_t } from '../../@types/Settings'
+import { useTranslation } from '../../LocalizationContext'
 
 
 export const ListSetting = ({ id, uuid, label, value, listType, onChange, createPrefComponent }) => {
+    const { translate } = useTranslation()
+
     const updateSetting = (listIndex: number, newValue: value_t, uuidOverride: string | undefined = undefined) => {
         // Composites use the uuid from the nested setting, other lists use the uuid from the list setting itself
         const id = uuidOverride !== undefined ? uuidOverride : uuid
@@ -89,7 +92,7 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
                         </SettingListEntry>
                     ))
                 }
-                <Button id={`btn-add-${id}`} onClick={addListItem} style={{ marginLeft: 20, width: '20%' }}>Add</Button>
+                <Button id={`btn-add-${id}`} onClick={addListItem} style={{ marginLeft: 20, width: 'fit-content' }}>{translate('settings_add')}</Button>
             </div>
         </>
     )

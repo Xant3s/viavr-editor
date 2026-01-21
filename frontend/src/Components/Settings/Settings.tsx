@@ -51,10 +51,6 @@ export const Settings = ({
         loadInitialValues()
     })
 
-    const closeWindow = () => {
-        window.close();
-    };
-
     return (
         <StyledSettings>
             <h1>{title}</h1>
@@ -69,11 +65,6 @@ export const Settings = ({
                             updateCallback={sendSettingUpdateToBackend} />))
                 }
             </SettingsContainer>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#15171B' }}>
-                <Button style={{ fontSize: '18px' }} onClick={closeWindow}>
-                    {translate('settings_exit')}
-                </Button>
-            </div>
         </StyledSettings>
     )
 }

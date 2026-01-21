@@ -15,7 +15,7 @@ export default class PreferencesManager {
 
 
     public static getInstance(): PreferencesManager {
-        if(!PreferencesManager.instance) {
+        if (!PreferencesManager.instance) {
             PreferencesManager.instance = new PreferencesManager()
         }
         return PreferencesManager.instance
@@ -31,6 +31,7 @@ export default class PreferencesManager {
         ipc.handle(channels.toMain.changePreference, (_, uuid: string, value: value_t) => this.updatePreference(uuid, value))
         ipc.handle(channels.toMain.requestPreference, (_, name) => this.settingsManager.get(name))
         ipc.handle(channels.toMain.requestPreferences, () => this.settingsManager.getAll())
+        ipc.handle(channels.toMain.checkPackageRegistryReachable, (_, url: string) => this.checkPackageRegistryReachable(url))
         app.on('quit', () => this.settingsManager.saveSettingToFile())
     }
 
@@ -67,5 +68,17 @@ export default class PreferencesManager {
             },
         })
         loadPage(this.window, 'preferences')
+    }
+
+    public async checkPackageRegistryReachable(url: string): Promise<{ reachable: boolean, error?: string }> {
+        if (!url || url.trim() === '') {
+            return { reachable: false, error: 'empty' }
+        }
+        try {
+            const response = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(5000) })
+            return { reachable: response.ok }
+        } catch (e) {
+            return { reachable: false, error: 'unreachable' }
+        }
     }
 }

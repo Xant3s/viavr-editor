@@ -11,9 +11,12 @@ import { SpokeAPI } from '../../SpokeEditor/SpokeAPI'
 import { SceneExport } from '../../SpokeEditor/SceneExport'
 import { ModalWindow } from '../Utils/UI'
 import { WelcomeContainer } from './WelcomeContainer'
+import { useTranslation } from '../../LocalizationContext'
+import { toaster } from 'evergreen-ui'
 
 
 export const Editor = () => {
+    const { translate } = useTranslation()
     const [viewID, setViewID] = useState(0)
     const [showModal, setShowModal] = useState(false)
     const [isTutorial, setTutorial] = useState(false)
@@ -35,7 +38,7 @@ export const Editor = () => {
 
     const onSpokeReady = async () => {
         sceneExport = sceneExport || new SceneExport()  // ensures there is only one instance of SceneExport
-        if(loadSceneWhenSpokeIsReady) {
+        if (loadSceneWhenSpokeIsReady) {
             setLoadSceneWhenSpokeIsReady(false)
             await loadScene()
         }
@@ -43,7 +46,7 @@ export const Editor = () => {
 
     const loadScene = async () => {
         const sceneFileContents = await api.invoke(api.channels.toMain.getSceneFileContents)
-        if(sceneFileContents === '') {
+        if (sceneFileContents === '') {
             console.log('No scene to load. Creating a new one')
             SpokeAPI.Instance.postMessage(SpokeAPI.Messages.toSpoke.createScene)
             return
@@ -56,9 +59,46 @@ export const Editor = () => {
     }
 
     useEffect(() => {
+        const checkPackageRegistryOnProjectLoad = async () => {
+            try {
+                const prefs = await api.invoke(api.channels.toMain.requestPreferences) as [string, any][]
+
+                // Get the current language from preferences for correct translation
+                const langPref = prefs.find(p => p[0] === 'dev.language')
+                let lang = langPref?.[1]?.value || 'en'
+                if (lang === 'unknown' || lang === 'system') {
+                    lang = await api.invoke(api.channels.toMain.detectSystemLanguage) || 'en'
+                }
+                const { translationsData } = await import('../../TranslationsData')
+                const translations = translationsData[lang] || translationsData['en']
+                const localTranslate = (key: string) => translations[key] || key
+
+                const packageRegistriesPref = prefs.find(p => p[0] === 'packageRegistries')
+                if (packageRegistriesPref) {
+                    const registries = packageRegistriesPref[1].value as any[]
+                    for (const registry of registries) {
+                        const url = registry.packageRegistryUrl?.value
+                        if (url) {
+                            const result = await api.invoke(api.channels.toMain.checkPackageRegistryReachable, url) as { reachable: boolean, error?: string }
+                            if (!result.reachable) {
+                                if (result.error === 'empty') {
+                                    toaster.warning(localTranslate('prefs_registry_empty'), { duration: 8 })
+                                } else {
+                                    toaster.warning(localTranslate('prefs_registry_unreachable').replace('{url}', url), { duration: 8 })
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('Failed to check package registry reachability:', e)
+            }
+        }
+
         const onProjectSelected = async () => {
             setViewID(1)
-            if(SpokeAPI.Instance.IsReady) {
+            checkPackageRegistryOnProjectLoad()
+            if (SpokeAPI.Instance.IsReady) {
                 await loadScene()
             } else {
                 setLoadSceneWhenSpokeIsReady(true)

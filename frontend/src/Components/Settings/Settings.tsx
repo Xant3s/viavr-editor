@@ -11,6 +11,7 @@ export declare interface SettingsProps {
     loadSettingsChannel: string,
     changeSettingChannel: string,
     registerUpdateCallbacksFromBackend?: (setPref) => void,
+    onSettingChange?: (uuid: string, newValue: value_t) => void,
     children?: React.ReactNode,
 }
 
@@ -19,6 +20,7 @@ export const Settings = ({
     loadSettingsChannel,
     changeSettingChannel,
     registerUpdateCallbacksFromBackend,
+    onSettingChange,
     children
 }: SettingsProps) => {
     const { translate } = useTranslation()
@@ -35,6 +37,7 @@ export const Settings = ({
     const sendSettingUpdateToBackend = async (uuid: string, newValue: value_t) => {
         await api.invoke(changeSettingChannel, uuid, newValue)
         toaster.success(translate('prefs_saved'))
+        onSettingChange?.(uuid, newValue)
     }
 
     useEffect(() => {

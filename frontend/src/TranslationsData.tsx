@@ -159,6 +159,8 @@ export const translationsData: Record<string, Record<string, string>> = {
         "buildDialog.installApk": "Install APK",
         "prefs_saved": "Preferences saved",
         "prefs_field_required": "This field is required",
+        "prefs_registry_empty": "Package registry URL is empty. Please check your Preferences.",
+        "prefs_registry_unreachable": "Package registry at {url} is not reachable. Please verify the URL in Preferences or check your network connection.",
     },
     "de": {
         "welcome": "Willkommen",
@@ -320,5 +322,7 @@ export const translationsData: Record<string, Record<string, string>> = {
         "buildDialog.installApk": "APK installieren",
         "prefs_saved": "Einstellungen gespeichert",
         "prefs_field_required": "Dieses Feld ist erforderlich",
+        "prefs_registry_empty": "Die Paketregistrierungs-URL ist leer. Bitte überprüfen Sie Ihre Einstellungen.",
+        "prefs_registry_unreachable": "Das Paketregister unter {url} ist nicht erreichbar. Bitte überprüfen Sie die URL in den Einstellungen oder Ihre Netzwerkverbindung.",
     }
 }

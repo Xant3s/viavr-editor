@@ -52,6 +52,7 @@ export const channels = {
         sendNewLanguageToAllWindows: 'localization:broadcast-language',
         adbGetDeviceConnected: 'adb:get-device-connected',
         adbInstallApk: 'adb:install-apk',
+        checkPackageRegistryReachable: 'preferences:check-package-registry-reachable',
     },
     fromMain: {
         preferenceChangedFromBackendUnityPath: 'preferences:preference-changed-from-backend-unityPath',

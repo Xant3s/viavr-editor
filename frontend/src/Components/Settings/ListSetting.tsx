@@ -82,14 +82,26 @@ export const ListSetting = ({ id, uuid, label, value, listType, onChange, create
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {
                     value.map((item, index) => (
-                        <SettingListEntry key={index} style={{ marginBottom: '0', marginTop: '0' }}>
-                            <div>{createListEntry(index, item)}</div>
-                            {value.length > 1 &&
-                                <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                        <div key={index} style={{
+                            position: 'relative',
+                            marginBottom: listType === 'composite' ? '15px' : '0',
+                            paddingBottom: listType === 'composite' ? '10px' : '0',
+                            borderBottom: listType === 'composite' && index < value.length - 1 ? '1px solid #666' : 'none'
+                        }}>
+                            {value.length > 1 && listType === 'composite' && (
+                                <div style={{ position: 'absolute', top: 0, right: 20 }}>
                                     <RemoveButton onClick={() => removeListItem(index)} />
                                 </div>
-                            }
-                        </SettingListEntry>
+                            )}
+                            <SettingListEntry style={{ marginBottom: '0', marginTop: '0' }}>
+                                <div style={{ flex: 1 }}>{createListEntry(index, item)}</div>
+                                {value.length > 1 && listType !== 'composite' && (
+                                    <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                                        <RemoveButton onClick={() => removeListItem(index)} />
+                                    </div>
+                                )}
+                            </SettingListEntry>
+                        </div>
                     ))
                 }
                 <Button id={`btn-add-${id}`} onClick={addListItem} style={{ marginLeft: 20, width: 'fit-content' }}>{translate('settings_add')}</Button>

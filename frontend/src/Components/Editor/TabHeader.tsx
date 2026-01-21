@@ -6,6 +6,7 @@ import { useTranslation } from '../../LocalizationContext'
 
 interface props {
     setId: (id: number) => void
+    currentViewId: number
     hidden: boolean
     isInTutorialMode: boolean
     returnToWelcomeScreen: () => void
@@ -13,7 +14,7 @@ interface props {
 
 const tooltipIconStyle = { marginLeft: 10, fontSize: 14 }
 
-export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScreen }) => {
+export const TabHeader = ({ setId, currentViewId, hidden, isInTutorialMode, returnToWelcomeScreen }) => {
     const { translate, language, setLanguage } = useTranslation()
     const [lastClicked, setLastClicked] = useState<number>(1)
     const [isDisabled, setDisabled] = useState(false)
@@ -24,6 +25,13 @@ export const TabHeader = ({ setId, hidden, isInTutorialMode, returnToWelcomeScre
             setLastClicked(id);
         }
     };
+
+    // Sync lastClicked with currentViewId when the tab header becomes visible
+    useEffect(() => {
+        if (!hidden && currentViewId !== 0) {
+            setLastClicked(currentViewId)
+        }
+    }, [hidden, currentViewId])
 
     useEffect(() => {
         api.on(api.channels.fromMain.externalWindowOpened, () => setDisabled(true))

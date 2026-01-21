@@ -144,7 +144,7 @@ export const Editor = () => {
 
     return (
         <>
-            <TabHeader setId={setViewID} hidden={viewID === 0} isInTutorialMode={isTutorial}
+            <TabHeader setId={setViewID} currentViewId={viewID} hidden={viewID === 0} isInTutorialMode={isTutorial}
                 returnToWelcomeScreen={returnToWelcomeScreen} />
             <WelcomeContainer hidden={viewID !== 0} startTutorial={onStartTutorial} />
             <div hidden={viewID === 0} style={{ marginBottom: '35px' }}></div>

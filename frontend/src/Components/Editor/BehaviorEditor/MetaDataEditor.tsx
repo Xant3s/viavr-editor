@@ -1,6 +1,6 @@
 import { SettingAccordion } from '../../Settings/SettingAccordion'
 import { Button, Select, SelectMenu, Pane } from 'evergreen-ui'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { Tooltip } from 'react-tooltip'
 import { Meta } from '../../../@types/Behaviors'
@@ -13,6 +13,7 @@ const RECOMMENDED_TAGS = [
     "Floor",
     "Teleport Anchor",
     "Collectable",
+    "Grab",
     "Level Boundary: Lower Left",
     "Level Boundary: Upper Right"
 ]
@@ -63,7 +64,7 @@ export const MetaDataEditor = ({ isActive }) => {
         return selectedNames
     }
 
-    const calculateAvailableTags = async (objectUUID: string, currentOptions = allTags) => {
+    const calculateAvailableTags = useCallback(async (objectUUID: string, currentOptions = allTags) => {
         const selectedObj = sceneObjects.find(sceneObj => objectUUID === sceneObj.uuid)
         if (!selectedObj) return
 
@@ -78,7 +79,7 @@ export const MetaDataEditor = ({ isActive }) => {
         else {
             setAvailableTags(currentOptions)
         }
-    }
+    }, [allTags, metas, sceneObjects])
 
     const loadSceneObjects = async () => {
         const objects = await api.invoke(api.channels.toMain.getSceneObjects)
@@ -180,14 +181,14 @@ export const MetaDataEditor = ({ isActive }) => {
     }, [isActive])
 
     useEffect(() => {
-        const listenerId = api.on(api.channels.fromMain.projectSettingChanged, (data: { uuid: string, newValue: any }) => {
+        const listenerId = api.on(api.channels.fromMain.projectSettingChanged, async (data: { uuid: string, newValue: any }) => {
             if (data.uuid === 'eec34978-5532-43b4-ae66-75d3deacc6cf') {
                 const projectTags: string[] = data.newValue ?? []
                 const mergedTags = Array.from(new Set([...RECOMMENDED_TAGS, ...projectTags]))
                 const tagOptions = mergedTags.map(tag => ({ label: tag, value: tag }))
                 setAllTags(tagOptions)
                 if (selectedObjectUUID) {
-                    calculateAvailableTags(selectedObjectUUID, tagOptions)
+                    await calculateAvailableTags(selectedObjectUUID, tagOptions)
                 } else {
                     setAvailableTags(tagOptions)
                 }
@@ -197,7 +198,7 @@ export const MetaDataEditor = ({ isActive }) => {
         return () => {
             api.removeListener(api.channels.fromMain.projectSettingChanged, listenerId)
         }
-    }, [selectedObjectUUID])
+    }, [selectedObjectUUID, calculateAvailableTags])
 
     return <SettingAccordion
         summary={

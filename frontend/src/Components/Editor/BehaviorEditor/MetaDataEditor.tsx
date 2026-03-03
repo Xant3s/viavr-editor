@@ -195,8 +195,20 @@ export const MetaDataEditor = ({ isActive }) => {
             }
         })
 
+        const saveListenerId = api.on(api.channels.fromMain.spokeProjectSavedSuccessfully, () => {
+            loadSceneObjects()
+        })
+
+        const openListenerId = api.on(api.channels.fromMain.projectOpened, () => {
+            setSceneObjects([])
+            setSelectedObjectUUID('')
+            setMetas([])
+        })
+
         return () => {
             api.removeListener(api.channels.fromMain.projectSettingChanged, listenerId)
+            api.removeListener(api.channels.fromMain.spokeProjectSavedSuccessfully, saveListenerId)
+            api.removeListener(api.channels.fromMain.projectOpened, openListenerId)
         }
     }, [selectedObjectUUID, calculateAvailableTags])
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Spoke } from './Spoke'
 import { TabHeader } from './TabHeader'
 import { BehaviorEditor } from './BehaviorEditor/BehaviorEditor'
@@ -22,7 +22,7 @@ export const Editor = () => {
     const [isTutorial, setTutorial] = useState(false)
     const [loadSceneWhenSpokeIsReady, setLoadSceneWhenSpokeIsReady] = useState(false)
     const [isExternalWindowOpen, setIsExternalWindowOpen] = useState(false)
-    let sceneExport: SceneExport | null = null
+    const sceneExportRef = useRef<SceneExport | null>(null)
 
 
     const returnToWelcomeScreen = () => {
@@ -37,7 +37,9 @@ export const Editor = () => {
     }
 
     const onSpokeReady = async () => {
-        sceneExport = sceneExport || new SceneExport()  // ensures there is only one instance of SceneExport
+        if (!sceneExportRef.current) {
+            sceneExportRef.current = new SceneExport() // ensures there is only one instance of SceneExport
+        }
         if (loadSceneWhenSpokeIsReady) {
             setLoadSceneWhenSpokeIsReady(false)
             await loadScene()

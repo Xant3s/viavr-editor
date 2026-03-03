@@ -69,6 +69,20 @@ export const EventsEditor: React.FC<Props> = ({ hidden }) => {
             loadSceneObjects()
             loadEventsFromBuildSettings()
         }
+
+        const listenerId = api.on(api.channels.fromMain.spokeProjectSavedSuccessfully, () => {
+            if (!hidden) loadSceneObjects()
+        })
+
+        const openListenerId = api.on(api.channels.fromMain.projectOpened, () => {
+            setSceneObjects([])
+            setEvents([])
+        })
+
+        return () => {
+            api.removeListener(api.channels.fromMain.spokeProjectSavedSuccessfully, listenerId)
+            api.removeListener(api.channels.fromMain.projectOpened, openListenerId)
+        }
     }, [loadAvailableActions, loadAvailableEvents, hidden])
 
     const addEvent = async (name: string) => {

@@ -143,5 +143,21 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447",
+  "overrides": {
+    "nth-check": "^2.0.1",
+    "postcss": "^8.4.31",
+    "webpack-dev-server": "^4.15.1",
+    "micromatch": "^4.0.5",
+    "braces": "^3.0.3",
+    "lodash": "^4.17.21",
+    "got": "^11.8.5",
+    "cross-spawn": "^7.0.5",
+    "ws": "^8.17.1",
+    "ejs": "^3.1.10",
+    "semver": "^7.5.2",
+    "diff": "^5.2.0",
+    "underscore": "^1.13.7",
+    "follow-redirects": "^1.15.6"
+  }
 }

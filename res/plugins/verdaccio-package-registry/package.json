@@ -9,6 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "verdaccio": "^6.1.6"
+    "verdaccio": "^5.29.2"
   }
 }

@@ -10,7 +10,9 @@ import { value_t } from '../../@types/Settings'
 export const Preferences: FC = () => {
     const { translate, language, setLanguage } = useTranslation()
 
-    const checkPackageRegistryReachability = useCallback(async (uuid: string, newValue: value_t) => {
+    const checkPackageRegistryReachability = useCallback(async (uuid: string, newValue: value_t, key?: string) => {
+        if (key !== 'packageRegistryUrl') return
+
         // Check if this is a string value (could be a package registry URL)
         if (typeof newValue === 'string' && newValue.trim() !== '') {
             const result = await api.invoke(api.channels.toMain.checkPackageRegistryReachable, newValue) as { reachable: boolean, error?: string }

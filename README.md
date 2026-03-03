@@ -77,7 +77,7 @@ Navigate to the "res" folder and run "checkInstallAll.ps1" with Powershell. Scri
 
 Alternatively, you can install to following manually (not recommended):
 
-- Make sure [node.js](https://nodejs.org/en/download/) >= 22 is installed
+- Make sure [node.js](https://nodejs.org/en/download/) 22 is installed
 
   - To check that Node.js was installed correctly, type the following commands in your terminal client:
 

@@ -58,6 +58,9 @@ export default class ProjectSettingsManager {
     // Handles update from frontend
     private async updateSetting(uuid: string, newValue: value_t) {
         await this.settingsManager.setByUuid(uuid, newValue)
+        BrowserWindow.getAllWindows().forEach(window => {
+            window.webContents.send(channels.fromMain.projectSettingChanged, { uuid, newValue })
+        })
     }
 
     private saveSettings() {

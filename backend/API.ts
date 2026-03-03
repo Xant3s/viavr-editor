@@ -69,6 +69,7 @@ export const channels = {
         tryExitApplication: 'editor:try-exit',
         floorMapEditorTryClose: 'floor-map-editor:try-close',
         newLanguage: 'localization:new-language',
+        projectSettingChanged: 'projectSettings:changed-from-backend',
     },
 }
 

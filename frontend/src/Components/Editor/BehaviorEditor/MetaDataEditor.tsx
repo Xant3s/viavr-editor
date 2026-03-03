@@ -8,10 +8,19 @@ import { FormControl, FormHelperText } from '@mui/material'
 import MetaDataComponent from './MetaDataComponent'
 import { useTranslation } from '../../../LocalizationContext'
 
+const RECOMMENDED_TAGS = [
+    "Avatar",
+    "Floor",
+    "Teleport Anchor",
+    "Collectable",
+    "Level Boundary: Lower Left",
+    "Level Boundary: Upper Right"
+]
+
 export const MetaDataEditor = ({ isActive }) => {
     const { translate } = useTranslation()
-    const [options] = useState(["Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label })))
-    const [availableTags, setAvailableTags] = useState(["Avatar", "Floor", "Teleport Anchor", "Collectable", "Level Boundary: Lower Left", "Level Boundary: Upper Right"].map(label => ({ label, value: label }))) // --> options
+    const [allTags, setAllTags] = useState<{ label: string, value: string }[]>([])
+    const [availableTags, setAvailableTags] = useState<{ label: string, value: string }[]>([])
     const [sceneObjects, setSceneObjects] = useState<any[]>([])
     const [selectedObjectUUID, setSelectedObjectUUID] = useState<string>('')
     const [selectButtonText, setSelectButtonText] = useState<string>('')
@@ -54,17 +63,20 @@ export const MetaDataEditor = ({ isActive }) => {
         return selectedNames
     }
 
-    const calculateAvailableTags = async (object) => {
-        const objName = sceneObjects.find(sceneObj => object === sceneObj.uuid).name
+    const calculateAvailableTags = async (objectUUID: string, currentOptions = allTags) => {
+        const selectedObj = sceneObjects.find(sceneObj => objectUUID === sceneObj.uuid)
+        if (!selectedObj) return
+
+        const objName = selectedObj.name
         const obj = metas.find(meta => objName === meta.name)
 
         if (obj !== undefined) {
             const unavailableTags: any = obj.tags
-            const calculatedAvailableTags = options.filter(tag => !unavailableTags.includes(tag.value))
+            const calculatedAvailableTags = currentOptions.filter(tag => !unavailableTags.includes(tag.value))
             setAvailableTags(calculatedAvailableTags)
         }
         else {
-            setAvailableTags(options)
+            setAvailableTags(currentOptions)
         }
     }
 
@@ -87,23 +99,40 @@ export const MetaDataEditor = ({ isActive }) => {
         setMetas(loadedMetas)
     }
 
+    const loadProjectTags = async () => {
+        const settings = await api.invoke(api.channels.toMain.requestProjectSettings) as [string, any][]
+        const tagsSetting = settings.find(s => s[0] === 'tags')?.[1]
+        const projectTags: string[] = tagsSetting?.value ?? []
+        const mergedTags = Array.from(new Set([...RECOMMENDED_TAGS, ...projectTags]))
+        const tagOptions = mergedTags.map(tag => ({ label: tag, value: tag }))
+        setAllTags(tagOptions)
+        setAvailableTags(tagOptions)
+    }
+
     const addMeta = async (tags: string[]) => {
-        //default object
-        if (!selectedObjectUUID) {
-            setSelectedObjectUUID(sceneObjects[0].uuid)
+        let objectUUID = selectedObjectUUID
+        if(!objectUUID && sceneObjects.length > 0) {
+            objectUUID = sceneObjects[0].uuid
+            setSelectedObjectUUID(objectUUID)
         }
-        const metaObjName: string = sceneObjects.find(sceneObj => selectedObjectUUID === sceneObj.uuid).name
+
+        if(!objectUUID) return
+
+        const selectedObj = sceneObjects.find(sceneObj => objectUUID === sceneObj.uuid)
+        if(!selectedObj) return
+
+        const metaObjName: string = selectedObj.name
         const object = metas.find(metaObj => metaObjName === metaObj.name)
 
         let newMetas: Meta[]
         if (object !== undefined) {
             const updatedObjTags: any = [...object.tags, ...tags]
-            const newMetaObj: Meta = { uuid: selectedObjectUUID, name: metaObjName, tags: updatedObjTags, index: object.index }
+            const newMetaObj: Meta = { uuid: objectUUID, name: metaObjName, tags: updatedObjTags, index: object.index }
             const updatedMetas = [...metas.filter(meta => meta["name"] !== metaObjName), newMetaObj]
             newMetas = [...updatedMetas.sort((m1, m2) => m1.index - m2.index)]
         }
         else {
-            newMetas = [...metas, { uuid: selectedObjectUUID, name: metaObjName, tags: tags, index: metas.length }]
+            newMetas = [...metas, { uuid: objectUUID, name: metaObjName, tags: tags, index: metas.length }]
         }
         setMetas(newMetas)
 
@@ -118,7 +147,7 @@ export const MetaDataEditor = ({ isActive }) => {
     const removeMeta = async (name: string) => {
         const newMetas = metas.filter(meta => meta["name"] !== name)
         setMetas(newMetas)
-        setAvailableTags(options)
+        setAvailableTags(allTags)
         await saveObjectTags(newMetas)
     }
 
@@ -146,8 +175,29 @@ export const MetaDataEditor = ({ isActive }) => {
         if (isActive) {
             loadSceneObjects()
             loadMetas()
+            loadProjectTags()
         }
     }, [isActive])
+
+    useEffect(() => {
+        const listenerId = api.on(api.channels.fromMain.projectSettingChanged, (data: { uuid: string, newValue: any }) => {
+            if (data.uuid === 'eec34978-5532-43b4-ae66-75d3deacc6cf') {
+                const projectTags: string[] = data.newValue ?? []
+                const mergedTags = Array.from(new Set([...RECOMMENDED_TAGS, ...projectTags]))
+                const tagOptions = mergedTags.map(tag => ({ label: tag, value: tag }))
+                setAllTags(tagOptions)
+                if (selectedObjectUUID) {
+                    calculateAvailableTags(selectedObjectUUID, tagOptions)
+                } else {
+                    setAvailableTags(tagOptions)
+                }
+            }
+        })
+
+        return () => {
+            api.removeListener(api.channels.fromMain.projectSettingChanged, listenerId)
+        }
+    }, [selectedObjectUUID])
 
     return <SettingAccordion
         summary={

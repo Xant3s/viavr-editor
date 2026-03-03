@@ -26,9 +26,9 @@ export const Settings = ({
     const { translate } = useTranslation()
     const [prefs, setPrefs] = useState<Map<string, any>>(new Map())
 
-    const setPref = (key: string, value: any) => {
-        setPrefs(new Map(prefs.set(key, value)))
-    }
+    const setPref = useCallback((key: string, value: any) => {
+        setPrefs(prevPrefs => new Map(prevPrefs.set(key, value)))
+    }, [])
 
     const loadPreferences = useCallback(() => {
         return api.invoke(loadSettingsChannel)
@@ -57,7 +57,7 @@ export const Settings = ({
 
         registerUpdateCallbacksFromBackend?.(setPref)
         loadInitialValues()
-    }, [])
+    }, [loadPreferences, registerUpdateCallbacksFromBackend, setPref])
 
     return (
         <StyledSettings>

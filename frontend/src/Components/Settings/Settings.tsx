@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { toaster } from 'evergreen-ui'
 import { SettingsContainer, StyledSettings } from '../StyledComponents/Preferences/StyledSettings'
 import { Setting } from './Setting'
@@ -30,15 +30,23 @@ export const Settings = ({
         setPrefs(new Map(prefs.set(key, value)))
     }
 
-    const loadPreferences = () => {
+    const loadPreferences = useCallback(() => {
         return api.invoke(loadSettingsChannel)
-    }
+    }, [loadSettingsChannel])
 
-    const sendSettingUpdateToBackend = async (uuid: string, newValue: value_t) => {
-        await api.invoke(changeSettingChannel, uuid, newValue)
-        toaster.success(translate('prefs_saved'))
-        onSettingChange?.(uuid, newValue)
-    }
+    const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const sendSettingUpdateToBackend = useCallback(async (uuid: string, newValue: value_t) => {
+        if (saveTimeoutRef.current) {
+            clearTimeout(saveTimeoutRef.current)
+        }
+
+        saveTimeoutRef.current = setTimeout(async () => {
+            await api.invoke(changeSettingChannel, uuid, newValue)
+            toaster.success(translate('prefs_saved'), { id: 'prefs-saved' })
+            onSettingChange?.(uuid, newValue)
+            saveTimeoutRef.current = null
+        }, 300)
+    }, [changeSettingChannel, translate, onSettingChange])
 
     useEffect(() => {
         const loadInitialValues = async () => {
@@ -49,7 +57,7 @@ export const Settings = ({
 
         registerUpdateCallbacksFromBackend?.(setPref)
         loadInitialValues()
-    })
+    }, [])
 
     return (
         <StyledSettings>

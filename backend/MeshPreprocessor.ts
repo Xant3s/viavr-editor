@@ -1,16 +1,16 @@
 import { ipcMain } from 'electron'
 import { channels } from './API'
-import { exec } from 'child_process'
 import AppUtils from './Utils/AppUtils'
-import {Settings} from '../frontend/src/@types/MeshPreprocessing.js'
+import { Settings } from '../frontend/src/@types/MeshPreprocessing.js'
 import path from 'path'
+import SpawnHelper from './Utils/SpawnHelper'
 
 export default class MeshPreprocessor {
     constructor() {
         ipcMain.handle(channels.toMain.runPreprocessor, async (event, paths, settings) => {
             try {
                 await this.runPreprocessor(paths, settings)
-            } catch(e) {
+            } catch (e) {
                 console.log('Could not run preprocessor:', e)
                 return 500
             }
@@ -33,12 +33,12 @@ export default class MeshPreprocessor {
             const creaseAngleArg = `--crease_angle=${settings.creaseAngle}`
             const normalDeviationArg = `--normal_deviation=${settings.normalDeviation}`
             const args = [settings.percentValue, embedTexturesArg, embedBuffersArg, noNormalMapsArg, adjustExistingNormalMapsArg,
-                                useVertexNormalsArg, creaseAngleArg, normalDeviationArg]
-                                .filter(arg => arg !== '')
-                                .join(' ')
+                useVertexNormalsArg, creaseAngleArg, normalDeviationArg]
+                .filter(arg => arg !== '')
+                .join(' ')
             const command = `${executablePath} ${filePath} ${path.join(directory, targetFileName)} ${args}`
-            exec(command, (error, stdout, stderr) => {
-                if(error) {
+            SpawnHelper.exec(command, (error, stdout, stderr) => {
+                if (error) {
                     console.error('Error occurred in child process:', error)
                     reject(500)
                 } else {

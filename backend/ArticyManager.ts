@@ -2,45 +2,45 @@ import MainWindow from './MainWindow'
 import { ipcMain } from 'electron'
 import { channels } from './API'
 import ProjectManager from './ProjectManager/ProjectManager'
-import * as child_process from 'child_process'
 import AppUtils from './Utils/AppUtils'
 import path from 'path'
 import { Logger } from './Logger'
+import SpawnHelper from './Utils/SpawnHelper'
 
 export class ArticyManager {
-    private mainWindow! : MainWindow
+    private mainWindow!: MainWindow
     private static path = `${AppUtils.getResPath()}plugins/ArticyDraft/ArticyDraft.exe`
     private static instance: ArticyManager
-    
-    private constructor() {}
-    
+
+    private constructor() { }
+
     public static getInstance() {
         return ArticyManager.instance || (ArticyManager.instance = new ArticyManager())
     }
-    
+
     public init(window: MainWindow) {
         ipcMain.handle(channels.toMain.openArticyEditor, this.openEditorAndDisableWindow.bind(this))
         this.mainWindow = window
     }
-    
+
     public static get articyPath() {
         return ArticyManager.path
     }
-    
+
     public async exportToUnity(outputPath: string) {
         return new Promise<void>((resolve) => {
-            try{
+            try {
                 const pwd = ProjectManager.getInstance().presentWorkingDirectory
                 const assetPath = path.join(outputPath, 'Assets')
                 const command = `${ArticyManager.path} -export -path ${pwd} -output ${assetPath}`
-                const proc = child_process.spawn(command, [], {
+                const proc = SpawnHelper.spawn(command, [], {
                     shell: true,
                     detached: true,
                 })
                 proc.on('exit', () => {
                     resolve()
                 })
-            } catch(e) {
+            } catch (e) {
                 Logger.get().logVerbose(`Error exporting Articy project: ${e}`)
                 resolve()
             }
@@ -48,7 +48,7 @@ export class ArticyManager {
         })
     }
 
-    private async openEditorAndDisableWindow(){
+    private async openEditorAndDisableWindow() {
         this.mainWindow.disableMenuOptionsOnArticyOpened()
         await this.openArticyEditor()
     }
@@ -56,7 +56,7 @@ export class ArticyManager {
     private async openArticyEditor() {
         const pwd = ProjectManager.getInstance().presentWorkingDirectory
         const articyStartCommend = `${ArticyManager.path} -edit -path ${pwd}`
-        const art = child_process.spawn(articyStartCommend, [], {
+        const art = SpawnHelper.spawn(articyStartCommend, [], {
             shell: true,
             detached: true,
         })
@@ -66,4 +66,3 @@ export class ArticyManager {
         });
     }
 }
-

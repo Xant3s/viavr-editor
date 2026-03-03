@@ -1,10 +1,22 @@
+import { useState, useEffect } from 'react'
 import { SettingEntryLabel } from '../StyledComponents/Preferences/StyledSettings'
 import { TextInput } from 'evergreen-ui'
 import { useTranslation } from '../../LocalizationContext'
 
 export const StringSetting = ({ id, uuid, label, value, onChange, required = false }) => {
     const { translate } = useTranslation()
-    const isEmpty = required && (!value || value.trim() === '')
+    const [localValue, setLocalValue] = useState(value ?? '')
+
+    useEffect(() => {
+        setLocalValue(value ?? '')
+    }, [value])
+
+    const isEmpty = required && (!localValue || localValue.trim() === '')
+
+    const handleChange = (e) => {
+        setLocalValue(e.target.value)
+        onChange(uuid, e.target.value)
+    }
 
     return (
         <>
@@ -12,8 +24,8 @@ export const StringSetting = ({ id, uuid, label, value, onChange, required = fal
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <TextInput
                     id={id}
-                    value={value}
-                    onChange={(e) => onChange(uuid, e.target.value)}
+                    value={localValue}
+                    onChange={handleChange}
                     height={24}
                     isInvalid={isEmpty}
                 />

@@ -11,7 +11,7 @@ export declare interface SettingsProps {
     loadSettingsChannel: string,
     changeSettingChannel: string,
     registerUpdateCallbacksFromBackend?: (setPref) => void,
-    onSettingChange?: (uuid: string, newValue: value_t, key?: string) => void,
+    onSettingChange?: (uuid: string, newValue: value_t) => void,
     children?: React.ReactNode,
 }
 
@@ -35,25 +35,6 @@ export const Settings = ({
     }, [loadSettingsChannel])
 
     const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-
-    const findKeyInSettings = (uuid: string, settings: any): string | undefined => {
-        for (const [key, setting] of Object.entries(settings)) {
-            if (typeof setting !== 'object' || setting === null) continue
-            if (setting['uuid'] === uuid) return key
-            if (setting['kind'] === 'composite' && setting['value']) {
-                const found = findKeyInSettings(uuid, setting['value'])
-                if (found) return found
-            }
-            if (setting['kind'] === 'list' && setting['listType'] === 'composite' && Array.isArray(setting['value'])) {
-                for (const composite of setting['value']) {
-                    const found = findKeyInSettings(uuid, composite)
-                    if (found) return found
-                }
-            }
-        }
-        return undefined
-    }
-
     const sendSettingUpdateToBackend = useCallback(async (uuid: string, newValue: value_t) => {
         if (saveTimeoutRef.current) {
             clearTimeout(saveTimeoutRef.current)
@@ -62,14 +43,10 @@ export const Settings = ({
         saveTimeoutRef.current = setTimeout(async () => {
             await api.invoke(changeSettingChannel, uuid, newValue)
             toaster.success(translate('prefs_saved'), { id: 'prefs-saved' })
-
-            // Find the key for this UUID to provide context to the callback
-            const key = findKeyInSettings(uuid, Object.fromEntries(prefs))
-            onSettingChange?.(uuid, newValue, key)
-
+            onSettingChange?.(uuid, newValue)
             saveTimeoutRef.current = null
         }, 300)
-    }, [changeSettingChannel, translate, onSettingChange, prefs])
+    }, [changeSettingChannel, translate, onSettingChange])
 
     useEffect(() => {
         const loadInitialValues = async () => {

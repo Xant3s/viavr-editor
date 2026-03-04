@@ -36,7 +36,7 @@ export class ArticyManager {
                 const proc = SpawnHelper.spawn(command, [], {
                     shell: true,
                     detached: true,
-                })
+                }, 'Articy Export')
                 proc.on('exit', () => {
                     resolve()
                 })
@@ -59,7 +59,7 @@ export class ArticyManager {
         const art = SpawnHelper.spawn(articyStartCommend, [], {
             shell: true,
             detached: true,
-        })
+        }, 'Articy Editor')
 
         art.on('exit', () => {
             this.mainWindow.enableMenuOptionsOnArticyClosed()

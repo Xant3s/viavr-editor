@@ -29,14 +29,18 @@ export default class SpokeManager {
         this.spokeProcess = SpawnHelper.spawn('yarn', ['start'], {
             shell: true,
             cwd: `${AppUtils.getResPath()}plugins/Spoke`
-        })
+        }, 'Spoke')
     }
 
     private async stopSpoke() {
-        const shouldStop: boolean = await PreferencesManager.getInstance().get<boolean>('dev.stopSpoke') as boolean
-
-        if (app.isPackaged || shouldStop) {
-            if (this.spokeProcess && this.spokeProcess.pid) kill(this.spokeProcess.pid)
+        if (this.spokeProcess && this.spokeProcess.pid) {
+            const pid = this.spokeProcess.pid
+            kill(pid, 'SIGKILL', (err) => {
+                if (err) {
+                    console.error('[Spoke] Process kill failed', err)
+                }
+            })
+            console.log(`Stopped process Spoke with pid ${pid}`)
         }
     }
 

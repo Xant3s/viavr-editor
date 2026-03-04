@@ -39,7 +39,8 @@ export default class ViavrServicesManager {
             {
                 shell: true,
                 cwd: `${AppUtils.getResPath()}plugins/viavr-reticulum`,
-            }
+            },
+            'Reticulum'
         )
 
         // Start monitoring Reticulum's port (localhost:4000)
@@ -52,7 +53,7 @@ export default class ViavrServicesManager {
         this.nearsparkPSInstance = SpawnHelper.spawn('node', ['app.js'], {
             shell: true,
             cwd: nearSparkScriptPath,
-        })
+        }, 'NearSpark')
     }
 
     private startVerdaccio() {
@@ -61,7 +62,7 @@ export default class ViavrServicesManager {
         this.verdaccioPSInstance = SpawnHelper.spawn('npm', ['run', 'verdaccio'], {
             shell: true,
             cwd: verdaccioPath,
-        })
+        }, 'Verdaccio')
     }
 
     //Monitor Reticulum startup
@@ -95,7 +96,7 @@ export default class ViavrServicesManager {
                     clearInterval(interval) // Stop checking
 
                     // Restart the service
-                    this.killProcess(this.reticulumPSInstance)
+                    this.killProcess(this.reticulumPSInstance, 'Reticulum')
                     await this.startReticulum()
                 }
             }
@@ -103,20 +104,20 @@ export default class ViavrServicesManager {
     }
 
     private stopAllChildProcesses() {
-        this.killProcess(this.reticulumPSInstance)
-        this.killProcess(this.nearsparkPSInstance)
-        this.killProcess(this.verdaccioPSInstance)
+        this.killProcess(this.reticulumPSInstance, 'Reticulum')
+        this.killProcess(this.nearsparkPSInstance, 'NearSpark')
+        this.killProcess(this.verdaccioPSInstance, 'Verdaccio')
     }
 
-    private killProcess(process: ChildProcess | null) {
+    private killProcess(process: ChildProcess | null, name: string) {
         if (!process || !process.pid) return
         try {
             kill(process.pid, 'SIGKILL', (err) => {
                 if (err) {
-                    console.error('Process kill failed', err)
+                    console.error(`[${name}] Process kill failed`, err)
                 }
             })
-            console.log(`Stopped process with pid ${process.pid}`)
+            console.log(`Stopped process ${name} with pid ${process.pid}`)
         } catch (e) {
             console.error(e)
         }

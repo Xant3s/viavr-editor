@@ -20,7 +20,7 @@ export default class SpawnHelper {
      * to 'pipe', and `windowsHide` is enabled. Together these guarantee no visible
      * console window.
      */
-    static spawn(command: string, args: string[] = [], options: SpawnOptions = {}): ChildProcess {
+    static spawn(command: string, args: string[] = [], options: SpawnOptions = {}, name?: string): ChildProcess {
         const mergedOptions: SpawnOptions = { ...options }
 
         if (this.isWindows) {
@@ -34,7 +34,35 @@ export default class SpawnHelper {
             }
         }
 
-        return spawn(command, args, mergedOptions)
+        const child = spawn(command, args, mergedOptions)
+
+        if (name) {
+            this.logOutput(child, name)
+        }
+
+        return child
+    }
+
+    /**
+     * Utility to forward child process output to the main console with a prefix.
+     */
+    static logOutput(child: ChildProcess, name: string) {
+        if (child.stdout) {
+            child.stdout.on('data', (data) => {
+                const lines = data.toString().split('\n')
+                lines.forEach((line: string) => {
+                    if (line.trim()) console.log(`[${name}] ${line.trim()}`)
+                })
+            })
+        }
+        if (child.stderr) {
+            child.stderr.on('data', (data) => {
+                const lines = data.toString().split('\n')
+                lines.forEach((line: string) => {
+                    if (line.trim()) console.error(`[${name}] ${line.trim()}`)
+                })
+            })
+        }
     }
 
     /**
@@ -58,9 +86,7 @@ export default class SpawnHelper {
             options.windowsHide = true
         }
 
-        if (cb) {
-            return exec(command, options, cb)
-        }
-        return exec(command, options)
+        return exec(command, options, cb)
     }
 }
+

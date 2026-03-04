@@ -32,19 +32,23 @@ export default class MeshPreprocessor {
             const useVertexNormalsArg = settings.useVertexNormals ? '--use_vertex_normals' : ''
             const creaseAngleArg = `--crease_angle=${settings.creaseAngle}`
             const normalDeviationArg = `--normal_deviation=${settings.normalDeviation}`
-            const args = [settings.percentValue, embedTexturesArg, embedBuffersArg, noNormalMapsArg, adjustExistingNormalMapsArg,
+            const args = [settings.percentValue.toString(), embedTexturesArg, embedBuffersArg, noNormalMapsArg, adjustExistingNormalMapsArg,
                 useVertexNormalsArg, creaseAngleArg, normalDeviationArg]
                 .filter(arg => arg !== '')
-                .join(' ')
-            const command = `${executablePath} ${filePath} ${path.join(directory, targetFileName)} ${args}`
-            SpawnHelper.exec(command, (error, stdout, stderr) => {
-                if (error) {
-                    console.error('Error occurred in child process:', error)
-                    reject(500)
-                } else {
+            const child = SpawnHelper.spawn(executablePath, [filePath, path.join(directory, targetFileName), ...args], {}, 'Preprocessor')
+
+            child.on('exit', (code) => {
+                if (code === 0) {
                     console.log('Child process completed successfully')
                     resolve(200)
+                } else {
+                    console.error('Child process failed with code:', code)
+                    reject(500)
                 }
+            })
+            child.on('error', (err) => {
+                console.error('Error occurred in child process:', err)
+                reject(500)
             })
         })
     }

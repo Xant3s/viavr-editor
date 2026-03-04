@@ -37,16 +37,55 @@
 				"tarball": "http://localhost:4873/de.jmu.ge.viavr.locomotion/-/de.jmu.ge.viavr.locomotion-0.5.3.tgz"
 			},
 			"contributors": []
+		},
+		"0.6.0": {
+			"author": {
+				"name": "Games Engineering JMU Würzburg"
+			},
+			"description": "This package provides an automatic Locomotion importer, that can read in settings for different movements",
+			"displayName": "Locomotion",
+			"name": "de.jmu.ge.viavr.locomotion",
+			"unity": "2021.2",
+			"unityRelease": "0f1",
+			"version": "0.6.0",
+			"hideInEditor": false,
+			"keywords": [
+				"viavr"
+			],
+			"mandatory": true,
+			"dependencies": {
+				"de.jmu.ge.spokesceneimporter": "0.3.3",
+				"de.jmu.ge.viavr.unitybridge": "0.4.0",
+				"com.unity.nuget.newtonsoft-json": "3.2.1",
+				"com.unity.xr.interaction.toolkit": "2.5.4",
+				"com.unity.inputsystem": "1.2.0",
+				"unity-com.siccity.gltfutility": "0.7.2",
+				"com.unity.render-pipelines.universal": "12.1.6"
+			},
+			"publishConfig": {
+				"registry": "https://packages.informatik.uni-wuerzburg.de/"
+			},
+			"_id": "de.jmu.ge.viavr.locomotion@0.6.0",
+			"gitHead": "22ddae51f6d2b361365d1b02bb7a82da3514133e",
+			"_nodeVersion": "22.12.0",
+			"_npmVersion": "10.9.0",
+			"dist": {
+				"integrity": "sha512-c3Khq8MKojp2dFss3810ozHl1jDoaDPTaFGjLD3V5R0hRlWCuWS7dQenxIcajTJSBMJFzFCYopfEGmNhbLDI7A==",
+				"shasum": "30905dfd1d8caf6a1cc63c11017543c4f744e6fc",
+				"tarball": "http://127.0.0.1:4873/de.jmu.ge.viavr.locomotion/-/de.jmu.ge.viavr.locomotion-0.6.0.tgz"
+			},
+			"contributors": []
 		}
 	},
 	"time": {
-		"modified": "2025-08-07T11:12:41.382Z",
+		"modified": "2026-03-04T19:00:19.849Z",
 		"created": "2025-08-07T11:12:41.382Z",
-		"0.5.3": "2025-08-07T11:12:41.382Z"
+		"0.5.3": "2025-08-07T11:12:41.382Z",
+		"0.6.0": "2026-03-04T19:00:19.849Z"
 	},
 	"users": {},
 	"dist-tags": {
-		"latest": "0.5.3"
+		"latest": "0.6.0"
 	},
 	"_uplinks": {},
 	"_distfiles": {},
@@ -54,9 +93,13 @@
 		"de.jmu.ge.viavr.locomotion-0.5.3.tgz": {
 			"shasum": "c7cbbe4c933b9a4e2cc09c09a50c70a1e5e71323",
 			"version": "0.5.3"
+		},
+		"de.jmu.ge.viavr.locomotion-0.6.0.tgz": {
+			"shasum": "30905dfd1d8caf6a1cc63c11017543c4f744e6fc",
+			"version": "0.6.0"
 		}
 	},
-	"_rev": "3-e88902ff19ec72df",
+	"_rev": "26-bf161167052b5bb6",
 	"_id": "de.jmu.ge.viavr.locomotion",
 	"readme": "ERROR: No README data found!"
 }

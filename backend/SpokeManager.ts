@@ -1,19 +1,20 @@
 import { app } from 'electron'
-import * as child_process from 'child_process'
+import { ChildProcess } from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
 import PreferencesManager from './Preferences/PreferencesManager'
 import { checkPort } from './Utils/CheckPort'
 import { channels } from './API'
 import MainWindow from './MainWindow'
+import SpawnHelper from './Utils/SpawnHelper'
 
 export default class SpokeManager {
     private static instance: SpokeManager
-    private spokeProcess : child_process.ChildProcess | undefined = undefined
+    private spokeProcess: ChildProcess | undefined = undefined
 
 
     public static getInstance(): SpokeManager {
-        if(!SpokeManager.instance) {
+        if (!SpokeManager.instance) {
             SpokeManager.instance = new SpokeManager()
         }
         return SpokeManager.instance
@@ -21,30 +22,26 @@ export default class SpokeManager {
 
     private constructor() {
         this.startSpoke()
-        app.on('quit', this.stopSpoke.bind(this))
     }
 
     private async startSpoke() {
-        const psCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden yarn start`
-        this.spokeProcess = child_process.spawn(psCommand, {
+        this.spokeProcess = SpawnHelper.spawn('yarn', ['start'], {
             shell: true,
-            detached: true,
             cwd: `${AppUtils.getResPath()}plugins/Spoke`
-        })
+        }, 'Spoke')
     }
 
-    private async stopSpoke() {
-        const shouldStop: boolean = await PreferencesManager.getInstance().get<boolean>('dev.stopSpoke') as boolean
-
-        if(app.isPackaged || shouldStop) {
-            if(this.spokeProcess && this.spokeProcess.pid) kill(this.spokeProcess.pid)
+    public async stopSpoke(): Promise<void> {
+        if (this.spokeProcess) {
+            await SpawnHelper.killTree(this.spokeProcess, 'Spoke')
+            this.spokeProcess = undefined
         }
     }
-    
+
     public waitForSpokePort(mainWindow: MainWindow) {
         const interval = setInterval(async () => {
             const portBlocked = await checkPort(9090)
-            if(portBlocked) {
+            if (portBlocked) {
                 clearInterval(interval)
                 mainWindow.send(channels.fromMain.spokePortTaken)
             }

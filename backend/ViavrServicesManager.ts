@@ -1,27 +1,26 @@
 import { app } from 'electron'
-import * as child_process from 'child_process'
+import { ChildProcess } from 'child_process'
 import kill from 'tree-kill'
 import AppUtils from './Utils/AppUtils'
-import { checkPort } from './Utils/CheckPort' // Import the net module for TCP connections
+import { checkPort } from './Utils/CheckPort'
+import SpawnHelper from './Utils/SpawnHelper'
 
 export default class ViavrServicesManager {
     private static instance: ViavrServicesManager
-    private reticulumPSInstance: child_process.ChildProcess | null = null
-    private nearsparkPSInstance: child_process.ChildProcess | null = null
-    private verdaccioPSInstance: child_process.ChildProcess | null = null
+    private reticulumPSInstance: ChildProcess | null = null
+    private nearsparkPSInstance: ChildProcess | null = null
+    private verdaccioPSInstance: ChildProcess | null = null
     private MAX_RETICULUM_CHECKS = 3
     private CURRENT_RETICULUM_CHECKS = 0
 
     public static getInstance(): ViavrServicesManager {
-        if(!ViavrServicesManager.instance) {
+        if (!ViavrServicesManager.instance) {
             ViavrServicesManager.instance = new ViavrServicesManager()
         }
         return ViavrServicesManager.instance
     }
 
     private constructor() {
-        app.on('quit', this.stopAllChildProcesses.bind(this))
-        
         this.startReticulum()
         this.startNearSpark()
         this.startVerdaccio()
@@ -29,15 +28,18 @@ export default class ViavrServicesManager {
 
     private async startReticulum() {
         await this.killErlProcess() // Kill `erl.exe` if running (effectively kills every running reticulum instance)
-        
-        const scriptPath = `${AppUtils.getResPath()}plugins/viavr-reticulum/run_reticulum_without_checks.ps1`
-        const psCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "${scriptPath}"`
 
-        this.reticulumPSInstance = child_process.spawn(psCommand, {
-            shell: true,
-            detached: true,
-            cwd: `${AppUtils.getResPath()}plugins/viavr-reticulum`,
-        })
+        const scriptPath = `${AppUtils.getResPath()}plugins/viavr-reticulum/run_reticulum_without_checks.ps1`
+
+        this.reticulumPSInstance = SpawnHelper.spawn(
+            'powershell',
+            ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', scriptPath],
+            {
+                shell: true,
+                cwd: `${AppUtils.getResPath()}plugins/viavr-reticulum`,
+            },
+            'Reticulum'
+        )
 
         // Start monitoring Reticulum's port (localhost:4000)
         await this.monitorReticulumService()
@@ -45,29 +47,24 @@ export default class ViavrServicesManager {
 
     private startNearSpark() {
         const nearSparkScriptPath = `${AppUtils.getResPath()}plugins/viavr-nearspark/`
-        const nearSparkPsCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden cd ${nearSparkScriptPath} && node app.js"`
 
-        this.nearsparkPSInstance = child_process.spawn(nearSparkPsCommand, {
+        this.nearsparkPSInstance = SpawnHelper.spawn('node', ['app.js'], {
             shell: true,
-            detached: true,
-            cwd: nearSparkScriptPath, // Optional since we're explicitly setting the directory in the command
-        })
+            cwd: nearSparkScriptPath,
+        }, 'NearSpark')
     }
 
     private startVerdaccio() {
         const verdaccioPath = `${AppUtils.getResPath()}plugins/verdaccio-package-registry/`
-        const verdaccioCommand = `powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden cd ${verdaccioPath} && npm run verdaccio`
         console.log(verdaccioPath)
-        this.verdaccioPSInstance = child_process.spawn(verdaccioCommand, {
+        this.verdaccioPSInstance = SpawnHelper.spawn('npm', ['run', 'verdaccio'], {
             shell: true,
-            detached: true,
             cwd: verdaccioPath,
-        })
+        }, 'Verdaccio')
     }
 
-    //Monitor Reticulum startup
     private async monitorReticulumService() {
-        if(this.CURRENT_RETICULUM_CHECKS >= this.MAX_RETICULUM_CHECKS) {
+        if (this.CURRENT_RETICULUM_CHECKS >= this.MAX_RETICULUM_CHECKS) {
             console.log('Tried to restart reticulum ' + this.MAX_RETICULUM_CHECKS + ' times. Aborting reticulum checks please try to reinstall/check Reticulum installation.')
             return
         }
@@ -84,44 +81,42 @@ export default class ViavrServicesManager {
 
         const interval = setInterval(async () => {
             const isReachable = await checkPort(4000, 'localhost')
-            if(isReachable) {
+            if (isReachable) {
                 console.log('Reticulum is running on localhost:4000')
                 retries = 0 // Reset retries if the service is reachable
                 clearInterval(interval)
             } else {
                 retries++
                 console.warn(`Reticulum not reachable. Retry ${retries}/${MAX_RETRIES}`)
-                if(retries >= MAX_RETRIES) {
+                if (retries >= MAX_RETRIES) {
                     console.error('Reticulum service failed. Restarting...')
                     clearInterval(interval) // Stop checking
 
                     // Restart the service
-                    this.killProcess(this.reticulumPSInstance)
+                    await this.killProcess(this.reticulumPSInstance, 'Reticulum')
+                    this.reticulumPSInstance = null
                     await this.startReticulum()
                 }
             }
         }, CHECK_INTERVAL)
     }
 
-    private stopAllChildProcesses() {
-        this.killProcess(this.reticulumPSInstance)
-        this.killProcess(this.nearsparkPSInstance)
-        this.killProcess(this.verdaccioPSInstance)
+    public async stopAllChildProcesses(): Promise<void> {
+        console.log('Stopping all VIA-VR services...')
+        await Promise.all([
+            this.killProcess(this.reticulumPSInstance, 'Reticulum'),
+            this.killProcess(this.nearsparkPSInstance, 'NearSpark'),
+            this.killProcess(this.verdaccioPSInstance, 'Verdaccio')
+        ])
+        this.reticulumPSInstance = null
+        this.nearsparkPSInstance = null
+        this.verdaccioPSInstance = null
+        console.log('All VIA-VR services stopped.')
     }
-    
-    private killProcess(process: child_process.ChildProcess | null) {
-        if(!process || !process.pid) return
-        try {
-            kill(process.pid, 'SIGKILL', (err) => {
-                if(err) {
-                    console.error('Process kill failed', err)
-                }
-            })
-            console.log(`Stopped process with pid ${process.pid}`)
-        } catch(e) {
-            console.error(e)
-        }
-        process = null
+
+    private async killProcess(process: ChildProcess | null, name: string): Promise<void> {
+        if (!process) return
+        await SpawnHelper.killTree(process, name)
     }
 
     private async killErlProcess(): Promise<void> {
@@ -129,8 +124,8 @@ export default class ViavrServicesManager {
         return new Promise((resolve) => {
             const psCommand = `powershell -Command "Get-Process erl -ErrorAction SilentlyContinue | Stop-Process -Force"`
 
-            child_process.exec(psCommand, (error, stdout, stderr) => {
-                if(error) {
+            SpawnHelper.exec(psCommand, (error) => {
+                if (error) {
                     //Expected fail if no instance of erl.exe is running
                 }
                 resolve() // Resolve the promise after the command finishes

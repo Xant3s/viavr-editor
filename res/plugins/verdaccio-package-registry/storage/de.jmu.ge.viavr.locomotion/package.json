@@ -66,22 +66,22 @@
 				"registry": "https://packages.informatik.uni-wuerzburg.de/"
 			},
 			"_id": "de.jmu.ge.viavr.locomotion@0.6.0",
-			"gitHead": "f679c1e57ee469b31116e109e1514fb2f3cde98c",
+			"gitHead": "22ddae51f6d2b361365d1b02bb7a82da3514133e",
 			"_nodeVersion": "22.12.0",
 			"_npmVersion": "10.9.0",
 			"dist": {
-				"integrity": "sha512-8PhR0Y3CYtBTpRXRV2NmTbBchNmQUsDTZdQ8S8hgb12n1szVVK5fi6FTbg1qeKAdjmq0H5hIKKMny+Ehjp+SpQ==",
-				"shasum": "e8d04c94cbbf8ef1af764ad7f61837ab7c8d58cd",
+				"integrity": "sha512-c3Khq8MKojp2dFss3810ozHl1jDoaDPTaFGjLD3V5R0hRlWCuWS7dQenxIcajTJSBMJFzFCYopfEGmNhbLDI7A==",
+				"shasum": "30905dfd1d8caf6a1cc63c11017543c4f744e6fc",
 				"tarball": "http://127.0.0.1:4873/de.jmu.ge.viavr.locomotion/-/de.jmu.ge.viavr.locomotion-0.6.0.tgz"
 			},
 			"contributors": []
 		}
 	},
 	"time": {
-		"modified": "2026-03-03T21:40:28.348Z",
+		"modified": "2026-03-04T19:00:19.849Z",
 		"created": "2025-08-07T11:12:41.382Z",
 		"0.5.3": "2025-08-07T11:12:41.382Z",
-		"0.6.0": "2026-03-03T21:40:28.348Z"
+		"0.6.0": "2026-03-04T19:00:19.849Z"
 	},
 	"users": {},
 	"dist-tags": {
@@ -95,11 +95,11 @@
 			"version": "0.5.3"
 		},
 		"de.jmu.ge.viavr.locomotion-0.6.0.tgz": {
-			"shasum": "e8d04c94cbbf8ef1af764ad7f61837ab7c8d58cd",
+			"shasum": "30905dfd1d8caf6a1cc63c11017543c4f744e6fc",
 			"version": "0.6.0"
 		}
 	},
-	"_rev": "11-0ac2b6acb7bdb498",
+	"_rev": "26-bf161167052b5bb6",
 	"_id": "de.jmu.ge.viavr.locomotion",
 	"readme": "ERROR: No README data found!"
 }

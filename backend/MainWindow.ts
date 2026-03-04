@@ -8,7 +8,7 @@ import ProjectManager from './ProjectManager/ProjectManager'
 
 export default class MainWindow {
     private static window: Electron.BrowserWindow
-    private static isActuallyQuitting: boolean = false
+    private static isActuallyQuitting = false
 
     public constructor() {
         app.whenReady().then(MainWindow.createWindow)

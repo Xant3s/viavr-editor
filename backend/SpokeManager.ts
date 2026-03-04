@@ -22,7 +22,6 @@ export default class SpokeManager {
 
     private constructor() {
         this.startSpoke()
-        app.on('quit', this.stopSpoke.bind(this))
     }
 
     private async startSpoke() {
@@ -32,15 +31,10 @@ export default class SpokeManager {
         }, 'Spoke')
     }
 
-    private async stopSpoke() {
-        if (this.spokeProcess && this.spokeProcess.pid) {
-            const pid = this.spokeProcess.pid
-            kill(pid, 'SIGKILL', (err) => {
-                if (err) {
-                    console.error('[Spoke] Process kill failed', err)
-                }
-            })
-            console.log(`Stopped process Spoke with pid ${pid}`)
+    public async stopSpoke(): Promise<void> {
+        if (this.spokeProcess) {
+            await SpawnHelper.killTree(this.spokeProcess, 'Spoke')
+            this.spokeProcess = undefined
         }
     }
 

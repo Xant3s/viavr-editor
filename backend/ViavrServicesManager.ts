@@ -21,8 +21,6 @@ export default class ViavrServicesManager {
     }
 
     private constructor() {
-        app.on('quit', this.stopAllChildProcesses.bind(this))
-
         this.startReticulum()
         this.startNearSpark()
         this.startVerdaccio()
@@ -65,7 +63,6 @@ export default class ViavrServicesManager {
         }, 'Verdaccio')
     }
 
-    //Monitor Reticulum startup
     private async monitorReticulumService() {
         if (this.CURRENT_RETICULUM_CHECKS >= this.MAX_RETICULUM_CHECKS) {
             console.log('Tried to restart reticulum ' + this.MAX_RETICULUM_CHECKS + ' times. Aborting reticulum checks please try to reinstall/check Reticulum installation.')
@@ -96,32 +93,30 @@ export default class ViavrServicesManager {
                     clearInterval(interval) // Stop checking
 
                     // Restart the service
-                    this.killProcess(this.reticulumPSInstance, 'Reticulum')
+                    await this.killProcess(this.reticulumPSInstance, 'Reticulum')
+                    this.reticulumPSInstance = null
                     await this.startReticulum()
                 }
             }
         }, CHECK_INTERVAL)
     }
 
-    private stopAllChildProcesses() {
-        this.killProcess(this.reticulumPSInstance, 'Reticulum')
-        this.killProcess(this.nearsparkPSInstance, 'NearSpark')
-        this.killProcess(this.verdaccioPSInstance, 'Verdaccio')
+    public async stopAllChildProcesses(): Promise<void> {
+        console.log('Stopping all VIA-VR services...')
+        await Promise.all([
+            this.killProcess(this.reticulumPSInstance, 'Reticulum'),
+            this.killProcess(this.nearsparkPSInstance, 'NearSpark'),
+            this.killProcess(this.verdaccioPSInstance, 'Verdaccio')
+        ])
+        this.reticulumPSInstance = null
+        this.nearsparkPSInstance = null
+        this.verdaccioPSInstance = null
+        console.log('All VIA-VR services stopped.')
     }
 
-    private killProcess(process: ChildProcess | null, name: string) {
-        if (!process || !process.pid) return
-        try {
-            kill(process.pid, 'SIGKILL', (err) => {
-                if (err) {
-                    console.error(`[${name}] Process kill failed`, err)
-                }
-            })
-            console.log(`Stopped process ${name} with pid ${process.pid}`)
-        } catch (e) {
-            console.error(e)
-        }
-        process = null
+    private async killProcess(process: ChildProcess | null, name: string): Promise<void> {
+        if (!process) return
+        await SpawnHelper.killTree(process, name)
     }
 
     private async killErlProcess(): Promise<void> {

@@ -42,7 +42,7 @@ const startup = async () => {
     new AdbUtils()
     Logger.get()
     app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
-  
+
         // Prevent having error
         event.preventDefault()
         // and continue
@@ -59,5 +59,35 @@ const tryOpenProject = async () => {
 }
 
 app.whenReady().then(tryOpenProject)
+
+let isShuttingDown = false
+app.on('before-quit', async (event) => {
+    if (isShuttingDown) return
+
+    // If it's a "natural" close attempt (X or Cmd+Q) and project is loaded, don't start cleanup yet.
+    // Let it proceed to the window-close event where the "Save the project?" modal appears.
+    if (!MainWindow.getIsActuallyQuitting() && ProjectManager.getInstance().projectIsLoaded()) {
+        return
+    }
+
+    // Prevent the quit so we can do async cleanup.
+    event.preventDefault()
+    isShuttingDown = true
+
+    console.log('Initiating graceful shutdown...')
+
+    try {
+        await Promise.all([
+            ViavrServicesManager.getInstance().stopAllChildProcesses(),
+            SpokeManager.getInstance().stopSpoke()
+        ])
+        console.log('All subprocesses terminated safely.')
+    } catch (err) {
+        console.error('Error during shutdown:', err)
+    } finally {
+        // Now that all is clear, call exit(0) to bypass any further blocking events.
+        app.exit(0)
+    }
+})
 
 startup()

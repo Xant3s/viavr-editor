@@ -8,6 +8,7 @@ import ProjectManager from './ProjectManager/ProjectManager'
 
 export default class MainWindow {
     private static window: Electron.BrowserWindow
+    private static isActuallyQuitting: boolean = false
 
     public constructor() {
         app.whenReady().then(MainWindow.createWindow)
@@ -15,13 +16,19 @@ export default class MainWindow {
         app.on('window-all-closed', () => MainWindow.onWindowAllClosed(app))
         app.commandLine.appendSwitch('disable-site-isolation-trials') // https://github.com/electron/electron/issues/18214
         ipc.handle(API.channels.toMain.exitApplication, this.exitApplication.bind(this))
-        ipc.on('editor:try-exit', () =>  {
-            if(ProjectManager.getInstance().projectIsLoaded()) {
-                MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)
+        ipc.on('editor:try-exit', () => {
+            if (ProjectManager.getInstance().projectIsLoaded()) {
+                if (MainWindow.window && !MainWindow.window.isDestroyed()) {
+                    MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)
+                }
             } else {
                 this.exitApplication()
             }
         })
+    }
+
+    public static getIsActuallyQuitting(): boolean {
+        return this.isActuallyQuitting
     }
 
     get window(): Electron.BrowserWindow {
@@ -55,9 +62,8 @@ export default class MainWindow {
     }
 
     private exitApplication() {
-        // @ts-ignore
-        MainWindow.window = null
-        app.exit(0)
+        MainWindow.isActuallyQuitting = true
+        app.quit()
     }
 
     private static createWindow() {
@@ -69,12 +75,16 @@ export default class MainWindow {
             },
             title: `VIA-VR Editor ${app.getVersion()}`
         })
-        MainWindow.window.on("close", () => {
-            if (ProjectManager.getInstance().projectIsLoaded()) {
-                MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)
+        MainWindow.window.on("close", (event) => {
+            // If we are not actually quitting yet and a project is loaded, interrupt the close.
+            // This allows the "Save the project?" modal to appear while services are still alive.
+            if (!MainWindow.isActuallyQuitting && ProjectManager.getInstance().projectIsLoaded()) {
+                event.preventDefault()
+                if (MainWindow.window && !MainWindow.window.isDestroyed()) {
+                    MainWindow.window.webContents.send(API.channels.fromMain.tryExitApplication)
+                }
             }
-        }
-        )
+        })
         MainWindow.allowCertificatesFromLocalhost(MainWindow.window)
         loadPage(MainWindow.window, 'index')
         MainWindow.window.maximize()

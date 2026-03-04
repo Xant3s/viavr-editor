@@ -1,4 +1,5 @@
 import { spawn, exec, SpawnOptions, ExecOptions, ChildProcess, ExecException } from 'child_process'
+import kill from 'tree-kill'
 
 /**
  * Utility for spawning child processes with platform-aware window hiding.
@@ -51,7 +52,8 @@ export default class SpawnHelper {
             child.stdout.on('data', (data) => {
                 const lines = data.toString().split('\n')
                 lines.forEach((line: string) => {
-                    if (line.trim()) console.log(`[${name}] ${line.trim()}`)
+                    const trimmed = line.trim()
+                    if (trimmed) console.log(`[${name}] ${trimmed}`)
                 })
             })
         }
@@ -59,10 +61,31 @@ export default class SpawnHelper {
             child.stderr.on('data', (data) => {
                 const lines = data.toString().split('\n')
                 lines.forEach((line: string) => {
-                    if (line.trim()) console.error(`[${name}] ${line.trim()}`)
+                    const trimmed = line.trim()
+                    if (trimmed) console.error(`[${name}] ${trimmed}`)
                 })
             })
         }
+    }
+
+    /**
+     * Terminate a process and all its children. Returns a promise that resolves when done.
+     */
+    static async killTree(child: ChildProcess | null | undefined, name: string): Promise<void> {
+        if (!child || !child.pid) {
+            return
+        }
+        const pid = child.pid
+        return new Promise((resolve) => {
+            kill(pid, 'SIGKILL', (err) => {
+                if (err) {
+                    console.error(`[${name}] Failed to kill process tree for PID ${pid}:`, err)
+                } else {
+                    console.log(`[${name}] Successfully stopped process tree for PID ${pid}`)
+                }
+                resolve()
+            })
+        })
     }
 
     /**

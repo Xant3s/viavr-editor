@@ -1,9 +1,9 @@
 [submodule "res/plugins/spoke"]
 	path = res/plugins/spoke
-	url = ../spoke.git
+	url = https://gitlab2.informatik.uni-wuerzburg.de/via-vr/spoke.git
 [submodule "res/plugins/viavr-reticulum"]
 	path = res/plugins/viavr-reticulum
-	url = ../viavr-reticulum.git
+	url = https://gitlab2.informatik.uni-wuerzburg.de/via-vr/reticulum.git
 [submodule "res/plugins/viavr-nearspark"]
 	path = res/plugins/viavr-nearspark
-	url = ../viavr-nearspark.git
+	url = https://gitlab2.informatik.uni-wuerzburg.de/via-vr/nearspark.git

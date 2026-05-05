@@ -3,7 +3,7 @@ $nodePath = "C:\Program Files\nodejs"
 
 $vscPath = "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
 
-$unityRecVersion = "2021.3.31f1"
+$unityRecVersion = "2021.3.45f2"
 $unityPath = "C:\Program Files\Unity\Hub\Editor\$unityRecVersion\Editor\"
 $unityHubPath = "C:\Program Files\Unity Hub"
 $unityHubExecutable = "$unityHubPath\Unity Hub.exe"

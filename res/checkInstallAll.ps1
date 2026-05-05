@@ -287,9 +287,9 @@ Install-Software -Name "Unity" -InstallScript {
     
     # List of files to download
     $filesToDownload = @(
-        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/AndroidPlayer.zip"; destination = "$unityPluginsDir\AndroidPlayer.zip" },
-        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnitySetup64-2021.3.31f1.exe"; destination = "$unityPluginsDir\UnitySetup64-2021.3.31f1.exe" },
-        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe"; destination = "$unityPluginsDir\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" }
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/2021.3.45f2/AndroidPlayer.zip"; destination = "$unityPluginsDir\AndroidPlayer.zip" },
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/2021.3.45f2/UnitySetup64-2021.3.45f2.exe"; destination = "$unityPluginsDir\UnitySetup64-2021.3.45f2.exe" },
+        @{ url = "https://downloads.games.informatik.uni-wuerzburg.de/via-vr/vendor/unity/2021.3.45f2/UnitySetup-Android-Support-for-Editor-2021.3.45f2.exe"; destination = "$unityPluginsDir\UnitySetup-Android-Support-for-Editor-2021.3.45f2.exe" }
     )
 
     # Download files
@@ -300,18 +300,18 @@ Install-Software -Name "Unity" -InstallScript {
     Write-Host "Installing Unity. This will take a while, please wait..."
 
     # Install Unity Editor silently and wait for completion
-    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup64-2021.3.31f1.exe" -ArgumentList "/S" -Wait
+    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup64-2021.3.45f2.exe" -ArgumentList "/S" -Wait
 
     # Install Android Support for Unity Editor silently and wait for completion
     Write-Host "Installing Android support for Unity..."
     Write-Log "Installing Android support for Unity..."
-    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.31f1.exe" -ArgumentList "/S" -Wait
+    Start-Process -FilePath "$PWD\plugins\unity\UnitySetup-Android-Support-for-Editor-2021.3.45f2.exe" -ArgumentList "/S" -Wait
 
     
     # Define extraction path
     Write-Host "Installing Android build tools for Unity..."
     Write-Log "Installing Android build tools for Unity..."
-    $androidPlayerPath = "C:\Program Files\Unity 2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer"
+    $androidPlayerPath = "C:\Program Files\Unity 2021.3.45f2\Editor\Data\PlaybackEngines\AndroidPlayer"
 
     # Ensure destination directory exists
     if (!(Test-Path $androidPlayerPath)) {
@@ -327,7 +327,7 @@ Install-Software -Name "Unity" -InstallScript {
     Write-Log "Unity installed"
 
 } -CheckInstalled {
-    (Test-Path "C:\Program Files\Unity 2021.3.31f1\Editor\Unity.exe") -or (Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Unity.exe")
+    (Test-Path "C:\Program Files\Unity 2021.3.45f2\Editor\Unity.exe") -or (Test-Path "C:\Program Files\Unity\Hub\Editor\2021.3.45f2\Editor\Unity.exe")
 }
 
 ### Unity License ###
@@ -336,7 +336,7 @@ Write-Host "For VIA-VR to work you need a Unity account and a valid license. Ple
 Write-Host "1. Start the application 'Unity Hub' that has been installed on your computer." -ForegroundColor Yellow
 Write-Host "2. Please sign in or create an account. You do not have to install a version of Unity." -ForegroundColor Yellow
 Write-Host "3. Once logged in, go to preferences -> licenses and make sure you have a valid license (e.g. a free personal license)." -ForegroundColor Yellow
-Write-Host "4. Start the application 'Unity 2021.3.31f1' that has been installed on your computer. You should not get any error messages. If you do please check your license as mentioned above." -ForegroundColor Yellow
+Write-Host "4. Start the application 'Unity 2021.3.45f2' that has been installed on your computer. You should not get any error messages. If you do please check your license as mentioned above." -ForegroundColor Yellow
 Write-Host "Please press enter and continue once you have a valid Unity license." -ForegroundColor Yellow
 $null = $Host.UI.RawUI.FlushInputBuffer()   # prevents previous repeated enter presses to skip pause
 Pause

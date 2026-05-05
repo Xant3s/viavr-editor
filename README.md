@@ -97,9 +97,9 @@ Alternatively, you can install to following manually (not recommended):
     yarn -v
     ```
         
-- Make sure Unity 2021.3.31f1 is installed
+- Make sure Unity 2021.3.45f2 is installed
   - Make sure to install the [Android Build Support module](https://docs.unity3d.com/Manual/android-sdksetup.html), API level 29 or above
-  - To verify that Unity was installed successfully, check if the folder `C:\Program Files\Unity\Hub\Editor\2021.3.31f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\build-tools` exists and is not empty. If this folder doesn't exist, reinstall Unity with Android Build Support 
+  - To verify that Unity was installed successfully, check if the folder `C:\Program Files\Unity\Hub\Editor\2021.3.45f2\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\build-tools` exists and is not empty. If this folder doesn't exist, reinstall Unity with Android Build Support 
   - Make sure the IL2CPP scripting backend is installed
 - Make sure your internet connection is working properly
 
